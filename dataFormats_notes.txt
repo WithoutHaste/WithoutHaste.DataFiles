@@ -1,0 +1,12 @@
+========================
+Naming
+
+it's going to contain XmlDocument extensions, XmlDocument Ms excel 2003 operations, ExcelPackage extensions, and PdfSharp extesions
+	- data file format extensions, in general
+
+System.Data is for ADO.Net architecture - to manage data from multiple sources
+	- don't want to conflict with this
+System.Windows.DataFormats is an enum for data formats
+	- not worried about conflicting with this
+	
+WithoutHaste.DataFormats
