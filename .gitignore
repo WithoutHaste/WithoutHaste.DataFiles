@@ -1,6 +1,6 @@
-DataFormats/.vs/*
-DataFormats/bin/Debug/*
-DataFormats/obj/*
-DataFormatsTest/.vs/*
-DataFormatsTest/bin/*
-DataFormatsTest/obj/*
+DataFiles/.vs/*
+DataFiles/bin/Debug/*
+DataFiles/obj/*
+DataFilesTest/.vs/*
+DataFilesTest/bin/*
+DataFilesTest/obj/*

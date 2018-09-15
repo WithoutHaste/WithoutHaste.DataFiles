@@ -1,4 +1,0 @@
-E:\GitHub\WithoutHaste.DataFiles\DataFiles\bin\Release\WithoutHaste.DataFiles.dll
-E:\GitHub\WithoutHaste.DataFiles\DataFiles\bin\Release\WithoutHaste.DataFiles.pdb
-E:\GitHub\WithoutHaste.DataFiles\DataFiles\obj\Release\WithoutHaste.DataFiles.dll
-E:\GitHub\WithoutHaste.DataFiles\DataFiles\obj\Release\WithoutHaste.DataFiles.pdb

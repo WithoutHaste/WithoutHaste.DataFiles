@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="exceptions\XmlNodeException.cs" />
-    <Compile Include="MSExcel2003XmlFormat.cs" />
+    <Compile Include="MSExcel2003XmlFile.cs" />
     <Compile Include="XmlDocumentHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
