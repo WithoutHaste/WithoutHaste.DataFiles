@@ -1,0 +1,8 @@
+E:\GitHub\WithoutHaste.DataFormats\DataFormatsTest\bin\Debug\DataFormatsTest.dll
+E:\GitHub\WithoutHaste.DataFormats\DataFormatsTest\bin\Debug\DataFormatsTest.pdb
+E:\GitHub\WithoutHaste.DataFormats\DataFormatsTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\GitHub\WithoutHaste.DataFormats\DataFormatsTest\bin\Debug\WithoutHaste.DataFormats.dll
+E:\GitHub\WithoutHaste.DataFormats\DataFormatsTest\bin\Debug\WithoutHaste.DataFormats.pdb
+E:\GitHub\WithoutHaste.DataFormats\DataFormatsTest\obj\Debug\DataFormatsTest.csprojResolveAssemblyReference.cache
+E:\GitHub\WithoutHaste.DataFormats\DataFormatsTest\obj\Debug\DataFormatsTest.dll
+E:\GitHub\WithoutHaste.DataFormats\DataFormatsTest\obj\Debug\DataFormatsTest.pdb

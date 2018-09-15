@@ -1,0 +1,5 @@
+E:\GitHub\WithoutHaste.DataFormats\DataFormats\bin\Debug\WithoutHaste.DataFormats.dll
+E:\GitHub\WithoutHaste.DataFormats\DataFormats\bin\Debug\WithoutHaste.DataFormats.pdb
+E:\GitHub\WithoutHaste.DataFormats\DataFormats\obj\Debug\DataFormats.csprojResolveAssemblyReference.cache
+E:\GitHub\WithoutHaste.DataFormats\DataFormats\obj\Debug\WithoutHaste.DataFormats.dll
+E:\GitHub\WithoutHaste.DataFormats\DataFormats\obj\Debug\WithoutHaste.DataFormats.pdb

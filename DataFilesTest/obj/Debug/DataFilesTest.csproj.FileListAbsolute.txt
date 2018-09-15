@@ -1,0 +1,8 @@
+E:\GitHub\WithoutHaste.DataFiles\DataFilesTest\bin\Debug\DataFilesTest.dll
+E:\GitHub\WithoutHaste.DataFiles\DataFilesTest\bin\Debug\DataFilesTest.pdb
+E:\GitHub\WithoutHaste.DataFiles\DataFilesTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\GitHub\WithoutHaste.DataFiles\DataFilesTest\bin\Debug\WithoutHaste.DataFiles.dll
+E:\GitHub\WithoutHaste.DataFiles\DataFilesTest\bin\Debug\WithoutHaste.DataFiles.pdb
+E:\GitHub\WithoutHaste.DataFiles\DataFilesTest\obj\Debug\DataFilesTest.csprojResolveAssemblyReference.cache
+E:\GitHub\WithoutHaste.DataFiles\DataFilesTest\obj\Debug\DataFilesTest.dll
+E:\GitHub\WithoutHaste.DataFiles\DataFilesTest\obj\Debug\DataFilesTest.pdb

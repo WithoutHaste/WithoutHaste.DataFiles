@@ -1,0 +1,5 @@
+E:\GitHub\WithoutHaste.DataFiles\DataFiles\bin\Debug\WithoutHaste.DataFiles.dll
+E:\GitHub\WithoutHaste.DataFiles\DataFiles\bin\Debug\WithoutHaste.DataFiles.pdb
+E:\GitHub\WithoutHaste.DataFiles\DataFiles\obj\Debug\DataFiles.csprojResolveAssemblyReference.cache
+E:\GitHub\WithoutHaste.DataFiles\DataFiles\obj\Debug\WithoutHaste.DataFiles.dll
+E:\GitHub\WithoutHaste.DataFiles\DataFiles\obj\Debug\WithoutHaste.DataFiles.pdb
