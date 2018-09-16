@@ -299,15 +299,6 @@ namespace WithoutHaste.DataFiles
 		}
 
 		/// <summary>
-		/// Creates Cells for each data values, adds sufficient Rows to the the specified Table to contain all the columns. Add all Cells to the Rows.
-		/// </summary>
-		/// <param name="columns">List of columns, each column being a list of values.</param>
-		public void AddColumns(int tableIndex, List<List<object>> columns)
-		{
-			AddColumns(tableIndex, columns.Select(column => column.Select(value => GenerateCell(value)).ToList()).ToList());
-		}
-
-		/// <summary>
 		/// Adds sufficient Rows to the the specified Table to contain all the columns. Add all Cells to the Rows.
 		/// </summary>
 		/// <param name="columns">List of columns, each column being a list of "Cell" tags.</param>
@@ -365,16 +356,16 @@ namespace WithoutHaste.DataFiles
 		}
 
 		/// <summary>
-		/// Returns the number of Columns in the specified Table.
+		/// Returns a list of values from the Cells in the column with the specified header.
 		/// </summary>
-		public int GetColumnCount(int tableIndex)
+		/// <remarks>The first row is skipped as the header row.</remarks>
+		public List<string> GetColumnValues(int tableIndex, string header)
 		{
-			int columnCount = 0;
-			foreach(XmlNode row in GetRows(tableIndex))
-			{
-				columnCount = Math.Max(columnCount, row.ChildNodes.Cast<XmlNode>().Count(node => node.LocalName == LocalNames.Cell));
-			}
-			return columnCount;
+			int headerIndex = GetHeaderIndex(tableIndex, header);
+			if(headerIndex == -1)
+				return new List<string>();
+
+			return GetColumnValues(tableIndex, headerIndex, firstRowIsHeader: true);
 		}
 
 		/// <summary>
@@ -396,19 +387,6 @@ namespace WithoutHaste.DataFiles
 		}
 
 		/// <summary>
-		/// Returns a list of values from the Cells in the column with the specified header.
-		/// </summary>
-		/// <remarks>The first row is skipped as the header row.</remarks>
-		public List<string> GetColumnValues(int tableIndex, string header)
-		{
-			int headerIndex = GetHeaderIndex(tableIndex, header);
-			if(headerIndex == -1)
-				return new List<string>();
-
-			return GetColumnValues(tableIndex, headerIndex, firstRowIsHeader: true);
-		}
-
-		/// <summary>
 		/// Returns a list of values from the cells in the selected column.
 		/// </summary>
 		/// <param name="firstRowIsHeader">If true, the first row of the table is skipped.</param>
@@ -420,7 +398,7 @@ namespace WithoutHaste.DataFiles
 			bool foundHeaderRow = false;
 			foreach(XmlNode rowNode in tableNodes[tableIndex].ChildNodes.Cast<XmlNode>().Where(node => node.LocalName == LocalNames.Row))
 			{
-				if(firstRowIsHeader && !foundHeaderRow)
+				if(!foundHeaderRow)
 				{
 					foundHeaderRow = true;
 					continue;
