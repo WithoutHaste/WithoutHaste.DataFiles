@@ -3,7 +3,7 @@ using System.Xml;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WithoutHaste.DataFiles;
 
-namespace DataFormatsTest
+namespace DataFilesTest
 {
 	[TestClass]
 	public class XmlDocumentHelperTests
@@ -15,7 +15,7 @@ namespace DataFormatsTest
 			//arrange
 			XmlNode xmlNode = null;
 			//act
-			xmlNode.Validate("");
+			XmlDocumentHelper.Validate(xmlNode, "");
 			//assert exception
 		}
 
@@ -27,7 +27,7 @@ namespace DataFormatsTest
 			XmlDocument xmlDocument = new XmlDocument();
 			XmlNode xmlNode = xmlDocument.CreateElement("A");
 			//act
-			xmlNode.Validate("B");
+			XmlDocumentHelper.Validate(xmlNode, "B");
 			//assert exception
 		}
 
@@ -38,7 +38,7 @@ namespace DataFormatsTest
 			XmlDocument xmlDocument = new XmlDocument();
 			XmlNode xmlNode = xmlDocument.CreateElement("A");
 			//act
-			xmlNode.Validate("A");
+			XmlDocumentHelper.Validate(xmlNode, "A");
 			//assert no exception
 		}
 	}

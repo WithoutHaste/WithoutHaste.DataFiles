@@ -293,7 +293,7 @@ namespace WithoutHaste.DataFiles
 
 			foreach(XmlNode cellNode in cellNodes)
 			{
-				cellNode.Validate(LocalNames.Cell);
+				XmlDocumentHelper.Validate(cellNode, LocalNames.Cell);
 				rowNode.AppendChild(cellNode);
 			}
 		}

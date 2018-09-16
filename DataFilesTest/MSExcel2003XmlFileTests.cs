@@ -6,7 +6,7 @@ using System.Xml;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WithoutHaste.DataFiles;
 
-namespace DataFormatsTest
+namespace DataFilesTest
 {
 	[TestClass]
 	public class MSExcel2003XmlFileTests
