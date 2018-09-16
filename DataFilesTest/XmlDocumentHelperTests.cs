@@ -18,5 +18,28 @@ namespace DataFormatsTest
 			xmlNode.Validate("");
 			//assert exception
 		}
+
+		[TestMethod]
+		[ExpectedException(typeof(XmlNodeException))]
+		public void XmlNode_Validate_WrongNode()
+		{
+			//arrange
+			XmlDocument xmlDocument = new XmlDocument();
+			XmlNode xmlNode = xmlDocument.CreateElement("A");
+			//act
+			xmlNode.Validate("B");
+			//assert exception
+		}
+
+		[TestMethod]
+		public void XmlNode_Validate_RightNode()
+		{
+			//arrange
+			XmlDocument xmlDocument = new XmlDocument();
+			XmlNode xmlNode = xmlDocument.CreateElement("A");
+			//act
+			xmlNode.Validate("A");
+			//assert no exception
+		}
 	}
 }

@@ -122,13 +122,13 @@ namespace WithoutHaste.DataFiles
 		private void InitWorkbook()
 		{
 			WorkbookNode = XmlDocument.CreateElement(LocalNames.Workbook, ROOT_NAMESPACE);
+			XmlDocument.AppendChild(WorkbookNode);
 
 			foreach(KeyValuePair<string, string> pair in PREFIX_NAMESPACEURI)
 			{
-				XmlAttribute attribute = XmlDocument.CreateAttribute("xmlns", pair.Key);
+				XmlAttribute attribute = XmlDocument.CreateAttribute("xmlns:"+pair.Key);
 				attribute.Value = pair.Value;
 				WorkbookNode.Attributes.Append(attribute);
-
 			}
 		}
 
@@ -439,7 +439,15 @@ namespace WithoutHaste.DataFiles
 
 		public XmlAttribute GenerateAttribute(string prefix, string name, string value)
 		{
-			XmlAttribute attribute = XmlDocument.CreateAttribute(prefix, name, PREFIX_NAMESPACEURI[prefix]);
+			if(!PREFIX_NAMESPACEURI.ContainsKey(prefix))
+				throw new ArgumentException("Unknown prefix: "+prefix);
+
+			return GenerateAttribute(prefix, PREFIX_NAMESPACEURI[prefix], name, value);
+		}
+
+		public XmlAttribute GenerateAttribute(string prefix, string uri, string name, string value)
+		{
+			XmlAttribute attribute = XmlDocument.CreateAttribute(prefix, name, uri);
 			attribute.Value = value;
 			return attribute;
 		}
