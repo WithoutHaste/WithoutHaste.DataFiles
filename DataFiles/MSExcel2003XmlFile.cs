@@ -12,6 +12,7 @@ namespace WithoutHaste.DataFiles
 	/// </summary>
 	/// <example>
 	/// Format:
+	/// <code><![CDATA[
 	/// <? xml version="1.0" encoding="UTF-8"?>
 	/// <? mso-application progid="Excel.Sheet" ?>
 	/// <Workbook xmlns:c="urn:schemas-microsoft-com:office:component:spreadsheet" xmlns:html="http://www.w3.org/TR/REC-html40" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:x2="http://schemas.microsoft.com/office/excel/2003/xml" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:x="urn:schemas-microsoft-com:office:excel">
@@ -28,6 +29,7 @@ namespace WithoutHaste.DataFiles
 	///     </Table>
 	///   </ss:Worksheet>
 	/// </ss:Workbook>
+	/// ]]></code>
 	/// </example>
 	public class MSExcel2003XmlFile
 	{

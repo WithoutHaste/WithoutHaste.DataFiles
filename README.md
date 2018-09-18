@@ -25,3 +25,4 @@ Uses [Semantic Versioning 2.0.0](https://semver.org/).
 [Initial Release - v1.0.0](https://github.com/WithoutHaste/WithoutHaste.DataFiles/releases/tag/v1.0.0)
 - Support for creating Microsoft Excel 2003 XML files.
 - Support for creating XLSX files with the EPPlus OfficeOpenXml library.
+- Uses library EPPlus version 4.5.2.1

@@ -185,7 +185,32 @@
             Returns the versions of any special libraries this one relies on.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:WithoutHaste.DataFiles.MSExcel2003XmlFile" -->
+        <member name="T:WithoutHaste.DataFiles.MSExcel2003XmlFile">
+            <summary>
+            Building a Microsoft Excel 2003 Xml file with XmlDocument.
+            </summary>
+            <example>
+            Format:
+            <code><![CDATA[
+            <? xml version="1.0" encoding="UTF-8"?>
+            <? mso-application progid="Excel.Sheet" ?>
+            <Workbook xmlns:c="urn:schemas-microsoft-com:office:component:spreadsheet" xmlns:html="http://www.w3.org/TR/REC-html40" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:x2="http://schemas.microsoft.com/office/excel/2003/xml" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:x="urn:schemas-microsoft-com:office:excel">
+              <ss:Worksheet ss:Name="Sheet1">
+                <Table>
+                  <Column />
+                  <Row>
+                    <Cell>
+                      <Data>
+                        Cell Value
+                      </Data>
+                    </Cell>
+                  </Row>
+                </Table>
+              </ss:Worksheet>
+            </ss:Workbook>
+            ]]></code>
+            </example>
+        </member>
         <member name="P:WithoutHaste.DataFiles.MSExcel2003XmlFile.XmlDocument">
             <summary></summary>
         </member>

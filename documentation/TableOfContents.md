@@ -1,5 +1,10 @@
 # Contents
 
+## Types
+
+[MSExcel2003XmlFile](MSExcel2003XmlFile.md)  
+Building a Microsoft Excel 2003 Xml file with XmlDocument.
+
 ## Static Types
 
 [ExcelPackageHelper](ExcelPackageHelper.md)  
