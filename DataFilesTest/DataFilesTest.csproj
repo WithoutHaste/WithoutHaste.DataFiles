@@ -35,7 +35,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\DataFiles\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.XML" />
   </ItemGroup>
   <Choose>
@@ -51,6 +60,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ExcelPackageHelperTests.cs" />
     <Compile Include="InfoTests.cs" />
     <Compile Include="MSExcel2003XmlFileTests.cs" />
     <Compile Include="XmlDocumentHelperTests.cs" />
@@ -135,6 +145,9 @@
     <Content Include="data\MSExcel2003XmlFile_WidthAttribute.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
