@@ -5,6 +5,9 @@
 [ExcelPackageHelper](ExcelPackageHelper.md)  
 Extensions for ExcelPackage.
 
+[Info](Info.md)  
+Retrieves version information.
+
 [XmlDocumentHelper](XmlDocumentHelper.md)  
 Generic XmlDocument utilities.
 

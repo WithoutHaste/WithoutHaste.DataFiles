@@ -9,6 +9,9 @@ using WithoutHaste.Libraries;
 
 namespace WithoutHaste.DataFiles
 {
+	/// <summary>
+	/// Retrieves version information.
+	/// </summary>
 	public static class Info
 	{
 		/// <summary>

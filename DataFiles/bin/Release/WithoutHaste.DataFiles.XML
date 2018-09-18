@@ -170,6 +170,11 @@
             Exceptions related to XmlNode objects.
             </summary>
         </member>
+        <member name="T:WithoutHaste.DataFiles.Info">
+            <summary>
+            Retrieves version information.
+            </summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.Info.GetVersion">
             <summary>
             Returns the version of this library.

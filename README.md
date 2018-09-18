@@ -1,6 +1,6 @@
 # WithoutHaste.DataFormats
 
-.Net library for XmlDocument, ExcelPackage, and PdfSharp files.
+.Net library for creating XmlDocument, ExcelPackage, and PdfSharp files.
 
 This library is under active development. Report bugs and request features on Github, or to wohaste@gmail.com.
 
