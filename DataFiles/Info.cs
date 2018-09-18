@@ -11,11 +11,17 @@ namespace WithoutHaste.DataFiles
 {
 	public static class Info
 	{
+		/// <summary>
+		/// Returns the version of this library.
+		/// </summary>
 		public static Version GetVersion()
 		{
 			return WithoutHaste.Libraries.AssemblyInfo.GetVersion();
 		}
 
+		/// <summary>
+		/// Returns the versions of any special libraries this one relies on.
+		/// </summary>
 		public static Dictionary<string, Version> GetDependencyVersions()
 		{
 			string[] dlls = new string[] {

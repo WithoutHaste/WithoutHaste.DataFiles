@@ -10,8 +10,11 @@ namespace WithoutHaste.DataFiles
 	/// <summary>Extensions for ExcelPackage.</summary>
 	public static class ExcelPackageHelper
 	{
+		/// <summary>Minimum row index in excel.</summary>
 		public const int MIN_ROW_INDEX = 1;
+		/// <summary>Minimum column index in excel.</summary>
 		public const int MIN_COLUMN_INDEX = 1;
+		/// <summary>Minimum column character in excel.</summary>
 		public const string MIN_COLUMN_CHAR = "A";
 
 		/// <summary>

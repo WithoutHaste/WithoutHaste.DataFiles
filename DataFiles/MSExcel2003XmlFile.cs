@@ -73,10 +73,14 @@ namespace WithoutHaste.DataFiles
 
 		//----------------------------------------------------
 
+		/// <summary></summary>
 		public XmlDocument XmlDocument { get; protected set; }
+		/// <summary></summary>
 		public XmlNode WorkbookNode { get; protected set; }
+		/// <summary></summary>
 		public XmlNode StylesNode { get; protected set; }
 		private List<XmlNode> tableNodes = new List<XmlNode>();
+		/// <summary></summary>
 		public XmlNode[] Tables { get { return tableNodes.ToArray(); } }
 
 		//----------------------------------------------------
@@ -442,6 +446,7 @@ namespace WithoutHaste.DataFiles
 			return values;
 		}
 
+		/// <summary>Save file.</summary>
 		public void Save(string fullPath)
 		{
 			XmlDocument.Save(fullPath);
@@ -449,41 +454,51 @@ namespace WithoutHaste.DataFiles
 
 		#region Generate
 
+		/// <summary>Returns an ss:Width attribute.</summary>
 		public XmlAttribute GenerateWidthAttribute(int value)
 		{
 			return GenerateAttribute("ss", Attributes.Width, value.ToString());
 		}
 
+		/// <summary>Returns an ss:StyleID attribute.</summary>
 		public XmlAttribute GenerateStyleIdAttribute(string value)
 		{
 			return GenerateAttribute("ss", Attributes.StyleID, value);
 		}
 
+		/// <summary>Returns an ss:Name attribute.</summary>
 		public XmlAttribute GenerateNameAttribute(string value)
 		{
 			return GenerateAttribute("ss", Attributes.Name, value);
 		}
 
+		/// <summary>Returns an ss:Type="String" attribute.</summary>
 		public XmlAttribute GenerateStringTypeAttribute()
 		{
 			return GenerateAttribute("ss", Attributes.Type, "String");
 		}
 
+		/// <summary>Returns an ss:Type="Number" attribute.</summary>
 		public XmlAttribute GenerateNumberTypeAttribute()
 		{
 			return GenerateAttribute("ss", Attributes.Type, "Number");
 		}
 
+		/// <summary>Returns an ss:Type="DateTime" attribute.</summary>
 		public XmlAttribute GenerateDateTypeAttribute()
 		{
 			return GenerateAttribute("ss", Attributes.Type, "DateTime");
 		}
 
+		/// <summary>Returns a custom ss:Type attribute.</summary>
 		public XmlAttribute GenerateTypeAttribute(string value)
 		{
 			return GenerateAttribute("ss", Attributes.Type, value);
 		}
 
+		/// <summary>Returns a custom attribute.</summary>
+		/// <remarks>Only namespace URIs known to this format can be referenced.</remarks>
+		/// <exception cref="ArgumentException">Unknown namespace URI prefix.</exception>
 		public XmlAttribute GenerateAttribute(string prefix, string name, string value)
 		{
 			if(!PREFIX_NAMESPACEURI.ContainsKey(prefix))
@@ -492,6 +507,7 @@ namespace WithoutHaste.DataFiles
 			return GenerateAttribute(prefix, PREFIX_NAMESPACEURI[prefix], name, value);
 		}
 
+		/// <summary>Returns a custom attribute.</summary>
 		public XmlAttribute GenerateAttribute(string prefix, string uri, string name, string value)
 		{
 			XmlAttribute attribute = XmlDocument.CreateAttribute(prefix, name, uri);
@@ -589,6 +605,7 @@ namespace WithoutHaste.DataFiles
 
 		#endregion
 
+		/// <summary>Converts a date to the expected string format.</summary>
 		public static string DateToString(DateTime date)
 		{
 			return date.ToString("yyyy-MM-ddT00:00:00.000");
