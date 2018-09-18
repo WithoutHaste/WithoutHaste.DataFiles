@@ -38,6 +38,7 @@ namespace WithoutHaste.DataFiles
 	/// </ss:Workbook>
 	/// ]]></code>
 	/// </example>
+	/// <layout methods="keep_order"/>
 	public class MSExcel2003XmlFile
 	{
 		private static class LocalNames

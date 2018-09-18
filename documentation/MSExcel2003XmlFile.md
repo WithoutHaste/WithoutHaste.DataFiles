@@ -62,13 +62,25 @@ Converts a date to the expected string format.
 
 ## Methods
 
-### AddColumns(System.Int32, System.Collections.Generic.List{System.Collections.Generic.List{System.Object}})
+### Int32 GetTableIndex(System.String title)
 
-Creates Cells for each data values, adds sufficient Rows to the the specified Table to contain all the columns. Add all Cells to the Rows.
+Returns the index of the Table in the Worksheet with the specified title.
 
-### AddColumns(System.Int32, System.Collections.Generic.List{System.Collections.Generic.List{System.Xml.XmlNode}})
+### Void RemoveStyle(System.String id)
 
-Adds sufficient Rows to the the specified Table to contain all the columns. Add all Cells to the Rows.
+Removes a Style.
+
+### Int32 AddWorksheet(System.String title)
+
+Add a Worksheet to the end of the list of Worksheets, containing an empty Table.
+
+Parameter title: Worksheet title.  
+
+Returns: The index of the worksheet/table.
+
+### SetColumnWidths(System.Int32, System.Collections.Generic.List{System.Int32})
+
+Set column widths on the specified Table. Overwrites column widths if they were already set.
 
 ### AddHeaderRow(System.Int32, System.Collections.Generic.List{System.String})
 
@@ -82,13 +94,79 @@ Creates Cells of the appropriate type for each value, and adds all Cells to a ne
 
 Adds all Cells to a new Row in the specified Table.
 
-### Int32 AddWorksheet(System.String title)
+### AddColumns(System.Int32, System.Collections.Generic.List{System.Collections.Generic.List{System.Object}})
 
-Add a Worksheet to the end of the list of Worksheets, containing an empty Table.
+Creates Cells for each data values, adds sufficient Rows to the the specified Table to contain all the columns. Add all Cells to the Rows.
 
-Parameter title: Worksheet title.  
+### AddColumns(System.Int32, System.Collections.Generic.List{System.Collections.Generic.List{System.Xml.XmlNode}})
 
-Returns: The index of the worksheet/table.
+Adds sufficient Rows to the the specified Table to contain all the columns. Add all Cells to the Rows.
+
+### List`1 GetRowValues(System.Int32 tableIndex, System.Int32 rowIndex)
+
+Returns a list of values from the Cells in the specified Row.
+
+Parameter tableIndex: Zero-based index of Table in Workbook.  
+Parameter rowIndex: Zero-based index of Row in Table.  
+
+### Int32 GetRowCount(System.Int32 tableIndex)
+
+Returns the number of Rows in the specified Table.
+
+### Int32 GetColumnCount(System.Int32 tableIndex)
+
+Returns the number of Columns in the specified Table.
+
+### Int32 GetHeaderIndex(System.Int32 tableIndex, System.String header)
+
+Returns zero-based index of the column with the selected header.
+            Returns -1 if header is not found.
+
+### List`1 GetHeaders(System.Int32 tableIndex)
+
+Returns all the header values from the first row.
+
+### List`1 GetColumnValues(System.Int32 tableIndex, System.String header)
+
+Returns a list of values from the Cells in the column with the specified header.
+
+### List`1 GetColumnValues(System.Int32 tableIndex, System.Int32 columnIndex, System.Boolean firstRowIsHeader)
+
+Returns a list of values from the cells in the selected column.
+
+Parameter firstRowIsHeader: If true, the first row of the table is skipped.  
+
+### Void Save(System.String fullPath)
+
+Save file.
+
+### XmlAttribute GenerateWidthAttribute(System.Int32 value)
+
+Returns an ss:Width attribute.
+
+### XmlAttribute GenerateStyleIdAttribute(System.String value)
+
+Returns an ss:StyleID attribute.
+
+### XmlAttribute GenerateNameAttribute(System.String value)
+
+Returns an ss:Name attribute.
+
+### XmlAttribute GenerateStringTypeAttribute()
+
+Returns an ss:Type="String" attribute.
+
+### XmlAttribute GenerateNumberTypeAttribute()
+
+Returns an ss:Type="Number" attribute.
+
+### XmlAttribute GenerateDateTypeAttribute()
+
+Returns an ss:Type="DateTime" attribute.
+
+### XmlAttribute GenerateTypeAttribute(System.String value)
+
+Returns a custom ss:Type attribute.
 
 ### XmlAttribute GenerateAttribute(System.String prefix, System.String name, System.String value)
 
@@ -109,105 +187,27 @@ Creates a Cell tag of the appropriate type containing the specified data.
 
 Creates a Cell tag containing the specified date.
 
-### XmlAttribute GenerateDateTypeAttribute()
+### XmlNode GenerateNumberCell(System.Int32 data)
 
-Returns an ss:Type="DateTime" attribute.
-
-### XmlNode GenerateEmptyCell()
-
-Generate an empty Cell tag.
+Generate a Cell tag containing the specified number.
 
 ### XmlNode GenerateHeaderCell(System.String data)
 
 Generate a header Cell tag containing the specified text.
 
-### XmlAttribute GenerateNameAttribute(System.String value)
-
-Returns an ss:Name attribute.
-
-### XmlNode GenerateNumberCell(System.Int32 data)
-
-Generate a Cell tag containing the specified number.
-
-### XmlAttribute GenerateNumberTypeAttribute()
-
-Returns an ss:Type="Number" attribute.
-
 ### XmlNode GenerateParagraphCell(System.String data)
 
 Generate a paragraph Cell tag containing the specified text.
-
-### XmlAttribute GenerateStringTypeAttribute()
-
-Returns an ss:Type="String" attribute.
-
-### XmlAttribute GenerateStyleIdAttribute(System.String value)
-
-Returns an ss:StyleID attribute.
 
 ### XmlNode GenerateTextCell(System.String data)
 
 Generate a paragraph Cell tag containing the specified text.
 
+### XmlNode GenerateEmptyCell()
+
+Generate an empty Cell tag.
+
 ### XmlNode GenerateTextCell(System.String data, System.String styleId)
 
 Generate a Cell tag containing the specified text.
-
-### XmlAttribute GenerateTypeAttribute(System.String value)
-
-Returns a custom ss:Type attribute.
-
-### XmlAttribute GenerateWidthAttribute(System.Int32 value)
-
-Returns an ss:Width attribute.
-
-### Int32 GetColumnCount(System.Int32 tableIndex)
-
-Returns the number of Columns in the specified Table.
-
-### List`1 GetColumnValues(System.Int32 tableIndex, System.String header)
-
-Returns a list of values from the Cells in the column with the specified header.
-
-### List`1 GetColumnValues(System.Int32 tableIndex, System.Int32 columnIndex, System.Boolean firstRowIsHeader)
-
-Returns a list of values from the cells in the selected column.
-
-Parameter firstRowIsHeader: If true, the first row of the table is skipped.  
-
-### Int32 GetHeaderIndex(System.Int32 tableIndex, System.String header)
-
-Returns zero-based index of the column with the selected header.
-            Returns -1 if header is not found.
-
-### List`1 GetHeaders(System.Int32 tableIndex)
-
-Returns all the header values from the first row.
-
-### Int32 GetRowCount(System.Int32 tableIndex)
-
-Returns the number of Rows in the specified Table.
-
-### List`1 GetRowValues(System.Int32 tableIndex, System.Int32 rowIndex)
-
-Returns a list of values from the Cells in the specified Row.
-
-Parameter tableIndex: Zero-based index of Table in Workbook.  
-Parameter rowIndex: Zero-based index of Row in Table.  
-
-### Int32 GetTableIndex(System.String title)
-
-Returns the index of the Table in the Worksheet with the specified title.
-
-### Void RemoveStyle(System.String id)
-
-Removes a Style.
-
-### Void Save(System.String fullPath)
-
-Save file.
-
-### SetColumnWidths(System.Int32, System.Collections.Generic.List{System.Int32})
-
-Set column widths on the specified Table. Overwrites column widths if they were already set.
 

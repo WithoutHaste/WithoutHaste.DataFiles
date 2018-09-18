@@ -217,6 +217,7 @@
             </ss:Workbook>
             ]]></code>
             </example>
+            <layout methods="keep_order"/>
         </member>
         <member name="P:WithoutHaste.DataFiles.MSExcel2003XmlFile.XmlDocument">
             <summary></summary>
