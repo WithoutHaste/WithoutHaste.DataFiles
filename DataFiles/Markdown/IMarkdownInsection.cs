@@ -9,7 +9,7 @@ namespace WithoutHaste.DataFiles.Markdown
 	/// <summary>
 	/// Represents a markdown element that can be included within a MarkdownSection.
 	/// </summary>
-	public interface IMarkdownInsection
+	public interface IMarkdownInSection
 	{
 		/// <summary>
 		/// Return markdown-formatted text.

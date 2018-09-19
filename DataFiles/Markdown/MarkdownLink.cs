@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace WithoutHaste.DataFiles.Markdown
 {
 	/// <summary></summary>
-	public abstract class MarkdownLink : IMarkdownInline
+	public abstract class MarkdownLink : IMarkdownInLine
 	{
 		/// <summary>Plain text of link.</summary>
 		public string Text { get; protected set; }

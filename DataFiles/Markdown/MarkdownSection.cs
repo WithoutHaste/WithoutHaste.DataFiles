@@ -9,28 +9,45 @@ namespace WithoutHaste.DataFiles.Markdown
 	/// <summary>
 	/// Represents a header and all contents until the next header of the same depth.
 	/// </summary>
-	public class MarkdownSection : IMarkdownInsection
+	public class MarkdownSection : IMarkdownInSection
 	{
 		/// <summary>
 		/// 0-indexed nesting depth of section.
 		/// </summary>
 		/// <example>"# Header" is depth 1</example>
 		/// <example>"## Header" is depth 2</example>
-		public int Depth { get; protected set; }
+		public int Depth {
+			get {
+				return depth;
+			}
+			protected set {
+				if(value < 0) throw new Exception("Depth cannot be less than 0.");
+
+				depth = value;
+				foreach(MarkdownSection section in elements.OfType<MarkdownSection>())
+				{
+					section.Depth = depth + 1;
+				}
+			}
+		}
 
 		/// <summary>
 		/// Displayed header text.
 		/// </summary>
 		public string Header { get; set; }
 
-		private List<IMarkdownInsection> elements = new List<IMarkdownInsection>();
+		/// <summary>All markdown elements within section.</summary>
+		public IMarkdownInSection[] Elements { get { return elements.ToArray(); } }
+
+		private int depth;
+		private List<IMarkdownInSection> elements = new List<IMarkdownInSection>();
 
 		#region Constructors
 
 		/// <summary></summary>
-		public MarkdownSection(string header, int depth)
+		public MarkdownSection(string header, int depth=1)
 		{
-			Depth = depth;
+			this.depth = depth;
 			Header = header;
 		}
 
@@ -49,19 +66,53 @@ namespace WithoutHaste.DataFiles.Markdown
 		}
 
 		/// <summary>
+		/// Adds existing section to the end of this section. Depths are updated.
+		/// </summary>
+		/// <param name="section">Existing section.</param>
+		public void AddSection(MarkdownSection section)
+		{
+			elements.Add(section);
+			section.Depth = this.Depth + 1;
+		}
+
+		/// <summary>
 		/// Adds the element to the end of this section.
 		/// </summary>
-		public void Add(IMarkdownInsection element)
+		public void Add(IMarkdownInSection element)
 		{
 			elements.Add(element);
 		}
 
 		/// <summary>
-		/// Adds the element in a new markdownLine at the end of this section.
+		/// Adds the element in a new MarkdownLine at the end of this section.
 		/// </summary>
-		public void AddInline(IMarkdownInline element)
+		public void AddInLine(IMarkdownInLine element)
 		{
 			elements.Add(new MarkdownLine(element));
+		}
+
+		/// <summary>
+		/// Adds the text in a new MarkdownLine at the end of this section.
+		/// </summary>
+		public void AddInLine(string text)
+		{
+			elements.Add(new MarkdownLine(text));
+		}
+
+		/// <summary>
+		/// Adds the element in a new MarkdownParagraph at the end of this section.
+		/// </summary>
+		public void AddInParagraph(IMarkdownInLine element)
+		{
+			elements.Add(new MarkdownParagraph(element));
+		}
+
+		/// <summary>
+		/// Adds the text in a new MarkdownParagraph at the end of this section.
+		/// </summary>
+		public void AddInParagraph(string text)
+		{
+			elements.Add(new MarkdownParagraph(text));
 		}
 
 		/// <inheritdoc />
@@ -70,7 +121,7 @@ namespace WithoutHaste.DataFiles.Markdown
 			StringBuilder builder = new StringBuilder();
 
 			builder.Append(new String('#', Depth) + " " + Header + "\n\n");
-			foreach(IMarkdownInsection element in elements)
+			foreach(IMarkdownInSection element in elements)
 			{
 				builder.Append(element.ToMarkdown());
 			}

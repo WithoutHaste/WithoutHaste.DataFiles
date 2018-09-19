@@ -9,7 +9,7 @@ namespace WithoutHaste.DataFiles.Markdown
 	/// <summary>
 	/// Represents plain text.
 	/// </summary>
-	public class MarkdownText : IMarkdownInline, IMarkdownInsection
+	public class MarkdownText : IMarkdownInLine, IMarkdownInSection
 	{
 		/// <summary></summary>
 		public string Text { get; protected set; }

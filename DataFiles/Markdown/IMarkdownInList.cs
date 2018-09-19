@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace WithoutHaste.DataFiles.Markdown
 {
 	/// <summary>
-	/// Represents a markdown element that can be included within a MarkdownLine (i.e. within text).
+	/// Represents a markdown element that can be added to a MarkdownList.
 	/// </summary>
-	public interface IMarkdownInLine : IMarkdownInSection
+	public interface IMarkdownInList : IMarkdownInSection
 	{
 	}
 }

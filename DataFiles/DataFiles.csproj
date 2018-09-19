@@ -57,12 +57,14 @@
     <Compile Include="ExcelPackageHelper.cs" />
     <Compile Include="exceptions\XmlNodeException.cs" />
     <Compile Include="Info.cs" />
-    <Compile Include="Markdown\IMarkdownInline.cs" />
-    <Compile Include="Markdown\IMarkdownInsection.cs" />
+    <Compile Include="Markdown\IMarkdownInLine.cs" />
+    <Compile Include="Markdown\IMarkdownInList.cs" />
+    <Compile Include="Markdown\IMarkdownInSection.cs" />
     <Compile Include="Markdown\MarkdownFile.cs" />
     <Compile Include="Markdown\MarkdownInlineLink.cs" />
     <Compile Include="Markdown\MarkdownLine.cs" />
     <Compile Include="Markdown\MarkdownLink.cs" />
+    <Compile Include="Markdown\MarkdownList.cs" />
     <Compile Include="Markdown\MarkdownParagraph.cs" />
     <Compile Include="Markdown\MarkdownSection.cs" />
     <Compile Include="Markdown\MarkdownText.cs" />

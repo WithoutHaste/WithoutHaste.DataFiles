@@ -11,25 +11,25 @@ namespace WithoutHaste.DataFiles.Markdown
 	/// </summary>
 	/// <remarks>Do not include the white space or endline character.</remarks>
 	/// <example>Displays as: The quick brown fox.  \\n</example>
-	public class MarkdownLine : IMarkdownInsection
+	public class MarkdownLine : IMarkdownInSection, IMarkdownInList
 	{
 		/// <summary>
 		/// Ordered inline elements that make up this line.
 		/// </summary>
 		/// <remarks>Expect mostly one plain text element.</remarks>
-		public IMarkdownInline[] Elements { get { return elements.ToArray(); } }
+		public IMarkdownInLine[] Elements { get { return elements.ToArray(); } }
 
 		/// <summary>
 		/// Ordered inline elements that make up this line.
 		/// </summary>
-		protected List<IMarkdownInline> elements = new List<IMarkdownInline>();
+		protected List<IMarkdownInLine> elements = new List<IMarkdownInLine>();
 
 		#region Constructors
 
 		/// <summary>
 		/// Initialize line with any number of elements.
 		/// </summary>
-		public MarkdownLine(params IMarkdownInline[] elements)
+		public MarkdownLine(params IMarkdownInLine[] elements)
 		{
 			this.elements.AddRange(elements);
 		}

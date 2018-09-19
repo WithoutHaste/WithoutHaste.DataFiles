@@ -18,7 +18,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <summary>
 		/// Initialize paragraph with any number of elements.
 		/// </summary>
-		public MarkdownParagraph(params IMarkdownInline[] elements) : base(elements)
+		public MarkdownParagraph(params IMarkdownInLine[] elements) : base(elements)
 		{
 		}
 

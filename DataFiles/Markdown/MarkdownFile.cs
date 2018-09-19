@@ -15,7 +15,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <summary>Accepted markdown file extensions.</summary>
 		public static readonly string[] Extensions = new string[] { ".md", ".markdown" };
 
-		private List<IMarkdownInsection> elements = new List<IMarkdownInsection>();
+		private List<IMarkdownInSection> elements = new List<IMarkdownInSection>();
 		private const int DEPTH = 0;
 
 		#region Constructors
@@ -55,13 +55,22 @@ namespace WithoutHaste.DataFiles.Markdown
 		}
 
 		/// <summary>
+		/// Adds existing section to the end of this file. Depths are not updated.
+		/// </summary>
+		/// <param name="section">Existing section.</param>
+		public void AddSection(MarkdownSection section)
+		{
+			elements.Add(section);
+		}
+
+		/// <summary>
 		/// Returns full markdown text for file, formatted for legibility.
 		/// </summary>
 		public string ToMarkdown()
 		{
 			StringBuilder builder = new StringBuilder();
 
-			foreach(IMarkdownInsection element in elements)
+			foreach(IMarkdownInSection element in elements)
 			{
 				builder.Append(element.ToMarkdown());
 			}
