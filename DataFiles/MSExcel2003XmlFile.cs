@@ -202,11 +202,13 @@ namespace WithoutHaste.DataFiles
 		/// Adds a Style. If a Style with the same id already exists, it is overwritten.
 		/// </summary>
 		/// <example>
+		/// <![CDATA[
 		/// <Styles>
 		///   <Style ss:ID="id">
 		///     <childName ss:childNameAttribute="childAttributeValue" />
 		///   </Style>
 		/// </Styles>
+		/// ]]>
 		/// </example>
 		public void AddStyle(string id, string childName, string childAttributeName, string childAttributeValue)
 		{
@@ -315,6 +317,7 @@ namespace WithoutHaste.DataFiles
 		/// <summary>
 		/// Creates Cells for each data values, adds sufficient Rows to the the specified Table to contain all the columns. Add all Cells to the Rows.
 		/// </summary>
+		/// <param name="tableIndex">0-based table index within Workbook.</param>
 		/// <param name="columns">List of columns, each column being a list of values.</param>
 		public void AddColumns(int tableIndex, List<List<object>> columns)
 		{
@@ -324,6 +327,7 @@ namespace WithoutHaste.DataFiles
 		/// <summary>
 		/// Adds sufficient Rows to the the specified Table to contain all the columns. Add all Cells to the Rows.
 		/// </summary>
+		/// <param name="tableIndex">0-based table index within Workbook.</param>
 		/// <param name="columns">List of columns, each column being a list of "Cell" tags.</param>
 		public void AddColumns(int tableIndex, List<List<XmlNode>> columns)
 		{
@@ -425,6 +429,8 @@ namespace WithoutHaste.DataFiles
 		/// <summary>
 		/// Returns a list of values from the cells in the selected column.
 		/// </summary>
+		/// <param name="tableIndex">0-based table index within Workbook.</param>
+		/// <param name="columnIndex">0-based column index within Table.</param>
 		/// <param name="firstRowIsHeader">If true, the first row of the table is skipped.</param>
 		public List<string> GetColumnValues(int tableIndex, int columnIndex, bool firstRowIsHeader = true)
 		{
@@ -638,7 +644,7 @@ namespace WithoutHaste.DataFiles
 			return tableNodes[tableIndex].ChildNodes.Cast<XmlNode>().Where(node => node.LocalName == LocalNames.Row).ToList();
 		}
 
-		public string GetCellValue(XmlNode cellNode)
+		private string GetCellValue(XmlNode cellNode)
 		{
 			foreach(XmlNode dataNode in cellNode.ChildNodes.Cast<XmlNode>().Where(node => node.LocalName == LocalNames.Data))
 			{
@@ -660,7 +666,7 @@ namespace WithoutHaste.DataFiles
 				throw new IndexOutOfRangeException("Row index out of range.");
 		}
 
-		public bool IsNumberType(object value)
+		private bool IsNumberType(object value)
 		{
 			return value is sbyte
 					|| value is byte

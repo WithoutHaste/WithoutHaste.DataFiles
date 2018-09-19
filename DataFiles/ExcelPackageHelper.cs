@@ -45,19 +45,19 @@ namespace WithoutHaste.DataFiles
 			return excelPackage.Workbook.Worksheets[name];
 		}
 
-		/// <duplicate cref="ExcelPackageHelper.AppendRow" />
+		/// <duplicate cref="ExcelPackageHelper.AppendRow(ExcelWorksheet, List{object})" />
 		public static void AppendRow(ExcelWorksheet worksheet, List<string> values)
 		{
 			AppendRow(worksheet, values.Cast<object>().ToList());
 		}
 
-		/// <duplicate cref="ExcelPackageHelper.AppendRow" />
+		/// <duplicate cref="ExcelPackageHelper.AppendRow(ExcelWorksheet, List{object})" />
 		public static void AppendRow(ExcelWorksheet worksheet, List<int> values)
 		{
 			AppendRow(worksheet, values.Cast<object>().ToList());
 		}
 
-		/// <duplicate cref="ExcelPackageHelper.AppendRow" />
+		/// <duplicate cref="ExcelPackageHelper.AppendRow(ExcelWorksheet, List{object})" />
 		public static void AppendRow(ExcelWorksheet worksheet, List<decimal> values)
 		{
 			AppendRow(worksheet, values.Cast<object>().ToList());

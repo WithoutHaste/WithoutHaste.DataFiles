@@ -86,6 +86,26 @@
       <Column ss:Width="60" />
       <Row>
         <Cell>
+          <Data ss:Type="Number">11</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">update to use most recent version of Libraries.AssemblyInfo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Minor</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-19T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-19T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
           <Data ss:Type="Number">9</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -283,14 +303,14 @@
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">Task</Data>
+          <Data ss:Type="String">Feature - Major</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">10</Data>
+          <Data ss:Type="Number">11</Data>
         </Cell>
       </Row>
       <Row>
@@ -305,7 +325,71 @@
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">Bug</Data>
+          <Data ss:Type="String">Feature - Minor</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="String">
+          </Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Inactive</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">
+          </Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Bug - Major</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="String">
+          </Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Inactive</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">
+          </Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Bug - Minor</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="String">
+          </Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Inactive</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">
+          </Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="String">
+          </Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Inactive</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">
+          </Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Documentation</Data>
         </Cell>
       </Row>
     </Table>

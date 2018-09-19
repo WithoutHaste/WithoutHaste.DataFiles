@@ -11,6 +11,7 @@ namespace WithoutHaste.DataFiles
 	/// </summary>
 	public class XmlNodeException : Exception
 	{
+		/// <summary></summary>
 		public XmlNodeException(string message) : base(message)
 		{
 		}

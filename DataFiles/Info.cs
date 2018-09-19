@@ -19,7 +19,7 @@ namespace WithoutHaste.DataFiles
 		/// </summary>
 		public static Version GetVersion()
 		{
-			return WithoutHaste.Libraries.AssemblyInfo.GetVersion();
+			return AssemblyInfo.GetVersion(Assembly.GetExecutingAssembly());
 		}
 
 		/// <summary>
@@ -30,7 +30,7 @@ namespace WithoutHaste.DataFiles
 			string[] dlls = new string[] {
 				"EPPlus.dll"
 			};
-			return WithoutHaste.Libraries.AssemblyInfo.GetAssemblyVersions(dlls);
+			return AssemblyInfo.GetDllVersions(dlls);
 		}
 	}
 }

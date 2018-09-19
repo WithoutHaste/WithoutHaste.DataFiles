@@ -35,13 +35,13 @@
             <exception cref="T:System.ArgumentException">ExcelPackage cannot be null.</exception>
         </member>
         <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.String})">
-            <duplicate cref="M:WithoutHaste.DataFiles.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.String})" />
+            <duplicate cref="M:WithoutHaste.DataFiles.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.Object})" />
         </member>
         <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.Int32})">
-            <duplicate cref="M:WithoutHaste.DataFiles.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.String})" />
+            <duplicate cref="M:WithoutHaste.DataFiles.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.Object})" />
         </member>
         <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.Decimal})">
-            <duplicate cref="M:WithoutHaste.DataFiles.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.String})" />
+            <duplicate cref="M:WithoutHaste.DataFiles.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.Object})" />
         </member>
         <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.Object})">
             <summary>
@@ -170,6 +170,9 @@
             Exceptions related to XmlNode objects.
             </summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.XmlNodeException.#ctor(System.String)">
+            <summary></summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.Info">
             <summary>
             Retrieves version information.
@@ -246,7 +249,20 @@
             Returns the index of the Table in the Worksheet with the specified title.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:WithoutHaste.DataFiles.MSExcel2003XmlFile.AddStyle(System.String,System.String,System.String,System.String)" -->
+        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.AddStyle(System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds a Style. If a Style with the same id already exists, it is overwritten.
+            </summary>
+            <example>
+            <![CDATA[
+            <Styles>
+              <Style ss:ID="id">
+                <childName ss:childNameAttribute="childAttributeValue" />
+              </Style>
+            </Styles>
+            ]]>
+            </example>
+        </member>
         <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.RemoveStyle(System.String)">
             <summary>
             Removes a Style.
@@ -283,12 +299,14 @@
             <summary>
             Creates Cells for each data values, adds sufficient Rows to the the specified Table to contain all the columns. Add all Cells to the Rows.
             </summary>
+            <param name="tableIndex">0-based table index within Workbook.</param>
             <param name="columns">List of columns, each column being a list of values.</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.AddColumns(System.Int32,System.Collections.Generic.List{System.Collections.Generic.List{System.Xml.XmlNode}})">
             <summary>
             Adds sufficient Rows to the the specified Table to contain all the columns. Add all Cells to the Rows.
             </summary>
+            <param name="tableIndex">0-based table index within Workbook.</param>
             <param name="columns">List of columns, each column being a list of "Cell" tags.</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GetRowValues(System.Int32,System.Int32)">
@@ -330,6 +348,8 @@
             <summary>
             Returns a list of values from the cells in the selected column.
             </summary>
+            <param name="tableIndex">0-based table index within Workbook.</param>
+            <param name="columnIndex">0-based column index within Table.</param>
             <param name="firstRowIsHeader">If true, the first row of the table is skipped.</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.Save(System.String)">
