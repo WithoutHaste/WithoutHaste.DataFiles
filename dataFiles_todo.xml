@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <?mso-application progid="Excel.Sheet"?>
-<Workbook xmlns:c="urn:schemas-microsoft-com:office:component:spreadsheet" xmlns:html="http://www.w3.org/TR/REC-html40" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:x2="http://schemas.microsoft.com/office/excel/2003/xml" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:x="urn:schemas-microsoft-com:office:excel">
+<Workbook xmlns:c="urn:schemas-microsoft-com:office:component:spreadsheet" xmlns:html="http://www.w3.org/TR/REC-html40" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:x2="http://schemas.microsoft.com/office/excel/2003/xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:schemas-microsoft-com:office:spreadsheet">
   <Styles>
     <Style ss:ID="cellShortDate">
       <NumberFormat ss:Format="Short Date" />
@@ -14,6 +14,11 @@
   </Styles>
   <ss:Worksheet ss:Name="Active">
     <Table>
+      <Column ss:Width="25" />
+      <Column ss:Width="300" />
+      <Column ss:Width="60" />
+      <Column ss:Width="60" />
+      <Column ss:Width="60" />
       <Row>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Id</Data>
@@ -31,11 +36,99 @@
           <Data ss:Type="String">Created</Data>
         </Cell>
       </Row>
-      <Column ss:Width="25" />
-      <Column ss:Width="300" />
-      <Column ss:Width="60" />
-      <Column ss:Width="60" />
-      <Column ss:Width="60" />
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">12</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">build and save markdown file</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-19T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">15</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">load markdown from file</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-19T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">16</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">support markdown "reference-style links"
+ex:
+[I'm a reference-style link][Arbitrary case-insensitive reference text]
+[You can use numbers for reference-style link definitions][1]
+Or leave it empty and use the [link text itself].
+
+[arbitrary case-insensitive reference text]: https://www.mozilla.org
+[1]: http://slashdot.org
+[link text itself]: http://www.reddit.com</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-19T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">13</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">update ReadMe with MarkDown feature and version notes</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Documentation</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-19T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">14</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">re-run EarlyDocs</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Documentation</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-19T00:00:00.000</Data>
+        </Cell>
+      </Row>
       <Row>
         <Cell>
           <Data ss:Type="Number">5</Data>
@@ -58,6 +151,12 @@
   </ss:Worksheet>
   <ss:Worksheet ss:Name="Inactive">
     <Table>
+      <Column ss:Width="25" />
+      <Column ss:Width="300" />
+      <Column ss:Width="60" />
+      <Column ss:Width="60" />
+      <Column ss:Width="60" />
+      <Column ss:Width="60" />
       <Row>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Id</Data>
@@ -78,12 +177,6 @@
           <Data ss:Type="String">Done</Data>
         </Cell>
       </Row>
-      <Column ss:Width="25" />
-      <Column ss:Width="300" />
-      <Column ss:Width="60" />
-      <Column ss:Width="60" />
-      <Column ss:Width="60" />
-      <Column ss:Width="60" />
       <Row>
         <Cell>
           <Data ss:Type="Number">11</Data>
@@ -310,7 +403,7 @@
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">11</Data>
+          <Data ss:Type="Number">16</Data>
         </Cell>
       </Row>
       <Row>
@@ -326,6 +419,14 @@
         </Cell>
         <Cell>
           <Data ss:Type="String">Feature - Minor</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">
+          </Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">
+          </Data>
         </Cell>
       </Row>
       <Row>
@@ -343,6 +444,14 @@
         <Cell>
           <Data ss:Type="String">Bug - Major</Data>
         </Cell>
+        <Cell>
+          <Data ss:Type="String">
+          </Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">
+          </Data>
+        </Cell>
       </Row>
       <Row>
         <Cell>
@@ -358,6 +467,14 @@
         </Cell>
         <Cell>
           <Data ss:Type="String">Bug - Minor</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">
+          </Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">
+          </Data>
         </Cell>
       </Row>
       <Row>
@@ -375,6 +492,14 @@
         <Cell>
           <Data ss:Type="String">Task</Data>
         </Cell>
+        <Cell>
+          <Data ss:Type="String">
+          </Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">
+          </Data>
+        </Cell>
       </Row>
       <Row>
         <Cell>
@@ -391,7 +516,16 @@
         <Cell>
           <Data ss:Type="String">Documentation</Data>
         </Cell>
+        <Cell>
+          <Data ss:Type="String">
+          </Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">
+          </Data>
+        </Cell>
       </Row>
     </Table>
+    <x:WorksheetOptions />
   </ss:Worksheet>
 </Workbook>

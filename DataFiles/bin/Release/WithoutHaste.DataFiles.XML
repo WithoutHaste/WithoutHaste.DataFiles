@@ -188,6 +188,185 @@
             Returns the versions of any special libraries this one relies on.
             </summary>
         </member>
+        <member name="T:WithoutHaste.DataFiles.Markdown.IMarkdownInline">
+            <summary>
+            Represents a markdown element that can be included within a MarkdownLine (i.e. within text).
+            </summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.Markdown.IMarkdownInsection">
+            <summary>
+            Represents a markdown element that can be included within a MarkdownSection.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.IMarkdownInsection.ToMarkdown">
+            <summary>
+            Return markdown-formatted text.
+            </summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownFile">
+            <summary>
+            Represents a markdown file.
+            </summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.Markdown.MarkdownFile.Extensions">
+            <summary>Accepted markdown file extensions.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownFile.#ctor">
+            <summary>
+            Create an empty markdown file.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownFile.#ctor(System.String)">
+            <summary>
+            Load markdown from file.
+            </summary>
+            <param name="filename">Full path, filename, and extension.</param>
+            <exception cref="T:WithoutHaste.Libraries.FileExtensionException">Unexpected file extension.</exception>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownFile.AddSection(System.String)">
+            <summary>
+            Creates new section and adds it to the end of the file. Defaults to depth 1.
+            </summary>
+            <param name="header">Section header</param>
+            <returns>The new section</returns>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownFile.ToMarkdown">
+            <summary>
+            Returns full markdown text for file, formatted for legibility.
+            </summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownInlineLink">
+            <summary>
+            Represents markdown inline-style link.
+            </summary>
+            <example>Displays as: The quick brown fox [jumped over](https://www.google.com) the lazy dog.</example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownInlineLink.#ctor(System.String,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownInlineLink.ToMarkdown">
+            <inheritdoc />
+        </member>
+        <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownLine">
+            <summary>
+            Represents one line of text that will end in a line break.
+            </summary>
+            <remarks>Do not include the white space or endline character.</remarks>
+            <example>Displays as: The quick brown fox.  \\n</example>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.Markdown.MarkdownLine.Elements">
+            <summary>
+            Ordered inline elements that make up this line.
+            </summary>
+            <remarks>Expect mostly one plain text element.</remarks>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.Markdown.MarkdownLine.elements">
+            <summary>
+            Ordered inline elements that make up this line.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLine.#ctor(WithoutHaste.DataFiles.Markdown.IMarkdownInline[])">
+            <summary>
+            Initialize line with any number of elements.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLine.#ctor(System.String)">
+            <summary>
+            Initialize line with one MarkdownText element.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLine.ToMarkdown">
+            <inheritdoc />
+        </member>
+        <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownLink">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.Markdown.MarkdownLink.Text">
+            <summary>Plain text of link.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.Markdown.MarkdownLink.Url">
+            <summary>Url of target.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLink.#ctor(System.String,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLink.ToMarkdown">
+            <inheritdoc />
+        </member>
+        <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownParagraph">
+            <summary>
+            Represents one paragraph of text that will end in a double line break.
+            </summary>
+            <remarks>Do not include the white space or endline characters.</remarks>
+            <example>Displays as: The quick brown fox.\\n\\n</example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownParagraph.#ctor(WithoutHaste.DataFiles.Markdown.IMarkdownInline[])">
+            <summary>
+            Initialize paragraph with any number of elements.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownParagraph.#ctor(System.String)">
+            <summary>
+            Initialize paragraph with one MarkdownText element.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownParagraph.ToMarkdown">
+            <inheritdoc />
+        </member>
+        <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownSection">
+            <summary>
+            Represents a header and all contents until the next header of the same depth.
+            </summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.Markdown.MarkdownSection.Depth">
+            <summary>
+            0-indexed nesting depth of section.
+            </summary>
+            <example>"# Header" is depth 1</example>
+            <example>"## Header" is depth 2</example>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.Markdown.MarkdownSection.Header">
+            <summary>
+            Displayed header text.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.#ctor(System.String,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.AddSection(System.String)">
+            <summary>
+            Creates new section and adds it to the end of this section. Defaults to depth of parent + 1.
+            </summary>
+            <param name="header">Section header</param>
+            <returns>The new section</returns>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.Add(WithoutHaste.DataFiles.Markdown.IMarkdownInsection)">
+            <summary>
+            Adds the element to the end of this section.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.AddInline(WithoutHaste.DataFiles.Markdown.IMarkdownInline)">
+            <summary>
+            Adds the element in a new markdownLine at the end of this section.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.ToMarkdown">
+            <inheritdoc />
+        </member>
+        <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownText">
+            <summary>
+            Represents plain text.
+            </summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.Markdown.MarkdownText.Text">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownText.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownText.ToMarkdown">
+            <inheritdoc />
+        </member>
         <member name="T:WithoutHaste.DataFiles.MSExcel2003XmlFile">
             <summary>
             Building a Microsoft Excel 2003 Xml file with XmlDocument.
