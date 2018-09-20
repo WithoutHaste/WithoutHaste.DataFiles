@@ -60,6 +60,7 @@
     <Compile Include="Markdown\IMarkdownInLine.cs" />
     <Compile Include="Markdown\IMarkdownInList.cs" />
     <Compile Include="Markdown\IMarkdownInSection.cs" />
+    <Compile Include="Markdown\MarkdownCodeBlock.cs" />
     <Compile Include="Markdown\MarkdownFile.cs" />
     <Compile Include="Markdown\MarkdownInlineLink.cs" />
     <Compile Include="Markdown\MarkdownLine.cs" />

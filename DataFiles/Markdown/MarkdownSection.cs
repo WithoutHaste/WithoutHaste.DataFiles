@@ -84,6 +84,14 @@ namespace WithoutHaste.DataFiles.Markdown
 		}
 
 		/// <summary>
+		/// Adds all the elements to the end of this section.
+		/// </summary>
+		public void Add(IMarkdownInSection[] elements)
+		{
+			this.elements.AddRange(elements);
+		}
+
+		/// <summary>
 		/// Adds the element in a new MarkdownLine at the end of this section.
 		/// </summary>
 		public void AddInLine(IMarkdownInLine element)

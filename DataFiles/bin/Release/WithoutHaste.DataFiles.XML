@@ -208,6 +208,27 @@
             Return markdown-formatted text.
             </summary>
         </member>
+        <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownCodeBlock">
+            <summary>
+            Represents a code block or CDATA block.
+            </summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.Markdown.MarkdownCodeBlock.Text">
+            <summary>
+            Full text of code, with endline characters between lines.
+            </summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.Markdown.MarkdownCodeBlock.Language">
+            <summary>
+            Language tag supported by highlight.js for syntax highlighting.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownCodeBlock.#ctor(System.String,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownCodeBlock.ToMarkdown">
+            <inheritdoc />
+        </member>
         <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownFile">
             <summary>
             Represents a markdown file.
@@ -314,7 +335,7 @@
             0-indexed nesting depth of list.
             </summary>
         </member>
-        <member name="P:WithoutHaste.DataFiles.Markdown.MarkdownList.IsOrdered">
+        <member name="P:WithoutHaste.DataFiles.Markdown.MarkdownList.IsNumbered">
             <summary>
             True means the list will be numbered. 
             False means the list will be bulleted.
@@ -417,6 +438,11 @@
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.Add(WithoutHaste.DataFiles.Markdown.IMarkdownInSection)">
             <summary>
             Adds the element to the end of this section.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.Add(WithoutHaste.DataFiles.Markdown.IMarkdownInSection[])">
+            <summary>
+            Adds all the elements to the end of this section.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.AddInLine(WithoutHaste.DataFiles.Markdown.IMarkdownInLine)">

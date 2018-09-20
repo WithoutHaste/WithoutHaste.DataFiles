@@ -30,7 +30,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// True means the list will be numbered. 
 		/// False means the list will be bulleted.
 		/// </summary>
-		public bool IsOrdered { get; protected set; }
+		public bool IsNumbered { get; protected set; }
 
 		/// <summary>
 		/// The length of the list. Nested lists count as 1 each.
@@ -57,17 +57,17 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <summary>
 		/// Creates an empty list.
 		/// </summary>
-		public MarkdownList(bool isOrdered = false)
+		public MarkdownList(bool isNumbered = false)
 		{
-			Init(isOrdered);
+			Init(isNumbered);
 		}
 
 		/// <summary>
 		/// Creates a list of the specified MarkdownLines.
 		/// </summary>
-		public MarkdownList(bool isOrdered = false, params IMarkdownInList[] inList)
+		public MarkdownList(bool isNumbered = false, params IMarkdownInList[] inList)
 		{
-			Init(isOrdered);
+			Init(isNumbered);
 			UpdateDepths(inList.OfType<MarkdownList>().ToArray());
 			elements.AddRange(inList);
 		}
@@ -75,15 +75,15 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <summary>
 		/// Creates a list MarkdownLines containing the specified IMarkdownInline elements.
 		/// </summary>
-		public MarkdownList(bool isOrdered = false, params IMarkdownInLine[] lines)
+		public MarkdownList(bool isNumbered = false, params IMarkdownInLine[] lines)
 		{
-			Init(isOrdered);
+			Init(isNumbered);
 			elements.AddRange(lines.Select(line => new MarkdownLine(line)).Cast<IMarkdownInList>());
 		}
 
-		private void Init(bool isOrdered)
+		private void Init(bool isNumbered)
 		{
-			IsOrdered = isOrdered;
+			IsNumbered = isNumbered;
 			Depth = 0;
 		}
 
@@ -114,13 +114,13 @@ namespace WithoutHaste.DataFiles.Markdown
 
 			StringBuilder builder = new StringBuilder();
 
-			if(IsOrdered) ToMarkdownOrdered(builder);
-			else ToMarkdownUnordered(builder);
+			if(IsNumbered) ToMarkdownNumbered(builder);
+			else ToMarkdownBulleted(builder);
 
 			return builder.ToString();
 		}
 
-		private void ToMarkdownOrdered(StringBuilder builder)
+		private void ToMarkdownNumbered(StringBuilder builder)
 		{
 			int count = 1;
 			foreach(IMarkdownInList line in elements)
@@ -130,7 +130,7 @@ namespace WithoutHaste.DataFiles.Markdown
 			}
 		}
 
-		private void ToMarkdownUnordered(StringBuilder builder)
+		private void ToMarkdownBulleted(StringBuilder builder)
 		{
 			foreach(IMarkdownInList line in elements)
 			{
