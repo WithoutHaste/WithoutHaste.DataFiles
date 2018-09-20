@@ -9,7 +9,7 @@ namespace WithoutHaste.DataFiles.Markdown
 	/// <summary>
 	/// Represents a markdown list.
 	/// </summary>
-	public class MarkdownList : IMarkdownInSection, IMarkdownInList
+	public class MarkdownList : IMarkdownInSection, IMarkdownInList, IMarkdownIsBlock
 	{
 		/// <summary>
 		/// 0-indexed nesting depth of list.
@@ -117,7 +117,7 @@ namespace WithoutHaste.DataFiles.Markdown
 			if(IsNumbered) ToMarkdownNumbered(builder);
 			else ToMarkdownBulleted(builder);
 
-			return builder.ToString();
+			return Utilities.EnsureTwoEndlines(builder.ToString());
 		}
 
 		private void ToMarkdownNumbered(StringBuilder builder)

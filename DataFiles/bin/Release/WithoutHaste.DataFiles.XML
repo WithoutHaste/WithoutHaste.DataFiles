@@ -208,6 +208,11 @@
             Return markdown-formatted text.
             </summary>
         </member>
+        <member name="T:WithoutHaste.DataFiles.Markdown.IMarkdownIsBlock">
+            <summary>
+            Represents a Markdown element that ends with a double endline.
+            </summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownCodeBlock">
             <summary>
             Represents a code block or CDATA block.
@@ -292,6 +297,11 @@
             </summary>
             <remarks>Expect mostly one plain text element.</remarks>
         </member>
+        <member name="P:WithoutHaste.DataFiles.Markdown.MarkdownLine.IsEmpty">
+            <summary>
+            True when there are no elements in the line.
+            </summary>
+        </member>
         <member name="F:WithoutHaste.DataFiles.Markdown.MarkdownLine.elements">
             <summary>
             Ordered inline elements that make up this line.
@@ -302,9 +312,34 @@
             Initialize line with any number of elements.
             </summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLine.#ctor(System.Collections.Generic.List{WithoutHaste.DataFiles.Markdown.IMarkdownInLine})">
+            <summary>
+            Initialize line with any number of elements.
+            </summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLine.#ctor(System.String)">
             <summary>
             Initialize line with one MarkdownText element.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLine.Add(System.String)">
+            <summary>
+            Add a new MarkdownText containing the text to the end of the line.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLine.Add(WithoutHaste.DataFiles.Markdown.IMarkdownInLine)">
+            <summary>
+            Add an element to the end of the line.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLine.Add(System.Collections.Generic.List{WithoutHaste.DataFiles.Markdown.IMarkdownInLine})">
+            <summary>
+            Add elements to the end of the line.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLine.Add(WithoutHaste.DataFiles.Markdown.IMarkdownInLine[])">
+            <summary>
+            Add elements to the end of the line.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLine.ToMarkdown">
@@ -391,6 +426,11 @@
             Initialize paragraph with any number of elements.
             </summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownParagraph.#ctor(System.Collections.Generic.List{WithoutHaste.DataFiles.Markdown.IMarkdownInLine})">
+            <summary>
+            Initialize paragraph with any number of elements.
+            </summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownParagraph.#ctor(System.String)">
             <summary>
             Initialize paragraph with one MarkdownText element.
@@ -445,6 +485,11 @@
             Adds all the elements to the end of this section.
             </summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.Add(System.Collections.Generic.List{WithoutHaste.DataFiles.Markdown.IMarkdownInSection})">
+            <summary>
+            Adds all the elements to the end of this section.
+            </summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.AddInLine(WithoutHaste.DataFiles.Markdown.IMarkdownInLine)">
             <summary>
             Adds the element in a new MarkdownLine at the end of this section.
@@ -455,9 +500,29 @@
             Adds the text in a new MarkdownLine at the end of this section.
             </summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.AddInLine(WithoutHaste.DataFiles.Markdown.IMarkdownInLine[])">
+            <summary>
+            Adds the elements in a new MarkdownLine at the end of this section.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.AddInLine(System.Collections.Generic.List{WithoutHaste.DataFiles.Markdown.IMarkdownInLine})">
+            <summary>
+            Adds the elements in a new MarkdownLine at the end of this section.
+            </summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.AddInParagraph(WithoutHaste.DataFiles.Markdown.IMarkdownInLine)">
             <summary>
             Adds the element in a new MarkdownParagraph at the end of this section.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.AddInParagraph(WithoutHaste.DataFiles.Markdown.IMarkdownInLine[])">
+            <summary>
+            Adds the elements in a new MarkdownParagraph at the end of this section.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.AddInParagraph(System.Collections.Generic.List{WithoutHaste.DataFiles.Markdown.IMarkdownInLine})">
+            <summary>
+            Adds the elements in a new MarkdownParagraph at the end of this section.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.AddInParagraph(System.String)">
@@ -465,8 +530,18 @@
             Adds the text in a new MarkdownParagraph at the end of this section.
             </summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.EndsWith(System.Type)">
+            <summary>
+            Returns true if the last element in the section has the specified type.
+            </summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.ToMarkdown">
             <inheritdoc />
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.ToMarkdown(System.String)">
+            <summary>
+            Return markdown-formatted text, taking the previous text of the file into account.
+            </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownText">
             <summary>
@@ -481,6 +556,12 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownText.ToMarkdown">
             <inheritdoc />
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.Utilities.EnsureTwoEndlines(System.String)">
+            <summary>
+            Ensure that string is null or ends with two end line characters.
+            Does not add unneccessary characters.
+            </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.MSExcel2003XmlFile">
             <summary>

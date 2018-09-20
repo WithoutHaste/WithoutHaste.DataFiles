@@ -9,7 +9,7 @@ namespace WithoutHaste.DataFiles.Markdown
 	/// <summary>
 	/// Represents a header and all contents until the next header of the same depth.
 	/// </summary>
-	public class MarkdownSection : IMarkdownInSection
+	public class MarkdownSection : IMarkdownInSection, IMarkdownIsBlock
 	{
 		/// <summary>
 		/// 0-indexed nesting depth of section.
@@ -86,7 +86,15 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <summary>
 		/// Adds all the elements to the end of this section.
 		/// </summary>
-		public void Add(IMarkdownInSection[] elements)
+		public void Add(params IMarkdownInSection[] elements)
+		{
+			this.elements.AddRange(elements);
+		}
+
+		/// <summary>
+		/// Adds all the elements to the end of this section.
+		/// </summary>
+		public void Add(List<IMarkdownInSection> elements)
 		{
 			this.elements.AddRange(elements);
 		}
@@ -108,11 +116,43 @@ namespace WithoutHaste.DataFiles.Markdown
 		}
 
 		/// <summary>
+		/// Adds the elements in a new MarkdownLine at the end of this section.
+		/// </summary>
+		public void AddInLine(params IMarkdownInLine[] elements)
+		{
+			this.elements.Add(new MarkdownLine(elements));
+		}
+
+		/// <summary>
+		/// Adds the elements in a new MarkdownLine at the end of this section.
+		/// </summary>
+		public void AddInLine(List<IMarkdownInLine> elements)
+		{
+			this.elements.Add(new MarkdownLine(elements));
+		}
+
+		/// <summary>
 		/// Adds the element in a new MarkdownParagraph at the end of this section.
 		/// </summary>
 		public void AddInParagraph(IMarkdownInLine element)
 		{
 			elements.Add(new MarkdownParagraph(element));
+		}
+
+		/// <summary>
+		/// Adds the elements in a new MarkdownParagraph at the end of this section.
+		/// </summary>
+		public void AddInParagraph(params IMarkdownInLine[] elements)
+		{
+			this.elements.Add(new MarkdownParagraph(elements));
+		}
+
+		/// <summary>
+		/// Adds the elements in a new MarkdownParagraph at the end of this section.
+		/// </summary>
+		public void AddInParagraph(List<IMarkdownInLine> elements)
+		{
+			this.elements.Add(new MarkdownParagraph(elements));
 		}
 
 		/// <summary>
@@ -123,18 +163,63 @@ namespace WithoutHaste.DataFiles.Markdown
 			elements.Add(new MarkdownParagraph(text));
 		}
 
+		/// <summary>
+		/// Returns true if the last element in the section has the specified type.
+		/// </summary>
+		public bool EndsWith(Type type)
+		{
+			if(elements.Count == 0) return false;
+			return (elements.Last().GetType() == type);
+		}
+
 		/// <inheritdoc />
 		public string ToMarkdown()
 		{
+			return ToMarkdown(null);
+		}
+
+		/// <summary>
+		/// Return markdown-formatted text, taking the previous text of the file into account.
+		/// </summary>
+		public string ToMarkdown(string previousText)
+		{
 			StringBuilder builder = new StringBuilder();
 
-			builder.Append(new String('#', Depth) + " " + Header + "\n\n");
-			foreach(IMarkdownInSection element in elements)
+			if(!String.IsNullOrEmpty(previousText))
 			{
-				builder.Append(element.ToMarkdown());
+				if(previousText.EndsWith("\n\n"))
+				{
+					//no action
+				}
+				else if(previousText.EndsWith("\n"))
+				{
+					if(previousText.Length > 1)
+					{
+						builder.Append("\n");
+					}
+				}
+				else
+				{
+					builder.Append("\n\n");
+				}
 			}
 
-			return builder.ToString();
+			builder.Append(new String('#', Depth) + " " + Header + "\n\n");
+			string thisPreviousText = null;
+			foreach(IMarkdownInSection element in elements)
+			{
+				if(element is MarkdownSection)
+				{
+					thisPreviousText = (element as MarkdownSection).ToMarkdown(thisPreviousText);
+				}
+				else
+				{
+					thisPreviousText = element.ToMarkdown();
+				}
+				builder.Append(thisPreviousText);
+			}
+
+			return Utilities.EnsureTwoEndlines(builder.ToString());
 		}
 	}
 }

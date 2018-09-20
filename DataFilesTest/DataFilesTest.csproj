@@ -63,6 +63,7 @@
     <Compile Include="ExcelPackageHelperTests.cs" />
     <Compile Include="InfoTests.cs" />
     <Compile Include="Markdown\MarkdownListTests.cs" />
+    <Compile Include="Markdown\MarkdownSectionTests.cs" />
     <Compile Include="MSExcel2003XmlFileTests.cs" />
     <Compile Include="XmlDocumentHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

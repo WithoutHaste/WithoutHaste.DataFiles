@@ -38,6 +38,23 @@
       </Row>
       <Row>
         <Cell>
+          <Data ss:Type="Number">17</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">load VS XML from file</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-20T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
           <Data ss:Type="Number">12</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -403,7 +420,7 @@ Or leave it empty and use the [link text itself].
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">16</Data>
+          <Data ss:Type="Number">17</Data>
         </Cell>
       </Row>
       <Row>

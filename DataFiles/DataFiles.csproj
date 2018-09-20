@@ -60,6 +60,7 @@
     <Compile Include="Markdown\IMarkdownInLine.cs" />
     <Compile Include="Markdown\IMarkdownInList.cs" />
     <Compile Include="Markdown\IMarkdownInSection.cs" />
+    <Compile Include="Markdown\IMarkdownIsBlock.cs" />
     <Compile Include="Markdown\MarkdownCodeBlock.cs" />
     <Compile Include="Markdown\MarkdownFile.cs" />
     <Compile Include="Markdown\MarkdownInlineLink.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Markdown\MarkdownParagraph.cs" />
     <Compile Include="Markdown\MarkdownSection.cs" />
     <Compile Include="Markdown\MarkdownText.cs" />
+    <Compile Include="Markdown\Utilities.cs" />
     <Compile Include="MSExcel2003XmlFile.cs" />
     <Compile Include="XmlDocumentHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

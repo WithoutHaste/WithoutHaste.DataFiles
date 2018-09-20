@@ -11,7 +11,7 @@ namespace WithoutHaste.DataFiles.Markdown
 	/// </summary>
 	/// <remarks>Do not include the white space or endline characters.</remarks>
 	/// <example>Displays as: The quick brown fox.\\n\\n</example>
-	public class MarkdownParagraph : MarkdownLine
+	public class MarkdownParagraph : MarkdownLine, IMarkdownIsBlock
 	{
 		#region Constructors
 
@@ -19,6 +19,13 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// Initialize paragraph with any number of elements.
 		/// </summary>
 		public MarkdownParagraph(params IMarkdownInLine[] elements) : base(elements)
+		{
+		}
+
+		/// <summary>
+		/// Initialize paragraph with any number of elements.
+		/// </summary>
+		public MarkdownParagraph(List<IMarkdownInLine> elements) : base(elements)
 		{
 		}
 

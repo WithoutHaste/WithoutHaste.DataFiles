@@ -9,7 +9,7 @@ namespace WithoutHaste.DataFiles.Markdown
 	/// <summary>
 	/// Represents a code block or CDATA block.
 	/// </summary>
-	public class MarkdownCodeBlock : IMarkdownInSection
+	public class MarkdownCodeBlock : IMarkdownInSection, IMarkdownIsBlock
 	{
 		/// <summary>
 		/// Full text of code, with endline characters between lines.
@@ -30,7 +30,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <inheritdoc />
 		public string ToMarkdown()
 		{
-			return String.Format("\n```{0}\n{1}```\n", Language, Text);
+			return String.Format("\n```{0}\n{1}```\n\n", Language, Text);
 		}
 	}
 }

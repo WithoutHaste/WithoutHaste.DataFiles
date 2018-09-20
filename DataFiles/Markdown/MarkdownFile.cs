@@ -70,9 +70,18 @@ namespace WithoutHaste.DataFiles.Markdown
 		{
 			StringBuilder builder = new StringBuilder();
 
+			string previousText = null;
 			foreach(IMarkdownInSection element in elements)
 			{
-				builder.Append(element.ToMarkdown());
+				if(element is MarkdownSection)
+				{
+					previousText = (element as MarkdownSection).ToMarkdown(previousText);
+				}
+				else
+				{
+					previousText = element.ToMarkdown();
+				}
+				builder.Append(previousText);
 			}
 
 			return builder.ToString();
