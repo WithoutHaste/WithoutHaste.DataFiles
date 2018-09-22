@@ -20,8 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>bin\Debug\WithoutHaste.DataFiles.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -54,7 +53,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExcelPackageHelper.cs" />
+    <Compile Include="DotNet\DotNetCommentListItem.cs" />
+    <Compile Include="DotNet\DotNetCommentRow.cs" />
+    <Compile Include="Excel\ExcelPackageHelper.cs" />
+    <Compile Include="exceptions\XmlFormatException.cs" />
     <Compile Include="exceptions\XmlNodeException.cs" />
     <Compile Include="Info.cs" />
     <Compile Include="Markdown\IMarkdownInLine.cs" />
@@ -72,6 +74,24 @@
     <Compile Include="Markdown\MarkdownText.cs" />
     <Compile Include="Markdown\Utilities.cs" />
     <Compile Include="MSExcel2003XmlFile.cs" />
+    <Compile Include="DotNet\DotNetComment.cs" />
+    <Compile Include="DotNet\DotNetCommentCell.cs" />
+    <Compile Include="DotNet\DotNetCommentGroup.cs" />
+    <Compile Include="DotNet\DotNetCommentLink.cs" />
+    <Compile Include="DotNet\DotNetCommentList.cs" />
+    <Compile Include="DotNet\DotNetCommentMethodLink.cs" />
+    <Compile Include="DotNet\DotNetCommentTable.cs" />
+    <Compile Include="DotNet\DotNetEvent.cs" />
+    <Compile Include="DotNet\DotNetField.cs" />
+    <Compile Include="DotNet\DotNetMember.cs" />
+    <Compile Include="DotNet\DotNetMethod.cs" />
+    <Compile Include="DotNet\DotNetParameter.cs" />
+    <Compile Include="DotNet\DotNetProperty.cs" />
+    <Compile Include="DotNet\DotNetCommentText.cs" />
+    <Compile Include="DotNet\DotNetType.cs" />
+    <Compile Include="DotNet\DotNetQualifiedName.cs" />
+    <Compile Include="DotNet\Utilities.cs" />
+    <Compile Include="DotNet\DotNetDocumentationFile.cs" />
     <Compile Include="XmlDocumentHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

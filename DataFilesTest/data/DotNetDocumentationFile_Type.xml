@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<assembly>
+		<name>Test</name>
+	</assembly>
+	<members>
+		<member name="M:Test.TestMethod"></member>
+	</members>
+</root>

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OfficeOpenXml;
 
-namespace WithoutHaste.DataFiles
+namespace WithoutHaste.DataFiles.Excel
 {
 	/// <summary>Extensions for ExcelPackage.</summary>
 	public static class ExcelPackageHelper

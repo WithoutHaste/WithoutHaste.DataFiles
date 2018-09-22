@@ -20,7 +20,7 @@ namespace DataFilesTest
 			//act
 			string text = XmlDocumentHelper.XmlToString(xmlFile.XmlDocument);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -46,7 +46,7 @@ namespace DataFilesTest
 			Assert.AreEqual(1, index1);
 			Assert.AreEqual(2, index2);
 			Assert.AreEqual(-1, indexNone);
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -63,7 +63,7 @@ namespace DataFilesTest
 			xmlFile.AddStyle(styleId, childName, childAttributeName, childAttributeValue);
 			string text = XmlDocumentHelper.XmlToString(xmlFile.XmlDocument);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -80,7 +80,7 @@ namespace DataFilesTest
 			xmlFile.AddStyle(styleId, childName, childAttributeName, childAttributeValue);
 			string text = XmlDocumentHelper.XmlToString(xmlFile.XmlDocument);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -94,7 +94,7 @@ namespace DataFilesTest
 			xmlFile.RemoveStyle(styleId);
 			string text = XmlDocumentHelper.XmlToString(xmlFile.XmlDocument);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -110,7 +110,7 @@ namespace DataFilesTest
 			xmlFile.SetColumnWidths(tableIndex, widths);
 			string text = XmlDocumentHelper.XmlToString(xmlFile.XmlDocument);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -128,7 +128,7 @@ namespace DataFilesTest
 			xmlFile.SetColumnWidths(tableIndex, widthsB);
 			string text = XmlDocumentHelper.XmlToString(xmlFile.XmlDocument);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -153,7 +153,7 @@ namespace DataFilesTest
 				Assert.AreEqual(headers[i], savedHeaders[i]);
 				Assert.AreEqual(i, savedHeaderIndexes[i]);
 			}
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 		
 		[TestMethod]
@@ -299,7 +299,7 @@ namespace DataFilesTest
 			node.Attributes.Append(attribute);
 			string text = XmlDocumentHelper.XmlToString(node);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -315,7 +315,7 @@ namespace DataFilesTest
 			node.Attributes.Append(attribute);
 			string text = XmlDocumentHelper.XmlToString(node);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -331,7 +331,7 @@ namespace DataFilesTest
 			node.Attributes.Append(attribute);
 			string text = XmlDocumentHelper.XmlToString(node);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -346,7 +346,7 @@ namespace DataFilesTest
 			node.Attributes.Append(attribute);
 			string text = XmlDocumentHelper.XmlToString(node);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -361,7 +361,7 @@ namespace DataFilesTest
 			node.Attributes.Append(attribute);
 			string text = XmlDocumentHelper.XmlToString(node);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -376,7 +376,7 @@ namespace DataFilesTest
 			node.Attributes.Append(attribute);
 			string text = XmlDocumentHelper.XmlToString(node);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -392,7 +392,7 @@ namespace DataFilesTest
 			node.Attributes.Append(attribute);
 			string text = XmlDocumentHelper.XmlToString(node);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -410,7 +410,7 @@ namespace DataFilesTest
 			node.Attributes.Append(attribute);
 			string text = XmlDocumentHelper.XmlToString(node);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -429,7 +429,7 @@ namespace DataFilesTest
 			node.Attributes.Append(attribute);
 			string text = XmlDocumentHelper.XmlToString(node);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -488,7 +488,7 @@ namespace DataFilesTest
 			XmlNode node = xmlFile.GenerateDateCell(date);
 			string text = XmlDocumentHelper.XmlToString(node);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -502,7 +502,7 @@ namespace DataFilesTest
 			XmlNode node = xmlFile.GenerateNumberCell(number);
 			string text = XmlDocumentHelper.XmlToString(node);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -516,7 +516,7 @@ namespace DataFilesTest
 			XmlNode node = xmlFile.GenerateHeaderCell(header);
 			string text = XmlDocumentHelper.XmlToString(node);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -530,7 +530,7 @@ namespace DataFilesTest
 			XmlNode node = xmlFile.GenerateParagraphCell(paragraph);
 			string text = XmlDocumentHelper.XmlToString(node);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -544,7 +544,7 @@ namespace DataFilesTest
 			XmlNode node = xmlFile.GenerateTextCell(t);
 			string text = XmlDocumentHelper.XmlToString(node);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -558,7 +558,7 @@ namespace DataFilesTest
 			XmlNode node = xmlFile.GenerateTextCell(t, null);
 			string text = XmlDocumentHelper.XmlToString(node);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -573,7 +573,7 @@ namespace DataFilesTest
 			XmlNode node = xmlFile.GenerateTextCell(t, styleId);
 			string text = XmlDocumentHelper.XmlToString(node);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		[TestMethod]
@@ -586,17 +586,10 @@ namespace DataFilesTest
 			XmlNode node = xmlFile.GenerateEmptyCell();
 			string text = XmlDocumentHelper.XmlToString(node);
 			//assert
-			Assert.AreEqual(LoadText(comparisonFilename), text);
+			Assert.AreEqual(Utilities.LoadText(comparisonFilename), text);
 		}
 
 		#endregion
 
-		private string LoadText(string fullPath)
-		{
-			using(StreamReader reader = new StreamReader(fullPath))
-			{
-				return reader.ReadToEnd().Replace("\r", "");
-			}
-		}
 	}
 }

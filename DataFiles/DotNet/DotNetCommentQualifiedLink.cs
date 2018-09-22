@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace WithoutHaste.DataFiles.DotNet
+{
+	/// <summary>
+	/// Represents a link in the comments to an internal or extenal type or type.method().
+	/// </summary>
+	public class DotNetCommentQualifiedLink : DotNetComment, IDotNetCommentLink
+	{
+		/// <summary>Name of type or member.</summary>
+		public DotNetQualifiedName Name { get; protected set; }
+
+		#region Constructors
+
+		/// <summary></summary>
+		public DotNetCommentQualifiedLink(DotNetQualifiedName name)
+		{
+			Name = name;
+		}
+
+		/// <summary>Parses .Net XML documentation cref.</summary>
+		public static new DotNetCommentQualifiedLink FromVisualStudioXml(string cref)
+		{
+			int divider = cref.IndexOf("(");
+			if(divider == -1)
+				return new DotNetCommentQualifiedLink(new DotNetQualifiedName(cref));
+
+			DotNetQualifiedName name = new DotNetQualifiedName(cref.Substring(0, divider));
+			List<DotNetParameter> parameters = DotNetMethod.ParseVisualStudioXmlParameters(cref.Substring(divider));
+			return new DotNetCommentMethodLink(name, parameters);
+		}
+
+		#endregion
+	}
+}

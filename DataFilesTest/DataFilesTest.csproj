@@ -46,6 +46,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Security" />
     <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -65,6 +66,8 @@
     <Compile Include="Markdown\MarkdownListTests.cs" />
     <Compile Include="Markdown\MarkdownSectionTests.cs" />
     <Compile Include="MSExcel2003XmlFileTests.cs" />
+    <Compile Include="Utilities.cs" />
+    <Compile Include="VisualStudioXml\VisualStudioXmlFileTests.cs" />
     <Compile Include="XmlDocumentHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -100,7 +103,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\MSExcel2003XmlFile_Default.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\MSExcel2003XmlFile_EmptyCell.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -145,6 +148,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\MSExcel2003XmlFile_WidthAttribute.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_Assembly.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_Type.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

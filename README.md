@@ -1,8 +1,23 @@
-# WithoutHaste.DataFormats
+# WithoutHaste.DataFiles
 
-.Net library for creating XmlDocument, ExcelPackage, and PdfSharp files.
+.Net library for loading or creating XmlDocument, ExcelPackage, .Net XML documentation, or Markdown files.
 
 This library is under active development. Report bugs and request features on Github, or to wohaste@gmail.com.
+
+## Dependencies
+
+### WithoutHaste.DataFiles
+
+* System.Xml
+
+### WithoutHaste.DataFiles.Excel
+
+* OfficeOpenXml from EPPlus NuGet package
+
+### WithoutHaste.DataFiles.DotNet
+
+* System.Xml
+* System.Xml.Linq
 
 ## Documentation
 
@@ -25,4 +40,6 @@ Uses [Semantic Versioning 2.0.0](https://semver.org/).
 [Initial Release - v1.0.0](https://github.com/WithoutHaste/WithoutHaste.DataFiles/releases/tag/v1.0.0)
 - Support for creating Microsoft Excel 2003 XML files.
 - Support for creating XLSX files with the EPPlus OfficeOpenXml library.
+- Support for creating Markdown files.
+- Support for parsing Visual Studio XML documentation files.
 - Uses library EPPlus version 4.5.2.1

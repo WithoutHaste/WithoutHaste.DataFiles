@@ -41,7 +41,7 @@
           <Data ss:Type="Number">17</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">load VS XML from file</Data>
+          <Data ss:Type="String">load .Net XML from file</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -55,27 +55,27 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">12</Data>
+          <Data ss:Type="Number">21</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">build and save markdown file</Data>
+          <Data ss:Type="String">verify EPPlus license - can I use in it free software?</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">Feature - Major</Data>
+          <Data ss:Type="String">Task</Data>
         </Cell>
         <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2018-09-19T00:00:00.000</Data>
+          <Data ss:Type="DateTime">2018-09-22T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">15</Data>
+          <Data ss:Type="Number">12</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">load markdown from file</Data>
+          <Data ss:Type="String">build and save markdown file</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -131,6 +131,23 @@ Or leave it empty and use the [link text itself].
       </Row>
       <Row>
         <Cell>
+          <Data ss:Type="Number">18</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">update repository summary</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Documentation</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-20T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
           <Data ss:Type="Number">14</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -161,6 +178,60 @@ Or leave it empty and use the [link text itself].
         </Cell>
         <Cell ss:StyleID="cellShortDate">
           <Data ss:Type="DateTime">2018-09-14T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">15</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">load markdown from file</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-19T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">19</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">VS Documentation: support everything on
+https://docs.microsoft.com/en-us/dotnet/csharp/codedoc</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-21T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">20</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">Markdown: support everything on
+https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-21T00:00:00.000</Data>
         </Cell>
       </Row>
     </Table>
@@ -420,7 +491,7 @@ Or leave it empty and use the [link text itself].
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">17</Data>
+          <Data ss:Type="Number">21</Data>
         </Cell>
       </Row>
       <Row>
