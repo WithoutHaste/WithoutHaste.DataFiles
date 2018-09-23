@@ -24,16 +24,16 @@ namespace WithoutHaste.DataFiles.DotNet
 				case "para": //paragraph
 				case "returns":
 				case "value":
-					return ParseGroup(element);
+					return new DotNetCommentGroup(ParseSection(element));
 
 				case "exception":
 				case "permission":
+					return DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
+
 				case "see": //link only
 				case "seealso": //link only
 					string cref = element.Attribute("cref")?.Value;
-					DotNetCommentGroup group = ParseGroup(element);
-					group.SetLink(DotNetCommentQualifiedLink.FromVisualStudioXml(cref));
-					return group;
+					return DotNetCommentQualifiedLink.FromVisualStudioXml(cref);
 
 				case "list":
 					return DotNetCommentList.FromVisualStudioXml(element);
@@ -49,7 +49,9 @@ namespace WithoutHaste.DataFiles.DotNet
 					return DotNetCommentTypeParameterLink.FromVisualStudioXml(element);
 
 				case "c": //inline code
-					return new DotNetCommentCode(element.Value);
+					return DotNetCommentCode.FromVisualStudioXml(element);
+				case "code": //code block
+					return DotNetCommentCodeBlock.FromVisualStudioXml(element);
 			}
 			return null;
 		}
@@ -61,22 +63,42 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>Parses inner .Net XML documentation comments.</summary>
-		public static DotNetCommentGroup ParseGroup(XElement element)
+		protected static List<DotNetComment> ParseSection(XElement element)
 		{
-			DotNetCommentGroup group = new DotNetCommentGroup();
+			List<DotNetComment> comments = new List<DotNetComment>();
 			foreach(XNode node in element.Nodes())
 			{
 				switch(node.NodeType)
 				{
 					case XmlNodeType.Element:
-						group.Add(DotNetComment.FromVisualStudioXml(node as XElement));
+						comments.Add(DotNetComment.FromVisualStudioXml(node as XElement));
 						break;
 					case XmlNodeType.Text:
-						group.Add(DotNetComment.FromVisualStudioXml(node.ToString()));
+						comments.Add(DotNetComment.FromVisualStudioXml(node.ToString()));
 						break;
 				}
 			}
-			return group;
+			return comments;
+		}
+
+		/// <summary>
+		/// Throws exception on unexpected xml formats.
+		/// </summary>
+		/// <exception cref="XmlFormatException">XML tag does not have the expected local name, or is null</exception>
+		public static void ValidateXmlTag(XElement element, string localName)
+		{
+			if(element == null || element.Name.LocalName != localName)
+				throw new XmlFormatException(String.Format("Unexpected xml element '{0}'. Expecting '{1}'.", element?.Name.LocalName, localName));
+		}
+
+		/// <summary>
+		/// Throws exception on unexpected xml formats.
+		/// </summary>
+		/// <exception cref="XmlFormatException">XML tag does not have any of the expected local names, or is null</exception>
+		public static void ValidateXmlTag(XElement element, string[] localNames)
+		{
+			if(element == null || !localNames.Contains(element.Name.LocalName))
+				throw new XmlFormatException(String.Format("Unexpected xml element '{0}'. Expecting any of {1}.", element?.Name.LocalName, String.Join(", ", localNames.Select(x => "'"+x+"'").ToArray())));
 		}
 	}
 }

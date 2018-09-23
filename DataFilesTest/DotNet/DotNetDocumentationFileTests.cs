@@ -8,7 +8,7 @@ using WithoutHaste.DataFiles.DotNet;
 namespace DataFilesTest
 {
 	[TestClass]
-	public class VisualStudioXmlFileTests
+	public class DotNetDocumentationFileTests
 	{
 		private const string ASSEMBLY_NAME = "Test";
 

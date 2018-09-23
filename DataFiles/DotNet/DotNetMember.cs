@@ -16,6 +16,24 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public DotNetQualifiedName Name { get; protected set; }
 
+		/// <summary>Returns the number of top level comments, which may contain more nested comments.</summary>
+		public int CommentCount {
+			get {
+				return summaryComments.Count
+					+ remarksComments.Count
+					+ permissionsComments.Count
+					+ exampleComments.Count
+					+ exceptionComments.Count
+					+ parameterComments.Count
+					+ (valueComment != null ? 1 : 0)
+					+ (returnsComment != null ? 1 : 0)
+					+ floatingComments.Count;
+			}
+		}
+
+		/// <summary>True when there are no comments.</summary>
+		public bool IsEmpty { get { return (CommentCount == 0); } }
+
 		private List<DotNetComment> summaryComments = new List<DotNetComment>();
 		private List<DotNetComment> remarksComments = new List<DotNetComment>();
 		private List<DotNetComment> permissionsComments = new List<DotNetComment>();

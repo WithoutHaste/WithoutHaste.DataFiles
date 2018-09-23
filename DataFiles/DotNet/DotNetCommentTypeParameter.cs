@@ -10,21 +10,34 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <summary>
 	/// Represents a generic-type parameter description in the comments.
 	/// </summary>
-	public class DotNetCommentTypeParameter : DotNetCommentTypeParameterLink
+	/// <example><![CDATA[<typeparam name="T">nested comments</typeparam>]]></example>
+	public class DotNetCommentTypeParameter : DotNetCommentLinkedGroup<DotNetCommentTypeParameterLink>
 	{
 		#region Constructors
 
 		/// <summary></summary>
-		public DotNetCommentTypeParameter(string name) : base(name)
+		public DotNetCommentTypeParameter(DotNetCommentTypeParameterLink link, DotNetComment comment) : base(link, comment)
+		{
+		}
+
+		/// <summary></summary>
+		public DotNetCommentTypeParameter(DotNetCommentTypeParameterLink link, params DotNetComment[] comments) : base(link, comments)
+		{
+		}
+
+		/// <summary></summary>
+		public DotNetCommentTypeParameter(DotNetCommentTypeParameterLink link, List<DotNetComment> comments) : base(link, comments)
 		{
 		}
 
 		/// <summary>Parses .Net XML documentation for typeparam.</summary>
-		public static new DotNetComment FromVisualStudioXml(XElement element)
+		public static new DotNetCommentTypeParameter FromVisualStudioXml(XElement element)
 		{
-			DotNetCommentGroup group = ParseGroup(element);
-			group.SetLink(new DotNetCommentParameter(element.Attribute("name")?.Value));
-			return group;
+			ValidateXmlTag(element, "typeparam");
+			return new DotNetCommentTypeParameter(
+				new DotNetCommentTypeParameterLink(element.Attribute("name")?.Value),
+				ParseSection(element)
+			);
 		}
 
 		#endregion

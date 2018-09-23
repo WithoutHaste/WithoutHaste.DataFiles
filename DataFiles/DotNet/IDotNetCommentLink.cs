@@ -11,5 +11,7 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// </summary>
 	public interface IDotNetCommentLink
 	{
+		/// <summary>Return the fully qualified name of the referenced assembly element.</summary>
+		string FullName { get; }
 	}
 }

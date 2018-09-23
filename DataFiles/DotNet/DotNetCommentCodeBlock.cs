@@ -8,20 +8,20 @@ using System.Xml.Linq;
 namespace WithoutHaste.DataFiles.DotNet
 {
 	/// <summary>
-	/// Represents an inline section of code in the comments.
+	/// Represents a section of code in the comments.
 	/// </summary>
-	/// <example><![CDATA[<c>code fragment</c>]]></example>
-	public class DotNetCommentCode : DotNetCommentText
+	/// <example><![CDATA[<code>code statements</code>]]></example>
+	public class DotNetCommentCodeBlock : DotNetCommentCode
 	{
 		/// <summary></summary>
-		public DotNetCommentCode(string text) : base(text)
+		public DotNetCommentCodeBlock(string text) : base(text)
 		{
 		}
 
-		/// <summary>Parses .Net XML documentation c.</summary>
+		/// <summary>Parses .Net XML documentation code.</summary>
 		public static new DotNetCommentCode FromVisualStudioXml(XElement element)
 		{
-			DotNetComment.ValidateXmlTag(element, "c");
+			DotNetComment.ValidateXmlTag(element, "code");
 			return new DotNetCommentCode(element.Value);
 		}
 	}

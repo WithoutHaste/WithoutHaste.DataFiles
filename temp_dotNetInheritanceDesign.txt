@@ -1,0 +1,30 @@
+Member.ParseComments(xelement)
+	loops through children of xelement
+	keeps list of Comments by category
+
+Comment: Cannot contain nested comments:
+	Text
+	Code
+	ParameterLink (paramref)
+	TypeParameterLink (typeparamref)
+	QualifiedLink (see, seealso, permission?)
+	MethodLink (see, seealso, permission)
+	List
+	Table
+	<CommentGroup>
+
+CommentGroup: Can contain nested comments:
+	(summary)
+	(remarks)
+	(example)
+	(para)
+	(returns)
+	(value)
+	<CommentLinkedGroup>
+	
+CommentLinkedGroup: has a link and can contain nested comments
+	Parameter (param) -- also has link (ParameterLink type)
+	TypeParameter (typeparam) -- also has link (TypeParameterLink type)
+	(permission) -- also has link (QualifiedLink type)
+	(exception) -- also has link (QualifiedLink type)
+	

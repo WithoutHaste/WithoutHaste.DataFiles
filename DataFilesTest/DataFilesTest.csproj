@@ -61,13 +61,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DotNet\DotNetCommentTypeParameterTests.cs" />
+    <Compile Include="DotNet\DotNetCommentTypeParameterLinkTests.cs" />
     <Compile Include="ExcelPackageHelperTests.cs" />
     <Compile Include="InfoTests.cs" />
     <Compile Include="Markdown\MarkdownListTests.cs" />
     <Compile Include="Markdown\MarkdownSectionTests.cs" />
     <Compile Include="MSExcel2003XmlFileTests.cs" />
     <Compile Include="Utilities.cs" />
-    <Compile Include="VisualStudioXml\VisualStudioXmlFileTests.cs" />
+    <Compile Include="DotNet\DotNetDocumentationFileTests.cs" />
     <Compile Include="XmlDocumentHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

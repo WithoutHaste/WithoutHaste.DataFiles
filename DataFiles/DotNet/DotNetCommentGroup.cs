@@ -10,13 +10,16 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// Represents an ordered collection of comments.
 	/// </summary>
 	/// <remarks>Groups may include a link to something in the assembly which these comments are documenting.</remarks>
+	/// <example><![CDATA[<summary>nested comments and/or plain text</summary>]]></example>
+	/// <example><![CDATA[<remarks>nested comments and/or plain text</remarks>]]></example>
+	/// <example><![CDATA[<example>nested comments and/or plain text</example>]]></example>
+	/// <example><![CDATA[<para>nested comments and/or plain text</para>]]></example>
+	/// <example><![CDATA[<returns>nested comments and/or plain text</returns>]]></example>
+	/// <example><![CDATA[<value>nested comments and/or plain text</value>]]></example>
 	public class DotNetCommentGroup : DotNetComment
 	{
 		/// <summary></summary>
 		public List<DotNetComment> Comments = new List<DotNetComment>();
-
-		/// <summary>Optional reference link from comments to something in the assembly.</summary>
-		public IDotNetCommentLink Link { get; protected set; }
 
 		#region Constructors
 
@@ -61,12 +64,6 @@ namespace WithoutHaste.DataFiles.DotNet
 		public void Add(List<DotNetComment> comments)
 		{
 			Comments.AddRange(comments);
-		}
-
-		/// <summary></summary>
-		public void SetLink(IDotNetCommentLink link)
-		{
-			Link = link;
 		}
 	}
 }

@@ -42,6 +42,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Parses .Net XML documentation table.</summary>
 		public static new DotNetCommentTable FromVisualStudioXml(XElement element)
 		{
+			ValidateXmlTag(element, "list");
+
 			List<DotNetCommentRow> rows = new List<DotNetCommentRow>();
 			foreach(XElement row in element.Elements())
 			{

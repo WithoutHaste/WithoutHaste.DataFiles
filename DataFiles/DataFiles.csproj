@@ -53,8 +53,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DotNet\DotNetCommentCode.cs" />
+    <Compile Include="DotNet\DotNetCommentCodeBlock.cs" />
+    <Compile Include="DotNet\DotNetCommentLinkedGroup.cs" />
     <Compile Include="DotNet\DotNetCommentListItem.cs" />
+    <Compile Include="DotNet\DotNetCommentParameter.cs" />
+    <Compile Include="DotNet\DotNetCommentParameterLink.cs" />
+    <Compile Include="DotNet\DotNetCommentQualifiedLinkedGroup.cs" />
     <Compile Include="DotNet\DotNetCommentRow.cs" />
+    <Compile Include="DotNet\DotNetCommentTypeParameter.cs" />
+    <Compile Include="DotNet\DotNetCommentTypeParameterLink.cs" />
+    <Compile Include="DotNet\IDotNetCommentLink.cs" />
     <Compile Include="Excel\ExcelPackageHelper.cs" />
     <Compile Include="exceptions\XmlFormatException.cs" />
     <Compile Include="exceptions\XmlNodeException.cs" />
@@ -77,7 +86,7 @@
     <Compile Include="DotNet\DotNetComment.cs" />
     <Compile Include="DotNet\DotNetCommentCell.cs" />
     <Compile Include="DotNet\DotNetCommentGroup.cs" />
-    <Compile Include="DotNet\DotNetCommentLink.cs" />
+    <Compile Include="DotNet\DotNetCommentQualifiedLink.cs" />
     <Compile Include="DotNet\DotNetCommentList.cs" />
     <Compile Include="DotNet\DotNetCommentMethodLink.cs" />
     <Compile Include="DotNet\DotNetCommentTable.cs" />

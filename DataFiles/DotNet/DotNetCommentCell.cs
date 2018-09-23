@@ -9,55 +9,30 @@ using System.Xml.Linq;
 namespace WithoutHaste.DataFiles.DotNet
 {
 	/// <summary>
-	/// Represents either an item in a list, or a cell in a table, in .Net XML documentation.
+	/// Represents a cell in a table in .Net XML documentation.
 	/// </summary>
+	/// <remarks>
+	/// Does not inherit from DotNetCommentText because a cell cannot appear everywhere text can.
+	/// </remarks>
+	/// <example><![CDATA[<term>plain text</term>]]></example>
 	public class DotNetCommentCell
 	{
 		/// <summary></summary>
-		public bool IsHeader { get; protected set; }
-
-		/// <summary></summary>
-		public string Term { get; protected set; }
-
-		/// <summary></summary>
-		public string Description { get; protected set; }
+		public string Text { get; protected set; }
 
 		#region Constructors
 
 		/// <summary></summary>
-		public DotNetCommentCell(string term, string description=null, bool isHeader=false)
+		public DotNetCommentCell(string text)
 		{
-			Term = term;
-			Description = description;
-			IsHeader = isHeader;
+			Text = text;
 		}
 
-		/// <summary>Parses .Net XML documentation listheader or item.</summary>
+		/// <summary>Parses .Net XML documentation term.</summary>
 		public static DotNetCommentCell FromVisualStudioXml(XElement element)
 		{
-			bool isHeader = (element.Name.LocalName == "listheader");
-			string term = null;
-			string description = null;
-
-			foreach(XNode node in element.Nodes())
-			{
-				if(node.NodeType == XmlNodeType.Text)
-				{
-					term = node.ToString();
-					continue;
-				}
-				else if(node.NodeType == XmlNodeType.Element)
-				{
-					XElement child = (node as XElement);
-					switch(child.Name.LocalName)
-					{
-						case "term": term = child.Value; break;
-						case "description": description = child.Value; break;
-					}
-				}
-			}
-
-			return new DotNetCommentCell(term, description, isHeader);
+			DotNetComment.ValidateXmlTag(element, "term");
+			return new DotNetCommentCell(element.Value);
 		}
 
 		#endregion

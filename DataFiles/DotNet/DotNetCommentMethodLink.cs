@@ -9,7 +9,8 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <summary>
 	/// Represents a link in the comments to an internal or extenal method.
 	/// </summary>
-	public class DotNetCommentMethodLink : DotNetCommentLink
+	/// <example><![CDATA[<permission cref="Namespace.Type.Method(Type1, Type2)">nested comments and/or plain text</permission>]]></example>
+	public class DotNetCommentMethodLink : DotNetCommentQualifiedLink
 	{
 		/// <summary></summary>
 		public List<DotNetParameter> Parameters = new List<DotNetParameter>();

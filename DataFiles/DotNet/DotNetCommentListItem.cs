@@ -15,17 +15,17 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// Format options:
 	/// <![CDATA[
 	///   <listheader>
-	///    plain text
+	///     plain text
 	///   </listheader>
 	///   <listheader>
-	///    <term>Term</term>
+	///     <term>Term</term>
 	///   </listheader>
 	///   <listheader>
-	///    <description>Description</description>
+	///     <description>Description</description>
 	///   </listheader>
 	///   <listheader>
-	///    <term>Term</term>
-	///    <description>Description</description>
+	///     <term>Term</term>
+	///     <description>Description</description>
 	///   </listheader>
 	/// ]]>
 	/// </example>
@@ -33,17 +33,17 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// Format options:
 	/// <![CDATA[
 	///   <item>
-	///    plain text
+	///     plain text
 	///   </item>
 	///   <item>
-	///    <term>Term</term>
+	///     <term>Term</term>
 	///   </item>
 	///   <item>
-	///    <description>Description</description>
+	///     <description>Description</description>
 	///   </item>
 	///   <item>
-	///    <term>Term</term>
-	///    <description>Description</description>
+	///     <term>Term</term>
+	///     <description>Description</description>
 	///   </item>
 	/// ]]>
 	/// </example>
@@ -71,6 +71,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Parses .Net XML documentation listheader or item.</summary>
 		public static DotNetCommentListItem FromVisualStudioXml(XElement element)
 		{
+			DotNetComment.ValidateXmlTag(element, new string[] { "listheader", "item" });
+
 			bool isHeader = (element.Name.LocalName == "listheader");
 			string term = null;
 			string description = null;

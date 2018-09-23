@@ -49,6 +49,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Parses .Net XML documentation list (which may actually be a table).</summary>
 		public static new DotNetComment FromVisualStudioXml(XElement element)
 		{
+			ValidateXmlTag(element, "list");
+
 			string type = element.Attribute("type")?.Value;
 			if(type == "table")
 			{

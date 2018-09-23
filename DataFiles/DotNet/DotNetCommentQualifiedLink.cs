@@ -9,10 +9,15 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <summary>
 	/// Represents a link in the comments to an internal or extenal type or type.method().
 	/// </summary>
+	/// <example><![CDATA[<exception cref="Namespace.ExceptionType">nested comments and/or plain text</exception>]]></example>
+	/// <example><![CDATA[<permission cref="Namespace.Type">nested comments and/or plain text</permission>]]></example>
 	public class DotNetCommentQualifiedLink : DotNetComment, IDotNetCommentLink
 	{
 		/// <summary>Name of type or member.</summary>
 		public DotNetQualifiedName Name { get; protected set; }
+
+		/// <inheritdoc />
+		public string FullName { get { return Name?.FullName; } }
 
 		#region Constructors
 
