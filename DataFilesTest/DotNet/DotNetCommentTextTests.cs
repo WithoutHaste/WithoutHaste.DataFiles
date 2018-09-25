@@ -18,7 +18,7 @@ namespace DataFilesTest
 			//act
 			DotNetCommentText result = DotNetCommentText.FromVisualStudioXml(text);
 			//assert
-			Assert.AreEqual(text, result.Text);
+			Assert.AreEqual(null, result.Text);
 		}
 
 		[TestMethod]

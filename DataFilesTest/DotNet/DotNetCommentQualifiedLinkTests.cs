@@ -8,7 +8,7 @@ using WithoutHaste.DataFiles.DotNet;
 namespace DataFilesTest
 {
 	[TestClass]
-	class DotNetCommentQualifiedLinkTests
+	public class DotNetCommentQualifiedLinkTests
 	{
 		[TestMethod]
 		public void DotNetCommentQualifiedLink_FromXml_TypeLink()

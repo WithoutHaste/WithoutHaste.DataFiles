@@ -55,6 +55,40 @@
       </Row>
       <Row>
         <Cell>
+          <Data ss:Type="Number">22</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">convert the special case constructors in DotNetQualifiedName into different subclasses for DotNetQualifiedMethodName and DotNetQualifiedTypeName.</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Minor</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-25T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">23</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">what to do if assembly actually includes types named "T", "U2" or "A"?</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Minor</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-25T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
           <Data ss:Type="Number">21</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -491,7 +525,7 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">21</Data>
+          <Data ss:Type="Number">23</Data>
         </Cell>
       </Row>
       <Row>

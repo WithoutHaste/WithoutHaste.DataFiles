@@ -46,12 +46,6 @@ namespace WithoutHaste.DataFiles.DotNet
 			if(signature == null)
 				return new DotNetMethod();
 
-			//remove leading "M:" from <member name="M:MethodName(Parameter)">
-			if(signature.Length > 1 && signature[1] == ':')
-			{
-				signature = signature.Substring(2);
-			}
-
 			//parameterless methods don't have a () at all
 			int divider = signature.IndexOf('(');
 			string name = null;
@@ -66,7 +60,7 @@ namespace WithoutHaste.DataFiles.DotNet
 				parameters = signature.Substring(divider);
 			}
 
-			DotNetQualifiedName qualifiedName = new DotNetQualifiedName(name);
+			DotNetQualifiedName qualifiedName = DotNetQualifiedName.FromVisualStudioXml(name);
 
 			//for constructors
 			bool isConstructor = qualifiedName.LocalName.EndsWith("#ctor");
@@ -83,7 +77,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 
 			//parse parameters
-			List<DotNetParameter> qualifiedParameters = ParseVisualStudioXmlParameters(parameters);
+			List<DotNetParameter> qualifiedParameters = ParametersFromVisualStudioXml(parameters);
 
 			return new DotNetMethod(qualifiedName, qualifiedParameters, isConstructor, isOperator);
 		}
@@ -98,11 +92,15 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Expects: empty string
 		/// Expects: "(type, type, type)"
 		/// </param>
-		public static List<DotNetParameter> ParseVisualStudioXmlParameters(string text)
+		public static List<DotNetParameter> ParametersFromVisualStudioXml(string text)
 		{
 			List<DotNetParameter> parameters = new List<DotNetParameter>();
 			if(!string.IsNullOrEmpty(text))
 			{
+				if(text.StartsWith("{") && text.EndsWith("}"))
+				{
+					text = text.Substring(1, text.Length - 2);
+				}
 				text = text.Replace("(", "").Replace(")", "");
 				string[] fields = text.Split(',');
 				for(int i = 0; i < fields.Length; i++)
@@ -110,7 +108,7 @@ namespace WithoutHaste.DataFiles.DotNet
 					string f = fields[i];
 					if(!String.IsNullOrEmpty(f))
 					{
-						parameters.Add(new DotNetParameter(new DotNetQualifiedName(f)));
+						parameters.Add(DotNetParameter.FromVisualStudioXml(f));
 					}
 				}
 			}

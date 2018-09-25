@@ -8,7 +8,7 @@ using WithoutHaste.DataFiles.DotNet;
 namespace DataFilesTest
 {
 	[TestClass]
-	class DotNetCommentCellTests
+	public class DotNetCommentCellTests
 	{
 		[TestMethod]
 		public void DotNetCommentCell_FromXml_Empty()

@@ -28,6 +28,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public DotNetCommentCell(string text)
 		{
+			if(text == "")
+				text = null;
 			Text = text;
 		}
 

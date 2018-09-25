@@ -44,5 +44,15 @@
 		<member name="M:Test.SingleGenericTypeD`1.op_Addition(`0,Test.SingleGenericTypeD{`0})"></member>
 		<member name="M:Test.DoubleGenericTypeE`2.#ctor(`1,`0)"></member>
 		<member name="M:Test.DoubleGenericTypeE`2.MethodEA``1(System.String,``0,`1)"></member>
+		<member name="M:Test.DoubleGenericTypeE`2.MethodEB``1(System.Collections.Generic.List{Test.SingleGenericTypeD{`0}})"></member>
+		<!-- Fields -->
+		<member name="F:Test.TypeA.FieldAA"></member>
+		<member name="F:Test.TypeA.FieldAB"></member>
+		<!-- Properties -->
+		<member name="P:Test.TypeA.PropertyAA"></member>
+		<member name="P:Test.TypeA.PropertyAB"></member>
+		<member name="P:Test.TypeA.PropertyAC"></member>
+		<!-- Events -->
+		<member name="E:Test.TypeA.EventAA"></member>
 	</members>
 </root>

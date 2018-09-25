@@ -8,7 +8,7 @@ using WithoutHaste.DataFiles.DotNet;
 namespace DataFilesTest
 {
 	[TestClass]
-	class DotNetCommentListTests
+	public class DotNetCommentListTests
 	{
 		[TestMethod]
 		public void DotNetCommentList_FromXml_NoType_Empty()
@@ -89,7 +89,7 @@ namespace DataFilesTest
 			//assert
 			Assert.IsTrue(result is DotNetCommentList);
 			DotNetCommentList list = result as DotNetCommentList;
-			Assert.AreEqual(false, list.IsNumbered);
+			Assert.AreEqual(true, list.IsNumbered);
 			Assert.AreEqual(4, list.Length);
 		}
 	}

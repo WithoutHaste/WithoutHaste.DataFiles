@@ -1,3 +1,19 @@
+
+Parsing type names, method names, member names, and parameter types
+
+Starts with "T:" it is a type
+Starts with "M:" it is a method
+Starts with "F:" or "P:" or "E:" it is a member
+
+Can determine for itself when to parse parameters, so that decision is private
+
+
+
+
+
+==========================================
+
+
 Member.ParseComments(xelement)
 	loops through children of xelement
 	keeps list of Comments by category
@@ -27,4 +43,6 @@ CommentLinkedGroup: has a link and can contain nested comments
 	TypeParameter (typeparam) -- also has link (TypeParameterLink type)
 	(permission) -- also has link (QualifiedLink type)
 	(exception) -- also has link (QualifiedLink type)
+	
+	
 	

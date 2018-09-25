@@ -29,6 +29,14 @@ namespace WithoutHaste.DataFiles.DotNet
 			TypeName = typeName;
 		}
 
+		/// <summary>
+		/// Parses a .Net XML documentation parameter type.
+		/// </summary>
+		public static DotNetParameter FromVisualStudioXml(string typeName)
+		{
+			return new DotNetParameter(DotNetQualifiedName.ParameterTypeFromVisualStudioXml(typeName));
+		}
+
 		#endregion
 	}
 }

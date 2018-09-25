@@ -17,6 +17,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public DotNetCommentText(string text)
 		{
+			if(text == "")
+				text = null;
 			Text = text;
 		}
 	}

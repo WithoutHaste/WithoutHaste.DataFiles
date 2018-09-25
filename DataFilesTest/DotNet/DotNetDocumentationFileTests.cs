@@ -35,127 +35,6 @@ namespace DataFilesTest
 		}
 
 		[TestMethod]
-		public void DotNetDocumentationFile_QualifiedName_JustLocal()
-		{
-			//arrange
-			string name = "Test";
-			//act
-			DotNetQualifiedName result = new DotNetQualifiedName(name);
-			//assert
-			Assert.AreEqual(name, result.LocalName);
-			Assert.AreEqual(name, result.FullName);
-			Assert.IsNull(result.FullNamespace);
-		}
-
-		[TestMethod]
-		public void DotNetDocumentationFile_QualifiedName_OneNamespace()
-		{
-			//arrange
-			string namespaceA = "A";
-			string name = "Test";
-			string qualifiedName = namespaceA + "." + name;
-			//act
-			DotNetQualifiedName result = new DotNetQualifiedName(qualifiedName);
-			//assert
-			Assert.AreEqual(name, result.LocalName);
-			Assert.AreEqual(qualifiedName, result.FullName);
-			Assert.AreEqual(namespaceA, result.FullNamespace);
-		}
-
-		[TestMethod]
-		public void DotNetDocumentationFile_QualifiedName_TwoNamespaces()
-		{
-			//arrange
-			string namespaceA = "A";
-			string namespaceB = "B";
-			string name = "Test";
-			string qualifiedNamespace = namespaceA + "." + namespaceB;
-			string qualifiedName = qualifiedNamespace + "." + name;
-			//act
-			DotNetQualifiedName result = new DotNetQualifiedName(qualifiedName);
-			//assert
-			Assert.AreEqual(name, result.LocalName);
-			Assert.AreEqual(qualifiedName, result.FullName);
-			Assert.AreEqual(qualifiedNamespace, result.FullNamespace);
-		}
-
-		[TestMethod]
-		public void DotNetDocumentationFile_QualifiedNameFromXml_CategoryIndicator()
-		{
-			//arrange
-			string categoryIndicator = "M";
-			string namespaceA = "A";
-			string namespaceB = "B";
-			string name = "Test";
-			string qualifiedNamespace = namespaceA + "." + namespaceB;
-			string qualifiedName = qualifiedNamespace + "." + name;
-			string xmlName = categoryIndicator + ":" + qualifiedName;
-			//act
-			DotNetQualifiedName result = DotNetQualifiedName.FromVisualStudioXml(xmlName);
-			//assert
-			Assert.AreEqual(name, result.LocalName);
-			Assert.AreEqual(qualifiedName, result.FullName);
-			Assert.AreEqual(qualifiedNamespace, result.FullNamespace);
-		}
-
-		[TestMethod]
-		public void DotNetDocumentationFile_QualifiedNameFromXml_CategoryIndicator_OneGenericType()
-		{
-			//arrange
-			string categoryIndicator = "M";
-			string namespaceA = "A";
-			string namespaceB = "B";
-			string name = "Test";
-			string qualifiedNamespace = namespaceA + "." + namespaceB;
-			string qualifiedName = qualifiedNamespace + "." + name;
-			string xmlName = categoryIndicator + ":" + qualifiedName + "`1";
-			//act
-			DotNetQualifiedName result = DotNetQualifiedName.FromVisualStudioXml(xmlName);
-			//assert
-			Assert.AreEqual(name + "<T>", result.LocalName);
-			Assert.AreEqual(qualifiedName + "<T>", result.FullName);
-			Assert.AreEqual(qualifiedNamespace, result.FullNamespace);
-		}
-
-		[TestMethod]
-		public void DotNetDocumentationFile_QualifiedNameFromXml_CategoryIndicator_TwoGenericTypes()
-		{
-			//arrange
-			string categoryIndicator = "M";
-			string namespaceA = "A";
-			string namespaceB = "B";
-			string name = "Test";
-			string qualifiedNamespace = namespaceA + "." + namespaceB;
-			string qualifiedName = qualifiedNamespace + "." + name;
-			string xmlName = categoryIndicator + ":" + qualifiedName + "`2";
-			//act
-			DotNetQualifiedName result = DotNetQualifiedName.FromVisualStudioXml(xmlName);
-			//assert
-			Assert.AreEqual(name + "<T,U>", result.LocalName);
-			Assert.AreEqual(qualifiedName + "<T,U>", result.FullName);
-			Assert.AreEqual(qualifiedNamespace, result.FullNamespace);
-		}
-
-		[TestMethod]
-		public void DotNetDocumentationFile_QualifiedNameFromXml_CategoryIndicator_TwoDigitGenericTypes()
-		{
-			//arrange
-			string categoryIndicator = "M";
-			string namespaceA = "A";
-			string namespaceB = "B";
-			string name = "Test";
-			string qualifiedNamespace = namespaceA + "." + namespaceB;
-			string qualifiedName = qualifiedNamespace + "." + name;
-			string xmlName = categoryIndicator + ":" + qualifiedName + "`10";
-			//act
-			DotNetQualifiedName result = DotNetQualifiedName.FromVisualStudioXml(xmlName);
-			//assert
-			Assert.AreEqual(name + "<T,U,V,W,T2,U2,V2,W2,T3,U3>", result.LocalName);
-			Assert.AreEqual(qualifiedName + "<T,U,V,W,T2,U2,V2,W2,T3,U3>", result.FullName);
-			Assert.AreEqual(qualifiedNamespace, result.FullNamespace);
-		}
-
-		[TestMethod]
 		public void DotNetDocumentationFile_CommentFromXml_Full()
 		{
 			//arrange
@@ -170,6 +49,9 @@ namespace DataFilesTest
 			Assert.AreEqual("Test.TypeA", typeA.Name.FullName);
 			Assert.AreEqual(4, typeA.CommentCount);
 			Assert.AreEqual(1, typeA.Methods.Count);
+			Assert.AreEqual(2, typeA.Fields.Count);
+			Assert.AreEqual(3, typeA.Properties.Count);
+			Assert.AreEqual(1, typeA.Events.Count);
 
 			DotNetType typeB = typeA.NestedTypes[0];
 			Assert.AreEqual(1, typeB.NestedTypeCount);
@@ -191,7 +73,7 @@ namespace DataFilesTest
 			DotNetType typeE = file[2];
 			Assert.AreEqual("Test.DoubleGenericTypeE<T,U>", typeE.Name.FullName);
 			Assert.AreEqual(0, typeE.CommentCount);
-			Assert.AreEqual(2, typeE.Methods.Count);
+			Assert.AreEqual(3, typeE.Methods.Count);
 
 			DotNetMethod methodAA = typeA.Methods[0];
 			Assert.AreEqual("Test.TypeA.MethodAA", methodAA.Name.FullName);
@@ -248,6 +130,14 @@ namespace DataFilesTest
 			Assert.AreEqual("System.String", methodEA.Parameters[0].FullName);
 			Assert.AreEqual("A", methodEA.Parameters[1].FullName);
 			Assert.AreEqual("U", methodEA.Parameters[2].FullName);
+
+			DotNetMethod methodEB = typeE.Methods[2];
+			Assert.AreEqual("Test.DoubleGenericTypeE<T,U>.MethodEB<A>", methodEB.Name.FullName);
+			Assert.AreEqual(0, methodEB.CommentCount);
+			Assert.AreEqual(false, methodEB.IsConstructor);
+			Assert.AreEqual(false, methodEB.IsOperator);
+			Assert.AreEqual(1, methodEB.Parameters.Count);
+			Assert.AreEqual("System.Collections.Generic.List<Test.SingleGenericTypeD<T>>", methodEB.Parameters[0].FullName);
 		}
 	}
 }

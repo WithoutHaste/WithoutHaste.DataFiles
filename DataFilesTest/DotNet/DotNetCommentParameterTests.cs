@@ -8,7 +8,7 @@ using WithoutHaste.DataFiles.DotNet;
 namespace DataFilesTest
 {
 	[TestClass]
-	class DotNetCommentParameterTests
+	public class DotNetCommentParameterTests
 	{
 		[TestMethod]
 		public void DotNetCommentParameter_FromXml_Empty()
@@ -30,7 +30,7 @@ namespace DataFilesTest
 			string name = "test";
 			XElement element = XElement.Parse("<typeparam name='" + name + "'>" + DotNetCommentGroupTests.GetXmlCommentsNestedInTag() + "</typeparam>");
 			//act
-			DotNetCommentParameter result = DotNetCommentParameter.FromVisualStudioXml(element);
+			DotNetCommentTypeParameter result = DotNetCommentTypeParameter.FromVisualStudioXml(element);
 			//assert
 			Assert.AreEqual(name, result.Link.FullName);
 			DotNetCommentGroupTests.ValidateXmlCommentsNestedInTag(result.Comments);

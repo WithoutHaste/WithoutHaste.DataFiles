@@ -26,7 +26,6 @@ namespace WithoutHaste.DataFiles.DotNet
 		public static DotNetField FromVisualStudioXml(XElement memberElement)
 		{
 			DotNetQualifiedName name = DotNetQualifiedName.FromVisualStudioXml(memberElement.Attribute("name")?.Value);
-			//todo: get xml documentation
 			return new DotNetField(name);
 		}
 
