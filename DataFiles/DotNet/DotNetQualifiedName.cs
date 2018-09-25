@@ -9,38 +9,8 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <summary>
 	/// Represents a fully qualified type name or member name.
 	/// </summary>
-	/// <remarks>
-	/// Cannot handle types or methods that declare more than 12 generic types,
-	/// such as <![CDATA[MyType<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13>]]>.
-	/// </remarks>
-	/// <example>
-	///   <para>
-	///     How .Net xml documentation formats generic types:
-	///     Backtics are followed by integers, identifying generic types.
-	///   </para>
-	///   <para>
-	///     Single backtics (such as `1) on a class declaration indicate a count of generic types for the class.
-	///     <example><![CDATA[MyGenericType<T,U,V> is documented as MyGenericType`3]]></example>
-	///     Anywhere else within this object's documentation that a single backtic appears, it indicates the index of the generic type in reference to the class declaration.
-	///     <example><![CDATA[MyGenericType(T,U,V) is documented as MyGenericType.#ctor(`0,`1,`2)]]></example>
-	///   </para>
-	///   <para>
-	///     Double backtics (such as ``1) on a method name indicate a count of generic types for the method.
-	///     <example><![CDATA[MyMethod<A,B,C> is documented as MyMethod``3]]></example>
-	///     Anywhere else within this method's documentation that a double backtic appears, it indicates the index of the generic type in reference to the method declaration.
-	///     <example><![CDATA[MyMethod<A,B,C>(A,B,C) is documented as MyMethod``3(``0,``1,``2)]]></example>
-	///     A method that uses both its own generic types AND generic types from the class declaration will look like this:
-	///     <example><![CDATA[MyMethod<A,B,C>(A,B,C,T,U) is documented as MyMethod``3(``0,``1,``2,`0,`1)]]></example>
-	///   </para>
-	/// </example>
 	public class DotNetQualifiedName
 	{
-		/// <summary>Default names that will be given to generic-types, in order.</summary>
-		public static readonly string[] ClassGenericTypeNames = new string[] { "T", "U", "V", "W", "T2", "U2", "V2", "W2", "T3", "U3", "V3", "W3" };
-
-		/// <summary>Default names that will be given to generic-method-types, in order.</summary>
-		public static readonly string[] MethodGenericTypeNames = new string[] { "A", "B", "C", "A2", "B2", "C2", "A3", "B3", "C3", "A4", "B4", "C4" };
-
 		/// <summary>Fully qualified namespace.</summary>
 		/// <remarks>Null if there is no namespace.</remarks>
 		public DotNetQualifiedName FullNamespace { get; protected set; }
@@ -49,20 +19,10 @@ namespace WithoutHaste.DataFiles.DotNet
 		public string FullName { get { return ToString(); } }
 
 		/// <summary>Name without namespace.</summary>
-		public string LocalName {
-			get {
-				if(classGenericTypeCount == 0 && methodGenericTypeCount == 0)
-					return localName;
-				if(classGenericTypeCount > 0)
-					return String.Format("{0}<{1}>", localName, String.Join(",", ClassGenericTypeNames.Take(classGenericTypeCount).ToArray()));
-				else
-					return String.Format("{0}<{1}>", localName, String.Join(",", MethodGenericTypeNames.Take(methodGenericTypeCount).ToArray()));
-			}
-		}
+		public virtual string LocalName { get { return localName; } }
 
-		private string localName;
-		private int classGenericTypeCount;
-		private int methodGenericTypeCount;
+		/// <summary>Name with namespace or required generic types.</summary>
+		protected string localName;
 
 		#region Constructors
 
@@ -72,32 +32,16 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary></summary>
-		public DotNetQualifiedName(string localName, int classGenericTypeCount = 0, int methodGenericTypeCount = 0)
+		public DotNetQualifiedName(string localName)
 		{
-			ValidateConstructorCounts(classGenericTypeCount, methodGenericTypeCount);
 			this.localName = localName;
-			this.classGenericTypeCount = classGenericTypeCount;
-			this.methodGenericTypeCount = methodGenericTypeCount;
 		}
 
 		/// <summary></summary>
-		public DotNetQualifiedName(string localName, DotNetQualifiedName fullNamespace, int classGenericTypeCount = 0, int methodGenericTypeCount = 0)
+		public DotNetQualifiedName(string localName, DotNetQualifiedName fullNamespace)
 		{
-			ValidateConstructorCounts(classGenericTypeCount, methodGenericTypeCount);
 			this.localName = localName;
-			this.classGenericTypeCount = classGenericTypeCount;
-			this.methodGenericTypeCount = methodGenericTypeCount;
 			this.FullNamespace = fullNamespace;
-		}
-
-		private void ValidateConstructorCounts(int classGenericTypeCount, int methodGenericTypeCount)
-		{
-			if(classGenericTypeCount < 0)
-				throw new ArgumentException("ClassGenericTypeCount cannot be less than 0.", "classGenericTypeCount");
-			if(methodGenericTypeCount < 0)
-				throw new ArgumentException("MethodGenericTypeCount cannot be less than 0.", "methodGenericTypeCount");
-			if(classGenericTypeCount > 0 && methodGenericTypeCount > 0)
-				throw new ArgumentException("ClassGenericTypeCount and MethodGenericTypeCount cannot both be greater than 0.");
 		}
 		
 		/// <summary>
@@ -163,13 +107,13 @@ namespace WithoutHaste.DataFiles.DotNet
 				if(localName.StartsWith("``"))
 				{
 					Int32.TryParse(localName.Substring(localName.IndexOf("``") + 2), out genericTypeIndex);
-					localName = MethodGenericTypeNames[genericTypeIndex];
+					localName = DotNetQualifiedMethodName.GenericTypeNames[genericTypeIndex];
 				}
 				//class-generic-type parameters
 				else if(localName.StartsWith("`"))
 				{
 					Int32.TryParse(localName.Substring(localName.IndexOf('`') + 1), out genericTypeIndex);
-					localName = ClassGenericTypeNames[genericTypeIndex];
+					localName = DotNetQualifiedClassName.GenericTypeNames[genericTypeIndex];
 				}
 			}
 
@@ -212,9 +156,9 @@ namespace WithoutHaste.DataFiles.DotNet
 				localName = localName.Substring(0, localName.IndexOf('`'));
 			}
 
-			if(String.IsNullOrEmpty(fullNamespace)) return new DotNetQualifiedName(localName, classGenericTypeCount, methodGenericTypeCount: 0);
+			if(String.IsNullOrEmpty(fullNamespace)) return new DotNetQualifiedClassName(localName, classGenericTypeCount);
 
-			return new DotNetQualifiedName(localName, TypeNameFromVisualStudioXml(fullNamespace), classGenericTypeCount, methodGenericTypeCount: 0);
+			return new DotNetQualifiedClassName(localName, TypeNameFromVisualStudioXml(fullNamespace), classGenericTypeCount);
 		}
 
 		/// <summary>
@@ -249,9 +193,9 @@ namespace WithoutHaste.DataFiles.DotNet
 				localName = localName.Substring(0, localName.IndexOf("``"));
 			}
 
-			if(String.IsNullOrEmpty(fullNamespace)) return new DotNetQualifiedName(localName, classGenericTypeCount: 0, methodGenericTypeCount: methodGenericTypeCount);
+			if(String.IsNullOrEmpty(fullNamespace)) return new DotNetQualifiedMethodName(localName, methodGenericTypeCount);
 
-			return new DotNetQualifiedName(localName, TypeNameFromVisualStudioXml(fullNamespace), classGenericTypeCount: 0, methodGenericTypeCount: methodGenericTypeCount);
+			return new DotNetQualifiedMethodName(localName, TypeNameFromVisualStudioXml(fullNamespace), methodGenericTypeCount);
 		}
 
 		/// <summary>
@@ -276,12 +220,10 @@ namespace WithoutHaste.DataFiles.DotNet
 				fullNamespace = name.Substring(0, divider);
 			}
 
-			if(String.IsNullOrEmpty(fullNamespace)) return new DotNetQualifiedName(localName, classGenericTypeCount: 0, methodGenericTypeCount: 0);
+			if(String.IsNullOrEmpty(fullNamespace)) return new DotNetQualifiedName(localName);
 
-			return new DotNetQualifiedName(localName, TypeNameFromVisualStudioXml(fullNamespace), classGenericTypeCount: 0, methodGenericTypeCount: 0);
+			return new DotNetQualifiedName(localName, TypeNameFromVisualStudioXml(fullNamespace));
 		}
-
-		//todo parsing parameter types
 
 		#endregion
 

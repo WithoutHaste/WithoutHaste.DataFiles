@@ -63,6 +63,8 @@
     <Compile Include="DotNet\DotNetCommentRow.cs" />
     <Compile Include="DotNet\DotNetCommentTypeParameter.cs" />
     <Compile Include="DotNet\DotNetCommentTypeParameterLink.cs" />
+    <Compile Include="DotNet\DotNetQualifiedMethodName.cs" />
+    <Compile Include="DotNet\DotNetQualifiedClassName.cs" />
     <Compile Include="DotNet\IDotNetCommentLink.cs" />
     <Compile Include="Excel\ExcelPackageHelper.cs" />
     <Compile Include="exceptions\XmlFormatException.cs" />
