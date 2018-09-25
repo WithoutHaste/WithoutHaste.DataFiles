@@ -18,11 +18,21 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Fully qualified name.</summary>
 		public string FullName { get { return ToString(); } }
 
-		/// <summary>Name without namespace.</summary>
-		public virtual string LocalName { get { return localName; } }
+		/// <summary>Local data type name.</summary>
+		public virtual string LocalName {
+			get {
+				if(GenericTypeParameters.Count == 0)
+					return localName;
+				return String.Format("{0}<{1}>", localName, String.Join(",", GenericTypeParameters.Select(x => x.FullName).ToArray()));
+			}
+		}
 
 		/// <summary>Name with namespace or required generic types.</summary>
 		protected string localName;
+
+		/// <summary>If this is a generic type, these are the specified parameter types.</summary>
+		/// <example><![CDATA[In parameter type List<System.String>, System.String is the generic-type parameter of List.]]></example>
+		public List<DotNetBaseParameter> GenericTypeParameters = new List<DotNetBaseParameter>();
 
 		#region Constructors
 
@@ -43,7 +53,31 @@ namespace WithoutHaste.DataFiles.DotNet
 			this.localName = localName;
 			this.FullNamespace = fullNamespace;
 		}
-		
+
+		/// <param name="localName"></param>
+		/// <param name="genericTypeParameters">List of generic-type parameters within this type.</param>
+		/// <exception cref="ArgumentException"><paramref name="genericTypeParameters"/> cannot be null.</exception>
+		public DotNetQualifiedName(string localName, List<DotNetBaseParameter> genericTypeParameters)
+		{
+			if(genericTypeParameters == null)
+				throw new ArgumentException("GenericTypeParameters list cannot be null.", "genericTypeParameters");
+			this.localName = localName;
+			GenericTypeParameters.AddRange(genericTypeParameters);
+		}
+
+		/// <param name="localName"></param>
+		/// <param name="genericTypeParameters">List of generic-type parameters within this type.</param>
+		/// <param name="fullNamespace"></param>
+		/// <exception cref="ArgumentException"><paramref name="genericTypeParameters"/> cannot be null.</exception>
+		public DotNetQualifiedName(string localName, List<DotNetBaseParameter> genericTypeParameters, DotNetQualifiedName fullNamespace)
+		{
+			if(genericTypeParameters == null)
+				throw new ArgumentException("GenericTypeParameters list cannot be null.", "genericTypeParameters");
+			this.localName = localName;
+			this.FullNamespace = fullNamespace;
+			GenericTypeParameters.AddRange(genericTypeParameters);
+		}
+
 		/// <summary>
 		/// Parses a .Net XML documentation type, method, or other member name.
 		/// </summary>
@@ -76,58 +110,6 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>
-		/// Parses a .Net XML documentation parameter type name.
-		/// </summary>
-		public static DotNetQualifiedName ParameterTypeFromVisualStudioXml(string typeName)
-		{
-			if(String.IsNullOrEmpty(typeName)) return new DotNetQualifiedName();
-
-			//fully qualified generic type parameters
-			//such as System.Collections.Generic.List<T> which are formatted as System.Collections.Generic{`0}
-			List<DotNetParameter> parameters = null;
-			if(typeName.EndsWith("}"))
-			{
-				string parameterSignature = typeName.Substring(typeName.IndexOf("{"));
-				typeName = typeName.Substring(0, typeName.IndexOf("{"));
-				parameters = DotNetMethod.ParametersFromVisualStudioXml(parameterSignature);
-			}
-
-			int divider = typeName.LastIndexOf('.');
-			string localName = typeName;
-			string fullNamespace = null;
-			if(divider != -1)
-			{
-				localName = typeName.Substring(divider + 1);
-				fullNamespace = typeName.Substring(0, divider);
-			}
-			else
-			{
-				//method-generic-type parameters
-				int genericTypeIndex = 0;
-				if(localName.StartsWith("``"))
-				{
-					Int32.TryParse(localName.Substring(localName.IndexOf("``") + 2), out genericTypeIndex);
-					localName = DotNetQualifiedMethodName.GenericTypeNames[genericTypeIndex];
-				}
-				//class-generic-type parameters
-				else if(localName.StartsWith("`"))
-				{
-					Int32.TryParse(localName.Substring(localName.IndexOf('`') + 1), out genericTypeIndex);
-					localName = DotNetQualifiedClassName.GenericTypeNames[genericTypeIndex];
-				}
-			}
-
-			if(parameters != null)
-			{
-				localName += String.Format("<{0}>", String.Join(",", parameters.Select(p => p.TypeName.ToString()).ToArray()));
-			}
-
-			if(String.IsNullOrEmpty(fullNamespace)) return new DotNetQualifiedName(localName);
-
-			return new DotNetQualifiedName(localName, TypeNameFromVisualStudioXml(fullNamespace));
-		}
-
-		/// <summary>
 		/// Parses a .Net XML documentation type name or namespace name.
 		/// </summary>
 		/// <remarks>
@@ -136,7 +118,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// and there are no important diffences in parsing the two.
 		/// </remarks>
 		/// <param name="name">Name may or may not start with "T:"</param>
-		private static DotNetQualifiedName TypeNameFromVisualStudioXml(string name)
+		internal static DotNetQualifiedName TypeNameFromVisualStudioXml(string name)
 		{
 			if(name.StartsWith("T:")) name = name.Substring(2);
 

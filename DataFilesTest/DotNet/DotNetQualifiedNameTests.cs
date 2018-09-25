@@ -257,13 +257,12 @@ namespace DataFilesTest
 			string input = "A.B.MyType";
 			string expectedLocalName = "MyType";
 			string expectedQualifiedName = "A.B.MyType";
-			string expectedFullNamespace = "A.B";
 			//act
-			DotNetQualifiedName result = DotNetQualifiedName.ParameterTypeFromVisualStudioXml(input);
+			DotNetBaseParameter result = DotNetBaseParameter.FromVisualStudioXml(input);
 			//assert
+			Assert.IsTrue(result is DotNetParameter);
 			Assert.AreEqual(expectedLocalName, result.LocalName);
 			Assert.AreEqual(expectedQualifiedName, result.FullName);
-			Assert.AreEqual(expectedFullNamespace, result.FullNamespace);
 		}
 
 		[TestMethod]
@@ -273,13 +272,12 @@ namespace DataFilesTest
 			string input = "System.Xml.Linq.XDocument";
 			string expectedLocalName = "XDocument";
 			string expectedQualifiedName = "System.Xml.Linq.XDocument";
-			string expectedFullNamespace = "System.Xml.Linq";
 			//act
-			DotNetQualifiedName result = DotNetQualifiedName.ParameterTypeFromVisualStudioXml(input);
+			DotNetBaseParameter result = DotNetBaseParameter.FromVisualStudioXml(input);
 			//assert
+			Assert.IsTrue(result is DotNetParameter);
 			Assert.AreEqual(expectedLocalName, result.LocalName);
 			Assert.AreEqual(expectedQualifiedName, result.FullName);
-			Assert.AreEqual(expectedFullNamespace, result.FullNamespace);
 		}
 
 		[TestMethod]
@@ -289,13 +287,12 @@ namespace DataFilesTest
 			string input = "`0";
 			string expectedLocalName = "T";
 			string expectedQualifiedName = "T";
-			string expectedFullNamespace = null;
 			//act
-			DotNetQualifiedName result = DotNetQualifiedName.ParameterTypeFromVisualStudioXml(input);
+			DotNetBaseParameter result = DotNetBaseParameter.FromVisualStudioXml(input);
 			//assert
+			Assert.IsTrue(result is DotNetClassGenericParameter);
 			Assert.AreEqual(expectedLocalName, result.LocalName);
 			Assert.AreEqual(expectedQualifiedName, result.FullName);
-			Assert.AreEqual(expectedFullNamespace, result.FullNamespace);
 		}
 
 		[TestMethod]
@@ -305,13 +302,12 @@ namespace DataFilesTest
 			string input = "`10";
 			string expectedLocalName = "V3";
 			string expectedQualifiedName = "V3";
-			string expectedFullNamespace = null;
 			//act
-			DotNetQualifiedName result = DotNetQualifiedName.ParameterTypeFromVisualStudioXml(input);
+			DotNetBaseParameter result = DotNetBaseParameter.FromVisualStudioXml(input);
 			//assert
+			Assert.IsTrue(result is DotNetClassGenericParameter);
 			Assert.AreEqual(expectedLocalName, result.LocalName);
 			Assert.AreEqual(expectedQualifiedName, result.FullName);
-			Assert.AreEqual(expectedFullNamespace, result.FullNamespace);
 		}
 
 		[TestMethod]
@@ -321,13 +317,12 @@ namespace DataFilesTest
 			string input = "``0";
 			string expectedLocalName = "A";
 			string expectedQualifiedName = "A";
-			string expectedFullNamespace = null;
 			//act
-			DotNetQualifiedName result = DotNetQualifiedName.ParameterTypeFromVisualStudioXml(input);
+			DotNetBaseParameter result = DotNetBaseParameter.FromVisualStudioXml(input);
 			//assert
+			Assert.IsTrue(result is DotNetMethodGenericParameter);
 			Assert.AreEqual(expectedLocalName, result.LocalName);
 			Assert.AreEqual(expectedQualifiedName, result.FullName);
-			Assert.AreEqual(expectedFullNamespace, result.FullNamespace);
 		}
 
 		[TestMethod]
@@ -337,13 +332,12 @@ namespace DataFilesTest
 			string input = "``10";
 			string expectedLocalName = "B4";
 			string expectedQualifiedName = "B4";
-			string expectedFullNamespace = null;
 			//act
-			DotNetQualifiedName result = DotNetQualifiedName.ParameterTypeFromVisualStudioXml(input);
+			DotNetBaseParameter result = DotNetBaseParameter.FromVisualStudioXml(input);
 			//assert
+			Assert.IsTrue(result is DotNetMethodGenericParameter);
 			Assert.AreEqual(expectedLocalName, result.LocalName);
 			Assert.AreEqual(expectedQualifiedName, result.FullName);
-			Assert.AreEqual(expectedFullNamespace, result.FullNamespace);
 		}
 
 		[TestMethod]
@@ -353,13 +347,12 @@ namespace DataFilesTest
 			string input = "System.Collections.Generic.List{System.Integer}";
 			string expectedLocalName = "List<System.Integer>";
 			string expectedQualifiedName = "System.Collections.Generic.List<System.Integer>";
-			string expectedFullNamespace = "System.Collections.Generic";
 			//act
-			DotNetQualifiedName result = DotNetQualifiedName.ParameterTypeFromVisualStudioXml(input);
+			DotNetBaseParameter result = DotNetBaseParameter.FromVisualStudioXml(input);
 			//assert
+			Assert.IsTrue(result is DotNetParameter);
 			Assert.AreEqual(expectedLocalName, result.LocalName);
 			Assert.AreEqual(expectedQualifiedName, result.FullName);
-			Assert.AreEqual(expectedFullNamespace, result.FullNamespace);
 		}
 
 		[TestMethod]
@@ -369,13 +362,12 @@ namespace DataFilesTest
 			string input = "System.Collections.Generic.List{`1}";
 			string expectedLocalName = "List<U>";
 			string expectedQualifiedName = "System.Collections.Generic.List<U>";
-			string expectedFullNamespace = "System.Collections.Generic";
 			//act
-			DotNetQualifiedName result = DotNetQualifiedName.ParameterTypeFromVisualStudioXml(input);
+			DotNetBaseParameter result = DotNetBaseParameter.FromVisualStudioXml(input);
 			//assert
+			Assert.IsTrue(result is DotNetParameter);
 			Assert.AreEqual(expectedLocalName, result.LocalName);
 			Assert.AreEqual(expectedQualifiedName, result.FullName);
-			Assert.AreEqual(expectedFullNamespace, result.FullNamespace);
 		}
 
 		[TestMethod]
@@ -385,13 +377,12 @@ namespace DataFilesTest
 			string input = "System.Collections.Generic.List{``1}";
 			string expectedLocalName = "List<B>";
 			string expectedQualifiedName = "System.Collections.Generic.List<B>";
-			string expectedFullNamespace = "System.Collections.Generic";
 			//act
-			DotNetQualifiedName result = DotNetQualifiedName.ParameterTypeFromVisualStudioXml(input);
+			DotNetBaseParameter result = DotNetBaseParameter.FromVisualStudioXml(input);
 			//assert
+			Assert.IsTrue(result is DotNetParameter);
 			Assert.AreEqual(expectedLocalName, result.LocalName);
 			Assert.AreEqual(expectedQualifiedName, result.FullName);
-			Assert.AreEqual(expectedFullNamespace, result.FullNamespace);
 		}
 
 		[TestMethod]
@@ -401,13 +392,12 @@ namespace DataFilesTest
 			string input = "System.Collections.Generic.List{Test.MyType{System.Integer}}";
 			string expectedLocalName = "List<Test.MyType<System.Integer>>";
 			string expectedQualifiedName = "System.Collections.Generic.List<Test.MyType<System.Integer>>";
-			string expectedFullNamespace = "System.Collections.Generic";
 			//act
-			DotNetQualifiedName result = DotNetQualifiedName.ParameterTypeFromVisualStudioXml(input);
+			DotNetBaseParameter result = DotNetBaseParameter.FromVisualStudioXml(input);
 			//assert
+			Assert.IsTrue(result is DotNetParameter);
 			Assert.AreEqual(expectedLocalName, result.LocalName);
 			Assert.AreEqual(expectedQualifiedName, result.FullName);
-			Assert.AreEqual(expectedFullNamespace, result.FullNamespace);
 		}
 
 		[TestMethod]
@@ -417,13 +407,12 @@ namespace DataFilesTest
 			string input = "System.Collections.Generic.List{Test.MyType{`1}}";
 			string expectedLocalName = "List<Test.MyType<U>>";
 			string expectedQualifiedName = "System.Collections.Generic.List<Test.MyType<U>>";
-			string expectedFullNamespace = "System.Collections.Generic";
 			//act
-			DotNetQualifiedName result = DotNetQualifiedName.ParameterTypeFromVisualStudioXml(input);
+			DotNetBaseParameter result = DotNetBaseParameter.FromVisualStudioXml(input);
 			//assert
+			Assert.IsTrue(result is DotNetParameter);
 			Assert.AreEqual(expectedLocalName, result.LocalName);
 			Assert.AreEqual(expectedQualifiedName, result.FullName);
-			Assert.AreEqual(expectedFullNamespace, result.FullNamespace);
 		}
 
 		[TestMethod]
@@ -433,14 +422,12 @@ namespace DataFilesTest
 			string input = "System.Collections.Generic.List{Test.MyType{``1}}";
 			string expectedLocalName = "List<Test.MyType<B>>";
 			string expectedQualifiedName = "System.Collections.Generic.List<Test.MyType<B>>";
-			string expectedFullNamespace = "System.Collections.Generic";
 			//act
-			DotNetQualifiedName result = DotNetQualifiedName.ParameterTypeFromVisualStudioXml(input);
+			DotNetBaseParameter result = DotNetBaseParameter.FromVisualStudioXml(input);
 			//assert
+			Assert.IsTrue(result is DotNetParameter);
 			Assert.AreEqual(expectedLocalName, result.LocalName);
 			Assert.AreEqual(expectedQualifiedName, result.FullName);
-			Assert.AreEqual(expectedFullNamespace, result.FullNamespace);
 		}
-
 	}
 }

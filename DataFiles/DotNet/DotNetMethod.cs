@@ -19,7 +19,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		public bool IsOperator { get; protected set; }
 
 		/// <summary></summary>
-		public List<DotNetParameter> Parameters = new List<DotNetParameter>();
+		public List<DotNetBaseParameter> Parameters = new List<DotNetBaseParameter>();
 
 		#region Constructors
 
@@ -29,7 +29,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>Normal constructor</summary>
-		public DotNetMethod(DotNetQualifiedName name, List<DotNetParameter> parameters, bool isConstructor = false, bool isOperator = false) : base(name)
+		public DotNetMethod(DotNetQualifiedName name, List<DotNetBaseParameter> parameters, bool isConstructor = false, bool isOperator = false) : base(name)
 		{
 			this.Parameters.AddRange(parameters);
 			IsConstructor = isConstructor;
@@ -77,7 +77,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 
 			//parse parameters
-			List<DotNetParameter> qualifiedParameters = ParametersFromVisualStudioXml(parameters);
+			List<DotNetBaseParameter> qualifiedParameters = ParametersFromVisualStudioXml(parameters);
 
 			return new DotNetMethod(qualifiedName, qualifiedParameters, isConstructor, isOperator);
 		}
@@ -92,9 +92,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Expects: empty string
 		/// Expects: "(type, type, type)"
 		/// </param>
-		public static List<DotNetParameter> ParametersFromVisualStudioXml(string text)
+		public static List<DotNetBaseParameter> ParametersFromVisualStudioXml(string text)
 		{
-			List<DotNetParameter> parameters = new List<DotNetParameter>();
+			List<DotNetBaseParameter> parameters = new List<DotNetBaseParameter>();
 			if(!string.IsNullOrEmpty(text))
 			{
 				if(text.StartsWith("{") && text.EndsWith("}"))
@@ -108,7 +108,7 @@ namespace WithoutHaste.DataFiles.DotNet
 					string f = fields[i];
 					if(!String.IsNullOrEmpty(f))
 					{
-						parameters.Add(DotNetParameter.FromVisualStudioXml(f));
+						parameters.Add(DotNetBaseParameter.FromVisualStudioXml(f));
 					}
 				}
 			}
