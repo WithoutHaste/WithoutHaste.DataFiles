@@ -44,7 +44,7 @@ namespace DataFilesTest
 			//assert
 			Assert.AreEqual(5, file.TypeCount);
 
-			DotNetType typeA = file[0];
+			DotNetType typeA = file.Types[0];
 			Assert.AreEqual(2, typeA.NestedTypeCount);
 			Assert.AreEqual("Test.TypeA", typeA.Name.FullName);
 			Assert.AreEqual(4, typeA.CommentCount);
@@ -65,12 +65,12 @@ namespace DataFilesTest
 			Assert.AreEqual(6, typeC.CommentCount);
 			Assert.AreEqual(2, typeC.Methods.Count);
 
-			DotNetType typeD = file[1];
+			DotNetType typeD = file.Types[1];
 			Assert.AreEqual("Test.SingleGenericTypeD<T>", typeD.Name.FullName);
 			Assert.AreEqual(0, typeD.CommentCount);
 			Assert.AreEqual(1, typeD.Methods.Count);
 
-			DotNetType typeE = file[2];
+			DotNetType typeE = file.Types[2];
 			Assert.AreEqual("Test.DoubleGenericTypeE<T,U>", typeE.Name.FullName);
 			Assert.AreEqual(0, typeE.CommentCount);
 			Assert.AreEqual(3, typeE.Methods.Count);

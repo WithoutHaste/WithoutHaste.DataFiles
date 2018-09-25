@@ -31,22 +31,6 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Top-level types in assembly.</summary>
 		public List<DotNetType> Types = new List<DotNetType>();
 
-		/// <summary>Returns the i-th top-level type.</summary>
-		/// <param name="i">0-based index of top-level types.</param>
-		/// <exception cref="IndexOutOfRangeException">Top-level type index is out of range.</exception>
-		public DotNetType this[int i] {
-			get {
-				if(i < 0 || i >= Types.Count)
-				{
-					if(Types.Count == 0)
-						throw new IndexOutOfRangeException("Top-level type index is out of range: collection is empty.");
-					else
-						throw new IndexOutOfRangeException(String.Format("Top-level type index is out of range [0,{0}]: index {1}.", Types.Count - 1, i));
-				}
-				return Types[i];
-			}
-		}
-
 		#region Constructors and Init
 
 		/// <summary>
