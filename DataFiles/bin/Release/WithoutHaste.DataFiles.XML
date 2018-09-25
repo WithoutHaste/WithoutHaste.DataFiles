@@ -1109,6 +1109,232 @@
             </summary>
             <exception cref="T:System.ArgumentException">Worksheet cannot be null.</exception>
         </member>
+        <member name="T:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile">
+            <summary>
+            Building a Microsoft Excel 2003 Xml file with XmlDocument.
+            </summary>
+            <example>
+            Format:
+            <code><![CDATA[
+            <? xml version="1.0" encoding="UTF-8"?>
+            <? mso-application progid="Excel.Sheet" ?>
+            <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" 
+              xmlns:c="urn:schemas-microsoft-com:office:component:spreadsheet" 
+              xmlns:html="http://www.w3.org/TR/REC-html40" 
+              xmlns:o="urn:schemas-microsoft-com:office:office" 
+              xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" 
+              xmlns:x="urn:schemas-microsoft-com:office:excel" 
+              xmlns:x2="http://schemas.microsoft.com/office/excel/2003/xml" 
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> 
+              <ss:Worksheet ss:Name="Sheet1">
+                <Table>
+                  <Column />
+                  <Row>
+                    <Cell>
+                      <Data>
+                        Cell Value
+                      </Data>
+                    </Cell>
+                  </Row>
+                </Table>
+              </ss:Worksheet>
+            </ss:Workbook>
+            ]]></code>
+            </example>
+            <layout methods="keep_order"/>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.XmlDocument">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.WorkbookNode">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.StylesNode">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.Tables">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.#ctor">
+            <summary>
+            Sets up a default file containing no Worksheets.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.#ctor(System.String)">
+            <summary>
+            Load from file.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GetTableIndex(System.String)">
+            <summary>
+            Returns the index of the Table in the Worksheet with the specified title.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.AddStyle(System.String,System.String,System.String,System.String)">
+            <summary>
+            Adds a Style. If a Style with the same id already exists, it is overwritten.
+            </summary>
+            <example>
+            <![CDATA[
+            <Styles>
+              <Style ss:ID="id">
+                <childName ss:childNameAttribute="childAttributeValue" />
+              </Style>
+            </Styles>
+            ]]>
+            </example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.RemoveStyle(System.String)">
+            <summary>
+            Removes a Style.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.AddWorksheet(System.String)">
+            <summary>
+            Add a Worksheet to the end of the list of Worksheets, containing an empty Table.
+            </summary>
+            <param name="title">Worksheet title.</param>
+            <returns>The index of the worksheet/table.</returns>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.SetColumnWidths(System.Int32,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Set column widths on the specified Table. Overwrites column widths if they were already set.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.AddHeaderRow(System.Int32,System.Collections.Generic.List{System.String})">
+            <summary>
+            Adds a Row of header-style Cells to the specified Table.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.AddRow(System.Int32,System.Collections.Generic.List{System.Object})">
+            <summary>
+            Creates Cells of the appropriate type for each value, and adds all Cells to a new Row in the specified Table.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.AddRow(System.Int32,System.Collections.Generic.List{System.Xml.XmlNode})">
+            <summary>
+            Adds all Cells to a new Row in the specified Table.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.AddColumns(System.Int32,System.Collections.Generic.List{System.Collections.Generic.List{System.Object}})">
+            <summary>
+            Creates Cells for each data values, adds sufficient Rows to the the specified Table to contain all the columns. Add all Cells to the Rows.
+            </summary>
+            <param name="tableIndex">0-based table index within Workbook.</param>
+            <param name="columns">List of columns, each column being a list of values.</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.AddColumns(System.Int32,System.Collections.Generic.List{System.Collections.Generic.List{System.Xml.XmlNode}})">
+            <summary>
+            Adds sufficient Rows to the the specified Table to contain all the columns. Add all Cells to the Rows.
+            </summary>
+            <param name="tableIndex">0-based table index within Workbook.</param>
+            <param name="columns">List of columns, each column being a list of "Cell" tags.</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GetRowValues(System.Int32,System.Int32)">
+            <summary>
+            Returns a list of values from the Cells in the specified Row.
+            </summary>
+            <param name="tableIndex">Zero-based index of Table in Workbook.</param>
+            <param name="rowIndex">Zero-based index of Row in Table.</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GetRowCount(System.Int32)">
+            <summary>
+            Returns the number of Rows in the specified Table.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GetColumnCount(System.Int32)">
+            <summary>
+            Returns the number of Columns in the specified Table.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GetHeaderIndex(System.Int32,System.String)">
+            <summary>
+            Returns zero-based index of the column with the selected header.
+            Returns -1 if header is not found.
+            </summary>
+            <remarks>Only the first row in the table is searched for the header.</remarks>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GetHeaders(System.Int32)">
+            <summary>
+            Returns all the header values from the first row.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GetColumnValues(System.Int32,System.String)">
+            <summary>
+            Returns a list of values from the Cells in the column with the specified header.
+            </summary>
+            <remarks>The first row is skipped as the header row.</remarks>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GetColumnValues(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Returns a list of values from the cells in the selected column.
+            </summary>
+            <param name="tableIndex">0-based table index within Workbook.</param>
+            <param name="columnIndex">0-based column index within Table.</param>
+            <param name="firstRowIsHeader">If true, the first row of the table is skipped.</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.Save(System.String)">
+            <summary>Save file.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GenerateWidthAttribute(System.Int32)">
+            <summary>Returns an ss:Width attribute.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GenerateStyleIdAttribute(System.String)">
+            <summary>Returns an ss:StyleID attribute.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GenerateNameAttribute(System.String)">
+            <summary>Returns an ss:Name attribute.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GenerateStringTypeAttribute">
+            <summary>Returns an ss:Type="String" attribute.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GenerateNumberTypeAttribute">
+            <summary>Returns an ss:Type="Number" attribute.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GenerateDateTypeAttribute">
+            <summary>Returns an ss:Type="DateTime" attribute.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GenerateTypeAttribute(System.String)">
+            <summary>Returns a custom ss:Type attribute.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GenerateAttribute(System.String,System.String,System.String)">
+            <summary>Returns a custom attribute.</summary>
+            <remarks>Only namespace URIs known to this format can be referenced.</remarks>
+            <exception cref="T:System.ArgumentException">Unknown namespace URI prefix.</exception>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GenerateAttribute(System.String,System.String,System.String,System.String)">
+            <summary>Returns a custom attribute.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GenerateCell(System.Object)">
+            <summary>
+            Creates a Cell tag of the appropriate type containing the specified data.
+            Supports DateTime cells, Number cells, and Text cells. All unknown types are converted to strings.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GenerateDateCell(System.DateTime)">
+            <summary>Creates a Cell tag containing the specified date.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GenerateNumberCell(System.Int32)">
+            <summary>Generate a Cell tag containing the specified number.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GenerateHeaderCell(System.String)">
+            <summary>Generate a header Cell tag containing the specified text.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GenerateParagraphCell(System.String)">
+            <summary>Generate a paragraph Cell tag containing the specified text.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GenerateTextCell(System.String)">
+            <summary>Generate a paragraph Cell tag containing the specified text.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GenerateEmptyCell">
+            <summary>Generate an empty Cell tag.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.GenerateTextCell(System.String,System.String)">
+            <summary>Generate a Cell tag containing the specified text.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.DateToString(System.DateTime)">
+            <summary>Converts a date to the expected string format.</summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.XmlFormatException">
             <summary>
             Badly formatted xml, or unexpected xml.
@@ -1514,232 +1740,6 @@
             Ensure that string is null or ends with two end line characters.
             Does not add unneccessary characters.
             </summary>
-        </member>
-        <member name="T:WithoutHaste.DataFiles.MSExcel2003XmlFile">
-            <summary>
-            Building a Microsoft Excel 2003 Xml file with XmlDocument.
-            </summary>
-            <example>
-            Format:
-            <code><![CDATA[
-            <? xml version="1.0" encoding="UTF-8"?>
-            <? mso-application progid="Excel.Sheet" ?>
-            <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" 
-              xmlns:c="urn:schemas-microsoft-com:office:component:spreadsheet" 
-              xmlns:html="http://www.w3.org/TR/REC-html40" 
-              xmlns:o="urn:schemas-microsoft-com:office:office" 
-              xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" 
-              xmlns:x="urn:schemas-microsoft-com:office:excel" 
-              xmlns:x2="http://schemas.microsoft.com/office/excel/2003/xml" 
-              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> 
-              <ss:Worksheet ss:Name="Sheet1">
-                <Table>
-                  <Column />
-                  <Row>
-                    <Cell>
-                      <Data>
-                        Cell Value
-                      </Data>
-                    </Cell>
-                  </Row>
-                </Table>
-              </ss:Worksheet>
-            </ss:Workbook>
-            ]]></code>
-            </example>
-            <layout methods="keep_order"/>
-        </member>
-        <member name="P:WithoutHaste.DataFiles.MSExcel2003XmlFile.XmlDocument">
-            <summary></summary>
-        </member>
-        <member name="P:WithoutHaste.DataFiles.MSExcel2003XmlFile.WorkbookNode">
-            <summary></summary>
-        </member>
-        <member name="P:WithoutHaste.DataFiles.MSExcel2003XmlFile.StylesNode">
-            <summary></summary>
-        </member>
-        <member name="P:WithoutHaste.DataFiles.MSExcel2003XmlFile.Tables">
-            <summary></summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.#ctor">
-            <summary>
-            Sets up a default file containing no Worksheets.
-            </summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.#ctor(System.String)">
-            <summary>
-            Load from file.
-            </summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GetTableIndex(System.String)">
-            <summary>
-            Returns the index of the Table in the Worksheet with the specified title.
-            </summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.AddStyle(System.String,System.String,System.String,System.String)">
-            <summary>
-            Adds a Style. If a Style with the same id already exists, it is overwritten.
-            </summary>
-            <example>
-            <![CDATA[
-            <Styles>
-              <Style ss:ID="id">
-                <childName ss:childNameAttribute="childAttributeValue" />
-              </Style>
-            </Styles>
-            ]]>
-            </example>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.RemoveStyle(System.String)">
-            <summary>
-            Removes a Style.
-            </summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.AddWorksheet(System.String)">
-            <summary>
-            Add a Worksheet to the end of the list of Worksheets, containing an empty Table.
-            </summary>
-            <param name="title">Worksheet title.</param>
-            <returns>The index of the worksheet/table.</returns>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.SetColumnWidths(System.Int32,System.Collections.Generic.List{System.Int32})">
-            <summary>
-            Set column widths on the specified Table. Overwrites column widths if they were already set.
-            </summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.AddHeaderRow(System.Int32,System.Collections.Generic.List{System.String})">
-            <summary>
-            Adds a Row of header-style Cells to the specified Table.
-            </summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.AddRow(System.Int32,System.Collections.Generic.List{System.Object})">
-            <summary>
-            Creates Cells of the appropriate type for each value, and adds all Cells to a new Row in the specified Table.
-            </summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.AddRow(System.Int32,System.Collections.Generic.List{System.Xml.XmlNode})">
-            <summary>
-            Adds all Cells to a new Row in the specified Table.
-            </summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.AddColumns(System.Int32,System.Collections.Generic.List{System.Collections.Generic.List{System.Object}})">
-            <summary>
-            Creates Cells for each data values, adds sufficient Rows to the the specified Table to contain all the columns. Add all Cells to the Rows.
-            </summary>
-            <param name="tableIndex">0-based table index within Workbook.</param>
-            <param name="columns">List of columns, each column being a list of values.</param>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.AddColumns(System.Int32,System.Collections.Generic.List{System.Collections.Generic.List{System.Xml.XmlNode}})">
-            <summary>
-            Adds sufficient Rows to the the specified Table to contain all the columns. Add all Cells to the Rows.
-            </summary>
-            <param name="tableIndex">0-based table index within Workbook.</param>
-            <param name="columns">List of columns, each column being a list of "Cell" tags.</param>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GetRowValues(System.Int32,System.Int32)">
-            <summary>
-            Returns a list of values from the Cells in the specified Row.
-            </summary>
-            <param name="tableIndex">Zero-based index of Table in Workbook.</param>
-            <param name="rowIndex">Zero-based index of Row in Table.</param>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GetRowCount(System.Int32)">
-            <summary>
-            Returns the number of Rows in the specified Table.
-            </summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GetColumnCount(System.Int32)">
-            <summary>
-            Returns the number of Columns in the specified Table.
-            </summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GetHeaderIndex(System.Int32,System.String)">
-            <summary>
-            Returns zero-based index of the column with the selected header.
-            Returns -1 if header is not found.
-            </summary>
-            <remarks>Only the first row in the table is searched for the header.</remarks>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GetHeaders(System.Int32)">
-            <summary>
-            Returns all the header values from the first row.
-            </summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GetColumnValues(System.Int32,System.String)">
-            <summary>
-            Returns a list of values from the Cells in the column with the specified header.
-            </summary>
-            <remarks>The first row is skipped as the header row.</remarks>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GetColumnValues(System.Int32,System.Int32,System.Boolean)">
-            <summary>
-            Returns a list of values from the cells in the selected column.
-            </summary>
-            <param name="tableIndex">0-based table index within Workbook.</param>
-            <param name="columnIndex">0-based column index within Table.</param>
-            <param name="firstRowIsHeader">If true, the first row of the table is skipped.</param>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.Save(System.String)">
-            <summary>Save file.</summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GenerateWidthAttribute(System.Int32)">
-            <summary>Returns an ss:Width attribute.</summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GenerateStyleIdAttribute(System.String)">
-            <summary>Returns an ss:StyleID attribute.</summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GenerateNameAttribute(System.String)">
-            <summary>Returns an ss:Name attribute.</summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GenerateStringTypeAttribute">
-            <summary>Returns an ss:Type="String" attribute.</summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GenerateNumberTypeAttribute">
-            <summary>Returns an ss:Type="Number" attribute.</summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GenerateDateTypeAttribute">
-            <summary>Returns an ss:Type="DateTime" attribute.</summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GenerateTypeAttribute(System.String)">
-            <summary>Returns a custom ss:Type attribute.</summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GenerateAttribute(System.String,System.String,System.String)">
-            <summary>Returns a custom attribute.</summary>
-            <remarks>Only namespace URIs known to this format can be referenced.</remarks>
-            <exception cref="T:System.ArgumentException">Unknown namespace URI prefix.</exception>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GenerateAttribute(System.String,System.String,System.String,System.String)">
-            <summary>Returns a custom attribute.</summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GenerateCell(System.Object)">
-            <summary>
-            Creates a Cell tag of the appropriate type containing the specified data.
-            Supports DateTime cells, Number cells, and Text cells. All unknown types are converted to strings.
-            </summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GenerateDateCell(System.DateTime)">
-            <summary>Creates a Cell tag containing the specified date.</summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GenerateNumberCell(System.Int32)">
-            <summary>Generate a Cell tag containing the specified number.</summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GenerateHeaderCell(System.String)">
-            <summary>Generate a header Cell tag containing the specified text.</summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GenerateParagraphCell(System.String)">
-            <summary>Generate a paragraph Cell tag containing the specified text.</summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GenerateTextCell(System.String)">
-            <summary>Generate a paragraph Cell tag containing the specified text.</summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GenerateEmptyCell">
-            <summary>Generate an empty Cell tag.</summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.GenerateTextCell(System.String,System.String)">
-            <summary>Generate a Cell tag containing the specified text.</summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.MSExcel2003XmlFile.DateToString(System.DateTime)">
-            <summary>Converts a date to the expected string format.</summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.XmlDocumentHelper">
             <summary>

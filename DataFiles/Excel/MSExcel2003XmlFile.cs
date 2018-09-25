@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace WithoutHaste.DataFiles
+namespace WithoutHaste.DataFiles.Excel
 {
 	/// <summary>
 	/// Building a Microsoft Excel 2003 Xml file with XmlDocument.

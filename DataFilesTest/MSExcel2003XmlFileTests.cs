@@ -5,6 +5,7 @@ using System.Linq;
 using System.Xml;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WithoutHaste.DataFiles;
+using WithoutHaste.DataFiles.Excel;
 
 namespace DataFilesTest
 {
