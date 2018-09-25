@@ -4,19 +4,963 @@
         <name>WithoutHaste.DataFiles</name>
     </assembly>
     <members>
-        <member name="T:WithoutHaste.DataFiles.ExcelPackageHelper">
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetBaseParameter">
+            <summary>
+            Represents a parameter in a method signature.
+            </summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetBaseParameter.FullName">
+            <summary>Fully qualified data type name.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetBaseParameter.LocalName">
+            <summary>Local data type name.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetBaseParameter.FromVisualStudioXml(System.String)">
+            <summary>
+            Parses a .Net XML documentation parameter type name.
+            </summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetParameterClassGeneric">
+            <summary>
+            Represents a class-generic-type parameter in a method signature.
+            </summary>
+            <example><![CDATA[Namespace.MyType<T,U>.MyMethod(T) => Namespace.MyType`2.MyMethod(`0)]]></example>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameterClassGeneric.FullName">
+            <inheritdoc/>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameterClassGeneric.LocalName">
+            <inheritdoc/>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetParameterClassGeneric.genericTypeIndex">
+            <summary>0-based index in class's generic type list corresponding to this parameter.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameterClassGeneric.#ctor(System.Int32)">
+            <summary></summary>
+            <param name="genericTypeIndex">0-based index in class's generic type list corresponding to this parameter.</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameterClassGeneric.FromVisualStudioXml(System.String)">
+            <summary>
+            Parses a .Net XML documentation class-generic-type parameter.
+            </summary>
+            <exception cref="T:WithoutHaste.DataFiles.XmlFormatException"><paramref name="name"/> is not in expected format: `Index.</exception>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameterClassGeneric.HasExpectedVisualStudioXmlFormat(System.String)">
+            <summary>
+            Check if a string is properly formatted as a parameter referencing a class-generic-type.
+            </summary>
+            <example>`0</example>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentCode">
+            <summary>
+            Represents an inline section of code in the comments.
+            </summary>
+            <example><![CDATA[<c>code fragment</c>]]></example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentCode.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentCode.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>Parses .Net XML documentation c.</summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentCodeBlock">
+            <summary>
+            Represents a section of code in the comments.
+            </summary>
+            <example><![CDATA[<code>code statements</code>]]></example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentCodeBlock.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentCodeBlock.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>Parses .Net XML documentation code.</summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup`1">
+            <summary>
+            Represents an ordered collection of comments that is linked to something in the assembly which it is documenting.
+            </summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup`1.Link">
+            <summary>Reference link from comments to something in the assembly.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup`1.#ctor">
+            <summary>Empty constructor</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup`1.#ctor(`0,WithoutHaste.DataFiles.DotNet.DotNetComment)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup`1.#ctor(`0,WithoutHaste.DataFiles.DotNet.DotNetComment[])">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup`1.#ctor(`0,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetComment})">
+            <summary></summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentListItem">
+            <summary>
+            Represents a listheader or item in a .Net XML documentation list.
+            </summary>
+            <example>
+            Format options:
+            <![CDATA[
+              <listheader>
+                plain text
+              </listheader>
+              <listheader>
+                <term>Term</term>
+              </listheader>
+              <listheader>
+                <description>Description</description>
+              </listheader>
+              <listheader>
+                <term>Term</term>
+                <description>Description</description>
+              </listheader>
+            ]]>
+            </example>
+            <example>
+            Format options:
+            <![CDATA[
+              <item>
+                plain text
+              </item>
+              <item>
+                <term>Term</term>
+              </item>
+              <item>
+                <description>Description</description>
+              </item>
+              <item>
+                <term>Term</term>
+                <description>Description</description>
+              </item>
+            ]]>
+            </example>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentListItem.IsHeader">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentListItem.Term">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentListItem.Description">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentListItem.#ctor(System.String,System.String,System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentListItem.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>Parses .Net XML documentation listheader or item.</summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentParameter">
+            <summary>
+            Represents a parameter description in the comments.
+            </summary>
+            <example><![CDATA[<param name="myParam">nested comments</param>]]></example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentParameter.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink,WithoutHaste.DataFiles.DotNet.DotNetComment)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentParameter.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink,WithoutHaste.DataFiles.DotNet.DotNetComment[])">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentParameter.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetComment})">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentParameter.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>Parses .Net XML documentation for param.</summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink">
+            <summary>
+            Represents a link in the comments to an internal parameter name.
+            </summary>
+            <example><![CDATA[<paramref name="paramName" />]]></example>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.Name">
+            <summary>Name of the parameter in local method.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.FullName">
+            <inheritdoc />
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>Parses .Net XML documentation for paramref.</summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup">
+            <summary>
+            Represents a section of comments that is linked to a fully qualified type or member.
+            </summary>
+            <example><![CDATA[<permission cref="Namespace.Type.Member">nested comments</permission>]]></example>
+            <example><![CDATA[<exception cref="Namespace.ExceptionType">nested comments</exception>]]></example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink,WithoutHaste.DataFiles.DotNet.DotNetComment)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink,WithoutHaste.DataFiles.DotNet.DotNetComment[])">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetComment})">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>Parses .Net XML documentation for permission or exception.</summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentRow">
+            <summary>
+            Represents a row of data in a .Net XML documentation table.
+            </summary>
+            <example><![CDATA[<listheader><term>Header 1</term><term>Header 2</term></listheader>]]></example>
+            <example><![CDATA[<item><term>Cell 1</term><term>Cell 2</term></item>]]></example>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentRow.IsHeader">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentRow.ColumnCount">
+            <summary>Number of columns (cells) in the row.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetCommentRow.Cells">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentRow.Item(System.Int32)">
+            <summary>
+            Returns the selected cell of the row. Returns an empty cell if no cell is found.
+            </summary>
+            <remarks>Returns an empty cell because Row does not know the number of columns in the Table, just how many cells are filled on this row.</remarks>
+            <param name="columnIndex">0-based index of table column.</param>
+            <exception cref="T:System.IndexOutOfRangeException">Column index is negative.</exception>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentRow.#ctor(System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetCommentCell},System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentRow.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>Parses .Net XML documentation "listheader" or "item", expecting one "term" per cell.</summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameter">
+            <summary>
+            Represents a generic-type parameter description in the comments.
+            </summary>
+            <example><![CDATA[<typeparam name="T">nested comments</typeparam>]]></example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameter.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink,WithoutHaste.DataFiles.DotNet.DotNetComment)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameter.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink,WithoutHaste.DataFiles.DotNet.DotNetComment[])">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameter.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetComment})">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameter.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>Parses .Net XML documentation for typeparam.</summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink">
+            <summary>
+            Represents a link in the comments to an internal generic-type parameter.
+            </summary>
+            <example><![CDATA[<typeparamref name="T" />]]></example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>Parses .Net XML documentation for typeparamref.</summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetMethodConstructor">
+            <summary>
+            Represents a method that is a constructor.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodConstructor.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetBaseParameter})">
+            <summary></summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetParameterMethodGeneric">
+            <summary>
+            Represents a method-generic-type parameter in a method signature.
+            </summary>
+            <example><![CDATA[Namespace.MyType.MyMethod<A>(A) => Namespace.MyType.MyMethod``1(``0)]]></example>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameterMethodGeneric.FullName">
+            <inheritdoc/>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameterMethodGeneric.LocalName">
+            <inheritdoc/>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetParameterMethodGeneric.genericTypeIndex">
+            <summary>0-based index in method's generic type list corresponding to this parameter.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameterMethodGeneric.#ctor(System.Int32)">
+            <summary></summary>
+            <param name="genericTypeIndex">0-based index in method's generic type list corresponding to this parameter.</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameterMethodGeneric.FromVisualStudioXml(System.String)">
+            <summary>
+            Parses a .Net XML documentation method-generic-type parameter.
+            </summary>
+            <exception cref="T:WithoutHaste.DataFiles.XmlFormatException"><paramref name="name"/> is not in expected format: ``Index.</exception>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameterMethodGeneric.HasExpectedVisualStudioXmlFormat(System.String)">
+            <summary>
+            Check if a string is properly formatted as a parameter referencing a method-generic-type.
+            </summary>
+            <example>``0</example>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator">
+            <summary>
+            Represents a method that is an operator.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetBaseParameter})">
+            <summary></summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName">
+            <summary>
+            Represents a fully qualified method name.
+            </summary>
+            <remarks>
+            Cannot handle methods that declare more than 12 generic types,
+            such as <![CDATA[MyMethod<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13>]]>.
+            </remarks>
+            <example>
+              <para>
+                How .Net xml documentation formats generic types:
+                Backtics are followed by integers, identifying generic types.
+              </para>
+              <para>
+                Double backtics (such as ``1) on a method name indicate a count of generic types for the method.
+                <example><![CDATA[MyMethod<A,B,C> is documented as MyMethod``3]]></example>
+                Anywhere else within this method's documentation that a double backtic appears, it indicates the index of the generic type in reference to the method declaration.
+                <example><![CDATA[MyMethod<A,B,C>(A,B,C) is documented as MyMethod``3(``0,``1,``2)]]></example>
+                A method that uses both its own generic types AND generic types from the class declaration will look like this:
+                <example><![CDATA[MyMethod<A,B,C>(A,B,C,T,U) is documented as MyMethod``3(``0,``1,``2,`0,`1)]]></example>
+              </para>
+            </example>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.GenericTypeNames">
+            <summary>Default names that will be given to generic-method-types, in order.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.LocalName">
+            <inheritdoc/>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.genericTypeCount">
+            <summary>The number of generic-types required by the method declaration.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.#ctor">
+            <summary>Empty constructor</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.#ctor(System.String,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.#ctor(System.String,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName">
+            <summary>
+            Represents a fully qualified class name.
+            </summary>
+            <remarks>
+            Cannot handle classes that declare more than 12 generic types,
+            such as <![CDATA[MyType<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13>]]>.
+            </remarks>
+            <example>
+              <para>
+                How .Net xml documentation formats generic types:
+                Backtics are followed by integers, identifying generic types.
+              </para>
+              <para>
+                Single backtics (such as `1) on a class declaration indicate a count of generic types for the class.
+                <example><![CDATA[MyGenericType<T,U,V> is documented as MyGenericType`3]]></example>
+                Anywhere else within this object's documentation that a single backtic appears, it indicates the index of the generic type in reference to the class declaration.
+                <example><![CDATA[MyGenericType(T,U,V) is documented as MyGenericType.#ctor(`0,`1,`2)]]></example>
+              </para>
+            </example>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.GenericTypeNames">
+            <summary>Default names that will be given to generic-types, in order.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.LocalName">
+            <inheritdoc/>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.genericTypeCount">
+            <summary>The number of generic-types required by the class declaration.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.#ctor">
+            <summary>Empty constructor</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.#ctor(System.String,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.#ctor(System.String,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.IDotNetCommentLink">
+            <summary>
+            Represents anything in the comments that links to something in the assembly.
+            </summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.IDotNetCommentLink.FullName">
+            <summary>Return the fully qualified name of the referenced assembly element.</summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetComment">
+            <summary>
+            Represents a section of documentation, such as the contents of a <![CDATA[<summary></summary>]]> tag.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetComment.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>Parses top-level .Net XML documentation comments.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetComment.FromVisualStudioXml(System.String)">
+            <summary>Creates a plain text comment.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetComment.ParseSection(System.Xml.Linq.XElement)">
+            <summary>Parses inner .Net XML documentation comments.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetComment.ValidateXmlTag(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Throws exception on unexpected xml formats.
+            </summary>
+            <exception cref="T:WithoutHaste.DataFiles.XmlFormatException">XML tag does not have the expected local name, or is null</exception>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetComment.ValidateXmlTag(System.Xml.Linq.XElement,System.String[])">
+            <summary>
+            Throws exception on unexpected xml formats.
+            </summary>
+            <exception cref="T:WithoutHaste.DataFiles.XmlFormatException">XML tag does not have any of the expected local names, or is null</exception>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentCell">
+            <summary>
+            Represents a cell in a table in .Net XML documentation.
+            </summary>
+            <remarks>
+            Does not inherit from DotNetCommentText because a cell cannot appear everywhere text can.
+            </remarks>
+            <example><![CDATA[<term>plain text</term>]]></example>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetCommentCell.EmptyCell">
+            <summary>Default empty cell.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentCell.Text">
+            <summary>Cell contents.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentCell.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentCell.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>Parses .Net XML documentation term.</summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup">
+            <summary>
+            Represents an ordered collection of comments.
+            </summary>
+            <remarks>Groups may include a link to something in the assembly which these comments are documenting.</remarks>
+            <example><![CDATA[<summary>nested comments and/or plain text</summary>]]></example>
+            <example><![CDATA[<remarks>nested comments and/or plain text</remarks>]]></example>
+            <example><![CDATA[<example>nested comments and/or plain text</example>]]></example>
+            <example><![CDATA[<para>nested comments and/or plain text</para>]]></example>
+            <example><![CDATA[<returns>nested comments and/or plain text</returns>]]></example>
+            <example><![CDATA[<value>nested comments and/or plain text</value>]]></example>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.Comments">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.#ctor">
+            <summary>Empty constructor</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetComment)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetComment[])">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.#ctor(System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetComment})">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.Add(WithoutHaste.DataFiles.DotNet.DotNetComment)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.Add(WithoutHaste.DataFiles.DotNet.DotNetComment[])">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.Add(System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetComment})">
+            <summary></summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink">
+            <summary>
+            Represents a link in the comments to an internal or extenal type or type.method().
+            </summary>
+            <example><![CDATA[<exception cref="Namespace.ExceptionType">nested comments and/or plain text</exception>]]></example>
+            <example><![CDATA[<permission cref="Namespace.Type">nested comments and/or plain text</permission>]]></example>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.Name">
+            <summary>Name of type or member.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.FullName">
+            <inheritdoc />
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.FromVisualStudioXml(System.String)">
+            <summary>Parses .Net XML documentation cref.</summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentList">
+            <summary>
+            Represents a list in the comments.
+            </summary>
+            <example>
+            <![CDATA[
+             <list type="bullet"> <!-- type can also be "number" -->
+              <listheader>
+               <term>Term</term>
+               <description>Description</description>
+              </listheader>
+              <item>
+               <term>Term</term>
+               <description>Description</description>
+              </item>
+             </list>
+            ]]>
+            </example>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentList.IsNumbered">
+            <summary>
+            True for numbered lists (numbering starts at 1).
+            False for bulleted lists.
+            </summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetCommentList.Items">
+            <summary>Items in the list.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentList.Length">
+            <summary>Number of items in the list. Includes headers.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentList.#ctor(System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetCommentListItem},System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentList.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>Parses .Net XML documentation list (which may actually be a table).</summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink">
+            <summary>
+            Represents a link in the comments to an internal or extenal method.
+            </summary>
+            <example><![CDATA[<permission cref="Namespace.Type.Method(Type1, Type2)">nested comments and/or plain text</permission>]]></example>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.Parameters">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.FullSignature">
+            <summary>Fully qualified method name with parameters.</summary>
+            <example>Namespace.Type.Method()</example>
+            <example>Namespace.Type.Method(int,string)</example>
+            <example><![CDATA[Namespace.Type.Method(System.Collections.Generic.List<int>)]]></example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetBaseParameter})">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.FromVisualStudioXml(System.String)">
+            <summary>Parses .Net XML documentation cref for methods.</summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentTable">
+            <summary>
+            Represents a table in the comments.
+            </summary>
+            <example>
+            <![CDATA[
+             <list type="table">
+              <listheader>
+               <term>Column 1</term>
+               <term>Column 2</term>
+               <term>Column 3</term>
+              </listheader>
+              <item>
+               <term>Row 1, Cell 1</term>
+               <term>Row 1, Cell 2</term>
+               <term>Row 1, Cell 3</term>
+              </item>
+             </list>
+            ]]>
+            </example>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetCommentTable.Rows">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentTable.RowCount">
+            <summary>Number of rows in the table. Includes header rows and normal rows.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentTable.HeaderRowCount">
+            <summary>Number of header rows in the table.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentTable.DataRowCount">
+            <summary>Number of data (non-header) rows in the table.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentTable.ColumnCount">
+            <summary>Maximum number of columns in the table.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentTable.Item(System.Int32,System.Int32)">
+            <summary>
+            Returns the selected <see cref="T:WithoutHaste.DataFiles.DotNet.DotNetCommentCell"/> of the table. Will return an empty <see cref="T:WithoutHaste.DataFiles.DotNet.DotNetCommentCell"/> if the cell within range but does not actually exist.
+            </summary>
+            <param name="rowIndex">0-based index of table row.</param>
+            <param name="columnIndex">0-based index of table column.</param>
+            <exception cref="T:System.IndexOutOfRangeException">Either the row or column index is out of range.</exception>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentTable.#ctor(System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetCommentRow})">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentTable.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>Parses .Net XML documentation table.</summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetEvent">
+            <summary>
+            Represents a type's event.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetEvent.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetEvent.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>
+            Parse .Net XML documentation for Event data.
+            </summary>
+            <param name="memberElement">Expects tag name "member".</param>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetField">
+            <summary>
+            Represents a type's field.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetField.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetField.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>
+            Parse .Net XML documentation for Field data.
+            </summary>
+            <param name="memberElement">Expects tag name "member".</param>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetMember">
+            <summary>
+            Represents anything that a class/struct/interface may contain.
+            </summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetMember.Name">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetMember.CommentCount">
+            <summary>Returns the number of top level comments, which may contain more nested comments.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetMember.IsEmpty">
+            <summary>True when there are no comments.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMember.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMember.ParseVisualStudioXmlDocumentation(System.Xml.Linq.XElement)">
+            <summary>
+            Parse .Net XML documentation about this member.
+            </summary>
+            <param name="parent">Expects the tag containing all documentation for this member.</param>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetMethod">
+            <summary>
+            Represents a method.
+            </summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetMethod.Parameters">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.#ctor">
+            <summary>Empty constructor</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetBaseParameter})">
+            <summary>Normal constructor</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>
+            Parse .Net XML documentation for method signature data.
+            </summary>
+            <param name="memberElement">Expects tag "member".</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.ParametersFromVisualStudioXml(System.String)">
+            <summary>
+            Parse .Net XML documentation parameter lists.
+            </summary>
+            <param name="text">
+            Expects: null
+            Expects: empty string
+            Expects: "(type, type, type)"
+            </param>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetParameter">
+            <summary>
+            Represents a normal-type parameter in a method signature.
+            </summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.TypeName">
+            <summary>Fully qualified data type name object.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.FullName">
+            <summary>Fully qualified data type name.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.LocalName">
+            <summary>Local data type name.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.#ctor">
+            <summary>Empty constructor.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary></summary>
+            <param name="typeName">Fully qualified data type name.</param>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetProperty">
+            <summary>
+            Represents a type's property.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetProperty.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetProperty.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>
+            Parse .Net XML documentation for Property data.
+            </summary>
+            <param name="memberElement">Expects tag name "member".</param>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentText">
+            <summary>
+            Represents a plain text segment of comments.
+            </summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentText.Text">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentText.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetType">
+            <summary>
+            Represents a data type.
+            </summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.IsException">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.NestedTypeCount">
+            <summary>The number of types nested within this type, including sub-nested types and enums.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.NestedTypes">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.Methods">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.Fields">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.Properties">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.Events">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.AllMembers">
+            <summary>
+            Lists all methods, fields, properties, and events.
+            Does not include nested types.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>
+            Parse .Net XML documentation for Type data.
+            </summary>
+            <param name="memberElement">Expects tag name "member".</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.Owns(WithoutHaste.DataFiles.DotNet.DotNetMember)">
+            <summary>
+            Returns true if this member is defined within this type or any of its nested types.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.AddMember(WithoutHaste.DataFiles.DotNet.DotNetMember)">
+            <summary>
+            Add a member to the correct level within this type.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.GetFullListOfLocalNames">
+            <summary>
+            Collect full list of local names used throughout documentation.
+            Includes namespaces, internal types, external types, and members.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.ToString">
+            <summary></summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName">
+            <summary>
+            Represents a fully qualified type name or member name.
+            </summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.FullNamespace">
+            <summary>Fully qualified namespace.</summary>
+            <remarks>Null if there is no namespace.</remarks>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.FullName">
+            <summary>Fully qualified name.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.LocalName">
+            <summary>Local data type name.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.localName">
+            <summary>Name with namespace or required generic types.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.GenericTypeParameters">
+            <summary>If this is a generic type, these are the specified parameter types.</summary>
+            <example><![CDATA[In parameter type List<System.String>, System.String is the generic-type parameter of List.]]></example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.#ctor">
+            <summary>Empty constructor</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.#ctor(System.String,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.#ctor(System.String,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetBaseParameter})">
+            <param name="localName"></param>
+            <param name="genericTypeParameters">List of generic-type parameters within this type.</param>
+            <exception cref="T:System.ArgumentException"><paramref name="genericTypeParameters"/> cannot be null.</exception>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.#ctor(System.String,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetBaseParameter},WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <param name="localName"></param>
+            <param name="genericTypeParameters">List of generic-type parameters within this type.</param>
+            <param name="fullNamespace"></param>
+            <exception cref="T:System.ArgumentException"><paramref name="genericTypeParameters"/> cannot be null.</exception>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.FromVisualStudioXml(System.String)">
+            <summary>
+            Parses a .Net XML documentation type, method, or other member name.
+            </summary>
+            <param name="name">
+              <list>
+                <item>Names starting with "T:" are parsed as Type names.</item>
+                <item>Names starting with "M:" are parsed as Method names.</item>
+                <item>Names starting with "F:" are parsed as Member names.</item>
+                <item>Names starting with "P:" are parsed as Member names.</item>
+                <item>Names starting with "E:" are parsed as Member names.</item>
+              </list>
+            </param>
+            <exception cref="T:WithoutHaste.DataFiles.XmlFormatException">Name does not start with /[TMFPE]:/</exception>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.TypeNameFromVisualStudioXml(System.String)">
+            <summary>
+            Parses a .Net XML documentation type name or namespace name.
+            </summary>
+            <remarks>
+            Does not differentiate between types and namespaces 
+            because a nested type will have other type names in its namespace path
+            and there are no important diffences in parsing the two.
+            </remarks>
+            <param name="name">Name may or may not start with "T:"</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.MethodNameFromVisualStudioXml(System.String)">
+            <summary>
+            Parses a .Net XML documentation method signature.
+            </summary>
+            <param name="signature">Name may or may not start with "M:". Includes parameter list.</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.MemberNameFromVisualStudioXml(System.String)">
+            <summary>
+            Parses a .Net XML documentation member name.
+            </summary>
+            <remarks>
+            There is no support for generic types here because .Net XMl documentation does not include member types, just the names.
+            </remarks>
+            <param name="name">Name may or may not start with /[FPE]:/</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.SetLocalName(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.GetFullListOfLocalNames">
+            <summary>
+            Collect full list of local names used throughout documentation.
+            Includes namespaces, internal types, external types, and members.
+            Does not include generic paremeters.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.Combine(System.String[])">
+            <summary>Return the names combined with a '.' delimiter.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.Combine(System.Collections.Generic.List{System.String})">
+            <summary>Return the names combined with a '.' delimiter.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.op_Implicit(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)~System.String">
+            <summary>Returns dot notation of namespaces and local name.</summary>
+            <example>A.B.C.LocalName</example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.ToString">
+            <summary>Returns dot notation of namespaces and local name.</summary>
+            <example>A.B.C.LocalName</example>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile">
+            <summary>
+            Represents a .Net XML documentation file, such as those produced by Visual Studio.
+            </summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.Extensions">
+            <summary>Accepted .Net XML documentation file extensions.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.AssemblyName">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.TypeCount">
+            <summary>Returns the full count of types within assembly, including nested types and enums.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.Types">
+            <summary>Top-level types in assembly.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.#ctor(System.String)">
+            <summary>
+            Loads .Net XML documentation from file.
+            </summary>
+            <param name="filename">Full path, filename, and extension.</param>
+            <exception cref="T:System.ArgumentException">Filename is null.</exception>
+            <exception cref="T:WithoutHaste.Libraries.FileExtensionException">Unexpected file extension.</exception>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.#ctor(System.Xml.Linq.XDocument)">
+            <summary>
+            Loads .Net XML documentation from XDocument.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.ResolveGenericTypeNameConflicts">
+            <summary>
+            Ensure that default generic-type names do not conflict with actual types used in assembly.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.GetFullListOfLocalNames">
+            <summary>
+            Collect full list of local names used throughout documentation.
+            Includes namespaces, internal types, external types, and members.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.Excel.ExcelPackageHelper">
             <summary>Extensions for ExcelPackage.</summary>
         </member>
-        <member name="F:WithoutHaste.DataFiles.ExcelPackageHelper.MIN_ROW_INDEX">
+        <member name="F:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.MIN_ROW_INDEX">
             <summary>Minimum row index in excel.</summary>
         </member>
-        <member name="F:WithoutHaste.DataFiles.ExcelPackageHelper.MIN_COLUMN_INDEX">
+        <member name="F:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.MIN_COLUMN_INDEX">
             <summary>Minimum column index in excel.</summary>
         </member>
-        <member name="F:WithoutHaste.DataFiles.ExcelPackageHelper.MIN_COLUMN_CHAR">
+        <member name="F:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.MIN_COLUMN_CHAR">
             <summary>Minimum column character in excel.</summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.AddWorksheet(OfficeOpenXml.ExcelPackage,System.String)">
+        <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.AddWorksheet(OfficeOpenXml.ExcelPackage,System.String)">
             <summary>
             Add a new Worksheet to an ExcelPackage.
             </summary>
@@ -25,7 +969,7 @@
             <returns>The new Worksheet.</returns>
             <exception cref="T:System.ArgumentException">ExcelPackage cannot be null.</exception>
         </member>
-        <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.GetWorksheet(OfficeOpenXml.ExcelPackage,System.String)">
+        <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.GetWorksheet(OfficeOpenXml.ExcelPackage,System.String)">
             <summary>
             Searches the ExcelPackage for a Worksheet by name.
             </summary>
@@ -34,16 +978,16 @@
             <returns>The Worksheet, or null.</returns>
             <exception cref="T:System.ArgumentException">ExcelPackage cannot be null.</exception>
         </member>
-        <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.String})">
-            <duplicate cref="M:WithoutHaste.DataFiles.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.Object})" />
+        <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.String})">
+            <duplicate cref="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.Object})" />
         </member>
-        <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.Int32})">
-            <duplicate cref="M:WithoutHaste.DataFiles.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.Object})" />
+        <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.Int32})">
+            <duplicate cref="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.Object})" />
         </member>
-        <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.Decimal})">
-            <duplicate cref="M:WithoutHaste.DataFiles.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.Object})" />
+        <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.Decimal})">
+            <duplicate cref="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.Object})" />
         </member>
-        <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.Object})">
+        <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.Object})">
             <summary>
             Add a new row of data to the end of the Worksheet.
             </summary>
@@ -52,7 +996,7 @@
             <exception cref="T:System.ArgumentException">Worksheet cannot be null.</exception>
             <exception cref="T:System.ArgumentException">Values list cannot be null.</exception>
         </member>
-        <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.GetRow(OfficeOpenXml.ExcelWorksheet,System.Int32)">
+        <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.GetRow(OfficeOpenXml.ExcelWorksheet,System.Int32)">
             <summary>
             Returns all the values from one row, specified by the 0-indexed row number.
             </summary>
@@ -61,7 +1005,7 @@
             <exception cref="T:System.ArgumentException">Worksheet cannot be null.</exception>
             <exception cref="T:System.IndexOutOfRangeException">Row index out of range.</exception>
         </member>
-        <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.SetColumnByIndex(OfficeOpenXml.ExcelWorksheet,System.Int32,System.Collections.Generic.List{System.Object},System.Boolean)">
+        <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.SetColumnByIndex(OfficeOpenXml.ExcelWorksheet,System.Int32,System.Collections.Generic.List{System.Object},System.Boolean)">
             <summary>
             Set an entire column of values at once.
             </summary>
@@ -72,7 +1016,7 @@
             <exception cref="T:System.ArgumentException">Worksheet cannot be null.</exception>
             <exception cref="T:System.ArgumentException">Values list cannot be null.</exception>
         </member>
-        <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.SetColumnByHeader(OfficeOpenXml.ExcelWorksheet,System.String,System.Collections.Generic.List{System.Object})">
+        <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.SetColumnByHeader(OfficeOpenXml.ExcelWorksheet,System.String,System.Collections.Generic.List{System.Object})">
             <summary>
             Set an entire column of values at once.
             </summary>
@@ -82,7 +1026,7 @@
             <exception cref="T:System.ArgumentException">Worksheet cannot be null.</exception>
             <exception cref="T:System.ArgumentException">Values list cannot be null.</exception>
         </member>
-        <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.SetColumnByChar(OfficeOpenXml.ExcelWorksheet,System.String,System.Collections.Generic.List{System.Object},System.Boolean)">
+        <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.SetColumnByChar(OfficeOpenXml.ExcelWorksheet,System.String,System.Collections.Generic.List{System.Object},System.Boolean)">
             <summary>
             Set an entire column of values at once.
             </summary>
@@ -93,7 +1037,7 @@
             <exception cref="T:System.ArgumentException">Worksheet cannot be null.</exception>
             <exception cref="T:System.ArgumentException">Values list cannot be null.</exception>
         </member>
-        <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.GetColumnCharForHeader(OfficeOpenXml.ExcelWorksheet,System.String)">
+        <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.GetColumnCharForHeader(OfficeOpenXml.ExcelWorksheet,System.String)">
             <summary>
             Searches first row for a particular value.
             </summary>
@@ -103,7 +1047,7 @@
             <exception cref="T:System.ArgumentException">Worksheet cannot be null.</exception>
             <exception cref="T:System.IndexOutOfRangeException">No header row found.</exception>
         </member>
-        <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.GetColumnByHeader(OfficeOpenXml.ExcelWorksheet,System.String)">
+        <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.GetColumnByHeader(OfficeOpenXml.ExcelWorksheet,System.String)">
             <summary>
             Returns all the values from one column, specified by the header value.
             </summary>
@@ -112,7 +1056,7 @@
             <returns>List of data values, not including the header. Includes all cells to the bottom of the Worksheet.</returns>
             <exception cref="T:System.ArgumentException">Worksheet cannot be null.</exception>
         </member>
-        <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.GetColumnByIndex(OfficeOpenXml.ExcelWorksheet,System.Int32,System.Boolean)">
+        <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.GetColumnByIndex(OfficeOpenXml.ExcelWorksheet,System.Int32,System.Boolean)">
             <summary>
             Returns all values from one column, specified by the integer index of the column.
             </summary>
@@ -122,7 +1066,7 @@
             <returns>List of data values. Includes all cells to the bottom of the Worksheet.</returns>
             <exception cref="T:System.ArgumentException">Worksheet cannot be null.</exception>
         </member>
-        <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.GetColumnByChar(OfficeOpenXml.ExcelWorksheet,System.String,System.Boolean)">
+        <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.GetColumnByChar(OfficeOpenXml.ExcelWorksheet,System.String,System.Boolean)">
             <summary>
             Returns all values from one column, specified by the character name of the column.
             </summary>
@@ -132,25 +1076,25 @@
             <returns>List of data values. Includes all cells to the bottom of the Worksheet.</returns>
             <exception cref="T:System.ArgumentException">Worksheet cannot be null.</exception>
         </member>
-        <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.CountRows(OfficeOpenXml.ExcelWorksheet)">
+        <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.CountRows(OfficeOpenXml.ExcelWorksheet)">
             <summary>
             Returns the number of rows in the Worksheet.
             </summary>
             <exception cref="T:System.ArgumentException">Worksheet cannot be null.</exception>
         </member>
-        <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.CountColumns(OfficeOpenXml.ExcelWorksheet)">
+        <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.CountColumns(OfficeOpenXml.ExcelWorksheet)">
             <summary>
             Returns the number of columns in the Worksheet.
             </summary>
             <exception cref="T:System.ArgumentException">Worksheet cannot be null.</exception>
         </member>
-        <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.CountWorksheets(OfficeOpenXml.ExcelPackage)">
+        <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.CountWorksheets(OfficeOpenXml.ExcelPackage)">
             <summary>
             Returns the number of Worksheets in the ExcelPacakge.
             </summary>
             <exception cref="T:System.ArgumentException">ExcelPackage cannot be null.</exception>
         </member>
-        <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.ColumnChar(System.Int32)">
+        <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.ColumnChar(System.Int32)">
             <summary>
             Convert column integer index to character index.
             </summary>
@@ -159,11 +1103,19 @@
             <example>27 becomes AA</example>
             <param name="columnNumber">1-based index of column</param>
         </member>
-        <member name="M:WithoutHaste.DataFiles.ExcelPackageHelper.Clear(OfficeOpenXml.ExcelWorksheet)">
+        <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.Clear(OfficeOpenXml.ExcelWorksheet)">
             <summary>
             Remove all rows and columns from Worksheet.
             </summary>
             <exception cref="T:System.ArgumentException">Worksheet cannot be null.</exception>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.XmlFormatException">
+            <summary>
+            Badly formatted xml, or unexpected xml.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.XmlFormatException.#ctor(System.String)">
+            <summary></summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.XmlNodeException">
             <summary>
