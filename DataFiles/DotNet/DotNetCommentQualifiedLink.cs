@@ -33,10 +33,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			int divider = cref.IndexOf("(");
 			if(divider == -1)
 				return new DotNetCommentQualifiedLink(new DotNetQualifiedName(cref));
-
-			DotNetQualifiedName name = new DotNetQualifiedName(cref.Substring(0, divider));
-			List<DotNetParameter> parameters = DotNetMethod.ParseVisualStudioXmlParameters(cref.Substring(divider));
-			return new DotNetCommentMethodLink(name, parameters);
+			return DotNetCommentMethodLink.FromVisualStudioXml(cref);
 		}
 
 		#endregion

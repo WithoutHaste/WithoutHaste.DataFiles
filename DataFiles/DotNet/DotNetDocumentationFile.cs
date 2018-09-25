@@ -19,7 +19,33 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public string AssemblyName { get; protected set; }
 
-		private List<DotNetType> types = new List<DotNetType>();
+		/// <summary>Returns the full count of types within assembly, including nested types and enums.</summary>
+		public int TypeCount {
+			get {
+				if(Types.Count == 0)
+					return 0;
+				return Types.Sum(t => 1 + t.NestedTypeCount);
+			}
+		}
+
+		/// <summary>Top-level types in assembly.</summary>
+		public List<DotNetType> Types = new List<DotNetType>();
+
+		/// <summary>Returns the i-th top-level type.</summary>
+		/// <param name="i">0-based index of top-level types.</param>
+		/// <exception cref="IndexOutOfRangeException">Top-level type index is out of range.</exception>
+		public DotNetType this[int i] {
+			get {
+				if(i < 0 || i >= Types.Count)
+				{
+					if(Types.Count == 0)
+						throw new IndexOutOfRangeException("Top-level type index is out of range: collection is empty.");
+					else
+						throw new IndexOutOfRangeException(String.Format("Top-level type index is out of range [0,{0}]: index {1}.", Types.Count - 1, i));
+				}
+				return Types[i];
+			}
+		}
 
 		#region Constructors and Init
 
@@ -79,7 +105,7 @@ namespace WithoutHaste.DataFiles.DotNet
 						DotNetType type = DotNetType.FromVisualStudioXml(memberElement);
 						type.ParseVisualStudioXmlDocumentation(memberElement);
 						if(IsNestedType(type)) AddMemberToType(type);
-						else types.Add(type);
+						else Types.Add(type);
 						break;
 
 					case "M:":
@@ -111,12 +137,12 @@ namespace WithoutHaste.DataFiles.DotNet
 
 		private bool IsNestedType(DotNetType type)
 		{
-			return types.Any(t => t.Owns(type));
+			return Types.Any(t => t.Owns(type));
 		}
 
 		private void AddMemberToType(DotNetMember member)
 		{
-			foreach(DotNetType parentType in types)
+			foreach(DotNetType parentType in Types)
 			{
 				if(parentType.Owns(member))
 				{

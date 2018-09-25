@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<list type="table">
+	<listheader>
+		<term>Header 1</term>
+		<term>Header 2</term>
+		<term>Header 3</term>
+	</listheader>
+	<item>
+		<term>R1 C1</term>
+		<term>R1 C2</term>
+	</item>
+	<item>
+		<term>R2 C1</term>
+		<term>R2 C2</term>
+		<term>R2 C3</term>
+	</item>
+	<item>
+		<term>R3 C1</term>
+	</item>
+</list>

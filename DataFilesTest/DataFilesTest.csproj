@@ -61,6 +61,20 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DotNet\DotNetCommentCellTests.cs" />
+    <Compile Include="DotNet\DotNetCommentCodeTests.cs" />
+    <Compile Include="DotNet\DotNetCommentGroupTests.cs" />
+    <Compile Include="DotNet\DotNetCommentCodeBlockTests.cs" />
+    <Compile Include="DotNet\DotNetCommentListItemTests.cs" />
+    <Compile Include="DotNet\DotNetCommentListTests.cs" />
+    <Compile Include="DotNet\DotNetCommentMethodLinkTests.cs" />
+    <Compile Include="DotNet\DotNetCommentParameterLinkTests.cs" />
+    <Compile Include="DotNet\DotNetCommentParameterTests.cs" />
+    <Compile Include="DotNet\DotNetCommentQualifiedLinkedGroupTests.cs" />
+    <Compile Include="DotNet\DotNetCommentQualifiedLinkTests.cs" />
+    <Compile Include="DotNet\DotNetCommentRowTests.cs" />
+    <Compile Include="DotNet\DotNetCommentTableTests.cs" />
+    <Compile Include="DotNet\DotNetCommentTextTests.cs" />
     <Compile Include="DotNet\DotNetCommentTypeParameterTests.cs" />
     <Compile Include="DotNet\DotNetCommentTypeParameterLinkTests.cs" />
     <Compile Include="ExcelPackageHelperTests.cs" />
@@ -80,6 +94,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\DotNetCommentGroup_XmlCommentsNestedInTag.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetCommentTable_Full.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_Full.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\MSExcel2003XmlFile_AddHeaderRow_GetHeaders.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

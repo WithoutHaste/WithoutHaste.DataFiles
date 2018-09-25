@@ -8,29 +8,29 @@ using WithoutHaste.DataFiles.DotNet;
 namespace DataFilesTest
 {
 	[TestClass]
-	public class DotNetCommentTypeParameterTests
+	class DotNetCommentParameterTests
 	{
 		[TestMethod]
-		public void DotNetCommentTypeParameter_FromXml_Empty()
+		public void DotNetCommentParameter_FromXml_Empty()
 		{
 			//arrange
 			string name = "test";
-			XElement element = XElement.Parse("<typeparam name='" + name + "' />");
+			XElement element = XElement.Parse("<param name='" + name + "' />");
 			//act
-			DotNetCommentTypeParameter result = DotNetCommentTypeParameter.FromVisualStudioXml(element);
+			DotNetCommentParameter result = DotNetCommentParameter.FromVisualStudioXml(element);
 			//assert
 			Assert.AreEqual(name, result.Link.FullName);
 			Assert.AreEqual(0, result.Comments.Count);
 		}
 
 		[TestMethod]
-		public void DotNetCommentTypeParameter_FromXml_Full()
+		public void DotNetCommentParameter_FromXml_Full()
 		{
 			//arrange
 			string name = "test";
 			XElement element = XElement.Parse("<typeparam name='" + name + "'>" + DotNetCommentGroupTests.GetXmlCommentsNestedInTag() + "</typeparam>");
 			//act
-			DotNetCommentTypeParameter result = DotNetCommentTypeParameter.FromVisualStudioXml(element);
+			DotNetCommentParameter result = DotNetCommentParameter.FromVisualStudioXml(element);
 			//assert
 			Assert.AreEqual(name, result.Link.FullName);
 			DotNetCommentGroupTests.ValidateXmlCommentsNestedInTag(result.Comments);

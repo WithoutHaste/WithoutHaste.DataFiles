@@ -15,11 +15,29 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public bool IsException { get; protected set; }
 
-		private List<DotNetType> nestedTypes = new List<DotNetType>();
-		private List<DotNetMethod> methods = new List<DotNetMethod>();
-		private List<DotNetField> fields = new List<DotNetField>();
-		private List<DotNetProperty> properties = new List<DotNetProperty>();
-		private List<DotNetEvent> events = new List<DotNetEvent>();
+		/// <summary>The number of types nested within this type, including sub-nested types and enums.</summary>
+		public int NestedTypeCount {
+			get {
+				if(NestedTypes.Count == 0)
+					return 0;
+				return NestedTypes.Sum(t => 1 + t.NestedTypeCount);
+			}
+		}
+
+		/// <summary></summary>
+		public List<DotNetType> NestedTypes = new List<DotNetType>();
+
+		/// <summary></summary>
+		public List<DotNetMethod> Methods = new List<DotNetMethod>();
+
+		/// <summary></summary>
+		public List<DotNetField> Fields = new List<DotNetField>();
+
+		/// <summary></summary>
+		public List<DotNetProperty> Properties = new List<DotNetProperty>();
+
+		/// <summary></summary>
+		public List<DotNetEvent> Events = new List<DotNetEvent>();
 
 		#region Constructors
 
@@ -48,7 +66,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			if(Name.FullName == member.Name.FullNamespace)
 				return true;
-			foreach(DotNetType nestedType in nestedTypes)
+			foreach(DotNetType nestedType in NestedTypes)
 			{
 				if(nestedType.Owns(member))
 					return true;
@@ -63,20 +81,21 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			if(Name.FullName == member.Name.FullNamespace)
 			{
-				if(member is DotNetEvent) events.Add(member as DotNetEvent);
-				else if(member is DotNetProperty) properties.Add(member as DotNetProperty);
-				else if(member is DotNetField) fields.Add(member as DotNetField);
-				else if(member is DotNetMethod) methods.Add(member as DotNetMethod);
-				else if(member is DotNetType) nestedTypes.Add(member as DotNetType);
+				if(member is DotNetEvent) Events.Add(member as DotNetEvent);
+				else if(member is DotNetProperty) Properties.Add(member as DotNetProperty);
+				else if(member is DotNetField) Fields.Add(member as DotNetField);
+				else if(member is DotNetMethod) Methods.Add(member as DotNetMethod);
+				else if(member is DotNetType) NestedTypes.Add(member as DotNetType);
 				else
 					throw new XmlFormatException("Member with unknown category added to type: " + member.Name.FullName);
 				return;
 			}
-			foreach(DotNetType nestedType in nestedTypes)
+			foreach(DotNetType nestedType in NestedTypes)
 			{
 				if(nestedType.Owns(member))
 				{
 					nestedType.AddMember(member);
+					return;
 				}
 			}
 			throw new XmlFormatException("Member has no parent type: " + member.Name.FullName);

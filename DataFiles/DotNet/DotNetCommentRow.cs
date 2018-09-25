@@ -17,8 +17,27 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public bool IsHeader { get; protected set; }
 
+		/// <summary>Number of columns (cells) in the row.</summary>
+		public int ColumnCount { get { return Cells.Count; } }
+
 		/// <summary></summary>
 		public List<DotNetCommentCell> Cells = new List<DotNetCommentCell>();
+
+		/// <summary>
+		/// Returns the selected cell of the row. Returns an empty cell if no cell is found.
+		/// </summary>
+		/// <remarks>Returns an empty cell because Row does not know the number of columns in the Table, just how many cells are filled on this row.</remarks>
+		/// <param name="columnIndex">0-based index of table column.</param>
+		/// <exception cref="IndexOutOfRangeException">Column index is negative.</exception>
+		public DotNetCommentCell this[int columnIndex] {
+			get {
+				if(columnIndex < 0)
+					throw new IndexOutOfRangeException("Table column index cannot be negative.");
+				if(ColumnCount <= columnIndex)
+					return DotNetCommentCell.EmptyCell;
+				return Cells[columnIndex];
+			}
+		}
 
 		#region Constructors
 

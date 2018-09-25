@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<assembly>
+		<name>Test</name>
+	</assembly>
+	<members>
+		<!-- Types -->
+		<member name="T:Test.TypeA">
+			<summary>summary TypeA</summary>
+			<remarks>remarks TypeA</remarks>
+			<example>example TypeA</example>
+			<permission cref="Test.TypeA.MethodAA">permission TypeA</permission>
+		</member>
+		<member name="T:Test.TypeA.NestedTypeB">
+			Plain text
+			Plain text
+			Plain text
+		</member>
+		<member name="T:Test.TypeA.NestedTypeB.SubNestedTypeC">
+			Plain text
+			<summary>summary TypeC</summary>
+			<summary>summary TypeC</summary>
+			Plain text <seealso cref="Test.SingleGenericTypeD`1" /> Plain text
+		</member>
+		<member name="T:Test.SingleGenericTypeD`1"></member>
+		<member name="T:Test.DoubleGenericTypeE`2"></member>
+		<!-- Methods -->
+		<member name="M:Test.TypeA.MethodAA">
+			<summary>summary MethodAA</summary>
+			<remarks>remarks MethodAA</remarks>
+			<example>example MethodAA</example>
+			<example>example MethodAA</example>
+			<exception cref="System.ArgumentException">exception MethodAA</exception>
+			<exception cref="System.ArgumentException">exception MethodAA</exception>
+			<exception cref="System.IndexOutOfRangeException">exception MethodAA</exception>
+			<returns>
+				Plain text
+				<example>example returns MethodAA</example>
+			</returns>
+		</member>
+		<member name="M:Test.TypeA.NestedTypeB.MethodBA(System.Integer,System.Integer)"></member>
+		<member name="M:Test.TypeA.NestedTypeB.SubNestedTypeC.MethodCA(System.Collections.Generic.List{System.String})"></member>
+		<member name="M:Test.TypeA.NestedTypeB.SubNestedTypeC.#ctor()"></member>
+		<member name="M:Test.SingleGenericTypeD`1.op_Addition(`0,Test.SingleGenericTypeD{`0})"></member>
+		<member name="M:Test.DoubleGenericTypeE`2.#ctor(`1,`0)"></member>
+		<member name="M:Test.DoubleGenericTypeE`2.MethodEA``1(System.String,``0,`1)"></member>
+	</members>
+</root>

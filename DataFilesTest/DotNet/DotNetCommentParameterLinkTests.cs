@@ -8,16 +8,16 @@ using WithoutHaste.DataFiles.DotNet;
 namespace DataFilesTest
 {
 	[TestClass]
-	public class DotNetCommentTypeParameterLinkTests
+	class DotNetCommentParameterLinkTests
 	{
 		[TestMethod]
-		public void DotNetCommentTypeParameterLink_FromXml()
+		public void DotNetCommentParameterLink_FromXml()
 		{
 			//arrange
 			string name = "test";
-			XElement element = XElement.Parse("<typeparamref name='" + name + "' />");
+			XElement element = XElement.Parse("<paramref name='" + name + "' />");
 			//act
-			DotNetCommentTypeParameterLink result = DotNetCommentTypeParameterLink.FromVisualStudioXml(element);
+			DotNetCommentParameterLink result = DotNetCommentParameterLink.FromVisualStudioXml(element);
 			//assert
 			Assert.AreEqual(name, result.Name);
 		}

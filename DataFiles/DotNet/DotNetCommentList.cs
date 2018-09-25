@@ -32,10 +32,11 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// </summary>
 		public bool IsNumbered { get; protected set; }
 
-		/// <summary>
-		/// Items in the list.
-		/// </summary>
+		/// <summary>Items in the list.</summary>
 		public List<DotNetCommentListItem> Items = new List<DotNetCommentListItem>();
+
+		/// <summary>Number of items in the list. Includes headers.</summary>
+		public int Length { get { return Items.Count; } }
 
 		#region Constructors
 

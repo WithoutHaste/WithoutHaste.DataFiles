@@ -18,7 +18,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>True if this method represents an overloaded operator.</summary>
 		public bool IsOperator { get; protected set; }
 
-		private List<DotNetParameter> parameters = new List<DotNetParameter>();
+		/// <summary></summary>
+		public List<DotNetParameter> Parameters = new List<DotNetParameter>();
 
 		#region Constructors
 
@@ -30,7 +31,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Normal constructor</summary>
 		public DotNetMethod(DotNetQualifiedName name, List<DotNetParameter> parameters, bool isConstructor = false, bool isOperator = false) : base(name)
 		{
-			this.parameters.AddRange(parameters);
+			this.Parameters.AddRange(parameters);
 			IsConstructor = isConstructor;
 			IsOperator = isOperator;
 		}
@@ -61,7 +62,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 			else
 			{
-				name = signature.Substring(0, divider - 1);
+				name = signature.Substring(0, divider);
 				parameters = signature.Substring(divider);
 			}
 
@@ -71,7 +72,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			bool isConstructor = qualifiedName.LocalName.EndsWith("#ctor");
 			if(isConstructor)
 			{
-				qualifiedName = qualifiedName.SetLocalName(qualifiedName.LocalName.RemoveFromEnd("#ctor"));
+				qualifiedName = qualifiedName.SetLocalName(qualifiedName.FullNamespace.LocalName);
 			}
 
 			//for operators
@@ -107,7 +108,10 @@ namespace WithoutHaste.DataFiles.DotNet
 				for(int i = 0; i < fields.Length; i++)
 				{
 					string f = fields[i];
-					parameters.Add(new DotNetParameter(new DotNetQualifiedName(f)));
+					if(!String.IsNullOrEmpty(f))
+					{
+						parameters.Add(new DotNetParameter(new DotNetQualifiedName(f)));
+					}
 				}
 			}
 			return parameters;

@@ -17,7 +17,10 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <example><![CDATA[<term>plain text</term>]]></example>
 	public class DotNetCommentCell
 	{
-		/// <summary></summary>
+		/// <summary>Default empty cell.</summary>
+		public static readonly DotNetCommentCell EmptyCell = new DotNetCommentCell(null);
+
+		/// <summary>Cell contents.</summary>
 		public string Text { get; protected set; }
 
 		#region Constructors

@@ -1,0 +1,47 @@
+﻿<para>
+	Lorem ipsum
+	<para>dolor sit amet</para>
+</para>
+<para>consectetur adipiscing elit</para>
+Aliquam ultricies hendrerit
+Vivamus odio justo, bibendum
+<example>non rutrum ac, interdum in metus. In tempus id diam eu mollis</example>
+<example>
+	Donec cursus non quam at egestas. Sed dictum, justo a maximus vulputate, nunc massa bibendum purus, nec placerat leo est quis elit. Sed porta porta tellus sit amet dignissim. Morbi id nisi eget dolor volutpat commodo nec vitae tortor. Pellentesque faucibus faucibus imperdiet.
+	<code>
+	int x = 0;
+	for(int i = 0; i != array.length; i++)
+	{
+		x = i * 3;
+	}
+	</code>
+	Pellentesque ac <paramref name="a" /> tincidunt purus
+</example>
+Mauris id metus commodo <typeparamref name="T" /> efficitur justo non, ultricies leo.
+Mauris eget eros velit. <see cref="Namespace.Type" /> Mauris ultrices elementum purus, ac ullamcorper erat sodales sit amet.
+<seealso cref="Namespace.Type.Method(int, string)" />
+<list type="bullet">
+	<listheader>
+		hendrerit
+	</listheader>
+	<item>
+		fringilla turpis euismod
+	</item>
+	<item>
+		Sed lobortis nulla in consectetur suscipit. Donec euismod dui dolor
+	</item>
+</list>
+<list type="table">
+	<listheader>
+		<term>a</term>
+		<term>b</term>
+	</listheader>
+	<item>
+		<term>a1</term>
+		<term>b1</term>
+	</item>
+	<item>
+		<term>a2</term>
+		<term>b2</term>
+	</item>
+</list>

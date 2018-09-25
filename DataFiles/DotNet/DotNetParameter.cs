@@ -11,8 +11,14 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// </summary>
 	public class DotNetParameter
 	{
-		/// <summary>Fully qualified data type name.</summary>
+		/// <summary>Fully qualified data type name object.</summary>
 		public DotNetQualifiedName TypeName { get; protected set; }
+
+		/// <summary>Fully qualified data type name.</summary>
+		public string FullName { get { return TypeName.FullName; } }
+
+		/// <summary>Local data type name.</summary>
+		public string LocalName { get { return TypeName.LocalName; } }
 
 		#region Constructors
 
