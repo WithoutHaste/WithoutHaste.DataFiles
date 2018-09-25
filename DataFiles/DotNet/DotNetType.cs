@@ -39,6 +39,21 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public List<DotNetEvent> Events = new List<DotNetEvent>();
 
+		/// <summary>
+		/// Lists all methods, fields, properties, and events.
+		/// Does not include nested types.
+		/// </summary>
+		public List<DotNetMember> AllMembers {
+			get {
+				List<DotNetMember> members = new List<DotNetMember>();
+				members.AddRange(Methods);
+				members.AddRange(Fields);
+				members.AddRange(Properties);
+				members.AddRange(Events);
+				return members;
+			}
+		}
+
 		#region Constructors
 
 		/// <summary></summary>
@@ -99,6 +114,35 @@ namespace WithoutHaste.DataFiles.DotNet
 				}
 			}
 			throw new XmlFormatException("Member has no parent type: " + member.Name.FullName);
+		}
+
+		/// <summary>
+		/// Collect full list of local names used throughout documentation.
+		/// Includes namespaces, internal types, external types, and members.
+		/// </summary>
+		/// <returns></returns>
+		public List<string> GetFullListOfLocalNames()
+		{
+			List<string> localNames = new List<string>();
+
+			localNames.AddRange(Name.GetFullListOfLocalNames());
+			foreach(DotNetType type in NestedTypes)
+			{
+				localNames.AddRange(type.GetFullListOfLocalNames());
+			}
+			foreach(DotNetMember member in AllMembers)
+			{
+				localNames.AddRange(member.Name.GetFullListOfLocalNames());
+			}
+			foreach(DotNetMethod method in Methods)
+			{
+				foreach(DotNetParameter parameter in method.Parameters.OfType<DotNetParameter>().Cast<DotNetParameter>())
+				{
+					localNames.AddRange(parameter.TypeName.GetFullListOfLocalNames());
+				}
+			}
+
+			return localNames;
 		}
 
 		#region Low Level

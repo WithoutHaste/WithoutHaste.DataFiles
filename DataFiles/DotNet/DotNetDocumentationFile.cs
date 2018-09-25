@@ -58,6 +58,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			LoadAssemblyInfo(document);
 			LoadMembersInfo(document);
+			ResolveGenericTypeNameConflicts();
 		}
 
 		#endregion
@@ -119,6 +120,35 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 		}
 
+		/// <summary>
+		/// Ensure that default generic-type names do not conflict with actual types used in assembly.
+		/// </summary>
+		private void ResolveGenericTypeNameConflicts()
+		{
+			string filler = "X";
+			bool foundConflict = false;
+			List<string> actualNames = GetFullListOfLocalNames();
+			do
+			{
+				foundConflict = false;
+				foreach(string actualName in actualNames)
+				{
+					if(DotNetQualifiedMethodName.GenericTypeNames.Contains(actualName))
+					{
+						foundConflict = true;
+						int index = Array.IndexOf(DotNetQualifiedMethodName.GenericTypeNames, actualName);
+						DotNetQualifiedMethodName.GenericTypeNames[index] = actualName + filler;
+					}
+					if(DotNetQualifiedClassName.GenericTypeNames.Contains(actualName))
+					{
+						foundConflict = true;
+						int index = Array.IndexOf(DotNetQualifiedClassName.GenericTypeNames, actualName);
+						DotNetQualifiedClassName.GenericTypeNames[index] = actualName + filler;
+					}
+				}
+			} while(foundConflict); //in case the updated generic-type names now conflict with other actual type names
+		}
+
 		private bool IsNestedType(DotNetType type)
 		{
 			return Types.Any(t => t.Owns(type));
@@ -135,6 +165,24 @@ namespace WithoutHaste.DataFiles.DotNet
 				}
 			}
 			throw new XmlFormatException("Member has no parent type: " + member.Name.FullName);
+		}
+
+		/// <summary>
+		/// Collect full list of local names used throughout documentation.
+		/// Includes namespaces, internal types, external types, and members.
+		/// </summary>
+		/// <returns></returns>
+		private List<string> GetFullListOfLocalNames()
+		{
+			List<string> localNames = new List<string>();
+
+			localNames.Add(AssemblyName);
+			foreach(DotNetType type in Types)
+			{
+				localNames.AddRange(type.GetFullListOfLocalNames());
+			}
+
+			return localNames;
 		}
 
 	}

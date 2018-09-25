@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<assembly>
+		<name>A</name>
+	</assembly>
+	<members>
+		<!-- Types -->
+		<member name="T:A.B"></member>
+		<member name="T:A.B.C"></member>
+		<member name="T:A.GenericClass`12"></member>
+		<member name="T:A.TX"></member>
+		<member name="T:A.TXX"></member>
+		<member name="T:A.AX"></member>
+		<member name="T:A.AXX"></member>
+		<!-- Methods -->
+		<member name="M:A.B.T(System.String)"></member>
+		<member name="M:A.B.T(U)"></member>
+		<member name="M:A.B.GenericMethod``12(``0,``1,``2,``3,``4,``5,``6,``7,``8,``9,``10,``11)"></member>
+		<member name="M:A.GenericClass`12.Method(`0,`1,`2,`3,`4,`5,`6,`7,`8,`9,`10,`11)"></member>
+		<!-- Fields -->
+		<member name="F:A.B.T2"></member>
+		<!-- Properties -->
+		<member name="F:A.B.U2"></member>
+		<!-- Events -->
+		<member name="F:A.B.V2"></member>
+	</members>
+</root>

@@ -38,26 +38,6 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">23</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">what to do if assembly actually includes types named "T", "U2" or "A"?
-- subtype parameter so it can store just the class-generic-index or method-generic-index
-- only generate string like &lt;T&gt; when converting to string
-- put in step after all xml is parsed that checks for all used types - if type conflicts with generic-types, append an X on the generic-type or something - handle if search already passed type "AX"</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Feature - Minor</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2018-09-25T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
           <Data ss:Type="Number">25</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -300,6 +280,29 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">23</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">what to do if assembly actually includes types named "T", "U2" or "A"?
+- subtype parameter so it can store just the class-generic-index or method-generic-index
+- only generate string like &lt;T&gt; when converting to string
+- put in step after all xml is parsed that checks for all used types - if type conflicts with generic-types, append an X on the generic-type or something - handle if search already passed type "AX"</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Minor</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-25T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-25T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>

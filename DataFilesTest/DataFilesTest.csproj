@@ -104,6 +104,9 @@
     <Content Include="data\DotNetDocumentationFile_Full.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="data\DotNetDocumentationFile_NameConflict.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\MSExcel2003XmlFile_AddHeaderRow_GetHeaders.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

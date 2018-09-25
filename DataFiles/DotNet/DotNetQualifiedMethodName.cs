@@ -30,7 +30,7 @@ namespace WithoutHaste.DataFiles.DotNet
 	public class DotNetQualifiedMethodName : DotNetQualifiedName
 	{
 		/// <summary>Default names that will be given to generic-method-types, in order.</summary>
-		public static readonly string[] GenericTypeNames = new string[] { "A", "B", "C", "A2", "B2", "C2", "A3", "B3", "C3", "A4", "B4", "C4" };
+		public static string[] GenericTypeNames = new string[] { "A", "B", "C", "A2", "B2", "C2", "A3", "B3", "C3", "A4", "B4", "C4" };
 
 		/// <inheritdoc/>
 		public override string LocalName {

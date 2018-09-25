@@ -28,7 +28,7 @@ namespace WithoutHaste.DataFiles.DotNet
 	public class DotNetQualifiedClassName : DotNetQualifiedName
 	{
 		/// <summary>Default names that will be given to generic-types, in order.</summary>
-		public static readonly string[] GenericTypeNames = new string[] { "T", "U", "V", "W", "T2", "U2", "V2", "W2", "T3", "U3", "V3", "W3" };
+		public static string[] GenericTypeNames = new string[] { "T", "U", "V", "W", "T2", "U2", "V2", "W2", "T3", "U3", "V3", "W3" };
 
 		/// <inheritdoc/>
 		public override string LocalName {

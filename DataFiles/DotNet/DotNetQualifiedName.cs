@@ -218,6 +218,28 @@ namespace WithoutHaste.DataFiles.DotNet
 			};
 		}
 
+		/// <summary>
+		/// Collect full list of local names used throughout documentation.
+		/// Includes namespaces, internal types, external types, and members.
+		/// Does not include generic paremeters.
+		/// </summary>
+		public List<string> GetFullListOfLocalNames()
+		{
+			List<string> localNames = new List<string>();
+
+			localNames.Add(localName);
+			foreach(DotNetParameter parameter in GenericTypeParameters.OfType<DotNetParameter>().Cast<DotNetParameter>())
+			{
+				localNames.AddRange(parameter.TypeName.GetFullListOfLocalNames());
+			}
+			if(FullNamespace != null)
+			{
+				localNames.AddRange(FullNamespace.GetFullListOfLocalNames());
+			}
+
+			return localNames;
+		}
+
 		/// <summary>Return the names combined with a '.' delimiter.</summary>
 		public static string Combine(params string[] names)
 		{
