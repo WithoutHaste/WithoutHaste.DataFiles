@@ -11,7 +11,7 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// Represents a method-generic-type parameter in a method signature.
 	/// </summary>
 	/// <example><![CDATA[Namespace.MyType.MyMethod<A>(A) => Namespace.MyType.MyMethod``1(``0)]]></example>
-	public class DotNetMethodGenericParameter : DotNetBaseParameter
+	public class DotNetParameterMethodGeneric : DotNetBaseParameter
 	{
 		/// <inheritdoc/>
 		public override string FullName { get { return LocalName; } }
@@ -26,7 +26,7 @@ namespace WithoutHaste.DataFiles.DotNet
 
 		/// <summary></summary>
 		/// <param name="genericTypeIndex">0-based index in method's generic type list corresponding to this parameter.</param>
-		public DotNetMethodGenericParameter(int genericTypeIndex)
+		public DotNetParameterMethodGeneric(int genericTypeIndex)
 		{
 			if(genericTypeIndex < 0 || genericTypeIndex >= DotNetQualifiedMethodName.GenericTypeNames.Length)
 				throw new ArgumentException(String.Format("GenericTypeIndex is invalid. Expects range [0,{0}]. Index: {1}.", DotNetQualifiedMethodName.GenericTypeNames.Length - 1, genericTypeIndex), "genericTypeIndex");
@@ -37,14 +37,14 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Parses a .Net XML documentation method-generic-type parameter.
 		/// </summary>
 		/// <exception cref="XmlFormatException"><paramref name="name"/> is not in expected format: ``Index.</exception>
-		public static new DotNetMethodGenericParameter FromVisualStudioXml(string name)
+		public static new DotNetParameterMethodGeneric FromVisualStudioXml(string name)
 		{
 			if(!HasExpectedVisualStudioXmlFormat(name))
 				throw new XmlFormatException("Generic parameters that refer to method-generic-types should be in the format ``Index, where Index is the 0-based index of the generic type in the method declaraction.");
 
 			int genericTypeIndex = 0;
 			Int32.TryParse(name.Substring(name.IndexOf("``") + 2), out genericTypeIndex);
-			return new DotNetMethodGenericParameter(genericTypeIndex);
+			return new DotNetParameterMethodGeneric(genericTypeIndex);
 		}
 
 		#endregion

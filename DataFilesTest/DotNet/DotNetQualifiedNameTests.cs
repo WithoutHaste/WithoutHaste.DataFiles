@@ -290,7 +290,7 @@ namespace DataFilesTest
 			//act
 			DotNetBaseParameter result = DotNetBaseParameter.FromVisualStudioXml(input);
 			//assert
-			Assert.IsTrue(result is DotNetClassGenericParameter);
+			Assert.IsTrue(result is DotNetParameterClassGeneric);
 			Assert.AreEqual(expectedLocalName, result.LocalName);
 			Assert.AreEqual(expectedQualifiedName, result.FullName);
 		}
@@ -305,7 +305,7 @@ namespace DataFilesTest
 			//act
 			DotNetBaseParameter result = DotNetBaseParameter.FromVisualStudioXml(input);
 			//assert
-			Assert.IsTrue(result is DotNetClassGenericParameter);
+			Assert.IsTrue(result is DotNetParameterClassGeneric);
 			Assert.AreEqual(expectedLocalName, result.LocalName);
 			Assert.AreEqual(expectedQualifiedName, result.FullName);
 		}
@@ -320,7 +320,7 @@ namespace DataFilesTest
 			//act
 			DotNetBaseParameter result = DotNetBaseParameter.FromVisualStudioXml(input);
 			//assert
-			Assert.IsTrue(result is DotNetMethodGenericParameter);
+			Assert.IsTrue(result is DotNetParameterMethodGeneric);
 			Assert.AreEqual(expectedLocalName, result.LocalName);
 			Assert.AreEqual(expectedQualifiedName, result.FullName);
 		}
@@ -335,7 +335,7 @@ namespace DataFilesTest
 			//act
 			DotNetBaseParameter result = DotNetBaseParameter.FromVisualStudioXml(input);
 			//assert
-			Assert.IsTrue(result is DotNetMethodGenericParameter);
+			Assert.IsTrue(result is DotNetParameterMethodGeneric);
 			Assert.AreEqual(expectedLocalName, result.LocalName);
 			Assert.AreEqual(expectedQualifiedName, result.FullName);
 		}

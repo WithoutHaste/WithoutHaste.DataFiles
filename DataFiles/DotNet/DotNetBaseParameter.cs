@@ -24,11 +24,11 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			if(String.IsNullOrEmpty(typeName)) return new DotNetParameter();
 
-			if(DotNetClassGenericParameter.HasExpectedVisualStudioXmlFormat(typeName))
-				return DotNetClassGenericParameter.FromVisualStudioXml(typeName);
+			if(DotNetParameterClassGeneric.HasExpectedVisualStudioXmlFormat(typeName))
+				return DotNetParameterClassGeneric.FromVisualStudioXml(typeName);
 
-			if(DotNetMethodGenericParameter.HasExpectedVisualStudioXmlFormat(typeName))
-				return DotNetMethodGenericParameter.FromVisualStudioXml(typeName);
+			if(DotNetParameterMethodGeneric.HasExpectedVisualStudioXmlFormat(typeName))
+				return DotNetParameterMethodGeneric.FromVisualStudioXml(typeName);
 
 			//fully qualified generic type parameters
 			//such as System.Collections.Generic.List<T> which are formatted as System.Collections.Generic{`0}

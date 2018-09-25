@@ -54,7 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DotNet\DotNetBaseParameter.cs" />
-    <Compile Include="DotNet\DotNetClassGenericParameter.cs" />
+    <Compile Include="DotNet\DotNetParameterClassGeneric.cs" />
     <Compile Include="DotNet\DotNetCommentCode.cs" />
     <Compile Include="DotNet\DotNetCommentCodeBlock.cs" />
     <Compile Include="DotNet\DotNetCommentLinkedGroup.cs" />
@@ -66,7 +66,7 @@
     <Compile Include="DotNet\DotNetCommentTypeParameter.cs" />
     <Compile Include="DotNet\DotNetCommentTypeParameterLink.cs" />
     <Compile Include="DotNet\DotNetMethodConstructor.cs" />
-    <Compile Include="DotNet\DotNetMethodGenericParameter.cs" />
+    <Compile Include="DotNet\DotNetParameterMethodGeneric.cs" />
     <Compile Include="DotNet\DotNetMethodOperator.cs" />
     <Compile Include="DotNet\DotNetQualifiedMethodName.cs" />
     <Compile Include="DotNet\DotNetQualifiedClassName.cs" />
