@@ -12,12 +12,6 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// </summary>
 	public class DotNetMethod : DotNetMember
 	{
-		/// <summary>True if this method represents a constructor.</summary>
-		public bool IsConstructor { get; protected set; }
-
-		/// <summary>True if this method represents an overloaded operator.</summary>
-		public bool IsOperator { get; protected set; }
-
 		/// <summary></summary>
 		public List<DotNetBaseParameter> Parameters = new List<DotNetBaseParameter>();
 
@@ -29,11 +23,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>Normal constructor</summary>
-		public DotNetMethod(DotNetQualifiedName name, List<DotNetBaseParameter> parameters, bool isConstructor = false, bool isOperator = false) : base(name)
+		public DotNetMethod(DotNetQualifiedName name, List<DotNetBaseParameter> parameters) : base(name)
 		{
 			this.Parameters.AddRange(parameters);
-			IsConstructor = isConstructor;
-			IsOperator = isOperator;
 		}
 
 		/// <summary>
@@ -79,7 +71,12 @@ namespace WithoutHaste.DataFiles.DotNet
 			//parse parameters
 			List<DotNetBaseParameter> qualifiedParameters = ParametersFromVisualStudioXml(parameters);
 
-			return new DotNetMethod(qualifiedName, qualifiedParameters, isConstructor, isOperator);
+			if(isConstructor)
+				return new DotNetMethodConstructor(qualifiedName, qualifiedParameters);
+			else if(isOperator)
+				return new DotNetMethodOperator(qualifiedName, qualifiedParameters);
+			else
+				return new DotNetMethod(qualifiedName, qualifiedParameters);
 		}
 
 		#endregion

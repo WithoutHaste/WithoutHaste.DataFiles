@@ -38,16 +38,17 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">25</Data>
+          <Data ss:Type="Number">26</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">? should constructors and operations be subclasses of DotNetMethod ?</Data>
+          <Data ss:Type="String">refactor: rename ClassGenericParameter and MethodGenericParameter to ParameterClassGeneric and ParameterMethodGeneric
+so that sorting by filename groups like-object together</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">Feature - Minor</Data>
+          <Data ss:Type="String">Feature - Major</Data>
         </Cell>
         <Cell ss:StyleID="cellShortDate">
           <Data ss:Type="DateTime">2018-09-25T00:00:00.000</Data>
@@ -280,6 +281,26 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">25</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">refactor: make constructors and operators subclasses of DotNetMethod</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Minor</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-25T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-25T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -571,7 +592,7 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">25</Data>
+          <Data ss:Type="Number">26</Data>
         </Cell>
       </Row>
       <Row>

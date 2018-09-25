@@ -78,36 +78,36 @@ namespace DataFilesTest
 			DotNetMethod methodAA = typeA.Methods[0];
 			Assert.AreEqual("Test.TypeA.MethodAA", methodAA.Name.FullName);
 			Assert.AreEqual(8, methodAA.CommentCount);
-			Assert.AreEqual(false, methodAA.IsConstructor);
-			Assert.AreEqual(false, methodAA.IsOperator);
+			Assert.AreEqual(false, methodAA is DotNetMethodConstructor);
+			Assert.AreEqual(false, methodAA is DotNetMethodOperator);
 			Assert.AreEqual(0, methodAA.Parameters.Count);
 
 			DotNetMethod methodBA = typeB.Methods[0];
 			Assert.AreEqual("Test.TypeA.NestedTypeB.MethodBA", methodBA.Name.FullName);
 			Assert.AreEqual(0, methodBA.CommentCount);
-			Assert.AreEqual(false, methodBA.IsConstructor);
-			Assert.AreEqual(false, methodBA.IsOperator);
+			Assert.AreEqual(false, methodBA is DotNetMethodConstructor);
+			Assert.AreEqual(false, methodBA is DotNetMethodOperator);
 			Assert.AreEqual(2, methodBA.Parameters.Count);
 
 			DotNetMethod methodCA = typeC.Methods[0];
 			Assert.AreEqual("Test.TypeA.NestedTypeB.SubNestedTypeC.MethodCA", methodCA.Name.FullName);
 			Assert.AreEqual(0, methodCA.CommentCount);
-			Assert.AreEqual(false, methodCA.IsConstructor);
-			Assert.AreEqual(false, methodCA.IsOperator);
+			Assert.AreEqual(false, methodCA is DotNetMethodConstructor);
+			Assert.AreEqual(false, methodCA is DotNetMethodOperator);
 			Assert.AreEqual(1, methodCA.Parameters.Count);
 
 			DotNetMethod methodCConstructor = typeC.Methods[1];
 			Assert.AreEqual("Test.TypeA.NestedTypeB.SubNestedTypeC.SubNestedTypeC", methodCConstructor.Name.FullName);
 			Assert.AreEqual(0, methodCConstructor.CommentCount);
-			Assert.AreEqual(true, methodCConstructor.IsConstructor);
-			Assert.AreEqual(false, methodCConstructor.IsOperator);
+			Assert.AreEqual(true, methodCConstructor is DotNetMethodConstructor);
+			Assert.AreEqual(false, methodCConstructor is DotNetMethodOperator);
 			Assert.AreEqual(0, methodCConstructor.Parameters.Count);
 
 			DotNetMethod methodDAddition = typeD.Methods[0];
 			Assert.AreEqual("Test.SingleGenericTypeD<T>.Addition", methodDAddition.Name.FullName);
 			Assert.AreEqual(0, methodDAddition.CommentCount);
-			Assert.AreEqual(false, methodDAddition.IsConstructor);
-			Assert.AreEqual(true, methodDAddition.IsOperator);
+			Assert.AreEqual(false, methodDAddition is DotNetMethodConstructor);
+			Assert.AreEqual(true, methodDAddition is DotNetMethodOperator);
 			Assert.AreEqual(2, methodDAddition.Parameters.Count);
 			Assert.AreEqual("T", methodDAddition.Parameters[0].FullName);
 			Assert.AreEqual("Test.SingleGenericTypeD<T>", methodDAddition.Parameters[1].FullName);
@@ -115,8 +115,8 @@ namespace DataFilesTest
 			DotNetMethod methodEConstructor = typeE.Methods[0];
 			Assert.AreEqual("Test.DoubleGenericTypeE<T,U>.DoubleGenericTypeE<T,U>", methodEConstructor.Name.FullName);
 			Assert.AreEqual(0, methodEConstructor.CommentCount);
-			Assert.AreEqual(true, methodEConstructor.IsConstructor);
-			Assert.AreEqual(false, methodEConstructor.IsOperator);
+			Assert.AreEqual(true, methodEConstructor is DotNetMethodConstructor);
+			Assert.AreEqual(false, methodEConstructor is DotNetMethodOperator);
 			Assert.AreEqual(2, methodEConstructor.Parameters.Count);
 			Assert.AreEqual("U", methodEConstructor.Parameters[0].FullName);
 			Assert.AreEqual("T", methodEConstructor.Parameters[1].FullName);
@@ -124,8 +124,8 @@ namespace DataFilesTest
 			DotNetMethod methodEA = typeE.Methods[1];
 			Assert.AreEqual("Test.DoubleGenericTypeE<T,U>.MethodEA<A>", methodEA.Name.FullName);
 			Assert.AreEqual(0, methodEA.CommentCount);
-			Assert.AreEqual(false, methodEA.IsConstructor);
-			Assert.AreEqual(false, methodEA.IsOperator);
+			Assert.AreEqual(false, methodEA is DotNetMethodConstructor);
+			Assert.AreEqual(false, methodEA is DotNetMethodOperator);
 			Assert.AreEqual(3, methodEA.Parameters.Count);
 			Assert.AreEqual("System.String", methodEA.Parameters[0].FullName);
 			Assert.AreEqual("A", methodEA.Parameters[1].FullName);
@@ -134,8 +134,8 @@ namespace DataFilesTest
 			DotNetMethod methodEB = typeE.Methods[2];
 			Assert.AreEqual("Test.DoubleGenericTypeE<T,U>.MethodEB<A>", methodEB.Name.FullName);
 			Assert.AreEqual(0, methodEB.CommentCount);
-			Assert.AreEqual(false, methodEB.IsConstructor);
-			Assert.AreEqual(false, methodEB.IsOperator);
+			Assert.AreEqual(false, methodEB is DotNetMethodConstructor);
+			Assert.AreEqual(false, methodEB is DotNetMethodOperator);
 			Assert.AreEqual(1, methodEB.Parameters.Count);
 			Assert.AreEqual("System.Collections.Generic.List<Test.SingleGenericTypeD<T>>", methodEB.Parameters[0].FullName);
 		}

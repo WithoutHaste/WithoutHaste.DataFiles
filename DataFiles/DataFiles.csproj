@@ -65,7 +65,9 @@
     <Compile Include="DotNet\DotNetCommentRow.cs" />
     <Compile Include="DotNet\DotNetCommentTypeParameter.cs" />
     <Compile Include="DotNet\DotNetCommentTypeParameterLink.cs" />
+    <Compile Include="DotNet\DotNetMethodConstructor.cs" />
     <Compile Include="DotNet\DotNetMethodGenericParameter.cs" />
+    <Compile Include="DotNet\DotNetMethodOperator.cs" />
     <Compile Include="DotNet\DotNetQualifiedMethodName.cs" />
     <Compile Include="DotNet\DotNetQualifiedClassName.cs" />
     <Compile Include="DotNet\IDotNetCommentLink.cs" />
