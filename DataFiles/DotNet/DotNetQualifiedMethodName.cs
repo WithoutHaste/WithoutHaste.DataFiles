@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -37,12 +38,20 @@ namespace WithoutHaste.DataFiles.DotNet
 			get {
 				if(genericTypeCount == 0)
 					return localName;
-				return String.Format("{0}<{1}>", localName, String.Join(",", GenericTypeNames.Take(genericTypeCount).ToArray()));
+				if(genericTypeAliases != null)
+					return String.Format("{0}<{1}>", localName, String.Join(",", genericTypeAliases));
+				else
+					return String.Format("{0}<{1}>", localName, String.Join(",", GenericTypeNames.Take(genericTypeCount).ToArray()));
 			}
 		}
 
 		/// <summary>The number of generic-types required by the method declaration.</summary>
 		protected int genericTypeCount = 0;
+
+		/// <summary>Specific generic type aliases for this method. If null, the shared <see cref="GenericTypeNames"/> will be used.</summary>
+		protected string[] genericTypeAliases;
+
+		#region Constructors
 
 		/// <summary>Empty constructor</summary>
 		public DotNetQualifiedMethodName() : base()
@@ -59,6 +68,26 @@ namespace WithoutHaste.DataFiles.DotNet
 		public DotNetQualifiedMethodName(string localName, DotNetQualifiedName fullNamespace, int genericTypeCount = 0) : base(localName, fullNamespace)
 		{
 			this.genericTypeCount = genericTypeCount;
+		}
+
+		#endregion
+
+		/// <summary>
+		/// Load additional documentation information from the assembly itself.
+		/// </summary>
+		public void AddAssemblyInfo(MethodInfo methodInfo)
+		{
+			string fullName = methodInfo.ToString();
+			if(fullName.Contains("["))
+			{
+				string aliases = fullName.Substring(fullName.IndexOf("[") + 1);
+				aliases = aliases.Substring(0, aliases.IndexOf("]"));
+				this.genericTypeAliases = aliases.Split(',');
+			}
+			if(methodInfo.DeclaringType != null && FullNamespace != null && FullNamespace is DotNetQualifiedClassName)
+			{
+				(FullNamespace as DotNetQualifiedClassName).AddAssemblyInfo(methodInfo.DeclaringType.GetTypeInfo());
+			}
 		}
 	}
 }

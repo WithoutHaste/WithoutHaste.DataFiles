@@ -12,8 +12,9 @@ namespace WithoutHaste.DataFiles.DotNet
 	public class DotNetMethodOperator : DotNetMethod
 	{
 		/// <summary></summary>
-		public DotNetMethodOperator(DotNetQualifiedName name, List<DotNetBaseParameter> parameters) : base(name, parameters)
+		public DotNetMethodOperator(DotNetQualifiedName name, List<DotNetParameterBase> parameters) : base(name, parameters)
 		{
+			Category = MethodCategory.Normal;
 		}
 	}
 }

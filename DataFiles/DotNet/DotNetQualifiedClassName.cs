@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,12 +36,20 @@ namespace WithoutHaste.DataFiles.DotNet
 			get {
 				if(genericTypeCount == 0)
 					return localName;
-				return String.Format("{0}<{1}>", localName, String.Join(",", GenericTypeNames.Take(genericTypeCount).ToArray()));
+				if(genericTypeAliases != null)
+					return String.Format("{0}<{1}>", localName, String.Join(",", genericTypeAliases));
+				else
+					return String.Format("{0}<{1}>", localName, String.Join(",", GenericTypeNames.Take(genericTypeCount).ToArray()));
 			}
 		}
 
 		/// <summary>The number of generic-types required by the class declaration.</summary>
 		protected int genericTypeCount = 0;
+
+		/// <summary>Specific generic type aliases for this type. If null, the shared <see cref="GenericTypeNames"/> will be used.</summary>
+		protected string[] genericTypeAliases;
+
+		#region Constructors
 
 		/// <summary>Empty constructor</summary>
 		public DotNetQualifiedClassName() : base()
@@ -58,5 +67,43 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			this.genericTypeCount = genericTypeCount;
 		}
+
+		#endregion
+		
+		/// <summary>
+		/// Load additional documentation information from the assembly itself.
+		/// </summary>
+		public void AddAssemblyInfo(TypeInfo typeInfo)
+		{
+			genericTypeAliases = typeInfo.GenericTypeParameters.Select(p => p.Name).ToArray();
+			if(typeInfo.DeclaringType != null && isNestedClass())
+			{
+				(FullNamespace as DotNetQualifiedClassName).AddAssemblyInfo(typeInfo.DeclaringType.GetTypeInfo());
+			}
+		}
+
+		private bool isNestedClass()
+		{
+			return (FullNamespace != null && FullNamespace is DotNetQualifiedClassName);
+		}
+
+		/// See <see cref="DotNetQualifiedName.SetMisplacedGenericParameters(List{DotNetParameterBase})"/>
+		public override void SetMisplacedGenericParameters(List<DotNetParameterBase> misplacedGenericParameters)
+		{
+			//todo: reveals problem in class design
+			//this should only be called on something that accepts full data types, rather than generic type aliases
+			//something concrete
+			int outerIndex = misplacedGenericParameters.Count - 1;
+			if(genericTypeCount > 0)
+			{
+				int keep = Math.Min(misplacedGenericParameters.Count, genericTypeCount);
+				genericTypeAliases = misplacedGenericParameters.Skip(misplacedGenericParameters.Count - keep).Take(keep).Select(x => x.FullTypeName).ToArray();
+				outerIndex -= keep;
+			}
+			if(outerIndex < 0 || FullNamespace == null)
+				return;
+			FullNamespace.SetMisplacedGenericParameters(misplacedGenericParameters.Take(outerIndex + 1).ToList());
+		}
+
 	}
 }

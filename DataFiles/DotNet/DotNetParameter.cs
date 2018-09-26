@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,16 +10,16 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <summary>
 	/// Represents a normal-type parameter in a method signature.
 	/// </summary>
-	public class DotNetParameter : DotNetBaseParameter
+	public class DotNetParameter : DotNetParameterBase
 	{
 		/// <summary>Fully qualified data type name object.</summary>
 		public DotNetQualifiedName TypeName { get; protected set; }
 
 		/// <summary>Fully qualified data type name.</summary>
-		public override string FullName { get { return TypeName?.FullName; } }
+		public override string FullTypeName { get { return TypeName?.FullName; } }
 
 		/// <summary>Local data type name.</summary>
-		public override string LocalName { get { return TypeName?.LocalName; } }
+		public override string LocalTypeName { get { return TypeName?.LocalName; } }
 
 		#region Constructors
 
@@ -36,5 +37,6 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		#endregion
+
 	}
 }

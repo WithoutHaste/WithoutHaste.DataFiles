@@ -13,7 +13,7 @@ namespace WithoutHaste.DataFiles.DotNet
 	public class DotNetCommentMethodLink : DotNetCommentQualifiedLink
 	{
 		/// <summary></summary>
-		public List<DotNetBaseParameter> Parameters = new List<DotNetBaseParameter>();
+		public List<DotNetParameterBase> Parameters = new List<DotNetParameterBase>();
 
 		/// <summary>Fully qualified method name with parameters.</summary>
 		/// <example>Namespace.Type.Method()</example>
@@ -21,14 +21,14 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <example><![CDATA[Namespace.Type.Method(System.Collections.Generic.List<int>)]]></example>
 		public string FullSignature {
 			get {
-				return String.Format("{0}({1})", FullName, String.Join(",",Parameters.Select(p => p.FullName).ToArray()));
+				return String.Format("{0}({1})", FullName, String.Join(",",Parameters.Select(p => p.FullTypeName).ToArray()));
 			}
 		}
 
 		#region Constructors
 
 		/// <summary></summary>
-		public DotNetCommentMethodLink(DotNetQualifiedName name, List<DotNetBaseParameter> parameters) : base(name)
+		public DotNetCommentMethodLink(DotNetQualifiedName name, List<DotNetParameterBase> parameters) : base(name)
 		{
 			Parameters.AddRange(parameters);
 		}
@@ -41,7 +41,7 @@ namespace WithoutHaste.DataFiles.DotNet
 				throw new XmlFormatException("Method cref expecting parentheses around parameters. Use empty parentheses for methods with no parameters.");
 
 			DotNetQualifiedName name = new DotNetQualifiedName(cref.Substring(0, divider));
-			List<DotNetBaseParameter> parameters = DotNetMethod.ParametersFromVisualStudioXml(cref.Substring(divider));
+			List<DotNetParameterBase> parameters = DotNetMethod.ParametersFromVisualStudioXml(cref.Substring(divider));
 			return new DotNetCommentMethodLink(name, parameters);
 		}
 

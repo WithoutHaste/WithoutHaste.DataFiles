@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,7 +24,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			get {
 				if(GenericTypeParameters.Count == 0)
 					return localName;
-				return String.Format("{0}<{1}>", localName, String.Join(",", GenericTypeParameters.Select(x => x.FullName).ToArray()));
+				return String.Format("{0}<{1}>", localName, String.Join(",", GenericTypeParameters.Select(x => x.FullTypeName).ToArray()));
 			}
 		}
 
@@ -32,7 +33,7 @@ namespace WithoutHaste.DataFiles.DotNet
 
 		/// <summary>If this is a generic type, these are the specified parameter types.</summary>
 		/// <example><![CDATA[In parameter type List<System.String>, System.String is the generic-type parameter of List.]]></example>
-		public List<DotNetBaseParameter> GenericTypeParameters = new List<DotNetBaseParameter>();
+		public List<DotNetParameterBase> GenericTypeParameters = new List<DotNetParameterBase>();
 
 		#region Constructors
 
@@ -57,7 +58,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <param name="localName"></param>
 		/// <param name="genericTypeParameters">List of generic-type parameters within this type.</param>
 		/// <exception cref="ArgumentException"><paramref name="genericTypeParameters"/> cannot be null.</exception>
-		public DotNetQualifiedName(string localName, List<DotNetBaseParameter> genericTypeParameters)
+		public DotNetQualifiedName(string localName, List<DotNetParameterBase> genericTypeParameters)
 		{
 			if(genericTypeParameters == null)
 				throw new ArgumentException("GenericTypeParameters list cannot be null.", "genericTypeParameters");
@@ -69,7 +70,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <param name="genericTypeParameters">List of generic-type parameters within this type.</param>
 		/// <param name="fullNamespace"></param>
 		/// <exception cref="ArgumentException"><paramref name="genericTypeParameters"/> cannot be null.</exception>
-		public DotNetQualifiedName(string localName, List<DotNetBaseParameter> genericTypeParameters, DotNetQualifiedName fullNamespace)
+		public DotNetQualifiedName(string localName, List<DotNetParameterBase> genericTypeParameters, DotNetQualifiedName fullNamespace)
 		{
 			if(genericTypeParameters == null)
 				throw new ArgumentException("GenericTypeParameters list cannot be null.", "genericTypeParameters");
@@ -207,6 +208,33 @@ namespace WithoutHaste.DataFiles.DotNet
 			return new DotNetQualifiedName(localName, TypeNameFromVisualStudioXml(fullNamespace));
 		}
 
+		/// <summary>
+		/// Parses a System.Reflection.AssemblyInfo full name.
+		/// </summary>
+		/// <list>
+		///   <item>The escape character is '\'</item>
+		///   <item>Nested types are separated with '+' instead of '.'</item>
+		///   <item>Class declaration of generic types are shown the same as .Net XML documentation: MyType`1 for one generic type</item>
+		///   <item>When a generic type is defined: System.Collections.Generic.List`1[U], where U is the type alias from the class declaration</item>
+		/// </list>
+		public static DotNetQualifiedName FromAssemblyInfo(TypeInfo typeInfo)
+		{
+			return FromAssemblyInfo(typeInfo.FullName);
+		}
+
+		/// <summary>See <see cref="FromAssemblyInfo(TypeInfo)"/></summary>
+		public static DotNetQualifiedName FromAssemblyInfo(Type type)
+		{
+			return FromAssemblyInfo(type.FullName);
+		}
+
+		/// <summary>See <see cref="FromAssemblyInfo(TypeInfo)"/></summary>
+		public static DotNetQualifiedName FromAssemblyInfo(string typeName)
+		{
+			typeName = typeName.ReplaceUnescapedCharacters('\\', '+', '.');
+			return FromVisualStudioXml("T:" + typeName);
+		}
+
 		#endregion
 
 		/// <summary></summary>
@@ -216,6 +244,22 @@ namespace WithoutHaste.DataFiles.DotNet
 				FullNamespace = this.FullNamespace,
 				localName = name
 			};
+		}
+
+		/// <summary>Handle an oddity of Assembly documenation of generic types nested in generic types.</summary>
+		public virtual void SetMisplacedGenericParameters(List<DotNetParameterBase> misplacedGenericParameters)
+		{
+			int outerIndex = misplacedGenericParameters.Count - 1;
+			int innerIndex = GenericTypeParameters.Count - 1;
+			while(outerIndex >= 0 && innerIndex >= 0)
+			{
+				GenericTypeParameters[innerIndex] = misplacedGenericParameters[outerIndex];
+				outerIndex--;
+				innerIndex--;
+			}
+			if(outerIndex < 0 || FullNamespace == null)
+				return;
+			FullNamespace.SetMisplacedGenericParameters(misplacedGenericParameters.Take(outerIndex + 1).ToList());
 		}
 
 		/// <summary>

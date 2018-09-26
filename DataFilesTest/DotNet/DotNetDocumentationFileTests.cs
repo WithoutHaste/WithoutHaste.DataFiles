@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -109,8 +110,8 @@ namespace DataFilesTest
 			Assert.AreEqual(false, methodDAddition is DotNetMethodConstructor);
 			Assert.AreEqual(true, methodDAddition is DotNetMethodOperator);
 			Assert.AreEqual(2, methodDAddition.Parameters.Count);
-			Assert.AreEqual("T", methodDAddition.Parameters[0].FullName);
-			Assert.AreEqual("Test.SingleGenericTypeD<T>", methodDAddition.Parameters[1].FullName);
+			Assert.AreEqual("T", methodDAddition.Parameters[0].FullTypeName);
+			Assert.AreEqual("Test.SingleGenericTypeD<T>", methodDAddition.Parameters[1].FullTypeName);
 
 			DotNetMethod methodEConstructor = typeE.Methods[0];
 			Assert.AreEqual("Test.DoubleGenericTypeE<T,U>.DoubleGenericTypeE<T,U>", methodEConstructor.Name.FullName);
@@ -118,8 +119,8 @@ namespace DataFilesTest
 			Assert.AreEqual(true, methodEConstructor is DotNetMethodConstructor);
 			Assert.AreEqual(false, methodEConstructor is DotNetMethodOperator);
 			Assert.AreEqual(2, methodEConstructor.Parameters.Count);
-			Assert.AreEqual("U", methodEConstructor.Parameters[0].FullName);
-			Assert.AreEqual("T", methodEConstructor.Parameters[1].FullName);
+			Assert.AreEqual("U", methodEConstructor.Parameters[0].FullTypeName);
+			Assert.AreEqual("T", methodEConstructor.Parameters[1].FullTypeName);
 
 			DotNetMethod methodEA = typeE.Methods[1];
 			Assert.AreEqual("Test.DoubleGenericTypeE<T,U>.MethodEA<A>", methodEA.Name.FullName);
@@ -127,9 +128,9 @@ namespace DataFilesTest
 			Assert.AreEqual(false, methodEA is DotNetMethodConstructor);
 			Assert.AreEqual(false, methodEA is DotNetMethodOperator);
 			Assert.AreEqual(3, methodEA.Parameters.Count);
-			Assert.AreEqual("System.String", methodEA.Parameters[0].FullName);
-			Assert.AreEqual("A", methodEA.Parameters[1].FullName);
-			Assert.AreEqual("U", methodEA.Parameters[2].FullName);
+			Assert.AreEqual("System.String", methodEA.Parameters[0].FullTypeName);
+			Assert.AreEqual("A", methodEA.Parameters[1].FullTypeName);
+			Assert.AreEqual("U", methodEA.Parameters[2].FullTypeName);
 
 			DotNetMethod methodEB = typeE.Methods[2];
 			Assert.AreEqual("Test.DoubleGenericTypeE<T,U>.MethodEB<A>", methodEB.Name.FullName);
@@ -137,7 +138,7 @@ namespace DataFilesTest
 			Assert.AreEqual(false, methodEB is DotNetMethodConstructor);
 			Assert.AreEqual(false, methodEB is DotNetMethodOperator);
 			Assert.AreEqual(1, methodEB.Parameters.Count);
-			Assert.AreEqual("System.Collections.Generic.List<Test.SingleGenericTypeD<T>>", methodEB.Parameters[0].FullName);
+			Assert.AreEqual("System.Collections.Generic.List<Test.SingleGenericTypeD<T>>", methodEB.Parameters[0].FullTypeName);
 		}
 
 		[TestMethod]
@@ -157,5 +158,17 @@ namespace DataFilesTest
 			DotNetMethod methodBGenericMethod = typeB.Methods[2];
 			Assert.AreEqual("A.B.GenericMethod<AXXX,BX,CX,A2,B2,C2,A3,B3,C3,A4,B4,C4>", methodBGenericMethod.Name.FullName);
 		}
+
+		[TestMethod]
+		public void DotNetDocumentationFile_AddAssemblyInfo()
+		{
+			//DotNetDocumentationFile file = new DotNetDocumentationFile();
+			//file.AddAssemblyInfo("E:/Github/EarlyDocs/Demo/bin/Debug/Demo.dll");
+
+			//arrange
+			//act
+			//assert
+		}
+
 	}
 }

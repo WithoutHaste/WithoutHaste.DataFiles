@@ -77,7 +77,11 @@
     <Compile Include="DotNet\DotNetCommentTextTests.cs" />
     <Compile Include="DotNet\DotNetCommentTypeParameterTests.cs" />
     <Compile Include="DotNet\DotNetCommentTypeParameterLinkTests.cs" />
+    <Compile Include="DotNet\DotNetQualifiedClassNameTests.cs" />
+    <Compile Include="DotNet\DotNetQualifiedMethodNameTests.cs" />
+    <Compile Include="DotNet\DotNetMethodTests.cs" />
     <Compile Include="DotNet\DotNetQualifiedNameTests.cs" />
+    <Compile Include="DotNet\UtilitiesTests.cs" />
     <Compile Include="ExcelPackageHelperTests.cs" />
     <Compile Include="InfoTests.cs" />
     <Compile Include="Markdown\MarkdownListTests.cs" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -17,6 +18,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public DotNetEvent(DotNetQualifiedName name) : base(name)
 		{
+			Category = FieldCategory.Normal;
 		}
 
 		/// <summary>
@@ -30,5 +32,13 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		#endregion
+
+		/// <summary>
+		/// Load additional documentation information from the assembly itself.
+		/// </summary>
+		public void AddAssemblyInfo(EventInfo eventInfo)
+		{
+			DataTypeName = DotNetParameterBase.FromAssemblyInfo(eventInfo.EventHandlerType);
+		}
 	}
 }

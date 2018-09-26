@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
@@ -34,6 +35,13 @@ namespace WithoutHaste.DataFiles.DotNet
 		#region Constructors and Init
 
 		/// <summary>
+		/// Empty constructor.
+		/// </summary>
+		public DotNetDocumentationFile()
+		{
+		}
+
+		/// <summary>
 		/// Loads .Net XML documentation from file.
 		/// </summary>
 		/// <param name="filename">Full path, filename, and extension.</param>
@@ -62,6 +70,18 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		#endregion
+
+		/// <summary>
+		/// Load additional documentation information from the assembly itself.
+		/// </summary>
+		public void AddAssemblyInfo(string assemblyFilename)
+		{
+			Assembly assembly = Assembly.LoadFrom(assemblyFilename);
+			foreach(TypeInfo typeInfo in assembly.DefinedTypes)
+			{
+				AddAssemblyInfoToType(typeInfo);
+			}
+		}
 
 		private void LoadAssemblyInfo(XDocument document)
 		{
@@ -165,6 +185,16 @@ namespace WithoutHaste.DataFiles.DotNet
 				}
 			}
 			throw new XmlFormatException("Member has no parent type: " + member.Name.FullName);
+		}
+
+		private void AddAssemblyInfoToType(TypeInfo typeInfo)
+		{
+			DotNetQualifiedName qualifiedName = DotNetQualifiedName.FromAssemblyInfo(typeInfo);
+			DotNetType type = Types.FirstOrDefault(x => x.Owns(qualifiedName));
+			if(type == null)
+				return;
+			type.AddAssemblyInfo(typeInfo, qualifiedName);
+			//no error if type is not found
 		}
 
 		/// <summary>

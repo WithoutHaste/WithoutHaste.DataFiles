@@ -1,19 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
+	/// <summary></summary>
+	public enum TypeCategory {
+		/// <summary>Not enough information is available to determine type category.</summary>
+		Unknown = 0,
+		/// <summary>No special category.</summary>
+		Normal,
+		/// <summary>Abstract type.</summary>
+		Abstract,
+		/// <summary>Static type.</summary>
+		Static,
+		/// <summary>Interface.</summary>
+		Interface,
+		/// <summary>Enumeration.</summary>
+		Enum,
+		/// <summary>Exception.</summary>
+		Exception
+	};
+
 	/// <summary>
 	/// Represents a data type.
 	/// </summary>
 	public class DotNetType : DotNetMember
 	{
 		/// <summary></summary>
-		public bool IsException { get; protected set; }
+		public TypeCategory Category { get; protected set; }
 
 		/// <summary>The number of types nested within this type, including sub-nested types and enums.</summary>
 		public int NestedTypeCount {
@@ -59,7 +78,6 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public DotNetType(DotNetQualifiedName name) : base(name)
 		{
-			IsException = name.LocalName.EndsWith("Exception"); //todo: can I check inheritance instead?
 		}
 
 		/// <summary>
@@ -79,11 +97,19 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// </summary>
 		public bool Owns(DotNetMember member)
 		{
-			if(Name.FullName == member.Name.FullNamespace)
+			return Owns(member.Name);
+		}
+
+		/// <summary>
+		/// Returns true if this qualified name is defined within this type or any of its nested types.
+		/// </summary>
+		public bool Owns(DotNetQualifiedName name)
+		{
+			if(Name.FullName == name.FullNamespace)
 				return true;
 			foreach(DotNetType nestedType in NestedTypes)
 			{
-				if(nestedType.Owns(member))
+				if(nestedType.Owns(name))
 					return true;
 			}
 			return false;
@@ -114,6 +140,95 @@ namespace WithoutHaste.DataFiles.DotNet
 				}
 			}
 			throw new XmlFormatException("Member has no parent type: " + member.Name.FullName);
+		}
+
+		/// <summary>
+		/// Load additional documentation information from the assembly itself.
+		/// </summary>
+		public void AddAssemblyInfo(TypeInfo typeInfo, DotNetQualifiedName name)
+		{
+			if(Name.FullName == name.FullNamespace)
+			{
+				AddAssemblyInfo(typeInfo);
+				return;
+			}
+			foreach(DotNetType nestedType in NestedTypes)
+			{
+				if(nestedType.Owns(name))
+				{
+					nestedType.AddAssemblyInfo(typeInfo, name);
+					return;
+				}
+			}
+			//no error if type is not found
+		}
+
+		private void AddAssemblyInfo(TypeInfo typeInfo)
+		{
+			if(typeInfo.Attributes.IsAbstract())
+				Category = TypeCategory.Abstract;
+			if(typeInfo.Attributes.IsStatic())
+				Category = TypeCategory.Static;
+			if(typeInfo.Attributes.IsInterface())
+				Category = TypeCategory.Interface;
+			if(typeInfo.IsEnum())
+				Category = TypeCategory.Enum;
+			if(typeInfo.IsException())
+				Category = TypeCategory.Exception;
+
+			if(Category == TypeCategory.Unknown)
+				Category = TypeCategory.Normal;
+			
+			foreach(FieldInfo fieldInfo in typeInfo.DeclaredFields)
+			{
+				DotNetField field = Fields.FirstOrDefault(f => fieldInfo.Name == f.Name);
+				if(field == null)
+					continue;
+				field.AddAssemblyInfo(fieldInfo);
+			}
+			foreach(PropertyInfo propertyInfo in typeInfo.DeclaredProperties)
+			{
+				DotNetProperty property = Properties.FirstOrDefault(p => propertyInfo.Name == p.Name);
+				if(property == null)
+					continue;
+				property.AddAssemblyInfo(propertyInfo);
+			}
+			foreach(MethodInfo methodInfo in typeInfo.DeclaredMethods)
+			{
+				DotNetMethod method = Methods.FirstOrDefault(m => m.MatchesSignature(methodInfo));
+				if(method == null) continue;
+
+				if(methodInfo.Attributes.IsPrivate())
+				{
+					Methods.Remove(method);
+					continue;
+				}
+
+				method.AddAssemblyInfo(methodInfo);
+			}
+			foreach(ConstructorInfo constructorInfo in typeInfo.DeclaredConstructors)
+			{
+				DotNetMethodConstructor method = Methods.OfType<DotNetMethodConstructor>().Cast<DotNetMethodConstructor>().FirstOrDefault(m => m.MatchesArguments(constructorInfo.GetParameters()));
+				if(method == null)
+					continue;
+				method.AddAssemblyInfo(constructorInfo);
+			}
+			foreach(EventInfo eventInfo in typeInfo.DeclaredEvents)
+			{
+				DotNetEvent e = Events.FirstOrDefault(m => m.Name == eventInfo.Name);
+				if(e == null)
+					continue;
+				e.AddAssemblyInfo(eventInfo);
+			}
+
+			foreach(TypeInfo nestedTypeInfo in typeInfo.DeclaredNestedTypes)
+			{
+				DotNetQualifiedName qualifiedName = DotNetQualifiedName.FromAssemblyInfo(nestedTypeInfo);
+				DotNetType nestedType = NestedTypes.FirstOrDefault(x => x.Owns(qualifiedName));
+				if(nestedType == null)
+					continue;
+				nestedType.AddAssemblyInfo(typeInfo, qualifiedName);
+			}
 		}
 
 		/// <summary>

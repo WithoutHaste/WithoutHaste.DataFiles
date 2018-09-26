@@ -11,13 +11,13 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// Represents a class-generic-type parameter in a method signature.
 	/// </summary>
 	/// <example><![CDATA[Namespace.MyType<T,U>.MyMethod(T) => Namespace.MyType`2.MyMethod(`0)]]></example>
-	public class DotNetParameterClassGeneric : DotNetBaseParameter
+	public class DotNetParameterClassGeneric : DotNetParameterGeneric
 	{
 		/// <inheritdoc/>
-		public override string FullName { get { return LocalName; } }
+		public override string FullTypeName { get { return LocalTypeName; } }
 
 		/// <inheritdoc/>
-		public override string LocalName { get { return DotNetQualifiedClassName.GenericTypeNames[genericTypeIndex]; } }
+		public override string LocalTypeName { get { return DotNetQualifiedClassName.GenericTypeNames[genericTypeIndex]; } }
 
 		/// <summary>0-based index in class's generic type list corresponding to this parameter.</summary>
 		protected int genericTypeIndex = 0;
@@ -25,8 +25,14 @@ namespace WithoutHaste.DataFiles.DotNet
 		#region Constructors
 
 		/// <summary></summary>
+		public DotNetParameterClassGeneric(int genericTypeIndex) : this(genericTypeIndex, null)
+		{
+		}
+
+		/// <summary></summary>
 		/// <param name="genericTypeIndex">0-based index in class's generic type list corresponding to this parameter.</param>
-		public DotNetParameterClassGeneric(int genericTypeIndex)
+		/// <param name="alias">Assembly-defined alias of generic type.</param>
+		public DotNetParameterClassGeneric(int genericTypeIndex, string alias) : base(alias)
 		{
 			if(genericTypeIndex < 0 || genericTypeIndex >= DotNetQualifiedClassName.GenericTypeNames.Length)
 				throw new ArgumentException(String.Format("GenericTypeIndex is invalid. Expects range [0,{0}]. Index: {1}.", DotNetQualifiedClassName.GenericTypeNames.Length - 1, genericTypeIndex), "genericTypeIndex");

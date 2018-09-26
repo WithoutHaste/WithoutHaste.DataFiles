@@ -2,18 +2,36 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
+	/// <summary></summary>
+	public enum MethodCategory
+	{
+		/// <summary>Not enough information is available to determine method category.</summary>
+		Unknown = 0,
+		/// <summary>No special category.</summary>
+		Normal,
+		/// <summary>Static method.</summary>
+		Static
+	};
+
 	/// <summary>
 	/// Represents a method.
 	/// </summary>
 	public class DotNetMethod : DotNetMember
 	{
 		/// <summary></summary>
-		public List<DotNetBaseParameter> Parameters = new List<DotNetBaseParameter>();
+		public MethodCategory Category { get; protected set; }
+
+		/// <summary>Fully qualified name of return data type, if known. Null if not known.</summary>
+		public DotNetParameterBase ReturnTypeName { get; protected set; }
+
+		/// <summary></summary>
+		public List<DotNetParameterBase> Parameters = new List<DotNetParameterBase>();
 
 		#region Constructors
 
@@ -23,7 +41,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>Normal constructor</summary>
-		public DotNetMethod(DotNetQualifiedName name, List<DotNetBaseParameter> parameters) : base(name)
+		public DotNetMethod(DotNetQualifiedName name, List<DotNetParameterBase> parameters) : base(name)
 		{
 			this.Parameters.AddRange(parameters);
 		}
@@ -69,7 +87,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 
 			//parse parameters
-			List<DotNetBaseParameter> qualifiedParameters = ParametersFromVisualStudioXml(parameters);
+			List<DotNetParameterBase> qualifiedParameters = ParametersFromVisualStudioXml(parameters);
 
 			if(isConstructor)
 				return new DotNetMethodConstructor(qualifiedName, qualifiedParameters);
@@ -89,9 +107,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Expects: empty string
 		/// Expects: "(type, type, type)"
 		/// </param>
-		public static List<DotNetBaseParameter> ParametersFromVisualStudioXml(string text)
+		public static List<DotNetParameterBase> ParametersFromVisualStudioXml(string text)
 		{
-			List<DotNetBaseParameter> parameters = new List<DotNetBaseParameter>();
+			List<DotNetParameterBase> parameters = new List<DotNetParameterBase>();
 			if(!string.IsNullOrEmpty(text))
 			{
 				if(text.StartsWith("{") && text.EndsWith("}"))
@@ -105,11 +123,65 @@ namespace WithoutHaste.DataFiles.DotNet
 					string f = fields[i];
 					if(!String.IsNullOrEmpty(f))
 					{
-						parameters.Add(DotNetBaseParameter.FromVisualStudioXml(f));
+						parameters.Add(DotNetParameterBase.FromVisualStudioXml(f));
 					}
 				}
 			}
 			return parameters;
+		}
+
+		/// <summary>
+		/// Returns true if this method's signature matches the reflected MethodInfo.
+		/// </summary>
+		public bool MatchesSignature(MethodInfo methodInfo)
+		{
+			if(methodInfo.Name != this.Name.LocalName)
+				return false;
+			return MatchesArguments(methodInfo.GetParameters());
+		}
+
+		/// <summary>
+		/// Returns true if this method's parameter list matches the reflected ParameterInfo.
+		/// </summary>
+		public bool MatchesArguments(ParameterInfo[] otherParameters)
+		{
+			if(Parameters.Count != otherParameters.Length)
+				return false;
+
+			for(int i = 0; i < Parameters.Count; i++)
+			{
+				string otherName = DotNetParameterBase.FromAssemblyInfo(otherParameters[i].ParameterType).FullTypeName;
+				//todo: something about parameters that end with @ vs &
+				if(Parameters[i].FullTypeName != otherName)
+					return false;
+			}
+			return true;
+		}
+
+		/// <summary>
+		/// Load additional documentation information from the assembly itself.
+		/// </summary>
+		public virtual void AddAssemblyInfo(MethodInfo methodInfo)
+		{
+			if(methodInfo.Attributes.IsStatic())
+				Category = MethodCategory.Static;
+			else
+				Category = MethodCategory.Normal;
+
+			if(methodInfo.ReturnType != null)
+				ReturnTypeName = DotNetParameterBase.FromAssemblyInfo(methodInfo.ReturnType);
+
+			int index = 0;
+			foreach(ParameterInfo parameterInfo in methodInfo.GetParameters())
+			{
+				Parameters[index].AddAssemblyInfo(parameterInfo);
+				index++;
+			}
+
+			if(Name != null && Name is DotNetQualifiedMethodName)
+			{
+				(Name as DotNetQualifiedMethodName).AddAssemblyInfo(methodInfo);
+			}
 		}
 	}
 }
