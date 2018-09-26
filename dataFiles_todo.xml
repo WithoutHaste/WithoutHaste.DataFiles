@@ -38,19 +38,20 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">21</Data>
+          <Data ss:Type="Number">31</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">verify EPPlus license - can I use in it free software?</Data>
+          <Data ss:Type="String">documentation:
+see https://www.nuget.org/packages/EPPlus/ for example (bottom of page) of how to list dependencies</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">Task</Data>
+          <Data ss:Type="String">Documentation</Data>
         </Cell>
         <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2018-09-22T00:00:00.000</Data>
+          <Data ss:Type="DateTime">2018-09-26T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -302,6 +303,37 @@ i think the same one as have ReturnType as a Parameter</Data>
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">21</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">verify EPPlus license - can I use in it free software?
+
+https://www.nuget.org/packages/EPPlus/
+links to license GNU Lesser General Public License  https://www.gnu.org/licenses/lgpl-3.0.en.html
+
+description from Github:
+Permissions of this copyleft license are conditioned on making available complete source code of licensed works and modifications under the same license or the GNU GPLv3. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. 
+
+THIS PART
+However, a larger work using the licensed work through interfaces provided by the licensed work may be distributed under different terms and without source code for the larger work.
+
+so I should be ok</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-22T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-26T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -657,7 +689,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">29</Data>
+          <Data ss:Type="Number">31</Data>
         </Cell>
       </Row>
       <Row>
@@ -689,7 +721,8 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">Inactive</Data>
+          <Data ss:Type="String">
+          </Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">
@@ -713,7 +746,8 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">Inactive</Data>
+          <Data ss:Type="String">
+          </Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">
@@ -737,7 +771,8 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">Inactive</Data>
+          <Data ss:Type="String">
+          </Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">
@@ -761,7 +796,8 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">Inactive</Data>
+          <Data ss:Type="String">
+          </Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">

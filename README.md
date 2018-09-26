@@ -12,7 +12,7 @@ This library is under active development. Report bugs and request features on Gi
 
 ### WithoutHaste.DataFiles.Excel
 
-* OfficeOpenXml from EPPlus NuGet package
+* OfficeOpenXml from [EPPlus](https://www.nuget.org/packages/EPPlus/) NuGet package
 
 ### WithoutHaste.DataFiles.DotNet
 
@@ -39,7 +39,7 @@ Uses [Semantic Versioning 2.0.0](https://semver.org/).
 
 [Initial Release - v1.0.0](https://github.com/WithoutHaste/WithoutHaste.DataFiles/releases/tag/v1.0.0)
 - Support for creating Microsoft Excel 2003 XML files.
-- Support for creating XLSX files with the EPPlus OfficeOpenXml library.
+- Support for creating XLSX files with the [EPPlus](https://www.nuget.org/packages/EPPlus/) OfficeOpenXml library.
 - Support for creating Markdown files.
-- Support for parsing Visual Studio XML documentation files.
-- Uses library EPPlus version 4.5.2.1
+- Support for parsing Visual Studio XML documentation files and assembly information.
+- Uses library [EPPlus](https://www.nuget.org/packages/EPPlus/) version 4.5.2.1
