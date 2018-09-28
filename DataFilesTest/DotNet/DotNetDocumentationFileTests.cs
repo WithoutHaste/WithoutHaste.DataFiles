@@ -105,7 +105,7 @@ namespace DataFilesTest
 			Assert.AreEqual(0, methodCConstructor.Parameters.Count);
 
 			DotNetMethod methodDAddition = typeD.Methods[0];
-			Assert.AreEqual("Test.SingleGenericTypeD<T>.Addition", methodDAddition.Name.FullName);
+			Assert.AreEqual("Test.SingleGenericTypeD<T>.op_Addition", methodDAddition.Name.FullName);
 			Assert.AreEqual(0, methodDAddition.CommentCount);
 			Assert.AreEqual(false, methodDAddition is DotNetMethodConstructor);
 			Assert.AreEqual(true, methodDAddition is DotNetMethodOperator);

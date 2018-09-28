@@ -47,6 +47,18 @@ namespace DataFilesTest
 		}
 
 		[TestMethod]
+		public void DotNetMethod_FromXml_GenericParameter()
+		{
+			//arrange
+			XElement xmlElement = XElement.Parse("<member name='M:Demo.DoubleGenericClass`2.op_Addition(`0,Demo.DoubleGenericClass{`0,`1})' />");
+			string expectedFullName = "Demo.DoubleGenericClass<T,U>.op_Addition";
+			//act
+			DotNetMethod result = DotNetMethod.FromVisualStudioXml(xmlElement);
+			//assert
+			Assert.AreEqual(expectedFullName, result.Name.FullName);
+		}
+
+		[TestMethod]
 		public void DotNetMethod_FromAssembly_ReturnVoid()
 		{
 			//arrange

@@ -4,52 +4,70 @@
         <name>WithoutHaste.DataFiles</name>
     </assembly>
     <members>
-        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetBaseParameter">
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric">
             <summary>
-            Represents a parameter in a method signature.
+            Represents a generic-type parameter that is in reference to a class's declared generic types.
             </summary>
+            <example>
+            The "T" and "U" in the constructor parameters.
+            <![CDATA[
+            class MyGeneric<T,U>
+            {
+                public MyGeneric(T t, U u) { }
+            }
+            ]]>
+            </example>
         </member>
-        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetBaseParameter.FullName">
-            <summary>Fully qualified data type name.</summary>
-        </member>
-        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetBaseParameter.LocalName">
-            <summary>Local data type name.</summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetBaseParameter.FromVisualStudioXml(System.String)">
-            <summary>
-            Parses a .Net XML documentation parameter type name.
-            </summary>
-        </member>
-        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetParameterClassGeneric">
-            <summary>
-            Represents a class-generic-type parameter in a method signature.
-            </summary>
-            <example><![CDATA[Namespace.MyType<T,U>.MyMethod(T) => Namespace.MyType`2.MyMethod(`0)]]></example>
-        </member>
-        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameterClassGeneric.FullName">
-            <inheritdoc/>
-        </member>
-        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameterClassGeneric.LocalName">
-            <inheritdoc/>
-        </member>
-        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetParameterClassGeneric.genericTypeIndex">
-            <summary>0-based index in class's generic type list corresponding to this parameter.</summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameterClassGeneric.#ctor(System.Int32)">
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric.LocalName">
             <summary></summary>
-            <param name="genericTypeIndex">0-based index in class's generic type list corresponding to this parameter.</param>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameterClassGeneric.FromVisualStudioXml(System.String)">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric.#ctor(System.Int32,System.String)">
+            <param name="genericTypeIndex">
+              0-based index of type in class declaration type parameter list.
+              <example><![CDATA[Index 0 refers to "T" in "class MyGeneric<T,U> { }"]]></example>
+            </param>
+            <param name="alias">Alias of generic-type within assembly. Null if not known.</param>
+            <exception cref="T:System.ArgumentException">GenericTypeIndex cannot be less than 0.</exception>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric.FromVisualStudioXml(System.String)">
             <summary>
             Parses a .Net XML documentation class-generic-type parameter.
             </summary>
+            <example><![CDATA[Namespace.MyType<T>{ } is formatted as Namespace.MyType`1]]></example>
             <exception cref="T:WithoutHaste.DataFiles.XmlFormatException"><paramref name="name"/> is not in expected format: `Index.</exception>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameterClassGeneric.HasExpectedVisualStudioXmlFormat(System.String)">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric.HasExpectedVisualStudioXmlFormat(System.String)">
             <summary>
             Check if a string is properly formatted as a parameter referencing a class-generic-type.
             </summary>
             <example>`0</example>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric">
+            <summary>
+            Represents a generic-type parameter that is not in a class declaration or a method declaration.
+            </summary>
+            <example><![CDATA[The "U"s in MyMethod(List<U> list, U obj).]]></example>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric.Alias">
+            <summary>
+            The generic-type alias specified in the assembly. Null if not known.
+            Whether this refers to a class-generic or method-generic is determined by the subclass.
+            </summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric.genericTypeIndex">
+            <summary>0-based index in class's generic type list corresponding to this parameter.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric.#ctor(System.Int32,System.String)">
+            <param name="genericTypeIndex">
+              0-based index of type in class or method declaration type parameter list.
+              <example><![CDATA[Index 0 refers to "T" in "class MyGeneric<T,U> { }"]]></example>
+              <example><![CDATA[Index 0 refers to "A" in "void MyMethod<A,B>() { }"]]></example>
+            </param>
+            <param name="alias">Alias of generic-type within assembly. Null if not known.</param>
+            <exception cref="T:System.ArgumentException">GenericTypeIndex cannot be less than 0.</exception>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric.SetAlias(System.String)">
+            <summary></summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentCode">
             <summary>
@@ -271,47 +289,76 @@
             Represents a method that is a constructor.
             </summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodConstructor.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetBaseParameter})">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodConstructor.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter})">
             <summary></summary>
         </member>
-        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetParameterMethodGeneric">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodConstructor.AddAssemblyInfo(System.Reflection.ConstructorInfo)">
             <summary>
-            Represents a method-generic-type parameter in a method signature.
+            Load additional documentation information from the assembly itself.
             </summary>
-            <example><![CDATA[Namespace.MyType.MyMethod<A>(A) => Namespace.MyType.MyMethod``1(``0)]]></example>
-        </member>
-        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameterMethodGeneric.FullName">
-            <inheritdoc/>
-        </member>
-        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameterMethodGeneric.LocalName">
-            <inheritdoc/>
-        </member>
-        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetParameterMethodGeneric.genericTypeIndex">
-            <summary>0-based index in method's generic type list corresponding to this parameter.</summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameterMethodGeneric.#ctor(System.Int32)">
-            <summary></summary>
-            <param name="genericTypeIndex">0-based index in method's generic type list corresponding to this parameter.</param>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameterMethodGeneric.FromVisualStudioXml(System.String)">
-            <summary>
-            Parses a .Net XML documentation method-generic-type parameter.
-            </summary>
-            <exception cref="T:WithoutHaste.DataFiles.XmlFormatException"><paramref name="name"/> is not in expected format: ``Index.</exception>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameterMethodGeneric.HasExpectedVisualStudioXmlFormat(System.String)">
-            <summary>
-            Check if a string is properly formatted as a parameter referencing a method-generic-type.
-            </summary>
-            <example>``0</example>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator">
             <summary>
             Represents a method that is an operator.
             </summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetBaseParameter})">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter})">
             <summary></summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName">
+            <summary>
+            Represents a fully qualified type name, for return types / field types / property types / parameter types.
+            </summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.LocalName">
+            <summary>Local data type name with generic type parameters (if applicable).</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.GenericTypeParameters">
+            <summary>If this is a generic type, these are the specified parameter types.</summary>
+            <example><![CDATA[In parameter type List<System.String>, System.String is the generic-type parameter of List.]]></example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.#ctor">
+            <summary>Empty constructor</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.#ctor(System.String,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName})">
+            See <see cref="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.#ctor(System.String,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName},WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)" />
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.#ctor(System.String,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName},WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <param name="localName"></param>
+            <param name="genericTypeParameters">List of generic-type parameters within this type.</param>
+            <param name="fullNamespace"></param>
+            <exception cref="T:System.ArgumentException"><paramref name="genericTypeParameters"/> cannot be null.</exception>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.FromVisualStudioXml(System.String)">
+            <summary>
+            Parses a .Net XML documentation type name.
+            Not intended for type declarations. Intended for field types, property types, parameter types, and return types.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.FromAssemblyInfo(System.Type)">
+            <summary>
+            Parses a System.Reflection.AssemblyInfo full name.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.FromAssemblyInfo(System.Type,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName})">
+            <summary>
+            Parses a System.Reflection.AssemblyInfo full name.
+            </summary>
+            <list>
+              <item>The escape character is '\'</item>
+              <item>Nested types are separated with '+' instead of '.'</item>
+              <item>Class declaration of generic types are shown the same as .Net XML documentation: MyType`1 for one generic type</item>
+              <item>When a generic type is defined: System.Collections.Generic.List`1[U], where U is the type alias from the class declaration</item>
+            </list>
+            <param name="type"></param>
+            <param name="bubbleUpParameters">Optional. When reflection gives type information about a generic type nested inside a generic type, all the generic-type-arguments are listed in the inner-most type. This is for passing that information back up the chain of types.</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.GetFullListOfLocalNames">
+            <summary>
+            Collect full list of local names used throughout documentation.
+            Includes namespaces, internal types, external types, and members.
+            Does not include generic paremeters.
+            </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName">
             <summary>
@@ -321,29 +368,18 @@
             Cannot handle methods that declare more than 12 generic types,
             such as <![CDATA[MyMethod<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13>]]>.
             </remarks>
-            <example>
-              <para>
-                How .Net xml documentation formats generic types:
-                Backtics are followed by integers, identifying generic types.
-              </para>
-              <para>
-                Double backtics (such as ``1) on a method name indicate a count of generic types for the method.
-                <example><![CDATA[MyMethod<A,B,C> is documented as MyMethod``3]]></example>
-                Anywhere else within this method's documentation that a double backtic appears, it indicates the index of the generic type in reference to the method declaration.
-                <example><![CDATA[MyMethod<A,B,C>(A,B,C) is documented as MyMethod``3(``0,``1,``2)]]></example>
-                A method that uses both its own generic types AND generic types from the class declaration will look like this:
-                <example><![CDATA[MyMethod<A,B,C>(A,B,C,T,U) is documented as MyMethod``3(``0,``1,``2,`0,`1)]]></example>
-              </para>
-            </example>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.GenericTypeNames">
             <summary>Default names that will be given to generic-method-types, in order.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.LocalName">
-            <inheritdoc/>
+            <summary>Local method name with generic type parameters (if applicable).</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.genericTypeCount">
             <summary>The number of generic-types required by the method declaration.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.genericTypeAliases">
+            <summary>Specific generic type aliases for this method. If null, the shared <see cref="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.GenericTypeNames"/> will be used.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.#ctor">
             <summary>Empty constructor</summary>
@@ -354,35 +390,31 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.#ctor(System.String,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Int32)">
             <summary></summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.AddAssemblyInfo(System.Reflection.MethodInfo)">
+            <summary>
+            Load additional documentation information from the assembly itself.
+            </summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName">
             <summary>
-            Represents a fully qualified class name.
+            Represents a fully qualified class name, for class declarations.
             </summary>
             <remarks>
             Cannot handle classes that declare more than 12 generic types,
             such as <![CDATA[MyType<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13>]]>.
             </remarks>
-            <example>
-              <para>
-                How .Net xml documentation formats generic types:
-                Backtics are followed by integers, identifying generic types.
-              </para>
-              <para>
-                Single backtics (such as `1) on a class declaration indicate a count of generic types for the class.
-                <example><![CDATA[MyGenericType<T,U,V> is documented as MyGenericType`3]]></example>
-                Anywhere else within this object's documentation that a single backtic appears, it indicates the index of the generic type in reference to the class declaration.
-                <example><![CDATA[MyGenericType(T,U,V) is documented as MyGenericType.#ctor(`0,`1,`2)]]></example>
-              </para>
-            </example>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.GenericTypeNames">
             <summary>Default names that will be given to generic-types, in order.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.LocalName">
-            <inheritdoc/>
+            <summary>Local data type name with generic type parameters (if applicable).</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.genericTypeCount">
             <summary>The number of generic-types required by the class declaration.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.genericTypeAliases">
+            <summary>Specific generic type aliases for this type. If null, the shared <see cref="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.GenericTypeNames"/> will be used.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.#ctor">
             <summary>Empty constructor</summary>
@@ -392,6 +424,51 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.#ctor(System.String,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Int32)">
             <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.AddAssemblyInfo(System.Reflection.TypeInfo)">
+            <summary>
+            Load additional documentation information from the assembly itself.
+            </summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric">
+            <summary>
+            Represents a generic-type parameter that is in reference to a method's declared generic types.
+            </summary>
+            <example>
+            The "A" and "B" in the MyMethod parameters.
+            <![CDATA[
+            class MyGeneric<T,U>
+            {
+                public MyGeneric(T t, U u) { }
+                
+                public void MyMethod<A,B>(A a, B b, T t, U u) { }
+            }
+            ]]>
+            </example>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric.LocalName">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric.#ctor(System.Int32,System.String)">
+            <param name="genericTypeIndex">
+              0-based index of type in method declaration type parameter list.
+              <example><![CDATA[Index 0 refers to "A" in "void MyMethod<A,B>() { }"]]></example>
+            </param>
+            <param name="alias">Alias of generic-type within assembly. Null if not known.</param>
+            <exception cref="T:System.ArgumentException">GenericTypeIndex cannot be less than 0.</exception>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric.FromVisualStudioXml(System.String)">
+            <summary>
+            Parses a .Net XML documentation method-generic-type parameter.
+            </summary>
+            <example><![CDATA[Namespace.MyType.MyMethod<A>(A) is formatted as Namespace.MyType.MyMethod``1(``0)]]></example>
+            <exception cref="T:WithoutHaste.DataFiles.XmlFormatException"><paramref name="name"/> is not in expected format: ``Index.</exception>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric.HasExpectedVisualStudioXmlFormat(System.String)">
+            <summary>
+            Check if a string is properly formatted as a parameter referencing a method-generic-type.
+            </summary>
+            <example>``0</example>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.IDotNetCommentLink">
             <summary>
@@ -555,7 +632,7 @@
             <example>Namespace.Type.Method(int,string)</example>
             <example><![CDATA[Namespace.Type.Method(System.Collections.Generic.List<int>)]]></example>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetBaseParameter})">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter})">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.FromVisualStudioXml(System.String)">
@@ -625,10 +702,33 @@
             </summary>
             <param name="memberElement">Expects tag name "member".</param>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetEvent.AddAssemblyInfo(System.Reflection.EventInfo)">
+            <summary>
+            Load additional documentation information from the assembly itself.
+            </summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.FieldCategory">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.FieldCategory.Unknown">
+            <summary>Not enough information is available to determine field category.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.FieldCategory.Normal">
+            <summary>No special category.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.FieldCategory.Constant">
+            <summary>Constant or Readonly field.</summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetField">
             <summary>
             Represents a type's field.
             </summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetField.Category">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetField.TypeName">
+            <summary>Fully qualified name of data type, if known. Null if not known.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetField.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary></summary>
@@ -638,6 +738,11 @@
             Parse .Net XML documentation for Field data.
             </summary>
             <param name="memberElement">Expects tag name "member".</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetField.AddAssemblyInfo(System.Reflection.FieldInfo)">
+            <summary>
+            Load additional documentation information from the assembly itself.
+            </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetMember">
             <summary>
@@ -662,10 +767,28 @@
             </summary>
             <param name="parent">Expects the tag containing all documentation for this member.</param>
         </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.MethodCategory">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.MethodCategory.Unknown">
+            <summary>Not enough information is available to determine method category.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.MethodCategory.Normal">
+            <summary>No special category.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.MethodCategory.Static">
+            <summary>Static method.</summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetMethod">
             <summary>
             Represents a method.
             </summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetMethod.Category">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetMethod.ReturnTypeName">
+            <summary>Fully qualified name of return data type, if known. Null if not known.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetMethod.Parameters">
             <summary></summary>
@@ -673,7 +796,7 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.#ctor">
             <summary>Empty constructor</summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetBaseParameter})">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter})">
             <summary>Normal constructor</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.FromVisualStudioXml(System.Xml.Linq.XElement)">
@@ -692,6 +815,21 @@
             Expects: "(type, type, type)"
             </param>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.MatchesSignature(System.Reflection.MethodInfo)">
+            <summary>
+            Returns true if this method's signature matches the reflected MethodInfo.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.MatchesArguments(System.Reflection.ParameterInfo[])">
+            <summary>
+            Returns true if this method's parameter list matches the reflected ParameterInfo.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.AddAssemblyInfo(System.Reflection.MethodInfo)">
+            <summary>
+            Load additional documentation information from the assembly itself.
+            </summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetParameter">
             <summary>
             Represents a normal-type parameter in a method signature.
@@ -700,18 +838,31 @@
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.TypeName">
             <summary>Fully qualified data type name object.</summary>
         </member>
-        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.FullName">
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.FullTypeName">
             <summary>Fully qualified data type name.</summary>
         </member>
-        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.LocalName">
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.LocalTypeName">
             <summary>Local data type name.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.Name">
+            <summary>Name of parametere. Null if not known.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.#ctor">
             <summary>Empty constructor.</summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName)">
             <summary></summary>
             <param name="typeName">Fully qualified data type name.</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.FromVisualStudioXml(System.String)">
+            <summary>
+            Parses a .Net XML documentation parameter type name.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.AddAssemblyInfo(System.Reflection.ParameterInfo)">
+            <summary>
+            Load additional documentation information from the assembly itself.
+            </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetProperty">
             <summary>
@@ -727,6 +878,11 @@
             </summary>
             <param name="memberElement">Expects tag name "member".</param>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetProperty.AddAssemblyInfo(System.Reflection.PropertyInfo)">
+            <summary>
+            Load additional documentation information from the assembly itself.
+            </summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentText">
             <summary>
             Represents a plain text segment of comments.
@@ -738,12 +894,36 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentText.#ctor(System.String)">
             <summary></summary>
         </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.TypeCategory">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Unknown">
+            <summary>Not enough information is available to determine type category.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Normal">
+            <summary>No special category.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Abstract">
+            <summary>Abstract type.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Static">
+            <summary>Static type.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Interface">
+            <summary>Interface.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Enum">
+            <summary>Enumeration.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Exception">
+            <summary>Exception.</summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetType">
             <summary>
             Represents a data type.
             </summary>
         </member>
-        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.IsException">
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.Category">
             <summary></summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.NestedTypeCount">
@@ -784,9 +964,19 @@
             Returns true if this member is defined within this type or any of its nested types.
             </summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.Owns(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary>
+            Returns true if this qualified name is defined within this type or any of its nested types.
+            </summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.AddMember(WithoutHaste.DataFiles.DotNet.DotNetMember)">
             <summary>
             Add a member to the correct level within this type.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.AddAssemblyInfo(System.Reflection.TypeInfo,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary>
+            Load additional documentation information from the assembly itself.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.GetFullListOfLocalNames">
@@ -815,11 +1005,7 @@
             <summary>Local data type name.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.localName">
-            <summary>Name with namespace or required generic types.</summary>
-        </member>
-        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.GenericTypeParameters">
-            <summary>If this is a generic type, these are the specified parameter types.</summary>
-            <example><![CDATA[In parameter type List<System.String>, System.String is the generic-type parameter of List.]]></example>
+            <summary>Name without namespace or declaring type or generic type parameters.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.#ctor">
             <summary>Empty constructor</summary>
@@ -829,17 +1015,6 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.#ctor(System.String,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary></summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.#ctor(System.String,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetBaseParameter})">
-            <param name="localName"></param>
-            <param name="genericTypeParameters">List of generic-type parameters within this type.</param>
-            <exception cref="T:System.ArgumentException"><paramref name="genericTypeParameters"/> cannot be null.</exception>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.#ctor(System.String,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetBaseParameter},WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
-            <param name="localName"></param>
-            <param name="genericTypeParameters">List of generic-type parameters within this type.</param>
-            <param name="fullNamespace"></param>
-            <exception cref="T:System.ArgumentException"><paramref name="genericTypeParameters"/> cannot be null.</exception>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.FromVisualStudioXml(System.String)">
             <summary>
@@ -865,12 +1040,38 @@
             because a nested type will have other type names in its namespace path
             and there are no important diffences in parsing the two.
             </remarks>
+            <example>
+              <para>
+                How .Net xml documentation formats generic types:
+                Backtics are followed by integers, identifying generic types.
+              </para>
+              <para>
+                Single backtics (such as `1) on a class declaration indicate a count of generic types for the class.
+                <example><![CDATA[MyGenericType<T,U,V> is documented as MyGenericType`3]]></example>
+                Anywhere else within this object's documentation that a single backtic appears, it indicates the index of the generic type in reference to the class declaration.
+                <example><![CDATA[MyGenericType(T,U,V) is documented as MyGenericType.#ctor(`0,`1,`2)]]></example>
+              </para>
+            </example>
             <param name="name">Name may or may not start with "T:"</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.MethodNameFromVisualStudioXml(System.String)">
             <summary>
             Parses a .Net XML documentation method signature.
             </summary>
+            <example>
+              <para>
+                How .Net xml documentation formats generic types:
+                Backtics are followed by integers, identifying generic types.
+              </para>
+              <para>
+                Double backtics (such as ``1) on a method name indicate a count of generic types for the method.
+                <example><![CDATA[MyMethod<A,B,C> is documented as MyMethod``3]]></example>
+                Anywhere else within this method's documentation that a double backtic appears, it indicates the index of the generic type in reference to the method declaration.
+                <example><![CDATA[MyMethod<A,B,C>(A,B,C) is documented as MyMethod``3(``0,``1,``2)]]></example>
+                A method that uses both its own generic types AND generic types from the class declaration will look like this:
+                <example><![CDATA[MyMethod<A,B,C>(A,B,C,T,U) is documented as MyMethod``3(``0,``1,``2,`0,`1)]]></example>
+              </para>
+            </example>
             <param name="signature">Name may or may not start with "M:". Includes parameter list.</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.MemberNameFromVisualStudioXml(System.String)">
@@ -881,6 +1082,23 @@
             There is no support for generic types here because .Net XMl documentation does not include member types, just the names.
             </remarks>
             <param name="name">Name may or may not start with /[FPE]:/</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.FromAssemblyInfo(System.Reflection.TypeInfo)">
+            <summary>
+            Parses a System.Reflection.AssemblyInfo full name.
+            </summary>
+            <list>
+              <item>The escape character is '\'</item>
+              <item>Nested types are separated with '+' instead of '.'</item>
+              <item>Class declaration of generic types are shown the same as .Net XML documentation: MyType`1 for one generic type</item>
+              <item>When a generic type is defined: System.Collections.Generic.List`1[U], where U is the type alias from the class declaration</item>
+            </list>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.FromAssemblyInfo(System.Type)">
+            <summary>See <see cref="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.FromAssemblyInfo(System.Reflection.TypeInfo)"/></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.FromAssemblyInfo(System.String)">
+            <summary>See <see cref="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.FromAssemblyInfo(System.Reflection.TypeInfo)"/></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.SetLocalName(System.String)">
             <summary></summary>
@@ -906,6 +1124,39 @@
             <summary>Returns dot notation of namespaces and local name.</summary>
             <example>A.B.C.LocalName</example>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.Utilities.CountPreceedingRepeatedChars(System.String,System.Int32,System.Char)">
+            <summary>
+            Returns the number of sequential characters that all match the selected character, working backwards from the starting index.
+            </summary>
+            <example>
+            ("abcDDDefg", 5, 'D') returns 3 
+            ("abcDDDefg", 4, 'D') returns 2 
+            </example>
+            <param name="text"></param>
+            <param name="startIndex">First index checked for <paramref name="searchChar"/>.</param>
+            <param name="searchChar"></param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.Utilities.RemoveOuterBraces(System.String)">
+            <summary>
+            Removes outer matched pairs of braces from string.
+            Only changes string if first and last characters are a matched pair of braces.
+            Supports {}, [], (), and <![CDATA[<>]]>
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.Utilities.SplitIgnoreNested(System.String,System.Char)">
+            <summary>
+            Split <paramref name="text"/> on the <paramref name="delimiter"/> 
+            but do not split if <paramref name="delimiter"/> is nested within matched braces.
+            Support braces: {}, [], (), and <![CDATA[<>]]>.
+            </summary>
+            <remarks>
+            Returns empty string for empty matches.
+            </remarks>
+            <example>
+            input "A,B{c,d},E[f,g,h]" returns ["A", "B{c,d}", "E[f,g,h]"]
+            </example>
+            <exception cref="T:WithoutHaste.DataFiles.StringFormatException">Mismatched open/close braces.</exception>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile">
             <summary>
             Represents a .Net XML documentation file, such as those produced by Visual Studio.
@@ -923,6 +1174,11 @@
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.Types">
             <summary>Top-level types in assembly.</summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.#ctor">
+            <summary>
+            Empty constructor.
+            </summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.#ctor(System.String)">
             <summary>
             Loads .Net XML documentation from file.
@@ -934,6 +1190,11 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.#ctor(System.Xml.Linq.XDocument)">
             <summary>
             Loads .Net XML documentation from XDocument.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.AddAssemblyInfo(System.String)">
+            <summary>
+            Load additional documentation information from the assembly itself.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.ResolveGenericTypeNameConflicts">
@@ -1334,6 +1595,12 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.DateToString(System.DateTime)">
             <summary>Converts a date to the expected string format.</summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.StringFormatException">
+            <summary>Badly formatted string.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.StringFormatException.#ctor(System.String)">
+            <summary></summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.XmlFormatException">
             <summary>

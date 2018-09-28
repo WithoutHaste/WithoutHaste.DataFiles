@@ -81,10 +81,6 @@ namespace WithoutHaste.DataFiles.DotNet
 
 			//for operators
 			bool isOperator = qualifiedName.LocalName.StartsWith("op_");
-			if(isOperator)
-			{
-				qualifiedName = qualifiedName.SetLocalName(qualifiedName.LocalName.RemoveFromStart("op_"));
-			}
 
 			//parse parameters
 			List<DotNetParameter> qualifiedParameters = ParametersFromVisualStudioXml(parameters);
@@ -112,12 +108,11 @@ namespace WithoutHaste.DataFiles.DotNet
 			List<DotNetParameter> parameters = new List<DotNetParameter>();
 			if(!string.IsNullOrEmpty(text))
 			{
-				if(text.StartsWith("{") && text.EndsWith("}"))
-				{
-					text = text.Substring(1, text.Length - 2);
-				}
-				text = text.Replace("(", "").Replace(")", "");
-				string[] fields = text.Split(',');
+				//remove possible { } and possible ( )
+				text = text.RemoveOuterBraces(); 
+				text = text.RemoveOuterBraces();
+
+				string[] fields = text.SplitIgnoreNested(',');
 				for(int i = 0; i < fields.Length; i++)
 				{
 					string f = fields[i];
