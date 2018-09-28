@@ -20,20 +20,10 @@ namespace WithoutHaste.DataFiles.DotNet
 		public string FullName { get { return ToString(); } }
 
 		/// <summary>Local data type name.</summary>
-		public virtual string LocalName {
-			get {
-				if(GenericTypeParameters.Count == 0)
-					return localName;
-				return String.Format("{0}<{1}>", localName, String.Join(",", GenericTypeParameters.Select(x => x.FullTypeName).ToArray()));
-			}
-		}
+		public virtual string LocalName { get { return localName; } }
 
-		/// <summary>Name with namespace or required generic types.</summary>
+		/// <summary>Name without namespace or declaring type or generic type parameters.</summary>
 		protected string localName;
-
-		/// <summary>If this is a generic type, these are the specified parameter types.</summary>
-		/// <example><![CDATA[In parameter type List<System.String>, System.String is the generic-type parameter of List.]]></example>
-		public List<DotNetParameterBase> GenericTypeParameters = new List<DotNetParameterBase>();
 
 		#region Constructors
 
@@ -53,30 +43,6 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			this.localName = localName;
 			this.FullNamespace = fullNamespace;
-		}
-
-		/// <param name="localName"></param>
-		/// <param name="genericTypeParameters">List of generic-type parameters within this type.</param>
-		/// <exception cref="ArgumentException"><paramref name="genericTypeParameters"/> cannot be null.</exception>
-		public DotNetQualifiedName(string localName, List<DotNetParameterBase> genericTypeParameters)
-		{
-			if(genericTypeParameters == null)
-				throw new ArgumentException("GenericTypeParameters list cannot be null.", "genericTypeParameters");
-			this.localName = localName;
-			GenericTypeParameters.AddRange(genericTypeParameters);
-		}
-
-		/// <param name="localName"></param>
-		/// <param name="genericTypeParameters">List of generic-type parameters within this type.</param>
-		/// <param name="fullNamespace"></param>
-		/// <exception cref="ArgumentException"><paramref name="genericTypeParameters"/> cannot be null.</exception>
-		public DotNetQualifiedName(string localName, List<DotNetParameterBase> genericTypeParameters, DotNetQualifiedName fullNamespace)
-		{
-			if(genericTypeParameters == null)
-				throw new ArgumentException("GenericTypeParameters list cannot be null.", "genericTypeParameters");
-			this.localName = localName;
-			this.FullNamespace = fullNamespace;
-			GenericTypeParameters.AddRange(genericTypeParameters);
 		}
 
 		/// <summary>
@@ -118,6 +84,18 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// because a nested type will have other type names in its namespace path
 		/// and there are no important diffences in parsing the two.
 		/// </remarks>
+		/// <example>
+		///   <para>
+		///     How .Net xml documentation formats generic types:
+		///     Backtics are followed by integers, identifying generic types.
+		///   </para>
+		///   <para>
+		///     Single backtics (such as `1) on a class declaration indicate a count of generic types for the class.
+		///     <example><![CDATA[MyGenericType<T,U,V> is documented as MyGenericType`3]]></example>
+		///     Anywhere else within this object's documentation that a single backtic appears, it indicates the index of the generic type in reference to the class declaration.
+		///     <example><![CDATA[MyGenericType(T,U,V) is documented as MyGenericType.#ctor(`0,`1,`2)]]></example>
+		///   </para>
+		/// </example>
 		/// <param name="name">Name may or may not start with "T:"</param>
 		internal static DotNetQualifiedName TypeNameFromVisualStudioXml(string name)
 		{
@@ -147,6 +125,20 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>
 		/// Parses a .Net XML documentation method signature.
 		/// </summary>
+		/// <example>
+		///   <para>
+		///     How .Net xml documentation formats generic types:
+		///     Backtics are followed by integers, identifying generic types.
+		///   </para>
+		///   <para>
+		///     Double backtics (such as ``1) on a method name indicate a count of generic types for the method.
+		///     <example><![CDATA[MyMethod<A,B,C> is documented as MyMethod``3]]></example>
+		///     Anywhere else within this method's documentation that a double backtic appears, it indicates the index of the generic type in reference to the method declaration.
+		///     <example><![CDATA[MyMethod<A,B,C>(A,B,C) is documented as MyMethod``3(``0,``1,``2)]]></example>
+		///     A method that uses both its own generic types AND generic types from the class declaration will look like this:
+		///     <example><![CDATA[MyMethod<A,B,C>(A,B,C,T,U) is documented as MyMethod``3(``0,``1,``2,`0,`1)]]></example>
+		///   </para>
+		/// </example>
 		/// <param name="signature">Name may or may not start with "M:". Includes parameter list.</param>
 		private static DotNetQualifiedName MethodNameFromVisualStudioXml(string signature)
 		{
@@ -246,36 +238,16 @@ namespace WithoutHaste.DataFiles.DotNet
 			};
 		}
 
-		/// <summary>Handle an oddity of Assembly documenation of generic types nested in generic types.</summary>
-		public virtual void SetMisplacedGenericParameters(List<DotNetParameterBase> misplacedGenericParameters)
-		{
-			int outerIndex = misplacedGenericParameters.Count - 1;
-			int innerIndex = GenericTypeParameters.Count - 1;
-			while(outerIndex >= 0 && innerIndex >= 0)
-			{
-				GenericTypeParameters[innerIndex] = misplacedGenericParameters[outerIndex];
-				outerIndex--;
-				innerIndex--;
-			}
-			if(outerIndex < 0 || FullNamespace == null)
-				return;
-			FullNamespace.SetMisplacedGenericParameters(misplacedGenericParameters.Take(outerIndex + 1).ToList());
-		}
-
 		/// <summary>
 		/// Collect full list of local names used throughout documentation.
 		/// Includes namespaces, internal types, external types, and members.
 		/// Does not include generic paremeters.
 		/// </summary>
-		public List<string> GetFullListOfLocalNames()
+		public virtual List<string> GetFullListOfLocalNames()
 		{
 			List<string> localNames = new List<string>();
 
 			localNames.Add(localName);
-			foreach(DotNetParameter parameter in GenericTypeParameters.OfType<DotNetParameter>().Cast<DotNetParameter>())
-			{
-				localNames.AddRange(parameter.TypeName.GetFullListOfLocalNames());
-			}
 			if(FullNamespace != null)
 			{
 				localNames.AddRange(FullNamespace.GetFullListOfLocalNames());

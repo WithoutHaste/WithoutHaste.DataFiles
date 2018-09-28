@@ -13,7 +13,7 @@ namespace WithoutHaste.DataFiles.DotNet
 	public class DotNetMethodConstructor : DotNetMethod
 	{
 		/// <summary></summary>
-		public DotNetMethodConstructor(DotNetQualifiedName name, List<DotNetParameterBase> parameters) : base(name, parameters)
+		public DotNetMethodConstructor(DotNetQualifiedName name, List<DotNetParameter> parameters) : base(name, parameters)
 		{
 			Category = MethodCategory.Normal;
 		}

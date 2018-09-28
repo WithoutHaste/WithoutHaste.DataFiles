@@ -38,7 +38,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// </summary>
 		public void AddAssemblyInfo(EventInfo eventInfo)
 		{
-			DataTypeName = DotNetParameterBase.FromAssemblyInfo(eventInfo.EventHandlerType);
+			TypeName = DotNetQualifiedTypeName.FromAssemblyInfo(eventInfo.EventHandlerType);
 		}
 	}
 }

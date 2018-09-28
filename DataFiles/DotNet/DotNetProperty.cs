@@ -38,7 +38,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// </summary>
 		public virtual void AddAssemblyInfo(PropertyInfo propertyInfo)
 		{
-			DataTypeName = DotNetParameterBase.FromAssemblyInfo(propertyInfo.PropertyType);
+			TypeName = DotNetQualifiedTypeName.FromAssemblyInfo(propertyInfo.PropertyType);
 		}
 	}
 }

@@ -8,30 +8,18 @@ using System.Threading.Tasks;
 namespace WithoutHaste.DataFiles.DotNet
 {
 	/// <summary>
-	/// Represents a fully qualified class name.
+	/// Represents a fully qualified class name, for class declarations.
 	/// </summary>
 	/// <remarks>
 	/// Cannot handle classes that declare more than 12 generic types,
 	/// such as <![CDATA[MyType<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13>]]>.
 	/// </remarks>
-	/// <example>
-	///   <para>
-	///     How .Net xml documentation formats generic types:
-	///     Backtics are followed by integers, identifying generic types.
-	///   </para>
-	///   <para>
-	///     Single backtics (such as `1) on a class declaration indicate a count of generic types for the class.
-	///     <example><![CDATA[MyGenericType<T,U,V> is documented as MyGenericType`3]]></example>
-	///     Anywhere else within this object's documentation that a single backtic appears, it indicates the index of the generic type in reference to the class declaration.
-	///     <example><![CDATA[MyGenericType(T,U,V) is documented as MyGenericType.#ctor(`0,`1,`2)]]></example>
-	///   </para>
-	/// </example>
 	public class DotNetQualifiedClassName : DotNetQualifiedName
 	{
 		/// <summary>Default names that will be given to generic-types, in order.</summary>
 		public static string[] GenericTypeNames = new string[] { "T", "U", "V", "W", "T2", "U2", "V2", "W2", "T3", "U3", "V3", "W3" };
 
-		/// <inheritdoc/>
+		/// <summary>Local data type name with generic type parameters (if applicable).</summary>
 		public override string LocalName {
 			get {
 				if(genericTypeCount == 0)
@@ -85,24 +73,6 @@ namespace WithoutHaste.DataFiles.DotNet
 		private bool isNestedClass()
 		{
 			return (FullNamespace != null && FullNamespace is DotNetQualifiedClassName);
-		}
-
-		/// See <see cref="DotNetQualifiedName.SetMisplacedGenericParameters(List{DotNetParameterBase})"/>
-		public override void SetMisplacedGenericParameters(List<DotNetParameterBase> misplacedGenericParameters)
-		{
-			//todo: reveals problem in class design
-			//this should only be called on something that accepts full data types, rather than generic type aliases
-			//something concrete
-			int outerIndex = misplacedGenericParameters.Count - 1;
-			if(genericTypeCount > 0)
-			{
-				int keep = Math.Min(misplacedGenericParameters.Count, genericTypeCount);
-				genericTypeAliases = misplacedGenericParameters.Skip(misplacedGenericParameters.Count - keep).Take(keep).Select(x => x.FullTypeName).ToArray();
-				outerIndex -= keep;
-			}
-			if(outerIndex < 0 || FullNamespace == null)
-				return;
-			FullNamespace.SetMisplacedGenericParameters(misplacedGenericParameters.Take(outerIndex + 1).ToList());
 		}
 
 	}

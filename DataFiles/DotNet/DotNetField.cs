@@ -28,7 +28,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		public FieldCategory Category { get; protected set; }
 
 		/// <summary>Fully qualified name of data type, if known. Null if not known.</summary>
-		public DotNetParameterBase DataTypeName { get; protected set; }
+		public DotNetQualifiedTypeName TypeName { get; protected set; }
 
 		#region Constructors
 
@@ -58,7 +58,7 @@ namespace WithoutHaste.DataFiles.DotNet
 				Category = FieldCategory.Constant;
 			else
 				Category = FieldCategory.Normal;
-			DataTypeName = DotNetParameterBase.FromAssemblyInfo(fieldInfo.FieldType);
+			TypeName = DotNetQualifiedTypeName.FromAssemblyInfo(fieldInfo.FieldType);
 		}
 	}
 }

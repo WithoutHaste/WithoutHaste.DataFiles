@@ -13,7 +13,7 @@ namespace WithoutHaste.DataFiles.DotNet
 	public class DotNetCommentMethodLink : DotNetCommentQualifiedLink
 	{
 		/// <summary></summary>
-		public List<DotNetParameterBase> Parameters = new List<DotNetParameterBase>();
+		public List<DotNetParameter> Parameters = new List<DotNetParameter>();
 
 		/// <summary>Fully qualified method name with parameters.</summary>
 		/// <example>Namespace.Type.Method()</example>
@@ -28,7 +28,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		#region Constructors
 
 		/// <summary></summary>
-		public DotNetCommentMethodLink(DotNetQualifiedName name, List<DotNetParameterBase> parameters) : base(name)
+		public DotNetCommentMethodLink(DotNetQualifiedName name, List<DotNetParameter> parameters) : base(name)
 		{
 			Parameters.AddRange(parameters);
 		}
@@ -41,7 +41,7 @@ namespace WithoutHaste.DataFiles.DotNet
 				throw new XmlFormatException("Method cref expecting parentheses around parameters. Use empty parentheses for methods with no parameters.");
 
 			DotNetQualifiedName name = new DotNetQualifiedName(cref.Substring(0, divider));
-			List<DotNetParameterBase> parameters = DotNetMethod.ParametersFromVisualStudioXml(cref.Substring(divider));
+			List<DotNetParameter> parameters = DotNetMethod.ParametersFromVisualStudioXml(cref.Substring(divider));
 			return new DotNetCommentMethodLink(name, parameters);
 		}
 

@@ -28,10 +28,10 @@ namespace WithoutHaste.DataFiles.DotNet
 		public MethodCategory Category { get; protected set; }
 
 		/// <summary>Fully qualified name of return data type, if known. Null if not known.</summary>
-		public DotNetParameterBase ReturnTypeName { get; protected set; }
+		public DotNetQualifiedTypeName ReturnTypeName { get; protected set; }
 
 		/// <summary></summary>
-		public List<DotNetParameterBase> Parameters = new List<DotNetParameterBase>();
+		public List<DotNetParameter> Parameters = new List<DotNetParameter>();
 
 		#region Constructors
 
@@ -41,7 +41,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>Normal constructor</summary>
-		public DotNetMethod(DotNetQualifiedName name, List<DotNetParameterBase> parameters) : base(name)
+		public DotNetMethod(DotNetQualifiedName name, List<DotNetParameter> parameters) : base(name)
 		{
 			this.Parameters.AddRange(parameters);
 		}
@@ -87,7 +87,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 
 			//parse parameters
-			List<DotNetParameterBase> qualifiedParameters = ParametersFromVisualStudioXml(parameters);
+			List<DotNetParameter> qualifiedParameters = ParametersFromVisualStudioXml(parameters);
 
 			if(isConstructor)
 				return new DotNetMethodConstructor(qualifiedName, qualifiedParameters);
@@ -107,9 +107,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Expects: empty string
 		/// Expects: "(type, type, type)"
 		/// </param>
-		public static List<DotNetParameterBase> ParametersFromVisualStudioXml(string text)
+		public static List<DotNetParameter> ParametersFromVisualStudioXml(string text)
 		{
-			List<DotNetParameterBase> parameters = new List<DotNetParameterBase>();
+			List<DotNetParameter> parameters = new List<DotNetParameter>();
 			if(!string.IsNullOrEmpty(text))
 			{
 				if(text.StartsWith("{") && text.EndsWith("}"))
@@ -123,7 +123,7 @@ namespace WithoutHaste.DataFiles.DotNet
 					string f = fields[i];
 					if(!String.IsNullOrEmpty(f))
 					{
-						parameters.Add(DotNetParameterBase.FromVisualStudioXml(f));
+						parameters.Add(DotNetParameter.FromVisualStudioXml(f));
 					}
 				}
 			}
@@ -150,7 +150,7 @@ namespace WithoutHaste.DataFiles.DotNet
 
 			for(int i = 0; i < Parameters.Count; i++)
 			{
-				string otherName = DotNetParameterBase.FromAssemblyInfo(otherParameters[i].ParameterType).FullTypeName;
+				string otherName = DotNetQualifiedTypeName.FromAssemblyInfo(otherParameters[i].ParameterType).FullName;
 				//todo: something about parameters that end with @ vs &
 				if(Parameters[i].FullTypeName != otherName)
 					return false;
@@ -169,7 +169,7 @@ namespace WithoutHaste.DataFiles.DotNet
 				Category = MethodCategory.Normal;
 
 			if(methodInfo.ReturnType != null)
-				ReturnTypeName = DotNetParameterBase.FromAssemblyInfo(methodInfo.ReturnType);
+				ReturnTypeName = DotNetQualifiedTypeName.FromAssemblyInfo(methodInfo.ReturnType);
 
 			int index = 0;
 			foreach(ParameterInfo parameterInfo in methodInfo.GetParameters())

@@ -60,7 +60,7 @@ namespace DataFilesTest
 			result.AddAssemblyInfo(methodInfo);
 			//assert
 			Assert.AreEqual(expectedFullName, result.Name.FullName);
-			Assert.AreEqual(expectedReturnFullName, result.ReturnTypeName.FullTypeName);
+			Assert.AreEqual(expectedReturnFullName, result.ReturnTypeName.FullName);
 		}
 
 		[TestMethod]
@@ -77,7 +77,7 @@ namespace DataFilesTest
 			result.AddAssemblyInfo(methodInfo);
 			//assert
 			Assert.AreEqual(expectedFullName, result.Name.FullName);
-			Assert.AreEqual(expectedReturnFullName, result.ReturnTypeName.FullTypeName);
+			Assert.AreEqual(expectedReturnFullName, result.ReturnTypeName.FullName);
 		}
 
 		[TestMethod]
@@ -94,7 +94,7 @@ namespace DataFilesTest
 			result.AddAssemblyInfo(methodInfo);
 			//assert
 			Assert.AreEqual(expectedFullName, result.Name.FullName);
-			Assert.AreEqual(expectedReturnFullName, result.ReturnTypeName.FullTypeName);
+			Assert.AreEqual(expectedReturnFullName, result.ReturnTypeName.FullName);
 		}
 
 		[TestMethod]
@@ -111,7 +111,7 @@ namespace DataFilesTest
 			result.AddAssemblyInfo(methodInfo);
 			//assert
 			Assert.AreEqual(expectedFullName, result.Name.FullName);
-			Assert.AreEqual(expectedReturnFullName, result.ReturnTypeName.FullTypeName);
+			Assert.AreEqual(expectedReturnFullName, result.ReturnTypeName.FullName);
 		}
 
 		[TestMethod]

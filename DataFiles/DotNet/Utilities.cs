@@ -62,6 +62,84 @@ namespace WithoutHaste.DataFiles.DotNet
 			return count;
 		}
 
+		/// <summary>
+		/// Removes outer matched pairs of braces from string.
+		/// Only changes string if first and last characters are a matched pair of braces.
+		/// Supports {}, [], (), and <![CDATA[<>]]>
+		/// </summary>
+		internal static string RemoveOuterBraces(this string text)
+		{
+			if(text == null)
+				return null;
+
+			if(
+				(text.StartsWith("{") && text.EndsWith("}")) ||
+				(text.StartsWith("[") && text.EndsWith("]")) ||
+				(text.StartsWith("(") && text.EndsWith(")")) ||
+				(text.StartsWith("<") && text.EndsWith(">"))
+			)
+				return text.Substring(1, text.Length - 2);
+
+			return text;
+		}
+
+		/// <summary>
+		/// Split <paramref name="text"/> on the <paramref name="delimiter"/> 
+		/// but do not split if <paramref name="delimiter"/> is nested within matched braces.
+		/// Support braces: {}, [], (), and <![CDATA[<>]]>.
+		/// </summary>
+		/// <remarks>
+		/// Returns empty string for empty matches.
+		/// </remarks>
+		/// <example>
+		/// input "A,B{c,d},E[f,g,h]" returns ["A", "B{c,d}", "E[f,g,h]"]
+		/// </example>
+		/// <exception cref="StringFormatException">Mismatched open/close braces.</exception>
+		internal static string[] SplitIgnoreNested(this string text, char delimiter)
+		{
+			if(text == null) return new string[] { };
+
+			List<string> results = new List<string>();
+			int openCurlyCount = 0;
+			int openSquareCount = 0;
+			int openAngleCount = 0;
+			int openParenCount = 0;
+			int i = text.Length - 1;
+
+			while(i >= 0)
+			{
+				switch(text[i])
+				{
+					case '}': openCurlyCount++; break;
+					case ']': openSquareCount++; break;
+					case '>': openAngleCount++; break;
+					case ')': openParenCount++; break;
+
+					case '{': openCurlyCount--; break;
+					case '[': openSquareCount--; break;
+					case '<': openAngleCount--; break;
+					case '(': openParenCount--; break;
+
+					case ',':
+						if(openCurlyCount > 0 || openSquareCount > 0 || openAngleCount > 0 || openParenCount > 0)
+							break;
+						results.Add(text.Substring(i + 1));
+						text = text.Substring(0, i);
+						break;
+				}
+				if(openCurlyCount < 0 || openSquareCount < 0 || openAngleCount < 0 || openParenCount < 0)
+					throw new StringFormatException("Mismatched open/close braces.");
+				i--;
+			}
+			if(openCurlyCount > 0 || openSquareCount > 0 || openAngleCount > 0 || openParenCount > 0)
+				throw new StringFormatException("Mismatched open/close braces.");
+			results.Add(text);
+
+			results.Reverse();
+
+			return results.ToArray();
+		}
+
 		internal static bool IsEven(this int num)
 		{
 			return (num % 2 == 0);

@@ -81,6 +81,7 @@
     <Compile Include="DotNet\DotNetQualifiedMethodNameTests.cs" />
     <Compile Include="DotNet\DotNetMethodTests.cs" />
     <Compile Include="DotNet\DotNetQualifiedNameTests.cs" />
+    <Compile Include="DotNet\DotNetQualifiedTypeNameTests.cs" />
     <Compile Include="DotNet\UtilitiesTests.cs" />
     <Compile Include="ExcelPackageHelperTests.cs" />
     <Compile Include="InfoTests.cs" />

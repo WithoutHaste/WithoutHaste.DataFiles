@@ -53,8 +53,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DotNet\DotNetParameterBase.cs" />
-    <Compile Include="DotNet\DotNetParameterClassGeneric.cs" />
+    <Compile Include="DotNet\DotNetReferenceClassGeneric.cs" />
+    <Compile Include="DotNet\DotNetReferenceGeneric.cs" />
     <Compile Include="DotNet\DotNetCommentCode.cs" />
     <Compile Include="DotNet\DotNetCommentCodeBlock.cs" />
     <Compile Include="DotNet\DotNetCommentLinkedGroup.cs" />
@@ -66,13 +66,14 @@
     <Compile Include="DotNet\DotNetCommentTypeParameter.cs" />
     <Compile Include="DotNet\DotNetCommentTypeParameterLink.cs" />
     <Compile Include="DotNet\DotNetMethodConstructor.cs" />
-    <Compile Include="DotNet\DotNetParameterGeneric.cs" />
-    <Compile Include="DotNet\DotNetParameterMethodGeneric.cs" />
     <Compile Include="DotNet\DotNetMethodOperator.cs" />
+    <Compile Include="DotNet\DotNetQualifiedTypeName.cs" />
     <Compile Include="DotNet\DotNetQualifiedMethodName.cs" />
     <Compile Include="DotNet\DotNetQualifiedClassName.cs" />
+    <Compile Include="DotNet\DotNetReferenceMethodGeneric.cs" />
     <Compile Include="DotNet\IDotNetCommentLink.cs" />
     <Compile Include="Excel\ExcelPackageHelper.cs" />
+    <Compile Include="exceptions\StringFormatException.cs" />
     <Compile Include="exceptions\XmlFormatException.cs" />
     <Compile Include="exceptions\XmlNodeException.cs" />
     <Compile Include="Info.cs" />
