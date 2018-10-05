@@ -190,10 +190,12 @@ namespace WithoutHaste.DataFiles.DotNet
 		private void AddAssemblyInfoToType(TypeInfo typeInfo)
 		{
 			DotNetQualifiedName qualifiedName = DotNetQualifiedName.FromAssemblyInfo(typeInfo);
-			DotNetType type = Types.FirstOrDefault(x => x.Owns(qualifiedName));
-			if(type == null)
+			DotNetType type = Types.FirstOrDefault(x => x.Is(qualifiedName) || x.Owns(qualifiedName));
+			if(type != null)
+			{
+				type.AddAssemblyInfo(typeInfo, qualifiedName);
 				return;
-			type.AddAssemblyInfo(typeInfo, qualifiedName);
+			}
 			//no error if type is not found
 		}
 

@@ -13,6 +13,9 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <example><![CDATA[<code>code statements</code>]]></example>
 	public class DotNetCommentCodeBlock : DotNetCommentCode
 	{
+		/// <summary>Specify the language of the code block. Null if not known.</summary>
+		public string Language { get; protected set; }
+
 		/// <summary></summary>
 		public DotNetCommentCodeBlock(string text) : base(text)
 		{

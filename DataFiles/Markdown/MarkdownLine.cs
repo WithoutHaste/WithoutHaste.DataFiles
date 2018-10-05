@@ -9,7 +9,7 @@ namespace WithoutHaste.DataFiles.Markdown
 	/// <summary>
 	/// Represents one line of text that will end in a line break.
 	/// </summary>
-	/// <remarks>Do not include the white space or endline character.</remarks>
+	/// <remarks>Do not include the trailing white space or endline character.</remarks>
 	/// <example>Displays as: The quick brown fox.  \\n</example>
 	public class MarkdownLine : IMarkdownInSection, IMarkdownInList
 	{
@@ -88,7 +88,23 @@ namespace WithoutHaste.DataFiles.Markdown
 		{
 			this.elements.AddRange(elements);
 		}
+		
+		/// <summary>
+		/// Add a new MarkdownText containing the text to the beginning of the line.
+		/// </summary>
+		public void Prepend(string text)
+		{
+			elements.Insert(0, new MarkdownText(text));
+		}
 
+		/// <summary>
+		/// Add an element to the beginning of the line.
+		/// </summary>
+		public void Preprend(IMarkdownInLine element)
+		{
+			elements.Insert(0, element);
+		}
+		
 		/// <inheritdoc />
 		public virtual string ToMarkdown()
 		{

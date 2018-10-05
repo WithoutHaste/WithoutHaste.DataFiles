@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
@@ -48,7 +49,7 @@ namespace DataFilesTest
 			DotNetType typeA = file.Types[0];
 			Assert.AreEqual(2, typeA.NestedTypeCount);
 			Assert.AreEqual("Test.TypeA", typeA.Name.FullName);
-			Assert.AreEqual(4, typeA.CommentCount);
+			Assert.AreEqual(true, typeA.HasComments);
 			Assert.AreEqual(1, typeA.Methods.Count);
 			Assert.AreEqual(2, typeA.Fields.Count);
 			Assert.AreEqual(3, typeA.Properties.Count);
@@ -57,56 +58,56 @@ namespace DataFilesTest
 			DotNetType typeB = typeA.NestedTypes[0];
 			Assert.AreEqual(1, typeB.NestedTypeCount);
 			Assert.AreEqual("Test.TypeA.NestedTypeB", typeB.Name.FullName);
-			Assert.AreEqual(1, typeB.CommentCount);
+			Assert.AreEqual(true, typeB.HasComments);
 			Assert.AreEqual(1, typeB.Methods.Count);
 
 			DotNetType typeC = typeB.NestedTypes[0];
 			Assert.AreEqual(0, typeC.NestedTypeCount);
 			Assert.AreEqual("Test.TypeA.NestedTypeB.SubNestedTypeC", typeC.Name.FullName);
-			Assert.AreEqual(6, typeC.CommentCount);
+			Assert.AreEqual(true, typeC.HasComments);
 			Assert.AreEqual(2, typeC.Methods.Count);
 
 			DotNetType typeD = file.Types[1];
 			Assert.AreEqual("Test.SingleGenericTypeD<T>", typeD.Name.FullName);
-			Assert.AreEqual(0, typeD.CommentCount);
+			Assert.AreEqual(false, typeD.HasComments);
 			Assert.AreEqual(1, typeD.Methods.Count);
 
 			DotNetType typeE = file.Types[2];
 			Assert.AreEqual("Test.DoubleGenericTypeE<T,U>", typeE.Name.FullName);
-			Assert.AreEqual(0, typeE.CommentCount);
+			Assert.AreEqual(false, typeE.HasComments);
 			Assert.AreEqual(3, typeE.Methods.Count);
 
 			DotNetMethod methodAA = typeA.Methods[0];
 			Assert.AreEqual("Test.TypeA.MethodAA", methodAA.Name.FullName);
-			Assert.AreEqual(8, methodAA.CommentCount);
+			Assert.AreEqual(true, methodAA.HasComments);
 			Assert.AreEqual(false, methodAA is DotNetMethodConstructor);
 			Assert.AreEqual(false, methodAA is DotNetMethodOperator);
 			Assert.AreEqual(0, methodAA.Parameters.Count);
 
 			DotNetMethod methodBA = typeB.Methods[0];
 			Assert.AreEqual("Test.TypeA.NestedTypeB.MethodBA", methodBA.Name.FullName);
-			Assert.AreEqual(0, methodBA.CommentCount);
+			Assert.AreEqual(false, methodBA.HasComments);
 			Assert.AreEqual(false, methodBA is DotNetMethodConstructor);
 			Assert.AreEqual(false, methodBA is DotNetMethodOperator);
 			Assert.AreEqual(2, methodBA.Parameters.Count);
 
 			DotNetMethod methodCA = typeC.Methods[0];
 			Assert.AreEqual("Test.TypeA.NestedTypeB.SubNestedTypeC.MethodCA", methodCA.Name.FullName);
-			Assert.AreEqual(0, methodCA.CommentCount);
+			Assert.AreEqual(false, methodCA.HasComments);
 			Assert.AreEqual(false, methodCA is DotNetMethodConstructor);
 			Assert.AreEqual(false, methodCA is DotNetMethodOperator);
 			Assert.AreEqual(1, methodCA.Parameters.Count);
 
 			DotNetMethod methodCConstructor = typeC.Methods[1];
 			Assert.AreEqual("Test.TypeA.NestedTypeB.SubNestedTypeC.SubNestedTypeC", methodCConstructor.Name.FullName);
-			Assert.AreEqual(0, methodCConstructor.CommentCount);
+			Assert.AreEqual(false, methodCConstructor.HasComments);
 			Assert.AreEqual(true, methodCConstructor is DotNetMethodConstructor);
 			Assert.AreEqual(false, methodCConstructor is DotNetMethodOperator);
 			Assert.AreEqual(0, methodCConstructor.Parameters.Count);
 
 			DotNetMethod methodDAddition = typeD.Methods[0];
 			Assert.AreEqual("Test.SingleGenericTypeD<T>.op_Addition", methodDAddition.Name.FullName);
-			Assert.AreEqual(0, methodDAddition.CommentCount);
+			Assert.AreEqual(false, methodDAddition.HasComments);
 			Assert.AreEqual(false, methodDAddition is DotNetMethodConstructor);
 			Assert.AreEqual(true, methodDAddition is DotNetMethodOperator);
 			Assert.AreEqual(2, methodDAddition.Parameters.Count);
@@ -115,7 +116,7 @@ namespace DataFilesTest
 
 			DotNetMethod methodEConstructor = typeE.Methods[0];
 			Assert.AreEqual("Test.DoubleGenericTypeE<T,U>.DoubleGenericTypeE<T,U>", methodEConstructor.Name.FullName);
-			Assert.AreEqual(0, methodEConstructor.CommentCount);
+			Assert.AreEqual(false, methodEConstructor.HasComments);
 			Assert.AreEqual(true, methodEConstructor is DotNetMethodConstructor);
 			Assert.AreEqual(false, methodEConstructor is DotNetMethodOperator);
 			Assert.AreEqual(2, methodEConstructor.Parameters.Count);
@@ -124,7 +125,7 @@ namespace DataFilesTest
 
 			DotNetMethod methodEA = typeE.Methods[1];
 			Assert.AreEqual("Test.DoubleGenericTypeE<T,U>.MethodEA<A>", methodEA.Name.FullName);
-			Assert.AreEqual(0, methodEA.CommentCount);
+			Assert.AreEqual(false, methodEA.HasComments);
 			Assert.AreEqual(false, methodEA is DotNetMethodConstructor);
 			Assert.AreEqual(false, methodEA is DotNetMethodOperator);
 			Assert.AreEqual(3, methodEA.Parameters.Count);
@@ -134,7 +135,7 @@ namespace DataFilesTest
 
 			DotNetMethod methodEB = typeE.Methods[2];
 			Assert.AreEqual("Test.DoubleGenericTypeE<T,U>.MethodEB<A>", methodEB.Name.FullName);
-			Assert.AreEqual(0, methodEB.CommentCount);
+			Assert.AreEqual(false, methodEB.HasComments);
 			Assert.AreEqual(false, methodEB is DotNetMethodConstructor);
 			Assert.AreEqual(false, methodEB is DotNetMethodOperator);
 			Assert.AreEqual(1, methodEB.Parameters.Count);
@@ -160,14 +161,16 @@ namespace DataFilesTest
 		}
 
 		[TestMethod]
-		public void DotNetDocumentationFile_AddAssemblyInfo()
+		public void DotNetDocumentationFile_AddAssemblyInfo_FoundType()
 		{
-			//DotNetDocumentationFile file = new DotNetDocumentationFile();
-			//file.AddAssemblyInfo("E:/Github/EarlyDocs/Demo/bin/Debug/Demo.dll");
-
 			//arrange
+			string xmlDocumentationFilename = "E:/Github/EarlyDocs/Demo/bin/Debug/Demo.XML";
+			string dllFilename = "E:/Github/EarlyDocs/Demo/bin/Debug/Demo.dll";
 			//act
+			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
+			xmlDocumentation.AddAssemblyInfo(dllFilename);
 			//assert
+			Assert.IsTrue(xmlDocumentation.Types.Count(t => t.Category != TypeCategory.Unknown) > 0);
 		}
 
 	}

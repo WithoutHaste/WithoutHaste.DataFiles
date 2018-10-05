@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DotNet\DotNetBaseType.cs" />
     <Compile Include="DotNet\DotNetReferenceClassGeneric.cs" />
     <Compile Include="DotNet\DotNetReferenceGeneric.cs" />
     <Compile Include="DotNet\DotNetCommentCode.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Markdown\IMarkdownInList.cs" />
     <Compile Include="Markdown\IMarkdownInSection.cs" />
     <Compile Include="Markdown\IMarkdownIsBlock.cs" />
+    <Compile Include="Markdown\MarkdownCode.cs" />
     <Compile Include="Markdown\MarkdownCodeBlock.cs" />
     <Compile Include="Markdown\MarkdownFile.cs" />
     <Compile Include="Markdown\MarkdownInlineLink.cs" />
@@ -89,6 +91,8 @@
     <Compile Include="Markdown\MarkdownList.cs" />
     <Compile Include="Markdown\MarkdownParagraph.cs" />
     <Compile Include="Markdown\MarkdownSection.cs" />
+    <Compile Include="Markdown\MarkdownTable.cs" />
+    <Compile Include="Markdown\MarkdownTableRow.cs" />
     <Compile Include="Markdown\MarkdownText.cs" />
     <Compile Include="Markdown\Utilities.cs" />
     <Compile Include="Excel\MSExcel2003XmlFile.cs" />
@@ -114,6 +118,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

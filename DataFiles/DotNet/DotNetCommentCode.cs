@@ -22,7 +22,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		public static new DotNetCommentCode FromVisualStudioXml(XElement element)
 		{
 			DotNetComment.ValidateXmlTag(element, "c");
-			return new DotNetCommentCode(element.Value);
+			return new DotNetCommentCode(element.Value.Trim());
 		}
 	}
 }

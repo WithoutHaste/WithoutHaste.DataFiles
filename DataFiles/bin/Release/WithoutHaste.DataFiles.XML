@@ -4,6 +4,26 @@
         <name>WithoutHaste.DataFiles</name>
     </assembly>
     <members>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetBaseType">
+            <summary>
+            Represents a node in an inheriance hierarchy.
+            Stub class: contains minimal information about the type.
+            </summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetBaseType.Name">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetBaseType.BaseType">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetBaseType.Depth">
+            <summary>Returns the inheritance distance from here to the bottom.</summary>
+            <example>Class "System.Reflection.TypeInfo" has Depth = 4 because its inheritance path is "TypeInfo" -> "Type" -> "MemberInfo" -> "Object".</example>
+            <example>Class "System.Object" has Depth = 1 because its inheritance path is just "Object".</example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetBaseType.#ctor(System.Type)">
+            <summary></summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric">
             <summary>
             Represents a generic-type parameter that is in reference to a class's declared generic types.
@@ -86,6 +106,9 @@
             Represents a section of code in the comments.
             </summary>
             <example><![CDATA[<code>code statements</code>]]></example>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentCodeBlock.Language">
+            <summary>Specify the language of the code block. Null if not known.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentCodeBlock.#ctor(System.String)">
             <summary></summary>
@@ -540,6 +563,12 @@
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.Comments">
             <summary></summary>
         </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.IsEmpty">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.Count">
+            <summary></summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.#ctor">
             <summary>Empty constructor</summary>
         </member>
@@ -752,11 +781,42 @@
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetMember.Name">
             <summary></summary>
         </member>
-        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetMember.CommentCount">
-            <summary>Returns the number of top level comments, which may contain more nested comments.</summary>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetMember.HasComments">
+            <summary>True when there's at least one comment on this member.</summary>
         </member>
-        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetMember.IsEmpty">
-            <summary>True when there are no comments.</summary>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetMember.HasNoComments">
+            <summary>True when there are no comments on this member.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetMember.SummaryComments">
+            <summary>Comments from "summary" xml tags. Only expected as a top-level tag.</summary>
+            <remarks>If there are multiple "summary" tags, their contents will be concatenated as if they were one tag.</remarks>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetMember.RemarksComments">
+            <summary>Comments from "remarks" xml tags. Only expected as a top-level tag.</summary>
+            <remarks>If there are multiple "remarks" tags, their contents will be concatenated as if they were one tag.</remarks>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetMember.PermissionComments">
+            <summary>Comments from "permission" xml tags. Only expected as top-level tags.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetMember.ExampleComments">
+            <summary>Comments from "example" xml tags.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetMember.ExceptionComments">
+            <summary>Comments from "exception" xml tags.  Only expected as top-level tags.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetMember.ParameterComments">
+            <summary>Comments from "param" and "typeparam" xml tags. Only expected as top-level tags.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetMember.ValueComments">
+            <summary>Comments from "value" xml tags. Only expected as a top-level tag.</summary>
+            <remarks>If there are multiple "value" tags, their contents will be concatenated as if they were one tag.</remarks>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetMember.ReturnsComments">
+            <summary>Comments from "returns" xml tags. Only expected as a top-level tag.</summary>
+            <remarks>If there are multiple "returns" tags, their contents will be concatenated as if they were one tag.</remarks>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetMember.FloatingComments">
+            <summary>Any comments not within expected top-level tags.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMember.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary></summary>
@@ -887,6 +947,7 @@
             <summary>
             Represents a plain text segment of comments.
             </summary>
+            <remarks>Text is allowed to have a single space at beginning and end. Anymore leading/trailing whitespace will be removed.</remarks>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentText.Text">
             <summary></summary>
@@ -926,17 +987,45 @@
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.Category">
             <summary></summary>
         </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.BaseType">
+            <summary>Base type this type inherits from. Null if not known or none exists.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.ImplementedInterfaces">
+            <summary>Interfaces this type inherits from, if known</summary>
+            <remarks>If an interface extends another interface, reflection reports that the type implements both interfaces.</remarks>
+        </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.NestedTypeCount">
             <summary>The number of types nested within this type, including sub-nested types and enums.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.NestedTypes">
             <summary></summary>
         </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.NestedEnums">
+            <summary>The subset of NestedTypes that are enums.</summary>
+        </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.Methods">
             <summary></summary>
         </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.ConstructorMethods">
+            <summary>The subset of Methods that are constructors.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.OperatorMethods">
+            <summary>The subset of Methods that are operator overloads.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.StaticMethods">
+            <summary>The subset of Methods that are static, but not constructors nor operators.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.NormalMethods">
+            <summary>The subset of Methods that are not static, nor constructors, nor operators.</summary>
+        </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.Fields">
             <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.ConstantFields">
+            <summary>The subset of Fields that are constants.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.NormalFields">
+            <summary>The subset of Fields that are not constant, or where the category is unknown.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.Properties">
             <summary></summary>
@@ -958,6 +1047,11 @@
             Parse .Net XML documentation for Type data.
             </summary>
             <param name="memberElement">Expects tag name "member".</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.Is(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary>
+            Returns true if this member's name matches the provided name.
+            </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.Owns(WithoutHaste.DataFiles.DotNet.DotNetMember)">
             <summary>
@@ -1156,6 +1250,11 @@
             input "A,B{c,d},E[f,g,h]" returns ["A", "B{c,d}", "E[f,g,h]"]
             </example>
             <exception cref="T:WithoutHaste.DataFiles.StringFormatException">Mismatched open/close braces.</exception>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.Utilities.TrimAllowOneSpace(System.String)">
+            <summary>
+            Trims leading and trailing whitespaces. Will leave one leading and one trailing space, but won't add them.
+            </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile">
             <summary>
@@ -1658,6 +1757,22 @@
             Represents a Markdown element that ends with a double endline.
             </summary>
         </member>
+        <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownCode">
+            <summary>
+            Represents inline code or CDATA.
+            </summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.Markdown.MarkdownCode.Text">
+            <summary>
+            Full text of code.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownCode.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownCode.ToMarkdown">
+            <inheritdoc />
+        </member>
         <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownCodeBlock">
             <summary>
             Represents a code block or CDATA block.
@@ -1733,7 +1848,7 @@
             <summary>
             Represents one line of text that will end in a line break.
             </summary>
-            <remarks>Do not include the white space or endline character.</remarks>
+            <remarks>Do not include the trailing white space or endline character.</remarks>
             <example>Displays as: The quick brown fox.  \\n</example>
         </member>
         <member name="P:WithoutHaste.DataFiles.Markdown.MarkdownLine.Elements">
@@ -1785,6 +1900,16 @@
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLine.Add(WithoutHaste.DataFiles.Markdown.IMarkdownInLine[])">
             <summary>
             Add elements to the end of the line.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLine.Prepend(System.String)">
+            <summary>
+            Add a new MarkdownText containing the text to the beginning of the line.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLine.Preprend(WithoutHaste.DataFiles.Markdown.IMarkdownInLine)">
+            <summary>
+            Add an element to the beginning of the line.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLine.ToMarkdown">
@@ -1863,7 +1988,7 @@
             <summary>
             Represents one paragraph of text that will end in a double line break.
             </summary>
-            <remarks>Do not include the white space or endline characters.</remarks>
+            <remarks>Do not include trailing white space or endline characters.</remarks>
             <example>Displays as: The quick brown fox.\\n\\n</example>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownParagraph.#ctor(WithoutHaste.DataFiles.Markdown.IMarkdownInLine[])">
@@ -1987,6 +2112,55 @@
             <summary>
             Return markdown-formatted text, taking the previous text of the file into account.
             </summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownTable">
+            <summary>
+            Represents a markdown table.
+            </summary>
+            <remarks>
+            Markdown requires each table to have exactly 1 header row, so the first row is assumed to be the header.
+            </remarks>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.Markdown.MarkdownTable.MINIMUM_COLUMN_WIDTH">
+            <summary>Minimum column width is 3 to allow for minimum "---" contents indicating header/data divider.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.Markdown.MarkdownTable.Rows">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownTable.#ctor(System.Collections.Generic.List{WithoutHaste.DataFiles.Markdown.MarkdownTableRow})">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownTable.#ctor(WithoutHaste.DataFiles.Markdown.MarkdownTableRow[])">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownTable.ToMarkdown">
+            <summary>
+            Return markdown-formatted text.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownTable.GetColumnWidths">
+            <summary>
+            Returns the width of the widest cell in each column.
+            </summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownTableRow">
+            <summary>
+            Represents one row in a Markdown table.
+            </summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.Markdown.MarkdownTableRow.Cells">
+            <summary>List of the cells in the row.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownTableRow.#ctor(System.Collections.Generic.List{System.String})">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownTableRow.ToMarkdown(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Return markdown-formatted text.
+            </summary>
+            <remarks>Column widths are padded an additional 1 space on left and right, per Markdown formatting.</remarks>
+            <remarks>Line feed, new line, and tab characters are removed.</remarks>
+            <exception cref="T:System.ArgumentException">ColumnWidths cannot be null or shorter than the row.</exception>
         </member>
         <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownText">
             <summary>

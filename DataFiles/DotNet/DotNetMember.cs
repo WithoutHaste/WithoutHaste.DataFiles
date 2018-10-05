@@ -16,33 +16,55 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public DotNetQualifiedName Name { get; protected set; }
 
-		/// <summary>Returns the number of top level comments, which may contain more nested comments.</summary>
-		public int CommentCount {
+		/// <summary>True when there's at least one comment on this member.</summary>
+		public bool HasComments { get { return !HasNoComments; } }
+
+		/// <summary>True when there are no comments on this member.</summary>
+		public bool HasNoComments {
 			get {
-				return summaryComments.Count
-					+ remarksComments.Count
-					+ permissionsComments.Count
-					+ exampleComments.Count
-					+ exceptionComments.Count
-					+ parameterComments.Count
-					+ (valueComment != null ? 1 : 0)
-					+ (returnsComment != null ? 1 : 0)
-					+ floatingComments.Count;
+				if(!SummaryComments.IsEmpty) return false;
+				if(!RemarksComments.IsEmpty) return false;
+				if(PermissionComments.Count > 0) return false;
+				if(ExampleComments.Count > 0) return false;
+				if(ExceptionComments.Count > 0) return false;
+				if(ParameterComments.Count > 0) return false;
+				if(!ValueComments.IsEmpty) return false;
+				if(!ReturnsComments.IsEmpty) return false;
+				if(!FloatingComments.IsEmpty) return false;
+				return true;
 			}
 		}
 
-		/// <summary>True when there are no comments.</summary>
-		public bool IsEmpty { get { return (CommentCount == 0); } }
+		/// <summary>Comments from "summary" xml tags. Only expected as a top-level tag.</summary>
+		/// <remarks>If there are multiple "summary" tags, their contents will be concatenated as if they were one tag.</remarks>
+		public DotNetCommentGroup SummaryComments = new DotNetCommentGroup();
 
-		private List<DotNetComment> summaryComments = new List<DotNetComment>();
-		private List<DotNetComment> remarksComments = new List<DotNetComment>();
-		private List<DotNetComment> permissionsComments = new List<DotNetComment>();
-		private List<DotNetComment> exampleComments = new List<DotNetComment>();
-		private List<DotNetCommentGroup> exceptionComments = new List<DotNetCommentGroup>();
-		private List<DotNetCommentGroup> parameterComments = new List<DotNetCommentGroup>(); //for <param> and <typeparam>
-		private DotNetComment valueComment; //properties only
-		private DotNetComment returnsComment; //methods only
-		private List<DotNetComment> floatingComments = new List<DotNetComment>(); //anything not inside main tags
+		/// <summary>Comments from "remarks" xml tags. Only expected as a top-level tag.</summary>
+		/// <remarks>If there are multiple "remarks" tags, their contents will be concatenated as if they were one tag.</remarks>
+		public DotNetCommentGroup RemarksComments = new DotNetCommentGroup();
+
+		/// <summary>Comments from "permission" xml tags. Only expected as top-level tags.</summary>
+		public List<DotNetComment> PermissionComments = new List<DotNetComment>();
+
+		/// <summary>Comments from "example" xml tags.</summary>
+		public List<DotNetComment> ExampleComments = new List<DotNetComment>();
+
+		/// <summary>Comments from "exception" xml tags.  Only expected as top-level tags.</summary>
+		public List<DotNetCommentGroup> ExceptionComments = new List<DotNetCommentGroup>();
+
+		/// <summary>Comments from "param" and "typeparam" xml tags. Only expected as top-level tags.</summary>
+		public List<DotNetCommentGroup> ParameterComments = new List<DotNetCommentGroup>();
+
+		/// <summary>Comments from "value" xml tags. Only expected as a top-level tag.</summary>
+		/// <remarks>If there are multiple "value" tags, their contents will be concatenated as if they were one tag.</remarks>
+		public DotNetCommentGroup ValueComments = new DotNetCommentGroup();
+
+		/// <summary>Comments from "returns" xml tags. Only expected as a top-level tag.</summary>
+		/// <remarks>If there are multiple "returns" tags, their contents will be concatenated as if they were one tag.</remarks>
+		public DotNetCommentGroup ReturnsComments = new DotNetCommentGroup();
+
+		/// <summary>Any comments not within expected top-level tags.</summary>
+		public DotNetCommentGroup FloatingComments = new DotNetCommentGroup();
 
 		/// <summary></summary>
 		public DotNetMember(DotNetQualifiedName name)
@@ -65,34 +87,34 @@ namespace WithoutHaste.DataFiles.DotNet
 						switch(element.Name.LocalName)
 						{
 							case "summary":
-								summaryComments.Add(DotNetComment.FromVisualStudioXml(element));
+								SummaryComments.Add(DotNetComment.FromVisualStudioXml(element));
 								break;
 							case "remarks":
-								remarksComments.Add(DotNetComment.FromVisualStudioXml(element));
+								RemarksComments.Add(DotNetComment.FromVisualStudioXml(element));
 								break;
 							case "example":
-								exampleComments.Add(DotNetComment.FromVisualStudioXml(element));
+								ExampleComments.Add(DotNetComment.FromVisualStudioXml(element));
 								break;
 							case "exception":
-								exceptionComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentGroup);
+								ExceptionComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentGroup);
 								break;
 							case "value":
-								valueComment = DotNetComment.FromVisualStudioXml(element);
+								ValueComments.Add(DotNetComment.FromVisualStudioXml(element));
 								break;
 							case "returns":
-								returnsComment = DotNetComment.FromVisualStudioXml(element);
+								ReturnsComments.Add(DotNetComment.FromVisualStudioXml(element));
 								break;
 							case "param":
 							case "typeparam":
-								parameterComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentGroup);
+								ParameterComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentGroup);
 								break;
 							default:
-								floatingComments.Add(DotNetComment.FromVisualStudioXml(element));
+								FloatingComments.Add(DotNetComment.FromVisualStudioXml(element));
 								break;
 						}
 						break;
 					case XmlNodeType.Text:
-						floatingComments.Add(DotNetComment.FromVisualStudioXml(node.ToString()));
+						FloatingComments.Add(DotNetComment.FromVisualStudioXml(node.ToString().Trim()));
 						break;
 				}
 			}

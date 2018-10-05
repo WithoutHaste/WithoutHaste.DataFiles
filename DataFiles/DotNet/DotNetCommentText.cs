@@ -9,6 +9,7 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <summary>
 	/// Represents a plain text segment of comments.
 	/// </summary>
+	/// <remarks>Text is allowed to have a single space at beginning and end. Anymore leading/trailing whitespace will be removed.</remarks>
 	public class DotNetCommentText : DotNetComment
 	{
 		/// <summary></summary>
@@ -17,9 +18,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public DotNetCommentText(string text)
 		{
-			if(text == "")
-				text = null;
-			Text = text;
+			if(text == "") text = null;
+			else Text = text.TrimAllowOneSpace();
 		}
 	}
 }

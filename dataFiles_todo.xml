@@ -38,6 +38,42 @@
       </Row>
       <Row>
         <Cell>
+          <Data ss:Type="Number">32</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">markdown
+? bold or italic styles as decoractor/wrapper classes ?</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-29T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">33</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">markdown
+? rename method ToMarkdown() to ToMarkdownString() ?</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Minor</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-10-01T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
           <Data ss:Type="Number">31</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -689,7 +725,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">31</Data>
+          <Data ss:Type="Number">33</Data>
         </Cell>
       </Row>
       <Row>
@@ -721,8 +757,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">
-          </Data>
+          <Data ss:Type="String">Inactive</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">
@@ -746,8 +781,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">
-          </Data>
+          <Data ss:Type="String">Inactive</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">
@@ -771,8 +805,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">
-          </Data>
+          <Data ss:Type="String">Inactive</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">
@@ -796,8 +829,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">
-          </Data>
+          <Data ss:Type="String">Inactive</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">

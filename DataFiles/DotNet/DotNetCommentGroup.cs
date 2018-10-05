@@ -21,6 +21,12 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public List<DotNetComment> Comments = new List<DotNetComment>();
 
+		/// <summary></summary>
+		public bool IsEmpty { get { return (Comments.Count == 0); } }
+
+		/// <summary></summary>
+		public int Count { get { return Comments.Count; } }
+
 		#region Constructors
 
 		/// <summary>Empty constructor</summary>

@@ -1,3 +1,4 @@
+DataFiles/*.cd
 DataFiles/.vs/*
 DataFiles/bin/Debug/*
 DataFiles/obj/*

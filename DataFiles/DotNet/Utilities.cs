@@ -140,6 +140,26 @@ namespace WithoutHaste.DataFiles.DotNet
 			return results.ToArray();
 		}
 
+		/// <summary>
+		/// Trims leading and trailing whitespaces. Will leave one leading and one trailing space, but won't add them.
+		/// </summary>
+		internal static string TrimAllowOneSpace(this string text)
+		{
+			string trimmedEnd = text.TrimEnd();
+			if(trimmedEnd.Length < text.Length && text[trimmedEnd.Length] == ' ')
+			{
+				trimmedEnd += " ";
+			}
+
+			string trimmedBoth = trimmedEnd.TrimStart();
+			if(trimmedBoth.Length < trimmedEnd.Length && trimmedEnd[trimmedEnd.Length - trimmedBoth.Length - 1] == ' ')
+			{
+				trimmedBoth = " " + trimmedBoth;
+			}
+
+			return trimmedBoth;
+		}
+
 		internal static bool IsEven(this int num)
 		{
 			return (num % 2 == 0);

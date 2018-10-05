@@ -34,6 +34,13 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public TypeCategory Category { get; protected set; }
 
+		/// <summary>Base type this type inherits from. Null if not known or none exists.</summary>
+		public DotNetBaseType BaseType { get; protected set; }
+
+		/// <summary>Interfaces this type inherits from, if known</summary>
+		/// <remarks>If an interface extends another interface, reflection reports that the type implements both interfaces.</remarks>
+		public List<DotNetBaseType> ImplementedInterfaces = new List<DotNetBaseType>();
+
 		/// <summary>The number of types nested within this type, including sub-nested types and enums.</summary>
 		public int NestedTypeCount {
 			get {
@@ -45,12 +52,54 @@ namespace WithoutHaste.DataFiles.DotNet
 
 		/// <summary></summary>
 		public List<DotNetType> NestedTypes = new List<DotNetType>();
+		/// <summary>The subset of NestedTypes that are enums.</summary>
+		public List<DotNetType> NestedEnums {
+			get {
+				return NestedTypes.Where(x => x.Category == TypeCategory.Enum).ToList();
+			}
+		}
 
 		/// <summary></summary>
 		public List<DotNetMethod> Methods = new List<DotNetMethod>();
+		/// <summary>The subset of Methods that are constructors.</summary>
+		public List<DotNetMethodConstructor> ConstructorMethods {
+			get {
+				return Methods.OfType<DotNetMethodConstructor>().ToList();
+			}
+		}
+		/// <summary>The subset of Methods that are operator overloads.</summary>
+		public List<DotNetMethodOperator> OperatorMethods {
+			get {
+				return Methods.OfType<DotNetMethodOperator>().ToList();
+			}
+		}
+		/// <summary>The subset of Methods that are static, but not constructors nor operators.</summary>
+		public List<DotNetMethod> StaticMethods {
+			get {
+				return Methods.Where(m => m.Category == MethodCategory.Static && !(m is DotNetMethodConstructor) && !(m is DotNetMethodOperator)).ToList();
+			}
+		}
+		/// <summary>The subset of Methods that are not static, nor constructors, nor operators.</summary>
+		public List<DotNetMethod> NormalMethods {
+			get {
+				return Methods.Where(m => m.Category == MethodCategory.Normal && !(m is DotNetMethodConstructor) && !(m is DotNetMethodOperator)).ToList();
+			}
+		}
 
 		/// <summary></summary>
 		public List<DotNetField> Fields = new List<DotNetField>();
+		/// <summary>The subset of Fields that are constants.</summary>
+		public List<DotNetField> ConstantFields {
+			get {
+				return Fields.Where(x => x.Category == FieldCategory.Constant).ToList();
+			}
+		}
+		/// <summary>The subset of Fields that are not constant, or where the category is unknown.</summary>
+		public List<DotNetField> NormalFields {
+			get {
+				return Fields.Where(x => x.Category != FieldCategory.Constant).ToList();
+			}
+		}
 
 		/// <summary></summary>
 		public List<DotNetProperty> Properties = new List<DotNetProperty>();
@@ -91,6 +140,14 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		#endregion
+
+		/// <summary>
+		/// Returns true if this member's name matches the provided name.
+		/// </summary>
+		public bool Is(DotNetQualifiedName name)
+		{
+			return (Name.FullName == name.FullName);
+		}
 
 		/// <summary>
 		/// Returns true if this member is defined within this type or any of its nested types.
@@ -147,14 +204,14 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// </summary>
 		public void AddAssemblyInfo(TypeInfo typeInfo, DotNetQualifiedName name)
 		{
-			if(Name.FullName == name.FullNamespace)
+			if(this.Is(name))
 			{
 				AddAssemblyInfo(typeInfo);
 				return;
 			}
 			foreach(DotNetType nestedType in NestedTypes)
 			{
-				if(nestedType.Owns(name))
+				if(nestedType.Is(name) || nestedType.Owns(name))
 				{
 					nestedType.AddAssemblyInfo(typeInfo, name);
 					return;
@@ -178,17 +235,29 @@ namespace WithoutHaste.DataFiles.DotNet
 
 			if(Category == TypeCategory.Unknown)
 				Category = TypeCategory.Normal;
+
+			if(typeInfo.BaseType != null)
+			{
+				BaseType = new DotNetBaseType(typeInfo.BaseType);
+			}
+			if(typeInfo.ImplementedInterfaces != null)
+			{
+				foreach(Type interfaceType in typeInfo.ImplementedInterfaces)
+				{
+					ImplementedInterfaces.Add(new DotNetBaseType(interfaceType));
+				}
+			}
 			
 			foreach(FieldInfo fieldInfo in typeInfo.DeclaredFields)
 			{
-				DotNetField field = Fields.FirstOrDefault(f => fieldInfo.Name == f.Name);
+				DotNetField field = Fields.FirstOrDefault(f => fieldInfo.Name == f.Name.LocalName);
 				if(field == null)
 					continue;
 				field.AddAssemblyInfo(fieldInfo);
 			}
 			foreach(PropertyInfo propertyInfo in typeInfo.DeclaredProperties)
 			{
-				DotNetProperty property = Properties.FirstOrDefault(p => propertyInfo.Name == p.Name);
+				DotNetProperty property = Properties.FirstOrDefault(p => propertyInfo.Name == p.Name.LocalName);
 				if(property == null)
 					continue;
 				property.AddAssemblyInfo(propertyInfo);

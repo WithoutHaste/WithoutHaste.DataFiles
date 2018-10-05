@@ -176,6 +176,65 @@ namespace DataFilesTest
 		}
 
 		[TestMethod]
+		public void Utilities_TrimAllowOneSpace_None()
+		{
+			//arrange
+			string input = "abc def\nghi";
+			//act
+			string result = input.TrimAllowOneSpace();
+			//assert
+			Assert.AreEqual(input, result);
+		}
+
+		[TestMethod]
+		public void Utilities_TrimAllowOneSpace_NoSpaces()
+		{
+			//arrange
+			string input = " \tabc def\nghi\r\n ";
+			string expectedOutput = "abc def\nghi";
+			//act
+			string result = input.TrimAllowOneSpace();
+			//assert
+			Assert.AreEqual(expectedOutput, result);
+		}
+
+		[TestMethod]
+		public void Utilities_TrimAllowOneSpace_StartSpace()
+		{
+			//arrange
+			string input = "\t abc def\nghi\r\n ";
+			string expectedOutput = " abc def\nghi";
+			//act
+			string result = input.TrimAllowOneSpace();
+			//assert
+			Assert.AreEqual(expectedOutput, result);
+		}
+
+		[TestMethod]
+		public void Utilities_TrimAllowOneSpace_EndSpace()
+		{
+			//arrange
+			string input = " \tabc def\nghi \r\n ";
+			string expectedOutput = "abc def\nghi ";
+			//act
+			string result = input.TrimAllowOneSpace();
+			//assert
+			Assert.AreEqual(expectedOutput, result);
+		}
+
+		[TestMethod]
+		public void Utilities_TrimAllowOneSpace_BothSpaces()
+		{
+			//arrange
+			string input = "        abc def\nghi \r\n ";
+			string expectedOutput = " abc def\nghi ";
+			//act
+			string result = input.TrimAllowOneSpace();
+			//assert
+			Assert.AreEqual(expectedOutput, result);
+		}
+
+		[TestMethod]
 		public void Utilities_TypeInfo_IsAbstract()
 		{
 			//arrange
