@@ -85,12 +85,16 @@ namespace WithoutHaste.DataFiles.DotNet
 			//parse parameters
 			List<DotNetParameter> qualifiedParameters = ParametersFromVisualStudioXml(parameters);
 
+			DotNetMethod method = null;
 			if(isConstructor)
-				return new DotNetMethodConstructor(qualifiedName, qualifiedParameters);
+				method = new DotNetMethodConstructor(qualifiedName, qualifiedParameters);
 			else if(isOperator)
-				return new DotNetMethodOperator(qualifiedName, qualifiedParameters);
+				method = new DotNetMethodOperator(qualifiedName, qualifiedParameters);
 			else
-				return new DotNetMethod(qualifiedName, qualifiedParameters);
+				method = new DotNetMethod(qualifiedName, qualifiedParameters);
+			method.ParseVisualStudioXmlDocumentation(memberElement);
+
+			return method;
 		}
 
 		#endregion

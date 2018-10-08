@@ -116,24 +116,24 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentCodeBlock.FromVisualStudioXml(System.Xml.Linq.XElement)">
             <summary>Parses .Net XML documentation code.</summary>
         </member>
-        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup`1">
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup">
             <summary>
             Represents an ordered collection of comments that is linked to something in the assembly which it is documenting.
             </summary>
         </member>
-        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup`1.Link">
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup.Link">
             <summary>Reference link from comments to something in the assembly.</summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup`1.#ctor">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup.#ctor">
             <summary>Empty constructor</summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup`1.#ctor(`0,WithoutHaste.DataFiles.DotNet.DotNetComment)">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.IDotNetCommentLink,WithoutHaste.DataFiles.DotNet.DotNetComment)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup`1.#ctor(`0,WithoutHaste.DataFiles.DotNet.DotNetComment[])">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.IDotNetCommentLink,WithoutHaste.DataFiles.DotNet.DotNetComment[])">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup`1.#ctor(`0,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetComment})">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.IDotNetCommentLink,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetComment})">
             <summary></summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentListItem">
@@ -198,6 +198,9 @@
             </summary>
             <example><![CDATA[<param name="myParam">nested comments</param>]]></example>
         </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentParameter.ParameterLink">
+            <summary>Strongly-typed link.</summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentParameter.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink,WithoutHaste.DataFiles.DotNet.DotNetComment)">
             <summary></summary>
         </member>
@@ -234,6 +237,9 @@
             </summary>
             <example><![CDATA[<permission cref="Namespace.Type.Member">nested comments</permission>]]></example>
             <example><![CDATA[<exception cref="Namespace.ExceptionType">nested comments</exception>]]></example>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.QualifiedLink">
+            <summary>Strongly-typed link.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink,WithoutHaste.DataFiles.DotNet.DotNetComment)">
             <summary></summary>
@@ -1907,7 +1913,7 @@
             Add a new MarkdownText containing the text to the beginning of the line.
             </summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLine.Preprend(WithoutHaste.DataFiles.Markdown.IMarkdownInLine)">
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLine.Prepend(WithoutHaste.DataFiles.Markdown.IMarkdownInLine)">
             <summary>
             Add an element to the beginning of the line.
             </summary>
@@ -2162,6 +2168,23 @@
             <remarks>Line feed, new line, and tab characters are removed.</remarks>
             <exception cref="T:System.ArgumentException">ColumnWidths cannot be null or shorter than the row.</exception>
         </member>
+        <member name="T:WithoutHaste.DataFiles.Markdown.TextStyle">
+            <summary>
+            Display style of text.
+            </summary>
+            <remarks>
+            Number enum values with powers of 2 to allow bitwise operations.
+            </remarks>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.Markdown.TextStyle.Normal">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.Markdown.TextStyle.Bold">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.Markdown.TextStyle.Italic">
+            <summary></summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownText">
             <summary>
             Represents plain text.
@@ -2170,11 +2193,28 @@
         <member name="P:WithoutHaste.DataFiles.Markdown.MarkdownText.Text">
             <summary></summary>
         </member>
+        <member name="P:WithoutHaste.DataFiles.Markdown.MarkdownText.Style">
+            <summary></summary>
+            <remarks>Supports multiple selections such as <c>TextStype.Bold | TextStyle.Italic</c>.</remarks>
+        </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownText.#ctor(System.String)">
             <summary></summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownText.#ctor(System.String,WithoutHaste.DataFiles.Markdown.TextStyle)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownText.Bold(System.String)">
+            <summary>Generate bold text.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownText.Italic(System.String)">
+            <summary>Generate italic text.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownText.BoldItalic(System.String)">
+            <summary>Generate bold-italic text.</summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownText.ToMarkdown">
             <inheritdoc />
+            <remarks>Uses ** for bold and _ for italics.</remarks>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.Utilities.EnsureTwoEndlines(System.String)">
             <summary>

@@ -44,7 +44,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		public static DotNetField FromVisualStudioXml(XElement memberElement)
 		{
 			DotNetQualifiedName name = DotNetQualifiedName.FromVisualStudioXml(memberElement.Attribute("name")?.Value);
-			return new DotNetField(name);
+			DotNetField field = new DotNetField(name);
+			field.ParseVisualStudioXmlDocumentation(memberElement);
+			return field;
 		}
 
 		#endregion

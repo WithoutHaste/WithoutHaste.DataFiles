@@ -28,7 +28,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		public static new DotNetEvent FromVisualStudioXml(XElement memberElement)
 		{
 			DotNetQualifiedName name = DotNetQualifiedName.FromVisualStudioXml(memberElement.Attribute("name")?.Value);
-			return new DotNetEvent(name);
+			DotNetEvent eventMember = new DotNetEvent(name);
+			eventMember.ParseVisualStudioXmlDocumentation(memberElement);
+			return eventMember;
 		}
 
 		#endregion

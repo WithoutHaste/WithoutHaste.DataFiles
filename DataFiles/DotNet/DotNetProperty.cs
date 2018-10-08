@@ -28,7 +28,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		public static new DotNetProperty FromVisualStudioXml(XElement memberElement)
 		{
 			DotNetQualifiedName name = DotNetQualifiedName.FromVisualStudioXml(memberElement.Attribute("name")?.Value);
-			return new DotNetProperty(name);
+			DotNetProperty property = new DotNetProperty(name);
+			property.ParseVisualStudioXmlDocumentation(memberElement);
+			return property;
 		}
 
 		#endregion

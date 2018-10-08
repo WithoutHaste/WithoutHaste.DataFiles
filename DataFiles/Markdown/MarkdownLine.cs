@@ -100,7 +100,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <summary>
 		/// Add an element to the beginning of the line.
 		/// </summary>
-		public void Preprend(IMarkdownInLine element)
+		public void Prepend(IMarkdownInLine element)
 		{
 			elements.Insert(0, element);
 		}

@@ -136,7 +136,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		public static DotNetType FromVisualStudioXml(XElement memberElement)
 		{
 			DotNetQualifiedName name = DotNetQualifiedName.FromVisualStudioXml(memberElement.Attribute("name")?.Value);
-			return new DotNetType(name);
+			DotNetType type = new DotNetType(name);
+			type.ParseVisualStudioXmlDocumentation(memberElement);
+			return type;
 		}
 
 		#endregion

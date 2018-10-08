@@ -11,7 +11,7 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// Represents a generic-type parameter description in the comments.
 	/// </summary>
 	/// <example><![CDATA[<typeparam name="T">nested comments</typeparam>]]></example>
-	public class DotNetCommentTypeParameter : DotNetCommentLinkedGroup<DotNetCommentTypeParameterLink>
+	public class DotNetCommentTypeParameter : DotNetCommentParameter
 	{
 		#region Constructors
 

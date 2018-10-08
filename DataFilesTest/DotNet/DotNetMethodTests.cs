@@ -253,5 +253,21 @@ namespace DataFilesTest
 			Assert.AreEqual("A", result.Parameters[0].FullTypeName);
 			Assert.AreEqual("a", result.Parameters[0].Name);
 		}
+
+		[TestMethod]
+		public void DotNetMethod_FromAssembly_ParamComment()
+		{
+			//arrange
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.ParameterClass.MethodOneNormalParameter(System.Int32)'><param name='a'>Comments</param></member>");
+			Type type = typeof(ParameterClass);
+			MethodInfo methodInfo = type.GetMethods()[1];
+			//act
+			DotNetMethod result = DotNetMethod.FromVisualStudioXml(xmlElement);
+			result.AddAssemblyInfo(methodInfo);
+			//assert
+			Assert.AreEqual(1, result.ParameterComments.Count);
+			Assert.IsNotNull(result.ParameterComments[0]);
+		}
+
 	}
 }

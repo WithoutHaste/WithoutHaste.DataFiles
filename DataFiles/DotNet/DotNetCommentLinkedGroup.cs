@@ -9,10 +9,10 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <summary>
 	/// Represents an ordered collection of comments that is linked to something in the assembly which it is documenting.
 	/// </summary>
-	public class DotNetCommentLinkedGroup<T> : DotNetCommentGroup where T : IDotNetCommentLink
+	public class DotNetCommentLinkedGroup : DotNetCommentGroup
 	{
 		/// <summary>Reference link from comments to something in the assembly.</summary>
-		public T Link { get; protected set; }
+		public IDotNetCommentLink Link { get; protected set; }
 
 		#region Constructors
 
@@ -22,19 +22,19 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary></summary>
-		public DotNetCommentLinkedGroup(T link, DotNetComment comment) : base(comment)
+		public DotNetCommentLinkedGroup(IDotNetCommentLink link, DotNetComment comment) : base(comment)
 		{
 			Link = link;
 		}
 
 		/// <summary></summary>
-		public DotNetCommentLinkedGroup(T link, params DotNetComment[] comments) : base(comments)
+		public DotNetCommentLinkedGroup(IDotNetCommentLink link, params DotNetComment[] comments) : base(comments)
 		{
 			Link = link;
 		}
 
 		/// <summary></summary>
-		public DotNetCommentLinkedGroup(T link, List<DotNetComment> comments) : base(comments)
+		public DotNetCommentLinkedGroup(IDotNetCommentLink link, List<DotNetComment> comments) : base(comments)
 		{
 			Link = link;
 		}

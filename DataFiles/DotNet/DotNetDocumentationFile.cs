@@ -108,32 +108,27 @@ namespace WithoutHaste.DataFiles.DotNet
 				{
 					case "T:":
 						DotNetType type = DotNetType.FromVisualStudioXml(memberElement);
-						type.ParseVisualStudioXmlDocumentation(memberElement);
 						if(IsNestedType(type)) AddMemberToType(type);
 						else Types.Add(type);
 						break;
 
 					case "M:":
 						DotNetMethod method = DotNetMethod.FromVisualStudioXml(memberElement);
-						method.ParseVisualStudioXmlDocumentation(memberElement);
 						AddMemberToType(method);
 						break;
 
 					case "F:":
 						DotNetField field = DotNetField.FromVisualStudioXml(memberElement);
-						field.ParseVisualStudioXmlDocumentation(memberElement);
 						AddMemberToType(field);
 						break;
 
 					case "P:":
 						DotNetProperty property = DotNetProperty.FromVisualStudioXml(memberElement);
-						property.ParseVisualStudioXmlDocumentation(memberElement);
 						AddMemberToType(property);
 						break;
 
 					case "E:":
 						DotNetEvent eventMember = DotNetEvent.FromVisualStudioXml(memberElement);
-						eventMember.ParseVisualStudioXmlDocumentation(memberElement);
 						AddMemberToType(eventMember);
 						break;
 				}

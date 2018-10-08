@@ -11,8 +11,11 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// Represents a parameter description in the comments.
 	/// </summary>
 	/// <example><![CDATA[<param name="myParam">nested comments</param>]]></example>
-	public class DotNetCommentParameter : DotNetCommentLinkedGroup<DotNetCommentParameterLink>
+	public class DotNetCommentParameter : DotNetCommentLinkedGroup
 	{
+		/// <summary>Strongly-typed link.</summary>
+		public DotNetCommentParameterLink ParameterLink { get { return Link as DotNetCommentParameterLink; } }
+
 		#region Constructors
 
 		/// <summary></summary>

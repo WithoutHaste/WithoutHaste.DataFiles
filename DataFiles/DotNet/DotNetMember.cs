@@ -50,10 +50,10 @@ namespace WithoutHaste.DataFiles.DotNet
 		public List<DotNetComment> ExampleComments = new List<DotNetComment>();
 
 		/// <summary>Comments from "exception" xml tags.  Only expected as top-level tags.</summary>
-		public List<DotNetCommentGroup> ExceptionComments = new List<DotNetCommentGroup>();
+		public List<DotNetCommentQualifiedLinkedGroup> ExceptionComments = new List<DotNetCommentQualifiedLinkedGroup>();
 
 		/// <summary>Comments from "param" and "typeparam" xml tags. Only expected as top-level tags.</summary>
-		public List<DotNetCommentGroup> ParameterComments = new List<DotNetCommentGroup>();
+		public List<DotNetCommentParameter> ParameterComments = new List<DotNetCommentParameter>();
 
 		/// <summary>Comments from "value" xml tags. Only expected as a top-level tag.</summary>
 		/// <remarks>If there are multiple "value" tags, their contents will be concatenated as if they were one tag.</remarks>
@@ -96,7 +96,7 @@ namespace WithoutHaste.DataFiles.DotNet
 								ExampleComments.Add(DotNetComment.FromVisualStudioXml(element));
 								break;
 							case "exception":
-								ExceptionComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentGroup);
+								ExceptionComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentQualifiedLinkedGroup);
 								break;
 							case "value":
 								ValueComments.Add(DotNetComment.FromVisualStudioXml(element));
@@ -106,7 +106,7 @@ namespace WithoutHaste.DataFiles.DotNet
 								break;
 							case "param":
 							case "typeparam":
-								ParameterComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentGroup);
+								ParameterComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentParameter);
 								break;
 							default:
 								FloatingComments.Add(DotNetComment.FromVisualStudioXml(element));
