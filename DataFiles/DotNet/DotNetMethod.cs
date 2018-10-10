@@ -78,9 +78,12 @@ namespace WithoutHaste.DataFiles.DotNet
 			{
 				qualifiedName = qualifiedName.SetLocalName(qualifiedName.FullNamespace.LocalName);
 			}
+			//todo: check for #cctor for static constructors
+			//todo: differentiate state constructors
 
 			//for operators
 			bool isOperator = qualifiedName.LocalName.StartsWith("op_");
+			//todo: implicit and explicit operators
 
 			//parse parameters
 			List<DotNetParameter> qualifiedParameters = ParametersFromVisualStudioXml(parameters);

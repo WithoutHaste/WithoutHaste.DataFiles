@@ -26,6 +26,8 @@ namespace DataFilesTest
 
 		protected class NormalClass
 		{
+			static NormalClass() { }
+
 			public void MethodReturnVoid() { }
 
 			public int MethodReturnNormal() { return 0; }
@@ -268,6 +270,15 @@ namespace DataFilesTest
 			Assert.AreEqual(1, result.ParameterComments.Count);
 			Assert.IsNotNull(result.ParameterComments[0]);
 		}
+
+		//[TestMethod]
+		//public void DotNetMethod_FromAssembly_StaticConstructor()
+		//{
+		//	//todo
+		//	Type type = typeof(NormalClass);
+		//	TypeInfo typeInfo = type.GetTypeInfo();
+		//	int x = 0;
+		//}
 
 	}
 }

@@ -78,6 +78,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <param name="parent">Expects the tag containing all documentation for this member.</param>
 		public void ParseVisualStudioXmlDocumentation(XElement parent)
 		{
+			//todo: should this start by clearing all the comment lists? so running it multiple times does not duplicate data?
 			foreach(XNode node in parent.Nodes())
 			{
 				switch(node.NodeType)
