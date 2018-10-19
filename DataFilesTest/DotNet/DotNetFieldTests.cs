@@ -15,6 +15,10 @@ namespace DataFilesTest
 		protected class A
 		{
 			public int IntField = 0;
+
+			public int this[string key] { get { return 0; } }
+
+			public double this[int i] { get { return 0; } }
 		}
 
 		public abstract class AbstractClass
@@ -47,6 +51,28 @@ namespace DataFilesTest
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
 			//assert
 			Assert.AreEqual(FieldCategory.Abstract, dotNetType.Properties[0].Category);
+		}
+
+		[TestMethod]
+		public void DotNetField_Assembly_Indexers()
+		{
+			//arrange
+			Type type = typeof(A);
+			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:A'></member>"));
+			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:A.Item(System.String)'></member>")));
+			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:A.Item(System.Int32)'></member>")));
+			//act
+			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			//assert
+			Assert.IsTrue(dotNetType.Properties[0] is DotNetIndexer);
+			DotNetIndexer indexer = (dotNetType.Properties[0] as DotNetIndexer);
+			Assert.AreEqual(1, indexer.Parameters.Count());
+			Assert.AreEqual("key", indexer.Parameters[0].Name);
+
+			Assert.IsTrue(dotNetType.Properties[1] is DotNetIndexer);
+			indexer = (dotNetType.Properties[1] as DotNetIndexer);
+			Assert.AreEqual(1, indexer.Parameters.Count());
+			Assert.AreEqual("i", indexer.Parameters[0].Name);
 		}
 	}
 }

@@ -32,7 +32,13 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <param name="memberElement">Expects tag name "member".</param>
 		public static new DotNetProperty FromVisualStudioXml(XElement memberElement)
 		{
-			DotNetQualifiedName name = DotNetQualifiedName.FromVisualStudioXml(memberElement.Attribute("name")?.Value);
+			string xmlName = memberElement.Attribute("name")?.Value;
+			if(xmlName.IndexOf("(") > -1)
+			{
+				return DotNetIndexer.FromVisualStudioXml(memberElement);
+			}
+
+			DotNetQualifiedName name = DotNetQualifiedName.FromVisualStudioXml(xmlName);
 			DotNetProperty property = new DotNetProperty(name);
 			property.ParseVisualStudioXmlDocumentation(memberElement);
 			return property;

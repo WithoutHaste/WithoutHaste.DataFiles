@@ -24,6 +24,44 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetBaseType.#ctor(System.Type)">
             <summary></summary>
         </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetIndexer">
+            <summary>
+            Represents an indexer property.
+            </summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetIndexer.Parameters">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetIndexer.ParameterTypesSignature">
+            <summary>Returns indexer parameters format as "[TypeA,TypeB]".</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetIndexer.ParametersSignature">
+            <summary>Returns indexer parameters format as "[TypeA a, TypeB b]".</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetIndexer.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter})">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetIndexer.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>
+            Parse .Net XML documentation for Indexer data.
+            </summary>
+            <param name="memberElement">Expects tag name "member".</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetIndexer.AddAssemblyInfo(System.Reflection.PropertyInfo)">
+            <summary>
+            Load additional documentation information from the assembly itself.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetIndexer.MatchesSignature(System.Reflection.MethodInfo)">
+            <summary>
+            Returns true if this method's signature matches the reflected MethodInfo.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetIndexer.MatchesArguments(System.Reflection.ParameterInfo[])">
+            <summary>
+            Returns true if this method's parameter list matches the reflected ParameterInfo.
+            </summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod">
             <summary>
             Represents a getter or a setter method of a property.
@@ -1107,6 +1145,12 @@
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.Properties">
             <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.IndexerProperties">
+            <summary>The subset of Properties that are indexers.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.NormalProperties">
+            <summary>The subset of Properties that are not indexers.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.Events">
             <summary></summary>

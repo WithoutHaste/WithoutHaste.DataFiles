@@ -101,6 +101,10 @@ namespace WithoutHaste.DataFiles.DotNet
 
 		/// <summary></summary>
 		public List<DotNetProperty> Properties = new List<DotNetProperty>();
+		/// <summary>The subset of Properties that are indexers.</summary>
+		public List<DotNetIndexer> IndexerProperties { get { return Properties.OfType<DotNetIndexer>().Cast<DotNetIndexer>().ToList(); } }
+		/// <summary>The subset of Properties that are not indexers.</summary>
+		public List<DotNetProperty> NormalProperties { get { return Properties.Where(p => !(p is DotNetIndexer)).ToList(); } }
 
 		/// <summary></summary>
 		public List<DotNetEvent> Events = new List<DotNetEvent>();
@@ -255,12 +259,19 @@ namespace WithoutHaste.DataFiles.DotNet
 					continue;
 				field.AddAssemblyInfo(fieldInfo);
 			}
-			foreach(PropertyInfo propertyInfo in typeInfo.DeclaredProperties)
+			foreach(PropertyInfo propertyInfo in typeInfo.DeclaredProperties.Where(x => x.GetMethod.GetParameters().Count() == 0))
 			{
 				DotNetProperty property = Properties.FirstOrDefault(p => propertyInfo.Name == p.Name.LocalName);
 				if(property == null)
 					continue;
 				property.AddAssemblyInfo(propertyInfo);
+			}
+			foreach(PropertyInfo propertyInfo in typeInfo.DeclaredProperties.Where(x => x.GetMethod.GetParameters().Count() > 0))
+			{
+				DotNetIndexer indexer = Properties.OfType<DotNetIndexer>().Cast<DotNetIndexer>().FirstOrDefault(i => i.MatchesSignature(propertyInfo.GetGetMethod()));
+				if(indexer == null)
+					continue;
+				indexer.AddAssemblyInfo(propertyInfo);
 			}
 			foreach(MethodInfo methodInfo in typeInfo.DeclaredMethods)
 			{
