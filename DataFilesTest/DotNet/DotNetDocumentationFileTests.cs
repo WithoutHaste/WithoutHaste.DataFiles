@@ -164,13 +164,24 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_AddAssemblyInfo_FoundType()
 		{
 			//arrange
-			string xmlDocumentationFilename = "E:/Github/EarlyDocs/Demo/bin/Debug/Demo.XML";
-			string dllFilename = "E:/Github/EarlyDocs/Demo/bin/Debug/Demo.dll";
+			string xmlDocumentationFilename = "E:/Github/EarlyDocs/Test/bin/Debug/Test.XML";
+			string dllFilename = "E:/Github/EarlyDocs/Test/bin/Debug/Test.dll";
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			xmlDocumentation.AddAssemblyInfo(dllFilename);
 			//assert
 			Assert.IsTrue(xmlDocumentation.Types.Count(t => t.Category != TypeCategory.Unknown) > 0);
+		}
+
+		[TestMethod]
+		public void DotNetDocumentationFile_OrphanedMember_Ignore()
+		{
+			//arrange
+			string filename = "data/DotNetDocumentationFile_OrphanedMember.xml";
+			//act
+			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
+			//assert
+			Assert.AreEqual(0, file.Types.Count);
 		}
 
 	}
