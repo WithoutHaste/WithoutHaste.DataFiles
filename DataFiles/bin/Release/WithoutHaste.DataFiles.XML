@@ -186,6 +186,9 @@
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentListItem.Description">
             <summary></summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentListItem.#ctor">
+            <summary></summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentListItem.#ctor(System.String,System.String,System.Boolean)">
             <summary></summary>
         </member>
@@ -533,6 +536,16 @@
             </summary>
             <exception cref="T:WithoutHaste.DataFiles.XmlFormatException">XML tag does not have any of the expected local names, or is null</exception>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetComment.IsXmlTag(System.Xml.Linq.XElement,System.String)">
+            <summary>
+            Returns false on unexpected xml formats.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetComment.IsXmlTag(System.Xml.Linq.XElement,System.String[])">
+            <summary>
+            Returns false on unexpected xml formats.
+            </summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentCell">
             <summary>
             Represents a cell in a table in .Net XML documentation.
@@ -642,6 +655,10 @@
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetCommentList.Items">
             <summary>Items in the list.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentList.Item(System.Int32)">
+            <summary>Access list items by 0-based index.</summary>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentList.Length">
             <summary>Number of items in the list. Includes headers.</summary>

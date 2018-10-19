@@ -100,5 +100,21 @@ namespace WithoutHaste.DataFiles.DotNet
 			if(element == null || !localNames.Contains(element.Name.LocalName))
 				throw new XmlFormatException(String.Format("Unexpected xml element '{0}'. Expecting any of {1}.", element?.Name.LocalName, String.Join(", ", localNames.Select(x => "'"+x+"'").ToArray())));
 		}
+
+		/// <summary>
+		/// Returns false on unexpected xml formats.
+		/// </summary>
+		public static bool IsXmlTag(XElement element, string localName)
+		{
+			return !(element == null || element.Name.LocalName != localName);
+		}
+
+		/// <summary>
+		/// Returns false on unexpected xml formats.
+		/// </summary>
+		public static bool IsXmlTag(XElement element, string[] localNames)
+		{
+			return !(element == null || !localNames.Contains(element.Name.LocalName));
+		}
 	}
 }

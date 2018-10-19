@@ -35,6 +35,16 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Items in the list.</summary>
 		public List<DotNetCommentListItem> Items = new List<DotNetCommentListItem>();
 
+		/// <summary>Access list items by 0-based index.</summary>
+		/// <exception cref="IndexOutOfRangeException"></exception>
+		public DotNetCommentListItem this[int index] {
+			get {
+				if(index < 0 || index >= Items.Count)
+					throw new IndexOutOfRangeException("Index out of range: " + index);
+				return Items[index];
+			}
+		}
+
 		/// <summary>Number of items in the list. Includes headers.</summary>
 		public int Length { get { return Items.Count; } }
 

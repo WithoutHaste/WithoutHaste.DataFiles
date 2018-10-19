@@ -61,6 +61,11 @@ namespace WithoutHaste.DataFiles.DotNet
 		#region Constructors
 
 		/// <summary></summary>
+		public DotNetCommentListItem() : this(null, null, false)
+		{
+		}
+
+		/// <summary></summary>
 		public DotNetCommentListItem(string term, string description = null, bool isHeader = false)
 		{
 			Term = term;
@@ -71,7 +76,10 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Parses .Net XML documentation listheader or item.</summary>
 		public static DotNetCommentListItem FromVisualStudioXml(XElement element)
 		{
-			DotNetComment.ValidateXmlTag(element, new string[] { "listheader", "item" });
+			if(!DotNetComment.IsXmlTag(element, new string[] { "listheader", "item" }))
+			{
+				return new DotNetCommentListItem();
+			}
 
 			bool isHeader = (element.Name.LocalName == "listheader");
 			string term = null;

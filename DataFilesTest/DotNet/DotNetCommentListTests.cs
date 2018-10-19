@@ -92,5 +92,38 @@ namespace DataFilesTest
 			Assert.AreEqual(true, list.IsNumbered);
 			Assert.AreEqual(4, list.Length);
 		}
+
+		[TestMethod]
+		public void DotNetCommentList_FromXml_NestedListInItem_Ignore()
+		{
+			//arrange
+			string items = "<listheader>H1</listheader><item>I1</item><item><list type='number'><item>Nested 1</item><item>Nested 2</item></list></item><item>I3</item>";
+			XElement element = XElement.Parse("<list type='bullet'>" + items + "</list>");
+			//act
+			DotNetComment result = DotNetCommentList.FromVisualStudioXml(element);
+			//assert
+			Assert.IsTrue(result is DotNetCommentList);
+			DotNetCommentList list = result as DotNetCommentList;
+			Assert.AreEqual(4, list.Length);
+			Assert.AreEqual(null, list[2].Term);
+			Assert.AreEqual(null, list[2].Description);
+		}
+
+		[TestMethod]
+		public void DotNetCommentList_FromXml_NestedList_Ignore()
+		{
+			//arrange
+			string items = "<listheader>H1</listheader><item>I1</item><list type='number'><item>Nested 1</item><item>Nested 2</item></list><item>I3</item>";
+			XElement element = XElement.Parse("<list type='bullet'>" + items + "</list>");
+			//act
+			DotNetComment result = DotNetCommentList.FromVisualStudioXml(element);
+			//assert
+			Assert.IsTrue(result is DotNetCommentList);
+			DotNetCommentList list = result as DotNetCommentList;
+			Assert.AreEqual(4, list.Length);
+			Assert.AreEqual("I1", list[1].Term);
+			Assert.AreEqual(null, list[2].Term);
+			Assert.AreEqual("I3", list[3].Term);
+		}
 	}
 }
