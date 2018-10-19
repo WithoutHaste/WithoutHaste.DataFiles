@@ -845,6 +845,9 @@
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetField.TypeName">
             <summary>Fully qualified name of data type, if known. Null if not known.</summary>
         </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetField.FullTypeName">
+            <summary></summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetField.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary></summary>
         </member>

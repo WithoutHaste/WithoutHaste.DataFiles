@@ -10,27 +10,25 @@ using WithoutHaste.DataFiles.DotNet;
 namespace DataFilesTest
 {
 	[TestClass]
-	public class DotNetFieldTests
+	public class DotNetEventTests
 	{
 		protected class A
 		{
-			public int IntField = 0;
-
-			public int IntProperty { get; set; }
+			public event EventHandler EventA;
 		}
 
 		[TestMethod]
-		public void DotNetField_Assembly_GetType()
+		public void DotNetEvent_Assembly_Normal()
 		{
 			//arrange
 			Type type = typeof(A);
 			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:A'></member>"));
-			dotNetType.AddMember(DotNetField.FromVisualStudioXml(XElement.Parse("<member name='F:A.IntField'></member>")));
+			dotNetType.AddMember(DotNetEvent.FromVisualStudioXml(XElement.Parse("<member name='E:A.EventA'></member>")));
 			//act
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
 			//assert
-			Assert.IsNotNull(dotNetType.Fields[0].TypeName);
-			Assert.AreEqual("System.Int32", dotNetType.Fields[0].TypeName.FullName);
+			Assert.AreEqual(1, dotNetType.Events.Count);
+			Assert.AreEqual("System.EventHandler", dotNetType.Events[0].FullTypeName);
 		}
 	}
 }

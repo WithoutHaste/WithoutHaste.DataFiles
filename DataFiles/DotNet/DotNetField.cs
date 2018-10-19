@@ -32,6 +32,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Fully qualified name of data type, if known. Null if not known.</summary>
 		public DotNetQualifiedTypeName TypeName { get; protected set; }
 
+		/// <summary></summary>
+		public string FullTypeName { get { return TypeName.FullName; } }
+
 		#region Constructors
 
 		/// <summary></summary>

@@ -295,7 +295,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 			foreach(EventInfo eventInfo in typeInfo.DeclaredEvents)
 			{
-				DotNetEvent e = Events.FirstOrDefault(m => m.Name == eventInfo.Name);
+				DotNetEvent e = Events.FirstOrDefault(m => m.Name.LocalName == eventInfo.Name);
 				if(e == null)
 					continue;
 				e.AddAssemblyInfo(eventInfo);
