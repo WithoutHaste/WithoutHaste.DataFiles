@@ -25,6 +25,9 @@ namespace WithoutHaste.DataFiles.DotNet
 
 		internal static string ReplaceUnescapedCharacters(this string text, char escapeChar, char searchChar, char replacementChar)
 		{
+			if(String.IsNullOrEmpty(text))
+				return text;
+
 			for(int i = text.Length - 1; i >= 0; i--)
 			{
 				if(text[i] != searchChar)

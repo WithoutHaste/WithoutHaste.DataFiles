@@ -116,6 +116,8 @@ namespace WithoutHaste.DataFiles.DotNet
 
 			string typeName = type.FullName;
 			typeName = typeName.ReplaceUnescapedCharacters('\\', '+', '.');
+			if(String.IsNullOrEmpty(typeName))
+				typeName = ""; //todo: this should not be necessary, track down case in EarlyDocs
 			List<DotNetQualifiedTypeName> parameters = new List<DotNetQualifiedTypeName>();
 			int genericParameterCount = 0;
 			if(type.GenericTypeArguments.Length > 0)
