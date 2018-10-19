@@ -249,5 +249,89 @@ namespace DataFilesTest
 			Assert.AreEqual(expectedQualifiedName, result.FullName);
 			Assert.AreEqual(expectedFullNamespace, result.FullNamespace);
 		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_FromXml_Equality_Different()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("A.B.C");
+			DotNetQualifiedName b = DotNetQualifiedName.FromVisualStudioXml("D.E.F");
+			//act
+			bool result = (a == b);
+			//assert
+			Assert.AreEqual(false, result);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_FromXml_Equality_SameLocalOnly()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("A.B.C");
+			DotNetQualifiedName b = DotNetQualifiedName.FromVisualStudioXml("D.E.C");
+			//act
+			bool result = (a == b);
+			//assert
+			Assert.AreEqual(false, result);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_FromXml_Equality_SameNamespaceOnly()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("A.B.C");
+			DotNetQualifiedName b = DotNetQualifiedName.FromVisualStudioXml("A.B.F");
+			//act
+			bool result = (a == b);
+			//assert
+			Assert.AreEqual(false, result);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_FromXml_Equality_OneNull()
+		{
+			//arrange
+			DotNetQualifiedName a = null;
+			DotNetQualifiedName b = DotNetQualifiedName.FromVisualStudioXml("D.E.F");
+			//act
+			bool result = (a == b);
+			//assert
+			Assert.AreEqual(false, result);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_FromXml_Equality_OneNamespaceNull()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("F");
+			DotNetQualifiedName b = DotNetQualifiedName.FromVisualStudioXml("D.E.F");
+			//act
+			bool result = (a == b);
+			//assert
+			Assert.AreEqual(false, result);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_FromXml_Equality_Same()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("A.B.C");
+			DotNetQualifiedName b = DotNetQualifiedName.FromVisualStudioXml("A.B.C");
+			//act
+			bool result = (a == b);
+			//assert
+			Assert.AreEqual(true, result);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_FromXml_Equality_BothNull()
+		{
+			//arrange
+			DotNetQualifiedName a = null;
+			DotNetQualifiedName b = null;
+			//act
+			bool result = (a == b);
+			//assert
+			Assert.AreEqual(true, result);
+		}
 	}
 }

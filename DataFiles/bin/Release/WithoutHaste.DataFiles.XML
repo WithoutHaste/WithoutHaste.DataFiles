@@ -1297,6 +1297,18 @@
             <summary>Returns dot notation of namespaces and local name.</summary>
             <example>A.B.C.LocalName</example>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.op_Equality(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary>Names converted to strings must match exactly to be considered equal.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.op_Inequality(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <duplicate cref="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.op_Equality(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)" />
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.Equals(System.Object)">
+            <duplicate cref="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.op_Equality(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)" />
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.GetHashCode">
+            <duplicate cref="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.op_Equality(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)" />
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.Utilities.CountPreceedingRepeatedChars(System.String,System.Int32,System.Char)">
             <summary>
             Returns the number of sequential characters that all match the selected character, working backwards from the starting index.

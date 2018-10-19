@@ -287,6 +287,42 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 			return FullNamespace + "." + LocalName;
 		}
+		
+		/// <summary>Names converted to strings must match exactly to be considered equal.</summary>
+		public static bool operator ==(DotNetQualifiedName a, DotNetQualifiedName b)
+		{
+			if(object.ReferenceEquals(a, null) && object.ReferenceEquals(b, null))
+				return true;
+
+			if(object.ReferenceEquals(a, null) || object.ReferenceEquals(b, null))
+				return false;
+
+			return (a.LocalName == b.LocalName && a.FullNamespace == b.FullNamespace);
+		}
+
+		/// <duplicate cref="operator ==(DotNetQualifiedName,DotNetQualifiedName)" />
+		public static bool operator !=(DotNetQualifiedName a, DotNetQualifiedName b)
+		{
+			return !(a == b);
+		}
+
+		/// <duplicate cref="operator ==(DotNetQualifiedName,DotNetQualifiedName)" />
+		public override bool Equals(Object b)
+		{
+			if(b != null && b is DotNetQualifiedName)
+			{
+				return (this == (DotNetQualifiedName)b);
+			}
+			return false;
+		}
+
+		/// <duplicate cref="operator ==(DotNetQualifiedName,DotNetQualifiedName)" />
+		public override int GetHashCode()
+		{
+			if(FullNamespace == null)
+				return LocalName.GetHashCode();
+			return LocalName.GetHashCode() ^ FullNamespace.GetHashCode();
+		}
 
 		#endregion
 	}
