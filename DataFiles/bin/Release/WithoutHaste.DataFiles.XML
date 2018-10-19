@@ -1131,11 +1131,8 @@
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.StaticMethods">
             <summary>The subset of Methods that are static, but not constructors nor operators.</summary>
         </member>
-        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.AbstractMethods">
-            <summary>The subset of Methods that are abstract, but not constructors nor operators.</summary>
-        </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.NormalMethods">
-            <summary>The subset of Methods that are not static, nor constructors, nor operators, nor abstract.</summary>
+            <summary>The subset of Methods that are not static, nor constructors, nor operators.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.Fields">
             <summary></summary>

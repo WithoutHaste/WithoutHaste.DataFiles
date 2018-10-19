@@ -79,10 +79,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		public List<DotNetMethodOperator> OperatorMethods { get { return Methods.OfType<DotNetMethodOperator>().ToList(); } }
 		/// <summary>The subset of Methods that are static, but not constructors nor operators.</summary>
 		public List<DotNetMethod> StaticMethods { get { return Methods.Where(m => m.Category == MethodCategory.Static && !(m is DotNetMethodConstructor) && !(m is DotNetMethodOperator)).ToList(); } }
-		/// <summary>The subset of Methods that are abstract, but not constructors nor operators.</summary>
-		public List<DotNetMethod> AbstractMethods { get { return Methods.Where(m => m.Category == MethodCategory.Abstract && !(m is DotNetMethodConstructor) && !(m is DotNetMethodOperator)).ToList(); } }
-		/// <summary>The subset of Methods that are not static, nor constructors, nor operators, nor abstract.</summary>
-		public List<DotNetMethod> NormalMethods { get { return Methods.Where(m => m.Category == MethodCategory.Normal && !(m is DotNetMethodConstructor) && !(m is DotNetMethodOperator)).ToList(); } }
+		/// <summary>The subset of Methods that are not static, nor constructors, nor operators.</summary>
+		public List<DotNetMethod> NormalMethods { get { return Methods.Where(m => (m.Category == MethodCategory.Normal || m.Category == MethodCategory.Abstract) && !(m is DotNetMethodConstructor) && !(m is DotNetMethodOperator)).ToList(); } }
 
 		/// <summary></summary>
 		public List<DotNetField> Fields = new List<DotNetField>();
