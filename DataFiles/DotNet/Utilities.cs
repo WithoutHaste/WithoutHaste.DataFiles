@@ -241,7 +241,12 @@ namespace WithoutHaste.DataFiles.DotNet
 
 		internal static bool IsStatic(this MethodAttributes methodAttributes)
 		{
-			return ((methodAttributes & MethodAttributes.Static) == MethodAttributes.Static);
+			return ((methodAttributes & MethodAttributes.Static) == MethodAttributes.Static && !IsAbstract(methodAttributes));
+		}
+
+		internal static bool IsAbstract(this MethodAttributes methodAttributes)
+		{
+			return ((methodAttributes & MethodAttributes.Abstract) == MethodAttributes.Abstract);
 		}
 	}
 }

@@ -48,6 +48,11 @@ namespace DataFilesTest
 			public void MethodGeneric<A>(A a) { }
 		}
 
+		public abstract class AbstractClass
+		{
+			public abstract void MethodAbstract();
+		}
+
 		[TestMethod]
 		public void DotNetMethod_FromXml_GenericParameter()
 		{
@@ -271,14 +276,19 @@ namespace DataFilesTest
 			Assert.IsNotNull(result.ParameterComments[0]);
 		}
 
-		//[TestMethod]
-		//public void DotNetMethod_FromAssembly_StaticConstructor()
-		//{
-		//	//todo
-		//	Type type = typeof(NormalClass);
-		//	TypeInfo typeInfo = type.GetTypeInfo();
-		//	int x = 0;
-		//}
+		[TestMethod]
+		public void DotNetMethod_FromAssembly_AbstractMethod()
+		{
+			//arrange
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.AbstractClass.MethodAbstract()'></member>");
+			Type type = typeof(AbstractClass);
+			MethodInfo methodInfo = type.GetMethods()[0];
+			//act
+			DotNetMethod result = DotNetMethod.FromVisualStudioXml(xmlElement);
+			result.AddAssemblyInfo(methodInfo);
+			//assert
+			Assert.AreEqual(MethodCategory.Abstract, result.Category);
+		}
 
 	}
 }

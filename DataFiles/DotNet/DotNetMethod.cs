@@ -16,7 +16,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>No special category.</summary>
 		Normal,
 		/// <summary>Static method.</summary>
-		Static
+		Static,
+		/// <summary>Abstract method.</summary>
+		Abstract
 	};
 
 	/// <summary>
@@ -167,6 +169,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			if(methodInfo.Attributes.IsStatic())
 				Category = MethodCategory.Static;
+			else if(methodInfo.Attributes.IsAbstract())
+				Category = MethodCategory.Abstract;
 			else
 				Category = MethodCategory.Normal;
 
