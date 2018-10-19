@@ -24,6 +24,28 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetBaseType.#ctor(System.Type)">
             <summary></summary>
         </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod">
+            <summary>
+            Represents a getter or a setter method of a property.
+            </summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod.IsAbstract">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod.AccessModifier">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod.#ctor">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod.#ctor(WithoutHaste.DataFiles.DotNet.AccessModifier,System.Boolean)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod.FromAssemblyInfo(System.Reflection.MethodInfo)">
+            <summary>
+            Load additional documentation information from the assembly itself.
+            </summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric">
             <summary>
             Represents a generic-type parameter that is in reference to a class's declared generic types.
@@ -771,6 +793,9 @@
         <member name="F:WithoutHaste.DataFiles.DotNet.FieldCategory.Constant">
             <summary>Constant or Readonly field.</summary>
         </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.FieldCategory.Abstract">
+            <summary>Abstract. Value only valid on properties and events.</summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetField">
             <summary>
             Represents a type's field.
@@ -862,6 +887,12 @@
         <member name="F:WithoutHaste.DataFiles.DotNet.MethodCategory.Static">
             <summary>Static method.</summary>
         </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.MethodCategory.Abstract">
+            <summary>Abstract method.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.MethodCategory.Virtual">
+            <summary>Virtual method.</summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetMethod">
             <summary>
             Represents a method.
@@ -952,6 +983,12 @@
             Represents a type's property.
             </summary>
         </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetProperty.GetterMethod">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetProperty.SetterMethod">
+            <summary></summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetProperty.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary></summary>
         </member>
@@ -976,6 +1013,21 @@
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentText.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.AccessModifier">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.AccessModifier.Unknown">
+            <summary>Not enough information is available to determine access modifier.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.AccessModifier.Public">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.AccessModifier.Protected">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.AccessModifier.Private">
             <summary></summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.TypeCategory">
@@ -1038,8 +1090,11 @@
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.StaticMethods">
             <summary>The subset of Methods that are static, but not constructors nor operators.</summary>
         </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.AbstractMethods">
+            <summary>The subset of Methods that are abstract, but not constructors nor operators.</summary>
+        </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.NormalMethods">
-            <summary>The subset of Methods that are not static, nor constructors, nor operators.</summary>
+            <summary>The subset of Methods that are not static, nor constructors, nor operators, nor abstract.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.Fields">
             <summary></summary>

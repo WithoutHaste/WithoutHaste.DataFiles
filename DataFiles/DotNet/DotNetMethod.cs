@@ -18,7 +18,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Static method.</summary>
 		Static,
 		/// <summary>Abstract method.</summary>
-		Abstract
+		Abstract,
+		/// <summary>Virtual method.</summary>
+		Virtual
 	};
 
 	/// <summary>
@@ -167,10 +169,12 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// </summary>
 		public virtual void AddAssemblyInfo(MethodInfo methodInfo)
 		{
-			if(methodInfo.Attributes.IsStatic())
+			if(methodInfo.IsStatic)
 				Category = MethodCategory.Static;
-			else if(methodInfo.Attributes.IsAbstract())
+			else if(methodInfo.IsAbstract)
 				Category = MethodCategory.Abstract;
+			else if(methodInfo.IsVirtual)
+				Category = MethodCategory.Virtual;
 			else
 				Category = MethodCategory.Normal;
 

@@ -234,6 +234,12 @@ namespace WithoutHaste.DataFiles.DotNet
 			return ((fieldAttributes & CONSTANT_FIELDATTRIBUTES) == CONSTANT_FIELDATTRIBUTES);
 		}
 
+		internal static bool IsAbstract(this PropertyAttributes propertyAttributes)
+		{
+			return false;
+//			return ((propertyAttributes & PropertyAttributes.Abstract) == PropertyAttributes.Abstract);
+		}
+
 		internal static bool IsPrivate(this MethodAttributes methodAttributes)
 		{
 			return ((methodAttributes & MethodAttributes.Private) == MethodAttributes.Private);

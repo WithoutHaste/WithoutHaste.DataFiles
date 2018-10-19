@@ -16,7 +16,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>No special category.</summary>
 		Normal,
 		/// <summary>Constant or Readonly field.</summary>
-		Constant
+		Constant,
+		/// <summary>Abstract. Value only valid on properties and events.</summary>
+		Abstract
 	};
 
 	/// <summary>

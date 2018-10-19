@@ -13,12 +13,17 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// </summary>
 	public class DotNetProperty : DotNetField
 	{
+		/// <summary></summary>
+		public DotNetPropertyMethod GetterMethod { get; protected set; }
+
+		/// <summary></summary>
+		public DotNetPropertyMethod SetterMethod { get; protected set; }
+
 		#region Constructors
 
 		/// <summary></summary>
 		public DotNetProperty(DotNetQualifiedName name) : base(name)
 		{
-			Category = FieldCategory.Normal;
 		}
 
 		/// <summary>
@@ -40,7 +45,13 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// </summary>
 		public virtual void AddAssemblyInfo(PropertyInfo propertyInfo)
 		{
+			GetterMethod = DotNetPropertyMethod.FromAssemblyInfo(propertyInfo.GetGetMethod());
+			SetterMethod = DotNetPropertyMethod.FromAssemblyInfo(propertyInfo.GetSetMethod());
 			TypeName = DotNetQualifiedTypeName.FromAssemblyInfo(propertyInfo.PropertyType);
+
+			Category = FieldCategory.Normal;
+			if(GetterMethod.IsAbstract && SetterMethod.IsAbstract)
+				Category = FieldCategory.Abstract;
 		}
 	}
 }

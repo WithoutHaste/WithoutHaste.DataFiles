@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DotNet\DotNetBaseType.cs" />
+    <Compile Include="DotNet\DotNetPropertyMethod.cs" />
     <Compile Include="DotNet\DotNetReferenceClassGeneric.cs" />
     <Compile Include="DotNet\DotNetReferenceGeneric.cs" />
     <Compile Include="DotNet\DotNetCommentCode.cs" />

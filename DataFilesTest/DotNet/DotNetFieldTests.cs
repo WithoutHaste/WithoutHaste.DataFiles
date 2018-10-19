@@ -17,6 +17,11 @@ namespace DataFilesTest
 			public int IntField = 0;
 		}
 
+		public abstract class AbstractClass
+		{
+			public abstract int AbstractProperty { get; set; }
+		}
+
 		[TestMethod]
 		public void DotNetField_Assembly_GetType()
 		{
@@ -29,6 +34,19 @@ namespace DataFilesTest
 			//assert
 			Assert.IsNotNull(dotNetType.Fields[0].TypeName);
 			Assert.AreEqual("System.Int32", dotNetType.Fields[0].TypeName.FullName);
+		}
+
+		[TestMethod]
+		public void DotNetField_Assembly_AbstractProperty()
+		{
+			//arrange
+			Type type = typeof(AbstractClass);
+			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:AbstractClass'></member>"));
+			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:AbstractClass.AbstractProperty'></member>")));
+			//act
+			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			//assert
+			Assert.AreEqual(FieldCategory.Abstract, dotNetType.Properties[0].Category);
 		}
 	}
 }
