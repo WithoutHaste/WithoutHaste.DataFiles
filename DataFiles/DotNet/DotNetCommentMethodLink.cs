@@ -40,7 +40,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			if(divider == -1)
 				throw new XmlFormatException("Method cref expecting parentheses around parameters. Use empty parentheses for methods with no parameters.");
 
-			DotNetQualifiedName name = new DotNetQualifiedName(cref.Substring(0, divider));
+			DotNetQualifiedName name = DotNetQualifiedName.FromVisualStudioXml(cref.Substring(0, divider));
 			List<DotNetParameter> parameters = DotNetMethod.ParametersFromVisualStudioXml(cref.Substring(divider));
 			return new DotNetCommentMethodLink(name, parameters);
 		}

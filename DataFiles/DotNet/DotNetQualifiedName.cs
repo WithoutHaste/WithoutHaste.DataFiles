@@ -55,6 +55,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		///     <item>Names starting with "F:" are parsed as Member names.</item>
 		///     <item>Names starting with "P:" are parsed as Member names.</item>
 		///     <item>Names starting with "E:" are parsed as Member names.</item>
+		///     <item>All others are parsed as Member names.</item>
 		///   </list>
 		/// </param>
 		/// <exception cref="XmlFormatException">Name does not start with /[TMFPE]:/</exception>
@@ -62,7 +63,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			if(String.IsNullOrEmpty(name)) return new DotNetQualifiedName();
 
-			if(name.Length < 2 || name[1] != ':') throw new XmlFormatException(String.Format("Name '{0}' does not start with /[TMFPE]:/", name));
+			if(name.Length < 2 || name[1] != ':') return MemberNameFromVisualStudioXml(name);
 
 			switch(name[0])
 			{
@@ -71,8 +72,7 @@ namespace WithoutHaste.DataFiles.DotNet
 				case 'F':
 				case 'P':
 				case 'E': return MemberNameFromVisualStudioXml(name);
-				default:
-					throw new XmlFormatException(String.Format("Name '{0}' does not start with /[TMFPE]:/", name));
+				default: return MemberNameFromVisualStudioXml(name);
 			}
 		}
 

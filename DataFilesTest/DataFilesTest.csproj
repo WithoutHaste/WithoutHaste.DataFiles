@@ -70,6 +70,7 @@
     <Compile Include="DotNet\DotNetCommentMethodLinkTests.cs" />
     <Compile Include="DotNet\DotNetCommentParameterLinkTests.cs" />
     <Compile Include="DotNet\DotNetCommentParameterTests.cs" />
+    <Compile Include="DotNet\DotNetCommentPermissionTests.cs" />
     <Compile Include="DotNet\DotNetCommentQualifiedLinkedGroupTests.cs" />
     <Compile Include="DotNet\DotNetCommentQualifiedLinkTests.cs" />
     <Compile Include="DotNet\DotNetCommentRowTests.cs" />

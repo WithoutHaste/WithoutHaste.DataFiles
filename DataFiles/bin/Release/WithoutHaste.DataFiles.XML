@@ -1199,6 +1199,7 @@
                 <item>Names starting with "F:" are parsed as Member names.</item>
                 <item>Names starting with "P:" are parsed as Member names.</item>
                 <item>Names starting with "E:" are parsed as Member names.</item>
+                <item>All others are parsed as Member names.</item>
               </list>
             </param>
             <exception cref="T:WithoutHaste.DataFiles.XmlFormatException">Name does not start with /[TMFPE]:/</exception>

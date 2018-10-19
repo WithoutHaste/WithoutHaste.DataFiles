@@ -32,7 +32,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			int divider = cref.IndexOf("(");
 			if(divider == -1)
-				return new DotNetCommentQualifiedLink(new DotNetQualifiedName(cref));
+				return new DotNetCommentQualifiedLink(DotNetQualifiedName.FromVisualStudioXml(cref));
 			return DotNetCommentMethodLink.FromVisualStudioXml(cref);
 		}
 

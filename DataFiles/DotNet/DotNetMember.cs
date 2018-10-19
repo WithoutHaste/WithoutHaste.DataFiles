@@ -44,7 +44,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		public DotNetCommentGroup RemarksComments = new DotNetCommentGroup();
 
 		/// <summary>Comments from "permission" xml tags. Only expected as top-level tags.</summary>
-		public List<DotNetComment> PermissionComments = new List<DotNetComment>();
+		public List<DotNetCommentQualifiedLinkedGroup> PermissionComments = new List<DotNetCommentQualifiedLinkedGroup>();
 
 		/// <summary>Comments from "example" xml tags.</summary>
 		public List<DotNetComment> ExampleComments = new List<DotNetComment>();
@@ -98,6 +98,9 @@ namespace WithoutHaste.DataFiles.DotNet
 								break;
 							case "exception":
 								ExceptionComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentQualifiedLinkedGroup);
+								break;
+							case "permission":
+								PermissionComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentQualifiedLinkedGroup);
 								break;
 							case "value":
 								ValueComments.Add(DotNetComment.FromVisualStudioXml(element));
