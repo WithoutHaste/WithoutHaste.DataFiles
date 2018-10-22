@@ -603,8 +603,24 @@
             
             Set to null to not use any converter.
             </summary>
+            <remarks>
+            See <see cref="M:WithoutHaste.DataFiles.DotNet.DotNetSettings.DefaultQualifiedNameConverter(System.String,System.Int32)"/> for usage examples.
+            </remarks>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetSettings.DefaultQualifiedNameConverter(System.String)">
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetSettings.AdditionalQualifiedNameConverter">
+            <summary>
+            A second level <see cref="F:WithoutHaste.DataFiles.DotNet.DotNetSettings.QualifiedNameConverter"/> to provide further processing.
+            This method will be run after <see cref="F:WithoutHaste.DataFiles.DotNet.DotNetSettings.QualifiedNameConverter"/> for each <see cref="T:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName"/>.
+            
+            Set to null to not use any converter.
+            </summary>
+            <example>
+            	DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
+            	DotNetSettinsg.AdditionalQualifiedNameConverter = myCustomConverter;
+            	string displayString = myQualifiedTypeName.FullName;
+            </example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetSettings.DefaultQualifiedNameConverter(System.String,System.Int32)">
             <summary>
             Converts all standard .Net types to their common aliases.
             </summary>
@@ -619,6 +635,24 @@
             "MyType.MyMethod(System.Int32)" => "MyType.MyMethod(int)"
             ]]>
             </example>
+            <param name="fullName">
+            	<example>
+            	For "System.Collections.Generic.List",
+            	fullName will be "System"
+            	then "System.Collections"
+            	then "System.Collections.Generic"
+            	then "System.Collections.Generic.List"
+            	</example>
+            </param>
+            <param name="depth">
+            	<example>
+            	For "System.Collections.Generic.List", 
+            	depth = 0 at "List"
+            	depth = 1 at "Generic"
+            	depth = 2 at "Collections"
+            	depth = 3 at "System"
+            	</example>
+            </param>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetComment">
             <summary>
@@ -1403,6 +1437,15 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.ToString">
             <summary>Returns dot notation of namespaces and local name.</summary>
             <example>A.B.C.LocalName</example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.ToString(System.Int32)">
+            <example>
+            For "System.Collections.Generic.List", 
+            Depth = 0 at "List"
+            Depth = 1 at "Generic"
+            Depth = 2 at "Collections"
+            Depth = 3 at "System"
+            </example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.op_Equality(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary>Names converted to strings must match exactly to be considered equal.</summary>

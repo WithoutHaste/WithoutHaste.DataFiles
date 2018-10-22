@@ -281,15 +281,29 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <example>A.B.C.LocalName</example>
 		public override string ToString()
 		{
-			string fullName = (FullNamespace == null) ? LocalName : Combine(FullNamespace.ToString(), LocalName);
-			return ApplyNameConverter(fullName);
+			return ToString(0);
 		}
 
-		private string ApplyNameConverter(string fullName)
+		/// <example>
+		/// For "System.Collections.Generic.List", 
+		/// Depth = 0 at "List"
+		/// Depth = 1 at "Generic"
+		/// Depth = 2 at "Collections"
+		/// Depth = 3 at "System"
+		/// </example>
+		private string ToString(int depth)
 		{
-			if(DotNetSettings.QualifiedNameConverter == null)
-				return fullName;
-			return DotNetSettings.QualifiedNameConverter(fullName);
+			string fullName = (FullNamespace == null) ? LocalName : Combine(FullNamespace.ToString(depth + 1), LocalName);
+			return ApplyNameConverter(fullName, depth);
+		}
+
+		private string ApplyNameConverter(string fullName, int depth)
+		{
+			if(DotNetSettings.QualifiedNameConverter != null)
+				fullName = DotNetSettings.QualifiedNameConverter(fullName, depth);
+			if(DotNetSettings.AdditionalQualifiedNameConverter != null)
+				fullName = DotNetSettings.AdditionalQualifiedNameConverter(fullName, depth);
+			return fullName;
 		}
 		
 		/// <summary>Names converted to strings must match exactly to be considered equal.</summary>

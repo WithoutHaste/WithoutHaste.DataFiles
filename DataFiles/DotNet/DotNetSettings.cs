@@ -19,7 +19,23 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// 
 		/// Set to null to not use any converter.
 		/// </summary>
-		public static Func<string, string> QualifiedNameConverter = null;
+		/// <remarks>
+		/// See <see cref="DefaultQualifiedNameConverter"/> for usage examples.
+		/// </remarks>
+		public static Func<string, int, string> QualifiedNameConverter = null;
+
+		/// <summary>
+		/// A second level <see cref="QualifiedNameConverter"/> to provide further processing.
+		/// This method will be run after <see cref="QualifiedNameConverter"/> for each <see cref="DotNetQualifiedName"/>.
+		/// 
+		/// Set to null to not use any converter.
+		/// </summary>
+		/// <example>
+		///		DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
+		///		DotNetSettinsg.AdditionalQualifiedNameConverter = myCustomConverter;
+		///		string displayString = myQualifiedTypeName.FullName;
+		/// </example>
+		public static Func<string, int, string> AdditionalQualifiedNameConverter = null;
 
 		/// <summary>
 		/// Converts all standard .Net types to their common aliases.
@@ -35,7 +51,25 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// "MyType.MyMethod(System.Int32)" => "MyType.MyMethod(int)"
 		/// ]]>
 		/// </example>
-		public static string DefaultQualifiedNameConverter(string fullName)
+		/// <param name="fullName">
+		///		<example>
+		///		For "System.Collections.Generic.List",
+		///		fullName will be "System"
+		///		then "System.Collections"
+		///		then "System.Collections.Generic"
+		///		then "System.Collections.Generic.List"
+		///		</example>
+		/// </param>
+		/// <param name="depth">
+		///		<example>
+		///		For "System.Collections.Generic.List", 
+		///		depth = 0 at "List"
+		///		depth = 1 at "Generic"
+		///		depth = 2 at "Collections"
+		///		depth = 3 at "System"
+		///		</example>
+		/// </param>
+		public static string DefaultQualifiedNameConverter(string fullName, int depth)
 		{
 			switch(fullName)
 			{
@@ -47,12 +81,14 @@ namespace WithoutHaste.DataFiles.DotNet
 				case "System.Int16": return "short";
 				case "System.Int32": return "int";
 				case "System.Int64": return "long";
+				case "System.Object": return "object";
 				case "System.SByte": return "sbyte";
 				case "System.Single": return "float";
 				case "System.String": return "string";
 				case "System.UInt16": return "ushort";
 				case "System.UInt32": return "uint";
 				case "System.UInt64": return "ulong";
+				case "System.Void": return "void";
 			}
 			return fullName;
 		}
