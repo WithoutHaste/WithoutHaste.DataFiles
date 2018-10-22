@@ -67,6 +67,7 @@
     <Compile Include="DotNet\DotNetCommentCodeBlockTests.cs" />
     <Compile Include="DotNet\DotNetCommentListItemTests.cs" />
     <Compile Include="DotNet\DotNetCommentListTests.cs" />
+    <Compile Include="DotNet\DotNetCommentMethodLinkedGroupTests.cs" />
     <Compile Include="DotNet\DotNetCommentMethodLinkTests.cs" />
     <Compile Include="DotNet\DotNetCommentParameterLinkTests.cs" />
     <Compile Include="DotNet\DotNetCommentParameterTests.cs" />

@@ -24,6 +24,25 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetBaseType.#ctor(System.Type)">
             <summary></summary>
         </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup">
+            <summary>
+            Represents a section of comments that is linked to a fully qualified type or member.
+            </summary>
+            <example><![CDATA[<permission cref="Namespace.Type.Member">nested comments</permission>]]></example>
+            <example><![CDATA[<exception cref="Namespace.ExceptionType">nested comments</exception>]]></example>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup.MethodLink">
+            <summary>Strongly-typed link.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink,WithoutHaste.DataFiles.DotNet.DotNetComment)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink,WithoutHaste.DataFiles.DotNet.DotNetComment[])">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetComment})">
+            <summary></summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetIndexer">
             <summary>
             Represents an indexer property.
@@ -744,11 +763,19 @@
             <example>Namespace.Type.Method(int,string)</example>
             <example><![CDATA[Namespace.Type.Method(System.Collections.Generic.List<int>)]]></example>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary></summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter})">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.FromVisualStudioXml(System.String)">
             <summary>Parses .Net XML documentation cref for methods.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.MatchesSignature(WithoutHaste.DataFiles.DotNet.DotNetMethod)">
+            <summary>
+            Returns true if this method link and the method have matching signatures, based on the fully qualified name and the list of parameter types.
+            </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentTable">
             <summary>
@@ -983,6 +1010,11 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.AddAssemblyInfo(System.Reflection.MethodInfo)">
             <summary>
             Load additional documentation information from the assembly itself.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.MatchesSignature(WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink)">
+            <summary>
+            Returns true if this method and the method link have matching signatures, based on the fully qualified name and the list of parameter types.
             </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetParameter">

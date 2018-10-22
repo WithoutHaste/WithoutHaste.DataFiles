@@ -28,6 +28,11 @@ namespace WithoutHaste.DataFiles.DotNet
 		#region Constructors
 
 		/// <summary></summary>
+		public DotNetCommentMethodLink(DotNetQualifiedName name) : base(name)
+		{
+		}
+
+		/// <summary></summary>
 		public DotNetCommentMethodLink(DotNetQualifiedName name, List<DotNetParameter> parameters) : base(name)
 		{
 			Parameters.AddRange(parameters);
@@ -38,7 +43,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			int divider = cref.IndexOf("(");
 			if(divider == -1)
-				throw new XmlFormatException("Method cref expecting parentheses around parameters. Use empty parentheses for methods with no parameters.");
+			{
+				return new DotNetCommentMethodLink(DotNetQualifiedName.FromVisualStudioXml(cref));
+			}
 
 			DotNetQualifiedName name = DotNetQualifiedName.FromVisualStudioXml(cref.Substring(0, divider));
 			List<DotNetParameter> parameters = DotNetMethod.ParametersFromVisualStudioXml(cref.Substring(divider));
@@ -46,5 +53,22 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		#endregion
+
+		/// <summary>
+		/// Returns true if this method link and the method have matching signatures, based on the fully qualified name and the list of parameter types.
+		/// </summary>
+		public bool MatchesSignature(DotNetMethod method)
+		{
+			if(Name != method.Name)
+				return false;
+			if(Parameters.Count != method.Parameters.Count)
+				return false;
+			for(int i = 0; i < Parameters.Count; i++)
+			{
+				if(Parameters[i].TypeName != method.Parameters[i].TypeName)
+					return false;
+			}
+			return true;
+		}
 	}
 }

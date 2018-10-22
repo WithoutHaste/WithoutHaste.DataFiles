@@ -31,9 +31,10 @@ namespace WithoutHaste.DataFiles.DotNet
 		public static new DotNetCommentQualifiedLink FromVisualStudioXml(string cref)
 		{
 			int divider = cref.IndexOf("(");
-			if(divider == -1)
-				return new DotNetCommentQualifiedLink(DotNetQualifiedName.FromVisualStudioXml(cref));
-			return DotNetCommentMethodLink.FromVisualStudioXml(cref);
+			if(divider > -1 || cref.StartsWith("M:"))
+				return DotNetCommentMethodLink.FromVisualStudioXml(cref);
+
+			return new DotNetCommentQualifiedLink(DotNetQualifiedName.FromVisualStudioXml(cref));
 		}
 
 		#endregion

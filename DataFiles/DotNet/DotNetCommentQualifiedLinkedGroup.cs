@@ -40,10 +40,14 @@ namespace WithoutHaste.DataFiles.DotNet
 		public static new DotNetCommentQualifiedLinkedGroup FromVisualStudioXml(XElement element)
 		{
 			ValidateXmlTag(element, new string[] { "permission", "exception" });
-			return new DotNetCommentQualifiedLinkedGroup(
-				DotNetCommentQualifiedLink.FromVisualStudioXml(element.Attribute("cref")?.Value),
-				ParseSection(element)
-			);
+			DotNetCommentQualifiedLink link = DotNetCommentQualifiedLink.FromVisualStudioXml(element.Attribute("cref")?.Value);
+			List<DotNetComment> comments = ParseSection(element);
+
+			if(link is DotNetCommentMethodLink)
+			{
+				return new DotNetCommentMethodLinkedGroup(link as DotNetCommentMethodLink, comments);
+			}
+			return new DotNetCommentQualifiedLinkedGroup(link, comments);
 		}
 
 		#endregion

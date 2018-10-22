@@ -120,7 +120,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			if(!string.IsNullOrEmpty(text))
 			{
 				//remove possible { } and possible ( )
-				text = text.RemoveOuterBraces(); 
+				text = text.RemoveOuterBraces();
 				text = text.RemoveOuterBraces();
 
 				string[] fields = text.SplitIgnoreNested(',');
@@ -192,6 +192,14 @@ namespace WithoutHaste.DataFiles.DotNet
 			{
 				(Name as DotNetQualifiedMethodName).AddAssemblyInfo(methodInfo);
 			}
+		}
+
+		/// <summary>
+		/// Returns true if this method and the method link have matching signatures, based on the fully qualified name and the list of parameter types.
+		/// </summary>
+		public bool MatchesSignature(DotNetCommentMethodLink link)
+		{
+			return link.MatchesSignature(this);
 		}
 	}
 }
