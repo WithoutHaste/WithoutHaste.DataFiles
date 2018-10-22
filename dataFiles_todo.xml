@@ -310,6 +310,24 @@ i think the same one as have ReturnType as a Parameter</Data>
           <Data ss:Type="DateTime">2018-09-26T00:00:00.000</Data>
         </Cell>
       </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">34</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">DotNet:
+could turn DotNetSettings.QualifiedNameConverter into a list or event so that any number can be stacked</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Minor</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-10-22T00:00:00.000</Data>
+        </Cell>
+      </Row>
     </Table>
     <x:WorksheetOptions />
   </ss:Worksheet>
@@ -725,7 +743,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">33</Data>
+          <Data ss:Type="Number">34</Data>
         </Cell>
       </Row>
       <Row>
