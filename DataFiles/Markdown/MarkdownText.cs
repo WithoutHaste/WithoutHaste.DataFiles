@@ -50,21 +50,24 @@ namespace WithoutHaste.DataFiles.Markdown
 		}
 
 		/// <summary>Generate bold text.</summary>
+		/// <remarks><paramref name="text"/> is trimmed to conform to Markdown formatting requirements.</remarks>
 		public static MarkdownText Bold(string text)
 		{
-			return new MarkdownText(text, TextStyle.Bold);
+			return new MarkdownText(text.Trim(), TextStyle.Bold);
 		}
 
 		/// <summary>Generate italic text.</summary>
+		/// <remarks><paramref name="text"/> is trimmed to conform to Markdown formatting requirements.</remarks>
 		public static MarkdownText Italic(string text)
 		{
-			return new MarkdownText(text, TextStyle.Italic);
+			return new MarkdownText(text.Trim(), TextStyle.Italic);
 		}
 
 		/// <summary>Generate bold-italic text.</summary>
+		/// <remarks><paramref name="text"/> is trimmed to conform to Markdown formatting requirements.</remarks>
 		public static MarkdownText BoldItalic(string text)
 		{
-			return new MarkdownText(text, TextStyle.Bold | TextStyle.Italic);
+			return new MarkdownText(text.Trim(), TextStyle.Bold | TextStyle.Italic);
 		}
 
 		#endregion

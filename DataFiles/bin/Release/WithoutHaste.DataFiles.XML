@@ -2366,12 +2366,15 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownText.Bold(System.String)">
             <summary>Generate bold text.</summary>
+            <remarks><paramref name="text"/> is trimmed to conform to Markdown formatting requirements.</remarks>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownText.Italic(System.String)">
             <summary>Generate italic text.</summary>
+            <remarks><paramref name="text"/> is trimmed to conform to Markdown formatting requirements.</remarks>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownText.BoldItalic(System.String)">
             <summary>Generate bold-italic text.</summary>
+            <remarks><paramref name="text"/> is trimmed to conform to Markdown formatting requirements.</remarks>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownText.ToMarkdown">
             <inheritdoc />
