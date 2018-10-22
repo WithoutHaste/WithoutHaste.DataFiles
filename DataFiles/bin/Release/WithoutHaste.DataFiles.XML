@@ -589,6 +589,37 @@
         <member name="P:WithoutHaste.DataFiles.DotNet.IDotNetCommentLink.FullName">
             <summary>Return the fully qualified name of the referenced assembly element.</summary>
         </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetSettings">
+            <summary>
+            Global settings for the entire DotNet namespace.
+            </summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetSettings.QualifiedNameConverter">
+            <summary>
+            When DotNetQualifiedNames are converted to strings, this converter will be automatically applied to each:
+            * generic type parameter
+            * method parameter
+            * type name
+            
+            Set to null to not use any converter.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetSettings.DefaultQualifiedNameConverter(System.String)">
+            <summary>
+            Converts all standard .Net types to their common aliases.
+            </summary>
+            <example>
+            	DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
+            	string displayString = myQualifiedTypeName.FullName;
+            </example>
+            <example>
+            <![CDATA[
+            "System.Int32" => "int"
+            "System.Collections.Generic.List<System.Int32> => "System.Collections.Generic.List<int>"
+            "MyType.MyMethod(System.Int32)" => "MyType.MyMethod(int)"
+            ]]>
+            </example>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetComment">
             <summary>
             Represents a section of documentation, such as the contents of a <![CDATA[<summary></summary>]]> tag.
@@ -1384,39 +1415,6 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.GetHashCode">
             <duplicate cref="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.op_Equality(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)" />
-        </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.Utilities.CountPreceedingRepeatedChars(System.String,System.Int32,System.Char)">
-            <summary>
-            Returns the number of sequential characters that all match the selected character, working backwards from the starting index.
-            </summary>
-            <example>
-            ("abcDDDefg", 5, 'D') returns 3 
-            ("abcDDDefg", 4, 'D') returns 2 
-            </example>
-            <param name="text"></param>
-            <param name="startIndex">First index checked for <paramref name="searchChar"/>.</param>
-            <param name="searchChar"></param>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.Utilities.RemoveOuterBraces(System.String)">
-            <summary>
-            Removes outer matched pairs of braces from string.
-            Only changes string if first and last characters are a matched pair of braces.
-            Supports {}, [], (), and <![CDATA[<>]]>
-            </summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.Utilities.SplitIgnoreNested(System.String,System.Char)">
-            <summary>
-            Split <paramref name="text"/> on the <paramref name="delimiter"/> 
-            but do not split if <paramref name="delimiter"/> is nested within matched braces.
-            Support braces: {}, [], (), and <![CDATA[<>]]>.
-            </summary>
-            <remarks>
-            Returns empty string for empty matches.
-            </remarks>
-            <example>
-            input "A,B{c,d},E[f,g,h]" returns ["A", "B{c,d}", "E[f,g,h]"]
-            </example>
-            <exception cref="T:WithoutHaste.DataFiles.StringFormatException">Mismatched open/close braces.</exception>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.Utilities.TrimAllowOneSpace(System.String)">
             <summary>
@@ -2385,6 +2383,68 @@
             Ensure that string is null or ends with two end line characters.
             Does not add unneccessary characters.
             </summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.TextHelper">
+            <summary>
+            Contains operations for parsing and editing text.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.TextHelper.RemoveFromEnd(System.String,System.String)">
+            <summary>
+            Removes the <paramref name="end"/> string from the end of <paramref name="text"/>, if it exists there.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.TextHelper.RemoveFromStart(System.String,System.String)">
+            <summary>
+            Removes the <paramref name="start"/> string from the beginning of <paramref name="text"/>, if it exists there.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.TextHelper.ReplaceUnescapedCharacters(System.String,System.Char,System.Char,System.Char)">
+            <summary>
+            Replaces all instances of the unescaped <paramref name="searchChar"/> in the <paramref name="text"/>.
+            </summary>
+            <remarks>
+            The <paramref name="escapeChar"/> can escape itself.
+            </remarks>
+            <example>
+            string original = "A.B.C\.D\\.E";
+            string result = original('\', '.', '_');
+            //result = "A_B_C\.D\\_E"
+            </example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.TextHelper.CountPreceedingRepeatedChars(System.String,System.Int32,System.Char)">
+            <summary>
+            Returns the number of sequential characters that all match the selected character, working backwards from the starting index.
+            </summary>
+            <example>
+            ("abcDDDefg", 5, 'D') returns 3 
+            ("abcDDDefg", 4, 'D') returns 2 
+            </example>
+            <param name="text"></param>
+            <param name="startIndex">First index checked for <paramref name="searchChar"/>.</param>
+            <param name="searchChar"></param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.TextHelper.RemoveOuterBraces(System.String)">
+            <summary>
+            Removes outer matched pairs of braces from string.
+            Only changes string if first and last characters are a matched pair of braces.
+            Supports {}, [], (), and <![CDATA[<>]]>
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.TextHelper.SplitIgnoreNested(System.String,System.Char)">
+            <summary>
+            Split <paramref name="text"/> on the <paramref name="delimiter"/> 
+            but do not split if <paramref name="delimiter"/> is nested within matched braces.
+            Support braces: {}, [], (), and <![CDATA[<>]]>.
+            </summary>
+            <remarks>
+            Returns empty string for empty matches.
+            </remarks>
+            <example>
+            input "A,B{c,d},E[f,g,h]" returns ["A", "B{c,d}", "E[f,g,h]"]
+            </example>
+            <exception cref="T:System.ArgumentException">Delimitor cannot be a supported brace character.</exception>
+            <exception cref="T:WithoutHaste.DataFiles.StringFormatException">Mismatched open/close braces.</exception>
         </member>
         <member name="T:WithoutHaste.DataFiles.XmlDocumentHelper">
             <summary>

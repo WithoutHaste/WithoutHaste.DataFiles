@@ -65,30 +65,24 @@ namespace WithoutHaste.DataFiles.DotNet
 			if(DotNetReferenceMethodGeneric.HasExpectedVisualStudioXmlFormat(typeName))
 				return DotNetReferenceMethodGeneric.FromVisualStudioXml(typeName);
 
+			string[] dotDelimited = typeName.SplitIgnoreNested('.');
+			string localName = dotDelimited.Last();
+			string fullNamespace = (dotDelimited.Length == 1) ? null : String.Join(".", dotDelimited.Take(dotDelimited.Length - 1).ToArray());
+
 			//fully qualified generic type parameters
 			//such as System.Collections.Generic.List<T> which are formatted as System.Collections.Generic.List{`0}
 			List<DotNetQualifiedTypeName> parameters = new List<DotNetQualifiedTypeName>();
-			if(typeName.EndsWith("}"))
+			if(localName.EndsWith("}"))
 			{
-				string parameterSignature = typeName.Substring(typeName.IndexOf("{")).RemoveOuterBraces();
-				typeName = typeName.Substring(0, typeName.IndexOf("{"));
-				//todo: test if there are nested comma-delimited type-parameter lists that this would mess up
+				string parameterSignature = localName.Substring(localName.IndexOf("{")).RemoveOuterBraces();
+				localName = localName.Substring(0, localName.IndexOf("{"));
 				parameters = parameterSignature.SplitIgnoreNested(',').Select(p => DotNetQualifiedTypeName.FromVisualStudioXml(p)).ToList();
-			}
-
-			int divider = typeName.LastIndexOf('.');
-			string localName = typeName;
-			string fullNamespace = null;
-			if(divider != -1)
-			{
-				localName = typeName.Substring(divider + 1);
-				fullNamespace = typeName.Substring(0, divider);
 			}
 
 			if(String.IsNullOrEmpty(fullNamespace))
 				return new DotNetQualifiedTypeName(localName, parameters);
 
-			return new DotNetQualifiedTypeName(localName, parameters, DotNetQualifiedName.TypeNameFromVisualStudioXml(fullNamespace));
+			return new DotNetQualifiedTypeName(localName, parameters, DotNetQualifiedTypeName.FromVisualStudioXml(fullNamespace));
 		}
 
 		/// <summary>

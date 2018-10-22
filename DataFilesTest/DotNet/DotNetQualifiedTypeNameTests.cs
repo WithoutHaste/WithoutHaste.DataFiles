@@ -155,6 +155,20 @@ namespace DataFilesTest
 		}
 
 		[TestMethod]
+		public void DotNetQualifiedTypeName_FromXml_OtherNestedSpecifiedGeneric()
+		{
+			//arrange
+			string input = "Namespace.TypeA{System.Int32}.TypeB{System.String,TypeD}";
+			string expectedLocalName = "TypeB<System.String,TypeD>";
+			string expectedQualifiedName = "Namespace.TypeA<System.Int32>.TypeB<System.String,TypeD>";
+			//act
+			DotNetQualifiedTypeName result = DotNetQualifiedTypeName.FromVisualStudioXml(input);
+			//assert
+			Assert.AreEqual(expectedLocalName, result.LocalName);
+			Assert.AreEqual(expectedQualifiedName, result.FullName);
+		}
+
+		[TestMethod]
 		public void DotNetQualifiedTypeName_FromXml_NestedSpecifiedClassGeneric()
 		{
 			//arrange

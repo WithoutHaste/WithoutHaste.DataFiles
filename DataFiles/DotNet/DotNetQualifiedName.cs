@@ -255,7 +255,7 @@ namespace WithoutHaste.DataFiles.DotNet
 
 			return localNames;
 		}
-
+		
 		/// <summary>Return the names combined with a '.' delimiter.</summary>
 		public static string Combine(params string[] names)
 		{
@@ -281,11 +281,15 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <example>A.B.C.LocalName</example>
 		public override string ToString()
 		{
-			if(FullNamespace == null)
-			{
-				return LocalName;
-			}
-			return FullNamespace + "." + LocalName;
+			string fullName = (FullNamespace == null) ? LocalName : Combine(FullNamespace.ToString(), LocalName);
+			return ApplyNameConverter(fullName);
+		}
+
+		private string ApplyNameConverter(string fullName)
+		{
+			if(DotNetSettings.QualifiedNameConverter == null)
+				return fullName;
+			return DotNetSettings.QualifiedNameConverter(fullName);
 		}
 		
 		/// <summary>Names converted to strings must match exactly to be considered equal.</summary>
