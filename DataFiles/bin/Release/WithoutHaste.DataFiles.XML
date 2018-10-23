@@ -1186,19 +1186,22 @@
             <summary>No special category.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Abstract">
-            <summary>Abstract type.</summary>
+            <summary></summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Static">
-            <summary>Static type.</summary>
+            <summary></summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Interface">
-            <summary>Interface.</summary>
+            <summary></summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Enum">
-            <summary>Enumeration.</summary>
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Delegate">
+            <summary></summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Exception">
-            <summary>Exception.</summary>
+            <summary></summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetType">
             <summary>

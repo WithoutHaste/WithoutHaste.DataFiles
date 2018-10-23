@@ -12,6 +12,8 @@ namespace DataFilesTest
 	[TestClass]
 	public class DotNetTypeTests
 	{
+		public delegate void BasicEventHandler(object sender, EventArgs e);
+
 		protected class ChildOfObject { }
 
 		protected struct ChildOfValue { }
@@ -125,6 +127,18 @@ namespace DataFilesTest
 			Assert.AreEqual(2, dotNetType.ImplementedInterfaces.Count);
 			Assert.AreEqual(1, dotNetType.ImplementedInterfaces.Count(i => i.Name.LocalName == "I1"));
 			Assert.AreEqual(1, dotNetType.ImplementedInterfaces.Count(i => i.Name.LocalName == "I3"));
+		}
+
+		[TestMethod]
+		public void DotNetType_Assembly_Delegate()
+		{
+			//arrange
+			Type type = typeof(BasicEventHandler);
+			DotNetType dotNetType = new DotNetType(new DotNetQualifiedName("BasicEventHandler"));
+			//act
+			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			//assert
+			Assert.AreEqual(TypeCategory.Delegate, dotNetType.Category);
 		}
 
 	}

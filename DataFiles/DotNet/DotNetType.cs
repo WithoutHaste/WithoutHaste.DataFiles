@@ -26,15 +26,17 @@ namespace WithoutHaste.DataFiles.DotNet
 		Unknown = 0,
 		/// <summary>No special category.</summary>
 		Normal,
-		/// <summary>Abstract type.</summary>
+		/// <summary></summary>
 		Abstract,
-		/// <summary>Static type.</summary>
+		/// <summary></summary>
 		Static,
-		/// <summary>Interface.</summary>
+		/// <summary></summary>
 		Interface,
-		/// <summary>Enumeration.</summary>
+		/// <summary></summary>
 		Enum,
-		/// <summary>Exception.</summary>
+		/// <summary></summary>
+		Delegate,
+		/// <summary></summary>
 		Exception
 	};
 
@@ -232,6 +234,8 @@ namespace WithoutHaste.DataFiles.DotNet
 				Category = TypeCategory.Interface;
 			if(typeInfo.IsEnum())
 				Category = TypeCategory.Enum;
+			if(typeInfo.IsDelegate())
+				Category = TypeCategory.Delegate;
 			if(typeInfo.IsException())
 				Category = TypeCategory.Exception;
 

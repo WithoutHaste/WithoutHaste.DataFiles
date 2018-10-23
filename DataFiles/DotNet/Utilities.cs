@@ -109,6 +109,24 @@ namespace WithoutHaste.DataFiles.DotNet
 			return type.BaseType.IsException();
 		}
 
+		internal static bool IsDelegate(this TypeInfo typeInfo)
+		{
+			if(typeInfo.FullName == "System.MulticastDelegate")
+				return true;
+			if(typeInfo.BaseType == null)
+				return false;
+			return typeInfo.BaseType.IsDelegate();
+		}
+
+		internal static bool IsDelegate(this Type type)
+		{
+			if(type.FullName == "System.MulticastDelegate")
+				return true;
+			if(type.BaseType == null)
+				return false;
+			return type.BaseType.IsDelegate();
+		}
+
 		internal static bool IsConstant(this FieldAttributes fieldAttributes)
 		{
 			FieldAttributes READONLY_FIELDATTRIBUTES = FieldAttributes.Static | FieldAttributes.InitOnly;
