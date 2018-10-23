@@ -129,17 +129,5 @@ namespace DataFilesTest
 			Assert.AreEqual(1, dotNetType.ImplementedInterfaces.Count(i => i.Name.LocalName == "I3"));
 		}
 
-		[TestMethod]
-		public void DotNetType_Assembly_Delegate()
-		{
-			//arrange
-			Type type = typeof(BasicEventHandler);
-			DotNetType dotNetType = new DotNetType(new DotNetQualifiedName("BasicEventHandler"));
-			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
-			//assert
-			Assert.AreEqual(TypeCategory.Delegate, dotNetType.Category);
-		}
-
 	}
 }

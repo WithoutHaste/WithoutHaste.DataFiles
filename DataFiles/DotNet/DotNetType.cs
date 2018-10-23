@@ -35,8 +35,6 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		Enum,
 		/// <summary></summary>
-		Delegate,
-		/// <summary></summary>
 		Exception
 	};
 
@@ -72,6 +70,9 @@ namespace WithoutHaste.DataFiles.DotNet
 				return NestedTypes.Where(x => x.Category == TypeCategory.Enum).ToList();
 			}
 		}
+
+		/// <summary></summary>
+		public List<DotNetDelegate> Delegates = new List<DotNetDelegate>();
 
 		/// <summary></summary>
 		public List<DotNetMethod> Methods = new List<DotNetMethod>();
@@ -177,6 +178,19 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>
+		/// Returns true if this qualified name is defined directly within this type.
+		/// </summary>
+		public bool IsDirectChild(DotNetQualifiedName name)
+		{
+			return (Name.FullName == name.FullNamespace);
+		}
+
+		private DotNetType GetDirectChild(DotNetQualifiedName name)
+		{
+			return NestedTypes.FirstOrDefault(subtype => subtype.Name.LocalName == name.LocalName);
+		}
+
+		/// <summary>
 		/// Add a member to the correct level within this type.
 		/// </summary>
 		public void AddMember(DotNetMember member)
@@ -234,8 +248,6 @@ namespace WithoutHaste.DataFiles.DotNet
 				Category = TypeCategory.Interface;
 			if(typeInfo.IsEnum())
 				Category = TypeCategory.Enum;
-			if(typeInfo.IsDelegate())
-				Category = TypeCategory.Delegate;
 			if(typeInfo.IsException())
 				Category = TypeCategory.Exception;
 
@@ -341,6 +353,51 @@ namespace WithoutHaste.DataFiles.DotNet
 
 			return localNames;
 		}
+
+		#region Convert
+
+		/// <summary>
+		/// Converts the type into a delegate, transfering all applicable data.
+		/// </summary>
+		/// <remarks>
+		/// If the <paramref name="name"/> refers to a sub-type, that type is the one converted.
+		/// The sub-type is removed from its parent and the new delegate is added in its place
+		/// </remarks>
+		/// <param name="name">The fully qualified name of the delegate.</param>
+		/// <returns>The new delegate, or null if the type is not found.</returns>
+		public DotNetDelegate ToDelegate(DotNetQualifiedName name)
+		{
+			if(Is(name))
+			{
+				return ToDelegate();
+			}
+			else if(IsDirectChild(name))
+			{
+				DotNetType subtype = GetDirectChild(name);
+				DotNetDelegate _delegate = subtype.ToDelegate();
+				NestedTypes.Remove(subtype);
+				Delegates.Add(_delegate);
+				return _delegate;
+			}
+			else
+			{
+				foreach(DotNetType nestedType in NestedTypes)
+				{
+					if(nestedType.Owns(name))
+						return nestedType.ToDelegate(name);
+				}
+			}
+			return null;
+		}
+
+		private DotNetDelegate ToDelegate()
+		{
+			DotNetDelegate _delegate = new DotNetDelegate(Name);
+			_delegate.CopyComments(this);
+			return _delegate;
+		}
+
+		#endregion
 
 		#region Low Level
 

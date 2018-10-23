@@ -20,7 +20,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Abstract method.</summary>
 		Abstract,
 		/// <summary>Virtual method.</summary>
-		Virtual
+		Virtual,
+		/// <summary>Delegate type.</summary>
+		Delegate
 	};
 
 	/// <summary>
@@ -44,7 +46,12 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 		}
 
-		/// <summary>Normal constructor</summary>
+		/// <summary></summary>
+		public DotNetMethod(DotNetQualifiedName name) : base(name)
+		{
+		}
+
+		/// <summary></summary>
 		public DotNetMethod(DotNetQualifiedName name, List<DotNetParameter> parameters) : base(name)
 		{
 			this.Parameters.AddRange(parameters);
@@ -169,23 +176,39 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// </summary>
 		public virtual void AddAssemblyInfo(MethodInfo methodInfo)
 		{
-			if(methodInfo.IsStatic)
-				Category = MethodCategory.Static;
-			else if(methodInfo.IsAbstract)
-				Category = MethodCategory.Abstract;
-			else if(methodInfo.IsVirtual)
-				Category = MethodCategory.Virtual;
-			else
-				Category = MethodCategory.Normal;
+			if(Category == MethodCategory.Unknown || Category == MethodCategory.Normal)
+			{
+				if(methodInfo.IsStatic)
+					Category = MethodCategory.Static;
+				else if(methodInfo.IsAbstract)
+					Category = MethodCategory.Abstract;
+				else if(methodInfo.IsVirtual)
+					Category = MethodCategory.Virtual;
+				else
+					Category = MethodCategory.Normal;
+			}
 
 			if(methodInfo.ReturnType != null)
 				ReturnTypeName = DotNetQualifiedTypeName.FromAssemblyInfo(methodInfo.ReturnType);
 
-			int index = 0;
-			foreach(ParameterInfo parameterInfo in methodInfo.GetParameters())
+			if(Category == MethodCategory.Delegate)
 			{
-				Parameters[index].AddAssemblyInfo(parameterInfo);
-				index++;
+				Parameters.Clear(); //expected to be empty already
+				foreach(ParameterInfo parameterInfo in methodInfo.GetParameters())
+				{
+					DotNetParameter parameter = new DotNetParameter(DotNetQualifiedTypeName.FromAssemblyInfo(parameterInfo.ParameterType));
+					parameter.AddAssemblyInfo(parameterInfo);
+					Parameters.Add(parameter);
+				}
+			}
+			else
+			{
+				int index = 0;
+				foreach(ParameterInfo parameterInfo in methodInfo.GetParameters())
+				{
+					Parameters[index].AddAssemblyInfo(parameterInfo);
+					index++;
+				}
 			}
 
 			if(Name != null && Name is DotNetQualifiedMethodName)

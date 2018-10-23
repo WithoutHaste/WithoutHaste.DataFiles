@@ -32,6 +32,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Top-level types in assembly.</summary>
 		public List<DotNetType> Types = new List<DotNetType>();
 
+		/// <summary>Top-level delegates in assembly.</summary>
+		public List<DotNetDelegate> Delegates = new List<DotNetDelegate>();
+
 		#region Constructors and Init
 
 		/// <summary>
@@ -64,8 +67,8 @@ namespace WithoutHaste.DataFiles.DotNet
 
 		private void Load(XDocument document)
 		{
-			LoadAssemblyInfo(document);
-			LoadMembersInfo(document);
+			LoadAssemblyInfoFromXml(document);
+			LoadMembersInfoFromXml(document);
 			ResolveGenericTypeNameConflicts();
 		}
 
@@ -83,7 +86,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 		}
 
-		private void LoadAssemblyInfo(XDocument document)
+		private void LoadAssemblyInfoFromXml(XDocument document)
 		{
 			XElement assemblyElement = document.Root.Elements("assembly").FirstOrDefault();
 			if(assemblyElement == null) return;
@@ -94,7 +97,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			AssemblyName = nameElement.Value;
 		}
 
-		private void LoadMembersInfo(XDocument document)
+		private void LoadMembersInfoFromXml(XDocument document)
 		{
 			XElement membersElement = document.Root.Elements("members").FirstOrDefault();
 			if(membersElement == null) return;
@@ -186,12 +189,27 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			DotNetQualifiedName qualifiedName = DotNetQualifiedName.FromAssemblyInfo(typeInfo);
 			DotNetType type = Types.FirstOrDefault(x => x.Is(qualifiedName) || x.Owns(qualifiedName));
-			if(type != null)
+			if(type == null)
+				return; //no error if type is not found
+
+			if(typeInfo.IsDelegate())
 			{
-				type.AddAssemblyInfo(typeInfo, qualifiedName);
+				ConvertTypeToDelegate(typeInfo, qualifiedName, type);
 				return;
 			}
-			//no error if type is not found
+
+			type.AddAssemblyInfo(typeInfo, qualifiedName);
+		}
+
+		private void ConvertTypeToDelegate(TypeInfo typeInfo, DotNetQualifiedName qualifiedName, DotNetType type)
+		{
+			DotNetDelegate _delegate = type.ToDelegate(qualifiedName);
+			if(type.Is(qualifiedName))
+			{
+				Types.Remove(type);
+				Delegates.Add(_delegate);
+			}
+			_delegate.AddAssemblyInfo(typeInfo);
 		}
 
 		/// <summary>

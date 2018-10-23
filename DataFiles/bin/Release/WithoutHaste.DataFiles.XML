@@ -43,6 +43,20 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetComment})">
             <summary></summary>
         </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetDelegate">
+            <summary>
+            Represents a delegate type, categorized as a method.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDelegate.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDelegate.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter})">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDelegate.AddAssemblyInfo(System.Reflection.TypeInfo)">
+            <summary></summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetIndexer">
             <summary>
             Represents an indexer property.
@@ -1008,6 +1022,11 @@
             </summary>
             <param name="parent">Expects the tag containing all documentation for this member.</param>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMember.CopyComments(WithoutHaste.DataFiles.DotNet.DotNetMember)">
+            <summary>
+            Shallow-copies all comments from the <paramref name="original"/> member to this member.
+            </summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.MethodCategory">
             <summary></summary>
         </member>
@@ -1026,6 +1045,9 @@
         <member name="F:WithoutHaste.DataFiles.DotNet.MethodCategory.Virtual">
             <summary>Virtual method.</summary>
         </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.MethodCategory.Delegate">
+            <summary>Delegate type.</summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetMethod">
             <summary>
             Represents a method.
@@ -1043,8 +1065,11 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.#ctor">
             <summary>Empty constructor</summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary></summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter})">
-            <summary>Normal constructor</summary>
+            <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.FromVisualStudioXml(System.Xml.Linq.XElement)">
             <summary>
@@ -1197,9 +1222,6 @@
         <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Enum">
             <summary></summary>
         </member>
-        <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Delegate">
-            <summary></summary>
-        </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Exception">
             <summary></summary>
         </member>
@@ -1226,6 +1248,9 @@
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.NestedEnums">
             <summary>The subset of NestedTypes that are enums.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.Delegates">
+            <summary></summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.Methods">
             <summary></summary>
@@ -1293,6 +1318,11 @@
             Returns true if this qualified name is defined within this type or any of its nested types.
             </summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.IsDirectChild(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary>
+            Returns true if this qualified name is defined directly within this type.
+            </summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.AddMember(WithoutHaste.DataFiles.DotNet.DotNetMember)">
             <summary>
             Add a member to the correct level within this type.
@@ -1309,6 +1339,17 @@
             Includes namespaces, internal types, external types, and members.
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.ToDelegate(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary>
+            Converts the type into a delegate, transfering all applicable data.
+            </summary>
+            <remarks>
+            If the <paramref name="name"/> refers to a sub-type, that type is the one converted.
+            The sub-type is removed from its parent and the new delegate is added in its place
+            </remarks>
+            <param name="name">The fully qualified name of the delegate.</param>
+            <returns>The new delegate, or null if the type is not found.</returns>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.ToString">
             <summary></summary>
@@ -1497,6 +1538,9 @@
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.Types">
             <summary>Top-level types in assembly.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.Delegates">
+            <summary>Top-level delegates in assembly.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.#ctor">
             <summary>

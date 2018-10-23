@@ -130,5 +130,37 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 		}
 
+		/// <summary>
+		/// Shallow-copies all comments from the <paramref name="original"/> member to this member.
+		/// </summary>
+		public void CopyComments(DotNetMember original)
+		{
+			SummaryComments.Comments.Clear();
+			SummaryComments.Comments.AddRange(original.SummaryComments.Comments);
+
+			RemarksComments.Comments.Clear();
+			RemarksComments.Comments.AddRange(original.RemarksComments.Comments);
+
+			PermissionComments.Clear();
+			PermissionComments.AddRange(original.PermissionComments);
+
+			ExampleComments.Clear();
+			ExampleComments.AddRange(original.ExampleComments);
+
+			ExceptionComments.Clear();
+			ExceptionComments.AddRange(original.ExceptionComments);
+
+			ParameterComments.Clear();
+			ParameterComments.AddRange(original.ParameterComments);
+
+			ValueComments.Comments.Clear();
+			ValueComments.Comments.AddRange(original.ValueComments.Comments);
+
+			ReturnsComments.Comments.Clear();
+			ReturnsComments.Comments.AddRange(original.ReturnsComments.Comments);
+
+			FloatingComments.Comments.Clear();
+			FloatingComments.Comments.AddRange(original.FloatingComments.Comments);
+		}
 	}
 }
