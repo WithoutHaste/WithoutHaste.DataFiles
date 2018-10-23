@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles.DotNet
@@ -27,6 +28,34 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 
 			return trimmedBoth;
+		}
+
+		/// <summary>
+		/// Trims an equal amount of leading white-space from each line, delimited by \n character.
+		/// Callibrated for formatting blocks of text nested in XML.
+		/// </summary>
+		internal static string TrimFromStartAsBlock(this string text)
+		{
+			if(String.IsNullOrEmpty(text))
+				return text;
+
+			text = text.Replace("\r", "");
+			while(text.StartsWith("\n"))
+			{
+				text = text.RemoveFromStart("\n");
+			}
+
+			if(String.IsNullOrEmpty(text))
+				return text;
+
+			string[] lines = text.Split('\n');
+			Match whitespace = (new Regex(@"^\s+", RegexOptions.IgnoreCase)).Match(lines[0]);
+			lines = lines.Select(l => l.RemoveFromStart(whitespace.Value)).ToArray();
+
+			string result = String.Join("\n", lines);
+			if(result.EndsWith("\n")) //trailing empty line is an artifact of XML
+				result = result.RemoveFromEnd("\n");
+			return result;
 		}
 
 		internal static bool IsAbstract(this TypeAttributes typeAttributes)

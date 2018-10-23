@@ -73,7 +73,7 @@ namespace WithoutHaste.DataFiles
 		/// <param name="text"></param>
 		/// <param name="startIndex">First index checked for <paramref name="searchChar"/>.</param>
 		/// <param name="searchChar"></param>
-		public static int CountPreceedingRepeatedChars(string text, int startIndex, char searchChar)
+		internal static int CountPreceedingRepeatedChars(string text, int startIndex, char searchChar)
 		{
 			int count = 0;
 			for(int i = startIndex; i >= 0 && i < text.Length; i--)

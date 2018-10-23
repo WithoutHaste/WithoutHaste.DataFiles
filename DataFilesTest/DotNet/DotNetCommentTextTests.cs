@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -36,13 +37,66 @@ namespace DataFilesTest
 		public void DotNetCommentText_FromXml_Formatted()
 		{
 			//arrange
-			string text = @" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultricies hendrerit vehicula. Vivamus odio justo, bibendum non rutrum ac, interdum in metus. In tempus id diam eu mollis. Donec cursus non quam at egestas. Sed dictum, justo a maximus vulputate, nunc massa bibendum purus, nec placerat leo est quis elit. Sed porta porta tellus sit amet dignissim. Morbi id nisi eget dolor volutpat commodo nec vitae tortor. Pellentesque faucibus faucibus imperdiet.
+			string originalText = @"
+	  Lorem ipsum dolor sit amet. 
+	  ultricies hendrerit vehicula. 
 
-Pellentesque ac tincidunt purus. Mauris id metus commodo, efficitur justo non, ultricies leo. Mauris eget eros velit. Mauris ultrices elementum purus, ac ullamcorper erat sodales sit amet. Etiam congue hendrerit neque, sed fringilla turpis euismod ut. Sed lobortis nulla in consectetur suscipit. Donec euismod dui dolor, eu sodales turpis ultrices sit amet. ";
+	  In tempus id diam eu mollis. Donec 
+	  vulputate, nunc massa bibendum purus.";
+			string expectedResult = "Lorem ipsum dolor sit amet. \nultricies hendrerit vehicula. \n\nIn tempus id diam eu mollis. Donec \nvulputate, nunc massa bibendum purus.";
 			//act
-			DotNetCommentText result = DotNetCommentText.FromVisualStudioXml(text);
+			DotNetCommentText result = DotNetCommentText.FromVisualStudioXml(originalText);
 			//assert
-			Assert.AreEqual(text, result.Text);
+			Assert.AreEqual(expectedResult, result.Text);
+		}
+
+		[TestMethod]
+		public void DotNetCommentText_FromXml_RealExample_A()
+		{
+			//arrange
+			string originalText = @"
+            Tests the display of common data types that have recognized aliases in .Net.
+            Also common data types that have long fully-qualified names.
+            ";
+			string expectedResult = "Tests the display of common data types that have recognized aliases in .Net.\nAlso common data types that have long fully-qualified names.";
+			//act
+			DotNetCommentText result = DotNetCommentText.FromVisualStudioXml(originalText);
+			//assert
+			Assert.AreEqual(expectedResult, result.Text);
+		}
+
+		[TestMethod]
+		public void DotNetCommentText_FromXml_RealExample_A2()
+		{
+			//arrange
+			XElement element = XElement.Parse(@"<summary>
+            Tests the display of common data types that have recognized aliases in .Net.
+            Also common data types that have long fully-qualified names.
+            </summary>");
+			string originalText = element.Nodes().First().ToString();
+			string expectedResult = "Tests the display of common data types that have recognized aliases in .Net.\nAlso common data types that have long fully-qualified names.";
+			//act
+			DotNetCommentText result = DotNetCommentText.FromVisualStudioXml(originalText);
+			//assert
+			Assert.AreEqual(expectedResult, result.Text);
+		}
+
+		[TestMethod]
+		public void DotNetCommentText_FromXml_RealExample_A3()
+		{
+			//arrange
+			XElement element = XElement.Parse(@"<summary>
+            Tests the display of common data types that have recognized aliases in .Net.
+            Also common data types that have long fully-qualified names.
+            </summary>");
+			string expectedResult = "Tests the display of common data types that have recognized aliases in .Net.\nAlso common data types that have long fully-qualified names.";
+			//act
+			DotNetComment result = DotNetComment.FromVisualStudioXml(element);
+			DotNetCommentGroup groupResult = result as DotNetCommentGroup;
+			result = groupResult.Comments.First();
+			DotNetCommentText textResult = result as DotNetCommentText;
+			//assert
+			Assert.AreEqual(expectedResult, textResult.Text);
 		}
 	}
 }

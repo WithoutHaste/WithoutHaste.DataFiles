@@ -1145,7 +1145,12 @@
             <summary>
             Represents a plain text segment of comments.
             </summary>
-            <remarks>Text is allowed to have a single space at beginning and end. Anymore leading/trailing whitespace will be removed.</remarks>
+            <remarks>
+            Endline characters (\n) are preserved.
+            
+            A multiline block of text will have leading white-space removed as a block.
+            So if each line starts with two tabs, two tabs will be removed from the beginning of each line.
+            </remarks>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentText.Text">
             <summary></summary>
@@ -1462,6 +1467,12 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.Utilities.TrimAllowOneSpace(System.String)">
             <summary>
             Trims leading and trailing whitespaces. Will leave one leading and one trailing space, but won't add them.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.Utilities.TrimFromStartAsBlock(System.String)">
+            <summary>
+            Trims an equal amount of leading white-space from each line, delimited by \n character.
+            Callibrated for formatting blocks of text nested in XML.
             </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile">

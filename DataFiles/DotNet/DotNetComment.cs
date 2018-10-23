@@ -74,7 +74,7 @@ namespace WithoutHaste.DataFiles.DotNet
 						comments.Add(DotNetComment.FromVisualStudioXml(node as XElement));
 						break;
 					case XmlNodeType.Text:
-						comments.Add(DotNetComment.FromVisualStudioXml(node.ToString().Trim()));
+						comments.Add(DotNetComment.FromVisualStudioXml(node.ToString()));
 						break;
 				}
 			}
