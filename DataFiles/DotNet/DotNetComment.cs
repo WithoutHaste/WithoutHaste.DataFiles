@@ -13,7 +13,7 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// </summary>
 	public abstract class DotNetComment
 	{
-		/// <summary>Parses top-level .Net XML documentation comments.</summary>
+		/// <summary>Parses top-level .Net XML documentation comments. Returns null if no comments are found.</summary>
 		public static DotNetComment FromVisualStudioXml(XElement element)
 		{
 			switch(element.Name.LocalName)
@@ -24,7 +24,10 @@ namespace WithoutHaste.DataFiles.DotNet
 				case "para": //paragraph
 				case "returns":
 				case "value":
-					return new DotNetCommentGroup(ParseSection(element));
+					DotNetCommentGroup group = new DotNetCommentGroup(ParseSection(element));
+					if(group.IsEmpty)
+						return null;
+					return group;
 
 				case "exception":
 				case "permission":

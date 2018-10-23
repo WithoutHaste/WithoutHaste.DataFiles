@@ -20,6 +20,13 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public string Text { get; protected set; }
 
+		/// <summary>True if text is null or empty string.</summary>
+		public bool IsEmpty {
+			get {
+				return String.IsNullOrEmpty(Text);
+			}
+		}
+
 		/// <summary></summary>
 		public DotNetCommentText(string text)
 		{

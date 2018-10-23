@@ -660,7 +660,7 @@
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetComment.FromVisualStudioXml(System.Xml.Linq.XElement)">
-            <summary>Parses top-level .Net XML documentation comments.</summary>
+            <summary>Parses top-level .Net XML documentation comments. Returns null if no comments are found.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetComment.FromVisualStudioXml(System.String)">
             <summary>Creates a plain text comment.</summary>
@@ -1154,6 +1154,9 @@
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentText.Text">
             <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentText.IsEmpty">
+            <summary>True if text is null or empty string.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentText.#ctor(System.String)">
             <summary></summary>

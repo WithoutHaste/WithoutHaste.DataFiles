@@ -22,7 +22,15 @@ namespace WithoutHaste.DataFiles.DotNet
 		public List<DotNetComment> Comments = new List<DotNetComment>();
 
 		/// <summary></summary>
-		public bool IsEmpty { get { return (Comments.Count == 0); } }
+		public bool IsEmpty {
+			get {
+				if(Comments.Count == 0)
+					return true;
+				if(Comments.All(c => c is DotNetCommentText && (c as DotNetCommentText).IsEmpty))
+					return true;
+				return false;
+			}
+		}
 
 		/// <summary></summary>
 		public int Count { get { return Comments.Count; } }

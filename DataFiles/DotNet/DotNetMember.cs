@@ -85,13 +85,16 @@ namespace WithoutHaste.DataFiles.DotNet
 				{
 					case XmlNodeType.Element:
 						XElement element = (node as XElement);
+						DotNetComment comment = null;
 						switch(element.Name.LocalName)
 						{
 							case "summary":
-								SummaryComments.Add(DotNetComment.FromVisualStudioXml(element));
+								comment = DotNetComment.FromVisualStudioXml(element);
+								if(comment != null) SummaryComments.Add(comment);
 								break;
 							case "remarks":
-								RemarksComments.Add(DotNetComment.FromVisualStudioXml(element));
+								comment = DotNetComment.FromVisualStudioXml(element);
+								if(comment != null) RemarksComments.Add(comment);
 								break;
 							case "example":
 								ExampleComments.Add(DotNetComment.FromVisualStudioXml(element));
@@ -103,17 +106,20 @@ namespace WithoutHaste.DataFiles.DotNet
 								PermissionComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentQualifiedLinkedGroup);
 								break;
 							case "value":
-								ValueComments.Add(DotNetComment.FromVisualStudioXml(element));
+								comment = DotNetComment.FromVisualStudioXml(element);
+								if(comment != null) ValueComments.Add(comment);
 								break;
 							case "returns":
-								ReturnsComments.Add(DotNetComment.FromVisualStudioXml(element));
+								comment = DotNetComment.FromVisualStudioXml(element);
+								if(comment != null) ReturnsComments.Add(comment);
 								break;
 							case "param":
 							case "typeparam":
 								ParameterComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentParameter);
 								break;
 							default:
-								FloatingComments.Add(DotNetComment.FromVisualStudioXml(element));
+								comment = DotNetComment.FromVisualStudioXml(element);
+								if(comment != null) FloatingComments.Add(comment);
 								break;
 						}
 						break;
