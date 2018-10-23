@@ -111,7 +111,7 @@ namespace WithoutHaste.DataFiles.DotNet
 
 		internal static bool IsDelegate(this TypeInfo typeInfo)
 		{
-			if(typeInfo.FullName == "System.MulticastDelegate")
+			if(typeInfo.FullName == "System.Delegate")
 				return true;
 			if(typeInfo.BaseType == null)
 				return false;
@@ -120,7 +120,7 @@ namespace WithoutHaste.DataFiles.DotNet
 
 		internal static bool IsDelegate(this Type type)
 		{
-			if(type.FullName == "System.MulticastDelegate")
+			if(type.FullName == "System.Delegate")
 				return true;
 			if(type.BaseType == null)
 				return false;
