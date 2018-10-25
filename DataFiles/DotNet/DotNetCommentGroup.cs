@@ -32,8 +32,15 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 		}
 
-		/// <summary></summary>
+		/// <summary>The number of comments in the group. Does not count nested comments.</summary>
 		public int Count { get { return Comments.Count; } }
+
+		/// <summary>Access comments by zero-based index.</summary>
+		public DotNetComment this[int index] {
+			get {
+				return Comments[index];
+			}
+		}
 
 		#region Constructors
 

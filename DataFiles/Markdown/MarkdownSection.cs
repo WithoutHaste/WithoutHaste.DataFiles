@@ -36,6 +36,11 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// </summary>
 		public string Header { get; set; }
 
+		/// <summary>
+		/// True if the section contains no elements.
+		/// </summary>
+		public bool IsEmpty { get { return (elements.Count == 0); } }
+
 		/// <summary>All markdown elements within section.</summary>
 		public IMarkdownInSection[] Elements { get { return elements.ToArray(); } }
 

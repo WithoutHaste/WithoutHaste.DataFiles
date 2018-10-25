@@ -744,7 +744,10 @@
             <summary></summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.Count">
-            <summary></summary>
+            <summary>The number of comments in the group. Does not count nested comments.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.Item(System.Int32)">
+            <summary>Access comments by zero-based index.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.#ctor">
             <summary>Empty constructor</summary>
@@ -2293,6 +2296,11 @@
         <member name="P:WithoutHaste.DataFiles.Markdown.MarkdownSection.Header">
             <summary>
             Displayed header text.
+            </summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.Markdown.MarkdownSection.IsEmpty">
+            <summary>
+            True if the section contains no elements.
             </summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.Markdown.MarkdownSection.Elements">

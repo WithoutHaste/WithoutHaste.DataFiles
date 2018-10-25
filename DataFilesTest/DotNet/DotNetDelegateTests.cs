@@ -40,6 +40,7 @@ namespace DataFilesTest
 			Assert.AreEqual("b", delegateResult.Parameters[1].Name);
 			Assert.AreEqual("System.Int32", delegateResult.Parameters[0].FullTypeName);
 			Assert.AreEqual("System.String", delegateResult.Parameters[1].FullTypeName);
+			Assert.AreEqual("System.EventHandler", delegateResult.ReturnTypeName.FullName);
 		}
 	}
 }
