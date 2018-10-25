@@ -4,6 +4,69 @@
         <name>WithoutHaste.DataFiles</name>
     </assembly>
     <members>
+        <member name="T:WithoutHaste.DataFiles.ArbitraryCounter">
+            <summary>
+            Counts using an arbitrary set of digits.
+            </summary>
+            <remarks>
+            Using "integers" as an analogy, Counter values cannot be negative.
+            </remarks>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.ArbitraryCounter.MINIMUM_VALUE">
+            <summary>Counter can never decrement below the minimum value.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.ArbitraryCounter.Value">
+            <summary>Current display value.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.ArbitraryCounter.value">
+            <summary>Current internal value.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.ArbitraryCounter.VALID_CHARACTERS">
+            <summary>All valid characters, in order from smallest to largest.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.ArbitraryCounter.#ctor(System.Char[])">
+            <summary>Initialize at MINIMUM_VALUE.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.ArbitraryCounter.SetValue(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.ArbitraryCounter.SetValue(System.Collections.Generic.List{System.Char})">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.ArbitraryCounter.Increment(System.Collections.Generic.List{System.Char},System.Int32)">
+            <summary>Increment a value.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.ArbitraryCounter.Decrement(System.Collections.Generic.List{System.Char},System.Int32)">
+            <summary>Increment a value.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.ArbitraryCounter.CopyValue">
+            <summary>Returns an independent copy of the value.</summary>
+        </member>
+        <member name="T:WithoutHaste.DataFiles.AlphabetCounter">
+            <summary>
+            Counts "A", "B", "C", ..., "Z", "AA", "AB", ..., "AZ", "BA", "BB", ...
+            </summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.AlphabetCounter.CHARACTERS">
+            <summary>
+            Valid characters.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.AlphabetCounter.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.AlphabetCounter.op_Addition(WithoutHaste.DataFiles.AlphabetCounter,System.Int32)">
+            <summary>Increment counter.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.AlphabetCounter.op_Subtraction(WithoutHaste.DataFiles.AlphabetCounter,System.Int32)">
+            <summary>Decrement counter.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.AlphabetCounter.op_Increment(WithoutHaste.DataFiles.AlphabetCounter)">
+            <summary>Increment counter by 1.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.AlphabetCounter.op_Decrement(WithoutHaste.DataFiles.AlphabetCounter)">
+            <summary>Decrement counter by 1.</summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetBaseType">
             <summary>
             Represents a node in an inheriance hierarchy.
