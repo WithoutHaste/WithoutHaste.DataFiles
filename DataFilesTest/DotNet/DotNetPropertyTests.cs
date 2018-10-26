@@ -29,6 +29,7 @@ namespace DataFilesTest
 			//act
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
 			//assert
+			Assert.AreEqual("AbstractProperty", dotNetType.Properties[0].Name.LocalName);
 			Assert.AreEqual(FieldCategory.Abstract, dotNetType.Properties[0].Category);
 			Assert.IsTrue(dotNetType.Properties[0].HasGetterMethod);
 			Assert.IsTrue(dotNetType.Properties[0].HasSetterMethod);
@@ -44,7 +45,9 @@ namespace DataFilesTest
 			//act
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
 			//assert
-			Assert.IsNull(dotNetType.Properties[0].SetterMethod);
+			Assert.AreEqual("GetOnlyProperty", dotNetType.Properties[0].Name.LocalName);
+			Assert.IsTrue(dotNetType.Properties[0].HasGetterMethod);
+			Assert.IsFalse(dotNetType.Properties[0].HasSetterMethod);
 		}
 	}
 }

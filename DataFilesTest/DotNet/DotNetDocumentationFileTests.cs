@@ -164,8 +164,8 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_AddAssemblyInfo_FoundType()
 		{
 			//arrange
-			string xmlDocumentationFilename = "E:/Github/EarlyDocs/Test/bin/Debug/Test.XML";
-			string dllFilename = "E:/Github/EarlyDocs/Test/bin/Debug/Test.dll";
+			string xmlDocumentationFilename = "../../../../EarlyDocs/Test/bin/Debug/Test.XML";
+			string dllFilename = "../../../../EarlyDocs/Test/bin/Debug/Test.dll";
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			xmlDocumentation.AddAssemblyInfo(dllFilename);
