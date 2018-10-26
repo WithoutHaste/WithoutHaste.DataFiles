@@ -55,6 +55,9 @@ namespace WithoutHaste.DataFiles.DotNet
 					return DotNetCommentCode.FromVisualStudioXml(element);
 				case "code": //code block
 					return DotNetCommentCodeBlock.FromVisualStudioXml(element);
+
+				case "inheritdoc":
+					return new DotNetCommentInherit();
 			}
 			return null;
 		}

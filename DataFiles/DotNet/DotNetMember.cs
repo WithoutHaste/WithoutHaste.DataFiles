@@ -35,6 +35,12 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 		}
 
+		internal bool InheritsDocumentation {
+			get {
+				return (!FloatingComments.IsEmpty && FloatingComments.Comments.OfType<DotNetCommentInherit>().Count() > 0);
+			}
+		}
+
 		/// <summary>Comments from "summary" xml tags. Only expected as a top-level tag.</summary>
 		/// <remarks>If there are multiple "summary" tags, their contents will be concatenated as if they were one tag.</remarks>
 		public DotNetCommentGroup SummaryComments = new DotNetCommentGroup();

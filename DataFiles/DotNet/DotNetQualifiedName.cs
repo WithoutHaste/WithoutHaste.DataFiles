@@ -45,6 +45,17 @@ namespace WithoutHaste.DataFiles.DotNet
 			this.FullNamespace = fullNamespace;
 		}
 
+		/// <summary>Builds the qualified name from each segment provided, with the first string being the root namespace and the last string being the local name.</summary>
+		/// <exception cref="ArgumentException">List of names cannot be empty.</exception>
+		public DotNetQualifiedName(params string[] names)
+		{
+			if(names == null || names.Length == 0)
+				throw new ArgumentException("List of names cannot be empty.");
+			this.localName = names.Last();
+			if(names.Length > 1)
+				this.FullNamespace = new DotNetQualifiedName(names.Take(names.Length - 1).ToArray());
+		}
+
 		/// <summary>
 		/// Parses a .Net XML documentation type, method, or other member name.
 		/// </summary>

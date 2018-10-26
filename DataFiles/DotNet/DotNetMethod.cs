@@ -42,7 +42,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		#region Constructors
 
 		/// <summary>Empty constructor</summary>
-		public DotNetMethod() : base(new DotNetQualifiedName(null))
+		public DotNetMethod() : base(new DotNetQualifiedName())
 		{
 		}
 
@@ -164,8 +164,23 @@ namespace WithoutHaste.DataFiles.DotNet
 			for(int i = 0; i < Parameters.Count; i++)
 			{
 				string otherName = DotNetQualifiedTypeName.FromAssemblyInfo(otherParameters[i].ParameterType).FullName;
-				//todo: something about parameters that end with @ vs &
 				if(Parameters[i].FullTypeName != otherName)
+					return false;
+			}
+			return true;
+		}
+
+		/// <summary>
+		/// Returns true if this method's parameter list matches the provided parameter list. Only parameter types matter, not the names.
+		/// </summary>
+		public bool MatchesArguments(List<DotNetParameter> otherParameters)
+		{
+			if(Parameters.Count != otherParameters.Count)
+				return false;
+
+			for(int i = 0; i < Parameters.Count; i++)
+			{
+				if(Parameters[i].TypeName.FullName != otherParameters[i].TypeName.FullName)
 					return false;
 			}
 			return true;
@@ -182,7 +197,7 @@ namespace WithoutHaste.DataFiles.DotNet
 					Category = MethodCategory.Static;
 				else if(methodInfo.IsAbstract)
 					Category = MethodCategory.Abstract;
-				else if(methodInfo.IsVirtual)
+				else if(methodInfo.IsVirtual && !methodInfo.IsFinal)
 					Category = MethodCategory.Virtual;
 				else
 					Category = MethodCategory.Normal;

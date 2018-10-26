@@ -87,7 +87,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>The subset of Methods that are static, but not constructors nor operators.</summary>
 		public List<DotNetMethod> StaticMethods { get { return Methods.Where(m => m.Category == MethodCategory.Static && !(m is DotNetMethodConstructor) && !(m is DotNetMethodOperator)).ToList(); } }
 		/// <summary>The subset of Methods that are not static, nor constructors, nor operators.</summary>
-		public List<DotNetMethod> NormalMethods { get { return Methods.Where(m => (m.Category == MethodCategory.Normal || m.Category == MethodCategory.Abstract) && !(m is DotNetMethodConstructor) && !(m is DotNetMethodOperator)).ToList(); } }
+		public List<DotNetMethod> NormalMethods { get { return Methods.Where(m => (m.Category != MethodCategory.Static) && !(m is DotNetMethodConstructor) && !(m is DotNetMethodOperator)).ToList(); } }
 
 		/// <summary></summary>
 		public List<DotNetField> Fields = new List<DotNetField>();
@@ -192,6 +192,51 @@ namespace WithoutHaste.DataFiles.DotNet
 		private DotNetType GetDirectChild(DotNetQualifiedName name)
 		{
 			return NestedTypes.FirstOrDefault(subtype => subtype.Name.LocalName == name.LocalName);
+		}
+
+		/// <summary>
+		/// Returns the selected type, whether it is this one or one of its nested types. Returns null if the type is not found.
+		/// </summary>
+		public DotNetType FindType(DotNetQualifiedName name)
+		{
+			if(this.Is(name))
+				return this;
+			DotNetType type = NestedTypes.FirstOrDefault(x => x.Is(name) || x.Owns(name));
+			if(type == null)
+				return null;
+			return type.FindType(name);
+		}
+
+		/// <summary>
+		/// Returns the selected field, if it exists in this type.
+		/// </summary>
+		public DotNetField FindField(string localName)
+		{
+			return Fields.FirstOrDefault(f => f.Name.LocalName == localName);
+		}
+
+		/// <summary>
+		/// Returns the selected property, if it exists in this type.
+		/// </summary>
+		public DotNetProperty FindProperty(string localName)
+		{
+			return Properties.FirstOrDefault(p => p.Name.LocalName == localName);
+		}
+
+		/// <summary>
+		/// Returns the selected event, if it exists in this type.
+		/// </summary>
+		public DotNetEvent FindEvent(string localName)
+		{
+			return Events.FirstOrDefault(e => e.Name.LocalName == localName);
+		}
+
+		/// <summary>
+		/// Returns the selected method, if it exists in this type.
+		/// </summary>
+		public DotNetMethod FindMethod(string localName, List<DotNetParameter> parameters) //todo: overrides generic method using diff names for the generic type parameters
+		{
+			return Methods.FirstOrDefault(m => m.Name.LocalName == localName && m.MatchesArguments(parameters));
 		}
 
 		/// <summary>
@@ -356,6 +401,112 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 
 			return localNames;
+		}
+
+		/// <summary>
+		/// For all "inheritdoc" comments, replace the inheritance comment with the inherited comments.
+		/// </summary>
+		/// <param name="FindType">Function that returns the selected type from all known types in the assembly.</param>
+		public void ResolveInheritedComments(Func<DotNetQualifiedName,DotNetType> FindType)
+		{
+			DotNetType baseType = null;
+			if(BaseType != null)
+			{
+				baseType = FindType(BaseType.Name);
+			}
+			List<DotNetType> baseInterfaces = new List<DotNetType>();
+			foreach(DotNetBaseType implementedInterface in ImplementedInterfaces)
+			{
+				DotNetType baseInterface = FindType(implementedInterface.Name);
+				if(baseInterface != null)
+					baseInterfaces.Add(baseInterface);
+			}
+
+			if(this.InheritsDocumentation && baseType != null)
+			{
+				//todo: if base type inherits too - loops shouldn't be possible but check anyway
+				this.CopyComments(baseType);
+			}
+
+			foreach(DotNetField field in Fields) //todo: field from grandparent instead of parent
+			{
+				if(!field.InheritsDocumentation) continue;
+
+				if(baseType != null)
+				{
+					DotNetField baseField = baseType.FindField(field.Name.LocalName);
+					if(baseField != null)
+					{
+						field.CopyComments(baseField);
+						continue;
+					}
+				}
+			}
+			foreach(DotNetProperty property in Properties)
+			{
+				if(!property.InheritsDocumentation) continue;
+
+				if(baseType != null)
+				{
+					DotNetProperty baseProperty = baseType.FindProperty(property.Name.LocalName);
+					if(baseProperty != null)
+					{
+						property.CopyComments(baseProperty);
+						continue;
+					}
+				}
+				foreach(DotNetType baseInterface in baseInterfaces)
+				{
+					DotNetProperty baseProperty = baseInterface.FindProperty(property.Name.LocalName);
+					if(baseProperty != null)
+					{
+						property.CopyComments(baseProperty);
+						break;
+					}
+				}
+			}
+			foreach(DotNetEvent _event in Events)
+			{
+				if(!_event.InheritsDocumentation) continue;
+
+				if(baseType != null)
+				{
+					DotNetEvent baseEvent = baseType.FindEvent(_event.Name.LocalName);
+					if(baseEvent != null)
+					{
+						_event.CopyComments(baseEvent);
+						continue;
+					}
+				}
+			}
+			foreach(DotNetMethod method in Methods)
+			{
+				if(!method.InheritsDocumentation) continue;
+
+				if(baseType != null)
+				{
+					DotNetMethod baseMethod = baseType.FindMethod(method.Name.LocalName, method.Parameters);
+					if(baseMethod != null)
+					{
+						method.CopyComments(baseMethod);
+						continue;
+					}
+				}
+				foreach(DotNetType baseInterface in baseInterfaces)
+				{
+					DotNetMethod baseMethod = baseInterface.FindMethod(method.Name.LocalName, method.Parameters);
+					if(baseMethod != null)
+					{
+						method.CopyComments(baseMethod);
+						break;
+					}
+				}
+			}
+
+			foreach(DotNetType nestedType in NestedTypes)
+			{
+				nestedType.ResolveInheritedComments(FindType);
+			}
 		}
 
 		#region Convert

@@ -84,6 +84,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			{
 				AddAssemblyInfoToType(typeInfo);
 			}
+			ResolveInheritedComments();
 		}
 
 		private void LoadAssemblyInfoFromXml(XDocument document)
@@ -165,6 +166,22 @@ namespace WithoutHaste.DataFiles.DotNet
 					}
 				}
 			} while(foundConflict); //in case the updated generic-type names now conflict with other actual type names
+		}
+
+		internal void ResolveInheritedComments()
+		{
+			foreach(DotNetType type in Types)
+			{
+				type.ResolveInheritedComments(FindType);
+			}
+		}
+
+		private DotNetType FindType(DotNetQualifiedName name)
+		{
+			DotNetType type = Types.FirstOrDefault(x => x.Is(name) || x.Owns(name));
+			if(type == null) return null;
+
+			return type.FindType(name);
 		}
 
 		private bool IsNestedType(DotNetType type)

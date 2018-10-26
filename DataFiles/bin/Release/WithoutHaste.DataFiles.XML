@@ -87,6 +87,15 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetBaseType.#ctor(System.Type)">
             <summary></summary>
         </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentInherit">
+            <summary>
+            Represents a the <![CDATA[<inheritdoc />]]> tag, which means that documentation should be inherited for the base class, interface, struct, or member.
+            </summary>
+            <remarks>This is just a marker class. If the inheritance can be resolved, the inherited comments will automatically replace this comment.</remarks>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentInherit.#ctor">
+            <summary></summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup">
             <summary>
             Represents a section of comments that is linked to a fully qualified type or member.
@@ -1172,6 +1181,11 @@
             Returns true if this method's parameter list matches the reflected ParameterInfo.
             </summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.MatchesArguments(System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter})">
+            <summary>
+            Returns true if this method's parameter list matches the provided parameter list. Only parameter types matter, not the names.
+            </summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.AddAssemblyInfo(System.Reflection.MethodInfo)">
             <summary>
             Load additional documentation information from the assembly itself.
@@ -1410,6 +1424,31 @@
             Returns true if this qualified name is defined directly within this type.
             </summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.FindType(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary>
+            Returns the selected type, whether it is this one or one of its nested types. Returns null if the type is not found.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.FindField(System.String)">
+            <summary>
+            Returns the selected field, if it exists in this type.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.FindProperty(System.String)">
+            <summary>
+            Returns the selected property, if it exists in this type.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.FindEvent(System.String)">
+            <summary>
+            Returns the selected event, if it exists in this type.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.FindMethod(System.String,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter})">
+            <summary>
+            Returns the selected method, if it exists in this type.
+            </summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.AddMember(WithoutHaste.DataFiles.DotNet.DotNetMember)">
             <summary>
             Add a member to the correct level within this type.
@@ -1426,6 +1465,12 @@
             Includes namespaces, internal types, external types, and members.
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.ResolveInheritedComments(System.Func{WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetType})">
+            <summary>
+            For all "inheritdoc" comments, replace the inheritance comment with the inherited comments.
+            </summary>
+            <param name="FindType">Function that returns the selected type from all known types in the assembly.</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.ToDelegate(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary>
@@ -1467,6 +1512,10 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.#ctor(System.String,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.#ctor(System.String[])">
+            <summary>Builds the qualified name from each segment provided, with the first string being the root namespace and the last string being the local name.</summary>
+            <exception cref="T:System.ArgumentException">List of names cannot be empty.</exception>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.FromVisualStudioXml(System.String)">
             <summary>

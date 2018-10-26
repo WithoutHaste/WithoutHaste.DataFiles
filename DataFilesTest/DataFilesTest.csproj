@@ -66,6 +66,7 @@
     <Compile Include="DotNet\DotNetCommentCodeTests.cs" />
     <Compile Include="DotNet\DotNetCommentGroupTests.cs" />
     <Compile Include="DotNet\DotNetCommentCodeBlockTests.cs" />
+    <Compile Include="DotNet\DotNetCommentInheritTests.cs" />
     <Compile Include="DotNet\DotNetCommentListItemTests.cs" />
     <Compile Include="DotNet\DotNetCommentListTests.cs" />
     <Compile Include="DotNet\DotNetCommentMethodLinkedGroupTests.cs" />
@@ -112,6 +113,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\DotNetCommentGroup_XmlCommentsNestedInTag.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetCommentInherit_TypeFromBaseType.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\DotNetCommentTable_Full.xml">

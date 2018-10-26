@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<assembly>
+		<name>Test</name>
+	</assembly>
+	<members>
+		<!-- Types -->
+		<member name="T:DataFilesTest.DotNetCommentInheritTests.BaseType">
+			<summary>Base type summary.</summary>
+		</member>
+		<member name="T:DataFilesTest.DotNetCommentInheritTests.DerivedType">
+			<inheritdoc />
+		</member>
+		<!-- Fields -->
+		<member name="F:DataFilesTest.DotNetCommentInheritTests.BaseType.FieldA">
+			<summary>Base type field summary.</summary>
+		</member>
+		<member name="F:DataFilesTest.DotNetCommentInheritTests.DerivedType.FieldA">
+			<inheritdoc />
+		</member>
+		<!-- Properties -->
+		<member name="P:DataFilesTest.DotNetCommentInheritTests.BaseType.PropertyA">
+			<summary>Base type property summary.</summary>
+		</member>
+		<member name="P:DataFilesTest.DotNetCommentInheritTests.DerivedType.PropertyA">
+			<inheritdoc />
+		</member>
+		<!-- Events -->
+		<member name="E:DataFilesTest.DotNetCommentInheritTests.BaseType.EventA">
+			<summary>Base type event summary.</summary>
+		</member>
+		<member name="E:DataFilesTest.DotNetCommentInheritTests.DerivedType.EventA">
+			<inheritdoc />
+		</member>
+		<!-- Method -->
+		<member name="M:DataFilesTest.DotNetCommentInheritTests.BaseType.MethodA">
+			<summary>Base type event summary.</summary>
+		</member>
+		<member name="M:DataFilesTest.DotNetCommentInheritTests.DerivedType.MethodA">
+			<inheritdoc />
+		</member>
+	</members>
+</root>
