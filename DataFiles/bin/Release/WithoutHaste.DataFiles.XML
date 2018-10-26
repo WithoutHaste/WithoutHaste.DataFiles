@@ -1001,7 +1001,10 @@
             <summary>No special category.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.FieldCategory.Constant">
-            <summary>Constant or Readonly field.</summary>
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.FieldCategory.ReadOnly">
+            <summary></summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.FieldCategory.Abstract">
             <summary>Abstract. Value only valid on properties and events.</summary>
@@ -1013,6 +1016,12 @@
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetField.Category">
             <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetField.AccessModifier">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetField.IsStatic">
+            <summary>False means unknown or is not static.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetField.TypeName">
             <summary>Fully qualified name of data type, if known. Null if not known.</summary>
@@ -1218,6 +1227,12 @@
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetProperty.SetterMethod">
             <summary></summary>
         </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetProperty.HasGetterMethod">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetProperty.HasSetterMethod">
+            <summary></summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetProperty.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary></summary>
         </member>
@@ -1262,6 +1277,12 @@
             <summary></summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.AccessModifier.Protected">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.AccessModifier.Internal">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.AccessModifier.InternalProtected">
             <summary></summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.AccessModifier.Private">

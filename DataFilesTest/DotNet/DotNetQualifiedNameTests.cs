@@ -333,5 +333,23 @@ namespace DataFilesTest
 			//assert
 			Assert.AreEqual(true, result);
 		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_Equality_ListContains()
+		{
+			//arrange
+			List<DotNetQualifiedName> list = new List<DotNetQualifiedName>() {
+				DotNetQualifiedName.FromVisualStudioXml("System"),
+				DotNetQualifiedName.FromVisualStudioXml("System.Collections.Generic"),
+				DotNetQualifiedName.FromVisualStudioXml("System.Linq"),
+				DotNetQualifiedName.FromVisualStudioXml("System.Text"),
+				DotNetQualifiedName.FromVisualStudioXml("System.Threading.Tasks")
+			};
+			DotNetQualifiedName target = DotNetQualifiedName.FromVisualStudioXml("System.Text");
+			//act
+			bool result = list.Contains(target);
+			//assert
+			Assert.AreEqual(true, result);
+		}
 	}
 }

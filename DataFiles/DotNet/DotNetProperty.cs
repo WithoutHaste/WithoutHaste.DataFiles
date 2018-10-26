@@ -19,6 +19,12 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public DotNetPropertyMethod SetterMethod { get; protected set; }
 
+		/// <summary></summary>
+		public bool HasGetterMethod { get { return (GetterMethod != null); } }
+
+		/// <summary></summary>
+		public bool HasSetterMethod { get { return (SetterMethod != null); } }
+
 		#region Constructors
 
 		/// <summary></summary>
@@ -56,7 +62,8 @@ namespace WithoutHaste.DataFiles.DotNet
 			TypeName = DotNetQualifiedTypeName.FromAssemblyInfo(propertyInfo.PropertyType);
 
 			Category = FieldCategory.Normal;
-			if(GetterMethod.IsAbstract && SetterMethod.IsAbstract)
+			if(HasGetterMethod && GetterMethod.IsAbstract && 
+				HasSetterMethod && SetterMethod.IsAbstract)
 				Category = FieldCategory.Abstract;
 		}
 	}

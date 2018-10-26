@@ -15,8 +15,10 @@ namespace WithoutHaste.DataFiles.DotNet
 		Unknown = 0,
 		/// <summary>No special category.</summary>
 		Normal,
-		/// <summary>Constant or Readonly field.</summary>
+		/// <summary></summary>
 		Constant,
+		/// <summary></summary>
+		ReadOnly,
 		/// <summary>Abstract. Value only valid on properties and events.</summary>
 		Abstract
 	};
@@ -28,6 +30,12 @@ namespace WithoutHaste.DataFiles.DotNet
 	{
 		/// <summary></summary>
 		public FieldCategory Category { get; protected set; }
+
+		/// <summary></summary>
+		public AccessModifier AccessModifier { get; protected set; } //todo: this property is not used by DotNetProperty - does that break inheritance?
+
+		/// <summary>False means unknown or is not static.</summary>
+		public bool IsStatic { get; protected set; }
 
 		/// <summary>Fully qualified name of data type, if known. Null if not known.</summary>
 		public DotNetQualifiedTypeName TypeName { get; protected set; }
@@ -63,8 +71,25 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			if(fieldInfo.Attributes.IsConstant())
 				Category = FieldCategory.Constant;
+			else if(fieldInfo.IsInitOnly)
+				Category = FieldCategory.ReadOnly;
 			else
 				Category = FieldCategory.Normal;
+
+			if(fieldInfo.IsPublic)
+				AccessModifier = AccessModifier.Public;
+			else if(fieldInfo.IsFamily)
+				AccessModifier = AccessModifier.Protected;
+			else if(fieldInfo.IsAssembly)
+				AccessModifier = AccessModifier.Internal;
+			else if(fieldInfo.IsFamilyOrAssembly)
+				AccessModifier = AccessModifier.InternalProtected;
+			else
+				AccessModifier = AccessModifier.Private;
+
+			if(fieldInfo.IsStatic)
+				IsStatic = true;
+
 			TypeName = DotNetQualifiedTypeName.FromAssemblyInfo(fieldInfo.FieldType);
 		}
 	}

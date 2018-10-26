@@ -17,6 +17,10 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		Protected,
 		/// <summary></summary>
+		Internal,
+		/// <summary></summary>
+		InternalProtected,
+		/// <summary></summary>
 		Private
 	};
 
@@ -273,14 +277,14 @@ namespace WithoutHaste.DataFiles.DotNet
 					continue;
 				field.AddAssemblyInfo(fieldInfo);
 			}
-			foreach(PropertyInfo propertyInfo in typeInfo.DeclaredProperties.Where(x => x.GetMethod.GetParameters().Count() == 0))
+			foreach(PropertyInfo propertyInfo in typeInfo.DeclaredProperties.Where(x => x.GetMethod == null || x.GetMethod.GetParameters().Count() == 0))
 			{
 				DotNetProperty property = Properties.FirstOrDefault(p => propertyInfo.Name == p.Name.LocalName);
 				if(property == null)
 					continue;
 				property.AddAssemblyInfo(propertyInfo);
 			}
-			foreach(PropertyInfo propertyInfo in typeInfo.DeclaredProperties.Where(x => x.GetMethod.GetParameters().Count() > 0))
+			foreach(PropertyInfo propertyInfo in typeInfo.DeclaredProperties.Where(x => x.GetMethod != null && x.GetMethod.GetParameters().Count() > 0))
 			{
 				DotNetIndexer indexer = Properties.OfType<DotNetIndexer>().Cast<DotNetIndexer>().FirstOrDefault(i => i.MatchesSignature(propertyInfo.GetGetMethod()));
 				if(indexer == null)

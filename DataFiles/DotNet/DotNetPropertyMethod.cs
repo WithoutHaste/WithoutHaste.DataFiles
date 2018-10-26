@@ -38,7 +38,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		public static DotNetPropertyMethod FromAssemblyInfo(MethodInfo methodInfo)
 		{
 			if(methodInfo == null)
-				return new DotNetPropertyMethod();
+				return null;
 
 			bool isAbstract = methodInfo.IsAbstract;
 
