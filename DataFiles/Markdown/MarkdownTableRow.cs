@@ -15,9 +15,27 @@ namespace WithoutHaste.DataFiles.Markdown
 		public List<string> Cells = new List<string>();
 
 		/// <summary></summary>
+		public MarkdownTableRow()
+		{
+		}
+
+		/// <summary></summary>
 		public MarkdownTableRow(List<string> cells)
 		{
 			Cells.AddRange(cells);
+		}
+
+		/// <summary></summary>
+		public MarkdownTableRow(params string[] cells)
+		{
+			Cells.AddRange(cells);
+		}
+
+		/// <summary>Add a cell to the end of the row.</summary>
+		/// <param name="cell"></param>
+		public void Add(string cell)
+		{
+			Cells.Add(cell);
 		}
 
 		/// <summary>

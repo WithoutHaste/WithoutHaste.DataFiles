@@ -32,6 +32,12 @@ namespace WithoutHaste.DataFiles.Markdown
 			Rows.AddRange(rows);
 		}
 
+		/// <summary>Add a row to the end of the table.</summary>
+		public void Add(MarkdownTableRow row)
+		{
+			Rows.Add(row);
+		}
+
 		/// <summary>
 		/// Return markdown-formatted text.
 		/// </summary>
@@ -77,7 +83,7 @@ namespace WithoutHaste.DataFiles.Markdown
 			{
 				for(int i = 0; i < row.Cells.Count; i++)
 				{
-					while(widths.Count >= i)
+					while(widths.Count <= i)
 					{
 						widths.Add(MINIMUM_COLUMN_WIDTH);
 					}

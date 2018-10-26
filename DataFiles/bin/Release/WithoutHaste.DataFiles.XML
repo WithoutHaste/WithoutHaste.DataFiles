@@ -2543,6 +2543,9 @@
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownTable.#ctor(WithoutHaste.DataFiles.Markdown.MarkdownTableRow[])">
             <summary></summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownTable.Add(WithoutHaste.DataFiles.Markdown.MarkdownTableRow)">
+            <summary>Add a row to the end of the table.</summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownTable.ToMarkdown">
             <summary>
             Return markdown-formatted text.
@@ -2561,8 +2564,18 @@
         <member name="F:WithoutHaste.DataFiles.Markdown.MarkdownTableRow.Cells">
             <summary>List of the cells in the row.</summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownTableRow.#ctor">
+            <summary></summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownTableRow.#ctor(System.Collections.Generic.List{System.String})">
             <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownTableRow.#ctor(System.String[])">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownTableRow.Add(System.String)">
+            <summary>Add a cell to the end of the row.</summary>
+            <param name="cell"></param>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownTableRow.ToMarkdown(System.Collections.Generic.List{System.Int32})">
             <summary>
