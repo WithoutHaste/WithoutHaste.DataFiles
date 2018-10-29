@@ -351,5 +351,53 @@ namespace DataFilesTest
 			//assert
 			Assert.AreEqual(true, result);
 		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_CompareTo_DifferentDepths_AShorterThanB()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("System.Collections");
+			DotNetQualifiedName b = DotNetQualifiedName.FromVisualStudioXml("System.Collections.Generic");
+			//act
+			int result = a.CompareTo(b);
+			//assert
+			Assert.AreEqual(-1, result);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_CompareTo_DifferentDepths_ALongerThanB()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("System.Collections.Generic");
+			DotNetQualifiedName b = DotNetQualifiedName.FromVisualStudioXml("System.Collections");
+			//act
+			int result = a.CompareTo(b);
+			//assert
+			Assert.AreEqual(1, result);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_CompareTo_SameDepths_ALessThanB()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("System.Collections.A");
+			DotNetQualifiedName b = DotNetQualifiedName.FromVisualStudioXml("System.Collections.B");
+			//act
+			int result = a.CompareTo(b);
+			//assert
+			Assert.AreEqual(-1, result);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_CompareTo_SameDepths_AGreaterThanB()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("System.Collections.C");
+			DotNetQualifiedName b = DotNetQualifiedName.FromVisualStudioXml("System.Collections.B");
+			//act
+			int result = a.CompareTo(b);
+			//assert
+			Assert.AreEqual(1, result);
+		}
 	}
 }

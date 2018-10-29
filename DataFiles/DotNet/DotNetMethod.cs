@@ -247,5 +247,58 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			return link.MatchesSignature(this);
 		}
+
+		#region Low Level
+
+		/// <duplicate cref='Equals(Object)' />
+		public static bool operator ==(DotNetMethod a, DotNetMethod b)
+		{
+			if(object.ReferenceEquals(a, null) && object.ReferenceEquals(b, null))
+				return true;
+			if(object.ReferenceEquals(a, null) || object.ReferenceEquals(b, null))
+				return false;
+			return a.Equals(b);
+		}
+
+		/// <duplicate cref='Equals(Object)' />
+		public static bool operator !=(DotNetMethod a, DotNetMethod b)
+		{
+			if(object.ReferenceEquals(a, null) && object.ReferenceEquals(b, null))
+				return false;
+			if(object.ReferenceEquals(a, null) || object.ReferenceEquals(b, null))
+				return true;
+			return !a.Equals(b);
+		}
+
+		/// <summary>Equality is based on the full namespace/name/generic-type-parameters of the method, and on parameter-types.</summary>
+		public override bool Equals(Object b)
+		{
+			if(!(b is DotNetMethod))
+				return false;
+			if(object.ReferenceEquals(this, null) && object.ReferenceEquals(b, null))
+				return true;
+			if(object.ReferenceEquals(this, null) || object.ReferenceEquals(b, null))
+				return false;
+
+			DotNetMethod other = (b as DotNetMethod);
+			if(this.Name != other.Name)
+				return false;
+			if(this.Parameters.Count != other.Parameters.Count)
+				return false;
+			for(int i = 0; i < this.Parameters.Count; i++)
+			{
+				if(this.Parameters[i].TypeName != other.Parameters[i].TypeName)
+					return false;
+			}
+			return true;
+		}
+
+		/// <summary></summary>
+		public override int GetHashCode()
+		{
+			return Name.GetHashCode() & Parameters.GetHashCode();
+		}
+
+		#endregion
 	}
 }

@@ -499,8 +499,28 @@
             Represents a method that is an operator.
             </summary>
         </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator.OperatorOrder">
+            <summary>Operators will be sorted into this order.</summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter})">
             <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator.op_LessThan(WithoutHaste.DataFiles.DotNet.DotNetMethodOperator,WithoutHaste.DataFiles.DotNet.DotNetMethodOperator)">
+            <duplicate cref='M:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator.CompareTo(System.Object)' />
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator.op_GreaterThan(WithoutHaste.DataFiles.DotNet.DotNetMethodOperator,WithoutHaste.DataFiles.DotNet.DotNetMethodOperator)">
+            <duplicate cref='M:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator.CompareTo(System.Object)' />
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator.CompareTo(System.Object)">
+            <summary>
+            Methods are sorted:
+            <list type='numbered'>
+            	<item>alphabetically by namespace</item>
+            	<item>then into <see cref='F:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator.OperatorOrder'/></item>
+            	<item>then parameter list, shortest to longest</item>
+            	<item>then alphabetically by parameter types</item>
+            </list>
+            </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName">
             <summary>
@@ -1254,6 +1274,18 @@
             Returns true if this method and the method link have matching signatures, based on the fully qualified name and the list of parameter types.
             </summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.op_Equality(WithoutHaste.DataFiles.DotNet.DotNetMethod,WithoutHaste.DataFiles.DotNet.DotNetMethod)">
+            <duplicate cref='M:WithoutHaste.DataFiles.DotNet.DotNetMethod.Equals(System.Object)' />
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.op_Inequality(WithoutHaste.DataFiles.DotNet.DotNetMethod,WithoutHaste.DataFiles.DotNet.DotNetMethod)">
+            <duplicate cref='M:WithoutHaste.DataFiles.DotNet.DotNetMethod.Equals(System.Object)' />
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.Equals(System.Object)">
+            <summary>Equality is based on the full namespace/name/generic-type-parameters of the method, and on parameter-types.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.GetHashCode">
+            <summary></summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetParameter">
             <summary>
             Represents a normal-type parameter in a method signature.
@@ -1653,16 +1685,21 @@
             </example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.op_Equality(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
-            <summary>Names converted to strings must match exactly to be considered equal.</summary>
+            <duplicate cref="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.Equals(System.Object)" />
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.op_Inequality(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
-            <duplicate cref="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.op_Equality(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)" />
+            <duplicate cref="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.Equals(System.Object)" />
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.Equals(System.Object)">
-            <duplicate cref="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.op_Equality(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)" />
+            <summary>Names converted to strings must match exactly to be considered equal.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.GetHashCode">
-            <duplicate cref="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.op_Equality(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)" />
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.CompareTo(System.Object)">
+            <summary>
+            Names are sorted alphabetically, per namespace, starting with the root.
+            </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.Utilities.TrimAllowOneSpace(System.String)">
             <summary>

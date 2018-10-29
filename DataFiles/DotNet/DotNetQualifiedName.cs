@@ -10,7 +10,7 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <summary>
 	/// Represents a fully qualified type name or member name.
 	/// </summary>
-	public class DotNetQualifiedName
+	public class DotNetQualifiedName : IComparable
 	{
 		/// <summary>Fully qualified namespace.</summary>
 		/// <remarks>Null if there is no namespace.</remarks>
@@ -215,41 +215,76 @@ namespace WithoutHaste.DataFiles.DotNet
 				fullName = DotNetSettings.AdditionalQualifiedNameConverter(fullName, depth);
 			return fullName;
 		}
-		
-		/// <summary>Names converted to strings must match exactly to be considered equal.</summary>
+
+		/// <duplicate cref="Equals(object)" />
 		public static bool operator ==(DotNetQualifiedName a, DotNetQualifiedName b)
 		{
 			if(object.ReferenceEquals(a, null) && object.ReferenceEquals(b, null))
 				return true;
-
 			if(object.ReferenceEquals(a, null) || object.ReferenceEquals(b, null))
 				return false;
-
-			return (a.LocalName == b.LocalName && a.FullNamespace == b.FullNamespace);
+			return a.Equals(b);
 		}
 
-		/// <duplicate cref="operator ==(DotNetQualifiedName,DotNetQualifiedName)" />
+		/// <duplicate cref="Equals(object)" />
 		public static bool operator !=(DotNetQualifiedName a, DotNetQualifiedName b)
 		{
-			return !(a == b);
+			if(object.ReferenceEquals(a, null) && object.ReferenceEquals(b, null))
+				return false;
+			if(object.ReferenceEquals(a, null) || object.ReferenceEquals(b, null))
+				return true;
+			return !a.Equals(b);
 		}
 
-		/// <duplicate cref="operator ==(DotNetQualifiedName,DotNetQualifiedName)" />
+		/// <summary>Names converted to strings must match exactly to be considered equal.</summary>
 		public override bool Equals(Object b)
 		{
-			if(b != null && b is DotNetQualifiedName)
-			{
-				return (this == (DotNetQualifiedName)b);
-			}
-			return false;
+			if(!(b is DotNetQualifiedName))
+				return false;
+			if(object.ReferenceEquals(this, null) && object.ReferenceEquals(b, null))
+				return true;
+			if(object.ReferenceEquals(this, null) || object.ReferenceEquals(b, null))
+				return false;
+
+			DotNetQualifiedName other = (b as DotNetQualifiedName);
+			return (this.LocalName == other.LocalName && this.FullNamespace == other.FullNamespace);
 		}
 
-		/// <duplicate cref="operator ==(DotNetQualifiedName,DotNetQualifiedName)" />
+		/// <summary></summary>
 		public override int GetHashCode()
 		{
-			if(FullNamespace == null)
-				return LocalName.GetHashCode();
+			if(FullNamespace == null) return LocalName.GetHashCode();
 			return LocalName.GetHashCode() ^ FullNamespace.GetHashCode();
+		}
+
+		/// <summary>
+		/// Names are sorted alphabetically, per namespace, starting with the root.
+		/// </summary>
+		public int CompareTo(object b)
+		{
+			if(!(b is DotNetQualifiedName))
+				return -1;
+			if(this.Equals(b))
+				return 0;
+			if(object.ReferenceEquals(this, null))
+				return -1;
+			if(object.ReferenceEquals(b, null))
+				return 1;
+
+			DotNetQualifiedName other = (b as DotNetQualifiedName);
+			string[] thisNames = this.ToString().SplitIgnoreNested('.');
+			string[] otherNames = other.ToString().SplitIgnoreNested('.');
+			for(int i = 0; i < thisNames.Length; i++)
+			{
+				if(i >= otherNames.Length)
+					return 1;
+				if(thisNames[i] == otherNames[i])
+					continue;
+				return thisNames[i].CompareTo(otherNames[i]);
+			}
+			if(thisNames.Length < otherNames.Length)
+				return -1;
+			return 0;
 		}
 
 		#endregion
