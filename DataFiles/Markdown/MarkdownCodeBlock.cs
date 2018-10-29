@@ -28,7 +28,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		}
 
 		/// <inheritdoc />
-		public string ToMarkdown()
+		public string ToMarkdown(string previousText)
 		{
 			return String.Format("\n```{0}\n{1}```\n\n", Language, Text);
 		}

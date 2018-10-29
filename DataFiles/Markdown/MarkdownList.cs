@@ -107,7 +107,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		}
 
 		/// <inheritdoc />
-		public string ToMarkdown()
+		public string ToMarkdown(string previousText)
 		{
 			if(elements.Count == 0)
 				return "";
@@ -125,7 +125,7 @@ namespace WithoutHaste.DataFiles.Markdown
 			int count = 1;
 			foreach(IMarkdownInList line in elements)
 			{
-				builder.Append(String.Format("{0}{1}. {2}", Margin, count, line.ToMarkdown()));
+				builder.Append(String.Format("{0}{1}. {2}", Margin, count, line.ToMarkdown(null)));
 				count++;
 			}
 		}
@@ -134,7 +134,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		{
 			foreach(IMarkdownInList line in elements)
 			{
-				builder.Append(String.Format("{0}* {1}", Margin, line.ToMarkdown()));
+				builder.Append(String.Format("{0}* {1}", Margin, line.ToMarkdown(null)));
 			}
 		}
 

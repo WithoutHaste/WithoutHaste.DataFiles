@@ -2152,7 +2152,7 @@
             Represents a markdown element that can be included within a MarkdownSection.
             </summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.Markdown.IMarkdownInSection.ToMarkdown">
+        <member name="M:WithoutHaste.DataFiles.Markdown.IMarkdownInSection.ToMarkdown(System.String)">
             <summary>
             Return markdown-formatted text.
             </summary>
@@ -2175,7 +2175,7 @@
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownCode.#ctor(System.String)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownCode.ToMarkdown">
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownCode.ToMarkdown(System.String)">
             <inheritdoc />
         </member>
         <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownCodeBlock">
@@ -2196,7 +2196,7 @@
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownCodeBlock.#ctor(System.String,System.String)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownCodeBlock.ToMarkdown">
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownCodeBlock.ToMarkdown(System.String)">
             <inheritdoc />
         </member>
         <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownFile">
@@ -2246,7 +2246,7 @@
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownInlineLink.#ctor(System.String,System.String)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownInlineLink.ToMarkdown">
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownInlineLink.ToMarkdown(System.String)">
             <inheritdoc />
         </member>
         <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownLine">
@@ -2317,7 +2317,7 @@
             Add an element to the beginning of the line.
             </summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLine.ToMarkdown">
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLine.ToMarkdown(System.String)">
             <inheritdoc />
         </member>
         <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownLink">
@@ -2332,7 +2332,7 @@
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLink.#ctor(System.String,System.String)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLink.ToMarkdown">
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLink.ToMarkdown(System.String)">
             <inheritdoc />
         </member>
         <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownList">
@@ -2386,7 +2386,7 @@
             Adds new MarkdownLine containing the specified element to the end of the list.
             </summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownList.ToMarkdown">
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownList.ToMarkdown(System.String)">
             <inheritdoc />
         </member>
         <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownParagraph">
@@ -2411,7 +2411,7 @@
             Initialize paragraph with one MarkdownText element.
             </summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownParagraph.ToMarkdown">
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownParagraph.ToMarkdown(System.String)">
             <inheritdoc />
         </member>
         <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownSection">
@@ -2546,7 +2546,7 @@
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownTable.Add(WithoutHaste.DataFiles.Markdown.MarkdownTableRow)">
             <summary>Add a row to the end of the table.</summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownTable.ToMarkdown">
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownTable.ToMarkdown(System.String)">
             <summary>
             Return markdown-formatted text.
             </summary>
@@ -2632,7 +2632,7 @@
             <summary>Generate bold-italic text.</summary>
             <remarks><paramref name="text"/> is trimmed to conform to Markdown formatting requirements.</remarks>
         </member>
-        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownText.ToMarkdown">
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownText.ToMarkdown(System.String)">
             <inheritdoc />
             <remarks>Uses ** for bold and _ for italics.</remarks>
         </member>

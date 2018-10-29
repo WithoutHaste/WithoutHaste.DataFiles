@@ -14,6 +14,6 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <summary>
 		/// Return markdown-formatted text.
 		/// </summary>
-		string ToMarkdown();
+		string ToMarkdown(string previousText);
 	}
 }

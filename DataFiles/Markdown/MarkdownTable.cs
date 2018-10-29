@@ -41,10 +41,33 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <summary>
 		/// Return markdown-formatted text.
 		/// </summary>
-		public string ToMarkdown()
+		public string ToMarkdown(string previousText)
 		{
 			List<int> columnWidths = GetColumnWidths();
 			StringBuilder builder = new StringBuilder();
+
+			if(!String.IsNullOrEmpty(previousText))
+			{
+				if(previousText.EndsWith("\n\n"))
+				{
+					//no action
+				}
+				else if(previousText.StartsWith("#"))
+				{
+					//no action
+				}
+				else if(previousText.EndsWith("\n"))
+				{
+					if(previousText.Length > 1)
+					{
+						builder.Append("\n");
+					}
+				}
+				else
+				{
+					builder.Append("\n\n");
+				}
+			}
 
 			bool finishedHeader = false;
 			foreach(MarkdownTableRow row in Rows)

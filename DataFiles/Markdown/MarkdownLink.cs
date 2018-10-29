@@ -27,6 +27,6 @@ namespace WithoutHaste.DataFiles.Markdown
 		#endregion
 
 		/// <inheritdoc />
-		public abstract string ToMarkdown();
+		public abstract string ToMarkdown(string previousText);
 	}
 }

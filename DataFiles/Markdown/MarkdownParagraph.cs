@@ -39,9 +39,9 @@ namespace WithoutHaste.DataFiles.Markdown
 		#endregion
 
 		/// <inheritdoc />
-		public override string ToMarkdown()
+		public override string ToMarkdown(string previousText)
 		{
-			return String.Join("", elements.Select(e => e.ToMarkdown()).ToArray()) + "\n\n";
+			return String.Join("", elements.Select(e => e.ToMarkdown(null)).ToArray()) + "\n\n";
 		}
 	}
 }

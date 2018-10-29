@@ -79,7 +79,7 @@ namespace WithoutHaste.DataFiles.Markdown
 				}
 				else
 				{
-					previousText = element.ToMarkdown();
+					previousText = element.ToMarkdown(previousText);
 				}
 				builder.Append(previousText);
 			}

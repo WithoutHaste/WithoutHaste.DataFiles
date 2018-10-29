@@ -219,7 +219,7 @@ namespace WithoutHaste.DataFiles.Markdown
 				}
 				else
 				{
-					thisPreviousText = element.ToMarkdown();
+					thisPreviousText = element.ToMarkdown(thisPreviousText);
 				}
 				builder.Append(thisPreviousText);
 			}

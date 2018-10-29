@@ -22,7 +22,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		#endregion
 
 		/// <inheritdoc />
-		public override string ToMarkdown()
+		public override string ToMarkdown(string previousText)
 		{
 			return String.Format("[{0}]({1})", Text, Url);
 		}

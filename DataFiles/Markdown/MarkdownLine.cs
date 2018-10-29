@@ -106,9 +106,9 @@ namespace WithoutHaste.DataFiles.Markdown
 		}
 		
 		/// <inheritdoc />
-		public virtual string ToMarkdown()
+		public virtual string ToMarkdown(string previousText)
 		{
-			return String.Join("", elements.Select(e => e.ToMarkdown()).ToArray()) + "  \n";
+			return String.Join("", elements.Select(e => e.ToMarkdown(null)).ToArray()) + "  \n";
 		}
 
 	}

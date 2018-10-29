@@ -23,7 +23,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		}
 
 		/// <inheritdoc />
-		public string ToMarkdown()
+		public string ToMarkdown(string previousText)
 		{
 			return String.Format("`{0}`", Text);
 		}
