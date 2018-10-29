@@ -19,20 +19,29 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Default names that will be given to generic-types, in order.</summary>
 		public static string[] GenericTypeNames = new string[] { "T", "U", "V", "W", "T2", "U2", "V2", "W2", "T3", "U3", "V3", "W3" };
 
-		/// <summary>Local data type name with generic type parameters (if applicable).</summary>
+		/// <inheritdoc/>
 		public override string LocalName {
 			get {
-				if(genericTypeCount == 0)
+				if(GenericTypeCount == 0)
 					return localName;
 				if(genericTypeAliases != null)
 					return String.Format("{0}<{1}>", localName, String.Join(",", genericTypeAliases));
 				else
-					return String.Format("{0}<{1}>", localName, String.Join(",", GenericTypeNames.Take(genericTypeCount).ToArray()));
+					return String.Format("{0}<{1}>", localName, String.Join(",", GenericTypeNames.Take(GenericTypeCount).ToArray()));
+			}
+		}
+
+		/// <inheritdoc/>
+		public override string LocalXmlName {
+			get {
+				if(GenericTypeCount == 0)
+					return localName;
+				return String.Format("{0}`{1}", localName, GenericTypeCount);
 			}
 		}
 
 		/// <summary>The number of generic-types required by the class declaration.</summary>
-		protected int genericTypeCount = 0;
+		public int GenericTypeCount { get; protected set; }
 
 		/// <summary>Specific generic type aliases for this type. If null, the shared <see cref="GenericTypeNames"/> will be used.</summary>
 		protected string[] genericTypeAliases;
@@ -42,18 +51,19 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Empty constructor</summary>
 		public DotNetQualifiedClassName() : base()
 		{
+			GenericTypeCount = 0;
 		}
 
 		/// <summary></summary>
 		public DotNetQualifiedClassName(string localName, int genericTypeCount = 0) : base(localName)
 		{
-			this.genericTypeCount = genericTypeCount;
+			GenericTypeCount = genericTypeCount;
 		}
 
 		/// <summary></summary>
 		public DotNetQualifiedClassName(string localName, DotNetQualifiedName fullNamespace, int genericTypeCount = 0) : base(localName, fullNamespace)
 		{
-			this.genericTypeCount = genericTypeCount;
+			GenericTypeCount = genericTypeCount;
 		}
 
 		#endregion

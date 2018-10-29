@@ -19,8 +19,13 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Fully qualified name.</summary>
 		public string FullName { get { return ToString(); } }
 
-		/// <summary>Local data type name.</summary>
+		/// <summary>Local data type name, written in the c# style.</summary>
+		/// <example><![CDATA[MyType<T> instead of MyType`1]]></example>
 		public virtual string LocalName { get { return localName; } }
+
+		/// <summary>Local data type name, written in the Xml style.</summary>
+		/// <example><![CDATA[MyType`1 instead of MyType<T>]]></example>
+		public virtual string LocalXmlName { get { return localName; } }
 
 		/// <summary>Name without namespace or declaring type or generic type parameters.</summary>
 		protected string localName;

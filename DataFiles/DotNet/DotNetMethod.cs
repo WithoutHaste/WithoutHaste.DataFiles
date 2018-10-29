@@ -148,8 +148,13 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// </summary>
 		public bool MatchesSignature(MethodInfo methodInfo)
 		{
-			if(methodInfo.Name != this.Name.LocalName)
+			if(methodInfo.Name + "``" + methodInfo.GetGenericArguments().Length != this.Name.LocalXmlName)
 				return false;
+			if((Name as DotNetQualifiedMethodName).IsGeneric)
+			{
+				if((Name as DotNetQualifiedMethodName).GenericTypeCount != methodInfo.GetGenericArguments().Length)
+					return false;
+			}
 			return MatchesArguments(methodInfo.GetParameters());
 		}
 

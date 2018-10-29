@@ -572,7 +572,13 @@
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.LocalName">
             <summary>Local method name with generic type parameters (if applicable).</summary>
         </member>
-        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.genericTypeCount">
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.LocalXmlName">
+            <inheritdoc/>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.IsGeneric">
+            <summary>True for generic methods.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.GenericTypeCount">
             <summary>The number of generic-types required by the method declaration.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.genericTypeAliases">
@@ -605,9 +611,12 @@
             <summary>Default names that will be given to generic-types, in order.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.LocalName">
-            <summary>Local data type name with generic type parameters (if applicable).</summary>
+            <inheritdoc/>
         </member>
-        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.genericTypeCount">
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.LocalXmlName">
+            <inheritdoc/>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.GenericTypeCount">
             <summary>The number of generic-types required by the class declaration.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.genericTypeAliases">
@@ -1499,7 +1508,12 @@
             <summary>Fully qualified name.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.LocalName">
-            <summary>Local data type name.</summary>
+            <summary>Local data type name, written in the c# style.</summary>
+            <example><![CDATA[MyType<T> instead of MyType`1]]></example>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.LocalXmlName">
+            <summary>Local data type name, written in the Xml style.</summary>
+            <example><![CDATA[MyType`1 instead of MyType<T>]]></example>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.localName">
             <summary>Name without namespace or declaring type or generic type parameters.</summary>

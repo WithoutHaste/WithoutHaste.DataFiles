@@ -22,17 +22,29 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Local method name with generic type parameters (if applicable).</summary>
 		public override string LocalName {
 			get {
-				if(genericTypeCount == 0)
+				if(GenericTypeCount == 0)
 					return localName;
 				if(genericTypeAliases != null)
 					return String.Format("{0}<{1}>", localName, String.Join(",", genericTypeAliases));
 				else
-					return String.Format("{0}<{1}>", localName, String.Join(",", GenericTypeNames.Take(genericTypeCount).ToArray()));
+					return String.Format("{0}<{1}>", localName, String.Join(",", GenericTypeNames.Take(GenericTypeCount).ToArray()));
 			}
 		}
 
+		/// <inheritdoc/>
+		public override string LocalXmlName {
+			get {
+				if(GenericTypeCount == 0)
+					return localName;
+				return String.Format("{0}``{1}", localName, GenericTypeCount);
+			}
+		}
+
+		/// <summary>True for generic methods.</summary>
+		public bool IsGeneric { get { return (GenericTypeCount > 0); } }
+
 		/// <summary>The number of generic-types required by the method declaration.</summary>
-		protected int genericTypeCount = 0;
+		public int GenericTypeCount { get; protected set; }
 
 		/// <summary>Specific generic type aliases for this method. If null, the shared <see cref="GenericTypeNames"/> will be used.</summary>
 		protected string[] genericTypeAliases;
@@ -42,18 +54,19 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Empty constructor</summary>
 		public DotNetQualifiedMethodName() : base()
 		{
+			GenericTypeCount = 0;
 		}
 
 		/// <summary></summary>
 		public DotNetQualifiedMethodName(string localName, int genericTypeCount = 0) : base(localName)
 		{
-			this.genericTypeCount = genericTypeCount;
+			GenericTypeCount = genericTypeCount;
 		}
 
 		/// <summary></summary>
 		public DotNetQualifiedMethodName(string localName, DotNetQualifiedName fullNamespace, int genericTypeCount = 0) : base(localName, fullNamespace)
 		{
-			this.genericTypeCount = genericTypeCount;
+			GenericTypeCount = genericTypeCount;
 		}
 
 		#endregion
@@ -63,12 +76,10 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// </summary>
 		public void AddAssemblyInfo(MethodInfo methodInfo)
 		{
-			string fullName = methodInfo.ToString();
-			if(fullName.Contains("["))
+			if(IsGeneric)
 			{
-				string aliases = fullName.Substring(fullName.IndexOf("[") + 1);
-				aliases = aliases.Substring(0, aliases.IndexOf("]"));
-				this.genericTypeAliases = aliases.Split(',');
+				Type[] genericTypes = methodInfo.GetGenericArguments();
+				this.genericTypeAliases = genericTypes.Select(g => g.ToString()).ToArray();
 			}
 			if(methodInfo.DeclaringType != null && FullNamespace != null && FullNamespace is DotNetQualifiedClassName)
 			{
