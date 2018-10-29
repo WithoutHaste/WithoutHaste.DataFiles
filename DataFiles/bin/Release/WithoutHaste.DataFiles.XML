@@ -1139,7 +1139,10 @@
             <summary>Comments from "exception" xml tags.  Only expected as top-level tags.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetMember.ParameterComments">
-            <summary>Comments from "param" and "typeparam" xml tags. Only expected as top-level tags.</summary>
+            <summary>Comments from "param" xml tags. Only expected as top-level tags.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetMember.TypeParameterComments">
+            <summary>Comments from "typeparam" xml tags. Only expected as top-level tags.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetMember.ValueComments">
             <summary>Comments from "value" xml tags. Only expected as a top-level tag.</summary>

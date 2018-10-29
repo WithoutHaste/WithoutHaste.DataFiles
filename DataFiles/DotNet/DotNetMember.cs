@@ -28,6 +28,7 @@ namespace WithoutHaste.DataFiles.DotNet
 				if(ExampleComments.Count > 0) return false;
 				if(ExceptionComments.Count > 0) return false;
 				if(ParameterComments.Count > 0) return false;
+				if(TypeParameterComments.Count > 0) return false;
 				if(!ValueComments.IsEmpty) return false;
 				if(!ReturnsComments.IsEmpty) return false;
 				if(!FloatingComments.IsEmpty) return false;
@@ -58,8 +59,11 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Comments from "exception" xml tags.  Only expected as top-level tags.</summary>
 		public List<DotNetCommentQualifiedLinkedGroup> ExceptionComments = new List<DotNetCommentQualifiedLinkedGroup>();
 
-		/// <summary>Comments from "param" and "typeparam" xml tags. Only expected as top-level tags.</summary>
+		/// <summary>Comments from "param" xml tags. Only expected as top-level tags.</summary>
 		public List<DotNetCommentParameter> ParameterComments = new List<DotNetCommentParameter>();
+
+		/// <summary>Comments from "typeparam" xml tags. Only expected as top-level tags.</summary>
+		public List<DotNetCommentParameter> TypeParameterComments = new List<DotNetCommentParameter>();
 
 		/// <summary>Comments from "value" xml tags. Only expected as a top-level tag.</summary>
 		/// <remarks>If there are multiple "value" tags, their contents will be concatenated as if they were one tag.</remarks>
@@ -120,8 +124,10 @@ namespace WithoutHaste.DataFiles.DotNet
 								if(comment != null) ReturnsComments.Add(comment);
 								break;
 							case "param":
-							case "typeparam":
 								ParameterComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentParameter);
+								break;
+							case "typeparam":
+								TypeParameterComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentParameter);
 								break;
 							default:
 								comment = DotNetComment.FromVisualStudioXml(element);
@@ -158,6 +164,9 @@ namespace WithoutHaste.DataFiles.DotNet
 
 			ParameterComments.Clear();
 			ParameterComments.AddRange(original.ParameterComments);
+
+			TypeParameterComments.Clear();
+			TypeParameterComments.AddRange(original.TypeParameterComments);
 
 			ValueComments.Comments.Clear();
 			ValueComments.Comments.AddRange(original.ValueComments.Comments);
