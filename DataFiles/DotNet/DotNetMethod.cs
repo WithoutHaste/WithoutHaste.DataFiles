@@ -81,13 +81,13 @@ namespace WithoutHaste.DataFiles.DotNet
 				parameters = signature.Substring(divider);
 			}
 
-			DotNetQualifiedName qualifiedName = DotNetQualifiedName.FromVisualStudioXml(name);
+			DotNetQualifiedMethodName qualifiedName = DotNetQualifiedMethodName.FromVisualStudioXml(name);
 
 			//for constructors
 			bool isConstructor = qualifiedName.LocalName.EndsWith("#ctor");
 			if(isConstructor)
 			{
-				qualifiedName = qualifiedName.SetLocalName(qualifiedName.FullNamespace.LocalName);
+				qualifiedName.SetLocalName(qualifiedName.FullNamespace.LocalName);
 			}
 			//todo: check for #cctor for static constructors
 			//todo: differentiate state constructors
@@ -148,11 +148,14 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// </summary>
 		public bool MatchesSignature(MethodInfo methodInfo)
 		{
-			if(methodInfo.Name + "``" + methodInfo.GetGenericArguments().Length != this.Name.LocalXmlName)
-				return false;
 			if((Name as DotNetQualifiedMethodName).IsGeneric)
 			{
-				if((Name as DotNetQualifiedMethodName).GenericTypeCount != methodInfo.GetGenericArguments().Length)
+				if(methodInfo.Name + "``" + methodInfo.GetGenericArguments().Length != this.Name.LocalXmlName)
+					return false;
+			}
+			else
+			{
+				if(methodInfo.Name != this.Name.LocalName)
 					return false;
 			}
 			return MatchesArguments(methodInfo.GetParameters());

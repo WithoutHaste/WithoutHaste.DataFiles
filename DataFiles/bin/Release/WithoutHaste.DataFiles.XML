@@ -593,10 +593,33 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.#ctor(System.String,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Int32)">
             <summary></summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.FromVisualStudioXml(System.String)">
+            <summary>
+            Parses a .Net XML documentation method signature.
+            </summary>
+            <example>
+              <para>
+                How .Net xml documentation formats generic types:
+                Backtics are followed by integers, identifying generic types.
+              </para>
+              <para>
+                Double backtics (such as ``1) on a method name indicate a count of generic types for the method.
+                <example><![CDATA[MyMethod<A,B,C> is documented as MyMethod``3]]></example>
+                Anywhere else within this method's documentation that a double backtic appears, it indicates the index of the generic type in reference to the method declaration.
+                <example><![CDATA[MyMethod<A,B,C>(A,B,C) is documented as MyMethod``3(``0,``1,``2)]]></example>
+                A method that uses both its own generic types AND generic types from the class declaration will look like this:
+                <example><![CDATA[MyMethod<A,B,C>(A,B,C,T,U) is documented as MyMethod``3(``0,``1,``2,`0,`1)]]></example>
+              </para>
+            </example>
+            <param name="signature">Name may or may not start with "M:". Includes parameter list.</param>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.AddAssemblyInfo(System.Reflection.MethodInfo)">
             <summary>
             Load additional documentation information from the assembly itself.
             </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.SetLocalName(System.String)">
+            <summary>Set the local name of the method. Does not affect generic type parameters or method parameters.</summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName">
             <summary>
@@ -630,6 +653,29 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.#ctor(System.String,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Int32)">
             <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.FromVisualStudioXml(System.String)">
+            <summary>
+            Parses a .Net XML documentation type name or namespace name.
+            </summary>
+            <remarks>
+            Does not differentiate between types and namespaces 
+            because a nested type will have other type names in its namespace path
+            and there are no important diffences in parsing the two.
+            </remarks>
+            <example>
+              <para>
+                How .Net xml documentation formats generic types:
+                Backtics are followed by integers, identifying generic types.
+              </para>
+              <para>
+                Single backtics (such as `1) on a class declaration indicate a count of generic types for the class.
+                <example><![CDATA[MyGenericType<T,U,V> is documented as MyGenericType`3]]></example>
+                Anywhere else within this object's documentation that a single backtic appears, it indicates the index of the generic type in reference to the class declaration.
+                <example><![CDATA[MyGenericType(T,U,V) is documented as MyGenericType.#ctor(`0,`1,`2)]]></example>
+              </para>
+            </example>
+            <param name="name">Name may or may not start with "T:"</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.AddAssemblyInfo(System.Reflection.TypeInfo)">
             <summary>
@@ -1547,49 +1593,6 @@
             </param>
             <exception cref="T:WithoutHaste.DataFiles.XmlFormatException">Name does not start with /[TMFPE]:/</exception>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.TypeNameFromVisualStudioXml(System.String)">
-            <summary>
-            Parses a .Net XML documentation type name or namespace name.
-            </summary>
-            <remarks>
-            Does not differentiate between types and namespaces 
-            because a nested type will have other type names in its namespace path
-            and there are no important diffences in parsing the two.
-            </remarks>
-            <example>
-              <para>
-                How .Net xml documentation formats generic types:
-                Backtics are followed by integers, identifying generic types.
-              </para>
-              <para>
-                Single backtics (such as `1) on a class declaration indicate a count of generic types for the class.
-                <example><![CDATA[MyGenericType<T,U,V> is documented as MyGenericType`3]]></example>
-                Anywhere else within this object's documentation that a single backtic appears, it indicates the index of the generic type in reference to the class declaration.
-                <example><![CDATA[MyGenericType(T,U,V) is documented as MyGenericType.#ctor(`0,`1,`2)]]></example>
-              </para>
-            </example>
-            <param name="name">Name may or may not start with "T:"</param>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.MethodNameFromVisualStudioXml(System.String)">
-            <summary>
-            Parses a .Net XML documentation method signature.
-            </summary>
-            <example>
-              <para>
-                How .Net xml documentation formats generic types:
-                Backtics are followed by integers, identifying generic types.
-              </para>
-              <para>
-                Double backtics (such as ``1) on a method name indicate a count of generic types for the method.
-                <example><![CDATA[MyMethod<A,B,C> is documented as MyMethod``3]]></example>
-                Anywhere else within this method's documentation that a double backtic appears, it indicates the index of the generic type in reference to the method declaration.
-                <example><![CDATA[MyMethod<A,B,C>(A,B,C) is documented as MyMethod``3(``0,``1,``2)]]></example>
-                A method that uses both its own generic types AND generic types from the class declaration will look like this:
-                <example><![CDATA[MyMethod<A,B,C>(A,B,C,T,U) is documented as MyMethod``3(``0,``1,``2,`0,`1)]]></example>
-              </para>
-            </example>
-            <param name="signature">Name may or may not start with "M:". Includes parameter list.</param>
-        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.MemberNameFromVisualStudioXml(System.String)">
             <summary>
             Parses a .Net XML documentation member name.
@@ -1615,9 +1618,6 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.FromAssemblyInfo(System.String)">
             <summary>See <see cref="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.FromAssemblyInfo(System.Reflection.TypeInfo)"/></summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.SetLocalName(System.String)">
-            <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.GetFullListOfLocalNames">
             <summary>

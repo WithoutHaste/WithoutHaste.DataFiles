@@ -66,8 +66,55 @@ namespace WithoutHaste.DataFiles.DotNet
 			GenericTypeCount = genericTypeCount;
 		}
 
+
+		/// <summary>
+		/// Parses a .Net XML documentation type name or namespace name.
+		/// </summary>
+		/// <remarks>
+		/// Does not differentiate between types and namespaces 
+		/// because a nested type will have other type names in its namespace path
+		/// and there are no important diffences in parsing the two.
+		/// </remarks>
+		/// <example>
+		///   <para>
+		///     How .Net xml documentation formats generic types:
+		///     Backtics are followed by integers, identifying generic types.
+		///   </para>
+		///   <para>
+		///     Single backtics (such as `1) on a class declaration indicate a count of generic types for the class.
+		///     <example><![CDATA[MyGenericType<T,U,V> is documented as MyGenericType`3]]></example>
+		///     Anywhere else within this object's documentation that a single backtic appears, it indicates the index of the generic type in reference to the class declaration.
+		///     <example><![CDATA[MyGenericType(T,U,V) is documented as MyGenericType.#ctor(`0,`1,`2)]]></example>
+		///   </para>
+		/// </example>
+		/// <param name="name">Name may or may not start with "T:"</param>
+		public new static DotNetQualifiedClassName FromVisualStudioXml(string name)
+		{
+			if(name.StartsWith("T:")) name = name.Substring(2);
+
+			int divider = name.LastIndexOf('.');
+			string localName = name;
+			string fullNamespace = null;
+			if(divider != -1)
+			{
+				localName = name.Substring(divider + 1);
+				fullNamespace = name.Substring(0, divider);
+			}
+
+			int classGenericTypeCount = 0;
+			if(localName.Contains("`"))
+			{
+				Int32.TryParse(localName.Substring(localName.IndexOf('`') + 1), out classGenericTypeCount);
+				localName = localName.Substring(0, localName.IndexOf('`'));
+			}
+
+			if(String.IsNullOrEmpty(fullNamespace)) return new DotNetQualifiedClassName(localName, classGenericTypeCount);
+
+			return new DotNetQualifiedClassName(localName, DotNetQualifiedClassName.FromVisualStudioXml(fullNamespace), classGenericTypeCount);
+		}
+
 		#endregion
-		
+
 		/// <summary>
 		/// Load additional documentation information from the assembly itself.
 		/// </summary>

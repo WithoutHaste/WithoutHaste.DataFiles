@@ -69,6 +69,57 @@ namespace WithoutHaste.DataFiles.DotNet
 			GenericTypeCount = genericTypeCount;
 		}
 
+		/// <summary>
+		/// Parses a .Net XML documentation method signature.
+		/// </summary>
+		/// <example>
+		///   <para>
+		///     How .Net xml documentation formats generic types:
+		///     Backtics are followed by integers, identifying generic types.
+		///   </para>
+		///   <para>
+		///     Double backtics (such as ``1) on a method name indicate a count of generic types for the method.
+		///     <example><![CDATA[MyMethod<A,B,C> is documented as MyMethod``3]]></example>
+		///     Anywhere else within this method's documentation that a double backtic appears, it indicates the index of the generic type in reference to the method declaration.
+		///     <example><![CDATA[MyMethod<A,B,C>(A,B,C) is documented as MyMethod``3(``0,``1,``2)]]></example>
+		///     A method that uses both its own generic types AND generic types from the class declaration will look like this:
+		///     <example><![CDATA[MyMethod<A,B,C>(A,B,C,T,U) is documented as MyMethod``3(``0,``1,``2,`0,`1)]]></example>
+		///   </para>
+		/// </example>
+		/// <param name="signature">Name may or may not start with "M:". Includes parameter list.</param>
+		public new static DotNetQualifiedMethodName FromVisualStudioXml(string signature)
+		{
+			if(signature.StartsWith("M:")) signature = signature.Substring(2);
+
+			string parameters = null;
+			if(signature.Contains("("))
+			{
+				parameters = signature.Substring(signature.IndexOf("("));
+				signature = signature.Substring(0, signature.IndexOf("("));
+				//parameters are ignored
+			}
+
+			int divider = signature.LastIndexOf('.');
+			string localName = signature;
+			string fullNamespace = null;
+			if(divider != -1)
+			{
+				localName = signature.Substring(divider + 1);
+				fullNamespace = signature.Substring(0, divider);
+			}
+
+			int methodGenericTypeCount = 0;
+			if(localName.Contains("``"))
+			{
+				Int32.TryParse(localName.Substring(localName.IndexOf("``") + 2), out methodGenericTypeCount);
+				localName = localName.Substring(0, localName.IndexOf("``"));
+			}
+
+			if(String.IsNullOrEmpty(fullNamespace)) return new DotNetQualifiedMethodName(localName, methodGenericTypeCount);
+
+			return new DotNetQualifiedMethodName(localName, DotNetQualifiedClassName.FromVisualStudioXml(fullNamespace), methodGenericTypeCount);
+		}
+
 		#endregion
 
 		/// <summary>
@@ -85,6 +136,12 @@ namespace WithoutHaste.DataFiles.DotNet
 			{
 				(FullNamespace as DotNetQualifiedClassName).AddAssemblyInfo(methodInfo.DeclaringType.GetTypeInfo());
 			}
+		}
+
+		/// <summary>Set the local name of the method. Does not affect generic type parameters or method parameters.</summary>
+		public void SetLocalName(string name)
+		{
+			this.localName = name;
 		}
 	}
 }
