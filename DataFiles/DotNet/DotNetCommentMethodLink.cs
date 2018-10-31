@@ -12,8 +12,8 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <example><![CDATA[<permission cref="Namespace.Type.Method(Type1, Type2)">nested comments and/or plain text</permission>]]></example>
 	public class DotNetCommentMethodLink : DotNetCommentQualifiedLink
 	{
-		/// <summary></summary>
-		public List<DotNetParameter> Parameters = new List<DotNetParameter>();
+		/// <summary>Strongly typed name.</summary>
+		public DotNetQualifiedMethodName MethodName { get { return (Name as DotNetQualifiedMethodName); } }
 
 		/// <summary>Fully qualified method name with parameters.</summary>
 		/// <example>Namespace.Type.Method()</example>
@@ -21,35 +21,22 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <example><![CDATA[Namespace.Type.Method(System.Collections.Generic.List<int>)]]></example>
 		public string FullSignature {
 			get {
-				return String.Format("{0}({1})", FullName, String.Join(",",Parameters.Select(p => p.FullTypeName).ToArray()));
+				return String.Format("{0}({1})", FullName, String.Join(",", MethodName.Parameters.Select(p => p.FullTypeName).ToArray()));
 			}
 		}
 
 		#region Constructors
 
 		/// <summary></summary>
-		public DotNetCommentMethodLink(DotNetQualifiedName name) : base(name)
+		public DotNetCommentMethodLink(DotNetQualifiedMethodName name) : base(name)
 		{
-		}
-
-		/// <summary></summary>
-		public DotNetCommentMethodLink(DotNetQualifiedName name, List<DotNetParameter> parameters) : base(name)
-		{
-			Parameters.AddRange(parameters);
 		}
 
 		/// <summary>Parses .Net XML documentation cref for methods.</summary>
 		public static new DotNetCommentMethodLink FromVisualStudioXml(string cref)
 		{
-			int divider = cref.IndexOf("(");
-			if(divider == -1)
-			{
-				return new DotNetCommentMethodLink(DotNetQualifiedName.FromVisualStudioXml(cref));
-			}
-
-			DotNetQualifiedName name = DotNetQualifiedName.FromVisualStudioXml(cref.Substring(0, divider));
-			List<DotNetParameter> parameters = DotNetMethod.ParametersFromVisualStudioXml(cref.Substring(divider));
-			return new DotNetCommentMethodLink(name, parameters);
+			DotNetQualifiedMethodName name = DotNetQualifiedMethodName.FromVisualStudioXml(cref);
+			return new DotNetCommentMethodLink(name);
 		}
 
 		#endregion
@@ -59,16 +46,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// </summary>
 		public bool MatchesSignature(DotNetMethod method)
 		{
-			if(Name != method.Name)
-				return false;
-			if(Parameters.Count != method.Parameters.Count)
-				return false;
-			for(int i = 0; i < Parameters.Count; i++)
-			{
-				if(Parameters[i].TypeName != method.Parameters[i].TypeName)
-					return false;
-			}
-			return true;
+			return MethodName.MatchesSignature(method.MethodName);
 		}
 	}
 }

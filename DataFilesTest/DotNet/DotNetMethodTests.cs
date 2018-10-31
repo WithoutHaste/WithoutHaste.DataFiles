@@ -82,7 +82,7 @@ namespace DataFilesTest
 			result.AddAssemblyInfo(methodInfo);
 			//assert
 			Assert.AreEqual(expectedFullName, result.Name.FullName);
-			Assert.AreEqual(expectedReturnFullName, result.ReturnTypeName.FullName);
+			Assert.AreEqual(expectedReturnFullName, result.MethodName.ReturnTypeName.FullName);
 		}
 
 		[TestMethod]
@@ -99,7 +99,7 @@ namespace DataFilesTest
 			result.AddAssemblyInfo(methodInfo);
 			//assert
 			Assert.AreEqual(expectedFullName, result.Name.FullName);
-			Assert.AreEqual(expectedReturnFullName, result.ReturnTypeName.FullName);
+			Assert.AreEqual(expectedReturnFullName, result.MethodName.ReturnTypeName.FullName);
 		}
 
 		[TestMethod]
@@ -116,7 +116,7 @@ namespace DataFilesTest
 			result.AddAssemblyInfo(methodInfo);
 			//assert
 			Assert.AreEqual(expectedFullName, result.Name.FullName);
-			Assert.AreEqual(expectedReturnFullName, result.ReturnTypeName.FullName);
+			Assert.AreEqual(expectedReturnFullName, result.MethodName.ReturnTypeName.FullName);
 		}
 
 		[TestMethod]
@@ -133,7 +133,7 @@ namespace DataFilesTest
 			result.AddAssemblyInfo(methodInfo);
 			//assert
 			Assert.AreEqual(expectedFullName, result.Name.FullName);
-			Assert.AreEqual(expectedReturnFullName, result.ReturnTypeName.FullName);
+			Assert.AreEqual(expectedReturnFullName, result.MethodName.ReturnTypeName.FullName);
 		}
 
 		[TestMethod]
@@ -184,7 +184,7 @@ namespace DataFilesTest
 			result.AddAssemblyInfo(methodInfo);
 			//assert
 			Assert.AreEqual(expectedFullName, result.Name.FullName);
-			Assert.AreEqual(0, result.Parameters.Count);
+			Assert.AreEqual(0, result.MethodName.Parameters.Count);
 		}
 
 		[TestMethod]
@@ -200,9 +200,9 @@ namespace DataFilesTest
 			result.AddAssemblyInfo(methodInfo);
 			//assert
 			Assert.AreEqual(expectedFullName, result.Name.FullName);
-			Assert.AreEqual(1, result.Parameters.Count);
-			Assert.AreEqual("System.Int32", result.Parameters[0].FullTypeName);
-			Assert.AreEqual("a", result.Parameters[0].Name);
+			Assert.AreEqual(1, result.MethodName.Parameters.Count);
+			Assert.AreEqual("System.Int32", result.MethodName.Parameters[0].FullTypeName);
+			Assert.AreEqual("a", result.MethodName.Parameters[0].Name);
 		}
 
 		[TestMethod]
@@ -218,11 +218,11 @@ namespace DataFilesTest
 			result.AddAssemblyInfo(methodInfo);
 			//assert
 			Assert.AreEqual(expectedFullName, result.Name.FullName);
-			Assert.AreEqual(2, result.Parameters.Count);
-			Assert.AreEqual("System.Int32", result.Parameters[0].FullTypeName);
-			Assert.AreEqual("a", result.Parameters[0].Name);
-			Assert.AreEqual("System.String", result.Parameters[1].FullTypeName);
-			Assert.AreEqual("b", result.Parameters[1].Name);
+			Assert.AreEqual(2, result.MethodName.Parameters.Count);
+			Assert.AreEqual("System.Int32", result.MethodName.Parameters[0].FullTypeName);
+			Assert.AreEqual("a", result.MethodName.Parameters[0].Name);
+			Assert.AreEqual("System.String", result.MethodName.Parameters[1].FullTypeName);
+			Assert.AreEqual("b", result.MethodName.Parameters[1].Name);
 		}
 
 		[TestMethod]
@@ -238,9 +238,9 @@ namespace DataFilesTest
 			result.AddAssemblyInfo(methodInfo);
 			//assert
 			Assert.AreEqual(expectedFullName, result.Name.FullName);
-			Assert.AreEqual(1, result.Parameters.Count);
-			Assert.AreEqual("A", result.Parameters[0].FullTypeName);
-			Assert.AreEqual("a", result.Parameters[0].Name);
+			Assert.AreEqual(1, result.MethodName.Parameters.Count);
+			Assert.AreEqual("A", result.MethodName.Parameters[0].FullTypeName);
+			Assert.AreEqual("a", result.MethodName.Parameters[0].Name);
 		}
 
 		[TestMethod]
@@ -256,9 +256,9 @@ namespace DataFilesTest
 			result.AddAssemblyInfo(methodInfo);
 			//assert
 			Assert.AreEqual(expectedFullName, result.Name.FullName);
-			Assert.AreEqual(1, result.Parameters.Count);
-			Assert.AreEqual("T", result.Parameters[0].FullTypeName);
-			Assert.AreEqual("t", result.Parameters[0].Name);
+			Assert.AreEqual(1, result.MethodName.Parameters.Count);
+			Assert.AreEqual("T", result.MethodName.Parameters[0].FullTypeName);
+			Assert.AreEqual("t", result.MethodName.Parameters[0].Name);
 		}
 
 		[TestMethod]
@@ -274,11 +274,11 @@ namespace DataFilesTest
 			result.AddAssemblyInfo(methodInfo);
 			//assert
 			Assert.AreEqual(expectedFullName, result.Name.FullName);
-			Assert.AreEqual(2, result.Parameters.Count);
-			Assert.AreEqual("A", result.Parameters[0].FullTypeName);
-			Assert.AreEqual("a", result.Parameters[0].Name);
-			Assert.AreEqual("T", result.Parameters[1].FullTypeName);
-			Assert.AreEqual("t", result.Parameters[1].Name);
+			Assert.AreEqual(2, result.MethodName.Parameters.Count);
+			Assert.AreEqual("A", result.MethodName.Parameters[0].FullTypeName);
+			Assert.AreEqual("a", result.MethodName.Parameters[0].Name);
+			Assert.AreEqual("T", result.MethodName.Parameters[1].FullTypeName);
+			Assert.AreEqual("t", result.MethodName.Parameters[1].Name);
 		}
 
 		[TestMethod]
@@ -294,9 +294,9 @@ namespace DataFilesTest
 			result.AddAssemblyInfo(methodInfo);
 			//assert
 			Assert.AreEqual(expectedFullName, result.Name.FullName);
-			Assert.AreEqual(1, result.Parameters.Count);
-			Assert.AreEqual("A", result.Parameters[0].FullTypeName);
-			Assert.AreEqual("a", result.Parameters[0].Name);
+			Assert.AreEqual(1, result.MethodName.Parameters.Count);
+			Assert.AreEqual("A", result.MethodName.Parameters[0].FullTypeName);
+			Assert.AreEqual("a", result.MethodName.Parameters[0].Name);
 		}
 
 		[TestMethod]

@@ -257,10 +257,40 @@ namespace WithoutHaste.DataFiles.DotNet
 			return LocalName.GetHashCode() ^ FullNamespace.GetHashCode();
 		}
 
+		/// <duplicate cref='CompareTo(object)' />
+		public static bool operator <(DotNetQualifiedName a, DotNetQualifiedName b)
+		{
+			if(object.ReferenceEquals(a, null) && object.ReferenceEquals(b, null))
+				return false;
+			if(object.ReferenceEquals(a, null))
+				return true;
+			return (a.CompareTo(b) == -1);
+		}
+
+		/// <duplicate cref='CompareTo(object)' />
+		public static bool operator >(DotNetQualifiedName a, DotNetQualifiedName b)
+		{
+			if(object.ReferenceEquals(a, null) && object.ReferenceEquals(b, null))
+				return false;
+			if(object.ReferenceEquals(a, null))
+				return false;
+			return (a.CompareTo(b) == 1);
+		}
+
+		/// <duplicate cref='CompareTo(object)' />
+		/// With protection against either object being null.
+		public static int Compare(DotNetQualifiedName a, DotNetQualifiedName b)
+		{
+			if(a > b) return 1;
+			if(a < b) return -1;
+
+			return 0;
+		}
+
 		/// <summary>
 		/// Names are sorted alphabetically, per namespace, starting with the root.
 		/// </summary>
-		public int CompareTo(object b)
+		public virtual int CompareTo(object b)
 		{
 			if(!(b is DotNetQualifiedName))
 				return -1;

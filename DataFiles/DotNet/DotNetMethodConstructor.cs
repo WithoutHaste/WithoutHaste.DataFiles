@@ -13,7 +13,7 @@ namespace WithoutHaste.DataFiles.DotNet
 	public class DotNetMethodConstructor : DotNetMethod
 	{
 		/// <summary></summary>
-		public DotNetMethodConstructor(DotNetQualifiedName name, List<DotNetParameter> parameters) : base(name, parameters)
+		public DotNetMethodConstructor(DotNetQualifiedMethodName name) : base(name)
 		{
 			Category = MethodCategory.Normal;
 		}
@@ -26,7 +26,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			int index = 0;
 			foreach(ParameterInfo parameterInfo in constructorInfo.GetParameters())
 			{
-				Parameters[index].AddAssemblyInfo(parameterInfo);
+				MethodName.Parameters[index].AddAssemblyInfo(parameterInfo);
 				index++;
 			}
 		}

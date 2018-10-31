@@ -120,10 +120,10 @@
             Represents a delegate type, categorized as a method.
             </summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDelegate.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDelegate.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDelegate.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter})">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDelegate.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDelegate.AddAssemblyInfo(System.Reflection.TypeInfo)">
@@ -486,7 +486,7 @@
             Represents a method that is a constructor.
             </summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodConstructor.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter})">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodConstructor.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName)">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodConstructor.AddAssemblyInfo(System.Reflection.ConstructorInfo)">
@@ -502,7 +502,7 @@
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator.OperatorOrder">
             <summary>Operators will be sorted into this order.</summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter})">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName)">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator.op_LessThan(WithoutHaste.DataFiles.DotNet.DotNetMethodOperator,WithoutHaste.DataFiles.DotNet.DotNetMethodOperator)">
@@ -517,8 +517,7 @@
             <list type='numbered'>
             	<item>alphabetically by namespace</item>
             	<item>then into <see cref='F:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator.OperatorOrder'/></item>
-            	<item>then parameter list, shortest to longest</item>
-            	<item>then alphabetically by parameter types</item>
+            	<item>then as a normal method (see <see cref='M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.CompareTo(System.Object)'/></item>
             </list>
             </summary>
         </member>
@@ -595,6 +594,12 @@
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.LocalXmlName">
             <inheritdoc/>
         </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.ParametersWithNames">
+            <summary>Returns parameter list formatted as: (TypeA a, TypeB b)</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.ParametersWithoutNames">
+            <summary>Returns parameter list formatted as: (TypeA,TypeB)</summary>
+        </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.IsGeneric">
             <summary>True for generic methods.</summary>
         </member>
@@ -604,34 +609,89 @@
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.genericTypeAliases">
             <summary>Specific generic type aliases for this method. If null, the shared <see cref="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.GenericTypeNames"/> will be used.</summary>
         </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.Parameters">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.ReturnTypeName">
+            <summary>Fully qualified name of return data type, if known. Null if not known.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.ReturnTypeIsPartOfSignature">
+            <summary>
+            True if the return type is necessary for distinguishing this method name from others.
+            </summary>
+            <example>True for implicit and explicit conversion operators.</example>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.#ctor">
             <summary>Empty constructor</summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.#ctor(System.String,System.Int32)">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.#ctor(System.String,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter},WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName,System.Int32)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.#ctor(System.String,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Int32)">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.#ctor(System.String,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter},WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName,System.Int32)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.FromVisualStudioXml(System.String)">
+             <summary>
+             Parses a .Net XML documentation method signature.
+             </summary>
+             <example>
+                 How .Net xml documentation formats generic types:
+                 Backtics are followed by integers, identifying generic types.
+            
+                 Double backtics (such as ``1) on a method name indicate a count of generic types for the method.
+                 Example: <![CDATA[MyMethod<A,B,C> is documented as MyMethod``3]]>
+                 
+            		Anywhere else within this method's documentation that a double backtic appears, it indicates the index of the generic type in reference to the method declaration.
+                 Example: <![CDATA[MyMethod<A,B,C>(A,B,C) is documented as MyMethod``3(``0,``1,``2)]]>
+                 
+            		A method that uses both its own generic types AND generic types from the class declaration will look like this:
+                 Example: <![CDATA[MyMethod<A,B,C>(A,B,C,T,U) is documented as MyMethod``3(``0,``1,``2,`0,`1)]]>
+             </example>
+             <example>
+            		How .Net xml documentation formats implicit and explicit operators:
+            		
+            		static explicit operator int(MyClass a)
+            		becomes
+            		MyClass.op_Explicit(MyClass)~System.Int32
+            		
+            		static implicit operator int(MyClass a)
+            		becomes
+            		MyClass.op_Implicit(MyClass)~System.Int32
+             </example>
+             <param name="signature">Name may or may not start with "M:". Includes parameter list.</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.ParametersFromVisualStudioXml(System.String)">
             <summary>
-            Parses a .Net XML documentation method signature.
+            Parse .Net XML documentation parameter lists.
             </summary>
-            <example>
-              <para>
-                How .Net xml documentation formats generic types:
-                Backtics are followed by integers, identifying generic types.
-              </para>
-              <para>
-                Double backtics (such as ``1) on a method name indicate a count of generic types for the method.
-                <example><![CDATA[MyMethod<A,B,C> is documented as MyMethod``3]]></example>
-                Anywhere else within this method's documentation that a double backtic appears, it indicates the index of the generic type in reference to the method declaration.
-                <example><![CDATA[MyMethod<A,B,C>(A,B,C) is documented as MyMethod``3(``0,``1,``2)]]></example>
-                A method that uses both its own generic types AND generic types from the class declaration will look like this:
-                <example><![CDATA[MyMethod<A,B,C>(A,B,C,T,U) is documented as MyMethod``3(``0,``1,``2,`0,`1)]]></example>
-              </para>
-            </example>
-            <param name="signature">Name may or may not start with "M:". Includes parameter list.</param>
+            <param name="text">
+            Expects: null
+            Expects: empty string
+            Expects: "(type, type, type)"
+            </param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.MatchesSignature(System.Reflection.MethodInfo)">
+            <summary>
+            Returns true if this method's signature matches the reflected MethodInfo.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.MatchesSignature(WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName)">
+            <summary>
+            Returns true if this method's signature matches the other method signature.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.MatchesArguments(System.Reflection.ParameterInfo[])">
+            <summary>
+            Returns true if this method's parameter list matches the reflected ParameterInfo. Checks parameter types, not names.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.MatchesArguments(System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter})">
+            <summary>
+            Returns true if this method's parameter list matches the provided parameter list. Checks parameter types, not names.
+            </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.AddAssemblyInfo(System.Reflection.MethodInfo)">
             <summary>
@@ -640,6 +700,23 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.SetLocalName(System.String)">
             <summary>Set the local name of the method. Does not affect generic type parameters or method parameters.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.op_LessThan(WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName,WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName)">
+            <duplicate cref='M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.CompareTo(System.Object)' />
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.op_GreaterThan(WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName,WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName)">
+            <duplicate cref='M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.CompareTo(System.Object)' />
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.CompareTo(System.Object)">
+            <summary>
+            Methods are sorted:
+            <list type='numbered'>
+            	<item>alphabetically by namespace</item>
+            	<item>then parameter list, shortest to longest</item>
+            	<item>then alphabetically by parameter types</item>
+            	<item>then alphabetically by return type (for some operators)</item>
+            </list>
+            </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName">
             <summary>
@@ -983,8 +1060,8 @@
             </summary>
             <example><![CDATA[<permission cref="Namespace.Type.Method(Type1, Type2)">nested comments and/or plain text</permission>]]></example>
         </member>
-        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.Parameters">
-            <summary></summary>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.MethodName">
+            <summary>Strongly typed name.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.FullSignature">
             <summary>Fully qualified method name with parameters.</summary>
@@ -992,10 +1069,7 @@
             <example>Namespace.Type.Method(int,string)</example>
             <example><![CDATA[Namespace.Type.Method(System.Collections.Generic.List<int>)]]></example>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
-            <summary></summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter})">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName)">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.FromVisualStudioXml(System.String)">
@@ -1221,19 +1295,13 @@
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetMethod.Category">
             <summary></summary>
         </member>
-        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetMethod.ReturnTypeName">
-            <summary>Fully qualified name of return data type, if known. Null if not known.</summary>
-        </member>
-        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetMethod.Parameters">
-            <summary></summary>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetMethod.MethodName">
+            <summary>Strongly typed name.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.#ctor">
             <summary>Empty constructor</summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
-            <summary></summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter})">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName)">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.FromVisualStudioXml(System.Xml.Linq.XElement)">
@@ -1242,40 +1310,31 @@
             </summary>
             <param name="memberElement">Expects tag "member".</param>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.ParametersFromVisualStudioXml(System.String)">
-            <summary>
-            Parse .Net XML documentation parameter lists.
-            </summary>
-            <param name="text">
-            Expects: null
-            Expects: empty string
-            Expects: "(type, type, type)"
-            </param>
-        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.MatchesSignature(System.Reflection.MethodInfo)">
+            <duplicate cref='M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.MatchesSignature(System.Reflection.MethodInfo)'/>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.MatchesSignature(WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink)">
             <summary>
-            Returns true if this method's signature matches the reflected MethodInfo.
+            Returns true if this method and the method link have matching signatures, based on the fully qualified name and the list of parameter types.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.MatchesArguments(System.Reflection.ParameterInfo[])">
-            <summary>
-            Returns true if this method's parameter list matches the reflected ParameterInfo.
-            </summary>
+            <duplicate cref='M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.MatchesArguments(System.Reflection.ParameterInfo[])'/>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.MatchesArguments(System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter})">
-            <summary>
-            Returns true if this method's parameter list matches the provided parameter list. Only parameter types matter, not the names.
-            </summary>
+            <duplicate cref='M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.MatchesArguments(System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter})'/>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.AddAssemblyInfo(System.Reflection.MethodInfo)">
             <summary>
             Load additional documentation information from the assembly itself.
             </summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.MatchesSignature(WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink)">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.GetFullListOfLocalNames">
             <summary>
-            Returns true if this method and the method link have matching signatures, based on the fully qualified name and the list of parameter types.
+            Collect full list of local names used throughout documentation.
+            Includes namespaces, internal types, external types, and members.
             </summary>
+            <returns></returns>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.op_Equality(WithoutHaste.DataFiles.DotNet.DotNetMethod,WithoutHaste.DataFiles.DotNet.DotNetMethod)">
             <duplicate cref='M:WithoutHaste.DataFiles.DotNet.DotNetMethod.Equals(System.Object)' />
@@ -1698,6 +1757,16 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.GetHashCode">
             <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.op_LessThan(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <duplicate cref='M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.CompareTo(System.Object)' />
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.op_GreaterThan(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <duplicate cref='M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.CompareTo(System.Object)' />
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.Compare(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <duplicate cref='M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.CompareTo(System.Object)' />
+            With protection against either object being null.
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.CompareTo(System.Object)">
             <summary>

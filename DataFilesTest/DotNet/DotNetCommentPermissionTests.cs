@@ -36,7 +36,7 @@ namespace DataFilesTest
 			string methodName = "C";
 			string parameters = "(int,string)";
 			string fullName = _namespace + "." + typeName + "." + methodName;
-			XElement element = XElement.Parse("<permission cref='F:" + fullName + parameters + "'>Comments</permission>");
+			XElement element = XElement.Parse("<permission cref='M:" + fullName + parameters + "'>Comments</permission>");
 			//act
 			DotNetCommentQualifiedLinkedGroup result = DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
 			//assert

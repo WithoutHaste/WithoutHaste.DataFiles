@@ -33,28 +33,19 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public MethodCategory Category { get; protected set; }
 
-		/// <summary>Fully qualified name of return data type, if known. Null if not known.</summary>
-		public DotNetQualifiedTypeName ReturnTypeName { get; protected set; }
-
-		/// <summary></summary>
-		public List<DotNetParameter> Parameters = new List<DotNetParameter>();
+		/// <summary>Strongly typed name.</summary>
+		public DotNetQualifiedMethodName MethodName { get { return (Name as DotNetQualifiedMethodName); } }
 
 		#region Constructors
 
 		/// <summary>Empty constructor</summary>
-		public DotNetMethod() : base(new DotNetQualifiedName())
+		public DotNetMethod() : base(new DotNetQualifiedMethodName())
 		{
 		}
 
 		/// <summary></summary>
-		public DotNetMethod(DotNetQualifiedName name) : base(name)
+		public DotNetMethod(DotNetQualifiedMethodName name) : base(name)
 		{
-		}
-
-		/// <summary></summary>
-		public DotNetMethod(DotNetQualifiedName name, List<DotNetParameter> parameters) : base(name)
-		{
-			this.Parameters.AddRange(parameters);
 		}
 
 		/// <summary>
@@ -67,146 +58,60 @@ namespace WithoutHaste.DataFiles.DotNet
 			if(signature == null)
 				return new DotNetMethod();
 
-			//parameterless methods don't have a () at all
-			int divider = signature.IndexOf('(');
-			string name = null;
-			string parameters = null;
-			string returns = null;
-			if(divider == -1)
-			{
-				name = signature;
-			}
-			else
-			{
-				name = signature.Substring(0, divider);
-				parameters = signature.Substring(divider);
-
-				//implicit and explicit operators will have the return type at the end after a ~
-				if(parameters.IndexOf('~') > -1)
-				{
-					returns = parameters.Substring(parameters.IndexOf('~') + 1);
-					parameters = parameters.Substring(0, parameters.IndexOf('~'));
-				}
-			}
-
-			DotNetQualifiedMethodName qualifiedName = DotNetQualifiedMethodName.FromVisualStudioXml(name);
+			DotNetQualifiedMethodName methodName = DotNetQualifiedMethodName.FromVisualStudioXml(signature);
 
 			//for constructors
-			bool isConstructor = qualifiedName.LocalName.EndsWith("#ctor");
+			bool isConstructor = methodName.LocalName.EndsWith("#ctor");
 			if(isConstructor)
 			{
-				qualifiedName.SetLocalName(qualifiedName.FullNamespace.LocalName);
+				methodName.SetLocalName(methodName.FullNamespace.LocalName);
 			}
 			//todo: check for #cctor for static constructors
 
 			//for operators
-			bool isOperator = qualifiedName.LocalName.StartsWith("op_");
-
-			//parse parameters
-			List<DotNetParameter> qualifiedParameters = ParametersFromVisualStudioXml(parameters);
+			bool isOperator = methodName.LocalName.StartsWith("op_");
 
 			DotNetMethod method = null;
 			if(isConstructor)
-				method = new DotNetMethodConstructor(qualifiedName, qualifiedParameters);
+				method = new DotNetMethodConstructor(methodName);
 			else if(isOperator)
-				method = new DotNetMethodOperator(qualifiedName, qualifiedParameters);
+				method = new DotNetMethodOperator(methodName);
 			else
-				method = new DotNetMethod(qualifiedName, qualifiedParameters);
-			method.ParseVisualStudioXmlDocumentation(memberElement);
+				method = new DotNetMethod(methodName);
 
-			if(!String.IsNullOrEmpty(returns))
-				method.ReturnTypeName = DotNetQualifiedTypeName.FromVisualStudioXml(returns);
+			method.ParseVisualStudioXmlDocumentation(memberElement);
 
 			return method;
 		}
 
 		#endregion
 
-		/// <summary>
-		/// Parse .Net XML documentation parameter lists.
-		/// </summary>
-		/// <param name="text">
-		/// Expects: null
-		/// Expects: empty string
-		/// Expects: "(type, type, type)"
-		/// </param>
-		public static List<DotNetParameter> ParametersFromVisualStudioXml(string text)
-		{
-			List<DotNetParameter> parameters = new List<DotNetParameter>();
-			if(!string.IsNullOrEmpty(text))
-			{
-				//remove possible { } and possible ( )
-				text = text.RemoveOuterBraces();
-				text = text.RemoveOuterBraces();
-
-				string[] fields = text.SplitIgnoreNested(',');
-				for(int i = 0; i < fields.Length; i++)
-				{
-					string f = fields[i];
-					if(!String.IsNullOrEmpty(f))
-					{
-						parameters.Add(DotNetParameter.FromVisualStudioXml(f));
-					}
-				}
-			}
-			return parameters;
-		}
-
-		/// <summary>
-		/// Returns true if this method's signature matches the reflected MethodInfo.
-		/// </summary>
+		/// <duplicate cref='DotNetQualifiedMethodName.MatchesSignature(MethodInfo)'/>
 		public bool MatchesSignature(MethodInfo methodInfo)
 		{
-			if((Name as DotNetQualifiedMethodName).IsGeneric)
-			{
-				if(methodInfo.Name + "``" + methodInfo.GetGenericArguments().Length != this.Name.LocalXmlName)
-					return false;
-			}
-			else
-			{
-				if(methodInfo.Name != this.Name.LocalName)
-					return false;
-			}
-			if(this is DotNetMethodOperator && this.ReturnTypeName != null) //for implicit/explicit operators
-			{
-				if(this.ReturnTypeName != DotNetQualifiedTypeName.FromAssemblyInfo(methodInfo.ReturnType))
-					return false;
-			}
-			return MatchesArguments(methodInfo.GetParameters());
+			return MethodName.MatchesSignature(methodInfo);
 		}
 
 		/// <summary>
-		/// Returns true if this method's parameter list matches the reflected ParameterInfo.
+		/// Returns true if this method and the method link have matching signatures, based on the fully qualified name and the list of parameter types.
 		/// </summary>
-		public bool MatchesArguments(ParameterInfo[] otherParameters)
+		public bool MatchesSignature(DotNetCommentMethodLink link)
 		{
-			if(Parameters.Count != otherParameters.Length)
-				return false;
-
-			for(int i = 0; i < Parameters.Count; i++)
-			{
-				string otherName = DotNetQualifiedTypeName.FromAssemblyInfo(otherParameters[i].ParameterType).FullName;
-				if(Parameters[i].FullTypeName != otherName)
-					return false;
-			}
-			return true;
+			return link.MatchesSignature(this);
 		}
 
-		/// <summary>
-		/// Returns true if this method's parameter list matches the provided parameter list. Only parameter types matter, not the names.
-		/// </summary>
-		public bool MatchesArguments(List<DotNetParameter> otherParameters)
+		/// <duplicate cref='DotNetQualifiedMethodName.MatchesArguments(ParameterInfo[])'/>
+		public bool MatchesArguments(ParameterInfo[] parameters)
 		{
-			if(Parameters.Count != otherParameters.Count)
-				return false;
-
-			for(int i = 0; i < Parameters.Count; i++)
-			{
-				if(Parameters[i].TypeName.FullName != otherParameters[i].TypeName.FullName)
-					return false;
-			}
-			return true;
+			return MethodName.MatchesArguments(parameters);
 		}
+
+		/// <duplicate cref='DotNetQualifiedMethodName.MatchesArguments(List{DotNetParameter})'/>
+		public bool MatchesArguments(List<DotNetParameter> parameters)
+		{
+			return MethodName.MatchesArguments(parameters);
+		}
+
 
 		/// <summary>
 		/// Load additional documentation information from the assembly itself.
@@ -225,41 +130,28 @@ namespace WithoutHaste.DataFiles.DotNet
 					Category = MethodCategory.Normal;
 			}
 
-			if(methodInfo.ReturnType != null)
-				ReturnTypeName = DotNetQualifiedTypeName.FromAssemblyInfo(methodInfo.ReturnType);
-
-			if(Category == MethodCategory.Delegate)
+			if(MethodName != null)
 			{
-				Parameters.Clear(); //expected to be empty already
-				foreach(ParameterInfo parameterInfo in methodInfo.GetParameters())
-				{
-					DotNetParameter parameter = new DotNetParameter(DotNetQualifiedTypeName.FromAssemblyInfo(parameterInfo.ParameterType));
-					parameter.AddAssemblyInfo(parameterInfo);
-					Parameters.Add(parameter);
-				}
-			}
-			else
-			{
-				int index = 0;
-				foreach(ParameterInfo parameterInfo in methodInfo.GetParameters())
-				{
-					Parameters[index].AddAssemblyInfo(parameterInfo);
-					index++;
-				}
-			}
-
-			if(Name != null && Name is DotNetQualifiedMethodName)
-			{
-				(Name as DotNetQualifiedMethodName).AddAssemblyInfo(methodInfo);
+				MethodName.AddAssemblyInfo(methodInfo);
 			}
 		}
 
 		/// <summary>
-		/// Returns true if this method and the method link have matching signatures, based on the fully qualified name and the list of parameter types.
+		/// Collect full list of local names used throughout documentation.
+		/// Includes namespaces, internal types, external types, and members.
 		/// </summary>
-		public bool MatchesSignature(DotNetCommentMethodLink link)
+		/// <returns></returns>
+		public List<string> GetFullListOfLocalNames()
 		{
-			return link.MatchesSignature(this);
+			List<string> localNames = new List<string>();
+
+			localNames.AddRange(Name.GetFullListOfLocalNames());
+			foreach(DotNetParameter parameter in MethodName.Parameters.OfType<DotNetParameter>().Cast<DotNetParameter>())
+			{
+				localNames.AddRange(parameter.TypeName.GetFullListOfLocalNames());
+			}
+
+			return localNames;
 		}
 
 		#region Low Level
@@ -297,11 +189,11 @@ namespace WithoutHaste.DataFiles.DotNet
 			DotNetMethod other = (b as DotNetMethod);
 			if(this.Name != other.Name)
 				return false;
-			if(this.Parameters.Count != other.Parameters.Count)
+			if(this.MethodName.Parameters.Count != other.MethodName.Parameters.Count)
 				return false;
-			for(int i = 0; i < this.Parameters.Count; i++)
+			for(int i = 0; i < this.MethodName.Parameters.Count; i++)
 			{
-				if(this.Parameters[i].TypeName != other.Parameters[i].TypeName)
+				if(this.MethodName.Parameters[i].TypeName != other.MethodName.Parameters[i].TypeName)
 					return false;
 			}
 			return true;
@@ -310,7 +202,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public override int GetHashCode()
 		{
-			return Name.GetHashCode() & Parameters.GetHashCode();
+			return Name.GetHashCode() & MethodName.Parameters.GetHashCode();
 		}
 
 		#endregion

@@ -394,10 +394,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 			foreach(DotNetMethod method in Methods)
 			{
-				foreach(DotNetParameter parameter in method.Parameters.OfType<DotNetParameter>().Cast<DotNetParameter>())
-				{
-					localNames.AddRange(parameter.TypeName.GetFullListOfLocalNames());
-				}
+				localNames.AddRange(method.GetFullListOfLocalNames());
 			}
 
 			return localNames;
@@ -485,7 +482,7 @@ namespace WithoutHaste.DataFiles.DotNet
 
 				if(baseType != null)
 				{
-					DotNetMethod baseMethod = baseType.FindMethod(method.Name.LocalName, method.Parameters);
+					DotNetMethod baseMethod = baseType.FindMethod(method.Name.LocalName, method.MethodName.Parameters);
 					if(baseMethod != null)
 					{
 						method.CopyComments(baseMethod);
@@ -494,7 +491,7 @@ namespace WithoutHaste.DataFiles.DotNet
 				}
 				foreach(DotNetType baseInterface in baseInterfaces)
 				{
-					DotNetMethod baseMethod = baseInterface.FindMethod(method.Name.LocalName, method.Parameters);
+					DotNetMethod baseMethod = baseInterface.FindMethod(method.Name.LocalName, method.MethodName.Parameters);
 					if(baseMethod != null)
 					{
 						method.CopyComments(baseMethod);

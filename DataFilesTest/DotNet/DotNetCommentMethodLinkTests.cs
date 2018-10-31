@@ -42,7 +42,7 @@ namespace DataFilesTest
 			//assert
 			Assert.AreEqual(qualifiedName, result.FullName);
 			Assert.AreEqual(signature, result.FullSignature);
-			Assert.AreEqual(1, result.Parameters.Count);
+			Assert.AreEqual(1, result.MethodName.Parameters.Count);
 		}
 
 		[TestMethod]
@@ -60,7 +60,7 @@ namespace DataFilesTest
 			//assert
 			Assert.AreEqual(qualifiedName, result.FullName);
 			Assert.AreEqual(signature, result.FullSignature);
-			Assert.AreEqual(2, result.Parameters.Count);
+			Assert.AreEqual(2, result.MethodName.Parameters.Count);
 		}
 	}
 }

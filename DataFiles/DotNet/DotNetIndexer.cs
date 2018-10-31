@@ -49,7 +49,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			xmlName = xmlName.Substring(0, xmlName.IndexOf("("));
 
 			DotNetQualifiedName name = DotNetQualifiedName.FromVisualStudioXml(xmlName);
-			List<DotNetParameter> parameters = DotNetMethod.ParametersFromVisualStudioXml(xmlParameters);
+			List<DotNetParameter> parameters = DotNetQualifiedMethodName.ParametersFromVisualStudioXml(xmlParameters);
 			DotNetIndexer indexer = new DotNetIndexer(name, parameters);
 			indexer.ParseVisualStudioXmlDocumentation(memberElement);
 			return indexer;

@@ -43,7 +43,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			};
 
 		/// <summary></summary>
-		public DotNetMethodOperator(DotNetQualifiedName name, List<DotNetParameter> parameters) : base(name, parameters)
+		public DotNetMethodOperator(DotNetQualifiedMethodName name) : base(name)
 		{
 			Category = MethodCategory.Normal;
 		}
@@ -53,16 +53,13 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <duplicate cref='CompareTo(object)' />
 		public static bool operator <(DotNetMethodOperator a, DotNetMethodOperator b)
 		{
-			if(a.Name.FullNamespace != b.Name.FullNamespace)
-				return (a.Name.FullNamespace.ToString().CompareTo(b.Name.FullNamespace.ToString()) == -1);
-
-			return a.Equals(b);
+			return (a.CompareTo(b) == -1);
 		}
 
 		/// <duplicate cref='CompareTo(Object)' />
 		public static bool operator >(DotNetMethodOperator a, DotNetMethodOperator b)
 		{
-			return !a.Equals(b);
+			return (a.CompareTo(b) == 1);
 		}
 
 		/// <summary>
@@ -70,8 +67,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <list type='numbered'>
 		///		<item>alphabetically by namespace</item>
 		///		<item>then into <see cref='OperatorOrder'/></item>
-		///		<item>then parameter list, shortest to longest</item>
-		///		<item>then alphabetically by parameter types</item>
+		///		<item>then as a normal method (see <see cref='DotNetQualifiedMethodName.CompareTo(object)'/></item>
 		/// </list>
 		/// </summary>
 		public int CompareTo(object b)
@@ -94,17 +90,7 @@ namespace WithoutHaste.DataFiles.DotNet
 				return indexThis.CompareTo(indexOther);
 			}
 
-			if(this.Parameters.Count != other.Parameters.Count)
-				return this.Parameters.Count.CompareTo(other.Parameters.Count);
-
-			for(int i = 0; i < this.Parameters.Count; i++)
-			{
-				if(this.Parameters[i].TypeName == other.Parameters[i].TypeName)
-					continue;
-				return this.Parameters[i].TypeName.CompareTo(other.Parameters[i].TypeName);
-			}
-
-			return 0;
+			return this.MethodName.CompareTo(other.MethodName);
 		}
 
 		#endregion

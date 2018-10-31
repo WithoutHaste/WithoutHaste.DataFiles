@@ -36,8 +36,8 @@ namespace DataFilesTest
 			DotNetMethod result = DotNetMethod.FromVisualStudioXml(xmlElement);
 			result.AddAssemblyInfo(methodInfo);
 			//assert
-			Assert.AreEqual("System.Double", result.ReturnTypeName);
-			Assert.AreEqual("DataFilesTest.DotNetMethodOperatorTests.ClassA", result.Parameters[0].TypeName);
+			Assert.AreEqual("System.Double", result.MethodName.ReturnTypeName);
+			Assert.AreEqual("DataFilesTest.DotNetMethodOperatorTests.ClassA", result.MethodName.Parameters[0].TypeName);
 		}
 
 		[TestMethod]
@@ -51,8 +51,8 @@ namespace DataFilesTest
 			DotNetMethod result = DotNetMethod.FromVisualStudioXml(xmlElement);
 			result.AddAssemblyInfo(methodInfo);
 			//assert
-			Assert.AreEqual("System.Single", result.ReturnTypeName);
-			Assert.AreEqual("DataFilesTest.DotNetMethodOperatorTests.ClassA", result.Parameters[0].TypeName);
+			Assert.AreEqual("System.Single", result.MethodName.ReturnTypeName);
+			Assert.AreEqual("DataFilesTest.DotNetMethodOperatorTests.ClassA", result.MethodName.Parameters[0].TypeName);
 		}
 
 		[TestMethod]
@@ -189,10 +189,10 @@ namespace DataFilesTest
 			//act
 			list.Sort();
 			//assert
-			Assert.AreEqual("System.Byte", list[0].Parameters[1].TypeName);
-			Assert.AreEqual("System.Decimal", list[1].Parameters[1].TypeName);
-			Assert.AreEqual("System.Int32", list[2].Parameters[1].TypeName);
-			Assert.AreEqual("System.Int64", list[3].Parameters[1].TypeName);
+			Assert.AreEqual("System.Byte", list[0].MethodName.Parameters[1].TypeName);
+			Assert.AreEqual("System.Decimal", list[1].MethodName.Parameters[1].TypeName);
+			Assert.AreEqual("System.Int32", list[2].MethodName.Parameters[1].TypeName);
+			Assert.AreEqual("System.Int64", list[3].MethodName.Parameters[1].TypeName);
 		}
 
 		[TestMethod]
@@ -212,10 +212,10 @@ namespace DataFilesTest
 			//act
 			list = list.OrderBy(x => x).ToList();
 			//assert
-			Assert.AreEqual("System.Byte", list[0].Parameters[1].TypeName);
-			Assert.AreEqual("System.Decimal", list[1].Parameters[1].TypeName);
-			Assert.AreEqual("System.Int32", list[2].Parameters[1].TypeName);
-			Assert.AreEqual("System.Int64", list[3].Parameters[1].TypeName);
+			Assert.AreEqual("System.Byte", list[0].MethodName.Parameters[1].TypeName);
+			Assert.AreEqual("System.Decimal", list[1].MethodName.Parameters[1].TypeName);
+			Assert.AreEqual("System.Int32", list[2].MethodName.Parameters[1].TypeName);
+			Assert.AreEqual("System.Int64", list[3].MethodName.Parameters[1].TypeName);
 		}
 	}
 }

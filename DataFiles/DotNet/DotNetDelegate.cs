@@ -13,13 +13,13 @@ namespace WithoutHaste.DataFiles.DotNet
 	public class DotNetDelegate : DotNetMethod
 	{
 		/// <summary></summary>
-		public DotNetDelegate(DotNetQualifiedName name) : base(name)
+		public DotNetDelegate(DotNetQualifiedMethodName name) : base(name)
 		{
 			Category = MethodCategory.Delegate;
 		}
 
 		/// <summary></summary>
-		public DotNetDelegate(DotNetQualifiedName name, List<DotNetParameter> parameters) : base(name, parameters)
+		public DotNetDelegate(DotNetQualifiedName name) : base(new DotNetQualifiedMethodName(name))
 		{
 			Category = MethodCategory.Delegate;
 		}

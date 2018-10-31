@@ -35,12 +35,12 @@ namespace DataFilesTest
 			DotNetDelegate delegateResult = typeResult.ToDelegate(typeResult.Name);
 			delegateResult.AddAssemblyInfo(delegateInfo);
 			//assert
-			Assert.AreEqual(2, delegateResult.Parameters.Count);
-			Assert.AreEqual("a", delegateResult.Parameters[0].Name);
-			Assert.AreEqual("b", delegateResult.Parameters[1].Name);
-			Assert.AreEqual("System.Int32", delegateResult.Parameters[0].FullTypeName);
-			Assert.AreEqual("System.String", delegateResult.Parameters[1].FullTypeName);
-			Assert.AreEqual("System.EventHandler", delegateResult.ReturnTypeName.FullName);
+			Assert.AreEqual(2, delegateResult.MethodName.Parameters.Count);
+			Assert.AreEqual("a", delegateResult.MethodName.Parameters[0].Name);
+			Assert.AreEqual("b", delegateResult.MethodName.Parameters[1].Name);
+			Assert.AreEqual("System.Int32", delegateResult.MethodName.Parameters[0].FullTypeName);
+			Assert.AreEqual("System.String", delegateResult.MethodName.Parameters[1].FullTypeName);
+			Assert.AreEqual("System.EventHandler", delegateResult.MethodName.ReturnTypeName.FullName);
 		}
 	}
 }
