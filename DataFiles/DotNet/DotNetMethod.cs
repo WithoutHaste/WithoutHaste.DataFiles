@@ -71,6 +71,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			int divider = signature.IndexOf('(');
 			string name = null;
 			string parameters = null;
+			string returns = null;
 			if(divider == -1)
 			{
 				name = signature;
@@ -79,6 +80,13 @@ namespace WithoutHaste.DataFiles.DotNet
 			{
 				name = signature.Substring(0, divider);
 				parameters = signature.Substring(divider);
+
+				//implicit and explicit operators will have the return type at the end after a ~
+				if(parameters.IndexOf('~') > -1)
+				{
+					returns = parameters.Substring(parameters.IndexOf('~') + 1);
+					parameters = parameters.Substring(0, parameters.IndexOf('~'));
+				}
 			}
 
 			DotNetQualifiedMethodName qualifiedName = DotNetQualifiedMethodName.FromVisualStudioXml(name);
@@ -90,11 +98,9 @@ namespace WithoutHaste.DataFiles.DotNet
 				qualifiedName.SetLocalName(qualifiedName.FullNamespace.LocalName);
 			}
 			//todo: check for #cctor for static constructors
-			//todo: differentiate state constructors
 
 			//for operators
 			bool isOperator = qualifiedName.LocalName.StartsWith("op_");
-			//todo: implicit and explicit operators
 
 			//parse parameters
 			List<DotNetParameter> qualifiedParameters = ParametersFromVisualStudioXml(parameters);
@@ -107,6 +113,9 @@ namespace WithoutHaste.DataFiles.DotNet
 			else
 				method = new DotNetMethod(qualifiedName, qualifiedParameters);
 			method.ParseVisualStudioXmlDocumentation(memberElement);
+
+			if(!String.IsNullOrEmpty(returns))
+				method.ReturnTypeName = DotNetQualifiedTypeName.FromVisualStudioXml(returns);
 
 			return method;
 		}
@@ -156,6 +165,11 @@ namespace WithoutHaste.DataFiles.DotNet
 			else
 			{
 				if(methodInfo.Name != this.Name.LocalName)
+					return false;
+			}
+			if(this is DotNetMethodOperator && this.ReturnTypeName != null) //for implicit/explicit operators
+			{
+				if(this.ReturnTypeName != DotNetQualifiedTypeName.FromAssemblyInfo(methodInfo.ReturnType))
 					return false;
 			}
 			return MatchesArguments(methodInfo.GetParameters());

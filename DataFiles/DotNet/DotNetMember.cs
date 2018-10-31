@@ -177,5 +177,16 @@ namespace WithoutHaste.DataFiles.DotNet
 			FloatingComments.Comments.Clear();
 			FloatingComments.Comments.AddRange(original.FloatingComments.Comments);
 		}
+
+		#region Low Level
+
+		/// <summary>Full name of member.</summary>
+		public override string ToString()
+		{
+			return Name.FullName;
+		}
+
+		#endregion
+
 	}
 }

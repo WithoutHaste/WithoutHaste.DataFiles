@@ -1189,6 +1189,9 @@
             Shallow-copies all comments from the <paramref name="original"/> member to this member.
             </summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMember.ToString">
+            <summary>Full name of member.</summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.MethodCategory">
             <summary></summary>
         </member>

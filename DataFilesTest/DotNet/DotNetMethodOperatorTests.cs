@@ -12,6 +12,49 @@ namespace DataFilesTest
 	[TestClass]
 	public class DotNetMethodOperatorTests
 	{
+		protected class ClassA
+		{
+			public static implicit operator double(ClassA a)
+			{
+				return 0;
+			}
+
+			public static explicit operator float(ClassA a)
+			{
+				return 0;
+			}
+		}
+
+		[TestMethod]
+		public void DotNetMethodOperator_FromAssembly_ImplicitOperator()
+		{
+			//arrange
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodOperatorTests.ClassA.op_Implicit(DataFilesTest.DotNetMethodOperatorTests.ClassA)~System.Double' />");
+			Type type = typeof(ClassA);
+			MethodInfo methodInfo = type.GetMethods().First(m => m.Name == "op_Implicit");
+			//act
+			DotNetMethod result = DotNetMethod.FromVisualStudioXml(xmlElement);
+			result.AddAssemblyInfo(methodInfo);
+			//assert
+			Assert.AreEqual("System.Double", result.ReturnTypeName);
+			Assert.AreEqual("DataFilesTest.DotNetMethodOperatorTests.ClassA", result.Parameters[0].TypeName);
+		}
+
+		[TestMethod]
+		public void DotNetMethodOperator_FromAssembly_ExplicitOperator()
+		{
+			//arrange
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodOperatorTests.ClassA.op_Explicit(DataFilesTest.DotNetMethodOperatorTests.ClassA)~System.Int64' />");
+			Type type = typeof(ClassA);
+			MethodInfo methodInfo = type.GetMethods().First(m => m.Name == "op_Explicit");
+			//act
+			DotNetMethod result = DotNetMethod.FromVisualStudioXml(xmlElement);
+			result.AddAssemblyInfo(methodInfo);
+			//assert
+			Assert.AreEqual("System.Single", result.ReturnTypeName);
+			Assert.AreEqual("DataFilesTest.DotNetMethodOperatorTests.ClassA", result.Parameters[0].TypeName);
+		}
+
 		[TestMethod]
 		public void DotNetMethodOperator_Equals_True()
 		{
@@ -145,6 +188,29 @@ namespace DataFilesTest
 			};
 			//act
 			list.Sort();
+			//assert
+			Assert.AreEqual("System.Byte", list[0].Parameters[1].TypeName);
+			Assert.AreEqual("System.Decimal", list[1].Parameters[1].TypeName);
+			Assert.AreEqual("System.Int32", list[2].Parameters[1].TypeName);
+			Assert.AreEqual("System.Int64", list[3].Parameters[1].TypeName);
+		}
+
+		[TestMethod]
+		public void DotNetMethodOperator_SortLINQ_OperatorOrder_ByParameters()
+		{
+			//arrange
+			string xmlA = "<member name='M:MyNamespace.MyClass.op_Addition(MyNamespace.MyClass,System.Byte)' />";
+			string xmlB = "<member name='M:MyNamespace.MyClass.op_Addition(MyNamespace.MyClass,System.Decimal)' />";
+			string xmlC = "<member name='M:MyNamespace.MyClass.op_Addition(MyNamespace.MyClass,System.Int32)' />";
+			string xmlD = "<member name='M:MyNamespace.MyClass.op_Addition(MyNamespace.MyClass,System.Int64)' />";
+			List<DotNetMethodOperator> list = new List<DotNetMethodOperator>() {
+				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlC)),
+				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlA)),
+				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlD)),
+				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlB)),
+			};
+			//act
+			list = list.OrderBy(x => x).ToList();
 			//assert
 			Assert.AreEqual("System.Byte", list[0].Parameters[1].TypeName);
 			Assert.AreEqual("System.Decimal", list[1].Parameters[1].TypeName);

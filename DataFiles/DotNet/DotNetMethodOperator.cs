@@ -13,6 +13,9 @@ namespace WithoutHaste.DataFiles.DotNet
 	{
 		/// <summary>Operators will be sorted into this order.</summary>
 		public static readonly string[] OperatorOrder = new string[] {
+				"op_Implicit",
+				"op_Explicit",
+
 				"op_Addition",
 				"op_Increment",
 				"op_Subtraction",
