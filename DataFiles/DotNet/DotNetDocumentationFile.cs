@@ -84,6 +84,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			{
 				AddAssemblyInfoToType(typeInfo);
 			}
+			ResolveDuplicatedComments();
 			ResolveInheritedComments();
 		}
 
@@ -176,12 +177,34 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 		}
 
+		internal void ResolveDuplicatedComments()
+		{
+			foreach(DotNetType type in Types)
+			{
+				type.ResolveDuplicatedComments(FindMember);
+			}
+			foreach(DotNetDelegate _delegate in Delegates)
+			{
+				_delegate.ResolveDuplicatedComments(FindMember);
+			}
+		}
+
 		private DotNetType FindType(DotNetQualifiedName name)
 		{
 			DotNetType type = Types.FirstOrDefault(x => x.Is(name) || x.Owns(name));
 			if(type == null) return null;
 
 			return type.FindType(name);
+		}
+
+		private DotNetMember FindMember(DotNetQualifiedName name)
+		{
+			DotNetType type = Types.FirstOrDefault(x => x.Is(name) || x.Owns(name));
+			if(type == null)
+			{
+				return Delegates.FirstOrDefault(x => x.Is(name));
+			}
+			return type.FindMember(name);
 		}
 
 		private bool IsNestedType(DotNetType type)

@@ -42,6 +42,19 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 		}
 
+		internal bool DuplicatesDocumentation {
+			get {
+				return (!FloatingComments.IsEmpty && FloatingComments.Comments.OfType<DotNetCommentDuplicate>().Count() > 0);
+			}
+		}
+
+		internal DotNetQualifiedName DuplicatesFrom {
+			get {
+				DotNetCommentDuplicate comment = FloatingComments.Comments.OfType<DotNetCommentDuplicate>().FirstOrDefault();
+				return comment?.Name;
+			}
+		}
+
 		/// <summary>Comments from "summary" xml tags. Only expected as a top-level tag.</summary>
 		/// <remarks>If there are multiple "summary" tags, their contents will be concatenated as if they were one tag.</remarks>
 		public DotNetCommentGroup SummaryComments = new DotNetCommentGroup();
@@ -143,10 +156,26 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>
+		/// For all "duplicate" comments, replace the comment with the duplicated comments.
+		/// </summary>
+		/// <param name="FindMember">Function that returns the selected member from all known members in the assembly.</param>
+		public virtual void ResolveDuplicatedComments(Func<DotNetQualifiedName, DotNetMember> FindMember)
+		{
+			//todo: the duplicated member itself duplicates - watch out for loops
+			if(!DuplicatesDocumentation)
+				return;
+			DotNetMember copyFrom = FindMember(DuplicatesFrom);
+			CopyComments(copyFrom);
+		}
+
+		/// <summary>
 		/// Shallow-copies all comments from the <paramref name="original"/> member to this member.
 		/// </summary>
 		public void CopyComments(DotNetMember original)
 		{
+			if(original == null)
+				return;
+
 			SummaryComments.Comments.Clear();
 			SummaryComments.Comments.AddRange(original.SummaryComments.Comments);
 

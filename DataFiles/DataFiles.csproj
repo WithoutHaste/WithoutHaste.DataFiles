@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Counters.cs" />
     <Compile Include="DotNet\DotNetBaseType.cs" />
+    <Compile Include="DotNet\DotNetCommentDuplicate.cs" />
     <Compile Include="DotNet\DotNetCommentInherit.cs" />
     <Compile Include="DotNet\DotNetCommentMethodLinkedGroup.cs" />
     <Compile Include="DotNet\DotNetDelegate.cs" />

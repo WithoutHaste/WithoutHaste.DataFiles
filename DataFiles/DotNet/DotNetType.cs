@@ -115,7 +115,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		public List<DotNetEvent> Events = new List<DotNetEvent>();
 
 		/// <summary>
-		/// Lists all methods, fields, properties, and events.
+		/// Lists all methods, delegates, fields, properties, and events.
 		/// Does not include nested types.
 		/// </summary>
 		public List<DotNetMember> AllMembers {
@@ -125,6 +125,7 @@ namespace WithoutHaste.DataFiles.DotNet
 				members.AddRange(Fields);
 				members.AddRange(Properties);
 				members.AddRange(Events);
+				members.AddRange(Delegates);
 				return members;
 			}
 		}
@@ -189,9 +190,32 @@ namespace WithoutHaste.DataFiles.DotNet
 			return (Name.FullName == name.FullNamespace);
 		}
 
-		private DotNetType GetDirectChild(DotNetQualifiedName name)
+		private DotNetMember GetDirectChild(DotNetQualifiedName name)
 		{
-			return NestedTypes.FirstOrDefault(subtype => subtype.Name.LocalName == name.LocalName);
+			if(name is DotNetQualifiedMethodName)
+			{
+				foreach(DotNetMethod method in Methods)
+				{
+					if(method.MatchesSignature(name as DotNetQualifiedMethodName))
+						return method;
+				}
+				foreach(DotNetDelegate _delegate in Delegates)
+				{
+					if(_delegate.MatchesSignature(name as DotNetQualifiedMethodName))
+						return _delegate;
+				}
+			}
+			foreach(DotNetField field in Fields.Union(Properties).Union(Events))
+			{
+				if(field.Name.LocalName == name.LocalName)
+					return field;
+			}
+			foreach(DotNetType nestedType in NestedTypes)
+			{
+				if(nestedType.Is(name))
+					return nestedType;
+			}
+			return null;
 		}
 
 		/// <summary>
@@ -237,6 +261,23 @@ namespace WithoutHaste.DataFiles.DotNet
 		public DotNetMethod FindMethod(string localName, List<DotNetParameter> parameters) //todo: overrides generic method using diff names for the generic type parameters
 		{
 			return Methods.FirstOrDefault(m => m.Name.LocalName == localName && m.MatchesArguments(parameters));
+		}
+
+		/// <summary>
+		/// Returns the specified member, of any type.
+		/// </summary>
+		public DotNetMember FindMember(DotNetQualifiedName name)
+		{
+			if(this.Is(name))
+				return this;
+			if(IsDirectChild(name))
+				return GetDirectChild(name);
+			foreach(DotNetType nestedType in NestedTypes)
+			{
+				if(nestedType.Is(name) || nestedType.Owns(name))
+					return nestedType.FindMember(name);
+			}
+			return null;
 		}
 
 		/// <summary>
@@ -506,6 +547,22 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 		}
 
+		/// <inheritdoc/>
+		public override void ResolveDuplicatedComments(Func<DotNetQualifiedName, DotNetMember> FindMember)
+		{
+			base.ResolveDuplicatedComments(FindMember);
+
+			foreach(DotNetMember member in AllMembers)
+			{
+				member.ResolveDuplicatedComments(FindMember);
+			}
+
+			foreach(DotNetType nestedType in NestedTypes)
+			{
+				nestedType.ResolveDuplicatedComments(FindMember);
+			}
+		}
+
 		#region Convert
 
 		/// <summary>
@@ -525,7 +582,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 			else if(IsDirectChild(name))
 			{
-				DotNetType subtype = GetDirectChild(name);
+				DotNetType subtype = (DotNetType)GetDirectChild(name);
 				DotNetDelegate _delegate = subtype.ToDelegate();
 				NestedTypes.Remove(subtype);
 				Delegates.Add(_delegate);

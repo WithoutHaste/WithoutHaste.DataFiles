@@ -86,15 +86,29 @@ namespace WithoutHaste.DataFiles.DotNet
 
 		#endregion
 
+		/// <summary>
+		/// Returns true if this member's name matches the provided name.
+		/// </summary>
+		public bool Is(DotNetQualifiedName name)
+		{
+			if(!(name is DotNetQualifiedMethodName))
+				return false;
+			return this.MethodName.MatchesSignature(name as DotNetQualifiedMethodName);
+		}
+
 		/// <duplicate cref='DotNetQualifiedMethodName.MatchesSignature(MethodInfo)'/>
 		public bool MatchesSignature(MethodInfo methodInfo)
 		{
 			return MethodName.MatchesSignature(methodInfo);
 		}
 
-		/// <summary>
-		/// Returns true if this method and the method link have matching signatures, based on the fully qualified name and the list of parameter types.
-		/// </summary>
+		/// <duplicate cref='DotNetQualifiedMethodName.MatchesSignature(DotNetQualifiedMethodName)'/>
+		public bool MatchesSignature(DotNetQualifiedMethodName name)
+		{
+			return MethodName.MatchesSignature(name);
+		}
+
+		/// <duplicate cref='DotNetCommentMethodLink.MatchesSignature(DotNetMethod)' />
 		public bool MatchesSignature(DotNetCommentMethodLink link)
 		{
 			return link.MatchesSignature(this);

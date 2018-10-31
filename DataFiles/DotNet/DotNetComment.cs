@@ -58,6 +58,9 @@ namespace WithoutHaste.DataFiles.DotNet
 
 				case "inheritdoc":
 					return new DotNetCommentInherit();
+				case "duplicate":
+					string duplicateCref = element.Attribute("cref")?.Value;
+					return new DotNetCommentDuplicate(DotNetCommentQualifiedLink.FromVisualStudioXml(duplicateCref));
 			}
 			return null;
 		}
