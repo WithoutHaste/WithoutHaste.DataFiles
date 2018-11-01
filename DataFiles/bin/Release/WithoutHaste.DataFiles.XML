@@ -1510,6 +1510,10 @@
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.Category">
             <summary></summary>
         </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.IsSealed">
+            <summary>True if the type is sealed.</summary>
+            <remarks>Abstract classes, static classes, and interfaces cannot be sealed. Exceptions can be sealed.</remarks>
+        </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.BaseType">
             <summary>Base type this type inherits from. Null if not known or none exists.</summary>
         </member>

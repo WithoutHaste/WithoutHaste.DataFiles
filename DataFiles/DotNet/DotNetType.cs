@@ -50,6 +50,10 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public TypeCategory Category { get; protected set; }
 
+		/// <summary>True if the type is sealed.</summary>
+		/// <remarks>Abstract classes, static classes, and interfaces cannot be sealed. Exceptions can be sealed.</remarks>
+		public bool IsSealed { get; protected set; }
+
 		/// <summary>Base type this type inherits from. Null if not known or none exists.</summary>
 		public DotNetBaseType BaseType { get; protected set; }
 
@@ -135,6 +139,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public DotNetType(DotNetQualifiedName name) : base(name)
 		{
+			Category = TypeCategory.Unknown;
+			IsSealed = false;
 		}
 
 		/// <summary>
@@ -343,6 +349,8 @@ namespace WithoutHaste.DataFiles.DotNet
 
 			if(Category == TypeCategory.Unknown)
 				Category = TypeCategory.Normal;
+
+			IsSealed = typeInfo.IsSealed;
 
 			if(typeInfo.BaseType != null)
 			{
