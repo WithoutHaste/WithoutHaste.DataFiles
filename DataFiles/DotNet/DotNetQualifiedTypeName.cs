@@ -109,6 +109,9 @@ namespace WithoutHaste.DataFiles.DotNet
 			if(type == null) return new DotNetQualifiedTypeName();
 
 			string typeName = type.FullName;
+			if(String.IsNullOrEmpty(typeName))
+				typeName = type.Name; //for generic types
+
 			typeName = typeName.ReplaceUnescapedCharacters('\\', '+', '.');
 			if(String.IsNullOrEmpty(typeName))
 				typeName = ""; //todo: this should not be necessary, track down case in EarlyDocs

@@ -19,6 +19,11 @@ namespace DataFilesTest
 			public int IntProperty { get; set; }
 		}
 
+		protected class B<T,U>
+		{
+			public T TField;
+		}
+
 		[TestMethod]
 		public void DotNetField_Assembly_GetType()
 		{
@@ -31,6 +36,20 @@ namespace DataFilesTest
 			//assert
 			Assert.IsNotNull(dotNetType.Fields[0].TypeName);
 			Assert.AreEqual("System.Int32", dotNetType.Fields[0].TypeName.FullName);
+		}
+
+		[TestMethod]
+		public void DotNetField_Assembly_GenericTypeField()
+		{
+			//arrange
+			Type type = typeof(B<,>);
+			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:DataFilesTest.DotNetFieldTests.B'></member>"));
+			dotNetType.AddMember(DotNetField.FromVisualStudioXml(XElement.Parse("<member name='F:DataFilesTest.DotNetFieldTests.B.TField'></member>")));
+			//act
+			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			//assert
+			Assert.IsNotNull(dotNetType.Fields[0].TypeName);
+			Assert.AreEqual("T", dotNetType.Fields[0].TypeName.FullName);
 		}
 	}
 }
