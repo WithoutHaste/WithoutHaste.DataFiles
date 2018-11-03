@@ -173,10 +173,31 @@
             <summary>
             Returns true if this method's signature matches the reflected MethodInfo.
             </summary>
+            <param name="methodInfo">Expects a method with name "get_Item".</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetIndexer.MatchesArguments(System.Reflection.ParameterInfo[])">
             <summary>
             Returns true if this method's parameter list matches the reflected ParameterInfo.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetIndexer.Matches(WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup)">
+            <summary>
+            Returns true if this indexer's signature matches the link.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetIndexer.Matches(WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup)">
+            <summary>
+            Returns true if this indexer's signature matches the link.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetIndexer.Matches(WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink)">
+            <summary>
+            Returns true if this indexer's signature matches the method signature.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetIndexer.Matches(WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName)">
+            <summary>
+            Returns true if this indexer's signature matches the method signature.
             </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod">
@@ -1198,6 +1219,9 @@
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetField.FullTypeName">
             <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetField.ConstantValue">
+            <summary>For constant fields, the value of the constant. Null otherwise.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetField.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary></summary>

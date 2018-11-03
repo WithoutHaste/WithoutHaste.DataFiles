@@ -75,6 +75,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>
 		/// Returns true if this method's signature matches the reflected MethodInfo.
 		/// </summary>
+		/// <param name="methodInfo">Expects a method with name "get_Item".</param>
 		public bool MatchesSignature(MethodInfo methodInfo)
 		{
 			if(methodInfo.Name != "get_Item")
@@ -100,5 +101,53 @@ namespace WithoutHaste.DataFiles.DotNet
 			return true;
 		}
 
+		/// <summary>
+		/// Returns true if this indexer's signature matches the link.
+		/// </summary>
+		public bool Matches(DotNetCommentQualifiedLinkedGroup linkedGroup)
+		{
+			if(linkedGroup is DotNetCommentMethodLinkedGroup)
+			{
+				return Matches(linkedGroup as DotNetCommentMethodLinkedGroup);
+			}
+			return false;
+		}
+
+		/// <summary>
+		/// Returns true if this indexer's signature matches the link.
+		/// </summary>
+		public bool Matches(DotNetCommentMethodLinkedGroup linkedGroup)
+		{
+			return Matches(linkedGroup.MethodLink);
+		}
+
+		/// <summary>
+		/// Returns true if this indexer's signature matches the method signature.
+		/// </summary>
+		public bool Matches(DotNetCommentMethodLink methodLink)
+		{
+			return Matches(methodLink.MethodName);
+		}
+
+		/// <summary>
+		/// Returns true if this indexer's signature matches the method signature.
+		/// </summary>
+		public bool Matches(DotNetQualifiedMethodName methodName)
+		{
+			if(methodName.LocalName != "Item")
+				return false;
+			if(methodName.IsGeneric)
+				return false;
+			if(methodName.FullNamespace != this.Name.FullNamespace)
+				return false;
+			if(Parameters.Count != methodName.Parameters.Count)
+				return false;
+			for(int i = 0; i < Parameters.Count; i++)
+			{
+				if(Parameters[i].TypeName != methodName.Parameters[i].TypeName)
+					return false;
+			}
+			return true;
+		}
 	}
 }

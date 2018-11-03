@@ -26,6 +26,17 @@ namespace DataFilesTest
 			Assert.AreEqual(fieldName, result.QualifiedLink.Name.LocalName);
 			Assert.AreEqual(_namespace + "." + typeName, result.QualifiedLink.Name.FullNamespace);
 		}
+		[TestMethod]
+		public void DotNetCommentPermission_FromXml_Indexer()
+		{
+			//arrange
+			XElement element = XElement.Parse("<permission cref='P:A.B.Item(System.Int32)'>Comments</permission>");
+			//act
+			DotNetCommentQualifiedLinkedGroup result = DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
+			//assert
+			Assert.IsTrue(result is DotNetCommentMethodLinkedGroup);
+		}
+
 
 		[TestMethod]
 		public void DotNetCommentPermission_FromXml_FullyQualifiedMethodLink()

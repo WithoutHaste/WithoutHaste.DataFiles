@@ -151,5 +151,21 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			return ((methodAttributes & MethodAttributes.Abstract) == MethodAttributes.Abstract);
 		}
+
+		internal static bool IsNumeric(this object _object)
+		{
+			return (_object is sbyte
+				|| _object is byte
+				|| _object is short
+				|| _object is ushort
+				|| _object is int
+				|| _object is uint
+				|| _object is long
+				|| _object is ulong
+				|| _object is float
+				|| _object is double
+				|| _object is decimal
+			);
+		}
 	}
 }

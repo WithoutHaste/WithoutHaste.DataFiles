@@ -43,6 +43,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public string FullTypeName { get { return TypeName.FullName; } }
 
+		/// <summary>For constant fields, the value of the constant. Null otherwise.</summary>
+		public object ConstantValue { get; protected set; }
+
 		#region Constructors
 
 		/// <summary></summary>
@@ -89,6 +92,11 @@ namespace WithoutHaste.DataFiles.DotNet
 
 			if(fieldInfo.IsStatic)
 				IsStatic = true;
+
+			if(Category == FieldCategory.Constant)
+			{
+				ConstantValue = fieldInfo.GetRawConstantValue();
+			}
 
 			TypeName = DotNetQualifiedTypeName.FromAssemblyInfo(fieldInfo.FieldType);
 		}

@@ -40,5 +40,22 @@ namespace DataFilesTest
 			Assert.AreEqual(1, indexer.Parameters.Count());
 			Assert.AreEqual("i", indexer.Parameters[0].Name);
 		}
+
+		[TestMethod]
+		public void DotNetIndexer_Assembly_MatchesPermission()
+		{
+			//arrange
+			Type type = typeof(A);
+			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:DataFilesTest.DotNetIndexerTests.A'></member>"));
+			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:DataFilesTest.DotNetIndexerTests.A.Item(System.String)'></member>")));
+			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			XElement permissionElement = XElement.Parse("<permission cref='P:DataFilesTest.DotNetIndexerTests.A.Item(System.String)'></permission>");
+			DotNetCommentQualifiedLinkedGroup permissionComment = DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(permissionElement);
+			//act
+			DotNetIndexer indexerResult = dotNetType.Properties.OfType<DotNetIndexer>().Cast<DotNetIndexer>().First();
+			bool matchesResult = indexerResult.Matches(permissionComment);
+			//assert
+			Assert.IsTrue(matchesResult);
+		}
 	}
 }

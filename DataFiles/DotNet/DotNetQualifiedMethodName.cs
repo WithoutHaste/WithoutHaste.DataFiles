@@ -140,6 +140,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		public new static DotNetQualifiedMethodName FromVisualStudioXml(string signature)
 		{
 			if(signature.StartsWith("M:")) signature = signature.Substring(2);
+			if(signature.StartsWith("P:")) signature = signature.Substring(2); //because of indexers
 
 			string returnType = null;
 			DotNetQualifiedTypeName qualifiedReturnType = null;
