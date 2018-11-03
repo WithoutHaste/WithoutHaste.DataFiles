@@ -13,9 +13,9 @@ namespace WithoutHaste.DataFiles.DotNet
 	public class DotNetMethodConstructor : DotNetMethod
 	{
 		/// <summary></summary>
-		public DotNetMethodConstructor(DotNetQualifiedMethodName name) : base(name)
+		public DotNetMethodConstructor(DotNetQualifiedMethodName name, bool isStatic = false) : base(name)
 		{
-			Category = MethodCategory.Normal;
+			Category = (isStatic) ? MethodCategory.Static : MethodCategory.Normal;
 		}
 
 		/// <summary>

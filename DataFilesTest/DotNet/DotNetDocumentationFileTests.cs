@@ -99,7 +99,7 @@ namespace DataFilesTest
 			Assert.AreEqual(1, methodCA.MethodName.Parameters.Count);
 
 			DotNetMethod methodCConstructor = typeC.Methods[1];
-			Assert.AreEqual("Test.TypeA.NestedTypeB.SubNestedTypeC.SubNestedTypeC", methodCConstructor.Name.FullName);
+			Assert.AreEqual("Test.TypeA.NestedTypeB.SubNestedTypeC.#ctor", methodCConstructor.Name.FullName);
 			Assert.AreEqual(false, methodCConstructor.HasComments);
 			Assert.AreEqual(true, methodCConstructor is DotNetMethodConstructor);
 			Assert.AreEqual(false, methodCConstructor is DotNetMethodOperator);
@@ -115,7 +115,7 @@ namespace DataFilesTest
 			Assert.AreEqual("Test.SingleGenericTypeD<T>", methodDAddition.MethodName.Parameters[1].FullTypeName);
 
 			DotNetMethod methodEConstructor = typeE.Methods[0];
-			Assert.AreEqual("Test.DoubleGenericTypeE<T,U>.DoubleGenericTypeE<T,U>", methodEConstructor.Name.FullName);
+			Assert.AreEqual("Test.DoubleGenericTypeE<T,U>.#ctor", methodEConstructor.Name.FullName);
 			Assert.AreEqual(false, methodEConstructor.HasComments);
 			Assert.AreEqual(true, methodEConstructor is DotNetMethodConstructor);
 			Assert.AreEqual(false, methodEConstructor is DotNetMethodOperator);

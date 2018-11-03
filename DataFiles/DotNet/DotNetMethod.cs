@@ -61,19 +61,15 @@ namespace WithoutHaste.DataFiles.DotNet
 			DotNetQualifiedMethodName methodName = DotNetQualifiedMethodName.FromVisualStudioXml(signature);
 
 			//for constructors
-			bool isConstructor = methodName.LocalName.EndsWith("#ctor");
-			if(isConstructor)
-			{
-				methodName.SetLocalName(methodName.FullNamespace.LocalName);
-			}
-			//todo: check for #cctor for static constructors
+			bool isConstructor = (methodName.LocalName.EndsWith("#ctor") || methodName.LocalName.EndsWith("#cctor"));
+			bool isStatic = methodName.LocalName.EndsWith("#cctor");
 
 			//for operators
 			bool isOperator = methodName.LocalName.StartsWith("op_");
 
 			DotNetMethod method = null;
 			if(isConstructor)
-				method = new DotNetMethodConstructor(methodName);
+				method = new DotNetMethodConstructor(methodName, isStatic);
 			else if(isOperator)
 				method = new DotNetMethodOperator(methodName);
 			else

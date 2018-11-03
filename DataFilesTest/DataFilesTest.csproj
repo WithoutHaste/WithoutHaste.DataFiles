@@ -85,6 +85,7 @@
     <Compile Include="DotNet\DotNetEventTests.cs" />
     <Compile Include="DotNet\DotNetFieldTests.cs" />
     <Compile Include="DotNet\DotNetIndexerTests.cs" />
+    <Compile Include="DotNet\DotNetMethodConstructorTests.cs" />
     <Compile Include="DotNet\DotNetMethodOperatorTests.cs" />
     <Compile Include="DotNet\DotNetPropertyTests.cs" />
     <Compile Include="DotNet\DotNetQualifiedClassNameTests.cs" />

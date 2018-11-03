@@ -519,7 +519,7 @@
             Represents a method that is a constructor.
             </summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodConstructor.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName)">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodConstructor.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName,System.Boolean)">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodConstructor.AddAssemblyInfo(System.Reflection.ConstructorInfo)">
