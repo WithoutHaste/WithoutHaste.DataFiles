@@ -64,12 +64,17 @@ namespace WithoutHaste.DataFiles.DotNet
 			bool isConstructor = (methodName.LocalName.EndsWith("#ctor") || methodName.LocalName.EndsWith("#cctor"));
 			bool isStatic = methodName.LocalName.EndsWith("#cctor");
 
+			//for destructors
+			bool isDestructor = (methodName.LocalName == "Finalize" && methodName.Parameters.Count == 0);
+
 			//for operators
 			bool isOperator = methodName.LocalName.StartsWith("op_");
 
 			DotNetMethod method = null;
 			if(isConstructor)
 				method = new DotNetMethodConstructor(methodName, isStatic);
+			else if(isDestructor)
+				method = new DotNetMethodDestructor(methodName);
 			else if(isOperator)
 				method = new DotNetMethodOperator(methodName);
 			else

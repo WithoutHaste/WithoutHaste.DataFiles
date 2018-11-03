@@ -86,12 +86,14 @@ namespace WithoutHaste.DataFiles.DotNet
 		public List<DotNetMethod> Methods = new List<DotNetMethod>();
 		/// <summary>The subset of Methods that are constructors.</summary>
 		public List<DotNetMethodConstructor> ConstructorMethods { get { return Methods.OfType<DotNetMethodConstructor>().ToList(); } }
+		/// <summary>The subset of Methods that are destructors. There can be zero or one destructors.</summary>
+		public DotNetMethodDestructor DestructorMethod { get { return Methods.OfType<DotNetMethodDestructor>().FirstOrDefault(); } }
 		/// <summary>The subset of Methods that are operator overloads.</summary>
 		public List<DotNetMethodOperator> OperatorMethods { get { return Methods.OfType<DotNetMethodOperator>().ToList(); } }
-		/// <summary>The subset of Methods that are static, but not constructors nor operators.</summary>
-		public List<DotNetMethod> StaticMethods { get { return Methods.Where(m => m.Category == MethodCategory.Static && !(m is DotNetMethodConstructor) && !(m is DotNetMethodOperator)).ToList(); } }
-		/// <summary>The subset of Methods that are not static, nor constructors, nor operators.</summary>
-		public List<DotNetMethod> NormalMethods { get { return Methods.Where(m => (m.Category != MethodCategory.Static) && !(m is DotNetMethodConstructor) && !(m is DotNetMethodOperator)).ToList(); } }
+		/// <summary>The subset of Methods that are static, but not constructors, nor destructors, nor operators.</summary>
+		public List<DotNetMethod> StaticMethods { get { return Methods.Where(m => m.Category == MethodCategory.Static && !(m is DotNetMethodConstructor) && !(m is DotNetMethodDestructor) && !(m is DotNetMethodOperator)).ToList(); } }
+		/// <summary>The subset of Methods that are not static, nor constructors, nor destructors, nor operators.</summary>
+		public List<DotNetMethod> NormalMethods { get { return Methods.Where(m => (m.Category != MethodCategory.Static) && !(m is DotNetMethodConstructor) && !(m is DotNetMethodDestructor) && !(m is DotNetMethodOperator)).ToList(); } }
 
 		/// <summary></summary>
 		public List<DotNetField> Fields = new List<DotNetField>();

@@ -200,6 +200,19 @@
             Returns true if this indexer's signature matches the method signature.
             </summary>
         </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetMethodDestructor">
+            <summary>
+            Represents a method that is a destructor.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodDestructor.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodDestructor.AddAssemblyInfo(System.Reflection.ConstructorInfo)">
+            <summary>
+            Load additional documentation information from the assembly itself.
+            </summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod">
             <summary>
             Represents a getter or a setter method of a property.
@@ -1563,14 +1576,17 @@
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.ConstructorMethods">
             <summary>The subset of Methods that are constructors.</summary>
         </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.DestructorMethod">
+            <summary>The subset of Methods that are destructors. There can be zero or one destructors.</summary>
+        </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.OperatorMethods">
             <summary>The subset of Methods that are operator overloads.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.StaticMethods">
-            <summary>The subset of Methods that are static, but not constructors nor operators.</summary>
+            <summary>The subset of Methods that are static, but not constructors, nor destructors, nor operators.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.NormalMethods">
-            <summary>The subset of Methods that are not static, nor constructors, nor operators.</summary>
+            <summary>The subset of Methods that are not static, nor constructors, nor destructors, nor operators.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.Fields">
             <summary></summary>
