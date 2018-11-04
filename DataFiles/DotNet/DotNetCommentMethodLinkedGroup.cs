@@ -22,17 +22,17 @@ namespace WithoutHaste.DataFiles.DotNet
 		#region Constructors
 
 		/// <summary></summary>
-		public DotNetCommentMethodLinkedGroup(DotNetCommentMethodLink link, DotNetComment comment) : base(link, comment)
+		public DotNetCommentMethodLinkedGroup(DotNetCommentMethodLink link, CommentTag tag, DotNetComment comment) : base(link, tag, comment)
 		{
 		}
 
 		/// <summary></summary>
-		public DotNetCommentMethodLinkedGroup(DotNetCommentMethodLink link, params DotNetComment[] comments) : base(link, comments)
+		public DotNetCommentMethodLinkedGroup(DotNetCommentMethodLink link, CommentTag tag, params DotNetComment[] comments) : base(link, tag, comments)
 		{
 		}
 
 		/// <summary></summary>
-		public DotNetCommentMethodLinkedGroup(DotNetCommentMethodLink link, List<DotNetComment> comments) : base(link, comments)
+		public DotNetCommentMethodLinkedGroup(DotNetCommentMethodLink link, CommentTag tag, List<DotNetComment> comments) : base(link, tag, comments)
 		{
 		}
 

@@ -39,6 +39,11 @@ namespace WithoutHaste.DataFiles.DotNet
 			if(String.IsNullOrEmpty(text))
 				return text;
 
+			if(!text.Contains("\n"))
+			{
+				return TrimFromStartAsLine(text);
+			}
+
 			text = text.Replace("\r", "");
 			while(text.StartsWith("\n"))
 			{
@@ -56,6 +61,23 @@ namespace WithoutHaste.DataFiles.DotNet
 			if(result.EndsWith("\n")) //trailing empty line is an artifact of XML
 				result = result.RemoveFromEnd("\n");
 			return result;
+		}
+
+		/// <summary>
+		/// Trims extra whitespace from beginning and end of string. Allows at most one space on each end.
+		/// Callibrated for formatting inline text nested in XML.
+		/// </summary>
+		internal static string TrimFromStartAsLine(this string text)
+		{
+			Match whitespace = (new Regex(@"^\s+", RegexOptions.IgnoreCase)).Match(text);
+			if(!String.IsNullOrEmpty(whitespace.Value))
+				text = " " + text.RemoveFromStart(whitespace.Value);
+
+			whitespace = (new Regex(@"\s+$", RegexOptions.IgnoreCase)).Match(text);
+			if(!String.IsNullOrEmpty(whitespace.Value))
+				text = text.RemoveFromEnd(whitespace.Value) + " ";
+
+			return text;
 		}
 
 		internal static bool IsAbstract(this TypeAttributes typeAttributes)

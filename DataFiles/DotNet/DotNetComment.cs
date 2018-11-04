@@ -9,10 +9,30 @@ using System.Xml.Linq;
 namespace WithoutHaste.DataFiles.DotNet
 {
 	/// <summary>
+	/// The type of xml tag that the comment came from.
+	/// </summary>
+	public enum CommentTag
+	{
+		/// <summary></summary>
+		Unknown = 0,
+		/// <summary></summary>
+		Exception,
+		/// <summary></summary>
+		Permission,
+		/// <summary></summary>
+		See,
+		/// <summary></summary>
+		SeeAlso,
+	};
+
+	/// <summary>
 	/// Represents a section of documentation, such as the contents of a <![CDATA[<summary></summary>]]> tag.
 	/// </summary>
 	public abstract class DotNetComment
 	{
+		/// <summary>The type of xml tag that the comment came from.</summary>
+		public CommentTag Tag { get; protected set; }
+
 		/// <summary>Parses top-level .Net XML documentation comments. Returns null if no comments are found.</summary>
 		public static DotNetComment FromVisualStudioXml(XElement element)
 		{
@@ -33,10 +53,12 @@ namespace WithoutHaste.DataFiles.DotNet
 				case "permission":
 					return DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
 
-				case "see": //link only
-				case "seealso": //link only
-					string cref = element.Attribute("cref")?.Value;
-					return DotNetCommentQualifiedLink.FromVisualStudioXml(cref);
+				case "see":
+				case "seealso":
+					if(element.Nodes().Count() == 0)
+						return DotNetCommentQualifiedLink.FromVisualStudioXml(element.Attribute("cref")?.Value);
+					else
+						return DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
 
 				case "list":
 					return DotNetCommentList.FromVisualStudioXml(element);
@@ -124,6 +146,21 @@ namespace WithoutHaste.DataFiles.DotNet
 		public static bool IsXmlTag(XElement element, string[] localNames)
 		{
 			return !(element == null || !localNames.Contains(element.Name.LocalName));
+		}
+
+		/// <summary>
+		/// Returns the CommentTag value that corresponds to the XElement.
+		/// </summary>
+		public static CommentTag GetTag(XElement element)
+		{
+			switch(element.Name.LocalName.ToLower())
+			{
+				case "exception": return CommentTag.Exception;
+				case "permission": return CommentTag.Permission;
+				case "see": return CommentTag.See;
+				case "seealso": return CommentTag.SeeAlso;
+			}
+			return CommentTag.Unknown;
 		}
 	}
 }

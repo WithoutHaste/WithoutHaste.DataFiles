@@ -118,13 +118,13 @@
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup.MethodLink">
             <summary>Strongly-typed link.</summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink,WithoutHaste.DataFiles.DotNet.DotNetComment)">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink,WithoutHaste.DataFiles.DotNet.CommentTag,WithoutHaste.DataFiles.DotNet.DotNetComment)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink,WithoutHaste.DataFiles.DotNet.DotNetComment[])">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink,WithoutHaste.DataFiles.DotNet.CommentTag,WithoutHaste.DataFiles.DotNet.DotNetComment[])">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetComment})">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink,WithoutHaste.DataFiles.DotNet.CommentTag,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetComment})">
             <summary></summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetDelegate">
@@ -455,13 +455,13 @@
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.QualifiedLink">
             <summary>Strongly-typed link.</summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink,WithoutHaste.DataFiles.DotNet.DotNetComment)">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink,WithoutHaste.DataFiles.DotNet.CommentTag,WithoutHaste.DataFiles.DotNet.DotNetComment)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink,WithoutHaste.DataFiles.DotNet.DotNetComment[])">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink,WithoutHaste.DataFiles.DotNet.CommentTag,WithoutHaste.DataFiles.DotNet.DotNetComment[])">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetComment})">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink,WithoutHaste.DataFiles.DotNet.CommentTag,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetComment})">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(System.Xml.Linq.XElement)">
@@ -938,10 +938,33 @@
             	</example>
             </param>
         </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.CommentTag">
+            <summary>
+            The type of xml tag that the comment came from.
+            </summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.Unknown">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.Exception">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.Permission">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.See">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.SeeAlso">
+            <summary></summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetComment">
             <summary>
             Represents a section of documentation, such as the contents of a <![CDATA[<summary></summary>]]> tag.
             </summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetComment.Tag">
+            <summary>The type of xml tag that the comment came from.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetComment.FromVisualStudioXml(System.Xml.Linq.XElement)">
             <summary>Parses top-level .Net XML documentation comments. Returns null if no comments are found.</summary>
@@ -972,6 +995,11 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetComment.IsXmlTag(System.Xml.Linq.XElement,System.String[])">
             <summary>
             Returns false on unexpected xml formats.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetComment.GetTag(System.Xml.Linq.XElement)">
+            <summary>
+            Returns the CommentTag value that corresponds to the XElement.
             </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentCell">
@@ -1858,6 +1886,12 @@
             <summary>
             Trims an equal amount of leading white-space from each line, delimited by \n character.
             Callibrated for formatting blocks of text nested in XML.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.Utilities.TrimFromStartAsLine(System.String)">
+            <summary>
+            Trims extra whitespace from beginning and end of string. Allows at most one space on each end.
+            Callibrated for formatting inline text nested in XML.
             </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile">

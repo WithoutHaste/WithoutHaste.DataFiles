@@ -51,6 +51,31 @@ namespace DataFilesTest
 		}
 
 		[TestMethod]
+		public void DotNetCommentText_FromXml_InLine()
+		{
+			//arrange
+			string originalText = " or ";
+			string expectedResult = " or ";
+			//act
+			DotNetCommentText result = DotNetCommentText.FromVisualStudioXml(originalText);
+			//assert
+			Assert.AreEqual(expectedResult, result.Text);
+		}
+
+		[TestMethod]
+		public void DotNetCommentText_FromXml_InLine_RealExample_A()
+		{
+			//arrange
+			XElement element = XElement.Parse(@"<summary><see cref='P:Test.ClassSeeAlso.PropertyA'/> or <see cref='P:Test.ClassSeeAlso.PropertyA'>Local property</see></summary>");
+			//act
+			DotNetComment result = DotNetComment.FromVisualStudioXml(element);
+			DotNetCommentGroup groupResult = result as DotNetCommentGroup;
+			//assert
+			Assert.AreEqual(3, groupResult.Comments.Count);
+			Assert.AreEqual(" or ", (groupResult.Comments[1] as DotNetCommentText).Text);
+		}
+
+		[TestMethod]
 		public void DotNetCommentText_FromXml_RealExample_A()
 		{
 			//arrange

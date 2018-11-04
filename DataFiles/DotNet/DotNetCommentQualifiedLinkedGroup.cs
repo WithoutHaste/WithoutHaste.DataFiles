@@ -22,32 +22,37 @@ namespace WithoutHaste.DataFiles.DotNet
 		#region Constructors
 
 		/// <summary></summary>
-		public DotNetCommentQualifiedLinkedGroup(DotNetCommentQualifiedLink link, DotNetComment comment) : base(link, comment)
+		public DotNetCommentQualifiedLinkedGroup(DotNetCommentQualifiedLink link, CommentTag tag, DotNetComment comment) : base(link, comment)
 		{
+			Tag = tag;
 		}
 
 		/// <summary></summary>
-		public DotNetCommentQualifiedLinkedGroup(DotNetCommentQualifiedLink link, params DotNetComment[] comments) : base(link, comments)
+		public DotNetCommentQualifiedLinkedGroup(DotNetCommentQualifiedLink link, CommentTag tag, params DotNetComment[] comments) : base(link, comments)
 		{
+			Tag = tag;
 		}
 
 		/// <summary></summary>
-		public DotNetCommentQualifiedLinkedGroup(DotNetCommentQualifiedLink link, List<DotNetComment> comments) : base(link, comments)
+		public DotNetCommentQualifiedLinkedGroup(DotNetCommentQualifiedLink link, CommentTag tag, List<DotNetComment> comments) : base(link, comments)
 		{
+			Tag = tag;
 		}
 
 		/// <summary>Parses .Net XML documentation for permission or exception.</summary>
 		public static new DotNetCommentQualifiedLinkedGroup FromVisualStudioXml(XElement element)
 		{
-			ValidateXmlTag(element, new string[] { "permission", "exception" });
+			ValidateXmlTag(element, new string[] { "permission", "exception", "see", "seealso" });
+			CommentTag tag = DotNetComment.GetTag(element);
+
 			DotNetCommentQualifiedLink link = DotNetCommentQualifiedLink.FromVisualStudioXml(element.Attribute("cref")?.Value);
 			List<DotNetComment> comments = ParseSection(element);
 
 			if(link is DotNetCommentMethodLink)
 			{
-				return new DotNetCommentMethodLinkedGroup(link as DotNetCommentMethodLink, comments);
+				return new DotNetCommentMethodLinkedGroup(link as DotNetCommentMethodLink, tag, comments);
 			}
-			return new DotNetCommentQualifiedLinkedGroup(link, comments);
+			return new DotNetCommentQualifiedLinkedGroup(link, tag, comments);
 		}
 
 		#endregion

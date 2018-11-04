@@ -109,6 +109,23 @@ see https://www.nuget.org/packages/EPPlus/ for example (bottom of page) of how t
       </Row>
       <Row>
         <Cell>
+          <Data ss:Type="Number">35</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">extend support for CommentTag enum</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Minor</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-11-03T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
           <Data ss:Type="Number">16</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -743,7 +760,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">34</Data>
+          <Data ss:Type="Number">35</Data>
         </Cell>
       </Row>
       <Row>
