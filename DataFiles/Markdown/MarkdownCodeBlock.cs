@@ -15,10 +15,17 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// Full text of code, with endline characters between lines.
 		/// </summary>
 		public readonly string Text;
+
 		/// <summary>
 		/// Language tag supported by highlight.js for syntax highlighting.
 		/// </summary>
 		public readonly string Language;
+
+		/// <summary></summary>
+		public MarkdownCodeBlock(string text)
+		{
+			Text = text;
+		}
 
 		/// <summary></summary>
 		public MarkdownCodeBlock(string text, string language)
@@ -30,7 +37,10 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <inheritdoc />
 		public string ToMarkdown(string previousText)
 		{
-			return String.Format("\n```{0}\n{1}```\n\n", Language, Text);
+			string text = Text;
+			if(!text.EndsWith("\n"))
+				text += "\n";
+			return String.Format("\n```{0}\n{1}```\n\n", Language, text);
 		}
 	}
 }

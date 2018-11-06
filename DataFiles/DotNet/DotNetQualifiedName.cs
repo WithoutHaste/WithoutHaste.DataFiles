@@ -178,6 +178,18 @@ namespace WithoutHaste.DataFiles.DotNet
 			return String.Join(".", names);
 		}
 
+		/// <summary>Returns true if this Name is nested inside the other Name.</summary>
+		/// <example>"System.Text.RegularExpressions" is within "System.Text" and "System".</example>
+		/// <example>"System" is not within null or empty Name.</example>
+		public bool IsWithin(DotNetQualifiedName other)
+		{
+			if(this.FullNamespace == null || other == null)
+				return false;
+			if(this.FullNamespace == other)
+				return true;
+			return this.FullNamespace.IsWithin(other);
+		}
+
 		#region Low Level Operations
 
 		/// <summary>Returns dot notation of namespaces and local name.</summary>

@@ -399,5 +399,53 @@ namespace DataFilesTest
 			//assert
 			Assert.AreEqual(1, result);
 		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_IsWithin_DirectChild()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("System.Text");
+			DotNetQualifiedName b = DotNetQualifiedName.FromVisualStudioXml("System.Text.RegularExpressions");
+			//act
+			bool result = b.IsWithin(a);
+			//assert
+			Assert.AreEqual(true, result);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_IsWithin_GrandChild()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("System");
+			DotNetQualifiedName b = DotNetQualifiedName.FromVisualStudioXml("System.Text.RegularExpressions");
+			//act
+			bool result = b.IsWithin(a);
+			//assert
+			Assert.AreEqual(true, result);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_IsWithin_Null()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("");
+			DotNetQualifiedName b = DotNetQualifiedName.FromVisualStudioXml("System.Text.RegularExpressions");
+			//act
+			bool result = b.IsWithin(a);
+			//assert
+			Assert.AreEqual(false, result);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_IsWithin_Different()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("System.Collections");
+			DotNetQualifiedName b = DotNetQualifiedName.FromVisualStudioXml("System.Text.RegularExpressions");
+			//act
+			bool result = b.IsWithin(a);
+			//assert
+			Assert.AreEqual(false, result);
+		}
 	}
 }

@@ -1908,6 +1908,11 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.Combine(System.Collections.Generic.List{System.String})">
             <summary>Return the names combined with a '.' delimiter.</summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.IsWithin(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary>Returns true if this Name is nested inside the other Name.</summary>
+            <example>"System.Text.RegularExpressions" is within "System.Text" and "System".</example>
+            <example>"System" is not within null or empty Name.</example>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.op_Implicit(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)~System.String">
             <summary>Returns dot notation of namespaces and local name.</summary>
             <example>A.B.C.LocalName</example>
@@ -2509,6 +2514,9 @@
             <summary>
             Language tag supported by highlight.js for syntax highlighting.
             </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownCodeBlock.#ctor(System.String)">
+            <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownCodeBlock.#ctor(System.String,System.String)">
             <summary></summary>
