@@ -10,10 +10,10 @@ namespace WithoutHaste.DataFiles.Markdown
 	public abstract class MarkdownLink : IMarkdownInLine
 	{
 		/// <summary>Plain text of link.</summary>
-		public string Text { get; protected set; }
+		public string Text { get; set; }
 
 		/// <summary>Url of target.</summary>
-		public string Url { get; protected set; }
+		public string Url { get; set; }
 
 		#region Constructors
 
