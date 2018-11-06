@@ -27,11 +27,25 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 		}
 
+		#region Constructors
+
 		/// <summary></summary>
 		public DotNetCommentText(string text)
 		{
 			if(text == "") text = null;
 			else Text = text.TrimFromStartAsBlock();
 		}
+
+		#endregion
+
+		#region Low Level
+
+		/// <summary>Returns full text.</summary>
+		public override string ToString()
+		{
+			return Text;
+		}
+
+		#endregion
 	}
 }

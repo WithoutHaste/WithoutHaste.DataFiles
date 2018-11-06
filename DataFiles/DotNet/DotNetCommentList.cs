@@ -55,6 +55,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			Items.AddRange(items);
 			IsNumbered = isNumbered;
+			Tag = CommentTag.List;
 		}
 		
 		/// <summary>Parses .Net XML documentation list (which may actually be a table).</summary>

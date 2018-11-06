@@ -15,7 +15,7 @@ namespace DataFilesTest
 		public void DotNetCommentRow_FromXml_EmptyHeader()
 		{
 			//arrange
-			XElement element = XElement.Parse("<listheader />");
+			XElement element = XElement.Parse("<listheader />", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentRow result = DotNetCommentRow.FromVisualStudioXml(element);
 			//assert
@@ -28,7 +28,7 @@ namespace DataFilesTest
 		public void DotNetCommentRow_FromXml_EmptyData()
 		{
 			//arrange
-			XElement element = XElement.Parse("<item />");
+			XElement element = XElement.Parse("<item />", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentRow result = DotNetCommentRow.FromVisualStudioXml(element);
 			//assert

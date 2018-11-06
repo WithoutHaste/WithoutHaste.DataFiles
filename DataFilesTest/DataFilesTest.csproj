@@ -123,6 +123,9 @@
     <Content Include="data\DotNetCommentTable_Full.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="data\DotNetCommentText_Inline_RealExample_B.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\DotNetDocumentationFile_Full.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

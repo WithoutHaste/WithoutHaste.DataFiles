@@ -18,16 +18,19 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public DotNetCommentTypeParameter(DotNetCommentTypeParameterLink link, DotNetComment comment) : base(link, comment)
 		{
+			Tag = CommentTag.TypeParam;
 		}
 
 		/// <summary></summary>
 		public DotNetCommentTypeParameter(DotNetCommentTypeParameterLink link, params DotNetComment[] comments) : base(link, comments)
 		{
+			Tag = CommentTag.TypeParam;
 		}
 
 		/// <summary></summary>
 		public DotNetCommentTypeParameter(DotNetCommentTypeParameterLink link, List<DotNetComment> comments) : base(link, comments)
 		{
+			Tag = CommentTag.TypeParam;
 		}
 
 		/// <summary>Parses .Net XML documentation for typeparam.</summary>

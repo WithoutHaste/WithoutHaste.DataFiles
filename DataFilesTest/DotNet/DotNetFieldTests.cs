@@ -29,8 +29,8 @@ namespace DataFilesTest
 		{
 			//arrange
 			Type type = typeof(A);
-			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:A'></member>"));
-			dotNetType.AddMember(DotNetField.FromVisualStudioXml(XElement.Parse("<member name='F:A.IntField'></member>")));
+			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:A'></member>", LoadOptions.PreserveWhitespace));
+			dotNetType.AddMember(DotNetField.FromVisualStudioXml(XElement.Parse("<member name='F:A.IntField'></member>", LoadOptions.PreserveWhitespace)));
 			//act
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
 			//assert
@@ -43,8 +43,8 @@ namespace DataFilesTest
 		{
 			//arrange
 			Type type = typeof(B<,>);
-			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:DataFilesTest.DotNetFieldTests.B'></member>"));
-			dotNetType.AddMember(DotNetField.FromVisualStudioXml(XElement.Parse("<member name='F:DataFilesTest.DotNetFieldTests.B.TField'></member>")));
+			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:DataFilesTest.DotNetFieldTests.B'></member>", LoadOptions.PreserveWhitespace));
+			dotNetType.AddMember(DotNetField.FromVisualStudioXml(XElement.Parse("<member name='F:DataFilesTest.DotNetFieldTests.B.TField'></member>", LoadOptions.PreserveWhitespace)));
 			//act
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
 			//assert

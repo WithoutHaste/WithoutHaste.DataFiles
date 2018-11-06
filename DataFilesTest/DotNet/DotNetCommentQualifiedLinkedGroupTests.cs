@@ -17,7 +17,7 @@ namespace DataFilesTest
 			string fullNamespace = "System.X";
 			string typeName = "ArgumentException";
 			string qualifiedName = fullNamespace + "." + typeName;
-			XElement element = XElement.Parse("<exception cref='" + qualifiedName + "' />");
+			XElement element = XElement.Parse("<exception cref='" + qualifiedName + "' />", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentQualifiedLinkedGroup result = DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
 			//assert
@@ -32,12 +32,13 @@ namespace DataFilesTest
 			string fullNamespace = "System.X";
 			string typeName = "ArgumentException";
 			string qualifiedName = fullNamespace + "." + typeName;
-			XElement element = XElement.Parse("<exception cref='" + qualifiedName + "'>" + DotNetCommentGroupTests.GetXmlCommentsNestedInTag() + "</exception>");
+			string comments = Utilities.LoadText("data/DotNetCommentGroup_XmlCommentsNestedInTag.txt");
+			XElement element = XElement.Parse("<exception cref='" + qualifiedName + "'>" + comments + "</exception>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentQualifiedLinkedGroup result = DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
 			//assert
 			Assert.AreEqual(qualifiedName, result.Link.FullName);
-			DotNetCommentGroupTests.ValidateXmlCommentsNestedInTag(result.Comments);
+			Assert.AreEqual(14, result.Comments.Count);
 		}
 
 		[TestMethod]
@@ -49,7 +50,7 @@ namespace DataFilesTest
 			string methodName = "MyMethod";
 			string parameters = "(int, string)";
 			string qualifiedName = fullNamespace + "." + typeName + "." + methodName;
-			XElement element = XElement.Parse("<permission cref='" + qualifiedName + parameters + "' />");
+			XElement element = XElement.Parse("<permission cref='" + qualifiedName + parameters + "' />", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentQualifiedLinkedGroup result = DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
 			//assert
@@ -66,12 +67,13 @@ namespace DataFilesTest
 			string methodName = "MyMethod";
 			string parameters = "(int, string)";
 			string qualifiedName = fullNamespace + "." + typeName + "." + methodName;
-			XElement element = XElement.Parse("<permission cref='" + qualifiedName + parameters + "'>" + DotNetCommentGroupTests.GetXmlCommentsNestedInTag() + "</permission>");
+			string comments = Utilities.LoadText("data/DotNetCommentGroup_XmlCommentsNestedInTag.txt");
+			XElement element = XElement.Parse("<permission cref='" + qualifiedName + parameters + "'>" + comments + "</permission>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentQualifiedLinkedGroup result = DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
 			//assert
 			Assert.AreEqual(qualifiedName, result.Link.FullName);
-			DotNetCommentGroupTests.ValidateXmlCommentsNestedInTag(result.Comments);
+			Assert.AreEqual(14, result.Comments.Count);
 		}
 
 		[TestMethod]
@@ -82,7 +84,7 @@ namespace DataFilesTest
 			string typeName = "MyType";
 			string memberName = "MyMember";
 			string qualifiedName = fullNamespace + "." + typeName + "." + memberName;
-			XElement element = XElement.Parse("<permission cref='" + qualifiedName + "' />");
+			XElement element = XElement.Parse("<permission cref='" + qualifiedName + "' />", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentQualifiedLinkedGroup result = DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
 			//assert
@@ -98,12 +100,13 @@ namespace DataFilesTest
 			string typeName = "MyType";
 			string memberName = "MyMember";
 			string qualifiedName = fullNamespace + "." + typeName + "." + memberName;
-			XElement element = XElement.Parse("<permission cref='" + qualifiedName + "'>" + DotNetCommentGroupTests.GetXmlCommentsNestedInTag() + "</permission>");
+			string comments = Utilities.LoadText("data/DotNetCommentGroup_XmlCommentsNestedInTag.txt");
+			XElement element = XElement.Parse("<permission cref='" + qualifiedName + "'>" + comments + "</permission>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentQualifiedLinkedGroup result = DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
 			//assert
 			Assert.AreEqual(qualifiedName, result.Link.FullName);
-			DotNetCommentGroupTests.ValidateXmlCommentsNestedInTag(result.Comments);
+			Assert.AreEqual(14, result.Comments.Count);
 		}
 	}
 }

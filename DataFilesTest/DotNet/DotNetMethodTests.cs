@@ -60,7 +60,7 @@ namespace DataFilesTest
 		public void DotNetMethod_FromXml_GenericParameter()
 		{
 			//arrange
-			XElement xmlElement = XElement.Parse("<member name='M:Demo.DoubleGenericClass`2.op_Addition(`0,Demo.DoubleGenericClass{`0,`1})' />");
+			XElement xmlElement = XElement.Parse("<member name='M:Demo.DoubleGenericClass`2.op_Addition(`0,Demo.DoubleGenericClass{`0,`1})' />", LoadOptions.PreserveWhitespace);
 			string expectedFullName = "Demo.DoubleGenericClass<T,U>.op_Addition";
 			//act
 			DotNetMethod result = DotNetMethod.FromVisualStudioXml(xmlElement);
@@ -72,7 +72,7 @@ namespace DataFilesTest
 		public void DotNetMethod_FromAssembly_ReturnVoid()
 		{
 			//arrange
-			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.NormalClass.MethodReturnVoid' />");
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.NormalClass.MethodReturnVoid' />", LoadOptions.PreserveWhitespace);
 			string expectedFullName = "DataFilesTest.DotNetMethodTests.NormalClass.MethodReturnVoid";
 			string expectedReturnFullName = "System.Void";
 			Type type = typeof(NormalClass);
@@ -89,7 +89,7 @@ namespace DataFilesTest
 		public void DotNetMethod_FromAssembly_ReturnNormal()
 		{
 			//arrange
-			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.NormalClass.MethodReturnNormal' />");
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.NormalClass.MethodReturnNormal' />", LoadOptions.PreserveWhitespace);
 			string expectedFullName = "DataFilesTest.DotNetMethodTests.NormalClass.MethodReturnNormal";
 			string expectedReturnFullName = "System.Int32";
 			Type type = typeof(NormalClass);
@@ -106,7 +106,7 @@ namespace DataFilesTest
 		public void DotNetMethod_FromAssembly_ReturnGeneric()
 		{
 			//arrange
-			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.NormalClass.MethodReturnGeneric' />");
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.NormalClass.MethodReturnGeneric' />", LoadOptions.PreserveWhitespace);
 			string expectedFullName = "DataFilesTest.DotNetMethodTests.NormalClass.MethodReturnGeneric";
 			string expectedReturnFullName = "System.Collections.Generic.List<System.Int32>";
 			Type type = typeof(NormalClass);
@@ -123,7 +123,7 @@ namespace DataFilesTest
 		public void DotNetMethod_FromAssembly_ReturnNestedGeneric()
 		{
 			//arrange
-			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.NormalClass.MethodReturnNestedGeneric' />");
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.NormalClass.MethodReturnNestedGeneric' />", LoadOptions.PreserveWhitespace);
 			string expectedFullName = "DataFilesTest.DotNetMethodTests.NormalClass.MethodReturnNestedGeneric";
 			string expectedReturnFullName = "DataFilesTest.DotNetMethodTests.GenericOne<System.String>.NestedGeneric<System.Int32>";
 			Type type = typeof(NormalClass);
@@ -140,7 +140,7 @@ namespace DataFilesTest
 		public void DotNetMethod_FromAssembly_MethodOneGeneric_AddedToMethod()
 		{
 			//arrange
-			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.NormalClass.MethodOneGeneric``1' />");
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.NormalClass.MethodOneGeneric``1' />", LoadOptions.PreserveWhitespace);
 			string expectedFullName = "DataFilesTest.DotNetMethodTests.NormalClass.MethodOneGeneric<CustomA>";
 			Type type = typeof(NormalClass);
 			MethodInfo methodInfo = type.GetMethods().First(m => m.Name == "MethodOneGeneric");
@@ -155,8 +155,8 @@ namespace DataFilesTest
 		public void DotNetMethod_FromAssembly_MethodOneGeneric_AddedToType()
 		{
 			//arrange
-			XElement typeXmlElement = XElement.Parse("<member name='T:DataFilesTest.DotNetMethodTests.NormalClass' />");
-			XElement methodXmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.NormalClass.MethodOneGeneric``1' />");
+			XElement typeXmlElement = XElement.Parse("<member name='T:DataFilesTest.DotNetMethodTests.NormalClass' />", LoadOptions.PreserveWhitespace);
+			XElement methodXmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.NormalClass.MethodOneGeneric``1' />", LoadOptions.PreserveWhitespace);
 			string expectedFullName = "DataFilesTest.DotNetMethodTests.NormalClass.MethodOneGeneric<CustomA>";
 			Type type = typeof(NormalClass);
 			TypeInfo typeInfo = type.GetTypeInfo();
@@ -175,7 +175,7 @@ namespace DataFilesTest
 		public void DotNetMethod_FromAssembly_ZeroParameters()
 		{
 			//arrange
-			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.ParameterClass.MethodZeroParameters' />");
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.ParameterClass.MethodZeroParameters' />", LoadOptions.PreserveWhitespace);
 			string expectedFullName = "DataFilesTest.DotNetMethodTests.ParameterClass.MethodZeroParameters";
 			Type type = typeof(ParameterClass);
 			MethodInfo methodInfo = type.GetMethods().First(m => m.Name == "MethodZeroParameters");
@@ -191,7 +191,7 @@ namespace DataFilesTest
 		public void DotNetMethod_FromAssembly_OneNormalParameter()
 		{
 			//arrange
-			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.ParameterClass.MethodOneNormalParameter(System.Int32)' />");
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.ParameterClass.MethodOneNormalParameter(System.Int32)' />", LoadOptions.PreserveWhitespace);
 			string expectedFullName = "DataFilesTest.DotNetMethodTests.ParameterClass.MethodOneNormalParameter";
 			Type type = typeof(ParameterClass);
 			MethodInfo methodInfo = type.GetMethods().First(m => m.Name == "MethodOneNormalParameter");
@@ -209,7 +209,7 @@ namespace DataFilesTest
 		public void DotNetMethod_FromAssembly_TwoNormalParameters()
 		{
 			//arrange
-			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.ParameterClass.MethodTwoNormalParameters(System.Int32,System.String)' />");
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.ParameterClass.MethodTwoNormalParameters(System.Int32,System.String)' />", LoadOptions.PreserveWhitespace);
 			string expectedFullName = "DataFilesTest.DotNetMethodTests.ParameterClass.MethodTwoNormalParameters";
 			Type type = typeof(ParameterClass);
 			MethodInfo methodInfo = type.GetMethods().First(m => m.Name == "MethodTwoNormalParameters");
@@ -229,7 +229,7 @@ namespace DataFilesTest
 		public void DotNetMethod_FromAssembly_GenericMethodOneParameter()
 		{
 			//arrange
-			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.ParameterClass.MethodGeneric``1(``0)' />");
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.ParameterClass.MethodGeneric``1(``0)' />", LoadOptions.PreserveWhitespace);
 			string expectedFullName = "DataFilesTest.DotNetMethodTests.ParameterClass.MethodGeneric<A>";
 			Type type = typeof(ParameterClass);
 			MethodInfo methodInfo = type.GetMethods().First(m => m.Name == "MethodGeneric");
@@ -247,7 +247,7 @@ namespace DataFilesTest
 		public void DotNetMethod_FromAssembly_GenericClassOneParameter()
 		{
 			//arrange
-			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.GenericOne`1.MethodClassGeneric(`0)' />");
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.GenericOne`1.MethodClassGeneric(`0)' />", LoadOptions.PreserveWhitespace);
 			string expectedFullName = "DataFilesTest.DotNetMethodTests.GenericOne<T>.MethodClassGeneric";
 			Type type = typeof(GenericOne<>);
 			MethodInfo methodInfo = type.GetMethods().First(m => m.Name == "MethodClassGeneric");
@@ -265,7 +265,7 @@ namespace DataFilesTest
 		public void DotNetMethod_FromAssembly_GenericClassGenericMethodOneParameterFromEach()
 		{
 			//arrange
-			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.GenericOne`1.MethodMethodAndClassGeneric``1(``0,`0)' />");
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.GenericOne`1.MethodMethodAndClassGeneric``1(``0,`0)' />", LoadOptions.PreserveWhitespace);
 			string expectedFullName = "DataFilesTest.DotNetMethodTests.GenericOne<T>.MethodMethodAndClassGeneric<A>";
 			Type type = typeof(GenericOne<>);
 			MethodInfo methodInfo = type.GetMethods().First(m => m.Name == "MethodMethodAndClassGeneric");
@@ -285,7 +285,7 @@ namespace DataFilesTest
 		public void DotNetMethod_FromAssembly_GenericClassGenericMethodOneParameterFromMethod()
 		{
 			//arrange
-			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.GenericOne`1.MethodMethodGeneric``1(``0)' />");
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.GenericOne`1.MethodMethodGeneric``1(``0)' />", LoadOptions.PreserveWhitespace);
 			string expectedFullName = "DataFilesTest.DotNetMethodTests.GenericOne<T>.MethodMethodGeneric<A>";
 			Type type = typeof(GenericOne<>);
 			MethodInfo methodInfo = type.GetMethods().First(m => m.Name == "MethodMethodGeneric");
@@ -303,7 +303,7 @@ namespace DataFilesTest
 		public void DotNetMethod_FromAssembly_ParamComment()
 		{
 			//arrange
-			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.ParameterClass.MethodOneNormalParameter(System.Int32)'><param name='a'>Comments</param></member>");
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.ParameterClass.MethodOneNormalParameter(System.Int32)'><param name='a'>Comments</param></member>", LoadOptions.PreserveWhitespace);
 			Type type = typeof(ParameterClass);
 			MethodInfo methodInfo = type.GetMethods().First(m => m.Name == "MethodOneNormalParameter");
 			//act
@@ -318,7 +318,7 @@ namespace DataFilesTest
 		public void DotNetMethod_FromAssembly_AbstractMethod()
 		{
 			//arrange
-			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.AbstractClass.MethodAbstract()'></member>");
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.AbstractClass.MethodAbstract()'></member>", LoadOptions.PreserveWhitespace);
 			Type type = typeof(AbstractClass);
 			MethodInfo methodInfo = type.GetMethods().First(m => m.Name == "MethodAbstract");
 			//act

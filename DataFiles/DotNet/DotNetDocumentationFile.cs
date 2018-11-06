@@ -53,7 +53,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		public DotNetDocumentationFile(string filename)
 		{
 			FileInfo.ValidateExtension(filename, Extensions);
-			XDocument document = XDocument.Load(filename);
+			XDocument document = XDocument.Load(filename, LoadOptions.PreserveWhitespace);
 			Load(document);
 		}
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
@@ -25,6 +26,21 @@ namespace WithoutHaste.DataFiles.DotNet
 		public DotNetCommentQualifiedLink(DotNetQualifiedName name)
 		{
 			Name = name;
+		}
+
+		/// <summary></summary>
+		public DotNetCommentQualifiedLink(DotNetQualifiedName name, CommentTag tag)
+		{
+			Name = name;
+			Tag = tag;
+		}
+
+		/// <summary>Parses .Net XML documentation tag that contains attribute cref.</summary>
+		public static new DotNetCommentQualifiedLink FromVisualStudioXml(XElement element)
+		{
+			DotNetCommentQualifiedLink link = FromVisualStudioXml(element.Attribute("cref")?.Value);
+			link.Tag = DotNetComment.GetTag(element);
+			return link;
 		}
 
 		/// <summary>Parses .Net XML documentation cref.</summary>

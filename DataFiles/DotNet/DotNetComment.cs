@@ -16,13 +16,43 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		Unknown = 0,
 		/// <summary></summary>
+		C,
+		/// <summary></summary>
+		Code,
+		/// <summary></summary>
+		Duplicate,
+		/// <summary></summary>
+		Example,
+		/// <summary></summary>
 		Exception,
 		/// <summary></summary>
+		InheritDoc,
+		/// <summary></summary>
+		List,
+		/// <summary></summary>
+		Para,
+		/// <summary></summary>
+		Param,
+		/// <summary></summary>
+		ParamRef,
+		/// <summary></summary>
 		Permission,
+		/// <summary></summary>
+		Remarks,
+		/// <summary></summary>
+		Returns,
 		/// <summary></summary>
 		See,
 		/// <summary></summary>
 		SeeAlso,
+		/// <summary></summary>
+		Summary,
+		/// <summary></summary>
+		TypeParam,
+		/// <summary></summary>
+		TypeParamRef,
+		/// <summary></summary>
+		Value,
 	};
 
 	/// <summary>
@@ -44,7 +74,7 @@ namespace WithoutHaste.DataFiles.DotNet
 				case "para": //paragraph
 				case "returns":
 				case "value":
-					DotNetCommentGroup group = new DotNetCommentGroup(ParseSection(element));
+					DotNetCommentGroup group = new DotNetCommentGroup(GetTag(element), ParseSection(element));
 					if(group.IsEmpty)
 						return null;
 					return group;
@@ -56,7 +86,7 @@ namespace WithoutHaste.DataFiles.DotNet
 				case "see":
 				case "seealso":
 					if(element.Nodes().Count() == 0)
-						return DotNetCommentQualifiedLink.FromVisualStudioXml(element.Attribute("cref")?.Value);
+						return DotNetCommentQualifiedLink.FromVisualStudioXml(element);
 					else
 						return DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
 
@@ -96,16 +126,33 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Parses inner .Net XML documentation comments.</summary>
 		protected static List<DotNetComment> ParseSection(XElement element)
 		{
+			element = element.CleanWhitespaces();
 			List<DotNetComment> comments = new List<DotNetComment>();
+			List<CommentTag> nonParagraphTags = new List<CommentTag>() {
+				CommentTag.Unknown,
+				CommentTag.C,
+				CommentTag.ParamRef,
+				CommentTag.See,
+				CommentTag.SeeAlso,
+				CommentTag.TypeParamRef,
+			};
+			bool previousCommentWasAParagraphTag = false;
 			foreach(XNode node in element.Nodes())
 			{
+				DotNetComment comment;
 				switch(node.NodeType)
 				{
 					case XmlNodeType.Element:
-						comments.Add(DotNetComment.FromVisualStudioXml(node as XElement));
+						comment = DotNetComment.FromVisualStudioXml(node as XElement);
+						comments.Add(comment);
+						previousCommentWasAParagraphTag = !nonParagraphTags.Contains(comment.Tag);
 						break;
 					case XmlNodeType.Text:
-						comments.Add(DotNetComment.FromVisualStudioXml(node.ToString()));
+						comment = DotNetComment.FromVisualStudioXml(node.ToString());
+						if(previousCommentWasAParagraphTag && comment.ToString() == "\n")
+							break;
+						comments.Add(comment);
+						previousCommentWasAParagraphTag = !nonParagraphTags.Contains(comment.Tag);
 						break;
 				}
 			}
@@ -155,12 +202,37 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			switch(element.Name.LocalName.ToLower())
 			{
+				case "c": return CommentTag.C;
+				case "code": return CommentTag.Code;
+				case "duplicate": return CommentTag.Duplicate;
+				case "example": return CommentTag.Example;
 				case "exception": return CommentTag.Exception;
+				case "inheritdoc": return CommentTag.InheritDoc;
+				case "list": return CommentTag.List;
+				case "para": return CommentTag.Para;
+				case "param": return CommentTag.Param;
+				case "paramref": return CommentTag.ParamRef;
 				case "permission": return CommentTag.Permission;
+				case "remarks": return CommentTag.Remarks;
+				case "returns": return CommentTag.Returns;
 				case "see": return CommentTag.See;
 				case "seealso": return CommentTag.SeeAlso;
+				case "summary": return CommentTag.Summary;
+				case "typeparam": return CommentTag.TypeParam;
+				case "typeparamref": return CommentTag.TypeParamRef;
+				case "value": return CommentTag.Value;
 			}
 			return CommentTag.Unknown;
 		}
+
+		#region Low Level
+
+		/// <summary>Defaults to the CommentTag text.</summary>
+		public override string ToString()
+		{
+			return Tag.ToString();
+		}
+
+		#endregion
 	}
 }

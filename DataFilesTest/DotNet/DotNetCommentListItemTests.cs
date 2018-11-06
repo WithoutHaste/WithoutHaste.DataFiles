@@ -14,7 +14,7 @@ namespace DataFilesTest
 		public void DotNetCommentListItem_FromXml_Header_Empty()
 		{
 			//arrange
-			XElement element = XElement.Parse("<listheader/>");
+			XElement element = XElement.Parse("<listheader/>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentListItem result = DotNetCommentListItem.FromVisualStudioXml(element);
 			//assert
@@ -28,7 +28,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			string text = "Lorem ipsum dolor sit amet";
-			XElement element = XElement.Parse("<listheader>" + text + "</listheader>");
+			XElement element = XElement.Parse("<listheader>" + text + "</listheader>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentListItem result = DotNetCommentListItem.FromVisualStudioXml(element);
 			//assert
@@ -42,7 +42,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			string text = "Lorem ipsum dolor sit amet";
-			XElement element = XElement.Parse("<listheader><term>" + text + "</term></listheader>");
+			XElement element = XElement.Parse("<listheader><term>" + text + "</term></listheader>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentListItem result = DotNetCommentListItem.FromVisualStudioXml(element);
 			//assert
@@ -57,7 +57,7 @@ namespace DataFilesTest
 			//arrange
 			string text = "Lorem ipsum dolor sit amet";
 			string description = "Vivamus odio justo, bibendum non rutrum ac.";
-			XElement element = XElement.Parse("<listheader><term>" + text + "</term><description>" + description + "</description></listheader>");
+			XElement element = XElement.Parse("<listheader><term>" + text + "</term><description>" + description + "</description></listheader>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentListItem result = DotNetCommentListItem.FromVisualStudioXml(element);
 			//assert
@@ -71,7 +71,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			string description = "Vivamus odio justo, bibendum non rutrum ac.";
-			XElement element = XElement.Parse("<listheader><description>" + description + "</description></listheader>");
+			XElement element = XElement.Parse("<listheader><description>" + description + "</description></listheader>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentListItem result = DotNetCommentListItem.FromVisualStudioXml(element);
 			//assert
@@ -84,7 +84,7 @@ namespace DataFilesTest
 		public void DotNetCommentListItem_FromXml_Data_Empty()
 		{
 			//arrange
-			XElement element = XElement.Parse("<item/>");
+			XElement element = XElement.Parse("<item/>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentListItem result = DotNetCommentListItem.FromVisualStudioXml(element);
 			//assert
@@ -98,7 +98,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			string text = "Lorem ipsum dolor sit amet";
-			XElement element = XElement.Parse("<item>" + text + "</item>");
+			XElement element = XElement.Parse("<item>" + text + "</item>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentListItem result = DotNetCommentListItem.FromVisualStudioXml(element);
 			//assert
@@ -112,7 +112,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			string text = "Lorem ipsum dolor sit amet";
-			XElement element = XElement.Parse("<item><term>" + text + "</term></item>");
+			XElement element = XElement.Parse("<item><term>" + text + "</term></item>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentListItem result = DotNetCommentListItem.FromVisualStudioXml(element);
 			//assert
@@ -127,7 +127,7 @@ namespace DataFilesTest
 			//arrange
 			string text = "Lorem ipsum dolor sit amet";
 			string description = "Vivamus odio justo, bibendum non rutrum ac.";
-			XElement element = XElement.Parse("<item><term>" + text + "</term><description>" + description + "</description></item>");
+			XElement element = XElement.Parse("<item><term>" + text + "</term><description>" + description + "</description></item>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentListItem result = DotNetCommentListItem.FromVisualStudioXml(element);
 			//assert
@@ -141,7 +141,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			string description = "Vivamus odio justo, bibendum non rutrum ac.";
-			XElement element = XElement.Parse("<item><description>" + description + "</description></item>");
+			XElement element = XElement.Parse("<item><description>" + description + "</description></item>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentListItem result = DotNetCommentListItem.FromVisualStudioXml(element);
 			//assert

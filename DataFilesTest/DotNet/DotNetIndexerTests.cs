@@ -24,9 +24,9 @@ namespace DataFilesTest
 		{
 			//arrange
 			Type type = typeof(A);
-			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:A'></member>"));
-			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:A.Item(System.String)'></member>")));
-			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:A.Item(System.Int32)'></member>")));
+			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:A'></member>", LoadOptions.PreserveWhitespace));
+			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:A.Item(System.String)'></member>", LoadOptions.PreserveWhitespace)));
+			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:A.Item(System.Int32)'></member>", LoadOptions.PreserveWhitespace)));
 			//act
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
 			//assert
@@ -46,10 +46,10 @@ namespace DataFilesTest
 		{
 			//arrange
 			Type type = typeof(A);
-			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:DataFilesTest.DotNetIndexerTests.A'></member>"));
-			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:DataFilesTest.DotNetIndexerTests.A.Item(System.String)'></member>")));
+			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:DataFilesTest.DotNetIndexerTests.A'></member>", LoadOptions.PreserveWhitespace));
+			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:DataFilesTest.DotNetIndexerTests.A.Item(System.String)'></member>", LoadOptions.PreserveWhitespace)));
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
-			XElement permissionElement = XElement.Parse("<permission cref='P:DataFilesTest.DotNetIndexerTests.A.Item(System.String)'></permission>");
+			XElement permissionElement = XElement.Parse("<permission cref='P:DataFilesTest.DotNetIndexerTests.A.Item(System.String)'></permission>", LoadOptions.PreserveWhitespace);
 			DotNetCommentQualifiedLinkedGroup permissionComment = DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(permissionElement);
 			//act
 			DotNetIndexer indexerResult = dotNetType.Properties.OfType<DotNetIndexer>().Cast<DotNetIndexer>().First();

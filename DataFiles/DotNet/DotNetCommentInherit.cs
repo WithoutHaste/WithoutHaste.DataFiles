@@ -15,6 +15,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public DotNetCommentInherit()
 		{
+			Tag = CommentTag.InheritDoc;
 		}
 	}
 }

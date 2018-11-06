@@ -14,7 +14,7 @@ namespace DataFilesTest
 		public void DotNetCommentCell_FromXml_Empty()
 		{
 			//arrange
-			XElement element = XElement.Parse("<term/>");
+			XElement element = XElement.Parse("<term/>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentCell result = DotNetCommentCell.FromVisualStudioXml(element);
 			//assert
@@ -26,7 +26,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			string text = "Lorem ipsum dolor sit amet";
-			XElement element = XElement.Parse("<term>" + text + "</term>");
+			XElement element = XElement.Parse("<term>" + text + "</term>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentCell result = DotNetCommentCell.FromVisualStudioXml(element);
 			//assert

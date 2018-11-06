@@ -71,6 +71,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		public DotNetCommentTable(List<DotNetCommentRow> rows)
 		{
 			Rows.AddRange(rows);
+			Tag = CommentTag.List;
 		}
 
 		/// <summary>Parses .Net XML documentation table.</summary>

@@ -10,14 +10,5 @@ namespace DataFilesTest
 	[TestClass]
 	public class DotNetCommentGroupTests
 	{
-		public static string GetXmlCommentsNestedInTag()
-		{
-			return Utilities.LoadText("data/DotNetCommentGroup_XmlCommentsNestedInTag.txt");
-		}
-
-		public static void ValidateXmlCommentsNestedInTag(List<DotNetComment> comments)
-		{
-			Assert.AreEqual(13, comments.Count);
-		}
 	}
 }

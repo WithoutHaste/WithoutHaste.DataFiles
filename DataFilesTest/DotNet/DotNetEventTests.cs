@@ -22,8 +22,8 @@ namespace DataFilesTest
 		{
 			//arrange
 			Type type = typeof(A);
-			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:A'></member>"));
-			dotNetType.AddMember(DotNetEvent.FromVisualStudioXml(XElement.Parse("<member name='E:A.EventA'></member>")));
+			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:A'></member>", LoadOptions.PreserveWhitespace));
+			dotNetType.AddMember(DotNetEvent.FromVisualStudioXml(XElement.Parse("<member name='E:A.EventA'></member>", LoadOptions.PreserveWhitespace)));
 			//act
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
 			//assert

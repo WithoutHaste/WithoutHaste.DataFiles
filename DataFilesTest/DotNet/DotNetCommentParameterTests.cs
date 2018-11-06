@@ -15,7 +15,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			string name = "test";
-			XElement element = XElement.Parse("<param name='" + name + "' />");
+			XElement element = XElement.Parse("<param name='" + name + "' />", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentParameter result = DotNetCommentParameter.FromVisualStudioXml(element);
 			//assert
@@ -28,12 +28,13 @@ namespace DataFilesTest
 		{
 			//arrange
 			string name = "test";
-			XElement element = XElement.Parse("<typeparam name='" + name + "'>" + DotNetCommentGroupTests.GetXmlCommentsNestedInTag() + "</typeparam>");
+			string comments = Utilities.LoadText("data/DotNetCommentGroup_XmlCommentsNestedInTag.txt");
+			XElement element = XElement.Parse("<typeparam name='" + name + "'>" + comments + "</typeparam>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentTypeParameter result = DotNetCommentTypeParameter.FromVisualStudioXml(element);
 			//assert
 			Assert.AreEqual(name, result.Link.FullName);
-			DotNetCommentGroupTests.ValidateXmlCommentsNestedInTag(result.Comments);
+			Assert.AreEqual(14, result.Comments.Count);
 		}
 	}
 }

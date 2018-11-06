@@ -23,7 +23,7 @@ namespace DataFilesTest
 		public void DotNetMethodConstructor_FromAssembly_StaticConstructor()
 		{
 			//arrange
-			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodConstructorTests.ClassA.#cctor' />");
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodConstructorTests.ClassA.#cctor' />", LoadOptions.PreserveWhitespace);
 			Type type = typeof(ClassA);
 			TypeInfo typeInfo = type.GetTypeInfo();
 			ConstructorInfo constructorInfo = typeInfo.DeclaredConstructors.First(m => m.Name == ".cctor");

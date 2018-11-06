@@ -20,11 +20,17 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 		}
 
+		/// <summary></summary>
+		public DotNetCommentTypeParameterLink(string name, CommentTag tag) : base(name)
+		{
+			Tag = tag;
+		}
+
 		/// <summary>Parses .Net XML documentation for typeparamref.</summary>
 		public static new DotNetCommentTypeParameterLink FromVisualStudioXml(XElement element)
 		{
 			ValidateXmlTag(element, "typeparamref");
-			return new DotNetCommentTypeParameterLink(element.Attribute("name")?.Value);
+			return new DotNetCommentTypeParameterLink(element.Attribute("name")?.Value, DotNetComment.GetTag(element));
 		}
 
 		#endregion

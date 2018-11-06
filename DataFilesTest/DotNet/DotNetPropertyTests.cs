@@ -24,8 +24,8 @@ namespace DataFilesTest
 		{
 			//arrange
 			Type type = typeof(AbstractClass);
-			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:AbstractClass'></member>"));
-			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:AbstractClass.AbstractProperty'></member>")));
+			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:AbstractClass'></member>", LoadOptions.PreserveWhitespace));
+			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:AbstractClass.AbstractProperty'></member>", LoadOptions.PreserveWhitespace)));
 			//act
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
 			//assert
@@ -40,8 +40,8 @@ namespace DataFilesTest
 		{
 			//arrange
 			Type type = typeof(AbstractClass);
-			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:AbstractClass'></member>"));
-			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:AbstractClass.GetOnlyProperty'></member>")));
+			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:AbstractClass'></member>", LoadOptions.PreserveWhitespace));
+			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:AbstractClass.GetOnlyProperty'></member>", LoadOptions.PreserveWhitespace)));
 			//act
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
 			//assert

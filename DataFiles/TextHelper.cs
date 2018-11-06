@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles
@@ -169,6 +170,17 @@ namespace WithoutHaste.DataFiles
 			results.Reverse();
 
 			return results.ToArray();
+		}
+
+		/// <summary>
+		/// Returns true if text is empty or contains only whitespace characters.
+		/// </summary>
+		public static bool IsAllWhitespace(this string text)
+		{
+			if(text == null)
+				return true;
+			Match whitespace = (new Regex(@"\s+", RegexOptions.IgnoreCase)).Match(text);
+			return (text.Length == whitespace.Value.Length);
 		}
 
 		internal static bool IsEven(this int num)

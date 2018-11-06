@@ -29,7 +29,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_LoadFromXDocument()
 		{
 			//arrange
-			XDocument document = XDocument.Load("data/DotNetDocumentationFile_Assembly.xml");
+			XDocument document = XDocument.Load("data/DotNetDocumentationFile_Assembly.xml", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(document);
 			//assert
@@ -40,7 +40,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_CommentFromXml_Full()
 		{
 			//arrange
-			XDocument document = XDocument.Load("data/DotNetDocumentationFile_Full.xml");
+			XDocument document = XDocument.Load("data/DotNetDocumentationFile_Full.xml", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(document);
 			//assert
@@ -146,7 +146,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_CommentFromXml_NameConflict()
 		{
 			//arrange
-			XDocument document = XDocument.Load("data/DotNetDocumentationFile_NameConflict.xml");
+			XDocument document = XDocument.Load("data/DotNetDocumentationFile_NameConflict.xml", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(document);
 			//assert

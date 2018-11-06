@@ -14,7 +14,7 @@ namespace DataFilesTest
 		public void DotNetCommentTable_FromXml_Empty()
 		{
 			//arrange
-			XElement element = XElement.Parse("<list type='table' />");
+			XElement element = XElement.Parse("<list type='table' />", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentTable result = DotNetCommentTable.FromVisualStudioXml(element);
 			//assert

@@ -14,7 +14,7 @@ namespace DataFilesTest
 		public void DotNetCommentList_FromXml_NoType_Empty()
 		{
 			//arrange
-			XElement element = XElement.Parse("<list/>");
+			XElement element = XElement.Parse("<list/>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetComment result = DotNetCommentList.FromVisualStudioXml(element);
 			//assert
@@ -28,7 +28,7 @@ namespace DataFilesTest
 		public void DotNetCommentList_FromXml_BulletType_Empty()
 		{
 			//arrange
-			XElement element = XElement.Parse("<list type='bullet'/>");
+			XElement element = XElement.Parse("<list type='bullet'/>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetComment result = DotNetCommentList.FromVisualStudioXml(element);
 			//assert
@@ -42,7 +42,7 @@ namespace DataFilesTest
 		public void DotNetCommentList_FromXml_NumberType_Empty()
 		{
 			//arrange
-			XElement element = XElement.Parse("<list type='number'/>");
+			XElement element = XElement.Parse("<list type='number'/>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetComment result = DotNetCommentList.FromVisualStudioXml(element);
 			//assert
@@ -56,7 +56,7 @@ namespace DataFilesTest
 		public void DotNetCommentList_FromXml_TableType_Empty()
 		{
 			//arrange
-			XElement element = XElement.Parse("<list type='table'/>");
+			XElement element = XElement.Parse("<list type='table'/>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetComment result = DotNetCommentList.FromVisualStudioXml(element);
 			//assert
@@ -68,7 +68,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			string items = "<listheader>H1</listheader><item>I1</item><item>I2</item><item>I3</item>";
-			XElement element = XElement.Parse("<list type='bullet'>" + items + "</list>");
+			XElement element = XElement.Parse("<list type='bullet'>" + items + "</list>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetComment result = DotNetCommentList.FromVisualStudioXml(element);
 			//assert
@@ -83,7 +83,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			string items = "<listheader>H1</listheader><item>I1</item><item>I2</item><item>I3</item>";
-			XElement element = XElement.Parse("<list type='number'>" + items + "</list>");
+			XElement element = XElement.Parse("<list type='number'>" + items + "</list>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetComment result = DotNetCommentList.FromVisualStudioXml(element);
 			//assert
@@ -98,7 +98,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			string items = "<listheader>H1</listheader><item>I1</item><item><list type='number'><item>Nested 1</item><item>Nested 2</item></list></item><item>I3</item>";
-			XElement element = XElement.Parse("<list type='bullet'>" + items + "</list>");
+			XElement element = XElement.Parse("<list type='bullet'>" + items + "</list>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetComment result = DotNetCommentList.FromVisualStudioXml(element);
 			//assert
@@ -114,7 +114,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			string items = "<listheader>H1</listheader><item>I1</item><list type='number'><item>Nested 1</item><item>Nested 2</item></list><item>I3</item>";
-			XElement element = XElement.Parse("<list type='bullet'>" + items + "</list>");
+			XElement element = XElement.Parse("<list type='bullet'>" + items + "</list>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetComment result = DotNetCommentList.FromVisualStudioXml(element);
 			//assert

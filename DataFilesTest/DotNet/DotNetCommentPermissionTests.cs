@@ -18,7 +18,7 @@ namespace DataFilesTest
 			string typeName = "B";
 			string fieldName = "C";
 			string fullName = _namespace + "." + typeName + "." + fieldName;
-			XElement element = XElement.Parse("<permission cref='F:" + fullName + "'>Comments</permission>");
+			XElement element = XElement.Parse("<permission cref='F:" + fullName + "'>Comments</permission>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentQualifiedLinkedGroup result = DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
 			//assert
@@ -30,7 +30,7 @@ namespace DataFilesTest
 		public void DotNetCommentPermission_FromXml_Indexer()
 		{
 			//arrange
-			XElement element = XElement.Parse("<permission cref='P:A.B.Item(System.Int32)'>Comments</permission>");
+			XElement element = XElement.Parse("<permission cref='P:A.B.Item(System.Int32)'>Comments</permission>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentQualifiedLinkedGroup result = DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
 			//assert
@@ -47,7 +47,7 @@ namespace DataFilesTest
 			string methodName = "C";
 			string parameters = "(int,string)";
 			string fullName = _namespace + "." + typeName + "." + methodName;
-			XElement element = XElement.Parse("<permission cref='M:" + fullName + parameters + "'>Comments</permission>");
+			XElement element = XElement.Parse("<permission cref='M:" + fullName + parameters + "'>Comments</permission>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentQualifiedLinkedGroup result = DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
 			//assert

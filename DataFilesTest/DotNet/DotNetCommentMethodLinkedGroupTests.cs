@@ -19,7 +19,7 @@ namespace DataFilesTest
 			string methodName = "MyMethod";
 			string parameters = "(int, string)";
 			string qualifiedName = fullNamespace + "." + typeName + "." + methodName;
-			XElement element = XElement.Parse("<permission cref='" + qualifiedName + parameters + "' />");
+			XElement element = XElement.Parse("<permission cref='" + qualifiedName + parameters + "' />", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentQualifiedLinkedGroup result = DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
 			//assert
@@ -37,7 +37,7 @@ namespace DataFilesTest
 			string methodName = "MyMethod";
 			string parameters = "";
 			string qualifiedName = fullNamespace + "." + typeName + "." + methodName;
-			XElement element = XElement.Parse("<permission cref='M:" + qualifiedName + parameters + "' />");
+			XElement element = XElement.Parse("<permission cref='M:" + qualifiedName + parameters + "' />", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentQualifiedLinkedGroup result = DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
 			//assert

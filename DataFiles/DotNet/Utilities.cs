@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
@@ -31,6 +32,19 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>
+		/// Clean the formatting of all inner xml of an XElement. Returns the cleaned element.
+		/// </summary>
+		/// <remarks>Does not preserve attributes of the root element.</remarks>
+		internal static XElement CleanWhitespaces(this XElement parent)
+		{
+			string innerText = String.Concat(parent.Nodes());
+			innerText = innerText.TrimFromStartAsBlock();
+			innerText = innerText.Trim();
+			XElement cleanParent = XElement.Parse("<" + parent.Name + ">" + innerText + "</" + parent.Name + ">", LoadOptions.PreserveWhitespace);
+			return cleanParent;
+		}
+
+		/// <summary>
 		/// Trims an equal amount of leading white-space from each line, delimited by \n character.
 		/// Callibrated for formatting blocks of text nested in XML.
 		/// </summary>
@@ -45,13 +59,17 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 
 			text = text.Replace("\r", "");
+			if(text.IsAllWhitespace())
+			{
+				if(text.Contains('\n'))
+					return "\n";
+				return "";
+			}
+
 			while(text.StartsWith("\n"))
 			{
 				text = text.RemoveFromStart("\n");
 			}
-
-			if(String.IsNullOrEmpty(text))
-				return text;
 
 			string[] lines = text.Split('\n');
 			Match whitespace = (new Regex(@"^\s+", RegexOptions.IgnoreCase)).Match(lines[0]);

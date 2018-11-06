@@ -442,6 +442,9 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.#ctor(System.String)">
             <summary></summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.#ctor(System.String,WithoutHaste.DataFiles.DotNet.CommentTag)">
+            <summary></summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.FromVisualStudioXml(System.Xml.Linq.XElement)">
             <summary>Parses .Net XML documentation for paramref.</summary>
         </member>
@@ -522,6 +525,9 @@
             <example><![CDATA[<typeparamref name="T" />]]></example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink.#ctor(System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink.#ctor(System.String,WithoutHaste.DataFiles.DotNet.CommentTag)">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink.FromVisualStudioXml(System.Xml.Linq.XElement)">
@@ -946,16 +952,61 @@
         <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.Unknown">
             <summary></summary>
         </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.C">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.Code">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.Duplicate">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.Example">
+            <summary></summary>
+        </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.Exception">
             <summary></summary>
         </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.InheritDoc">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.List">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.Para">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.Param">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.ParamRef">
+            <summary></summary>
+        </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.Permission">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.Remarks">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.Returns">
             <summary></summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.See">
             <summary></summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.SeeAlso">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.Summary">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.TypeParam">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.TypeParamRef">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.CommentTag.Value">
             <summary></summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetComment">
@@ -1001,6 +1052,9 @@
             <summary>
             Returns the CommentTag value that corresponds to the XElement.
             </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetComment.ToString">
+            <summary>Defaults to the CommentTag text.</summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentCell">
             <summary>
@@ -1050,13 +1104,25 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.#ctor">
             <summary>Empty constructor</summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.#ctor(WithoutHaste.DataFiles.DotNet.CommentTag)">
+            <summary></summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetComment)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.#ctor(WithoutHaste.DataFiles.DotNet.CommentTag,WithoutHaste.DataFiles.DotNet.DotNetComment)">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.#ctor(WithoutHaste.DataFiles.DotNet.DotNetComment[])">
             <summary></summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.#ctor(WithoutHaste.DataFiles.DotNet.CommentTag,WithoutHaste.DataFiles.DotNet.DotNetComment[])">
+            <summary></summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.#ctor(System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetComment})">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.#ctor(WithoutHaste.DataFiles.DotNet.CommentTag,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetComment})">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.Add(WithoutHaste.DataFiles.DotNet.DotNetComment)">
@@ -1083,6 +1149,12 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.CommentTag)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>Parses .Net XML documentation tag that contains attribute cref.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.FromVisualStudioXml(System.String)">
             <summary>Parses .Net XML documentation cref.</summary>
@@ -1522,6 +1594,9 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentText.#ctor(System.String)">
             <summary></summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentText.ToString">
+            <summary>Returns full text.</summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.AccessModifier">
             <summary></summary>
         </member>
@@ -1881,6 +1956,12 @@
             <summary>
             Trims leading and trailing whitespaces. Will leave one leading and one trailing space, but won't add them.
             </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.Utilities.CleanWhitespaces(System.Xml.Linq.XElement)">
+            <summary>
+            Clean the formatting of all inner xml of an XElement. Returns the cleaned element.
+            </summary>
+            <remarks>Does not preserve attributes of the root element.</remarks>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.Utilities.TrimFromStartAsBlock(System.String)">
             <summary>
@@ -2939,6 +3020,11 @@
             </example>
             <exception cref="T:System.ArgumentException">Delimitor cannot be a supported brace character.</exception>
             <exception cref="T:WithoutHaste.DataFiles.StringFormatException">Mismatched open/close braces.</exception>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.TextHelper.IsAllWhitespace(System.String)">
+            <summary>
+            Returns true if text is empty or contains only whitespace characters.
+            </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.XmlDocumentHelper">
             <summary>

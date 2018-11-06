@@ -16,6 +16,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public DotNetCommentCode(string text) : base(text)
 		{
+			Tag = CommentTag.C;
 		}
 
 		/// <summary>Parses .Net XML documentation c.</summary>

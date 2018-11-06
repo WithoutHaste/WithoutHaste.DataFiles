@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<summary>
+  <see cref='P:Test.A'/> or <see cref='P:Test.A'>Local A</see>
+  <see cref='P:Test.B'/> or <see cref='P:Test.B'>Local B</see>
+</summary>

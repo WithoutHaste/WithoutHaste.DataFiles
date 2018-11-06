@@ -66,13 +66,29 @@ namespace DataFilesTest
 		public void DotNetCommentText_FromXml_InLine_RealExample_A()
 		{
 			//arrange
-			XElement element = XElement.Parse(@"<summary><see cref='P:Test.ClassSeeAlso.PropertyA'/> or <see cref='P:Test.ClassSeeAlso.PropertyA'>Local property</see></summary>");
+			XElement element = XElement.Parse(@"<summary><see cref='P:Test.ClassSeeAlso.PropertyA'/> or <see cref='P:Test.ClassSeeAlso.PropertyA'>Local property</see></summary>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetComment result = DotNetComment.FromVisualStudioXml(element);
 			DotNetCommentGroup groupResult = result as DotNetCommentGroup;
 			//assert
 			Assert.AreEqual(3, groupResult.Comments.Count);
 			Assert.AreEqual(" or ", (groupResult.Comments[1] as DotNetCommentText).Text);
+		}
+
+		[TestMethod]
+		public void DotNetCommentText_FromXml_InLine_RealExample_B()
+		{
+			//arrange
+			XDocument document = XDocument.Load("data/DotNetCommentText_Inline_RealExample_B.xml", LoadOptions.PreserveWhitespace);
+			XElement element = document.Elements().First();
+			string inner = String.Concat(element.Nodes());
+			//act
+			DotNetComment result = DotNetComment.FromVisualStudioXml(element);
+			DotNetCommentGroup groupResult = result as DotNetCommentGroup;
+			//assert
+			Assert.AreEqual(7, groupResult.Comments.Count);
+			Assert.AreEqual(" or ", (groupResult.Comments[1] as DotNetCommentText).Text);
+			Assert.AreEqual("\n", (groupResult.Comments[3] as DotNetCommentText).Text);
 		}
 
 		[TestMethod]
@@ -97,7 +113,7 @@ namespace DataFilesTest
 			XElement element = XElement.Parse(@"<summary>
             Tests the display of common data types that have recognized aliases in .Net.
             Also common data types that have long fully-qualified names.
-            </summary>");
+            </summary>", LoadOptions.PreserveWhitespace);
 			string originalText = element.Nodes().First().ToString();
 			string expectedResult = "Tests the display of common data types that have recognized aliases in .Net.\nAlso common data types that have long fully-qualified names.";
 			//act
@@ -113,7 +129,7 @@ namespace DataFilesTest
 			XElement element = XElement.Parse(@"<summary>
             Tests the display of common data types that have recognized aliases in .Net.
             Also common data types that have long fully-qualified names.
-            </summary>");
+            </summary>", LoadOptions.PreserveWhitespace);
 			string expectedResult = "Tests the display of common data types that have recognized aliases in .Net.\nAlso common data types that have long fully-qualified names.";
 			//act
 			DotNetComment result = DotNetComment.FromVisualStudioXml(element);

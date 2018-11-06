@@ -21,16 +21,19 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public DotNetCommentParameter(DotNetCommentParameterLink link, DotNetComment comment) : base(link, comment)
 		{
+			Tag = CommentTag.Param;
 		}
 
 		/// <summary></summary>
 		public DotNetCommentParameter(DotNetCommentParameterLink link, params DotNetComment[] comments) : base(link, comments)
 		{
+			Tag = CommentTag.Param;
 		}
 
 		/// <summary></summary>
 		public DotNetCommentParameter(DotNetCommentParameterLink link, List<DotNetComment> comments) : base(link, comments)
 		{
+			Tag = CommentTag.Param;
 		}
 
 		/// <summary>Parses .Net XML documentation for param.</summary>

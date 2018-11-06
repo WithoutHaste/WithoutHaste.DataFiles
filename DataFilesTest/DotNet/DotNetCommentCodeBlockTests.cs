@@ -14,7 +14,7 @@ namespace DataFilesTest
 		public void DotNetCommentCodeBlock_FromXml_Empty()
 		{
 			//arrange
-			XElement element = XElement.Parse("<code/>");
+			XElement element = XElement.Parse("<code/>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentCode result = DotNetCommentCodeBlock.FromVisualStudioXml(element);
 			//assert
@@ -27,7 +27,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			string code = "int x = 5;\nint y = 6;";
-			XElement element = XElement.Parse("<code>" + code + "</code>");
+			XElement element = XElement.Parse("<code>" + code + "</code>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentCode result = DotNetCommentCodeBlock.FromVisualStudioXml(element);
 			//assert

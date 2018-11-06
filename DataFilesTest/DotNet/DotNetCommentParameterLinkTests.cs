@@ -15,7 +15,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			string name = "test";
-			XElement element = XElement.Parse("<paramref name='" + name + "' />");
+			XElement element = XElement.Parse("<paramref name='" + name + "' />", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentParameterLink result = DotNetCommentParameterLink.FromVisualStudioXml(element);
 			//assert

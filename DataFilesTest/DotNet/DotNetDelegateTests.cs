@@ -27,7 +27,7 @@ namespace DataFilesTest
 		public void DotNetDelegate_ConvertFromType_Global()
 		{
 			//arrange
-			XElement xmlElement = XElement.Parse("<member name='T:DataFileTest.DotNetDelegateTests.GlobalDelegate' />");
+			XElement xmlElement = XElement.Parse("<member name='T:DataFileTest.DotNetDelegateTests.GlobalDelegate' />", LoadOptions.PreserveWhitespace);
 			Type type = typeof(GlobalDelegate);
 			TypeInfo delegateInfo = type.GetTypeInfo();
 			//act

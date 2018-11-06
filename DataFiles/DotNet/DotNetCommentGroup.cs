@@ -50,8 +50,21 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary></summary>
+		public DotNetCommentGroup(CommentTag tag)
+		{
+			Tag = tag;
+		}
+
+		/// <summary></summary>
 		public DotNetCommentGroup(DotNetComment comment)
 		{
+			Comments.Add(comment);
+		}
+
+		/// <summary></summary>
+		public DotNetCommentGroup(CommentTag tag, DotNetComment comment)
+		{
+			Tag = tag;
 			Comments.Add(comment);
 		}
 
@@ -62,8 +75,22 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary></summary>
+		public DotNetCommentGroup(CommentTag tag, params DotNetComment[] comments)
+		{
+			Tag = tag;
+			Comments.AddRange(comments);
+		}
+
+		/// <summary></summary>
 		public DotNetCommentGroup(List<DotNetComment> comments)
 		{
+			Comments.AddRange(comments);
+		}
+
+		/// <summary></summary>
+		public DotNetCommentGroup(CommentTag tag, List<DotNetComment> comments)
+		{
+			Tag = tag;
 			Comments.AddRange(comments);
 		}
 

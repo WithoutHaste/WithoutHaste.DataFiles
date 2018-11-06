@@ -101,7 +101,11 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <param name="parent">Expects the tag containing all documentation for this member.</param>
 		public void ParseVisualStudioXmlDocumentation(XElement parent)
 		{
+			parent = parent.CleanWhitespaces();
+
 			//todo: should this start by clearing all the comment lists? so running it multiple times does not duplicate data?
+
+			bool previousCommentWasAParagraphTag = false;
 			foreach(XNode node in parent.Nodes())
 			{
 				switch(node.NodeType)
@@ -111,45 +115,65 @@ namespace WithoutHaste.DataFiles.DotNet
 						DotNetComment comment = null;
 						switch(element.Name.LocalName)
 						{
-							case "summary":
-								comment = DotNetComment.FromVisualStudioXml(element);
-								if(comment != null) SummaryComments.Add(comment);
+							case "example":
+								ExampleComments.Add(DotNetComment.FromVisualStudioXml(element));
+								previousCommentWasAParagraphTag = true;
+								break;
+							case "exception":
+								ExceptionComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentQualifiedLinkedGroup);
+								previousCommentWasAParagraphTag = true;
+								break;
+							case "param":
+								ParameterComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentParameter);
+								previousCommentWasAParagraphTag = true;
+								break;
+							case "permission":
+								PermissionComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentQualifiedLinkedGroup);
+								previousCommentWasAParagraphTag = true;
 								break;
 							case "remarks":
 								comment = DotNetComment.FromVisualStudioXml(element);
 								if(comment != null) RemarksComments.Add(comment);
-								break;
-							case "example":
-								ExampleComments.Add(DotNetComment.FromVisualStudioXml(element));
-								break;
-							case "exception":
-								ExceptionComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentQualifiedLinkedGroup);
-								break;
-							case "permission":
-								PermissionComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentQualifiedLinkedGroup);
-								break;
-							case "value":
-								comment = DotNetComment.FromVisualStudioXml(element);
-								if(comment != null) ValueComments.Add(comment);
+								previousCommentWasAParagraphTag = true;
 								break;
 							case "returns":
 								comment = DotNetComment.FromVisualStudioXml(element);
 								if(comment != null) ReturnsComments.Add(comment);
+								previousCommentWasAParagraphTag = true;
 								break;
-							case "param":
-								ParameterComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentParameter);
+							case "summary":
+								comment = DotNetComment.FromVisualStudioXml(element);
+								if(comment != null) SummaryComments.Add(comment);
+								previousCommentWasAParagraphTag = true;
 								break;
 							case "typeparam":
 								TypeParameterComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentParameter);
+								previousCommentWasAParagraphTag = true;
+								break;
+							case "value":
+								comment = DotNetComment.FromVisualStudioXml(element);
+								if(comment != null) ValueComments.Add(comment);
+								previousCommentWasAParagraphTag = true;
 								break;
 							default:
 								comment = DotNetComment.FromVisualStudioXml(element);
-								if(comment != null) FloatingComments.Add(comment);
+								if(comment == null)
+									break;
+								if(previousCommentWasAParagraphTag && comment.ToString() == "\n")
+									break;
+								FloatingComments.Add(comment);
+								previousCommentWasAParagraphTag = (comment.Tag == CommentTag.Para || comment.Tag == CommentTag.List || comment.Tag == CommentTag.Code);
 								break;
 						}
 						break;
 					case XmlNodeType.Text:
-						FloatingComments.Add(DotNetComment.FromVisualStudioXml(node.ToString().Trim()));
+						comment = DotNetComment.FromVisualStudioXml(node.ToString());
+						if(comment == null)
+							break;
+						if(previousCommentWasAParagraphTag && comment.ToString() == "\n")
+							break;
+						FloatingComments.Add(comment);
+						previousCommentWasAParagraphTag = false;
 						break;
 				}
 			}

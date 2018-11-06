@@ -17,11 +17,13 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public DotNetCommentDuplicate(DotNetQualifiedName name) : base(name)
 		{
+			Tag = CommentTag.Duplicate;
 		}
 
 		/// <summary></summary>
 		public DotNetCommentDuplicate(DotNetCommentQualifiedLink link) : base(link.Name)
 		{
+			Tag = CommentTag.Duplicate;
 		}
 
 		#endregion

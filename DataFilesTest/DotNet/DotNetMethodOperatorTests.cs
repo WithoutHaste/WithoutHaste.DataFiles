@@ -29,7 +29,7 @@ namespace DataFilesTest
 		public void DotNetMethodOperator_FromAssembly_ImplicitOperator()
 		{
 			//arrange
-			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodOperatorTests.ClassA.op_Implicit(DataFilesTest.DotNetMethodOperatorTests.ClassA)~System.Double' />");
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodOperatorTests.ClassA.op_Implicit(DataFilesTest.DotNetMethodOperatorTests.ClassA)~System.Double' />", LoadOptions.PreserveWhitespace);
 			Type type = typeof(ClassA);
 			MethodInfo methodInfo = type.GetMethods().First(m => m.Name == "op_Implicit");
 			//act
@@ -44,7 +44,7 @@ namespace DataFilesTest
 		public void DotNetMethodOperator_FromAssembly_ExplicitOperator()
 		{
 			//arrange
-			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodOperatorTests.ClassA.op_Explicit(DataFilesTest.DotNetMethodOperatorTests.ClassA)~System.Int64' />");
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodOperatorTests.ClassA.op_Explicit(DataFilesTest.DotNetMethodOperatorTests.ClassA)~System.Int64' />", LoadOptions.PreserveWhitespace);
 			Type type = typeof(ClassA);
 			MethodInfo methodInfo = type.GetMethods().First(m => m.Name == "op_Explicit");
 			//act
@@ -60,7 +60,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			string xml = "<member name='M:MyNamespace.MyClass.op_Addition(MyNamespace.MyClass,System.Int32)' />";
-			XElement element = XElement.Parse(xml);
+			XElement element = XElement.Parse(xml, LoadOptions.PreserveWhitespace);
 			DotNetMethodOperator a = (DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(element);
 			DotNetMethodOperator b = (DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(element);
 			//act
@@ -75,8 +75,8 @@ namespace DataFilesTest
 			//arrange
 			string xmlA = "<member name='M:MyNamespace.MyClass.op_Addition(MyNamespace.MyClass,System.Int32)' />";
 			string xmlB = "<member name='M:MyNamespaceB.MyClass.op_Addition(MyNamespace.MyClass,System.Int32)' />";
-			XElement elementA = XElement.Parse(xmlA);
-			XElement elementB = XElement.Parse(xmlB);
+			XElement elementA = XElement.Parse(xmlA, LoadOptions.PreserveWhitespace);
+			XElement elementB = XElement.Parse(xmlB, LoadOptions.PreserveWhitespace);
 			DotNetMethodOperator a = (DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(elementA);
 			DotNetMethodOperator b = (DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(elementB);
 			//act
@@ -91,8 +91,8 @@ namespace DataFilesTest
 			//arrange
 			string xmlA = "<member name='M:MyNamespace.MyClass.op_Addition(MyNamespace.MyClass,System.Int32)' />";
 			string xmlB = "<member name='M:MyNamespace.MyClassB.op_Addition(MyNamespace.MyClass,System.Int32)' />";
-			XElement elementA = XElement.Parse(xmlA);
-			XElement elementB = XElement.Parse(xmlB);
+			XElement elementA = XElement.Parse(xmlA, LoadOptions.PreserveWhitespace);
+			XElement elementB = XElement.Parse(xmlB, LoadOptions.PreserveWhitespace);
 			DotNetMethodOperator a = (DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(elementA);
 			DotNetMethodOperator b = (DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(elementB);
 			//act
@@ -107,8 +107,8 @@ namespace DataFilesTest
 			//arrange
 			string xmlA = "<member name='M:MyNamespace.MyClass.op_Addition(MyNamespace.MyClass,System.Int32)' />";
 			string xmlB = "<member name='M:MyNamespace.MyClass.op_Subtraction(MyNamespace.MyClass,System.Int32)' />";
-			XElement elementA = XElement.Parse(xmlA);
-			XElement elementB = XElement.Parse(xmlB);
+			XElement elementA = XElement.Parse(xmlA, LoadOptions.PreserveWhitespace);
+			XElement elementB = XElement.Parse(xmlB, LoadOptions.PreserveWhitespace);
 			DotNetMethodOperator a = (DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(elementA);
 			DotNetMethodOperator b = (DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(elementB);
 			//act
@@ -123,8 +123,8 @@ namespace DataFilesTest
 			//arrange
 			string xmlA = "<member name='M:MyNamespace.MyClass.op_Addition(MyNamespace.MyClass,System.Int32)' />";
 			string xmlB = "<member name='M:MyNamespace.MyClass.op_Addition(MyNamespace.MyClass,System.Decimal)' />";
-			XElement elementA = XElement.Parse(xmlA);
-			XElement elementB = XElement.Parse(xmlB);
+			XElement elementA = XElement.Parse(xmlA, LoadOptions.PreserveWhitespace);
+			XElement elementB = XElement.Parse(xmlB, LoadOptions.PreserveWhitespace);
 			DotNetMethodOperator a = (DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(elementA);
 			DotNetMethodOperator b = (DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(elementB);
 			//act
@@ -139,8 +139,8 @@ namespace DataFilesTest
 			//arrange
 			string xmlA = "<member name='M:MyNamespace.MyClass.op_Addition(MyNamespace.MyClass,System.Int32)' />";
 			string xmlB = "<member name='M:MyNamespace.MyClass.op_Addition(MyNamespace.MyClass)' />";
-			XElement elementA = XElement.Parse(xmlA);
-			XElement elementB = XElement.Parse(xmlB);
+			XElement elementA = XElement.Parse(xmlA, LoadOptions.PreserveWhitespace);
+			XElement elementB = XElement.Parse(xmlB, LoadOptions.PreserveWhitespace);
 			DotNetMethodOperator a = (DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(elementA);
 			DotNetMethodOperator b = (DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(elementB);
 			//act
@@ -158,10 +158,10 @@ namespace DataFilesTest
 			string xmlC = "<member name='M:MyNamespace.MyClass.op_Multiply(MyNamespace.MyClass,System.Int64)' />";
 			string xmlD = "<member name='M:MyNamespace.MyClass.op_Division(MyNamespace.MyClass,System.Decimal)' />";
 			List<DotNetMethodOperator> list = new List<DotNetMethodOperator>() {
-				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlC)),
-				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlA)),
-				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlD)),
-				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlB)),
+				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlC, LoadOptions.PreserveWhitespace)),
+				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlA, LoadOptions.PreserveWhitespace)),
+				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlD, LoadOptions.PreserveWhitespace)),
+				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlB, LoadOptions.PreserveWhitespace)),
 			};
 			//act
 			list.Sort();
@@ -181,10 +181,10 @@ namespace DataFilesTest
 			string xmlC = "<member name='M:MyNamespace.MyClass.op_Addition(MyNamespace.MyClass,System.Int32)' />";
 			string xmlD = "<member name='M:MyNamespace.MyClass.op_Addition(MyNamespace.MyClass,System.Int64)' />";
 			List<DotNetMethodOperator> list = new List<DotNetMethodOperator>() {
-				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlC)),
-				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlA)),
-				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlD)),
-				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlB)),
+				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlC, LoadOptions.PreserveWhitespace)),
+				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlA, LoadOptions.PreserveWhitespace)),
+				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlD, LoadOptions.PreserveWhitespace)),
+				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlB, LoadOptions.PreserveWhitespace)),
 			};
 			//act
 			list.Sort();
@@ -204,10 +204,10 @@ namespace DataFilesTest
 			string xmlC = "<member name='M:MyNamespace.MyClass.op_Addition(MyNamespace.MyClass,System.Int32)' />";
 			string xmlD = "<member name='M:MyNamespace.MyClass.op_Addition(MyNamespace.MyClass,System.Int64)' />";
 			List<DotNetMethodOperator> list = new List<DotNetMethodOperator>() {
-				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlC)),
-				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlA)),
-				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlD)),
-				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlB)),
+				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlC, LoadOptions.PreserveWhitespace)),
+				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlA, LoadOptions.PreserveWhitespace)),
+				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlD, LoadOptions.PreserveWhitespace)),
+				(DotNetMethodOperator)DotNetMethod.FromVisualStudioXml(XElement.Parse(xmlB, LoadOptions.PreserveWhitespace)),
 			};
 			//act
 			list = list.OrderBy(x => x).ToList();
