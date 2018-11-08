@@ -1642,6 +1642,9 @@
         <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Exception">
             <summary></summary>
         </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Struct">
+            <summary></summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetType">
             <summary>
             Represents a data type.

@@ -81,10 +81,14 @@ namespace WithoutHaste.DataFiles.DotNet
 
 				case "exception":
 				case "permission":
+					if(String.IsNullOrEmpty(element.Attribute("cref")?.Value))
+						break;
 					return DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
 
 				case "see":
 				case "seealso":
+					if(String.IsNullOrEmpty(element.Attribute("cref")?.Value))
+						break;
 					if(element.Nodes().Count() == 0)
 						return DotNetCommentQualifiedLink.FromVisualStudioXml(element);
 					else
@@ -112,6 +116,8 @@ namespace WithoutHaste.DataFiles.DotNet
 					return new DotNetCommentInherit();
 				case "duplicate":
 					string duplicateCref = element.Attribute("cref")?.Value;
+					if(String.IsNullOrEmpty(duplicateCref))
+						break;
 					return new DotNetCommentDuplicate(DotNetCommentQualifiedLink.FromVisualStudioXml(duplicateCref));
 			}
 			return null;

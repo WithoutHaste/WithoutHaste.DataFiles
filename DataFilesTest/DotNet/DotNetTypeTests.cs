@@ -32,6 +32,8 @@ namespace DataFilesTest
 
 		protected class ChildOfChildInterface : I3 { }
 
+		protected struct StructA { }
+
 		[TestMethod]
 		public void DotNetType_Assembly_Object()
 		{
@@ -127,6 +129,18 @@ namespace DataFilesTest
 			Assert.AreEqual(2, dotNetType.ImplementedInterfaces.Count);
 			Assert.AreEqual(1, dotNetType.ImplementedInterfaces.Count(i => i.Name.LocalName == "I1"));
 			Assert.AreEqual(1, dotNetType.ImplementedInterfaces.Count(i => i.Name.LocalName == "I3"));
+		}
+
+		[TestMethod]
+		public void DotNetType_Assembly_Struct()
+		{
+			//arrange
+			Type type = typeof(StructA);
+			DotNetType dotNetType = new DotNetType(new DotNetQualifiedName("DataFilesTest.DotNetTypeTests.StructA"));
+			//act
+			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			//assert
+			Assert.AreEqual(TypeCategory.Struct, dotNetType.Category);
 		}
 
 	}

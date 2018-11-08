@@ -39,7 +39,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		Enum,
 		/// <summary></summary>
-		Exception
+		Exception,
+		/// <summary></summary>
+		Struct
 	};
 
 	/// <summary>
@@ -348,6 +350,8 @@ namespace WithoutHaste.DataFiles.DotNet
 				Category = TypeCategory.Enum;
 			if(typeInfo.IsException())
 				Category = TypeCategory.Exception;
+			if(typeInfo.IsValueType)
+				Category = TypeCategory.Struct;
 
 			if(Category == TypeCategory.Unknown)
 				Category = TypeCategory.Normal;

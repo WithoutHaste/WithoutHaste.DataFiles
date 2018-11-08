@@ -105,6 +105,8 @@ namespace WithoutHaste.DataFiles.DotNet
 
 			//todo: should this start by clearing all the comment lists? so running it multiple times does not duplicate data?
 
+			//todo: refactor: using DotNetComment.Tag, alot of this duplication can be removed
+
 			bool previousCommentWasAParagraphTag = false;
 			foreach(XNode node in parent.Nodes())
 			{
@@ -116,43 +118,66 @@ namespace WithoutHaste.DataFiles.DotNet
 						switch(element.Name.LocalName)
 						{
 							case "example":
-								ExampleComments.Add(DotNetComment.FromVisualStudioXml(element));
+								comment = DotNetComment.FromVisualStudioXml(element);
+								if(comment == null)
+									break;
+								ExampleComments.Add(comment);
 								previousCommentWasAParagraphTag = true;
 								break;
 							case "exception":
-								ExceptionComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentQualifiedLinkedGroup);
+								comment = DotNetComment.FromVisualStudioXml(element);
+								if(comment == null)
+									break;
+								ExceptionComments.Add(comment as DotNetCommentQualifiedLinkedGroup);
 								previousCommentWasAParagraphTag = true;
 								break;
 							case "param":
-								ParameterComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentParameter);
+								comment = DotNetComment.FromVisualStudioXml(element);
+								if(comment == null)
+									break;
+								ParameterComments.Add(comment as DotNetCommentParameter);
 								previousCommentWasAParagraphTag = true;
 								break;
 							case "permission":
-								PermissionComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentQualifiedLinkedGroup);
+								comment = DotNetComment.FromVisualStudioXml(element);
+								if(comment == null)
+									break;
+								PermissionComments.Add(comment as DotNetCommentQualifiedLinkedGroup);
 								previousCommentWasAParagraphTag = true;
 								break;
 							case "remarks":
 								comment = DotNetComment.FromVisualStudioXml(element);
-								if(comment != null) RemarksComments.Add(comment);
+								if(comment == null)
+									break;
+								RemarksComments.Add(comment);
 								previousCommentWasAParagraphTag = true;
 								break;
 							case "returns":
 								comment = DotNetComment.FromVisualStudioXml(element);
-								if(comment != null) ReturnsComments.Add(comment);
+								if(comment == null)
+									break;
+								ReturnsComments.Add(comment);
 								previousCommentWasAParagraphTag = true;
 								break;
 							case "summary":
 								comment = DotNetComment.FromVisualStudioXml(element);
-								if(comment != null) SummaryComments.Add(comment);
+								if(comment == null)
+									break;
+								SummaryComments.Add(comment);
 								previousCommentWasAParagraphTag = true;
 								break;
 							case "typeparam":
-								TypeParameterComments.Add(DotNetComment.FromVisualStudioXml(element) as DotNetCommentParameter);
+								comment = DotNetComment.FromVisualStudioXml(element);
+								if(comment == null)
+									break;
+								TypeParameterComments.Add(comment as DotNetCommentParameter);
 								previousCommentWasAParagraphTag = true;
 								break;
 							case "value":
 								comment = DotNetComment.FromVisualStudioXml(element);
-								if(comment != null) ValueComments.Add(comment);
+								if(comment == null)
+									break;
+								ValueComments.Add(comment);
 								previousCommentWasAParagraphTag = true;
 								break;
 							default:
