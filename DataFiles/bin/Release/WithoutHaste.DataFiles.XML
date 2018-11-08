@@ -310,7 +310,10 @@
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentCode.FromVisualStudioXml(System.Xml.Linq.XElement)">
-            <summary>Parses .Net XML documentation c.</summary>
+            <summary>Parses .Net XML documentation c tag.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentCode.FromVisualStudioXml(System.Xml.Linq.XCData)">
+            <summary>Parses .Net XML documentation CDATA tag.</summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentCodeBlock">
             <summary>
@@ -324,8 +327,14 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentCodeBlock.#ctor(System.String)">
             <summary></summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentCodeBlock.#ctor(System.String,System.String)">
+            <summary></summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentCodeBlock.FromVisualStudioXml(System.Xml.Linq.XElement)">
-            <summary>Parses .Net XML documentation code.</summary>
+            <summary>Parses .Net XML documentation code tag.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentCodeBlock.FromVisualStudioXml(System.Xml.Linq.XCData)">
+            <summary>Parses .Net XML documentation cdata tag.</summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup">
             <summary>
@@ -1124,6 +1133,9 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.#ctor(WithoutHaste.DataFiles.DotNet.CommentTag,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetComment})">
             <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.FromVisualStudioXml(System.Xml.Linq.XElement)">
+            <summary>Parses .Net XML documentation for any "grouping" tag.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.Add(WithoutHaste.DataFiles.DotNet.DotNetComment)">
             <summary></summary>

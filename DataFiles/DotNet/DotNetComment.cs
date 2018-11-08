@@ -74,7 +74,7 @@ namespace WithoutHaste.DataFiles.DotNet
 				case "para": //paragraph
 				case "returns":
 				case "value":
-					DotNetCommentGroup group = new DotNetCommentGroup(GetTag(element), ParseSection(element));
+					DotNetCommentGroup group = DotNetCommentGroup.FromVisualStudioXml(element);
 					if(group.IsEmpty)
 						return null;
 					return group;
@@ -148,6 +148,20 @@ namespace WithoutHaste.DataFiles.DotNet
 				DotNetComment comment;
 				switch(node.NodeType)
 				{
+					case XmlNodeType.CDATA:
+						if(node.ToString().Contains("\n"))
+						{
+							comment = DotNetCommentCodeBlock.FromVisualStudioXml(node as XCData);
+							comments.Add(comment);
+							previousCommentWasAParagraphTag = true;
+						}
+						else
+						{
+							comment = DotNetCommentCode.FromVisualStudioXml(node as XCData);
+							comments.Add(comment);
+							previousCommentWasAParagraphTag = false;
+						}
+						break;
 					case XmlNodeType.Element:
 						comment = DotNetComment.FromVisualStudioXml(node as XElement);
 						comments.Add(comment);

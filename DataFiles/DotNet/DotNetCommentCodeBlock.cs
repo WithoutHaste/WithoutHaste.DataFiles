@@ -22,11 +22,26 @@ namespace WithoutHaste.DataFiles.DotNet
 			Tag = CommentTag.Code;
 		}
 
-		/// <summary>Parses .Net XML documentation code.</summary>
+		/// <summary></summary>
+		public DotNetCommentCodeBlock(string text, string language) : base(text)
+		{
+			Tag = CommentTag.Code;
+			Language = language;
+		}
+
+		/// <summary>Parses .Net XML documentation code tag.</summary>
 		public static new DotNetCommentCode FromVisualStudioXml(XElement element)
 		{
 			DotNetComment.ValidateXmlTag(element, "code");
+			if(element.Attribute("lang") != null)
+				return new DotNetCommentCodeBlock(element.Value, element.Attribute("lang").Value);
 			return new DotNetCommentCodeBlock(element.Value);
+		}
+
+		/// <summary>Parses .Net XML documentation cdata tag.</summary>
+		public new static DotNetCommentCode FromVisualStudioXml(XCData element)
+		{
+			return new DotNetCommentCodeBlock(element.Value, "xml");
 		}
 	}
 }

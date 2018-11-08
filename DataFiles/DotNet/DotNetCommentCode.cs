@@ -19,10 +19,16 @@ namespace WithoutHaste.DataFiles.DotNet
 			Tag = CommentTag.C;
 		}
 
-		/// <summary>Parses .Net XML documentation c.</summary>
-		public static new DotNetCommentCode FromVisualStudioXml(XElement element)
+		/// <summary>Parses .Net XML documentation c tag.</summary>
+		public new static DotNetCommentCode FromVisualStudioXml(XElement element)
 		{
 			DotNetComment.ValidateXmlTag(element, "c");
+			return new DotNetCommentCode(element.Value.Trim());
+		}
+
+		/// <summary>Parses .Net XML documentation CDATA tag.</summary>
+		public static DotNetCommentCode FromVisualStudioXml(XCData element)
+		{
 			return new DotNetCommentCode(element.Value.Trim());
 		}
 	}

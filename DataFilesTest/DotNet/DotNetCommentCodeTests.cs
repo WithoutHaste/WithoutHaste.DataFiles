@@ -32,5 +32,18 @@ namespace DataFilesTest
 			//assert
 			Assert.AreEqual(code, result.Text);
 		}
+
+		[TestMethod]
+		public void DotNetCommentCode_FromXml_CDATA()
+		{
+			//arrange
+			string xml = "<html><body></body></html>";
+			XElement element = XElement.Parse("<para>Word word word <![CDATA[" + xml + "]]> word word word.</para>", LoadOptions.PreserveWhitespace);
+			//act
+			DotNetCommentGroup result = DotNetCommentGroup.FromVisualStudioXml(element);
+			//assert
+			Assert.AreEqual(3, result.Comments.Count);
+			Assert.AreEqual(xml, result.Comments[1].ToString());
+		}
 	}
 }

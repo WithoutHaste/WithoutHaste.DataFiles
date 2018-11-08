@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
@@ -92,6 +93,12 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			Tag = tag;
 			Comments.AddRange(comments);
+		}
+
+		/// <summary>Parses .Net XML documentation for any "grouping" tag.</summary>
+		public new static DotNetCommentGroup FromVisualStudioXml(XElement element)
+		{
+			return new DotNetCommentGroup(DotNetComment.GetTag(element), DotNetComment.ParseSection(element));
 		}
 
 		#endregion
