@@ -21,7 +21,13 @@ namespace WithoutHaste.DataFiles.DotNet
 
 		/// <summary>Local data type name, written in the c# style.</summary>
 		/// <example><![CDATA[MyType<T> instead of MyType`1]]></example>
-		public virtual string LocalName { get { return localName; } }
+		public virtual string LocalName {
+			get {
+				if(ExplicitInterface != null)
+					return Combine(ExplicitInterface.FullName, localName);
+				return localName;
+			}
+		}
 
 		/// <summary>Local data type name, written in the Xml style.</summary>
 		/// <example><![CDATA[MyType`1 instead of MyType<T>]]></example>
@@ -29,6 +35,11 @@ namespace WithoutHaste.DataFiles.DotNet
 
 		/// <summary>Name without namespace or declaring type or generic type parameters.</summary>
 		protected string localName;
+
+		/// <summary>
+		/// The interface being implemented, if this is a property or method with an explicit interface implementation.
+		/// </summary>
+		public DotNetQualifiedName ExplicitInterface { get; protected set; }
 
 		#region Constructors
 
@@ -38,15 +49,15 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary></summary>
-		public DotNetQualifiedName(string localName)
+		public DotNetQualifiedName(string localName, DotNetQualifiedName explicitInterface = null)
 		{
 			this.localName = localName;
+			ExplicitInterface = explicitInterface;
 		}
 
 		/// <summary></summary>
-		public DotNetQualifiedName(string localName, DotNetQualifiedName fullNamespace)
+		public DotNetQualifiedName(string localName, DotNetQualifiedName fullNamespace, DotNetQualifiedName explicitInterface = null) : this(localName, explicitInterface)
 		{
-			this.localName = localName;
 			this.FullNamespace = fullNamespace;
 		}
 
@@ -77,9 +88,11 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <exception cref="XmlFormatException">Name does not start with /[TMFPE]:/</exception>
 		public static DotNetQualifiedName FromVisualStudioXml(string name)
 		{
-			if(String.IsNullOrEmpty(name)) return new DotNetQualifiedName();
+			if(String.IsNullOrEmpty(name))
+				return new DotNetQualifiedName();
 
-			if(name.Length < 2 || name[1] != ':') return MemberNameFromVisualStudioXml(name);
+			if(name.Length < 2 || name[1] != ':')
+				return MemberNameFromVisualStudioXml(name);
 
 			switch(name[0])
 			{
@@ -98,6 +111,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <remarks>
 		/// There is no support for generic types here because .Net XMl documentation does not include member types, just the names.
 		/// </remarks>
+		/// <remarks>
+		/// Does not parse method names; use DotNetQualifiedMethodName.FromVisualStudioXml(string) instead.
+		/// </remarks>
 		/// <param name="name">Name may or may not start with /[FPE]:/</param>
 		private static DotNetQualifiedName MemberNameFromVisualStudioXml(string name)
 		{
@@ -114,9 +130,19 @@ namespace WithoutHaste.DataFiles.DotNet
 				fullNamespace = name.Substring(0, divider);
 			}
 
-			if(String.IsNullOrEmpty(fullNamespace)) return new DotNetQualifiedName(localName);
+			DotNetQualifiedName explicitInterface = null;
+			if(localName.Contains("#"))
+			{
+				int lastIndex = localName.LastIndexOf("#");
+				string interfaceName = localName.Substring(0, lastIndex).Replace("#", ".");
+				explicitInterface = DotNetQualifiedName.FromVisualStudioXml(interfaceName);
+				localName = localName.Substring(lastIndex + 1);
+			}
 
-			return new DotNetQualifiedName(localName, DotNetQualifiedClassName.FromVisualStudioXml(fullNamespace));
+			if(String.IsNullOrEmpty(fullNamespace))
+				return new DotNetQualifiedName(localName, explicitInterface);
+
+			return new DotNetQualifiedName(localName, DotNetQualifiedClassName.FromVisualStudioXml(fullNamespace), explicitInterface);
 		}
 
 		/// <summary>

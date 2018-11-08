@@ -88,7 +88,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary></summary>
-		public DotNetQualifiedMethodName(string localName, List<DotNetParameter> parameters, DotNetQualifiedTypeName returnTypeName = null, int genericTypeCount = 0) : base(localName)
+		public DotNetQualifiedMethodName(string localName, List<DotNetParameter> parameters, DotNetQualifiedTypeName returnTypeName = null, int genericTypeCount = 0, DotNetQualifiedName explicitInterface = null) : base(localName, explicitInterface)
 		{
 			GenericTypeCount = genericTypeCount;
 			Parameters.AddRange(parameters);
@@ -96,7 +96,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary></summary>
-		public DotNetQualifiedMethodName(string localName, DotNetQualifiedName fullNamespace, List<DotNetParameter> parameters, DotNetQualifiedTypeName returnTypeName = null, int genericTypeCount = 0) : base(localName, fullNamespace)
+		public DotNetQualifiedMethodName(string localName, DotNetQualifiedName fullNamespace, List<DotNetParameter> parameters, DotNetQualifiedTypeName returnTypeName = null, int genericTypeCount = 0, DotNetQualifiedName explicitInterface = null) : base(localName, fullNamespace, explicitInterface)
 		{
 			GenericTypeCount = genericTypeCount;
 			Parameters.AddRange(parameters);
@@ -104,7 +104,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary></summary>
-		public DotNetQualifiedMethodName(DotNetQualifiedName name) : base(name.LocalName, name.FullNamespace)
+		public DotNetQualifiedMethodName(DotNetQualifiedName name, DotNetQualifiedName explicitInterface = null) : base(name.LocalName, name.FullNamespace, explicitInterface)
 		{
 			GenericTypeCount = 0;
 		}
@@ -160,6 +160,7 @@ namespace WithoutHaste.DataFiles.DotNet
 				qualifiedParameters = ParametersFromVisualStudioXml(parameters);
 			}
 
+
 			int divider = signature.LastIndexOf('.');
 			string localName = signature;
 			string fullNamespace = null;
@@ -176,10 +177,19 @@ namespace WithoutHaste.DataFiles.DotNet
 				localName = localName.Substring(0, localName.IndexOf("``"));
 			}
 
-			if(String.IsNullOrEmpty(fullNamespace))
-				return new DotNetQualifiedMethodName(localName, qualifiedParameters, qualifiedReturnType, methodGenericTypeCount);
+			DotNetQualifiedName explicitInterface = null;
+			if(localName.Contains("#") && !localName.Contains("#ctor") && !localName.Contains("#cctor"))
+			{
+				int lastIndex = localName.LastIndexOf("#");
+				string interfaceName = localName.Substring(0, lastIndex).Replace("#", ".");
+				explicitInterface = DotNetQualifiedName.FromVisualStudioXml(interfaceName);
+				localName = localName.Substring(lastIndex + 1);
+			}
 
-			return new DotNetQualifiedMethodName(localName, DotNetQualifiedClassName.FromVisualStudioXml(fullNamespace), qualifiedParameters, qualifiedReturnType, methodGenericTypeCount);
+			if(String.IsNullOrEmpty(fullNamespace))
+				return new DotNetQualifiedMethodName(localName, qualifiedParameters, qualifiedReturnType, methodGenericTypeCount, explicitInterface);
+
+			return new DotNetQualifiedMethodName(localName, DotNetQualifiedClassName.FromVisualStudioXml(fullNamespace), qualifiedParameters, qualifiedReturnType, methodGenericTypeCount, explicitInterface);
 		}
 
 		/// <summary>

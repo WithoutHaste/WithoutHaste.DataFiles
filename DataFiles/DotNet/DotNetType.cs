@@ -314,7 +314,7 @@ namespace WithoutHaste.DataFiles.DotNet
 					return;
 				}
 			}
-			throw new XmlFormatException("Member has no parent type: " + member.Name.FullName);
+			//no exception if member parent is not found
 		}
 
 		/// <summary>

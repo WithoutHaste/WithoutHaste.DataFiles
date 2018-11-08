@@ -33,8 +33,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// See <see cref="DotNetQualifiedTypeName(string,List{DotNetQualifiedTypeName},DotNetQualifiedName)" />
-		public DotNetQualifiedTypeName(string localName, List<DotNetQualifiedTypeName> genericTypeParameters)
-			: this(localName, genericTypeParameters, null)
+		public DotNetQualifiedTypeName(string localName, List<DotNetQualifiedTypeName> genericTypeParameters) : this(localName, genericTypeParameters, null)
 		{
 		}
 

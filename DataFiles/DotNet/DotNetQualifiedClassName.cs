@@ -61,7 +61,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary></summary>
-		public DotNetQualifiedClassName(string localName, DotNetQualifiedName fullNamespace, int genericTypeCount = 0) : base(localName, fullNamespace)
+		public DotNetQualifiedClassName(string localName, DotNetQualifiedName fullNamespace, int genericTypeCount = 0) : base(localName, fullNamespace, null)
 		{
 			GenericTypeCount = genericTypeCount;
 		}

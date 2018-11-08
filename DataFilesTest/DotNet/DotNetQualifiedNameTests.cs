@@ -401,6 +401,18 @@ namespace DataFilesTest
 		}
 
 		[TestMethod]
+		public void DotNetQualifiedName_CompareTo_SameDepths_DifferentExplicitInterfaces()
+		{
+			//arrange
+			DotNetQualifiedName a1 = DotNetQualifiedName.FromVisualStudioXml("System.Collections#I1#A");
+			DotNetQualifiedName a2 = DotNetQualifiedName.FromVisualStudioXml("System.Collections#I2#A");
+			//act
+			int result = a1.CompareTo(a2);
+			//assert
+			Assert.AreNotEqual(0, result);
+		}
+
+		[TestMethod]
 		public void DotNetQualifiedName_IsWithin_DirectChild()
 		{
 			//arrange

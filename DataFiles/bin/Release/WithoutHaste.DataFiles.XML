@@ -685,13 +685,13 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.#ctor">
             <summary>Empty constructor</summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.#ctor(System.String,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter},WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName,System.Int32)">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.#ctor(System.String,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter},WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName,System.Int32,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.#ctor(System.String,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter},WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName,System.Int32)">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.#ctor(System.String,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter},WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName,System.Int32,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.FromVisualStudioXml(System.String)">
@@ -1855,13 +1855,18 @@
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.localName">
             <summary>Name without namespace or declaring type or generic type parameters.</summary>
         </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.ExplicitInterface">
+            <summary>
+            The interface being implemented, if this is a property or method with an explicit interface implementation.
+            </summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.#ctor">
             <summary>Empty constructor</summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.#ctor(System.String)">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.#ctor(System.String,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.#ctor(System.String,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.#ctor(System.String,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.#ctor(System.String[])">
@@ -1890,6 +1895,9 @@
             </summary>
             <remarks>
             There is no support for generic types here because .Net XMl documentation does not include member types, just the names.
+            </remarks>
+            <remarks>
+            Does not parse method names; use DotNetQualifiedMethodName.FromVisualStudioXml(string) instead.
             </remarks>
             <param name="name">Name may or may not start with /[FPE]:/</param>
         </member>
