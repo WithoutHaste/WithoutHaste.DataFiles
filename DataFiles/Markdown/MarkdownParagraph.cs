@@ -7,41 +7,112 @@ using System.Threading.Tasks;
 namespace WithoutHaste.DataFiles.Markdown
 {
 	/// <summary>
-	/// Represents one paragraph of text that will end in a double line break.
+	/// Represents a grouping of elements that will end in a single double-line-break.
 	/// </summary>
-	/// <remarks>Do not include trailing white space or endline characters.</remarks>
+	/// <remarks>Nesting paragraphs inside paragraphs will still result in just one double-line-break at the end.</remarks>
 	/// <example>Displays as: The quick brown fox.\\n\\n</example>
-	public class MarkdownParagraph : MarkdownLine, IMarkdownIsBlock
+	public class MarkdownParagraph : IMarkdownIsBlock, IMarkdownInSection
 	{
+		/// <summary>
+		/// Ordered elements that make up this paragraph.
+		/// </summary>
+		/// <remarks>Expect mostly one plain text element.</remarks>
+		public IMarkdownInSection[] Elements { get { return elements.ToArray(); } }
+
+		/// <summary>
+		/// True when there are no elements in the line.
+		/// </summary>
+		public bool IsEmpty { get { return (elements.Count == 0); } }
+
+		/// <summary>
+		/// Ordered inline elements that make up this line.
+		/// </summary>
+		protected List<IMarkdownInSection> elements = new List<IMarkdownInSection>();
+
 		#region Constructors
 
 		/// <summary>
 		/// Initialize paragraph with any number of elements.
 		/// </summary>
-		public MarkdownParagraph(params IMarkdownInLine[] elements) : base(elements)
+		public MarkdownParagraph(params IMarkdownInSection[] elements)
 		{
+			this.elements.AddRange(elements);
 		}
 
 		/// <summary>
 		/// Initialize paragraph with any number of elements.
 		/// </summary>
-		public MarkdownParagraph(List<IMarkdownInLine> elements) : base(elements)
+		public MarkdownParagraph(List<IMarkdownInSection> elements)
 		{
+			this.elements.AddRange(elements);
 		}
 
 		/// <summary>
 		/// Initialize paragraph with one MarkdownText element.
 		/// </summary>
-		public MarkdownParagraph(string text) : base(text)
+		public MarkdownParagraph(string text)
 		{
+			this.elements.Add(new MarkdownText(text));
 		}
 
 		#endregion
 
-		/// <inheritdoc />
-		public override string ToMarkdown(string previousText)
+		/// <summary>
+		/// Add a new MarkdownText containing the text to the end of the paragraph.
+		/// </summary>
+		public void Add(string text)
 		{
-			return String.Join("", elements.Select(e => e.ToMarkdown(null)).ToArray()) + "\n\n";
+			elements.Add(new MarkdownText(text));
+		}
+
+		/// <summary>
+		/// Add an element to the end of the paragraph.
+		/// </summary>
+		public void Add(IMarkdownInSection element)
+		{
+			elements.Add(element);
+		}
+
+		/// <summary>
+		/// Add elements to the end of the paragraph.
+		/// </summary>
+		public void Add(List<IMarkdownInSection> elements)
+		{
+			this.elements.AddRange(elements);
+		}
+
+		/// <summary>
+		/// Add elements to the end of the paragraph.
+		/// </summary>
+		public void Add(params IMarkdownInSection[] elements)
+		{
+			this.elements.AddRange(elements);
+		}
+
+		/// <summary>
+		/// Add a new MarkdownText containing the text to the beginning of the paragraph.
+		/// </summary>
+		public void Prepend(string text)
+		{
+			elements.Insert(0, new MarkdownText(text));
+		}
+
+		/// <summary>
+		/// Add an element to the beginning of the paragraph.
+		/// </summary>
+		public void Prepend(IMarkdownInSection element)
+		{
+			elements.Insert(0, element);
+		}
+
+		/// <summary>
+		/// Convert the paragraph to markdown-formatted text.
+		/// </summary>
+		public string ToMarkdown(string previousText)
+		{
+			string result = String.Join("", elements.Select(e => e.ToMarkdown(null)).ToArray());
+			result = result.TrimEnd();
+			return result + "  \n\n";
 		}
 	}
 }

@@ -88,7 +88,15 @@ namespace WithoutHaste.DataFiles.Markdown
 		{
 			this.elements.AddRange(elements);
 		}
-		
+
+		/// <summary>
+		/// Appends the contents of the second line to end of this line.
+		/// </summary>
+		public void Concat(MarkdownLine other)
+		{
+			elements.AddRange(other.Elements);
+		}
+
 		/// <summary>
 		/// Add a new MarkdownText containing the text to the beginning of the line.
 		/// </summary>

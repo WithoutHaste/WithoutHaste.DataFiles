@@ -139,7 +139,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <summary>
 		/// Adds the element in a new MarkdownParagraph at the end of this section.
 		/// </summary>
-		public void AddInParagraph(IMarkdownInLine element)
+		public void AddInParagraph(IMarkdownInSection element)
 		{
 			elements.Add(new MarkdownParagraph(element));
 		}
@@ -147,7 +147,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <summary>
 		/// Adds the elements in a new MarkdownParagraph at the end of this section.
 		/// </summary>
-		public void AddInParagraph(params IMarkdownInLine[] elements)
+		public void AddInParagraph(params IMarkdownInSection[] elements)
 		{
 			this.elements.Add(new MarkdownParagraph(elements));
 		}
@@ -155,7 +155,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <summary>
 		/// Adds the elements in a new MarkdownParagraph at the end of this section.
 		/// </summary>
-		public void AddInParagraph(List<IMarkdownInLine> elements)
+		public void AddInParagraph(List<IMarkdownInSection> elements)
 		{
 			this.elements.Add(new MarkdownParagraph(elements));
 		}
