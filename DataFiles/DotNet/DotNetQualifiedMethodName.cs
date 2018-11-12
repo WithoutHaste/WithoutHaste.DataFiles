@@ -231,12 +231,12 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			if(IsGeneric)
 			{
-				if(methodInfo.Name + "``" + methodInfo.GetGenericArguments().Length != LocalXmlName)
+				if(methodInfo.Name + "``" + methodInfo.GetGenericArguments().Length != DotNetQualifiedName.Combine(ExplicitInterface, LocalXmlName))
 					return false;
 			}
 			else
 			{
-				if(methodInfo.Name != LocalName)
+				if(methodInfo.Name != DotNetQualifiedName.Combine(ExplicitInterface, LocalName))
 					return false;
 			}
 
@@ -363,6 +363,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Methods are sorted:
 		/// <list type='numbered'>
 		///		<item>alphabetically by namespace</item>
+		///		<item>alphabetically by explicit interface implementation</item>
 		///		<item>then parameter list, shortest to longest</item>
 		///		<item>then alphabetically by parameter types</item>
 		///		<item>then alphabetically by return type (for some operators)</item>
@@ -380,6 +381,15 @@ namespace WithoutHaste.DataFiles.DotNet
 			if(this.LocalName != other.LocalName)
 			{
 				return this.LocalName.CompareTo(other.LocalName);
+			}
+
+			if(this.ExplicitInterface != null)
+			{
+				return this.ExplicitInterface.CompareTo(other.ExplicitInterface);
+			}
+			if(other.ExplicitInterface != null)
+			{
+				return -1;
 			}
 
 			if(this.Parameters.Count != other.Parameters.Count)

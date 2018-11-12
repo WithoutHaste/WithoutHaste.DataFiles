@@ -379,7 +379,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 			foreach(PropertyInfo propertyInfo in typeInfo.DeclaredProperties.Where(x => x.GetMethod == null || x.GetMethod.GetParameters().Count() == 0))
 			{
-				DotNetProperty property = Properties.FirstOrDefault(p => propertyInfo.Name == p.Name.LocalName);
+				DotNetProperty property = Properties.FirstOrDefault(p => propertyInfo.Name == DotNetQualifiedName.Combine(p.Name.ExplicitInterface, p.Name.LocalName));
 				if(property == null)
 					continue;
 				property.AddAssemblyInfo(propertyInfo);
@@ -396,7 +396,7 @@ namespace WithoutHaste.DataFiles.DotNet
 				DotNetMethod method = Methods.FirstOrDefault(m => m.MatchesSignature(methodInfo));
 				if(method == null) continue;
 
-				if(methodInfo.Attributes.IsPrivate())
+				if(methodInfo.Attributes.IsPrivate() && method.Name.ExplicitInterface == null)
 				{
 					Methods.Remove(method);
 					continue;
@@ -509,6 +509,9 @@ namespace WithoutHaste.DataFiles.DotNet
 				}
 				foreach(DotNetType baseInterface in baseInterfaces)
 				{
+					if(property.Name.ExplicitInterface != null && property.Name.ExplicitInterface != baseInterface.Name)
+						continue;
+
 					DotNetProperty baseProperty = baseInterface.FindProperty(property.Name.LocalName);
 					if(baseProperty != null)
 					{
@@ -546,6 +549,9 @@ namespace WithoutHaste.DataFiles.DotNet
 				}
 				foreach(DotNetType baseInterface in baseInterfaces)
 				{
+					if(method.Name.ExplicitInterface != null && method.Name.ExplicitInterface != baseInterface.Name)
+						continue;
+
 					DotNetMethod baseMethod = baseInterface.FindMethod(method.Name.LocalName, method.MethodName.Parameters);
 					if(baseMethod != null)
 					{

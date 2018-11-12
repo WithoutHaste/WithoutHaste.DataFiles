@@ -773,6 +773,7 @@
             Methods are sorted:
             <list type='numbered'>
             	<item>alphabetically by namespace</item>
+            	<item>alphabetically by explicit interface implementation</item>
             	<item>then parameter list, shortest to longest</item>
             	<item>then alphabetically by parameter types</item>
             	<item>then alphabetically by return type (for some operators)</item>
@@ -1979,6 +1980,7 @@
             <summary>
             Names are sorted alphabetically, per namespace, starting with the root.
             </summary>
+            <remarks>Explicit interface implementations are considered only as a last resort.</remarks>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.Utilities.TrimAllowOneSpace(System.String)">
             <summary>

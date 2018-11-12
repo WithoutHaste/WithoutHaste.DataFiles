@@ -91,9 +91,13 @@ namespace DataFilesTest
 			Assert.AreEqual(2, dotNetType.Properties.Count);
 			Assert.AreEqual("DataFilesTest.DotNetPropertyTests.IInterfaceA", dotNetType.Properties[0].Name.ExplicitInterface);
 			Assert.AreEqual("DataFilesTest.DotNetPropertyTests.IInterfaceB", dotNetType.Properties[1].Name.ExplicitInterface);
+			Assert.AreEqual("System.Int32", dotNetType.Properties[0].TypeName);
+			Assert.AreEqual("System.Int32", dotNetType.Properties[1].TypeName);
 			Assert.AreEqual(2, dotNetType.Methods.Count);
 			Assert.AreEqual("DataFilesTest.DotNetPropertyTests.IInterfaceA", dotNetType.Methods[0].Name.ExplicitInterface);
 			Assert.AreEqual("DataFilesTest.DotNetPropertyTests.IInterfaceB", dotNetType.Methods[1].Name.ExplicitInterface);
+			Assert.AreEqual("System.Int32", dotNetType.Methods[0].MethodName.ReturnTypeName);
+			Assert.AreEqual("System.Int32", dotNetType.Methods[1].MethodName.ReturnTypeName);
 		}
 	}
 }

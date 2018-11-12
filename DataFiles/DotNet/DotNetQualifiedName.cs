@@ -23,8 +23,6 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <example><![CDATA[MyType<T> instead of MyType`1]]></example>
 		public virtual string LocalName {
 			get {
-				if(ExplicitInterface != null)
-					return Combine(ExplicitInterface.FullName, localName);
 				return localName;
 			}
 		}
@@ -195,13 +193,13 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Return the names combined with a '.' delimiter.</summary>
 		public static string Combine(params string[] names)
 		{
-			return String.Join(".", names);
+			return String.Join(".", names.Where(n => !String.IsNullOrEmpty(n)));
 		}
 
 		/// <summary>Return the names combined with a '.' delimiter.</summary>
 		public static string Combine(List<string> names)
 		{
-			return String.Join(".", names);
+			return String.Join(".", names.Where(n => !String.IsNullOrEmpty(n)));
 		}
 
 		/// <summary>Returns true if this Name is nested inside the other Name.</summary>
@@ -285,7 +283,7 @@ namespace WithoutHaste.DataFiles.DotNet
 				return false;
 
 			DotNetQualifiedName other = (b as DotNetQualifiedName);
-			return (this.LocalName == other.LocalName && this.FullNamespace == other.FullNamespace);
+			return (this.LocalName == other.LocalName && this.FullNamespace == other.FullNamespace && this.ExplicitInterface == other.ExplicitInterface);
 		}
 
 		/// <summary></summary>
@@ -328,6 +326,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>
 		/// Names are sorted alphabetically, per namespace, starting with the root.
 		/// </summary>
+		/// <remarks>Explicit interface implementations are considered only as a last resort.</remarks>
 		public virtual int CompareTo(object b)
 		{
 			if(!(b is DotNetQualifiedName))
@@ -352,6 +351,12 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 			if(thisNames.Length < otherNames.Length)
 				return -1;
+
+			if(this.ExplicitInterface != null)
+				return this.ExplicitInterface.CompareTo(other.ExplicitInterface);
+			if(other.ExplicitInterface != null)
+				return -1;
+
 			return 0;
 		}
 
