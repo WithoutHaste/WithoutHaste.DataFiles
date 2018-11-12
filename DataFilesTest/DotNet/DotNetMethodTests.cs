@@ -38,6 +38,10 @@ namespace DataFilesTest
 			public GenericOne<string>.NestedGeneric<int> MethodReturnNestedGeneric() { return new GenericOne<string>.NestedGeneric<int>(); }
 
 			public void MethodOneGeneric<CustomA>() { }
+
+			public void MethodOut(out int a) { a = 0; }
+
+			public void MethodRef(ref int a) { a = 0; }
 		}
 
 		protected class ParameterClass
@@ -203,6 +207,44 @@ namespace DataFilesTest
 			Assert.AreEqual(1, result.MethodName.Parameters.Count);
 			Assert.AreEqual("System.Int32", result.MethodName.Parameters[0].FullTypeName);
 			Assert.AreEqual("a", result.MethodName.Parameters[0].Name);
+		}
+
+		[TestMethod]
+		public void DotNetMethod_FromAssembly_OutParameter()
+		{
+			//arrange
+			XElement xmlTypeElement = XElement.Parse("<member name='T:DataFilesTest.DotNetMethodTests.NormalClass' />", LoadOptions.PreserveWhitespace);
+			XElement xmlMemberElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.NormalClass.MethodOut(System.Int32@)' />", LoadOptions.PreserveWhitespace);
+			Type type = typeof(NormalClass);
+			DotNetType dotNetType = new DotNetType(new DotNetQualifiedName("DataFilesTest.DotNetMethodTests.NormalClass"));
+			dotNetType.AddMember(DotNetMethod.FromVisualStudioXml(xmlMemberElement));
+			//act
+			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			DotNetMethod result = dotNetType.Methods[0];
+			//assert
+			Assert.AreEqual(1, result.MethodName.Parameters.Count);
+			Assert.AreEqual("System.Int32", result.MethodName.Parameters[0].FullTypeName);
+			Assert.AreEqual("a", result.MethodName.Parameters[0].Name);
+			Assert.AreEqual(ParameterCategory.Out, result.MethodName.Parameters[0].Category);
+		}
+
+		[TestMethod]
+		public void DotNetMethod_FromAssembly_RefParameter()
+		{
+			//arrange
+			XElement xmlTypeElement = XElement.Parse("<member name='T:DataFilesTest.DotNetMethodTests.NormalClass' />", LoadOptions.PreserveWhitespace);
+			XElement xmlMemberElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.NormalClass.MethodRef(System.Int32@)' />", LoadOptions.PreserveWhitespace);
+			Type type = typeof(NormalClass);
+			DotNetType dotNetType = new DotNetType(new DotNetQualifiedName("DataFilesTest.DotNetMethodTests.NormalClass"));
+			dotNetType.AddMember(DotNetMethod.FromVisualStudioXml(xmlMemberElement));
+			//act
+			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			DotNetMethod result = dotNetType.Methods[0];
+			//assert
+			Assert.AreEqual(1, result.MethodName.Parameters.Count);
+			Assert.AreEqual("System.Int32", result.MethodName.Parameters[0].FullTypeName);
+			Assert.AreEqual("a", result.MethodName.Parameters[0].Name);
+			Assert.AreEqual(ParameterCategory.Ref, result.MethodName.Parameters[0].Category);
 		}
 
 		[TestMethod]

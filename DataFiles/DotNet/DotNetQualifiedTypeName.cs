@@ -111,6 +111,8 @@ namespace WithoutHaste.DataFiles.DotNet
 			if(String.IsNullOrEmpty(typeName))
 				typeName = type.Name; //for generic types
 
+			typeName = typeName.Replace("@", "").Replace("&", ""); //out and ref modifiers do not differentiate method signatures
+
 			typeName = typeName.ReplaceUnescapedCharacters('\\', '+', '.');
 			if(String.IsNullOrEmpty(typeName))
 				typeName = ""; //todo: this should not be necessary, track down case in EarlyDocs

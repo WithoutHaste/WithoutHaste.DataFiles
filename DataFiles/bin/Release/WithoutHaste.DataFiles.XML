@@ -659,7 +659,7 @@
             <summary>Returns parameter list formatted as: (TypeA a, TypeB b)</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.ParametersWithoutNames">
-            <summary>Returns parameter list formatted as: (TypeA,TypeB)</summary>
+            <summary>Returns parameter list formatted as: (TypeA, TypeB)</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.IsGeneric">
             <summary>True for generic methods.</summary>
@@ -1522,6 +1522,24 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.GetHashCode">
             <summary></summary>
         </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.ParameterCategory">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.ParameterCategory.Unknown">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.ParameterCategory.Normal">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.ParameterCategory.OutOrRef">
+            <summary>Parameter is either an out or a ref parameter.</summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.ParameterCategory.Out">
+            <summary></summary>
+        </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.ParameterCategory.Ref">
+            <summary></summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetParameter">
             <summary>
             Represents a normal-type parameter in a method signature.
@@ -1537,14 +1555,34 @@
             <summary>Local data type name.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.Name">
-            <summary>Name of parametere. Null if not known.</summary>
+            <summary>Name of parameter. Null if not known.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.Category">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.SignatureWithName">
+            <summary>
+            Returns formatted string "Type Name", "out Type Name" or "ref Type Name".
+            </summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.SignatureWithoutName">
+            <summary>
+            Returns formatted string "Type", "out Type" or "ref Type".
+            </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.#ctor">
             <summary>Empty constructor.</summary>
+            <remarks>Category defaults to Unknown.</remarks>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName)">
             <summary></summary>
+            <remarks>Category defaults to Normal.</remarks>
             <param name="typeName">Fully qualified data type name.</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName,WithoutHaste.DataFiles.DotNet.ParameterCategory)">
+            <summary></summary>
+            <param name="typeName">Fully qualified data type name.</param>
+            <param name="category">Category of parameter.</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.FromVisualStudioXml(System.String)">
             <summary>
@@ -1555,6 +1593,9 @@
             <summary>
             Load additional documentation information from the assembly itself.
             </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.ToString">
+            <duplicate cref='P:WithoutHaste.DataFiles.DotNet.DotNetParameter.SignatureWithName'/>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetProperty">
             <summary>

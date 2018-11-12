@@ -94,7 +94,6 @@ namespace WithoutHaste.DataFiles.DotNet
 			for(int i = 0; i < Parameters.Count; i++)
 			{
 				string otherName = DotNetQualifiedTypeName.FromAssemblyInfo(otherParameters[i].ParameterType).FullName;
-				//todo: something about parameters that end with @ vs &
 				if(Parameters[i].FullTypeName != otherName)
 					return false;
 			}

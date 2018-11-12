@@ -43,14 +43,14 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Returns parameter list formatted as: (TypeA a, TypeB b)</summary>
 		public string ParametersWithNames {
 			get {
-				return String.Format("({0})", String.Join(", ", Parameters.Select(p => p.TypeName.ToString() + " " + p.Name).ToArray()));
+				return String.Format("({0})", String.Join(", ", Parameters.Select(p => p.SignatureWithName).ToArray()));
 			}
 		}
 
-		/// <summary>Returns parameter list formatted as: (TypeA,TypeB)</summary>
+		/// <summary>Returns parameter list formatted as: (TypeA, TypeB)</summary>
 		public string ParametersWithoutNames {
 			get {
-				return String.Format("({0})", String.Join(",", Parameters.Select(p => p.TypeName.ToString()).ToArray()));
+				return String.Format("({0})", String.Join(", ", Parameters.Select(p => p.SignatureWithoutName).ToArray()));
 			}
 		}
 
