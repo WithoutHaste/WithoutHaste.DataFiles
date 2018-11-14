@@ -2640,7 +2640,13 @@
             </summary>
             <example>Displays as: The quick brown fox [jumped over](https://www.google.com) the lazy dog.</example>
         </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownInlineLink.#ctor(System.String)">
+            <inheritdoc/>
+        </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownInlineLink.#ctor(System.String,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownInlineLink.#ctor(WithoutHaste.DataFiles.Markdown.MarkdownText,System.String)">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownInlineLink.ToMarkdown(System.String)">
@@ -2728,10 +2734,19 @@
         <member name="P:WithoutHaste.DataFiles.Markdown.MarkdownLink.Text">
             <summary>Plain text of link.</summary>
         </member>
+        <member name="F:WithoutHaste.DataFiles.Markdown.MarkdownLink.text">
+            <summary>Styled text of link.</summary>
+        </member>
         <member name="P:WithoutHaste.DataFiles.Markdown.MarkdownLink.Url">
             <summary>Url of target.</summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLink.#ctor(System.String)">
+            <summary>Link text and url are the same.</summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLink.#ctor(System.String,System.String)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLink.#ctor(WithoutHaste.DataFiles.Markdown.MarkdownText,System.String)">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLink.ToMarkdown(System.String)">

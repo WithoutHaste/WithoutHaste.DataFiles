@@ -14,8 +14,18 @@ namespace WithoutHaste.DataFiles.Markdown
 	{
 		#region Constructors
 
+		/// <inheritdoc/>
+		public MarkdownInlineLink(string text) : base(text)
+		{
+		}
+
 		/// <summary></summary>
 		public MarkdownInlineLink(string text, string url) : base(text, url)
+		{
+		}
+
+		/// <summary></summary>
+		public MarkdownInlineLink(MarkdownText text, string url) : base(text, url)
 		{
 		}
 
@@ -24,7 +34,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <inheritdoc />
 		public override string ToMarkdown(string previousText)
 		{
-			return String.Format("[{0}]({1})", Text, Url);
+			return String.Format("[{0}]({1})", text.ToMarkdown(), Url);
 		}
 	}
 }

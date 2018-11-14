@@ -74,7 +74,7 @@ namespace WithoutHaste.DataFiles.Markdown
 
 		/// <inheritdoc />
 		/// <remarks>Uses ** for bold and _ for italics.</remarks>
-		public string ToMarkdown(string previousText)
+		public string ToMarkdown(string previousText = null)
 		{
 			if(Style == TextStyle.Bold)
 				return "**" + Text + "**";
