@@ -1540,6 +1540,9 @@
         <member name="F:WithoutHaste.DataFiles.DotNet.ParameterCategory.Ref">
             <summary></summary>
         </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.ParameterCategory.Optional">
+            <summary></summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetParameter">
             <summary>
             Represents a normal-type parameter in a method signature.
@@ -1559,6 +1562,9 @@
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.Category">
             <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.DefaultValue">
+            <summary>For optional parameters, the dafult value of the parameter. Null otherwise.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.SignatureWithName">
             <summary>

@@ -20,6 +20,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		Out,
 		/// <summary></summary>
 		Ref,
+		/// <summary></summary>
+		Optional,
 	};
 
 	/// <summary>
@@ -42,6 +44,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public ParameterCategory Category { get; protected set; }
 
+		/// <summary>For optional parameters, the dafult value of the parameter. Null otherwise.</summary>
+		public object DefaultValue { get; protected set; }
+
 		/// <summary>
 		/// Returns formatted string "Type Name", "out Type Name" or "ref Type Name".
 		/// </summary>
@@ -52,6 +57,13 @@ namespace WithoutHaste.DataFiles.DotNet
 					return "out " + signature;
 				if(Category == ParameterCategory.Ref)
 					return "ref " + signature;
+				if(Category == ParameterCategory.Optional)
+				{
+					if(DefaultValue == null)
+						return signature + " = null";
+					else
+						return signature + " = " + DefaultValue.ToString();
+				}
 				return signature;
 			}
 		}
@@ -66,6 +78,13 @@ namespace WithoutHaste.DataFiles.DotNet
 					return "out " + signature;
 				if(Category == ParameterCategory.Ref)
 					return "ref " + signature;
+				if(Category == ParameterCategory.Optional)
+				{
+					if(DefaultValue == null)
+						return signature + " = null";
+					else
+						return signature + " = " + DefaultValue.ToString();
+				}
 				return signature;
 			}
 		}
@@ -122,6 +141,11 @@ namespace WithoutHaste.DataFiles.DotNet
 				Category = ParameterCategory.Out;
 			else if(parameterInfo.ParameterType.Name.Contains("&"))
 				Category = ParameterCategory.Ref;
+			else if(parameterInfo.IsOptional)
+			{
+				Category = ParameterCategory.Optional;
+				DefaultValue = parameterInfo.RawDefaultValue;
+			}
 
 			Name = parameterInfo.Name;
 		}

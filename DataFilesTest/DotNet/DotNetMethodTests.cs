@@ -42,6 +42,8 @@ namespace DataFilesTest
 			public void MethodOut(out int a) { a = 0; }
 
 			public void MethodRef(ref int a) { a = 0; }
+
+			public void MethodOptional(int a = 5, string b = null) { }
 		}
 
 		protected class ParameterClass
@@ -245,6 +247,31 @@ namespace DataFilesTest
 			Assert.AreEqual("System.Int32", result.MethodName.Parameters[0].FullTypeName);
 			Assert.AreEqual("a", result.MethodName.Parameters[0].Name);
 			Assert.AreEqual(ParameterCategory.Ref, result.MethodName.Parameters[0].Category);
+		}
+
+		[TestMethod]
+		public void DotNetMethod_FromAssembly_OptionalParameter()
+		{
+			//arrange
+			XElement xmlTypeElement = XElement.Parse("<member name='T:DataFilesTest.DotNetMethodTests.NormalClass' />", LoadOptions.PreserveWhitespace);
+			XElement xmlMemberElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.NormalClass.MethodOptional(System.Int32,System.String)' />", LoadOptions.PreserveWhitespace);
+			Type type = typeof(NormalClass);
+			DotNetType dotNetType = new DotNetType(new DotNetQualifiedName("DataFilesTest.DotNetMethodTests.NormalClass"));
+			dotNetType.AddMember(DotNetMethod.FromVisualStudioXml(xmlMemberElement));
+			//act
+			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			DotNetMethod result = dotNetType.Methods[0];
+			//assert
+			Assert.AreEqual(2, result.MethodName.Parameters.Count);
+			Assert.AreEqual("System.Int32", result.MethodName.Parameters[0].FullTypeName);
+			Assert.AreEqual("a", result.MethodName.Parameters[0].Name);
+			Assert.AreEqual(ParameterCategory.Optional, result.MethodName.Parameters[0].Category);
+			Assert.AreEqual(5, result.MethodName.Parameters[0].DefaultValue);
+			Assert.AreEqual("System.String", result.MethodName.Parameters[1].FullTypeName);
+			Assert.AreEqual("b", result.MethodName.Parameters[1].Name);
+			Assert.AreEqual(ParameterCategory.Optional, result.MethodName.Parameters[1].Category);
+			Assert.IsNull(result.MethodName.Parameters[1].DefaultValue);
+			Assert.AreEqual("System.String b = null", result.MethodName.Parameters[1].SignatureWithName);
 		}
 
 		[TestMethod]
