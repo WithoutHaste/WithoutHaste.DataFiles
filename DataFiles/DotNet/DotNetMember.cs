@@ -264,6 +264,22 @@ namespace WithoutHaste.DataFiles.DotNet
 			return Name.FullName;
 		}
 
+		/// <summary>
+		/// Returns true if member name matches the link name.
+		/// </summary>
+		public bool Matches(DotNetCommentQualifiedLink link)
+		{
+			return (this.Name == link.Name);
+		}
+
+		/// <summary>
+		/// Returns true if member name matches the link name.
+		/// </summary>
+		public bool Matches(DotNetCommentQualifiedLinkedGroup group)
+		{
+			return (this.Name == group.QualifiedLink.Name);
+		}
+
 		#endregion
 
 	}

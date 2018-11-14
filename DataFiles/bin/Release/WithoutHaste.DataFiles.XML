@@ -479,6 +479,11 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(System.Xml.Linq.XElement)">
             <summary>Parses .Net XML documentation for permission or exception.</summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.Matches(WithoutHaste.DataFiles.DotNet.DotNetMember)">
+            <summary>
+            Returns true if link name matches the member name.
+            </summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentRow">
             <summary>
             Represents a row of data in a .Net XML documentation table.
@@ -1172,6 +1177,11 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.FromVisualStudioXml(System.String)">
             <summary>Parses .Net XML documentation cref.</summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.Matches(WithoutHaste.DataFiles.DotNet.DotNetMember)">
+            <summary>
+            Returns true if link name matches the member name.
+            </summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentList">
             <summary>
             Represents a list in the comments.
@@ -1433,6 +1443,16 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMember.ToString">
             <summary>Full name of member.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMember.Matches(WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink)">
+            <summary>
+            Returns true if member name matches the link name.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMember.Matches(WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup)">
+            <summary>
+            Returns true if member name matches the link name.
+            </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.MethodCategory">
             <summary></summary>

@@ -54,5 +54,17 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		#endregion
+
+		#region Low Level
+
+		/// <summary>
+		/// Returns true if link name matches the member name.
+		/// </summary>
+		public bool Matches(DotNetMember member)
+		{
+			return member.Matches(this);
+		}
+
+		#endregion
 	}
 }
