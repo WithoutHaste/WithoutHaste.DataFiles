@@ -103,7 +103,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			parent = parent.CleanWhitespaces();
 
-			//todo: should this start by clearing all the comment lists? so running it multiple times does not duplicate data?
+			ClearComments();
 
 			//todo: refactor: using DotNetComment.Tag, alot of this duplication can be removed
 
@@ -254,6 +254,23 @@ namespace WithoutHaste.DataFiles.DotNet
 
 			FloatingComments.Comments.Clear();
 			FloatingComments.Comments.AddRange(original.FloatingComments.Comments);
+		}
+
+		/// <summary>
+		/// Removes all comments from member.
+		/// </summary>
+		public void ClearComments()
+		{
+			SummaryComments = new DotNetCommentGroup();
+			RemarksComments = new DotNetCommentGroup();
+			PermissionComments.Clear();
+			ExampleComments.Clear();
+			ExceptionComments.Clear();
+			ParameterComments.Clear();
+			TypeParameterComments.Clear();
+			ValueComments = new DotNetCommentGroup();
+			ReturnsComments = new DotNetCommentGroup();
+			FloatingComments = new DotNetCommentGroup();
 		}
 
 		#region Low Level
