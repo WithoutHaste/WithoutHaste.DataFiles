@@ -98,6 +98,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>
 		/// Parse .Net XML documentation about this member.
 		/// </summary>
+		/// <remarks>Clears any existing comments before parsing the new ones.</remarks>
 		/// <param name="parent">Expects the tag containing all documentation for this member.</param>
 		public void ParseVisualStudioXmlDocumentation(XElement parent)
 		{
@@ -110,11 +111,11 @@ namespace WithoutHaste.DataFiles.DotNet
 			bool previousCommentWasAParagraphTag = false;
 			foreach(XNode node in parent.Nodes())
 			{
+				DotNetComment comment = null;
 				switch(node.NodeType)
 				{
 					case XmlNodeType.Element:
 						XElement element = (node as XElement);
-						DotNetComment comment = null;
 						switch(element.Name.LocalName)
 						{
 							case "example":
