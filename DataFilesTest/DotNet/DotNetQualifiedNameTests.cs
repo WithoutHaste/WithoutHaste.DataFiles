@@ -493,5 +493,96 @@ namespace DataFilesTest
 			Assert.AreEqual(a, result);
 			Assert.AreEqual("A.B.C", result.ExplicitInterface.ToString());
 		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_Localize_NoMatch()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("A.B.C.D");
+			DotNetQualifiedName b = DotNetQualifiedName.FromVisualStudioXml("E.F.G");
+			//act
+			a.Localize(b);
+			DotNetQualifiedName c = a.GetLocalized(b);
+			//assert
+			Assert.IsFalse(Object.ReferenceEquals(a, c));
+			Assert.AreEqual(a, c);
+			Assert.AreEqual("A.B.C.D", a);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_Localize_CloseButNoMatch()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("A.B.C.D");
+			DotNetQualifiedName b = DotNetQualifiedName.FromVisualStudioXml("E.B.C.D");
+			//act
+			a.Localize(b);
+			DotNetQualifiedName c = a.GetLocalized(b);
+			//assert
+			Assert.IsFalse(Object.ReferenceEquals(a, c));
+			Assert.AreEqual(a, c);
+			Assert.AreEqual("A.B.C.D", a);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_Localize_AWithinB()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("A.B.C.D");
+			DotNetQualifiedName b = DotNetQualifiedName.FromVisualStudioXml("A.B");
+			//act
+			a.Localize(b);
+			DotNetQualifiedName c = a.GetLocalized(b);
+			//assert
+			Assert.IsFalse(Object.ReferenceEquals(a, c));
+			Assert.AreEqual(a, c);
+			Assert.AreEqual("C.D", a);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_Localize_ABShareNamespace()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("A.B.C.D");
+			DotNetQualifiedName b = DotNetQualifiedName.FromVisualStudioXml("A.B.E.F");
+			//act
+			a.Localize(b);
+			DotNetQualifiedName c = a.GetLocalized(b);
+			//assert
+			Assert.IsFalse(Object.ReferenceEquals(a, c));
+			Assert.AreEqual(a, c);
+			Assert.AreEqual("C.D", a);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_Localize_ExactMatch()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("A.B.C.D");
+			DotNetQualifiedName b = DotNetQualifiedName.FromVisualStudioXml("A.B.C.D");
+			//act
+			a.Localize(b);
+			DotNetQualifiedName c = a.GetLocalized(b);
+			//assert
+			Assert.IsFalse(Object.ReferenceEquals(a, c));
+			Assert.AreEqual(a, c);
+			Assert.AreEqual("D", a);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_Localize_ExplicitInterface()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("A.B.C.InterfaceNamespace#Interface#D");
+			DotNetQualifiedName b = DotNetQualifiedName.FromVisualStudioXml("A.B.C.D");
+			//act
+			a.Localize(b);
+			DotNetQualifiedName c = a.GetLocalized(b);
+			//assert
+			Assert.IsFalse(Object.ReferenceEquals(a, c));
+			Assert.AreEqual(a, c);
+			Assert.AreEqual("D", a);
+			Assert.AreEqual("InterfaceNamespace.Interface", a.ExplicitInterface.ToString());
+		}
 	}
 }

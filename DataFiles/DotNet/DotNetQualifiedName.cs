@@ -223,27 +223,50 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>
+		/// Returns a new name object which has been localized to the provided other name. The current object is not altered.
+		/// </summary>
+		public DotNetQualifiedName GetLocalized(DotNetQualifiedName other)
+		{
+			DotNetQualifiedName clone = this.Clone();
+			clone.Localize(other);
+			return clone;
+		}
+
+		/// <summary>
 		/// Simplifies this qualified name based on the <paramref name='other'/> name.
 		/// In other words, removes the portion of the namespace that this and the <paramref name='other'/> have in common.
+		/// Alters the current object.
 		/// </summary>
-		/// <remarks>Will always return at least the LocalName.</remarks>
+		/// <remarks>Will always keep at least the LocalName.</remarks>
 		/// <remarks>Preserves explicit interface implementations.</remarks>
 		/// <example>"System.Collections.Generic.List".Localize("System.Collections") returns "Generic.List".</example>
 		/// <example>"System.Collections.Generic.List".Localize("System.Collections.Standard.List") returns "Standard.List".</example>
 		/// <example>"System.Collections.Generic.List".Localize("System.Collections.Generic.List") returns "List".</example>
-		public DotNetQualifiedName Localize(DotNetQualifiedName other)
+		public void Localize(DotNetQualifiedName other)
 		{
-			List<string> thisFlattened = this.Flatten().ToList();
-			List<string> otherFlattened = other.Flatten().ToList();
-			while(thisFlattened.Count > 1 && otherFlattened.Count > 0 && thisFlattened[0] == otherFlattened[0])
+			if(FullNamespace == null)
+				return;
+
+			if(FullNamespace == other || other.IsWithin(FullNamespace))
 			{
-				thisFlattened.RemoveAt(0);
-				otherFlattened.RemoveAt(0);
+				FullNamespace = null;
+				return;
 			}
-			DotNetQualifiedName localizedName = new DotNetQualifiedName(thisFlattened.ToArray());
-			if(this.ExplicitInterface != null)
-				localizedName.ExplicitInterface = this.ExplicitInterface;
-			return localizedName;
+
+			FullNamespace.Localize(other);
+
+
+			//List<string> thisFlattened = this.Flatten().ToList();
+			//List<string> otherFlattened = other.Flatten().ToList();
+			//while(thisFlattened.Count > 1 && otherFlattened.Count > 0 && thisFlattened[0] == otherFlattened[0])
+			//{
+			//	thisFlattened.RemoveAt(0);
+			//	otherFlattened.RemoveAt(0);
+			//}
+			//DotNetQualifiedName localizedName = new DotNetQualifiedName(thisFlattened.ToArray());
+			//if(this.ExplicitInterface != null)
+			//	localizedName.ExplicitInterface = this.ExplicitInterface;
+			//return localizedName;
 		}
 
 		/// <summary>
