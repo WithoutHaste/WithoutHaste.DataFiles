@@ -184,5 +184,85 @@ namespace DataFilesTest
 			Assert.AreEqual(0, file.Types.Count);
 		}
 
+		[TestMethod]
+		public void DotNetDocumentationFile_DuplicateComments_OneLevelDeep()
+		{
+			//arrange
+			string filename = "data/DotNetDocumentationFile_DuplicateComments_OneLevelDeep.xml";
+			//act
+			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
+
+			List<DotNetMember> members = new List<DotNetMember>();
+			foreach(DotNetType type in file.Types)
+			{
+				members.Add(type);
+				members.AddRange(type.Methods);
+				members.AddRange(type.Fields);
+				members.AddRange(type.Properties);
+				members.AddRange(type.Events);
+			}
+			DotNetMember typeA = members.OfType<DotNetType>().FirstOrDefault(m => m.Name.LocalName == "TypeA");
+			DotNetMember methodA = members.OfType<DotNetMethod>().FirstOrDefault(m => m.Name.LocalName == "MethodA");
+			DotNetMember fieldA = members.OfType<DotNetField>().FirstOrDefault(m => m.Name.LocalName == "FieldA");
+			DotNetMember propertyA = members.OfType<DotNetProperty>().FirstOrDefault(m => m.Name.LocalName == "PropertyA");
+			DotNetMember eventA = members.OfType<DotNetEvent>().FirstOrDefault(m => m.Name.LocalName == "EventA");
+
+			//assert
+			int count = 0;
+			foreach(DotNetMember member in members)
+			{
+				if(member.Name.LocalName.EndsWith("FromTypeA"))
+					Assert.AreEqual(typeA.SummaryComments[0], member.SummaryComments[0]);
+				else if(member.Name.LocalName.EndsWith("FromMethodA"))
+					Assert.AreEqual(methodA.SummaryComments[0], member.SummaryComments[0]);
+				else if(member.Name.LocalName.EndsWith("FromFieldA"))
+					Assert.AreEqual(fieldA.SummaryComments[0], member.SummaryComments[0]);
+				else if(member.Name.LocalName.EndsWith("FromPropertyA"))
+					Assert.AreEqual(propertyA.SummaryComments[0], member.SummaryComments[0]);
+				else if(member.Name.LocalName.EndsWith("FromEventA"))
+					Assert.AreEqual(eventA.SummaryComments[0], member.SummaryComments[0]);
+				else
+					continue;
+				count++;
+			}
+			Assert.AreEqual(25, count);
+		}
+
+		[TestMethod]
+		public void DotNetDocumentationFile_DuplicateComments_MultipleLevelsDeep()
+		{
+			//arrange
+			string filename = "data/DotNetDocumentationFile_DuplicateComments_MultipleLevelsDeep.xml";
+			//act
+			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
+			DotNetType typeA = file.Types.FirstOrDefault(m => m.Name.LocalName == "TypeA");
+			//assert
+			int count = 0;
+			foreach(DotNetType type in file.Types)
+			{
+				if(type == typeA)
+					continue;
+				Assert.AreEqual(typeA.SummaryComments[0], type.SummaryComments[0]);
+				count++;
+			}
+			Assert.AreEqual(5, count);
+		}
+
+		[TestMethod]
+		public void DotNetDocumentationFile_DuplicateComments_Loop()
+		{
+			//arrange
+			string filename = "data/DotNetDocumentationFile_DuplicateComments_Loop.xml";
+			//act
+			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
+			DotNetType typeA = file.Types.FirstOrDefault(m => m.Name.LocalName == "TypeA");
+			DotNetType typeB = file.Types.FirstOrDefault(m => m.Name.LocalName == "TypeB");
+			DotNetType typeC = file.Types.FirstOrDefault(m => m.Name.LocalName == "TypeC");
+			//assert
+			Assert.AreNotEqual(typeA.FloatingComments[0], typeB.FloatingComments[0]);
+			Assert.AreNotEqual(typeB.FloatingComments[0], typeC.FloatingComments[0]);
+			Assert.AreNotEqual(typeC.FloatingComments[0], typeA.FloatingComments[0]);
+		}
+
 	}
 }

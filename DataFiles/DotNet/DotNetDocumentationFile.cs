@@ -70,6 +70,8 @@ namespace WithoutHaste.DataFiles.DotNet
 			LoadAssemblyInfoFromXml(document);
 			LoadMembersInfoFromXml(document);
 			ResolveGenericTypeNameConflicts();
+			ResolveDuplicatedComments();
+			ResolveInheritedComments();
 		}
 
 		#endregion

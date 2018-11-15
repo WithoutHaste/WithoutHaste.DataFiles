@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <assembly>
+	<name>Test</name>
+  </assembly>
+  <members>
+	<!-- Types -->
+	<member name="T:Test.TypeA">
+	  <duplicate cref="T:Test.TypeB"/>
+	</member>
+	<member name="T:Test.TypeB">
+	  <duplicate cref="T:Test.TypeC"/>
+	</member>
+	<member name="T:Test.TypeC">
+	  <duplicate cref="T:Test.TypeA"/>
+	</member>
+  </members>
+</root>

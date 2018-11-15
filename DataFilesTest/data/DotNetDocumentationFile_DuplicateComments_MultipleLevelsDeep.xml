@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <assembly>
+	<name>Test</name>
+  </assembly>
+  <members>
+	<!-- Types -->
+	<member name="T:Test.TypeA">
+	  <summary>summary TypeA</summary>
+	</member>
+	<member name="T:Test.Type1FromTypeA">
+	  <duplicate cref="T:Test.TypeA"/>
+	</member>
+	<member name="T:Test.Type2FromTypeA">
+	  <duplicate cref="T:Test.Type1FromTypeA"/>
+	</member>
+	<member name="T:Test.Type3FromTypeA">
+	  <duplicate cref="T:Test.Type2FromTypeA"/>
+	</member>
+	<member name="T:Test.Type4FromTypeA">
+	  <duplicate cref="T:Test.Type3FromTypeA"/>
+	</member>
+	<member name="T:Test.Type5FromTypeA">
+	  <duplicate cref="T:Test.Type4FromTypeA"/>
+	</member>
+  </members>
+</root>

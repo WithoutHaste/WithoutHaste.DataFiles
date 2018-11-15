@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <assembly>
+	<name>Test</name>
+  </assembly>
+  <members>
+	<!-- Types -->
+	<member name="T:Test.TypeA">
+	  <summary>summary TypeA</summary>
+	</member>
+	<member name="T:Test.TypeFromTypeA">
+	  <duplicate cref="T:Test.TypeA"/>
+	</member>
+	<member name="T:Test.TypeFromMethodA">
+	  <duplicate cref="M:Test.TypeA.MethodA"/>
+	</member>
+	<member name="T:Test.TypeFromFieldA">
+	  <duplicate cref="F:Test.TypeA.FieldA"/>
+	</member>
+	<member name="T:Test.TypeFromPropertyA">
+	  <duplicate cref="P:Test.TypeA.PropertyA"/>
+	</member>
+	<member name="T:Test.TypeFromEventA">
+	  <duplicate cref="E:Test.TypeA.EventA"/>
+	</member>
+	<!-- Methods -->
+	<member name="M:Test.TypeA.MethodA">
+	  <summary>summary MethodA</summary>
+	</member>
+	<member name="M:Test.TypeA.MethodFromTypeA">
+	  <duplicate cref="T:Test.TypeA"/>
+	</member>
+	<member name="M:Test.TypeA.MethodFromMethodA">
+	  <duplicate cref="M:Test.TypeA.MethodA"/>
+	</member>
+	<member name="M:Test.TypeA.MethodFromFieldA">
+	  <duplicate cref="F:Test.TypeA.FieldA"/>
+	</member>
+	<member name="M:Test.TypeA.MethodFromPropertyA">
+	  <duplicate cref="P:Test.TypeA.PropertyA"/>
+	</member>
+	<member name="M:Test.TypeA.MethodFromEventA">
+	  <duplicate cref="E:Test.TypeA.EventA"/>
+	</member>
+	<!-- Fields -->
+	<member name="F:Test.TypeA.FieldA">
+	  <summary>summary FieldA</summary>
+	</member>
+	<member name="F:Test.TypeA.FieldFromTypeA">
+	  <duplicate cref="T:Test.TypeA"/>
+	</member>
+	<member name="F:Test.TypeA.FieldFromMethodA">
+	  <duplicate cref="M:Test.TypeA.MethodA"/>
+	</member>
+	<member name="F:Test.TypeA.FieldFromFieldA">
+	  <duplicate cref="F:Test.TypeA.FieldA"/>
+	</member>
+	<member name="F:Test.TypeA.FieldFromPropertyA">
+	  <duplicate cref="P:Test.TypeA.PropertyA"/>
+	</member>
+	<member name="F:Test.TypeA.FieldFromEventA">
+	  <duplicate cref="E:Test.TypeA.EventA"/>
+	</member>
+	<!-- Properties -->
+	<member name="P:Test.TypeA.PropertyA">
+	  <summary>summary PropertyA</summary>
+	</member>
+	<member name="P:Test.TypeA.PropertyFromTypeA">
+	  <duplicate cref="T:Test.TypeA"/>
+	</member>
+	<member name="P:Test.TypeA.PropertyFromMethodA">
+	  <duplicate cref="M:Test.TypeA.MethodA"/>
+	</member>
+	<member name="P:Test.TypeA.PropertyFromFieldA">
+	  <duplicate cref="F:Test.TypeA.FieldA"/>
+	</member>
+	<member name="P:Test.TypeA.PropertyFromPropertyA">
+	  <duplicate cref="P:Test.TypeA.PropertyA"/>
+	</member>
+	<member name="P:Test.TypeA.PropertyFromEventA">
+	  <duplicate cref="E:Test.TypeA.EventA"/>
+	</member>
+	<!-- Events -->
+	<member name="E:Test.TypeA.EventA">
+	  <summary>summary EventA</summary>
+	</member>
+	<member name="E:Test.TypeA.EventFromTypeA">
+	  <duplicate cref="T:Test.TypeA"/>
+	</member>
+	<member name="E:Test.TypeA.EventFromMethodA">
+	  <duplicate cref="M:Test.TypeA.MethodA"/>
+	</member>
+	<member name="E:Test.TypeA.EventFromFieldA">
+	  <duplicate cref="F:Test.TypeA.FieldA"/>
+	</member>
+	<member name="E:Test.TypeA.EventFromPropertyA">
+	  <duplicate cref="P:Test.TypeA.PropertyA"/>
+	</member>
+	<member name="E:Test.TypeA.EventFromEventA">
+	  <duplicate cref="E:Test.TypeA.EventA"/>
+	</member>
+  </members>
+</root>

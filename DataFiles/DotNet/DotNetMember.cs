@@ -209,13 +209,27 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// For all "duplicate" comments, replace the comment with the duplicated comments.
 		/// </summary>
 		/// <param name="FindMember">Function that returns the selected member from all known members in the assembly.</param>
-		public virtual void ResolveDuplicatedComments(Func<DotNetQualifiedName, DotNetMember> FindMember)
+		/// <param name="pathToThisDuplicate">List of named types/members that are duplicating each other, leading to this member. Used to avoid reference loops.</param>
+		/// <returns>Returns true if resolution is successful. Returns false if referenced member is not found, or if there is a reference loop.</returns>
+		public virtual bool ResolveDuplicatedComments(Func<DotNetQualifiedName, DotNetMember> FindMember, List<DotNetQualifiedName> pathToThisDuplicate = null)
 		{
-			//todo: the duplicated member itself duplicates - watch out for loops
+			if(pathToThisDuplicate == null)
+				pathToThisDuplicate = new List<DotNetQualifiedName>();
+
 			if(!DuplicatesDocumentation)
-				return;
+				return true;
+			if(pathToThisDuplicate.Contains(this.Name))
+				return false; //avoid reference loops
 			DotNetMember copyFrom = FindMember(DuplicatesFrom);
+			if(copyFrom.DuplicatesDocumentation)
+			{
+				pathToThisDuplicate.Add(copyFrom.Name);
+				bool copyFromSuccessful = copyFrom.ResolveDuplicatedComments(FindMember, pathToThisDuplicate);
+				if(!copyFromSuccessful)
+					return false;
+			}
 			CopyComments(copyFrom);
+			return true;
 		}
 
 		/// <summary>

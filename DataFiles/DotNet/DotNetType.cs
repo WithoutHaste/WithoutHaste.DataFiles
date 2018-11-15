@@ -567,8 +567,11 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 		}
 
-		/// <inheritdoc/>
-		public override void ResolveDuplicatedComments(Func<DotNetQualifiedName, DotNetMember> FindMember)
+		/// <summary>
+		/// For all "duplicate" comments, replace the comment with the duplicated comments.
+		/// </summary>
+		/// <param name="FindMember">Function that returns the selected member from all known members in the assembly.</param>
+		public void ResolveDuplicatedComments(Func<DotNetQualifiedName, DotNetMember> FindMember)
 		{
 			base.ResolveDuplicatedComments(FindMember);
 

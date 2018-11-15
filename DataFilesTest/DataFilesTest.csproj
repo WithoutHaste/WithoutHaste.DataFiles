@@ -128,6 +128,15 @@
     <Content Include="data\DotNetCommentText_Inline_RealExample_B.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="data\DotNetDocumentationFile_DuplicateComments_Loop.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_DuplicateComments_MultipleLevelsDeep.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_DuplicateComments_OneLevelDeep.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\DotNetDocumentationFile_Full.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

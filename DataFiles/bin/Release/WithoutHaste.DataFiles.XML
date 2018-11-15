@@ -1470,11 +1470,13 @@
             <remarks>Clears any existing comments before parsing the new ones.</remarks>
             <param name="parent">Expects the tag containing all documentation for this member.</param>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMember.ResolveDuplicatedComments(System.Func{WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetMember})">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMember.ResolveDuplicatedComments(System.Func{WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetMember},System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetQualifiedName})">
             <summary>
             For all "duplicate" comments, replace the comment with the duplicated comments.
             </summary>
             <param name="FindMember">Function that returns the selected member from all known members in the assembly.</param>
+            <param name="pathToThisDuplicate">List of named types/members that are duplicating each other, leading to this member. Used to avoid reference loops.</param>
+            <returns>Returns true if resolution is successful. Returns false if referenced member is not found, or if there is a reference loop.</returns>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMember.CopyComments(WithoutHaste.DataFiles.DotNet.DotNetMember)">
             <summary>
@@ -1946,7 +1948,10 @@
             <param name="FindType">Function that returns the selected type from all known types in the assembly.</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.ResolveDuplicatedComments(System.Func{WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetMember})">
-            <inheritdoc/>
+            <summary>
+            For all "duplicate" comments, replace the comment with the duplicated comments.
+            </summary>
+            <param name="FindMember">Function that returns the selected member from all known members in the assembly.</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.ToDelegate(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary>
