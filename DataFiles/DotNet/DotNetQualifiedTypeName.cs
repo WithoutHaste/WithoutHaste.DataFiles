@@ -210,7 +210,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Includes namespaces, internal types, external types, and members.
 		/// Does not include generic paremeters.
 		/// </summary>
-		public override List<string> GetFullListOfLocalNames()
+		internal override List<string> GetFullListOfLocalNames()
 		{
 			List<string> localNames = new List<string>();
 

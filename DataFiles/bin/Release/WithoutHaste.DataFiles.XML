@@ -592,6 +592,11 @@
             Represents a fully qualified type name, for return types / field types / property types / parameter types.
             </summary>
         </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.FullTypeNamespace">
+            <summary>
+            Strongly-typed FullNamespace.
+            </summary>
+        </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.LocalName">
             <summary>Local data type name with generic type parameters (if applicable).</summary>
         </member>
@@ -602,10 +607,16 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.#ctor">
             <summary>Empty constructor</summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.#ctor(System.String,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName})">
-            See <see cref="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.#ctor(System.String,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName},WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)" />
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.#ctor(System.String)">
+            <summary></summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.#ctor(System.String,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName},WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.#ctor(System.String,WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName)">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.#ctor(System.String,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName})">
+            See <see cref="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.#ctor(System.String,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName},WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName)" />
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.#ctor(System.String,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName},WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName)">
             <param name="localName"></param>
             <param name="genericTypeParameters">List of generic-type parameters within this type.</param>
             <param name="fullNamespace"></param>
@@ -635,11 +646,19 @@
             <param name="type"></param>
             <param name="bubbleUpParameters">Optional. When reflection gives type information about a generic type nested inside a generic type, all the generic-type-arguments are listed in the inner-most type. This is for passing that information back up the chain of types.</param>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.FromAssemblyInfo(System.String)">
+            <summary></summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.GetFullListOfLocalNames">
             <summary>
             Collect full list of local names used throughout documentation.
             Includes namespaces, internal types, external types, and members.
             Does not include generic paremeters.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.Clone">
+            <summary>
+            Returns deep clone of qualified name.
             </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName">
@@ -653,6 +672,11 @@
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.GenericTypeNames">
             <summary>Default names that will be given to generic-method-types, in order.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.FullClassNamespace">
+            <summary>
+            Strongly-typed FullNamespace.
+            </summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.LocalName">
             <summary>Local method name with generic type parameters (if applicable).</summary>
@@ -785,6 +809,11 @@
             </list>
             </summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.Clone">
+            <summary>
+            Returns deep clone of qualified name.
+            </summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName">
             <summary>
             Represents a fully qualified class name, for class declarations.
@@ -796,6 +825,11 @@
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.GenericTypeNames">
             <summary>Default names that will be given to generic-types, in order.</summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.FullClassNamespace">
+            <summary>
+            Strongly-typed FullNamespace.
+            </summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.LocalName">
             <inheritdoc/>
@@ -815,7 +849,7 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.#ctor(System.String,System.Int32)">
             <summary></summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.#ctor(System.String,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Int32)">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.#ctor(System.String,WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName,System.Int32)">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.FromVisualStudioXml(System.String)">
@@ -844,6 +878,11 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.AddAssemblyInfo(System.Reflection.TypeInfo)">
             <summary>
             Load additional documentation information from the assembly itself.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.Clone">
+            <summary>
+            Returns deep clone of qualified name.
             </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric">
@@ -1623,6 +1662,23 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.ToString">
             <duplicate cref='P:WithoutHaste.DataFiles.DotNet.DotNetParameter.SignatureWithName'/>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.op_Equality(WithoutHaste.DataFiles.DotNet.DotNetParameter,WithoutHaste.DataFiles.DotNet.DotNetParameter)">
+            <duplicate cref="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.Equals(System.Object)" />
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.op_Inequality(WithoutHaste.DataFiles.DotNet.DotNetParameter,WithoutHaste.DataFiles.DotNet.DotNetParameter)">
+            <duplicate cref="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.Equals(System.Object)" />
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.Equals(System.Object)">
+            <summary>Parameter type and category must be equal. Parameter name and default value are irrelevant.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.GetHashCode">
+            <summary></summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.Clone">
+            <summary>
+            Returns deep clone of parameter.
+            </summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetProperty">
             <summary>
             Represents a type's property.
@@ -1967,6 +2023,14 @@
             <remarks>
             Does not parse method names; use DotNetQualifiedMethodName.FromVisualStudioXml(string) instead.
             </remarks>
+            <example>
+            Expected formats:
+            - "F:NamespaceA.NamespaceB.MemberC"
+            - "P:NamespaceA.NamespaceB.MemberC"
+            - "E:NamespaceA.NamespaceB.MemberC"
+            - "NamespaceA.NamespaceB.MemberC"
+            - "NamespaceA.NamespaceB.InterfaceNamespace#Interface#MemberC"
+            </example>
             <param name="name">Name may or may not start with /[FPE]:/</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.FromAssemblyInfo(System.Reflection.TypeInfo)">
@@ -2003,6 +2067,30 @@
             <summary>Returns true if this Name is nested inside the other Name.</summary>
             <example>"System.Text.RegularExpressions" is within "System.Text" and "System".</example>
             <example>"System" is not within null or empty Name.</example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.GetLocalized(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary>
+            Returns a new name object which has been localized to the provided other name. The current object is not altered.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.Localize(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary>
+            Simplifies this qualified name based on the <paramref name='other'/> name.
+            In other words, removes the portion of the namespace that this and the <paramref name='other'/> have in common.
+            Alters the current object.
+            </summary>
+            <remarks>Will always keep at least the LocalName.</remarks>
+            <remarks>Preserves explicit interface implementations.</remarks>
+            <example>"System.Collections.Generic.List".Localize("System.Collections") returns "Generic.List".</example>
+            <example>"System.Collections.Generic.List".Localize("System.Collections.Standard.List") returns "Standard.List".</example>
+            <example>"System.Collections.Generic.List".Localize("System.Collections.Generic.List") returns "List".</example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.Flatten">
+            <summary>
+            Returns an array of the name segments that make up this qualified name.
+            </summary>
+            <remarks>Does not include explicit interface implementations.</remarks>
+            <example>"System.Collections.Generic".Flatten() returns ["System", "Collections", "Generic"].</example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.op_Implicit(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)~System.String">
             <summary>Returns dot notation of namespaces and local name.</summary>
@@ -2048,6 +2136,16 @@
             Names are sorted alphabetically, per namespace, starting with the root.
             </summary>
             <remarks>Explicit interface implementations are considered only as a last resort.</remarks>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.Clone">
+            <summary>
+            Returns deep clone of qualified name.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.ToDotNetQualifiedTypeName">
+            <summary>
+            Convert a base-type DotNetQualifiedName to a DotNetQualifiedTypeName.
+            </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.Utilities.TrimAllowOneSpace(System.String)">
             <summary>

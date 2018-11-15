@@ -185,7 +185,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Includes namespaces, internal types, external types, and members.
 		/// Does not include generic paremeters.
 		/// </summary>
-		public virtual List<string> GetFullListOfLocalNames()
+		internal virtual List<string> GetFullListOfLocalNames()
 		{
 			List<string> localNames = new List<string>();
 
