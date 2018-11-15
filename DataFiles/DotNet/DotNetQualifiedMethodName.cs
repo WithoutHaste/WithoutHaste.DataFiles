@@ -19,6 +19,17 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Default names that will be given to generic-method-types, in order.</summary>
 		public static string[] GenericTypeNames = new string[] { "A", "B", "C", "A2", "B2", "C2", "A3", "B3", "C3", "A4", "B4", "C4" };
 
+		/// <summary>
+		/// Strongly-typed FullNamespace.
+		/// </summary>
+		public DotNetQualifiedClassName FullClassNamespace {
+			get {
+				if(FullNamespace == null)
+					return null;
+				return (FullNamespace as DotNetQualifiedClassName);
+			}
+		}
+
 		/// <summary>Local method name with generic type parameters (if applicable).</summary>
 		public override string LocalName {
 			get {
@@ -159,7 +170,6 @@ namespace WithoutHaste.DataFiles.DotNet
 				signature = signature.Substring(0, signature.IndexOf("("));
 				qualifiedParameters = ParametersFromVisualStudioXml(parameters);
 			}
-
 
 			int divider = signature.LastIndexOf('.');
 			string localName = signature;
@@ -344,7 +354,6 @@ namespace WithoutHaste.DataFiles.DotNet
 			this.localName = name;
 		}
 
-
 		#region Low Level
 
 		/// <duplicate cref='CompareTo(object)' />
@@ -403,6 +412,28 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 
 			return DotNetQualifiedName.Compare(this.ReturnTypeName, other.ReturnTypeName);
+		}
+
+		/// <summary>
+		/// Returns deep clone of qualified name.
+		/// </summary>
+		public new DotNetQualifiedMethodName Clone()
+		{
+			DotNetQualifiedClassName clonedFullNamespace = null;
+			if(FullNamespace != null)
+				clonedFullNamespace = FullClassNamespace.Clone();
+
+			DotNetQualifiedName clonedExplicitInterface = null;
+			if(ExplicitInterface != null)
+				clonedExplicitInterface = ExplicitInterface.Clone();
+
+			List<DotNetParameter> clonedParameters = Parameters.Select(p => p.Clone()).ToList();
+
+			DotNetQualifiedTypeName clonedReturnTypeName = null;
+			if(ReturnTypeName != null)
+				clonedReturnTypeName = ReturnTypeName.Clone();
+
+			return new DotNetQualifiedMethodName(localName, clonedFullNamespace, clonedParameters, clonedReturnTypeName, GenericTypeCount, clonedExplicitInterface);
 		}
 
 		#endregion

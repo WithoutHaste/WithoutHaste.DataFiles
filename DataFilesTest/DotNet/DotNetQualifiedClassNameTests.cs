@@ -94,5 +94,52 @@ namespace DataFilesTest
 			//assert
 			Assert.AreEqual(expectedFullName, result.FullName);
 		}
+
+		[TestMethod]
+		public void DotNetQualifiedClassName_Clone_NullFullNamespace()
+		{
+			//arrange
+			DotNetQualifiedClassName a = DotNetQualifiedClassName.FromVisualStudioXml("System");
+			//act
+			DotNetQualifiedClassName result = a.Clone();
+			//assert
+			Assert.AreEqual(a, result);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedClassName_Clone_ManySegments()
+		{
+			//arrange
+			DotNetQualifiedClassName a = DotNetQualifiedClassName.FromVisualStudioXml("System.Collections.Generic.List");
+			//act
+			DotNetQualifiedClassName result = a.Clone();
+			//assert
+			Assert.AreEqual(a, result);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedClassName_Clone_GenericType()
+		{
+			//arrange
+			DotNetQualifiedClassName a = DotNetQualifiedClassName.FromVisualStudioXml("System.Collections.Generic.List`1");
+			//act
+			DotNetQualifiedClassName result = a.Clone();
+			//assert
+			Assert.AreEqual(a, result);
+			Assert.AreEqual(1, result.GenericTypeCount);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedClassName_Clone_NestedGenericType()
+		{
+			//arrange
+			DotNetQualifiedClassName a = DotNetQualifiedClassName.FromVisualStudioXml("System.Collections.Generic`2.List`1");
+			//act
+			DotNetQualifiedClassName result = a.Clone();
+			//assert
+			Assert.AreEqual(a, result);
+			Assert.AreEqual(1, result.GenericTypeCount);
+			Assert.AreEqual(2, result.FullClassNamespace.GenericTypeCount);
+		}
 	}
 }

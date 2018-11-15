@@ -12,6 +12,17 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// </summary>
 	public class DotNetQualifiedTypeName : DotNetQualifiedName
 	{
+		/// <summary>
+		/// Strongly-typed FullNamespace.
+		/// </summary>
+		public DotNetQualifiedTypeName FullTypeNamespace {
+			get {
+				if(FullNamespace == null)
+					return null;
+				return (FullNamespace as DotNetQualifiedTypeName);
+			}
+		}
+
 		/// <summary>Local data type name with generic type parameters (if applicable).</summary>
 		public override string LocalName {
 			get {
@@ -32,7 +43,20 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 		}
 
-		/// See <see cref="DotNetQualifiedTypeName(string,List{DotNetQualifiedTypeName},DotNetQualifiedName)" />
+		/// <summary></summary>
+		public DotNetQualifiedTypeName(string localName)
+		{
+			this.localName = localName;
+		}
+
+		/// <summary></summary>
+		public DotNetQualifiedTypeName(string localName, DotNetQualifiedTypeName fullNamespace)
+		{
+			this.localName = localName;
+			this.FullNamespace = fullNamespace;
+		}
+
+		/// See <see cref="DotNetQualifiedTypeName(string,List{DotNetQualifiedTypeName},DotNetQualifiedTypeName)" />
 		public DotNetQualifiedTypeName(string localName, List<DotNetQualifiedTypeName> genericTypeParameters) : this(localName, genericTypeParameters, null)
 		{
 		}
@@ -41,7 +65,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <param name="genericTypeParameters">List of generic-type parameters within this type.</param>
 		/// <param name="fullNamespace"></param>
 		/// <exception cref="ArgumentException"><paramref name="genericTypeParameters"/> cannot be null.</exception>
-		public DotNetQualifiedTypeName(string localName, List<DotNetQualifiedTypeName> genericTypeParameters, DotNetQualifiedName fullNamespace)
+		public DotNetQualifiedTypeName(string localName, List<DotNetQualifiedTypeName> genericTypeParameters, DotNetQualifiedTypeName fullNamespace)
 		{
 			if(genericTypeParameters == null)
 				throw new ArgumentException("GenericTypeParameters list cannot be null.", "genericTypeParameters");
@@ -163,17 +187,24 @@ namespace WithoutHaste.DataFiles.DotNet
 				parameters = parameters.Skip(outerParameters.Count).ToList();
 			}
 
-			DotNetQualifiedName fullNamespace = null;
+			DotNetQualifiedTypeName fullNamespace = null;
 			if(type.DeclaringType != null)
 				fullNamespace = DotNetQualifiedTypeName.FromAssemblyInfo(type.DeclaringType, outerParameters);
 			else
-				fullNamespace = DotNetQualifiedName.FromAssemblyInfo(fullNamespaceString);
+				fullNamespace = DotNetQualifiedTypeName.FromAssemblyInfo(fullNamespaceString);
 
 			return new DotNetQualifiedTypeName(localName, parameters, fullNamespace);
 		}
 
+		/// <summary></summary>
+		public new static DotNetQualifiedTypeName FromAssemblyInfo(string typeName)
+		{
+			DotNetQualifiedName name = DotNetQualifiedName.FromAssemblyInfo(typeName);
+			return name.ToDotNetQualifiedTypeName();
+		}
+
 		#endregion
-		
+
 		/// <summary>
 		/// Collect full list of local names used throughout documentation.
 		/// Includes namespaces, internal types, external types, and members.
@@ -195,5 +226,23 @@ namespace WithoutHaste.DataFiles.DotNet
 
 			return localNames;
 		}
+
+		#region Low Level
+
+		/// <summary>
+		/// Returns deep clone of qualified name.
+		/// </summary>
+		public new DotNetQualifiedTypeName Clone()
+		{
+			DotNetQualifiedTypeName clonedFullNamespace = null;
+			if(FullNamespace != null)
+				clonedFullNamespace = FullTypeNamespace.Clone();
+
+			List<DotNetQualifiedTypeName> clonedGenericTypeParameters = GenericTypeParameters.Select(gtp => gtp.Clone()).ToList();
+
+			return new DotNetQualifiedTypeName(localName, clonedGenericTypeParameters, clonedFullNamespace);
+		}
+
+		#endregion
 	}
 }

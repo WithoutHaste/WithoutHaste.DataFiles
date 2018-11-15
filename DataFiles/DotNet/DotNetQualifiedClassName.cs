@@ -19,6 +19,17 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Default names that will be given to generic-types, in order.</summary>
 		public static string[] GenericTypeNames = new string[] { "T", "U", "V", "W", "T2", "U2", "V2", "W2", "T3", "U3", "V3", "W3" };
 
+		/// <summary>
+		/// Strongly-typed FullNamespace.
+		/// </summary>
+		public DotNetQualifiedClassName FullClassNamespace {
+			get {
+				if(FullNamespace == null)
+					return null;
+				return (FullNamespace as DotNetQualifiedClassName);
+			}
+		}
+
 		/// <inheritdoc/>
 		public override string LocalName {
 			get {
@@ -61,11 +72,10 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary></summary>
-		public DotNetQualifiedClassName(string localName, DotNetQualifiedName fullNamespace, int genericTypeCount = 0) : base(localName, fullNamespace, null)
+		public DotNetQualifiedClassName(string localName, DotNetQualifiedClassName fullNamespace, int genericTypeCount = 0) : base(localName, fullNamespace, null)
 		{
 			GenericTypeCount = genericTypeCount;
 		}
-
 
 		/// <summary>
 		/// Parses a .Net XML documentation type name or namespace name.
@@ -132,5 +142,20 @@ namespace WithoutHaste.DataFiles.DotNet
 			return (FullNamespace != null && FullNamespace is DotNetQualifiedClassName);
 		}
 
+		#region Low Level
+
+		/// <summary>
+		/// Returns deep clone of qualified name.
+		/// </summary>
+		public new DotNetQualifiedClassName Clone()
+		{
+			DotNetQualifiedClassName clonedFullNamespace = null;
+			if(FullNamespace != null)
+				clonedFullNamespace = FullClassNamespace.Clone();
+
+			return new DotNetQualifiedClassName(localName, clonedFullNamespace, GenericTypeCount);
+		}
+
+		#endregion
 	}
 }

@@ -195,5 +195,52 @@ namespace DataFilesTest
 			Assert.AreEqual(expectedLocalName, result.LocalName);
 			Assert.AreEqual(expectedQualifiedName, result.FullName);
 		}
+
+		[TestMethod]
+		public void DotNetQualifiedTypeName_Clone_NullFullNamespace()
+		{
+			//arrange
+			DotNetQualifiedTypeName a = DotNetQualifiedTypeName.FromVisualStudioXml("MyType");
+			//act
+			DotNetQualifiedTypeName result = a.Clone();
+			//assert
+			Assert.AreEqual(a, result);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedTypeName_Clone_ManySegments()
+		{
+			//arrange
+			DotNetQualifiedTypeName a = DotNetQualifiedTypeName.FromVisualStudioXml("A.B.C.MyType");
+			//act
+			DotNetQualifiedTypeName result = a.Clone();
+			//assert
+			Assert.AreEqual(a, result);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedTypeName_Clone_GenericType()
+		{
+			//arrange
+			DotNetQualifiedTypeName a = DotNetQualifiedTypeName.FromVisualStudioXml("A.B.C.MyType{System.Int32}");
+			//act
+			DotNetQualifiedTypeName result = a.Clone();
+			//assert
+			Assert.AreEqual(a, result);
+			Assert.AreEqual("System.Int32", result.GenericTypeParameters[0].ToString());
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedTypeName_Clone_NestedGenericType()
+		{
+			//arrange
+			DotNetQualifiedTypeName a = DotNetQualifiedTypeName.FromVisualStudioXml("A.B.C{System.String}.MyType{System.Int32}");
+			//act
+			DotNetQualifiedTypeName result = a.Clone();
+			//assert
+			Assert.AreEqual(a, result);
+			Assert.AreEqual("System.Int32", result.GenericTypeParameters[0].ToString());
+			Assert.AreEqual("System.String", result.FullTypeNamespace.GenericTypeParameters[0].ToString());
+		}
 	}
 }

@@ -108,7 +108,6 @@ namespace WithoutHaste.DataFiles.DotNet
 			Category = ParameterCategory.Normal;
 		}
 
-
 		/// <summary></summary>
 		/// <param name="typeName">Fully qualified data type name.</param>
 		/// <param name="category">Category of parameter.</param>
@@ -158,6 +157,58 @@ namespace WithoutHaste.DataFiles.DotNet
 			return SignatureWithName;
 		}
 
-		#endregion
-	}
+		/// <duplicate cref="Equals(object)" />
+		public static bool operator ==(DotNetParameter a, DotNetParameter b)
+		{
+			if(object.ReferenceEquals(a, null) && object.ReferenceEquals(b, null))
+				return true;
+			if(object.ReferenceEquals(a, null) || object.ReferenceEquals(b, null))
+				return false;
+			return a.Equals(b);
+		}
+
+		/// <duplicate cref="Equals(object)" />
+		public static bool operator !=(DotNetParameter a, DotNetParameter b)
+		{
+			if(object.ReferenceEquals(a, null) && object.ReferenceEquals(b, null))
+				return false;
+			if(object.ReferenceEquals(a, null) || object.ReferenceEquals(b, null))
+				return true;
+			return !a.Equals(b);
+		}
+
+		/// <summary>Parameter type and category must be equal. Parameter name and default value are irrelevant.</summary>
+		public override bool Equals(Object b)
+		{
+			if(!(b is DotNetParameter))
+				return false;
+			if(object.ReferenceEquals(this, null) && object.ReferenceEquals(b, null))
+				return true;
+			if(object.ReferenceEquals(this, null) || object.ReferenceEquals(b, null))
+				return false;
+
+			DotNetParameter other = (b as DotNetParameter);
+			return (this.TypeName == other.TypeName && this.Category == other.Category);
+		}
+
+		/// <summary></summary>
+		public override int GetHashCode()
+		{
+			return TypeName.GetHashCode() ^ Name.GetHashCode();
+		}
+
+		/// <summary>
+		/// Returns deep clone of parameter.
+		/// </summary>
+		public DotNetParameter Clone()
+		{
+			DotNetQualifiedTypeName clonedTypeName = null;
+			if(TypeName != null)
+				clonedTypeName = TypeName.Clone();
+
+			return new DotNetParameter(clonedTypeName, Category);
+		}
+
+	#endregion
+}
 }

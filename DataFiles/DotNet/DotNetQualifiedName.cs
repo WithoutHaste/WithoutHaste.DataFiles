@@ -112,6 +112,14 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <remarks>
 		/// Does not parse method names; use DotNetQualifiedMethodName.FromVisualStudioXml(string) instead.
 		/// </remarks>
+		/// <example>
+		/// Expected formats:
+		/// - "F:NamespaceA.NamespaceB.MemberC"
+		/// - "P:NamespaceA.NamespaceB.MemberC"
+		/// - "E:NamespaceA.NamespaceB.MemberC"
+		/// - "NamespaceA.NamespaceB.MemberC"
+		/// - "NamespaceA.NamespaceB.InterfaceNamespace#Interface#MemberC"
+		/// </example>
 		/// <param name="name">Name may or may not start with /[FPE]:/</param>
 		private static DotNetQualifiedName MemberNameFromVisualStudioXml(string name)
 		{
@@ -212,6 +220,45 @@ namespace WithoutHaste.DataFiles.DotNet
 			if(this.FullNamespace == other)
 				return true;
 			return this.FullNamespace.IsWithin(other);
+		}
+
+		/// <summary>
+		/// Simplifies this qualified name based on the <paramref name='other'/> name.
+		/// In other words, removes the portion of the namespace that this and the <paramref name='other'/> have in common.
+		/// </summary>
+		/// <remarks>Will always return at least the LocalName.</remarks>
+		/// <remarks>Preserves explicit interface implementations.</remarks>
+		/// <example>"System.Collections.Generic.List".Localize("System.Collections") returns "Generic.List".</example>
+		/// <example>"System.Collections.Generic.List".Localize("System.Collections.Standard.List") returns "Standard.List".</example>
+		/// <example>"System.Collections.Generic.List".Localize("System.Collections.Generic.List") returns "List".</example>
+		public DotNetQualifiedName Localize(DotNetQualifiedName other)
+		{
+			List<string> thisFlattened = this.Flatten().ToList();
+			List<string> otherFlattened = other.Flatten().ToList();
+			while(thisFlattened.Count > 1 && otherFlattened.Count > 0 && thisFlattened[0] == otherFlattened[0])
+			{
+				thisFlattened.RemoveAt(0);
+				otherFlattened.RemoveAt(0);
+			}
+			DotNetQualifiedName localizedName = new DotNetQualifiedName(thisFlattened.ToArray());
+			if(this.ExplicitInterface != null)
+				localizedName.ExplicitInterface = this.ExplicitInterface;
+			return localizedName;
+		}
+
+		/// <summary>
+		/// Returns an array of the name segments that make up this qualified name.
+		/// </summary>
+		/// <remarks>Does not include explicit interface implementations.</remarks>
+		/// <example>"System.Collections.Generic".Flatten() returns ["System", "Collections", "Generic"].</example>
+		public string[] Flatten()
+		{
+			if(FullNamespace == null)
+				return new string[] { LocalName };
+
+			List<string> segments = new List<string>(FullNamespace.Flatten());
+			segments.Add(LocalName);
+			return segments.ToArray();
 		}
 
 		#region Low Level Operations
@@ -358,6 +405,32 @@ namespace WithoutHaste.DataFiles.DotNet
 				return -1;
 
 			return 0;
+		}
+
+		/// <summary>
+		/// Returns deep clone of qualified name.
+		/// </summary>
+		public virtual DotNetQualifiedName Clone()
+		{
+			DotNetQualifiedName clonedFullNamespace = null;
+			if(FullNamespace != null)
+				clonedFullNamespace = FullNamespace.Clone();
+
+			DotNetQualifiedName clonedExplicitInterface = null;
+			if(ExplicitInterface != null)
+				clonedExplicitInterface = ExplicitInterface.Clone();
+
+			return new DotNetQualifiedName(localName, clonedFullNamespace, clonedExplicitInterface);
+		}
+
+		/// <summary>
+		/// Convert a base-type DotNetQualifiedName to a DotNetQualifiedTypeName.
+		/// </summary>
+		public DotNetQualifiedTypeName ToDotNetQualifiedTypeName()
+		{
+			if(FullNamespace == null)
+				return new DotNetQualifiedTypeName(localName);
+			return new DotNetQualifiedTypeName(localName, FullNamespace.ToDotNetQualifiedTypeName());
 		}
 
 		#endregion

@@ -459,5 +459,39 @@ namespace DataFilesTest
 			//assert
 			Assert.AreEqual(false, result);
 		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_Clone_NullFullNamespace()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("System");
+			//act
+			DotNetQualifiedName result = a.Clone();
+			//assert
+			Assert.AreEqual(a, result);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_Clone_ManySegments()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("System.Collections.Generic.List");
+			//act
+			DotNetQualifiedName result = a.Clone();
+			//assert
+			Assert.AreEqual(a, result);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedName_Clone_ExplicitInterface()
+		{
+			//arrange
+			DotNetQualifiedName a = DotNetQualifiedName.FromVisualStudioXml("System.Collections.Generic.A#B#C#List");
+			//act
+			DotNetQualifiedName result = a.Clone();
+			//assert
+			Assert.AreEqual(a, result);
+			Assert.AreEqual("A.B.C", result.ExplicitInterface.ToString());
+		}
 	}
 }
