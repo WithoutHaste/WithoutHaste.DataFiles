@@ -62,6 +62,7 @@
     <Compile Include="DotNet\DotNetIndexer.cs" />
     <Compile Include="DotNet\DotNetMethodDestructor.cs" />
     <Compile Include="DotNet\DotNetPropertyMethod.cs" />
+    <Compile Include="DotNet\DotNetQualifiedClassNameTreeNode.cs" />
     <Compile Include="DotNet\DotNetReferenceClassGeneric.cs" />
     <Compile Include="DotNet\DotNetReferenceGeneric.cs" />
     <Compile Include="DotNet\DotNetCommentCode.cs" />

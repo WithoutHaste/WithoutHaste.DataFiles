@@ -235,6 +235,26 @@
             Load additional documentation information from the assembly itself.
             </summary>
         </member>
+        <member name="T:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassNameTreeNode">
+            <summary>
+            A node in a tree data structure made up of DotNetQualifiedClassNames organized by their namespaces.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassNameTreeNode.Generate(System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName})">
+            <summary>
+            Organize a list of namespaces into a tree, based on which namespaces are within other namespaces.
+            </summary>
+            <returns>
+            Returns the root of the new tree.
+            If there is one top-level namespace, root.Value will be that namespace.
+            If there are more than one top-level namespaces, root.Value will be null and root.Children will contain the top-level namespaces.
+            </returns>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassNameTreeNode.Insert(WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName)">
+            <summary>
+            Insert a new namespace into its proper position, based on the current node as the root.
+            </summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric">
             <summary>
             Represents a generic-type parameter that is in reference to a class's declared generic types.
