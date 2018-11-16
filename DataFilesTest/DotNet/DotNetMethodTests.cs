@@ -218,7 +218,7 @@ namespace DataFilesTest
 			XElement xmlTypeElement = XElement.Parse("<member name='T:DataFilesTest.DotNetMethodTests.NormalClass' />", LoadOptions.PreserveWhitespace);
 			XElement xmlMemberElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.NormalClass.MethodOut(System.Int32@)' />", LoadOptions.PreserveWhitespace);
 			Type type = typeof(NormalClass);
-			DotNetType dotNetType = new DotNetType(new DotNetQualifiedName("DataFilesTest.DotNetMethodTests.NormalClass"));
+			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("DataFilesTest.DotNetMethodTests.NormalClass"));
 			dotNetType.AddMember(DotNetMethod.FromVisualStudioXml(xmlMemberElement));
 			//act
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
@@ -237,7 +237,7 @@ namespace DataFilesTest
 			XElement xmlTypeElement = XElement.Parse("<member name='T:DataFilesTest.DotNetMethodTests.NormalClass' />", LoadOptions.PreserveWhitespace);
 			XElement xmlMemberElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.NormalClass.MethodRef(System.Int32@)' />", LoadOptions.PreserveWhitespace);
 			Type type = typeof(NormalClass);
-			DotNetType dotNetType = new DotNetType(new DotNetQualifiedName("DataFilesTest.DotNetMethodTests.NormalClass"));
+			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("DataFilesTest.DotNetMethodTests.NormalClass"));
 			dotNetType.AddMember(DotNetMethod.FromVisualStudioXml(xmlMemberElement));
 			//act
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
@@ -256,7 +256,7 @@ namespace DataFilesTest
 			XElement xmlTypeElement = XElement.Parse("<member name='T:DataFilesTest.DotNetMethodTests.NormalClass' />", LoadOptions.PreserveWhitespace);
 			XElement xmlMemberElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.NormalClass.MethodOptional(System.Int32,System.String)' />", LoadOptions.PreserveWhitespace);
 			Type type = typeof(NormalClass);
-			DotNetType dotNetType = new DotNetType(new DotNetQualifiedName("DataFilesTest.DotNetMethodTests.NormalClass"));
+			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("DataFilesTest.DotNetMethodTests.NormalClass"));
 			dotNetType.AddMember(DotNetMethod.FromVisualStudioXml(xmlMemberElement));
 			//act
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);

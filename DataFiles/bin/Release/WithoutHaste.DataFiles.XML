@@ -1826,6 +1826,9 @@
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.Category">
             <summary></summary>
         </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.TypeName">
+            <summary>Strongly typed name.</summary>
+        </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.IsSealed">
             <summary>True if the type is sealed.</summary>
             <remarks>Abstract classes, static classes, and interfaces cannot be sealed. Exceptions can be sealed.</remarks>
@@ -1894,7 +1897,7 @@
             Does not include nested types.
             </summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName)">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.FromVisualStudioXml(System.Xml.Linq.XElement)">

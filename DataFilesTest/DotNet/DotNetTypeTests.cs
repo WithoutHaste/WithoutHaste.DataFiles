@@ -39,7 +39,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			Type type = typeof(System.Object);
-			DotNetType dotNetType = new DotNetType(new DotNetQualifiedName("System.Object"));
+			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("System.Object"));
 			//act
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
 			//assert
@@ -51,7 +51,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			Type type = typeof(ChildOfObject);
-			DotNetType dotNetType = new DotNetType(new DotNetQualifiedName("ChildOfObject"));
+			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("ChildOfObject"));
 			//act
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
 			//assert
@@ -65,7 +65,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			Type type = typeof(ChildOfValue);
-			DotNetType dotNetType = new DotNetType(new DotNetQualifiedName("ChildOfValue"));
+			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("ChildOfValue"));
 			//act
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
 			//assert
@@ -80,7 +80,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			Type type = typeof(GrandChildOfObject);
-			DotNetType dotNetType = new DotNetType(new DotNetQualifiedName("GrandChildOfObject"));
+			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("GrandChildOfObject"));
 			//act
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
 			//assert
@@ -95,7 +95,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			Type type = typeof(ChildOfOneInterface);
-			DotNetType dotNetType = new DotNetType(new DotNetQualifiedName("ChildOfOneInterface"));
+			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("ChildOfOneInterface"));
 			//act
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
 			//assert
@@ -108,7 +108,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			Type type = typeof(ChildOfTwoInterfaces);
-			DotNetType dotNetType = new DotNetType(new DotNetQualifiedName("ChildOfTwoInterfaces"));
+			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("ChildOfTwoInterfaces"));
 			//act
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
 			//assert
@@ -122,7 +122,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			Type type = typeof(ChildOfChildInterface);
-			DotNetType dotNetType = new DotNetType(new DotNetQualifiedName("ChildOfChildInterface"));
+			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("ChildOfChildInterface"));
 			//act
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
 			//assert
@@ -136,7 +136,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			Type type = typeof(StructA);
-			DotNetType dotNetType = new DotNetType(new DotNetQualifiedName("DataFilesTest.DotNetTypeTests.StructA"));
+			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("DataFilesTest.DotNetTypeTests.StructA"));
 			//act
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
 			//assert

@@ -52,6 +52,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public TypeCategory Category { get; protected set; }
 
+		/// <summary>Strongly typed name.</summary>
+		public DotNetQualifiedClassName TypeName { get { return (Name as DotNetQualifiedClassName); } }
+
 		/// <summary>True if the type is sealed.</summary>
 		/// <remarks>Abstract classes, static classes, and interfaces cannot be sealed. Exceptions can be sealed.</remarks>
 		public bool IsSealed { get; protected set; }
@@ -141,7 +144,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		#region Constructors
 
 		/// <summary></summary>
-		public DotNetType(DotNetQualifiedName name) : base(name)
+		public DotNetType(DotNetQualifiedClassName name) : base(name)
 		{
 			Category = TypeCategory.Unknown;
 			IsSealed = false;
@@ -153,7 +156,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <param name="memberElement">Expects tag name "member".</param>
 		public static DotNetType FromVisualStudioXml(XElement memberElement)
 		{
-			DotNetQualifiedName name = DotNetQualifiedName.FromVisualStudioXml(memberElement.Attribute("name")?.Value);
+			DotNetQualifiedClassName name = DotNetQualifiedClassName.FromVisualStudioXml(memberElement.Attribute("name")?.Value);
 			DotNetType type = new DotNetType(name);
 			type.ParseVisualStudioXmlDocumentation(memberElement);
 			return type;
