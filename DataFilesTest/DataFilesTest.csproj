@@ -130,6 +130,7 @@
     </Content>
     <Content Include="data\DotNetDocumentationFile_DuplicateComments_Loop.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="data\DotNetDocumentationFile_DuplicateComments_MultipleLevelsDeep.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -140,10 +141,28 @@
     <Content Include="data\DotNetDocumentationFile_Full.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="data\DotNetDocumentationFile_InheritComments_DifferentGenericAliases.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_InheritComments_ExplicitInterfaces.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_InheritComments_MultipleLevelsDeep.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_inheritComments_NoBaseType.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_InheritComments_OrderOfInterfaces.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="data\DotNetDocumentationFile_NameConflict.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\DotNetDocumentationFile_OrphanedMember.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_InheritComments_OneLevelDeep.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\MSExcel2003XmlFile_AddHeaderRow_GetHeaders.txt">

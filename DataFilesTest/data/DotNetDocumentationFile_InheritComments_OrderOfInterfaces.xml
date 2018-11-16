@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <assembly>
+	<name>DataFilesTest</name>
+  </assembly>
+  <members>
+	<!-- Types -->
+	<member name="T:DataFilesTest.DotNetDocumentationFileTests.InheritanceInterfaceF">
+	  <summary>summary InheritanceInterfaceF</summary>
+	</member>
+	<member name="T:DataFilesTest.DotNetDocumentationFileTests.InheritanceInterfaceG">
+	  <summary>summary InheritanceInterfaceG</summary>
+	</member>
+	<member name="T:DataFilesTest.DotNetDocumentationFileTests.InheritanceClassH">
+	  <summary>summary InheritanceClassH</summary>
+	</member>
+	<!-- Properties -->
+	<member name="P:DataFilesTest.DotNetDocumentationFileTests.InheritanceInterfaceF.PropertyA">
+	  <summary>summary InheritanceInterfaceF.PropertyA</summary>
+	</member>
+	<member name="P:DataFilesTest.DotNetDocumentationFileTests.InheritanceInterfaceG.PropertyA">
+	  <summary>summary InheritanceInterfaceG.PropertyA</summary>
+	</member>
+	<member name="P:DataFilesTest.DotNetDocumentationFileTests.InheritanceClassH.PropertyA">
+	  <inheritdoc/>
+	</member>
+  </members>
+</root>

@@ -45,7 +45,7 @@ namespace DataFilesTest
 			file.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(2, file.Types.Count);
-			Assert.AreEqual(file.Types[0].FindField("FieldA").SummaryComments.Comments[0], file.Types[1].FindField("FieldA").SummaryComments.Comments[0]);
+			Assert.AreEqual(file.Types[0].Fields.First(f => f.Name.LocalName == "FieldA").SummaryComments.Comments[0], file.Types[1].Fields.First(f => f.Name.LocalName == "FieldA").SummaryComments.Comments[0]);
 		}
 
 		[TestMethod]
@@ -59,7 +59,7 @@ namespace DataFilesTest
 			file.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(2, file.Types.Count);
-			Assert.AreEqual(file.Types[0].FindProperty("PropertyA").SummaryComments.Comments[0], file.Types[1].FindProperty("PropertyA").SummaryComments.Comments[0]);
+			Assert.AreEqual(file.Types[0].Properties.First(p => p.Name.LocalName == "PropertyA").SummaryComments.Comments[0], file.Types[1].Properties.First(p => p.Name.LocalName == "PropertyA").SummaryComments.Comments[0]);
 		}
 
 		[TestMethod]
@@ -73,7 +73,7 @@ namespace DataFilesTest
 			file.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(2, file.Types.Count);
-			Assert.AreEqual(file.Types[0].FindEvent("EventA").SummaryComments.Comments[0], file.Types[1].FindEvent("EventA").SummaryComments.Comments[0]);
+			Assert.AreEqual(file.Types[0].Events.First(e => e.Name.LocalName == "EventA").SummaryComments.Comments[0], file.Types[1].Events.First(e => e.Name.LocalName == "EventA").SummaryComments.Comments[0]);
 		}
 
 		[TestMethod]
@@ -87,7 +87,7 @@ namespace DataFilesTest
 			file.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(2, file.Types.Count);
-			Assert.AreEqual(file.Types[0].FindMethod("MethodA", new List<DotNetParameter>()).SummaryComments.Comments[0], file.Types[1].FindMethod("MethodA", new List<DotNetParameter>()).SummaryComments.Comments[0]);
+			Assert.AreEqual(file.Types[0].Methods.First(m => m.Name.LocalName == "MethodA" && m.MethodName.Parameters.Count == 0).SummaryComments.Comments[0], file.Types[1].Methods.First(m => m.Name.LocalName == "MethodA" && m.MethodName.Parameters.Count == 0).SummaryComments.Comments[0]);
 		}
 	}
 }

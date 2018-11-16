@@ -109,6 +109,12 @@ namespace WithoutHaste.DataFiles.DotNet
 			return MethodName.MatchesSignature(name);
 		}
 
+		/// <duplicate cref='DotNetQualifiedMethodName.MatchesLocalSignature(DotNetQualifiedMethodName)'/>
+		public bool MatchesLocalSignature(DotNetQualifiedMethodName name)
+		{
+			return MethodName.MatchesLocalSignature(name);
+		}
+
 		/// <duplicate cref='DotNetCommentMethodLink.MatchesSignature(DotNetMethod)' />
 		public bool MatchesSignature(DotNetCommentMethodLink link)
 		{

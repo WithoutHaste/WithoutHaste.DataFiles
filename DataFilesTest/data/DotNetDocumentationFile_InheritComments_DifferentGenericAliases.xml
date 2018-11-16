@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <assembly>
+	<name>DataFilesTest</name>
+  </assembly>
+  <members>
+	<!-- Types -->
+	<member name="T:DataFilesTest.DotNetDocumentationFileTests.InheritanceClassI">
+	  <summary>summary InheritanceClassI</summary>
+	</member>
+	<member name="T:DataFilesTest.DotNetDocumentationFileTests.InheritanceClassJ">
+	  <summary>summary InheritanceClassJ</summary>
+	</member>
+	<!-- Methods -->
+	<member name="M:DataFilesTest.DotNetDocumentationFileTests.InheritanceClassI.MethodA``1(``0)">
+	  <summary>summary InheritanceClassI.MethodA``1</summary>
+	</member>
+	<member name="M:DataFilesTest.DotNetDocumentationFileTests.InheritanceClassJ.MethodA``1(``0)">
+	  <inheritdoc/>
+	</member>
+  </members>
+</root>

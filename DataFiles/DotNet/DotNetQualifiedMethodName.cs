@@ -279,6 +279,28 @@ namespace WithoutHaste.DataFiles.DotNet
 			return MatchesArguments(other.Parameters);
 		}
 
+
+		/// <summary>
+		/// Returns true if this method's signature matches the other method signature.
+		/// Looks at local name instead of entire namespace.
+		/// </summary>
+		public bool MatchesLocalSignature(DotNetQualifiedMethodName other)
+		{
+			if(this.LocalName != other.LocalName)
+				return false;
+
+			if(this.GenericTypeCount != other.GenericTypeCount)
+				return false;
+
+			if(ReturnTypeIsPartOfSignature)
+			{
+				if(this.ReturnTypeName != other.ReturnTypeName)
+					return false;
+			}
+
+			return MatchesArguments(other.Parameters);
+		}
+
 		/// <summary>
 		/// Returns true if this method's parameter list matches the reflected ParameterInfo. Checks parameter types, not names.
 		/// </summary>

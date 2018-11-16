@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <assembly>
+	<name>DataFilesTest</name>
+  </assembly>
+  <members>
+	<!-- Types -->
+	<member name="T:DataFilesTest.DotNetDocumentationFileTests.InheritanceClassA">
+	  <summary>summary InheritanceClassA</summary>
+	</member>
+	<member name="T:DataFilesTest.DotNetDocumentationFileTests.InheritanceInterfaceC">
+	  <summary>summary InheritanceInterfaceC</summary>
+	</member>
+	<member name="T:DataFilesTest.DotNetDocumentationFileTests.InheritanceClassB">
+	  <inheritdoc/>
+	</member>
+	<!-- Methods -->
+	<member name="M:DataFilesTest.DotNetDocumentationFileTests.InheritanceClassA.MethodA">
+	  <summary>summary InheritanceClassA.MethodA</summary>
+	</member>
+	<member name="M:DataFilesTest.DotNetDocumentationFileTests.InheritanceInterfaceC.MethodC">
+	  <summary>summary InheritanceInterfaceC.MethodC</summary>
+	</member>
+	<member name="M:DataFilesTest.DotNetDocumentationFileTests.InheritanceClassB.MethodA">
+	  <inheritdoc/>
+	</member>
+	<member name="M:DataFilesTest.DotNetDocumentationFileTests.InheritanceClassB.MethodC">
+	  <inheritdoc/>
+	</member>
+	<!-- Fields -->
+	<member name="F:DataFilesTest.DotNetDocumentationFileTests.InheritanceClassA.FieldA">
+	  <summary>summary InheritanceClassA.FieldA</summary>
+	</member>
+	<member name="F:DataFilesTest.DotNetDocumentationFileTests.InheritanceClassB.FieldA">
+	  <inheritdoc/>
+	</member>
+	<!-- Properties -->
+	<member name="P:DataFilesTest.DotNetDocumentationFileTests.InheritanceClassA.PropertyA">
+	  <summary>summary InheritanceClassA.PropertyA</summary>
+	</member>
+	<member name="P:DataFilesTest.DotNetDocumentationFileTests.InheritanceInterfaceC.PropertyC">
+	  <summary>summary InheritanceInterfaceA.PropertyC</summary>
+	</member>
+	<member name="P:DataFilesTest.DotNetDocumentationFileTests.InheritanceClassB.PropertyA">
+	  <inheritdoc/>
+	</member>
+	<member name="P:DataFilesTest.DotNetDocumentationFileTests.InheritanceClassB.PropertyC">
+	  <inheritdoc/>
+	</member>
+	<!-- Events -->
+	<member name="E:DataFilesTest.DotNetDocumentationFileTests.InheritanceClassA.EventA">
+	  <summary>summary InheritanceClassA.EventA</summary>
+	</member>
+	<member name="E:DataFilesTest.DotNetDocumentationFileTests.InheritanceClassB.EventA">
+	  <inheritdoc/>
+	</member>
+  </members>
+</root>

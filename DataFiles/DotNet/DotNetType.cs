@@ -244,33 +244,81 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>
 		/// Returns the selected field, if it exists in this type.
 		/// </summary>
-		public DotNetField FindField(string localName)
+		/// <param name="FindType">Function that returns the selected type from all known types in the assembly.</param>
+		public DotNetField FindInheritedField(Func<DotNetQualifiedName, DotNetType> FindType, string localName)
 		{
-			return Fields.FirstOrDefault(f => f.Name.LocalName == localName);
+			DotNetField field = Fields.FirstOrDefault(f => f.Name.LocalName == localName);
+			if(field != null)
+				return field;
+			if(BaseType != null)
+			{
+				DotNetType baseType = FindType(BaseType.Name);
+				if(baseType != null)
+				{
+					return baseType.FindInheritedField(FindType, localName);
+				}
+			}
+			return null;
 		}
 
 		/// <summary>
 		/// Returns the selected property, if it exists in this type.
 		/// </summary>
-		public DotNetProperty FindProperty(string localName)
+		/// <param name="FindType">Function that returns the selected type from all known types in the assembly.</param>
+		public DotNetProperty FindInheritedProperty(Func<DotNetQualifiedName, DotNetType> FindType, string localName)
 		{
-			return Properties.FirstOrDefault(p => p.Name.LocalName == localName);
+			DotNetProperty property = Properties.FirstOrDefault(p => p.Name.LocalName == localName);
+			if(property != null)
+				return property;
+			if(BaseType != null)
+			{
+				DotNetType baseType = FindType(BaseType.Name);
+				if(baseType != null)
+				{
+					return baseType.FindInheritedProperty(FindType, localName);
+				}
+			}
+			return null;
 		}
 
 		/// <summary>
 		/// Returns the selected event, if it exists in this type.
 		/// </summary>
-		public DotNetEvent FindEvent(string localName)
+		/// <param name="FindType">Function that returns the selected type from all known types in the assembly.</param>
+		public DotNetEvent FindInheritedEvent(Func<DotNetQualifiedName, DotNetType> FindType, string localName)
 		{
-			return Events.FirstOrDefault(e => e.Name.LocalName == localName);
+			DotNetEvent _event = Events.FirstOrDefault(e => e.Name.LocalName == localName);
+			if(_event != null)
+				return _event;
+			if(BaseType != null)
+			{
+				DotNetType baseType = FindType(BaseType.Name);
+				if(baseType != null)
+				{
+					return baseType.FindInheritedEvent(FindType, localName);
+				}
+			}
+			return null;
 		}
 
 		/// <summary>
 		/// Returns the selected method, if it exists in this type.
 		/// </summary>
-		public DotNetMethod FindMethod(string localName, List<DotNetParameter> parameters) //todo: overrides generic method using diff names for the generic type parameters
+		/// <param name="FindType">Function that returns the selected type from all known types in the assembly.</param>
+		public DotNetMethod FindInheritedMethod(Func<DotNetQualifiedName, DotNetType> FindType, DotNetQualifiedMethodName methodName)
 		{
-			return Methods.FirstOrDefault(m => m.Name.LocalName == localName && m.MatchesArguments(parameters));
+			DotNetMethod method = Methods.FirstOrDefault(m => m.MatchesLocalSignature(methodName));
+			if(method != null)
+				return method;
+			if(BaseType != null)
+			{
+				DotNetType baseType = FindType(BaseType.Name);
+				if(baseType != null)
+				{
+					return baseType.FindInheritedMethod(FindType, methodName);
+				}
+			}
+			return null;
 		}
 
 		/// <summary>
@@ -458,40 +506,61 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>
 		/// For all "inheritdoc" comments, replace the inheritance comment with the inherited comments.
 		/// </summary>
+		/// <remarks>
+		/// Classes can inherit from their base class (or the base class's base, etc).
+		/// Interfaces can inherit from interfaces.
+		/// Class members can inherit from their base class or from interfaces.
+		/// </remarks>
 		/// <param name="FindType">Function that returns the selected type from all known types in the assembly.</param>
-		public void ResolveInheritedComments(Func<DotNetQualifiedName,DotNetType> FindType)
+		/// <param name="inheritancePath">List of types or members inheriting from each other, from top level to bottom level. Used to avoid loops.</param>
+		public void ResolveInheritedComments(Func<DotNetQualifiedName,DotNetType> FindType, List<DotNetQualifiedName> inheritancePath = null)
 		{
+			if(inheritancePath == null)
+				inheritancePath = new List<DotNetQualifiedName>();
+			if(inheritancePath.Contains(this.Name))
+				return; //inheritance loop
+
 			DotNetType baseType = null;
 			if(BaseType != null)
 			{
 				baseType = FindType(BaseType.Name);
+				if(baseType != null && baseType.InheritsDocumentation)
+				{
+					List<DotNetQualifiedName> copiedInheritancePath = inheritancePath.Select(x => x).ToList();
+					copiedInheritancePath.Add(this.Name);
+					baseType.ResolveInheritedComments(FindType, copiedInheritancePath);
+				}
 			}
 			List<DotNetType> baseInterfaces = new List<DotNetType>();
 			foreach(DotNetBaseType implementedInterface in ImplementedInterfaces)
 			{
 				DotNetType baseInterface = FindType(implementedInterface.Name);
 				if(baseInterface != null)
+				{
 					baseInterfaces.Add(baseInterface);
+					if(baseInterface.InheritsDocumentation)
+					{
+						List<DotNetQualifiedName> copiedInheritancePath = inheritancePath.Select(x => x).ToList();
+						copiedInheritancePath.Add(this.Name);
+						baseInterface.ResolveInheritedComments(FindType, copiedInheritancePath);
+					}
+				}
 			}
 
 			if(this.InheritsDocumentation && baseType != null)
 			{
-				//todo: if base type inherits too - loops shouldn't be possible but check anyway
 				this.CopyComments(baseType);
 			}
 
-			foreach(DotNetField field in Fields) //todo: field from grandparent instead of parent
+			if(baseType != null)
 			{
-				if(!field.InheritsDocumentation) continue;
-
-				if(baseType != null)
+				foreach(DotNetField field in Fields)
 				{
-					DotNetField baseField = baseType.FindField(field.Name.LocalName);
+					if(!field.InheritsDocumentation) continue;
+
+					DotNetField baseField = baseType.FindInheritedField(FindType, field.Name.LocalName);
 					if(baseField != null)
-					{
 						field.CopyComments(baseField);
-						continue;
-					}
 				}
 			}
 			foreach(DotNetProperty property in Properties)
@@ -500,7 +569,7 @@ namespace WithoutHaste.DataFiles.DotNet
 
 				if(baseType != null)
 				{
-					DotNetProperty baseProperty = baseType.FindProperty(property.Name.LocalName);
+					DotNetProperty baseProperty = baseType.FindInheritedProperty(FindType, property.Name.LocalName);
 					if(baseProperty != null)
 					{
 						property.CopyComments(baseProperty);
@@ -512,7 +581,7 @@ namespace WithoutHaste.DataFiles.DotNet
 					if(property.Name.ExplicitInterface != null && property.Name.ExplicitInterface != baseInterface.Name)
 						continue;
 
-					DotNetProperty baseProperty = baseInterface.FindProperty(property.Name.LocalName);
+					DotNetProperty baseProperty = baseInterface.FindInheritedProperty(FindType, property.Name.LocalName);
 					if(baseProperty != null)
 					{
 						property.CopyComments(baseProperty);
@@ -526,7 +595,7 @@ namespace WithoutHaste.DataFiles.DotNet
 
 				if(baseType != null)
 				{
-					DotNetEvent baseEvent = baseType.FindEvent(_event.Name.LocalName);
+					DotNetEvent baseEvent = baseType.FindInheritedEvent(FindType, _event.Name.LocalName);
 					if(baseEvent != null)
 					{
 						_event.CopyComments(baseEvent);
@@ -540,7 +609,7 @@ namespace WithoutHaste.DataFiles.DotNet
 
 				if(baseType != null)
 				{
-					DotNetMethod baseMethod = baseType.FindMethod(method.Name.LocalName, method.MethodName.Parameters);
+					DotNetMethod baseMethod = baseType.FindInheritedMethod(FindType, method.MethodName);
 					if(baseMethod != null)
 					{
 						method.CopyComments(baseMethod);
@@ -552,7 +621,7 @@ namespace WithoutHaste.DataFiles.DotNet
 					if(method.Name.ExplicitInterface != null && method.Name.ExplicitInterface != baseInterface.Name)
 						continue;
 
-					DotNetMethod baseMethod = baseInterface.FindMethod(method.Name.LocalName, method.MethodName.Parameters);
+					DotNetMethod baseMethod = baseInterface.FindInheritedMethod(FindType, method.MethodName);
 					if(baseMethod != null)
 					{
 						method.CopyComments(baseMethod);

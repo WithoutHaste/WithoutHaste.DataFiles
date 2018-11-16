@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <assembly>
+	<name>DataFilesTest</name>
+  </assembly>
+  <members>
+	<!-- Types -->
+	<member name="T:DataFilesTest.DotNetDocumentationFileTests.InheritanceClassA">
+	  <inheritdoc/>
+	</member>
+  </members>
+</root>
