@@ -137,7 +137,7 @@
   <PropertyGroup>
     <EarlyDocsDllFile>$(ProjectDir)$(OutDir)WithoutHaste.DataFiles.dll</EarlyDocsDllFile>
     <EarlyDocsXmlFile>$(ProjectDir)$(OutDir)WithoutHaste.DataFiles.XML</EarlyDocsXmlFile>
-    <EarlyDocsOutputDir>$(ProjectDir)documentation\</EarlyDocsOutputDir>
+    <EarlyDocsOutputDir>$(ProjectDir)..\documentation\</EarlyDocsOutputDir>
   </PropertyGroup>
   <Import Project="packages\EarlyDocs.1.0.0\build\EarlyDocs.targets" Condition="Exists('packages\EarlyDocs.1.0.0\build\EarlyDocs.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
