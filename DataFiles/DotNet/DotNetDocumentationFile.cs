@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Xml;
@@ -52,7 +53,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <exception cref="FileExtensionException">Unexpected file extension.</exception>
 		public DotNetDocumentationFile(string filename)
 		{
-			FileInfo.ValidateExtension(filename, Extensions);
+			WithoutHaste.Libraries.FileInfo.ValidateExtension(filename, Extensions);
 			XDocument document = XDocument.Load(filename, LoadOptions.PreserveWhitespace);
 			Load(document);
 		}
@@ -81,11 +82,12 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// </summary>
 		public void AddAssemblyInfo(string assemblyFilename)
 		{
-			Assembly assembly = Assembly.LoadFrom(assemblyFilename);
+			Assembly assembly = Assembly.Load(File.ReadAllBytes(assemblyFilename));
 			foreach(TypeInfo typeInfo in assembly.DefinedTypes)
 			{
 				AddAssemblyInfoToType(typeInfo);
 			}
+
 			ResolveDuplicatedComments();
 			ResolveInheritedComments();
 		}
