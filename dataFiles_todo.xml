@@ -38,38 +38,19 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">32</Data>
+          <Data ss:Type="Number">36</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">markdown
-? bold or italic styles as decoractor/wrapper classes ?</Data>
+          <Data ss:Type="String">remove any dependency on WithoutHaste.Libraries</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">Feature - Major</Data>
+          <Data ss:Type="String">Task</Data>
         </Cell>
         <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2018-09-29T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
-          <Data ss:Type="Number">33</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">markdown
-? rename method ToMarkdown() to ToMarkdownString() ?</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Feature - Minor</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2018-10-01T00:00:00.000</Data>
+          <Data ss:Type="DateTime">2018-11-20T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -88,65 +69,6 @@ see https://www.nuget.org/packages/EPPlus/ for example (bottom of page) of how t
         </Cell>
         <Cell ss:StyleID="cellShortDate">
           <Data ss:Type="DateTime">2018-09-26T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
-          <Data ss:Type="Number">12</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">build and save markdown file</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Feature - Major</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2018-09-19T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
-          <Data ss:Type="Number">35</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">extend support for CommentTag enum</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Feature - Minor</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2018-11-03T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
-          <Data ss:Type="Number">16</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">support markdown "reference-style links"
-ex:
-[I'm a reference-style link][Arbitrary case-insensitive reference text]
-[You can use numbers for reference-style link definitions][1]
-Or leave it empty and use the [link text itself].
-
-[arbitrary case-insensitive reference text]: https://www.mozilla.org
-[1]: http://slashdot.org
-[link text itself]: http://www.reddit.com</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Feature - Major</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2018-09-19T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -188,7 +110,7 @@ Or leave it empty and use the [link text itself].
           <Data ss:Type="Number">14</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">re-run EarlyDocs</Data>
+          <Data ss:Type="String">re-run EarlyDocs on this</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -215,6 +137,66 @@ Or leave it empty and use the [link text itself].
         </Cell>
         <Cell ss:StyleID="cellShortDate">
           <Data ss:Type="DateTime">2018-09-14T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">37</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">publish as its own NuGet package</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-11-20T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">33</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">markdown
+? rename method ToMarkdown() to ToMarkdownString() ?</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Minor</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-10-01T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">16</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">support markdown "reference-style links"
+ex:
+[I'm a reference-style link][Arbitrary case-insensitive reference text]
+[You can use numbers for reference-style link definitions][1]
+Or leave it empty and use the [link text itself].
+
+[arbitrary case-insensitive reference text]: https://www.mozilla.org
+[1]: http://slashdot.org
+[link text itself]: http://www.reddit.com</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-19T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -298,7 +280,7 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 - TypeInfo convert name to documentation format ?</Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">Todo</Data>
+          <Data ss:Type="String">Maybe</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Task</Data>
@@ -374,6 +356,67 @@ could turn DotNetSettings.QualifiedNameConverter into a list or event so that an
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">35</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">extend support for CommentTag enum</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Minor</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-11-03T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-11-20T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">12</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">build and save markdown file</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-19T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-11-20T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">32</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">markdown
+? bold or italic styles as decoractor/wrapper classes ?</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-29T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-11-20T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -760,15 +803,15 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">35</Data>
+          <Data ss:Type="Number">37</Data>
         </Cell>
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="String">Done</Data>
+          <Data ss:Type="String">Maybe</Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">Inactive</Data>
+          <Data ss:Type="String">Active</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">
@@ -788,8 +831,7 @@ so that sorting by filename groups like-object together</Data>
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="String">
-          </Data>
+          <Data ss:Type="String">Done</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Inactive</Data>
@@ -812,8 +854,7 @@ so that sorting by filename groups like-object together</Data>
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="String">
-          </Data>
+          <Data ss:Type="String">Skip</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Inactive</Data>
@@ -840,7 +881,8 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">Inactive</Data>
+          <Data ss:Type="String">
+          </Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">
@@ -864,7 +906,8 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">Inactive</Data>
+          <Data ss:Type="String">
+          </Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">
