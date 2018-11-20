@@ -256,7 +256,17 @@ namespace WithoutHaste.DataFiles.DotNet
 					return false;
 			}
 
-			return MatchesArguments(methodInfo.GetParameters());
+			ParameterInfo[] parameterInfo = null;
+			try
+			{
+				parameterInfo = methodInfo.GetParameters();
+			}
+			catch(Exception)
+			{
+				//todo: from DataFiles: System.IO.FileNotFoundException: Could not load file or assembly 'EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1' or one of its dependencies. The system cannot find the file specified.
+				return false;
+			}
+			return MatchesArguments(parameterInfo);
 		}
 
 		/// <summary>

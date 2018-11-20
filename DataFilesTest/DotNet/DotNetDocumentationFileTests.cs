@@ -238,11 +238,24 @@ namespace DataFilesTest
 		}
 
 		[TestMethod]
-		public void DotNetDocumentationFile_AddAssemblyInfo_FoundType()
+		public void DotNetDocumentationFile_SmokeTest_EarlyDocsTest()
 		{
 			//arrange
 			string xmlDocumentationFilename = "../../../../EarlyDocs/Test/bin/Debug/Test.XML";
 			string dllFilename = "../../../../EarlyDocs/Test/bin/Debug/Test.dll";
+			//act
+			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
+			xmlDocumentation.AddAssemblyInfo(dllFilename);
+			//assert
+			Assert.IsTrue(xmlDocumentation.Types.Count(t => t.Category != TypeCategory.Unknown) > 0);
+		}
+
+		[TestMethod]
+		public void DotNetDocumentationFile_SmokeTest_DataFiles()
+		{
+			//arrange
+			string xmlDocumentationFilename = "../../../DataFiles/bin/Debug/WithoutHaste.DataFiles.XML";
+			string dllFilename = "../../../DataFiles/bin/Debug/WithoutHaste.DataFiles.dll";
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			xmlDocumentation.AddAssemblyInfo(dllFilename);

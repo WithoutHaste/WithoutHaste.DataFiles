@@ -95,7 +95,14 @@ namespace WithoutHaste.DataFiles.DotNet
 
 			if(Category == FieldCategory.Constant)
 			{
-				ConstantValue = fieldInfo.GetRawConstantValue();
+				try
+				{
+					ConstantValue = fieldInfo.GetRawConstantValue();
+				}
+				catch(Exception)
+				{
+					//System.InvalidOperationException: Operation is not valid due to the current state of the object.
+				}
 			}
 
 			TypeName = DotNetQualifiedTypeName.FromAssemblyInfo(fieldInfo.FieldType);
