@@ -248,6 +248,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Returns the selected field, if it exists in this type.
 		/// </summary>
 		/// <param name="FindType">Function that returns the selected type from all known types in the assembly.</param>
+		/// <param name="localName">Name of field, local to this type.</param>
 		public DotNetField FindInheritedField(Func<DotNetQualifiedName, DotNetType> FindType, string localName)
 		{
 			DotNetField field = Fields.FirstOrDefault(f => f.Name.LocalName == localName);
@@ -268,6 +269,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Returns the selected property, if it exists in this type.
 		/// </summary>
 		/// <param name="FindType">Function that returns the selected type from all known types in the assembly.</param>
+		/// <param name="localName">Name of property, local to this type.</param>
 		public DotNetProperty FindInheritedProperty(Func<DotNetQualifiedName, DotNetType> FindType, string localName)
 		{
 			DotNetProperty property = Properties.FirstOrDefault(p => p.Name.LocalName == localName);
@@ -288,6 +290,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Returns the selected event, if it exists in this type.
 		/// </summary>
 		/// <param name="FindType">Function that returns the selected type from all known types in the assembly.</param>
+		/// <param name="localName">Name of event, local to this type.</param>
 		public DotNetEvent FindInheritedEvent(Func<DotNetQualifiedName, DotNetType> FindType, string localName)
 		{
 			DotNetEvent _event = Events.FirstOrDefault(e => e.Name.LocalName == localName);
@@ -308,6 +311,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Returns the selected method, if it exists in this type.
 		/// </summary>
 		/// <param name="FindType">Function that returns the selected type from all known types in the assembly.</param>
+		/// <param name="methodName">Name of method, local to this type.</param>
 		public DotNetMethod FindInheritedMethod(Func<DotNetQualifiedName, DotNetType> FindType, DotNetQualifiedMethodName methodName)
 		{
 			DotNetMethod method = Methods.FirstOrDefault(m => m.MatchesLocalSignature(methodName));

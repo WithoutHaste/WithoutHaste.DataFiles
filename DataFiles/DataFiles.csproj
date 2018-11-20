@@ -48,9 +48,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="WithoutHaste.Libraries">
-      <HintPath>..\..\WithoutHaste.Libraries\Libraries\bin\Release\WithoutHaste.Libraries.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Counters.cs" />
@@ -87,7 +84,6 @@
     <Compile Include="exceptions\StringFormatException.cs" />
     <Compile Include="exceptions\XmlFormatException.cs" />
     <Compile Include="exceptions\XmlNodeException.cs" />
-    <Compile Include="Info.cs" />
     <Compile Include="Markdown\IMarkdownInLine.cs" />
     <Compile Include="Markdown\IMarkdownInList.cs" />
     <Compile Include="Markdown\IMarkdownInSection.cs" />

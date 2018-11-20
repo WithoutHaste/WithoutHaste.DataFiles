@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
-using WithoutHaste.Libraries;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
@@ -50,10 +49,12 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// </summary>
 		/// <param name="filename">Full path, filename, and extension.</param>
 		/// <exception cref="ArgumentException">Filename is null.</exception>
-		/// <exception cref="FileExtensionException">Unexpected file extension.</exception>
+		/// <exception cref="ArgumentException">Unexpected file extension.</exception>
 		public DotNetDocumentationFile(string filename)
 		{
-			WithoutHaste.Libraries.FileInfo.ValidateExtension(filename, Extensions);
+			if(!Extensions.Contains(Path.GetExtension(filename)))
+				throw new ArgumentException("Unexpected file extension. Use one of these extensions: " + String.Join(", ", Extensions));
+
 			XDocument document = XDocument.Load(filename, LoadOptions.PreserveWhitespace);
 			Load(document);
 		}

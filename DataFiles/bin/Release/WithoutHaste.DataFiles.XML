@@ -240,6 +240,15 @@
             A node in a tree data structure made up of DotNetQualifiedClassNames organized by their namespaces.
             </summary>
         </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassNameTreeNode.Parent">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassNameTreeNode.Value">
+            <summary></summary>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassNameTreeNode.Children">
+            <summary></summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassNameTreeNode.Generate(System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName})">
             <summary>
             Organize a list of namespaces into a tree, based on which namespaces are within other namespaces.
@@ -1936,24 +1945,28 @@
             Returns the selected field, if it exists in this type.
             </summary>
             <param name="FindType">Function that returns the selected type from all known types in the assembly.</param>
+            <param name="localName">Name of field, local to this type.</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.FindInheritedProperty(System.Func{WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetType},System.String)">
             <summary>
             Returns the selected property, if it exists in this type.
             </summary>
             <param name="FindType">Function that returns the selected type from all known types in the assembly.</param>
+            <param name="localName">Name of property, local to this type.</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.FindInheritedEvent(System.Func{WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetType},System.String)">
             <summary>
             Returns the selected event, if it exists in this type.
             </summary>
             <param name="FindType">Function that returns the selected type from all known types in the assembly.</param>
+            <param name="localName">Name of event, local to this type.</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.FindInheritedMethod(System.Func{WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetType},WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName)">
             <summary>
             Returns the selected method, if it exists in this type.
             </summary>
             <param name="FindType">Function that returns the selected type from all known types in the assembly.</param>
+            <param name="methodName">Name of method, local to this type.</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.FindMember(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary>
@@ -2254,7 +2267,7 @@
             </summary>
             <param name="filename">Full path, filename, and extension.</param>
             <exception cref="T:System.ArgumentException">Filename is null.</exception>
-            <exception cref="T:WithoutHaste.Libraries.FileExtensionException">Unexpected file extension.</exception>
+            <exception cref="T:System.ArgumentException">Unexpected file extension.</exception>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.#ctor(System.Xml.Linq.XDocument)">
             <summary>
@@ -2687,21 +2700,6 @@
         <member name="M:WithoutHaste.DataFiles.XmlNodeException.#ctor(System.String)">
             <summary></summary>
         </member>
-        <member name="T:WithoutHaste.DataFiles.Info">
-            <summary>
-            Retrieves version information.
-            </summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.Info.GetVersion">
-            <summary>
-            Returns the version of this library.
-            </summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.Info.GetDependencyVersions">
-            <summary>
-            Returns the versions of any special libraries this one relies on.
-            </summary>
-        </member>
         <member name="T:WithoutHaste.DataFiles.Markdown.IMarkdownInLine">
             <summary>
             Represents a markdown element that can be included within a MarkdownLine (i.e. within text).
@@ -2779,13 +2777,6 @@
             <summary>
             Create an empty markdown file.
             </summary>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownFile.#ctor(System.String)">
-            <summary>
-            Load markdown from file.
-            </summary>
-            <param name="filename">Full path, filename, and extension.</param>
-            <exception cref="T:WithoutHaste.Libraries.FileExtensionException">Unexpected file extension.</exception>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownFile.AddSection(System.String)">
             <summary>

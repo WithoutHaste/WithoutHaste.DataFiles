@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WithoutHaste.Libraries;
 
 namespace WithoutHaste.DataFiles.Markdown
 {
@@ -27,18 +27,22 @@ namespace WithoutHaste.DataFiles.Markdown
 		{
 		}
 
+		//todo: implement
+		/*
 		/// <summary>
 		/// Load markdown from file.
 		/// </summary>
 		/// <param name="filename">Full path, filename, and extension.</param>
-		/// <exception cref="FileExtensionException">Unexpected file extension.</exception>
+		/// <exception cref="ArgumentException">Unexpected file extension.</exception>
 		public MarkdownFile(string filename)
 		{
-			FileInfo.ValidateExtension(filename, Extensions);
+			if(!Extensions.Contains(Path.GetExtension(filename).ToLower()))
+				throw new ArgumentException("Unexpected file extension. Use one of these extensions: " + String.Join(", ", Extensions));
 
 			//todo: load markdown from file
 			throw new NotImplementedException("Loading markdown from file not implemented yet.");
 		}
+		*/
 
 		#endregion
 

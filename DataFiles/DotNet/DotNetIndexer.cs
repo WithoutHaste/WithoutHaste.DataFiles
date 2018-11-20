@@ -103,7 +103,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>
 		/// Returns true if this indexer's signature matches the link.
 		/// </summary>
-		public bool Matches(DotNetCommentQualifiedLinkedGroup linkedGroup)
+		public new bool Matches(DotNetCommentQualifiedLinkedGroup linkedGroup)
 		{
 			if(linkedGroup is DotNetCommentMethodLinkedGroup)
 			{

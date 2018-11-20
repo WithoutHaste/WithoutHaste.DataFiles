@@ -11,8 +11,13 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// </summary>
 	public class DotNetQualifiedClassNameTreeNode
 	{
+		/// <summary></summary>
 		public DotNetQualifiedClassNameTreeNode Parent { get; protected set; }
+
+		/// <summary></summary>
 		public DotNetQualifiedClassName Value { get; protected set; }
+
+		/// <summary></summary>
 		public List<DotNetQualifiedClassNameTreeNode> Children { get; protected set; }
 
 		internal DotNetQualifiedClassNameTreeNode(DotNetQualifiedClassName value)
