@@ -7,7 +7,7 @@ using OfficeOpenXml;
 
 namespace WithoutHaste.DataFiles.Excel
 {
-	/// <summary>Extensions for ExcelPackage.</summary>
+	/// <summary>Extensions for EPPlus OfficeOpenXml.ExcelPackage.</summary>
 	public static class ExcelPackageHelper
 	{
 		/// <summary>Minimum row index in excel.</summary>

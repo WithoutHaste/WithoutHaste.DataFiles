@@ -39,9 +39,11 @@ namespace WithoutHaste.DataFiles
 		/// The <paramref name="escapeChar"/> can escape itself.
 		/// </remarks>
 		/// <example>
-		/// string original = "A.B.C\.D\\.E";
-		/// string result = original('\', '.', '_');
-		/// //result = "A_B_C\.D\\_E"
+		///   <code>
+		///   string original = "A.B.C\.D\\.E";
+		///   string result = original('\', '.', '_');
+		///   //result = "A_B_C\.D\\_E"
+		///   </code>
 		/// </example>
 		public static string ReplaceUnescapedCharacters(this string text, char escapeChar, char searchChar, char replacementChar)
 		{
@@ -88,7 +90,7 @@ namespace WithoutHaste.DataFiles
 		/// <summary>
 		/// Removes outer matched pairs of braces from string.
 		/// Only changes string if first and last characters are a matched pair of braces.
-		/// Supports {}, [], (), and <![CDATA[<>]]>
+		/// Supports {}, [], (), and <![CDATA[<>]]>.
 		/// </summary>
 		public static string RemoveOuterBraces(this string text)
 		{

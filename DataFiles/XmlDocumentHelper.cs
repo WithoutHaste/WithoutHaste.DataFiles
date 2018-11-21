@@ -9,7 +9,7 @@ using System.Xml;
 namespace WithoutHaste.DataFiles
 {
 	/// <summary>
-	/// Generic XmlDocument utilities.
+	/// Generic System.Xml.XmlDocument utilities.
 	/// </summary>
     public static class XmlDocumentHelper
     {
