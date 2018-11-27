@@ -258,6 +258,7 @@ namespace DataFilesTest
 			string dllFilename = "../../../DataFiles/bin/Debug/WithoutHaste.DataFiles.dll";
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
+			//xmlDocumentation.AddAssemblyForReference("System.Xml");
 			xmlDocumentation.AddAssemblyInfo(dllFilename);
 			//assert
 			Assert.IsTrue(xmlDocumentation.Types.Count(t => t.Category != TypeCategory.Unknown) > 0);

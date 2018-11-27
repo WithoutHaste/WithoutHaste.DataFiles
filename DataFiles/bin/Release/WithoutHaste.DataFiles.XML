@@ -2274,10 +2274,19 @@
             Loads .Net XML documentation from XDocument.
             </summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.AddAssemblyInfo(System.String)">
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.AddAssemblyInfo(System.String,System.String[])">
             <summary>
             Load additional documentation information from the assembly itself.
             </summary>
+            <param name="assemblyFilename">Fill path and filename of the *.dll library being documentated.</param>
+            <param name="thirdPartyAssemblyFilenames">
+            List of third-party libraries referenced by your library.
+            These libraries will not be documented, but they must be loaded if you want to see the full type names for return types and parameter types from these libraries.
+            Each item in the list should be the full path and filename of a library.
+            <example>
+            To document the return type of <c>public Company.SomeType MyMethod() {}</c>, the library for <c>Company.SomeType</c> must be loaded.
+            </example>
+            </param>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.ResolveGenericTypeNameConflicts">
             <summary>
@@ -2292,7 +2301,7 @@
             <returns></returns>
         </member>
         <member name="T:WithoutHaste.DataFiles.Excel.ExcelPackageHelper">
-            <summary>Extensions for ExcelPackage.</summary>
+            <summary>Extensions for EPPlus OfficeOpenXml.ExcelPackage.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.MIN_ROW_INDEX">
             <summary>Minimum row index in excel.</summary>
@@ -2484,7 +2493,6 @@
             </ss:Workbook>
             ]]></code>
             </example>
-            <layout methods="keep_order"/>
         </member>
         <member name="P:WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.XmlDocument">
             <summary></summary>
@@ -3292,9 +3300,11 @@
             The <paramref name="escapeChar"/> can escape itself.
             </remarks>
             <example>
-            string original = "A.B.C\.D\\.E";
-            string result = original('\', '.', '_');
-            //result = "A_B_C\.D\\_E"
+              <code>
+              string original = "A.B.C\.D\\.E";
+              string result = original('\', '.', '_');
+              //result = "A_B_C\.D\\_E"
+              </code>
             </example>
         </member>
         <member name="M:WithoutHaste.DataFiles.TextHelper.CountPreceedingRepeatedChars(System.String,System.Int32,System.Char)">
@@ -3313,7 +3323,7 @@
             <summary>
             Removes outer matched pairs of braces from string.
             Only changes string if first and last characters are a matched pair of braces.
-            Supports {}, [], (), and <![CDATA[<>]]>
+            Supports {}, [], (), and <![CDATA[<>]]>.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.TextHelper.SplitIgnoreNested(System.String,System.Char)">
@@ -3338,7 +3348,7 @@
         </member>
         <member name="T:WithoutHaste.DataFiles.XmlDocumentHelper">
             <summary>
-            Generic XmlDocument utilities.
+            Generic System.Xml.XmlDocument utilities.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.XmlDocumentHelper.Validate(System.Xml.XmlNode,System.String)">

@@ -49,7 +49,22 @@ Loads .Net XML documentation from XDocument.
 
 # Methods
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddAssemblyInfo([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) assemblyFilename)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddAssemblyInfo([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) assemblyFilename, [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.string[]) thirdPartyAssemblyFilenames)
 
 Load additional documentation information from the assembly itself.  
+
+### Parameters
+
+#### [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) assemblyFilename
+
+Fill path and filename of the *.dll library being documentated.  
+
+#### [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.string[]) thirdPartyAssemblyFilenames
+
+List of third-party libraries referenced by your library.  
+These libraries will not be documented, but they must be loaded if you want to see the full type names for return types and parameter types from these libraries.  
+Each item in the list should be the full path and filename of a library.  
+
+**Example A:**  
+To document the return type of `public Company.SomeType MyMethod() {}`, the library for `Company.SomeType` must be loaded.  
 

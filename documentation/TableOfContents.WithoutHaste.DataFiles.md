@@ -20,7 +20,7 @@ Contains operations for parsing and editing text.
 
   
 [**XmlDocumentHelper**](WithoutHaste.DataFiles.XmlDocumentHelper.md)  
-Generic XmlDocument utilities.  
+Generic System.Xml.XmlDocument utilities.  
 
   
 

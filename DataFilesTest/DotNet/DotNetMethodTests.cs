@@ -397,5 +397,27 @@ namespace DataFilesTest
 			Assert.AreEqual(MethodCategory.Abstract, result.Category);
 		}
 
+		[TestMethod]
+		public void DotNetMethod_ThirdPartyTypes()
+		{
+			//arrange
+			string xmlDocumentationFilename = "../../../ThirdPartyTest/bin/Debug/ThirdPartyTest.XML";
+			string dllFilename = "../../../ThirdPartyTest/bin/Debug/ThirdPartyTest.dll";
+			string thirdPartyDllFilename = "../../../ThirdPartyTest/bin/Debug/Markdown.dll";
+			//act
+			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
+			xmlDocumentation.AddAssemblyInfo(dllFilename, thirdPartyDllFilename);
+			//assert
+			DotNetType type = xmlDocumentation.Types[0];
+			DotNetMethod methodA = type.Methods.First(m => m.Name.LocalName == "MethodA");
+			DotNetMethod methodB = type.Methods.First(m => m.Name.LocalName == "MethodB");
+			DotNetMethod methodC = type.Methods.First(m => m.Name.LocalName == "MethodC");
+			Assert.AreEqual("HeyRed.MarkdownSharp.Markdown", methodA.MethodName.ReturnTypeName);
+			Assert.AreEqual(0, methodA.MethodName.Parameters.Count);
+			Assert.AreEqual("System.Void", methodB.MethodName.ReturnTypeName);
+			Assert.AreEqual(1, methodB.MethodName.Parameters.Count);
+			Assert.AreEqual("HeyRed.MarkdownSharp.Markdown", methodC.MethodName.ReturnTypeName);
+			Assert.AreEqual(1, methodC.MethodName.Parameters.Count);
+		}
 	}
 }

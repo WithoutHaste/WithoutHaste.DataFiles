@@ -10,7 +10,7 @@ Building a Microsoft Excel 2003 Xml file with XmlDocument.
 ## Static Types
 
 [**ExcelPackageHelper**](WithoutHaste.DataFiles.Excel.ExcelPackageHelper.md)  
-Extensions for ExcelPackage.  
+Extensions for EPPlus OfficeOpenXml.ExcelPackage.  
 
   
 

@@ -24,7 +24,7 @@ Removes the  string from the beginning of , if it exists there.
 Removes outer matched pairs of braces from string.  
 Only changes string if first and last characters are a matched pair of braces.  
 Supports {}, [], (), and   
-`<>`  
+`<>`.  
 
 ## static [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ReplaceUnescapedCharacters([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text, [char](https://docs.microsoft.com/en-us/dotnet/api/system.char) escapeChar, [char](https://docs.microsoft.com/en-us/dotnet/api/system.char) searchChar, [char](https://docs.microsoft.com/en-us/dotnet/api/system.char) replacementChar)
 
@@ -34,9 +34,12 @@ Replaces all instances of the unescaped  in the .
 The  can escape itself.  
 
 **Example A:**  
-string original = "A.B.C\.D\\.E";  
-string result = original('\', '.', '_');  
-//result = "A_B_C\.D\\_E"  
+
+```
+string original = "A.B.C\.D\\.E";
+string result = original('\', '.', '_');
+//result = "A_B_C\.D\\_E"
+```  
 
 ## static [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.string[]) SplitIgnoreNested([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text, [char](https://docs.microsoft.com/en-us/dotnet/api/system.char) delimiter)
 

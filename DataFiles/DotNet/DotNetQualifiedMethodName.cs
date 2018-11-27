@@ -263,7 +263,8 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 			catch(Exception)
 			{
-				//todo: from DataFiles: System.IO.FileNotFoundException: Could not load file or assembly 'EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1' or one of its dependencies. The system cannot find the file specified.
+				//example: from DataFiles: System.IO.FileNotFoundException: Could not load file or assembly 'EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1' or one of its dependencies. The system cannot find the file specified.
+				//this only happens when the referenced dll is not loaded, or was loaded in a way that it is not recognized
 				return false;
 			}
 			return MatchesArguments(parameterInfo);

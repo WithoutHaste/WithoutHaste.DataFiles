@@ -3,7 +3,7 @@
 **Static**  
 **Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
 
-Generic XmlDocument utilities.  
+Generic System.Xml.XmlDocument utilities.  
 
 # Static Methods
 

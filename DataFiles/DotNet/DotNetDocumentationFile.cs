@@ -81,9 +81,26 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>
 		/// Load additional documentation information from the assembly itself.
 		/// </summary>
-		public void AddAssemblyInfo(string assemblyFilename)
+		/// <param name="assemblyFilename">Fill path and filename of the *.dll library being documentated.</param>
+		/// <param name="thirdPartyAssemblyFilenames">
+		/// List of third-party libraries referenced by your library.
+		/// These libraries will not be documented, but they must be loaded if you want to see the full type names for return types and parameter types from these libraries.
+		/// Each item in the list should be the full path and filename of a library.
+		/// <example>
+		/// To document the return type of <c>public Company.SomeType MyMethod() {}</c>, the library for <c>Company.SomeType</c> must be loaded.
+		/// </example>
+		/// </param>
+		public void AddAssemblyInfo(string assemblyFilename, params string[] thirdPartyAssemblyFilenames)
 		{
-			Assembly assembly = Assembly.Load(File.ReadAllBytes(assemblyFilename));
+			if(thirdPartyAssemblyFilenames != null)
+			{
+				foreach(string thirdParty in thirdPartyAssemblyFilenames)
+				{
+					Assembly.LoadFrom(thirdParty);
+				}
+			}
+
+			Assembly assembly = Assembly.LoadFrom(assemblyFilename);
 			foreach(TypeInfo typeInfo in assembly.DefinedTypes)
 			{
 				AddAssemblyInfoToType(typeInfo);

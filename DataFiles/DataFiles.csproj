@@ -130,15 +130,20 @@
     <None Include="ClassDiagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="earlydocs_readme.txt" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <EarlyDocsDllFile>$(ProjectDir)$(OutDir)WithoutHaste.DataFiles.dll</EarlyDocsDllFile>
     <EarlyDocsXmlFile>$(ProjectDir)$(OutDir)WithoutHaste.DataFiles.XML</EarlyDocsXmlFile>
     <EarlyDocsOutputDir>$(ProjectDir)..\documentation\</EarlyDocsOutputDir>
+    <!--<EarlyDocsSkip>True</EarlyDocsSkip>-->
   </PropertyGroup>
+  <ItemGroup>
+    <EarlyDocsInclude Include="$(ProjectDir)$(OutDir)EPPlus.dll">
+    </EarlyDocsInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="earlydocs_readme.txt" />
+  </ItemGroup>
   <Import Project="packages\EarlyDocs.1.0.0\build\EarlyDocs.targets" Condition="Exists('packages\EarlyDocs.1.0.0\build\EarlyDocs.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
