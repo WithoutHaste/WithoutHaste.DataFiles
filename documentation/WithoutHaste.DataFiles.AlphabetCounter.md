@@ -15,8 +15,7 @@ Valid characters.
 
 ## AlphabetCounter()
 
-**Misc:**  
-  
+Initialize a counter at "A".  
 
 # Operators
 

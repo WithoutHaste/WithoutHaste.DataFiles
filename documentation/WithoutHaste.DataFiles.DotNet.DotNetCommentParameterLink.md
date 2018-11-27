@@ -27,6 +27,12 @@ Name of the parameter in local method.
 
 ## DotNetCommentParameterLink([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name, [WithoutHaste.DataFiles.DotNet.CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag)
 
+# Methods
+
+##  ToString()
+
+Name  
+
 # Static Methods
 
 ## static DotNetCommentParameterLink FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)

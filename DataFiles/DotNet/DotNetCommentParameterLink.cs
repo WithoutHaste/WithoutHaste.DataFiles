@@ -42,5 +42,15 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		#endregion
+
+		#region Low Level
+
+		/// <summary>Name</summary>
+		public override string ToString()
+		{
+			return Name;
+		}
+
+		#endregion
 	}
 }

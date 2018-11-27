@@ -53,7 +53,9 @@
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.AlphabetCounter.#ctor">
-            <inheritdoc/>
+            <summary>
+            Initialize a counter at "A".
+            </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.AlphabetCounter.op_Addition(WithoutHaste.DataFiles.AlphabetCounter,System.Int32)">
             <summary>Increment counter.</summary>
@@ -485,6 +487,9 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.FromVisualStudioXml(System.Xml.Linq.XElement)">
             <summary>Parses .Net XML documentation for paramref.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.ToString">
+            <summary>Name</summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup">
             <summary>
