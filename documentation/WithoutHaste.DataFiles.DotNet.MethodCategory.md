@@ -17,6 +17,10 @@ Delegate type.
 
 No special category.  
 
+## const MethodCategory Protected
+
+Protected method.  
+
 ## const MethodCategory Static
 
 Static method.  

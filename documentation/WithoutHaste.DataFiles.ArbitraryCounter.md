@@ -36,19 +36,19 @@ Initialize at MINIMUM_VALUE.
 
 # Methods
 
-## [List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) CopyValue()
+## protected [List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) CopyValue()
 
 Returns an independent copy of the value.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Decrement([List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) value, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) delta)
+## protected [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Decrement([List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) value, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) delta)
 
 Increment a value.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Increment([List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) value, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) delta)
+## protected [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Increment([List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) value, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) delta)
 
 Increment a value.  
 
 ## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) SetValue([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) start)
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) SetValue([List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) start)
+## protected [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) SetValue([List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) start)
 

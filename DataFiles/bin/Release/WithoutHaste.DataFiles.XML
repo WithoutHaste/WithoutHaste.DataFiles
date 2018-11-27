@@ -1553,6 +1553,9 @@
         <member name="F:WithoutHaste.DataFiles.DotNet.MethodCategory.Static">
             <summary>Static method.</summary>
         </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.MethodCategory.Protected">
+            <summary>Protected method.</summary>
+        </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.MethodCategory.Abstract">
             <summary>Abstract method.</summary>
         </member>

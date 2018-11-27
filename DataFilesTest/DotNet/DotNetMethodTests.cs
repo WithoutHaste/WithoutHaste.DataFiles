@@ -60,6 +60,8 @@ namespace DataFilesTest
 		public abstract class AbstractClass
 		{
 			public abstract void MethodAbstract();
+
+			protected void MethodProtected() { }
 		}
 
 		[TestMethod]
@@ -395,6 +397,20 @@ namespace DataFilesTest
 			result.AddAssemblyInfo(methodInfo);
 			//assert
 			Assert.AreEqual(MethodCategory.Abstract, result.Category);
+		}
+
+		[TestMethod]
+		public void DotNetMethod_FromAssembly_AbstractClassProtectedMethod()
+		{
+			//arrange
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.AbstractClass.MethodProtected()'></member>", LoadOptions.PreserveWhitespace);
+			Type type = typeof(AbstractClass);
+			MethodInfo methodInfo = type.GetTypeInfo().DeclaredMethods.First(m => m.Name == "MethodProtected");
+			//act
+			DotNetMethod result = DotNetMethod.FromVisualStudioXml(xmlElement);
+			result.AddAssemblyInfo(methodInfo);
+			//assert
+			Assert.AreEqual(MethodCategory.Protected, result.Category);
 		}
 
 		[TestMethod]
