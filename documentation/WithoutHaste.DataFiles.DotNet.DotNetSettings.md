@@ -10,8 +10,7 @@ Global settings for the entire DotNet namespace.
 ## static [Func&lt;string,int,string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-3) AdditionalQualifiedNameConverter
 
 A second level [WithoutHaste.DataFiles.DotNet.DotNetSettings.QualifiedNameConverter](WithoutHaste.DataFiles.DotNet.DotNetSettings.md)to provide further processing.  
-This method will be run after   
-[WithoutHaste.DataFiles.DotNet.DotNetSettings.QualifiedNameConverter](WithoutHaste.DataFiles.DotNet.DotNetSettings.md) for each [WithoutHaste.DataFiles.DotNet.DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md).  
+This method will be run after [WithoutHaste.DataFiles.DotNet.DotNetSettings.QualifiedNameConverter](WithoutHaste.DataFiles.DotNet.DotNetSettings.md) for each [WithoutHaste.DataFiles.DotNet.DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md).  
   
 Set to null to not use any converter.  
 

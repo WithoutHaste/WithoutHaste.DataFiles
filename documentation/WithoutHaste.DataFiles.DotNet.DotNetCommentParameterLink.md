@@ -29,7 +29,7 @@ Name of the parameter in local method.
 
 # Methods
 
-##  ToString()
+## virtual [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToString()
 
 Name  
 

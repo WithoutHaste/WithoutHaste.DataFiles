@@ -54,7 +54,7 @@ Parses a .Net XML documentation class-generic-type parameter.
 
 #### [WithoutHaste.DataFiles.XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)
 
-  
+_name_  
 
  is not in expected format: `Index.  
 

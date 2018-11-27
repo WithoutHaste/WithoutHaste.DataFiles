@@ -83,7 +83,7 @@ Removes all comments from member.
 
 ## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) CopyComments(DotNetMember original)
 
-Shallow-copies all comments from the  member to this member.  
+Shallow-copies all comments from the _original_ member to this member.  
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.md) link)
 

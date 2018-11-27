@@ -45,7 +45,7 @@ See [DotNetQualifiedTypeName(string, List&lt;WithoutHaste.DataFiles.DotNet.DotNe
 
 #### [ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)
 
-  
+_genericTypeParameters_  
 
  cannot be null.  
 

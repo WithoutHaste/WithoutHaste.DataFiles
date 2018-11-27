@@ -188,7 +188,7 @@ Class members can inherit from their base class or from interfaces.
 Converts the type into a delegate, transfering all applicable data.  
 
 **Remarks:**  
-If the refers to a sub-type, that type is the one converted.  
+If the _name_refers to a sub-type, that type is the one converted.  
 The sub-type is removed from its parent and the new delegate is added in its place  
 
 **Returns:**  

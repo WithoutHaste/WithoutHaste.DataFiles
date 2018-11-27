@@ -36,19 +36,19 @@ Return markdown-formatted text.
 Generate bold text.  
 
 **Remarks:**  
- is trimmed to conform to Markdown formatting requirements.  
+_text_ is trimmed to conform to Markdown formatting requirements.  
 
 ## static MarkdownText BoldItalic([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text)
 
 Generate bold-italic text.  
 
 **Remarks:**  
- is trimmed to conform to Markdown formatting requirements.  
+_text_ is trimmed to conform to Markdown formatting requirements.  
 
 ## static MarkdownText Italic([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text)
 
 Generate italic text.  
 
 **Remarks:**  
- is trimmed to conform to Markdown formatting requirements.  
+_text_ is trimmed to conform to Markdown formatting requirements.  
 

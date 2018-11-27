@@ -7,8 +7,7 @@ Represents a fully qualified method name.
 
 **Remarks:**  
 Cannot handle methods that declare more than 12 generic types,  
-such as   
-`MyMethod<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13>`.  
+such as `MyMethod<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13>`.  
 
 # Fields
 
@@ -132,12 +131,9 @@ How .Net xml documentation formats generic types:
 Backtics are followed by integers, identifying generic types.  
           
 Double backtics (such as ``1) on a method name indicate a count of generic types for the method.  
-Example:   
-`MyMethod<A,B,C> is documented as MyMethod``3`Anywhere else within this method's documentation that a double backtic appears, it indicates the index of the generic type in reference to the method declaration.  
-Example:   
-`MyMethod<A,B,C>(A,B,C) is documented as MyMethod``3(``0,``1,``2)`A method that uses both its own generic types AND generic types from the class declaration will look like this:  
-Example:   
-`MyMethod<A,B,C>(A,B,C,T,U) is documented as MyMethod``3(``0,``1,``2,`0,`1)`  
+Example: `MyMethod<A,B,C> is documented as MyMethod``3`Anywhere else within this method's documentation that a double backtic appears, it indicates the index of the generic type in reference to the method declaration.  
+Example: `MyMethod<A,B,C>(A,B,C) is documented as MyMethod``3(``0,``1,``2)`A method that uses both its own generic types AND generic types from the class declaration will look like this:  
+Example: `MyMethod<A,B,C>(A,B,C,T,U) is documented as MyMethod``3(``0,``1,``2,`0,`1)`  
 
 **Example B:**  
 How .Net xml documentation formats implicit and explicit operators:  

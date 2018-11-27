@@ -104,9 +104,8 @@ Returns true if this Name is nested inside the other Name.
 
 ## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Localize(DotNetQualifiedName other)
 
-Simplifies this qualified name based on the name.  
-In other words, removes the portion of the namespace that this and the   
-have in common.  
+Simplifies this qualified name based on the _other_name.  
+In other words, removes the portion of the namespace that this and the _other_have in common.  
 Alters the current object.  
 
 **Remarks:**  
