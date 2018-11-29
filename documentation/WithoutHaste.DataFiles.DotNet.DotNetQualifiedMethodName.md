@@ -128,12 +128,14 @@ Parses a .Net XML documentation method signature.
 
 **Example A:**  
 How .Net xml documentation formats generic types:  
-Backtics are followed by integers, identifying generic types.  
-          
-Double backtics (such as ``1) on a method name indicate a count of generic types for the method.  
-Example: `MyMethod<A,B,C> is documented as MyMethod``3`Anywhere else within this method's documentation that a double backtic appears, it indicates the index of the generic type in reference to the method declaration.  
-Example: `MyMethod<A,B,C>(A,B,C) is documented as MyMethod``3(``0,``1,``2)`A method that uses both its own generic types AND generic types from the class declaration will look like this:  
-Example: `MyMethod<A,B,C>(A,B,C,T,U) is documented as MyMethod``3(``0,``1,``2,`0,`1)`  
+                 Backtics are followed by integers, identifying generic types.  
+              
+                 Double backtics (such as ``1) on a method name indicate a count of generic types for the method.  
+                 Example: `MyMethod<A,B,C> is documented as MyMethod``3`                   
+            		Anywhere else within this method's documentation that a double backtic appears, it indicates the index of the generic type in reference to the method declaration.  
+                 Example: `MyMethod<A,B,C>(A,B,C) is documented as MyMethod``3(``0,``1,``2)`                   
+            		A method that uses both its own generic types AND generic types from the class declaration will look like this:  
+                 Example: `MyMethod<A,B,C>(A,B,C,T,U) is documented as MyMethod``3(``0,``1,``2,`0,`1)`  
 
 **Example B:**  
 How .Net xml documentation formats implicit and explicit operators:  

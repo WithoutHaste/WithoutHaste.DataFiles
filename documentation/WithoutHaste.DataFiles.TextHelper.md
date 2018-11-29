@@ -42,9 +42,9 @@ string result = original.ReplaceUnescapedCharacters('\', '.', '_');
 
 ## static [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.string[]) SplitIgnoreNested(this [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text, [char](https://docs.microsoft.com/en-us/dotnet/api/system.char) delimiter)
 
-Split _text_ on the _delimiter_  
-but do not split if _delimiter_is nested within matched braces.  
-Support braces: {}, [], (), and `<>`.  
+Split _text_ on the _delimiter_   
+but do not split if _delimiter_ is nested within matched braces.  
+Supports braces: {}, [], (), and `<>`.  
 
 **Remarks:**  
 Returns empty string for empty matches.  

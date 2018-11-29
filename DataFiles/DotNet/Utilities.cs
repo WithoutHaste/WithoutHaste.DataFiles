@@ -73,7 +73,10 @@ namespace WithoutHaste.DataFiles.DotNet
 
 			string[] lines = text.Split('\n');
 			Match whitespace = (new Regex(@"^\s+", RegexOptions.IgnoreCase)).Match(lines[0]);
-			lines = lines.Select(l => l.RemoveFromStart(whitespace.Value)).ToArray();
+			if(lines.All(l => (l.StartsWith(whitespace.Value) || l.IsAllWhitespace())))
+			{
+				lines = lines.Select(l => l.RemoveFromStart(whitespace.Value)).ToArray();
+			}
 
 			string result = String.Join("\n", lines);
 			if(result.EndsWith("\n")) //trailing empty line is an artifact of XML

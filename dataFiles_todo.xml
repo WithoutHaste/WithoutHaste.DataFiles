@@ -43,7 +43,7 @@
         <Cell ss:StyleID="paragraph">
           <Data ss:Type="String">verify documentation: DataFiles namespace
 - AlphabetCounter DONE
-- TextHelper PENDING BUG FIXES (this parameters)
+- TextHelper PENDING BUG FIXES (SplitIgnoreNested space)
 - XmlDocumentHelper DONE
 - ArbitraryCounter PENDING BUG FIXES
 - StringFormatException DONE

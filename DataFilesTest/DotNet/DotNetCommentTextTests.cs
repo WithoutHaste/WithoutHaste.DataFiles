@@ -139,5 +139,23 @@ namespace DataFilesTest
 			//assert
 			Assert.AreEqual(expectedResult, textResult.Text);
 		}
+
+		[TestMethod]
+		public void DotNetCommentText_FromXml_SpaceAfterParamRef()
+		{
+			//arrange
+			XElement element = XElement.Parse(@"<summary>
+Split <paramref name='text'/> on the <paramref name='delimiter'/> 
+but do not split if <paramref name='delimiter'/> is nested within matched braces.
+Supports braces: {}, [], (), and <![CDATA[<>]]>.
+</summary>", LoadOptions.PreserveWhitespace);
+			//act
+			DotNetCommentGroup result = DotNetCommentGroup.FromVisualStudioXml(element);
+			//assert
+			Assert.AreEqual("Split ", (result[0] as DotNetCommentText).Text);
+			Assert.AreEqual(" on the ", (result[2] as DotNetCommentText).Text);
+			Assert.AreEqual(" \nbut do not split if ", (result[4] as DotNetCommentText).Text);
+			Assert.AreEqual(" is nested within matched braces.\nSupports braces: {}, [], (), and ", (result[6] as DotNetCommentText).Text);
+		}
 	}
 }

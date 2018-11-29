@@ -1,0 +1,6 @@
+E:\GitHub\WithoutHaste.DataFiles\ThirdPartyTest\bin\Release\ThirdPartyTest.dll
+E:\GitHub\WithoutHaste.DataFiles\ThirdPartyTest\bin\Release\ThirdPartyTest.pdb
+E:\GitHub\WithoutHaste.DataFiles\ThirdPartyTest\bin\Release\Markdown.dll
+E:\GitHub\WithoutHaste.DataFiles\ThirdPartyTest\obj\Release\ThirdPartyTest.csprojResolveAssemblyReference.cache
+E:\GitHub\WithoutHaste.DataFiles\ThirdPartyTest\obj\Release\ThirdPartyTest.dll
+E:\GitHub\WithoutHaste.DataFiles\ThirdPartyTest\obj\Release\ThirdPartyTest.pdb
