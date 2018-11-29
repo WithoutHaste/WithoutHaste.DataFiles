@@ -81,6 +81,10 @@ Parameter type and category must be equal. Parameter name and default value are 
 
 ## virtual [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) GetHashCode()
 
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) SetIsExtension()
+
+Set that this parameter is the first parameter in an extension method.  
+
 ## virtual [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToString()
 
 Returns formatted string "Type Name", "out Type Name" or "ref Type Name".  

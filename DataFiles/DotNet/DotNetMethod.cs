@@ -17,6 +17,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		Normal,
 		/// <summary>Static method.</summary>
 		Static,
+		/// <summary>Static extension method.</summary>
+		Extension,
 		/// <summary>Protected method.</summary>
 		Protected,
 		/// <summary>Abstract method.</summary>
@@ -144,7 +146,11 @@ namespace WithoutHaste.DataFiles.DotNet
 			if(Category == MethodCategory.Unknown || Category == MethodCategory.Normal)
 			{
 				if(methodInfo.IsStatic)
+				{
 					Category = MethodCategory.Static;
+					if(methodInfo.IsExtension())
+						Category = MethodCategory.Extension;
+				}
 				else if(methodInfo.IsAbstract)
 					Category = MethodCategory.Abstract;
 				else if(methodInfo.IsVirtual && !methodInfo.IsFinal)

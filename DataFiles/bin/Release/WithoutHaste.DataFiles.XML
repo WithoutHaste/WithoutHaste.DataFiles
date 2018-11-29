@@ -1553,6 +1553,9 @@
         <member name="F:WithoutHaste.DataFiles.DotNet.MethodCategory.Static">
             <summary>Static method.</summary>
         </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.MethodCategory.Extension">
+            <summary>Static extension method.</summary>
+        </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.MethodCategory.Protected">
             <summary>Protected method.</summary>
         </member>
@@ -1656,6 +1659,9 @@
         <member name="F:WithoutHaste.DataFiles.DotNet.ParameterCategory.Optional">
             <summary></summary>
         </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.ParameterCategory.Extension">
+            <summary></summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetParameter">
             <summary>
             Represents a normal-type parameter in a method signature.
@@ -1711,6 +1717,11 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.AddAssemblyInfo(System.Reflection.ParameterInfo)">
             <summary>
             Load additional documentation information from the assembly itself.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.SetIsExtension">
+            <summary>
+            Set that this parameter is the first parameter in an extension method.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.ToString">
@@ -1882,7 +1893,7 @@
             <summary>The subset of Methods that are operator overloads.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.StaticMethods">
-            <summary>The subset of Methods that are static, but not constructors, nor destructors, nor operators.</summary>
+            <summary>The subset of Methods that are static (including extension methods), but not constructors, nor destructors, nor operators.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.NormalMethods">
             <summary>The subset of Methods that are not static, nor constructors, nor destructors, nor operators.</summary>
@@ -2327,7 +2338,7 @@
             <param name="excelPackage"></param>
             <param name="name">The name of the Worksheet.</param>
             <returns>The new Worksheet.</returns>
-            <exception cref="T:System.ArgumentException">ExcelPackage cannot be null.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name='excelPackage'/> cannot be null.</exception>
         </member>
         <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.GetWorksheet(OfficeOpenXml.ExcelPackage,System.String)">
             <summary>
@@ -2336,7 +2347,7 @@
             <param name="excelPackage"></param>
             <param name="name">The name of the Worksheet.</param>
             <returns>The Worksheet, or null.</returns>
-            <exception cref="T:System.ArgumentException">ExcelPackage cannot be null.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name='excelPackage'/> cannot be null.</exception>
         </member>
         <member name="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.String})">
             <duplicate cref="M:WithoutHaste.DataFiles.Excel.ExcelPackageHelper.AppendRow(OfficeOpenXml.ExcelWorksheet,System.Collections.Generic.List{System.Object})" />
@@ -3310,7 +3321,7 @@
             <example>
               <code>
               string original = "A.B.C\.D\\.E";
-              string result = original('\', '.', '_');
+              string result = original.ReplaceUnescapedCharacters('\', '.', '_');
               //result = "A_B_C\.D\\_E"
               </code>
             </example>

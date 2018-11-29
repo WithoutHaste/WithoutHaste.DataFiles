@@ -95,10 +95,10 @@ namespace WithoutHaste.DataFiles.DotNet
 		public DotNetMethodDestructor DestructorMethod { get { return Methods.OfType<DotNetMethodDestructor>().FirstOrDefault(); } }
 		/// <summary>The subset of Methods that are operator overloads.</summary>
 		public List<DotNetMethodOperator> OperatorMethods { get { return Methods.OfType<DotNetMethodOperator>().ToList(); } }
-		/// <summary>The subset of Methods that are static, but not constructors, nor destructors, nor operators.</summary>
-		public List<DotNetMethod> StaticMethods { get { return Methods.Where(m => m.Category == MethodCategory.Static && !(m is DotNetMethodConstructor) && !(m is DotNetMethodDestructor) && !(m is DotNetMethodOperator)).ToList(); } }
+		/// <summary>The subset of Methods that are static (including extension methods), but not constructors, nor destructors, nor operators.</summary>
+		public List<DotNetMethod> StaticMethods { get { return Methods.Where(m => (m.Category == MethodCategory.Static || m.Category == MethodCategory.Extension) && !(m is DotNetMethodConstructor) && !(m is DotNetMethodDestructor) && !(m is DotNetMethodOperator)).ToList(); } }
 		/// <summary>The subset of Methods that are not static, nor constructors, nor destructors, nor operators.</summary>
-		public List<DotNetMethod> NormalMethods { get { return Methods.Where(m => (m.Category != MethodCategory.Static) && !(m is DotNetMethodConstructor) && !(m is DotNetMethodDestructor) && !(m is DotNetMethodOperator)).ToList(); } }
+		public List<DotNetMethod> NormalMethods { get { return Methods.Where(m => (m.Category != MethodCategory.Static) && (m.Category != MethodCategory.Extension) && !(m is DotNetMethodConstructor) && !(m is DotNetMethodDestructor) && !(m is DotNetMethodOperator)).ToList(); } }
 
 		/// <summary></summary>
 		public List<DotNetField> Fields = new List<DotNetField>();

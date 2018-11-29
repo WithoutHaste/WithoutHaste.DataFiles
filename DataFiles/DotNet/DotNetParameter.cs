@@ -22,6 +22,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		Ref,
 		/// <summary></summary>
 		Optional,
+		/// <summary></summary>
+		Extension,
 	};
 
 	/// <summary>
@@ -147,6 +149,14 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 
 			Name = parameterInfo.Name;
+		}
+
+		/// <summary>
+		/// Set that this parameter is the first parameter in an extension method.
+		/// </summary>
+		public void SetIsExtension()
+		{
+			Category = ParameterCategory.Extension;
 		}
 
 		#region Low Level

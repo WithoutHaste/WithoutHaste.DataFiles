@@ -87,7 +87,7 @@ The subset of Methods that are operator overloads.
 
 ## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) StaticMethods { get; }
 
-The subset of Methods that are static, but not constructors, nor destructors, nor operators.  
+The subset of Methods that are static (including extension methods), but not constructors, nor destructors, nor operators.  
 
 ## [DotNetQualifiedClassName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md) TypeName { get; }
 

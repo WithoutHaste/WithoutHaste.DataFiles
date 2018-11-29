@@ -5,6 +5,8 @@
 
 # Fields
 
+## const ParameterCategory Extension
+
 ## const ParameterCategory Normal
 
 ## const ParameterCategory Optional

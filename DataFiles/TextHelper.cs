@@ -111,7 +111,7 @@ namespace WithoutHaste.DataFiles
 		/// <summary>
 		/// Split <paramref name="text"/> on the <paramref name="delimiter"/> 
 		/// but do not split if <paramref name="delimiter"/> is nested within matched braces.
-		/// Support braces: {}, [], (), and <![CDATA[<>]]>.
+		/// Supports braces: {}, [], (), and <![CDATA[<>]]>.
 		/// </summary>
 		/// <remarks>
 		/// Returns empty string for empty matches.

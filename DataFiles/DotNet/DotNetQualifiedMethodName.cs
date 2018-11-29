@@ -379,6 +379,10 @@ namespace WithoutHaste.DataFiles.DotNet
 				this.Parameters[index].AddAssemblyInfo(parameterInfo);
 				index++;
 			}
+			if(methodInfo.IsExtension() && this.Parameters.Count > 0)
+			{
+				this.Parameters[0].SetIsExtension();
+			}
 		}
 
 		/// <summary>Set the local name of the method. Does not affect generic type parameters or method parameters.</summary>

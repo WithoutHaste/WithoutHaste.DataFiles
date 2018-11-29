@@ -192,6 +192,11 @@ namespace WithoutHaste.DataFiles.DotNet
 			return ((methodAttributes & MethodAttributes.Abstract) == MethodAttributes.Abstract);
 		}
 
+		internal static bool IsExtension(this MethodInfo methodInfo)
+		{
+			return methodInfo.CustomAttributes.Any(attr => attr.AttributeType == typeof(System.Runtime.CompilerServices.ExtensionAttribute));
+		}
+
 		internal static bool IsNumeric(this object _object)
 		{
 			return (_object is sbyte

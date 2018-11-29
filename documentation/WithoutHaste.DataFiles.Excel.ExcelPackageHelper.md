@@ -28,8 +28,13 @@ Add a new Worksheet to an ExcelPackage.
 **Returns:**  
 The new Worksheet.  
 
-**Exceptions:**  
-* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: ExcelPackage cannot be null.  
+### Exceptions
+
+#### [ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)
+
+_excelPackage_  
+
+ cannot be null.  
 
 **Parameters:**  
 * **OfficeOpenXml.ExcelPackage excelPackage**:   
@@ -205,8 +210,13 @@ Searches the ExcelPackage for a Worksheet by name.
 **Returns:**  
 The Worksheet, or null.  
 
-**Exceptions:**  
-* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: ExcelPackage cannot be null.  
+### Exceptions
+
+#### [ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)
+
+_excelPackage_  
+
+ cannot be null.  
 
 **Parameters:**  
 * **OfficeOpenXml.ExcelPackage excelPackage**:   

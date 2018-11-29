@@ -13,6 +13,10 @@ Abstract method.
 
 Delegate type.  
 
+## const MethodCategory Extension
+
+Static extension method.  
+
 ## const MethodCategory Normal
 
 No special category.  

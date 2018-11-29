@@ -9,6 +9,11 @@ using WithoutHaste.DataFiles.DotNet;
 
 namespace DataFilesTest
 {
+	public static class StaticTestClass
+	{
+		public static void MethodExtension(this string a, string b) { }
+	}
+
 	[TestClass]
 	public class DotNetMethodTests
 	{
@@ -434,6 +439,22 @@ namespace DataFilesTest
 			Assert.AreEqual(1, methodB.MethodName.Parameters.Count);
 			Assert.AreEqual("HeyRed.MarkdownSharp.Markdown", methodC.MethodName.ReturnTypeName);
 			Assert.AreEqual(1, methodC.MethodName.Parameters.Count);
+		}
+
+		[TestMethod]
+		public void DotNetMethod_FromAssembly_ExtensionMethodParameters()
+		{
+			//arrange
+			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.StaticTestClass.MethodExtension(System.String,System.String)'></member>", LoadOptions.PreserveWhitespace);
+			Type type = typeof(StaticTestClass);
+			MethodInfo methodInfo = type.GetTypeInfo().DeclaredMethods.First(m => m.Name == "MethodExtension");
+			//act
+			DotNetMethod result = DotNetMethod.FromVisualStudioXml(xmlElement);
+			result.AddAssemblyInfo(methodInfo);
+			//assert
+			Assert.AreEqual(MethodCategory.Extension, result.Category);
+			Assert.AreEqual(ParameterCategory.Extension, result.MethodName.Parameters[0].Category);
+			Assert.AreEqual(ParameterCategory.Normal, result.MethodName.Parameters[1].Category);
 		}
 	}
 }
