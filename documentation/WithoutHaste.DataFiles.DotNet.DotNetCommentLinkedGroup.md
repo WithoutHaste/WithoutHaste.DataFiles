@@ -6,7 +6,7 @@ Represents an ordered collection of comments that is linked to something in the 
 
 # Properties
 
-## [WithoutHaste.DataFiles.DotNet.IDotNetCommentLink](WithoutHaste.DataFiles.DotNet.IDotNetCommentLink.md) Link { get; protected set; }
+## [IDotNetCommentLink](WithoutHaste.DataFiles.DotNet.IDotNetCommentLink.md) Link { get; protected set; }
 
 Reference link from comments to something in the assembly.  
 
@@ -16,9 +16,9 @@ Reference link from comments to something in the assembly.
 
 Empty constructor  
 
-## DotNetCommentLinkedGroup([WithoutHaste.DataFiles.DotNet.IDotNetCommentLink](WithoutHaste.DataFiles.DotNet.IDotNetCommentLink.md) link, [WithoutHaste.DataFiles.DotNet.DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
+## DotNetCommentLinkedGroup([IDotNetCommentLink](WithoutHaste.DataFiles.DotNet.IDotNetCommentLink.md) link, [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
 
-## DotNetCommentLinkedGroup([WithoutHaste.DataFiles.DotNet.IDotNetCommentLink](WithoutHaste.DataFiles.DotNet.IDotNetCommentLink.md) link, WithoutHaste.DataFiles.DotNet.DotNetComment[] comments)
+## DotNetCommentLinkedGroup([IDotNetCommentLink](WithoutHaste.DataFiles.DotNet.IDotNetCommentLink.md) link, DotNetComment[] comments)
 
-## DotNetCommentLinkedGroup([WithoutHaste.DataFiles.DotNet.IDotNetCommentLink](WithoutHaste.DataFiles.DotNet.IDotNetCommentLink.md) link, [List&lt;WithoutHaste.DataFiles.DotNet.DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
+## DotNetCommentLinkedGroup([IDotNetCommentLink](WithoutHaste.DataFiles.DotNet.IDotNetCommentLink.md) link, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
 

@@ -6,9 +6,9 @@ Represents a type's field.
 
 # Properties
 
-## [WithoutHaste.DataFiles.DotNet.AccessModifier](WithoutHaste.DataFiles.DotNet.AccessModifier.md) AccessModifier { get; protected set; }
+## [AccessModifier](WithoutHaste.DataFiles.DotNet.AccessModifier.md) AccessModifier { get; protected set; }
 
-## [WithoutHaste.DataFiles.DotNet.FieldCategory](WithoutHaste.DataFiles.DotNet.FieldCategory.md) Category { get; protected set; }
+## [FieldCategory](WithoutHaste.DataFiles.DotNet.FieldCategory.md) Category { get; protected set; }
 
 ## [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) ConstantValue { get; protected set; }
 
@@ -20,13 +20,13 @@ For constant fields, the value of the constant. Null otherwise.
 
 False means unknown or is not static.  
 
-## [WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) TypeName { get; protected set; }
+## [DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) TypeName { get; protected set; }
 
 Fully qualified name of data type, if known. Null if not known.  
 
 # Constructors
 
-## DotNetField([WithoutHaste.DataFiles.DotNet.DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+## DotNetField([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 
 # Methods
 

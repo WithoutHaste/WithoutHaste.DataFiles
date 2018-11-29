@@ -6,7 +6,7 @@ Represents an indexer property.
 
 # Fields
 
-## [List&lt;WithoutHaste.DataFiles.DotNet.DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Parameters
+## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Parameters
 
 # Properties
 
@@ -20,7 +20,7 @@ Returns indexer parameters format as "[TypeA,TypeB]".
 
 # Constructors
 
-## DotNetIndexer([WithoutHaste.DataFiles.DotNet.DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name, [List&lt;WithoutHaste.DataFiles.DotNet.DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) parameters)
+## DotNetIndexer([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) parameters)
 
 # Methods
 
@@ -28,19 +28,19 @@ Returns indexer parameters format as "[TypeA,TypeB]".
 
 Load additional documentation information from the assembly itself.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.md) linkedGroup)
+## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([DotNetCommentQualifiedLinkedGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.md) linkedGroup)
 
 Returns true if this indexer's signature matches the link.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup.md) linkedGroup)
+## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([DotNetCommentMethodLinkedGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup.md) linkedGroup)
 
 Returns true if this indexer's signature matches the link.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.md) methodLink)
+## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([DotNetCommentMethodLink](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.md) methodLink)
 
 Returns true if this indexer's signature matches the method signature.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) methodName)
+## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) methodName)
 
 Returns true if this indexer's signature matches the method signature.  
 

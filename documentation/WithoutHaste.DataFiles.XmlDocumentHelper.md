@@ -12,7 +12,7 @@ Generic System.Xml.XmlDocument utilities.
 Throw exception if XmlNode does not exist, or does not have the expected LocalName.  
 
 **Exceptions:**  
-* **[WithoutHaste.DataFiles.XmlNodeException](WithoutHaste.DataFiles.XmlNodeException.md)**:   
+* **[XmlNodeException](WithoutHaste.DataFiles.XmlNodeException.md)**:   
 
 ## static [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) XmlToString([System.Xml.XmlDocument](https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmldocument) xmlDocument)
 

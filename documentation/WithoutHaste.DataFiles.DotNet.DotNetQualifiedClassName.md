@@ -51,7 +51,7 @@ Empty constructor
 
 ## DotNetQualifiedClassName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) genericTypeCount = 0)
 
-## DotNetQualifiedClassName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, DotNetQualifiedClassName fullNamespace, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) genericTypeCount = 0)
+## DotNetQualifiedClassName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [DotNetQualifiedClassName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md) fullNamespace, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) genericTypeCount = 0)
 
 # Methods
 

@@ -24,7 +24,7 @@ Represents a list in the comments.
 
 # Fields
 
-## [List&lt;WithoutHaste.DataFiles.DotNet.DotNetCommentListItem&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Items
+## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Items
 
 Items in the list.  
 
@@ -45,11 +45,11 @@ Number of items in the list. Includes headers.
 
 # Constructors
 
-## DotNetCommentList([List&lt;WithoutHaste.DataFiles.DotNet.DotNetCommentListItem&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) items, [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isNumbered = False)
+## DotNetCommentList([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) items, [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isNumbered = False)
 
 # Static Methods
 
-## static [WithoutHaste.DataFiles.DotNet.DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## static [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
 
 Parses .Net XML documentation list (which may actually be a table).  
 

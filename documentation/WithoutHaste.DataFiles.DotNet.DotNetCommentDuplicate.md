@@ -10,7 +10,7 @@ This is just a marker class. If the cref can be resolved, the duplicated comment
 
 # Constructors
 
-## DotNetCommentDuplicate([WithoutHaste.DataFiles.DotNet.DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+## DotNetCommentDuplicate([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 
-## DotNetCommentDuplicate([WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.md) link)
+## DotNetCommentDuplicate([DotNetCommentQualifiedLink](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.md) link)
 

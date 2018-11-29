@@ -48,9 +48,9 @@ Local data type name, written in the Xml style.
 
 Empty constructor  
 
-## DotNetQualifiedName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, DotNetQualifiedName explicitInterface = null)
+## DotNetQualifiedName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) explicitInterface = null)
 
-## DotNetQualifiedName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, DotNetQualifiedName fullNamespace, DotNetQualifiedName explicitInterface = null)
+## DotNetQualifiedName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) fullNamespace, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) explicitInterface = null)
 
 ## DotNetQualifiedName([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.string[]) names)
 
@@ -88,11 +88,11 @@ Does not include explicit interface implementations.
 
 ## virtual [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) GetHashCode()
 
-## DotNetQualifiedName GetLocalized(DotNetQualifiedName other)
+## DotNetQualifiedName GetLocalized([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
 
 Returns a new name object which has been localized to the provided other name. The current object is not altered.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsWithin(DotNetQualifiedName other)
+## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsWithin([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
 
 Returns true if this Name is nested inside the other Name.  
 
@@ -102,7 +102,7 @@ Returns true if this Name is nested inside the other Name.
 **Example B:**  
 "System" is not within null or empty Name.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Localize(DotNetQualifiedName other)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Localize([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
 
 Simplifies this qualified name based on the _other_name.  
 In other words, removes the portion of the namespace that this and the _other_have in common.  
@@ -122,7 +122,7 @@ Preserves explicit interface implementations.
 **Example C:**  
 "System.Collections.Generic.List".Localize("System.Collections.Generic.List") returns "List".  
 
-## [WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) ToDotNetQualifiedTypeName()
+## [DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) ToDotNetQualifiedTypeName()
 
 Convert a base-type DotNetQualifiedName to a DotNetQualifiedTypeName.  
 
@@ -139,11 +139,11 @@ A.B.C.LocalName
 
 Return the names combined with a '.' delimiter.  
 
-## static [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Combine([List&lt;string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) names)
+## static [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Combine([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) names)
 
 Return the names combined with a '.' delimiter.  
 
-## static [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) Compare(DotNetQualifiedName a, DotNetQualifiedName b)
+## static [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) Compare([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) a, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) b)
 
 Names are sorted alphabetically, per namespace, starting with the root.  
 
@@ -173,7 +173,7 @@ See [WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.FromAssemblyInfo(System.R
 Parses a .Net XML documentation type, method, or other member name.  
 
 **Exceptions:**  
-* **[WithoutHaste.DataFiles.XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)**: Name does not start with /[TMFPE]:/  
+* **[XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)**: Name does not start with /[TMFPE]:/  
 
 ### Parameters
 

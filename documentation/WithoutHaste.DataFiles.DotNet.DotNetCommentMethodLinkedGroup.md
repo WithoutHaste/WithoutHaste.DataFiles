@@ -16,15 +16,15 @@ Represents a section of comments that is linked to a fully qualified type or mem
 
 # Properties
 
-## [WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.md) MethodLink { get; }
+## [DotNetCommentMethodLink](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.md) MethodLink { get; }
 
 Strongly-typed link.  
 
 # Constructors
 
-## DotNetCommentMethodLinkedGroup([WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.md) link, [WithoutHaste.DataFiles.DotNet.CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, [WithoutHaste.DataFiles.DotNet.DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
+## DotNetCommentMethodLinkedGroup([DotNetCommentMethodLink](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.md) link, [CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
 
-## DotNetCommentMethodLinkedGroup([WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.md) link, [WithoutHaste.DataFiles.DotNet.CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, WithoutHaste.DataFiles.DotNet.DotNetComment[] comments)
+## DotNetCommentMethodLinkedGroup([DotNetCommentMethodLink](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.md) link, [CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, DotNetComment[] comments)
 
-## DotNetCommentMethodLinkedGroup([WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.md) link, [WithoutHaste.DataFiles.DotNet.CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, [List&lt;WithoutHaste.DataFiles.DotNet.DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
+## DotNetCommentMethodLinkedGroup([DotNetCommentMethodLink](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.md) link, [CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
 

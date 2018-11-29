@@ -16,21 +16,21 @@ Represents a section of comments that is linked to a fully qualified type or mem
 
 # Properties
 
-## [WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.md) QualifiedLink { get; }
+## [DotNetCommentQualifiedLink](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.md) QualifiedLink { get; }
 
 Strongly-typed link.  
 
 # Constructors
 
-## DotNetCommentQualifiedLinkedGroup([WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.md) link, [WithoutHaste.DataFiles.DotNet.CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, [WithoutHaste.DataFiles.DotNet.DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
+## DotNetCommentQualifiedLinkedGroup([DotNetCommentQualifiedLink](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.md) link, [CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
 
-## DotNetCommentQualifiedLinkedGroup([WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.md) link, [WithoutHaste.DataFiles.DotNet.CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, WithoutHaste.DataFiles.DotNet.DotNetComment[] comments)
+## DotNetCommentQualifiedLinkedGroup([DotNetCommentQualifiedLink](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.md) link, [CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, DotNetComment[] comments)
 
-## DotNetCommentQualifiedLinkedGroup([WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.md) link, [WithoutHaste.DataFiles.DotNet.CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, [List&lt;WithoutHaste.DataFiles.DotNet.DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
+## DotNetCommentQualifiedLinkedGroup([DotNetCommentQualifiedLink](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.md) link, [CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
 
 # Methods
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([WithoutHaste.DataFiles.DotNet.DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) member)
+## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) member)
 
 Returns true if link name matches the member name.  
 

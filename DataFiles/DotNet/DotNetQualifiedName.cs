@@ -244,7 +244,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <example>"System.Collections.Generic.List".Localize("System.Collections.Generic.List") returns "List".</example>
 		public void Localize(DotNetQualifiedName other)
 		{
-			if(FullNamespace == null)
+			if(FullNamespace == null || other == null)
 				return;
 
 			if(FullNamespace == other || other.IsWithin(FullNamespace))
@@ -254,19 +254,6 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 
 			FullNamespace.Localize(other);
-
-
-			//List<string> thisFlattened = this.Flatten().ToList();
-			//List<string> otherFlattened = other.Flatten().ToList();
-			//while(thisFlattened.Count > 1 && otherFlattened.Count > 0 && thisFlattened[0] == otherFlattened[0])
-			//{
-			//	thisFlattened.RemoveAt(0);
-			//	otherFlattened.RemoveAt(0);
-			//}
-			//DotNetQualifiedName localizedName = new DotNetQualifiedName(thisFlattened.ToArray());
-			//if(this.ExplicitInterface != null)
-			//	localizedName.ExplicitInterface = this.ExplicitInterface;
-			//return localizedName;
 		}
 
 		/// <summary>

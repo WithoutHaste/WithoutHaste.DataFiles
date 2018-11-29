@@ -12,11 +12,11 @@ Represents a generic-type parameter description in the comments.
 
 # Constructors
 
-## DotNetCommentTypeParameter([WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink.md) link, [WithoutHaste.DataFiles.DotNet.DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
+## DotNetCommentTypeParameter([DotNetCommentTypeParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink.md) link, [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
 
-## DotNetCommentTypeParameter([WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink.md) link, WithoutHaste.DataFiles.DotNet.DotNetComment[] comments)
+## DotNetCommentTypeParameter([DotNetCommentTypeParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink.md) link, DotNetComment[] comments)
 
-## DotNetCommentTypeParameter([WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink.md) link, [List&lt;WithoutHaste.DataFiles.DotNet.DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
+## DotNetCommentTypeParameter([DotNetCommentTypeParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink.md) link, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
 
 # Static Methods
 

@@ -6,9 +6,9 @@ Represents a delegate type, categorized as a method.
 
 # Constructors
 
-## DotNetDelegate([WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) name)
+## DotNetDelegate([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) name)
 
-## DotNetDelegate([WithoutHaste.DataFiles.DotNet.DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+## DotNetDelegate([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 
 # Methods
 

@@ -6,7 +6,7 @@ Represents a getter or a setter method of a property.
 
 # Properties
 
-## [WithoutHaste.DataFiles.DotNet.AccessModifier](WithoutHaste.DataFiles.DotNet.AccessModifier.md) AccessModifier { get; protected set; }
+## [AccessModifier](WithoutHaste.DataFiles.DotNet.AccessModifier.md) AccessModifier { get; protected set; }
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsAbstract { get; protected set; }
 
@@ -14,7 +14,7 @@ Represents a getter or a setter method of a property.
 
 ## DotNetPropertyMethod()
 
-## DotNetPropertyMethod([WithoutHaste.DataFiles.DotNet.AccessModifier](WithoutHaste.DataFiles.DotNet.AccessModifier.md) accessModifier, [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isAbstract)
+## DotNetPropertyMethod([AccessModifier](WithoutHaste.DataFiles.DotNet.AccessModifier.md) accessModifier, [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isAbstract)
 
 # Static Methods
 

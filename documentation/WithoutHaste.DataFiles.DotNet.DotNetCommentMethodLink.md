@@ -26,17 +26,17 @@ Namespace.Type.Method(int,string)
 **Example C:**  
 `Namespace.Type.Method(System.Collections.Generic.List<int>)`  
 
-## [WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) MethodName { get; }
+## [DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) MethodName { get; }
 
 Strongly typed name.  
 
 # Constructors
 
-## DotNetCommentMethodLink([WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) name)
+## DotNetCommentMethodLink([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) name)
 
 # Methods
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesSignature([WithoutHaste.DataFiles.DotNet.DotNetMethod](WithoutHaste.DataFiles.DotNet.DotNetMethod.md) method)
+## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesSignature([DotNetMethod](WithoutHaste.DataFiles.DotNet.DotNetMethod.md) method)
 
 Returns true if this method link and the method have matching signatures, based on the fully qualified name and the list of parameter types.  
 

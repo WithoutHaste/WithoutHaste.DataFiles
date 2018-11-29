@@ -12,17 +12,17 @@ Represents a parameter description in the comments.
 
 # Properties
 
-## [WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.md) ParameterLink { get; }
+## [DotNetCommentParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.md) ParameterLink { get; }
 
 Strongly-typed link.  
 
 # Constructors
 
-## DotNetCommentParameter([WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.md) link, [WithoutHaste.DataFiles.DotNet.DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
+## DotNetCommentParameter([DotNetCommentParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.md) link, [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
 
-## DotNetCommentParameter([WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.md) link, WithoutHaste.DataFiles.DotNet.DotNetComment[] comments)
+## DotNetCommentParameter([DotNetCommentParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.md) link, DotNetComment[] comments)
 
-## DotNetCommentParameter([WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.md) link, [List&lt;WithoutHaste.DataFiles.DotNet.DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
+## DotNetCommentParameter([DotNetCommentParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.md) link, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
 
 # Static Methods
 

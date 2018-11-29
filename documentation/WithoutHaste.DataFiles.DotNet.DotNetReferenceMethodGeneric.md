@@ -54,7 +54,7 @@ Parses a .Net XML documentation method-generic-type parameter.
 
 ### Exceptions
 
-#### [WithoutHaste.DataFiles.XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)
+#### [XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)
 
 _name_  
 

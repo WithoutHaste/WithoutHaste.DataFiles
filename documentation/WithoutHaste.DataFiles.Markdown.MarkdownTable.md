@@ -14,17 +14,17 @@ Markdown requires each table to have exactly 1 header row, so the first row is a
 
 Minimum column width is 3 to allow for minimum "---" contents indicating header/data divider.  
 
-## [List&lt;WithoutHaste.DataFiles.Markdown.MarkdownTableRow&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Rows
+## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Rows
 
 # Constructors
 
-## MarkdownTable([List&lt;WithoutHaste.DataFiles.Markdown.MarkdownTableRow&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) rows)
+## MarkdownTable([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) rows)
 
-## MarkdownTable(WithoutHaste.DataFiles.Markdown.MarkdownTableRow[] rows)
+## MarkdownTable(MarkdownTableRow[] rows)
 
 # Methods
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([WithoutHaste.DataFiles.Markdown.MarkdownTableRow](WithoutHaste.DataFiles.Markdown.MarkdownTableRow.md) row)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([MarkdownTableRow](WithoutHaste.DataFiles.Markdown.MarkdownTableRow.md) row)
 
 Add a row to the end of the table.  
 

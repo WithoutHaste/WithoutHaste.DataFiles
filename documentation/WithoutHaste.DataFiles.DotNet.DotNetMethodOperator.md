@@ -13,7 +13,7 @@ Operators will be sorted into this order.
 
 # Constructors
 
-## DotNetMethodOperator([WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) name)
+## DotNetMethodOperator([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) name)
 
 # Methods
 

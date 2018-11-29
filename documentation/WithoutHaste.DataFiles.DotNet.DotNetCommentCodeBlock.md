@@ -24,11 +24,11 @@ Specify the language of the code block. Null if not known.
 
 # Static Methods
 
-## static [WithoutHaste.DataFiles.DotNet.DotNetCommentCode](WithoutHaste.DataFiles.DotNet.DotNetCommentCode.md) FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## static [DotNetCommentCode](WithoutHaste.DataFiles.DotNet.DotNetCommentCode.md) FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
 
 Parses .Net XML documentation code tag.  
 
-## static [WithoutHaste.DataFiles.DotNet.DotNetCommentCode](WithoutHaste.DataFiles.DotNet.DotNetCommentCode.md) FromVisualStudioXml([System.Xml.Linq.XCData](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xcdata) element)
+## static [DotNetCommentCode](WithoutHaste.DataFiles.DotNet.DotNetCommentCode.md) FromVisualStudioXml([System.Xml.Linq.XCData](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xcdata) element)
 
 Parses .Net XML documentation cdata tag.  
 

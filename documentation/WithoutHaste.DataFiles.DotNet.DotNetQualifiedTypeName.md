@@ -7,7 +7,7 @@ Represents a fully qualified type name, for return types / field types / propert
 
 # Fields
 
-## [List&lt;WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) GenericTypeParameters
+## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) GenericTypeParameters
 
 If this is a generic type, these are the specified parameter types.  
 
@@ -32,14 +32,14 @@ Empty constructor
 
 ## DotNetQualifiedTypeName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName)
 
-## DotNetQualifiedTypeName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, DotNetQualifiedTypeName fullNamespace)
+## DotNetQualifiedTypeName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) fullNamespace)
 
-## DotNetQualifiedTypeName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [List&lt;WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) genericTypeParameters)
+## DotNetQualifiedTypeName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) genericTypeParameters)
 
 **Misc:**  
 See [DotNetQualifiedTypeName(string, List&lt;WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName&gt;, WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName)](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md)  
 
-## DotNetQualifiedTypeName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [List&lt;WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) genericTypeParameters, DotNetQualifiedTypeName fullNamespace)
+## DotNetQualifiedTypeName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) genericTypeParameters, [DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) fullNamespace)
 
 ### Exceptions
 
@@ -51,7 +51,7 @@ _genericTypeParameters_
 
 **Parameters:**  
 * **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName**:   
-* **[List&lt;WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) genericTypeParameters**: List of generic-type parameters within this type.  
+* **[List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) genericTypeParameters**: List of generic-type parameters within this type.  
 * **DotNetQualifiedTypeName fullNamespace**:   
 
 # Methods
@@ -66,7 +66,7 @@ Returns deep clone of qualified name.
 
 Parses a System.Reflection.AssemblyInfo full name.  
 
-## static DotNetQualifiedTypeName FromAssemblyInfo([Type](https://docs.microsoft.com/en-us/dotnet/api/system.type) type, [List&lt;WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) bubbleUpParameters = null)
+## static DotNetQualifiedTypeName FromAssemblyInfo([Type](https://docs.microsoft.com/en-us/dotnet/api/system.type) type, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) bubbleUpParameters = null)
 
 Parses a System.Reflection.AssemblyInfo full name.  
 
@@ -78,7 +78,7 @@ Parses a System.Reflection.AssemblyInfo full name.
 
 **Parameters:**  
 * **[Type](https://docs.microsoft.com/en-us/dotnet/api/system.type) type**:   
-* **[List&lt;WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) bubbleUpParameters**: Optional. When reflection gives type information about a generic type nested inside a generic type, all the generic-type-arguments are listed in the inner-most type. This is for passing that information back up the chain of types.  
+* **[List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) bubbleUpParameters**: Optional. When reflection gives type information about a generic type nested inside a generic type, all the generic-type-arguments are listed in the inner-most type. This is for passing that information back up the chain of types.  
 
 ## static DotNetQualifiedTypeName FromAssemblyInfo([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) typeName)
 

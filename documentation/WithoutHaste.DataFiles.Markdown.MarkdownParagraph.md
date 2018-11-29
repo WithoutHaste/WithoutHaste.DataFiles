@@ -16,13 +16,13 @@ Displays as: The quick brown fox.\\n\\n
 
 # Fields
 
-## protected [List&lt;WithoutHaste.DataFiles.Markdown.IMarkdownInSection&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements
+## protected [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements
 
 Ordered inline elements that make up this line.  
 
 # Properties
 
-## WithoutHaste.DataFiles.Markdown.IMarkdownInSection[] Elements { get; }
+## IMarkdownInSection[] Elements { get; }
 
 Ordered elements that make up this paragraph.  
 
@@ -35,11 +35,11 @@ True when there are no elements in the line.
 
 # Constructors
 
-## MarkdownParagraph(WithoutHaste.DataFiles.Markdown.IMarkdownInSection[] elements)
+## MarkdownParagraph(IMarkdownInSection[] elements)
 
 Initialize paragraph with any number of elements.  
 
-## MarkdownParagraph([List&lt;WithoutHaste.DataFiles.Markdown.IMarkdownInSection&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
+## MarkdownParagraph([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
 
 Initialize paragraph with any number of elements.  
 
@@ -53,15 +53,15 @@ Initialize paragraph with one MarkdownText element.
 
 Add a new MarkdownText containing the text to the end of the paragraph.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([WithoutHaste.DataFiles.Markdown.IMarkdownInSection](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) element)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([IMarkdownInSection](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) element)
 
 Add an element to the end of the paragraph.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([List&lt;WithoutHaste.DataFiles.Markdown.IMarkdownInSection&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
 
 Add elements to the end of the paragraph.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add(WithoutHaste.DataFiles.Markdown.IMarkdownInSection[] elements)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add(IMarkdownInSection[] elements)
 
 Add elements to the end of the paragraph.  
 
@@ -69,7 +69,7 @@ Add elements to the end of the paragraph.
 
 Add a new MarkdownText containing the text to the beginning of the paragraph.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Prepend([WithoutHaste.DataFiles.Markdown.IMarkdownInSection](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) element)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Prepend([IMarkdownInSection](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) element)
 
 Add an element to the beginning of the paragraph.  
 

@@ -16,13 +16,13 @@ Displays as: The quick brown fox.  \\n
 
 # Fields
 
-## protected [List&lt;WithoutHaste.DataFiles.Markdown.IMarkdownInLine&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements
+## protected [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements
 
 Ordered inline elements that make up this line.  
 
 # Properties
 
-## WithoutHaste.DataFiles.Markdown.IMarkdownInLine[] Elements { get; }
+## IMarkdownInLine[] Elements { get; }
 
 Ordered inline elements that make up this line.  
 
@@ -35,11 +35,11 @@ True when there are no elements in the line.
 
 # Constructors
 
-## MarkdownLine(WithoutHaste.DataFiles.Markdown.IMarkdownInLine[] elements)
+## MarkdownLine(IMarkdownInLine[] elements)
 
 Initialize line with any number of elements.  
 
-## MarkdownLine([List&lt;WithoutHaste.DataFiles.Markdown.IMarkdownInLine&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
+## MarkdownLine([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
 
 Initialize line with any number of elements.  
 
@@ -53,19 +53,19 @@ Initialize line with one MarkdownText element.
 
 Add a new MarkdownText containing the text to the end of the line.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([WithoutHaste.DataFiles.Markdown.IMarkdownInLine](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) element)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([IMarkdownInLine](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) element)
 
 Add an element to the end of the line.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([List&lt;WithoutHaste.DataFiles.Markdown.IMarkdownInLine&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
 
 Add elements to the end of the line.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add(WithoutHaste.DataFiles.Markdown.IMarkdownInLine[] elements)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add(IMarkdownInLine[] elements)
 
 Add elements to the end of the line.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Concat(MarkdownLine other)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Concat([MarkdownLine](WithoutHaste.DataFiles.Markdown.MarkdownLine.md) other)
 
 Appends the contents of the second line to end of this line.  
 
@@ -73,7 +73,7 @@ Appends the contents of the second line to end of this line.
 
 Add a new MarkdownText containing the text to the beginning of the line.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Prepend([WithoutHaste.DataFiles.Markdown.IMarkdownInLine](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) element)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Prepend([IMarkdownInLine](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) element)
 
 Add an element to the beginning of the line.  
 

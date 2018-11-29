@@ -6,17 +6,17 @@ Represents a type's property.
 
 # Properties
 
-## [WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod](WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod.md) GetterMethod { get; protected set; }
+## [DotNetPropertyMethod](WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod.md) GetterMethod { get; protected set; }
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) HasGetterMethod { get; }
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) HasSetterMethod { get; }
 
-## [WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod](WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod.md) SetterMethod { get; protected set; }
+## [DotNetPropertyMethod](WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod.md) SetterMethod { get; protected set; }
 
 # Constructors
 
-## DotNetProperty([WithoutHaste.DataFiles.DotNet.DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+## DotNetProperty([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 
 # Methods
 

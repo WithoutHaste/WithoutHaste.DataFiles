@@ -6,7 +6,7 @@ Represents a normal-type parameter in a method signature.
 
 # Properties
 
-## [WithoutHaste.DataFiles.DotNet.ParameterCategory](WithoutHaste.DataFiles.DotNet.ParameterCategory.md) Category { get; protected set; }
+## [ParameterCategory](WithoutHaste.DataFiles.DotNet.ParameterCategory.md) Category { get; protected set; }
 
 ## [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) DefaultValue { get; protected set; }
 
@@ -32,7 +32,7 @@ Returns formatted string "Type Name", "out Type Name" or "ref Type Name".
 
 Returns formatted string "Type", "out Type" or "ref Type".  
 
-## [WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) TypeName { get; protected set; }
+## [DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) TypeName { get; protected set; }
 
 Fully qualified data type name object.  
 
@@ -45,7 +45,7 @@ Empty constructor.
 **Remarks:**  
 Category defaults to Unknown.  
 
-## DotNetParameter([WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) typeName)
+## DotNetParameter([DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) typeName)
 
 **Remarks:**  
 Category defaults to Normal.  
@@ -54,16 +54,16 @@ Category defaults to Normal.
   
 
 **Parameters:**  
-* **[WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) typeName**: Fully qualified data type name.  
+* **[DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) typeName**: Fully qualified data type name.  
 
-## DotNetParameter([WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) typeName, [WithoutHaste.DataFiles.DotNet.ParameterCategory](WithoutHaste.DataFiles.DotNet.ParameterCategory.md) category)
+## DotNetParameter([DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) typeName, [ParameterCategory](WithoutHaste.DataFiles.DotNet.ParameterCategory.md) category)
 
 **Misc:**  
   
 
 **Parameters:**  
-* **[WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) typeName**: Fully qualified data type name.  
-* **[WithoutHaste.DataFiles.DotNet.ParameterCategory](WithoutHaste.DataFiles.DotNet.ParameterCategory.md) category**: Category of parameter.  
+* **[DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) typeName**: Fully qualified data type name.  
+* **[ParameterCategory](WithoutHaste.DataFiles.DotNet.ParameterCategory.md) category**: Category of parameter.  
 
 # Methods
 

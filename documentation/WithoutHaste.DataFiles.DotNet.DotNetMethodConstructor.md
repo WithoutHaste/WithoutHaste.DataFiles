@@ -6,7 +6,7 @@ Represents a method that is a constructor.
 
 # Constructors
 
-## DotNetMethodConstructor([WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) name, [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isStatic = False)
+## DotNetMethodConstructor([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) name, [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isStatic = False)
 
 # Methods
 

@@ -19,7 +19,7 @@ Link text and url are the same.
 
 ## MarkdownInlineLink([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) url)
 
-## MarkdownInlineLink([WithoutHaste.DataFiles.Markdown.MarkdownText](WithoutHaste.DataFiles.Markdown.MarkdownText.md) text, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) url)
+## MarkdownInlineLink([MarkdownText](WithoutHaste.DataFiles.Markdown.MarkdownText.md) text, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) url)
 
 # Methods
 

@@ -7,7 +7,7 @@ Represents a section of documentation, such as the contents of a `<summary></sum
 
 # Properties
 
-## [WithoutHaste.DataFiles.DotNet.CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) Tag { get; protected set; }
+## [CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) Tag { get; protected set; }
 
 The type of xml tag that the comment came from.  
 
@@ -23,11 +23,11 @@ Defaults to the CommentTag text.
 
 Parses top-level .Net XML documentation comments. Returns null if no comments are found.  
 
-## static [WithoutHaste.DataFiles.DotNet.DotNetCommentText](WithoutHaste.DataFiles.DotNet.DotNetCommentText.md) FromVisualStudioXml([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text)
+## static [DotNetCommentText](WithoutHaste.DataFiles.DotNet.DotNetCommentText.md) FromVisualStudioXml([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text)
 
 Creates a plain text comment.  
 
-## static [WithoutHaste.DataFiles.DotNet.CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) GetTag([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## static [CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) GetTag([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
 
 Returns the CommentTag value that corresponds to the XElement.  
 
@@ -39,7 +39,7 @@ Returns false on unexpected xml formats.
 
 Returns false on unexpected xml formats.  
 
-## static [List&lt;WithoutHaste.DataFiles.DotNet.DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ParseSection([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## static [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ParseSection([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
 
 Parses inner .Net XML documentation comments.  
 
@@ -48,12 +48,12 @@ Parses inner .Net XML documentation comments.
 Throws exception on unexpected xml formats.  
 
 **Exceptions:**  
-* **[WithoutHaste.DataFiles.XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)**: XML tag does not have the expected local name, or is null  
+* **[XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)**: XML tag does not have the expected local name, or is null  
 
 ## static [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) ValidateXmlTag([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element, [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.string[]) localNames)
 
 Throws exception on unexpected xml formats.  
 
 **Exceptions:**  
-* **[WithoutHaste.DataFiles.XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)**: XML tag does not have any of the expected local names, or is null  
+* **[XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)**: XML tag does not have any of the expected local names, or is null  
 

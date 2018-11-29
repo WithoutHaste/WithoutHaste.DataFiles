@@ -21,19 +21,19 @@ Represents a link in the comments to an internal or extenal type or type.method(
 
 Return the fully qualified name of the referenced assembly element.  
 
-## [WithoutHaste.DataFiles.DotNet.DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) Name { get; protected set; }
+## [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) Name { get; protected set; }
 
 Name of type or member.  
 
 # Constructors
 
-## DotNetCommentQualifiedLink([WithoutHaste.DataFiles.DotNet.DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+## DotNetCommentQualifiedLink([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 
-## DotNetCommentQualifiedLink([WithoutHaste.DataFiles.DotNet.DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name, [WithoutHaste.DataFiles.DotNet.CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag)
+## DotNetCommentQualifiedLink([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name, [CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag)
 
 # Methods
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([WithoutHaste.DataFiles.DotNet.DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) member)
+## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) member)
 
 Returns true if link name matches the member name.  
 

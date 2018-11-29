@@ -6,7 +6,7 @@ Represents a method that is a destructor.
 
 # Constructors
 
-## DotNetMethodDestructor([WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) name)
+## DotNetMethodDestructor([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) name)
 
 # Methods
 

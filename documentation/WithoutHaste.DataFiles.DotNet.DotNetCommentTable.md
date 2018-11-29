@@ -26,7 +26,7 @@ Represents a table in the comments.
 
 # Fields
 
-## [List&lt;WithoutHaste.DataFiles.DotNet.DotNetCommentRow&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Rows
+## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Rows
 
 # Properties
 
@@ -52,7 +52,7 @@ Number of rows in the table. Includes header rows and normal rows.
 
 # Constructors
 
-## DotNetCommentTable([List&lt;WithoutHaste.DataFiles.DotNet.DotNetCommentRow&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) rows)
+## DotNetCommentTable([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) rows)
 
 # Static Methods
 

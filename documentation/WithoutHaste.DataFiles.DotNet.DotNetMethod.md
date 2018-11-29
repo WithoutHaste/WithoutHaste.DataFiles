@@ -6,9 +6,9 @@ Represents a method.
 
 # Properties
 
-## [WithoutHaste.DataFiles.DotNet.MethodCategory](WithoutHaste.DataFiles.DotNet.MethodCategory.md) Category { get; protected set; }
+## [MethodCategory](WithoutHaste.DataFiles.DotNet.MethodCategory.md) Category { get; protected set; }
 
-## [WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) MethodName { get; }
+## [DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) MethodName { get; }
 
 Strongly typed name.  
 
@@ -18,7 +18,7 @@ Strongly typed name.
 
 Empty constructor  
 
-## DotNetMethod([WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) name)
+## DotNetMethod([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) name)
 
 # Methods
 
@@ -32,7 +32,7 @@ Equality is based on the full namespace/name/generic-type-parameters of the meth
 
 ## virtual [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) GetHashCode()
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Is([WithoutHaste.DataFiles.DotNet.DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Is([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 
 Returns true if this member's name matches the provided name.  
 
@@ -40,11 +40,11 @@ Returns true if this member's name matches the provided name.
 
 Returns true if this method's parameter list matches the reflected ParameterInfo. Checks parameter types, not names.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesArguments([List&lt;WithoutHaste.DataFiles.DotNet.DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) parameters)
+## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesArguments([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) parameters)
 
 Returns true if this method's parameter list matches the provided parameter list. Checks parameter types, not names.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesLocalSignature([WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) name)
+## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesLocalSignature([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) name)
 
 Returns true if this method's signature matches the other method signature.  
 Looks at local name instead of entire namespace.  
@@ -53,11 +53,11 @@ Looks at local name instead of entire namespace.
 
 Returns true if this method's signature matches the reflected MethodInfo.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesSignature([WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) name)
+## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesSignature([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) name)
 
 Returns true if this method's signature matches the other method signature.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesSignature([WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.md) link)
+## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesSignature([DotNetCommentMethodLink](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.md) link)
 
 Returns true if this method link and the method have matching signatures, based on the fully qualified name and the list of parameter types.  
 

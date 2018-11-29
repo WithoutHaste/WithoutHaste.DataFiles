@@ -6,7 +6,7 @@ Represents a type's event.
 
 # Constructors
 
-## DotNetEvent([WithoutHaste.DataFiles.DotNet.DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+## DotNetEvent([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 
 # Methods
 

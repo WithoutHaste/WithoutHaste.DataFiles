@@ -35,7 +35,7 @@ Groups may include a link to something in the assembly which these comments are 
 
 # Fields
 
-## [List&lt;WithoutHaste.DataFiles.DotNet.DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Comments
+## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Comments
 
 # Properties
 
@@ -55,27 +55,27 @@ The number of comments in the group. Does not count nested comments.
 
 Empty constructor  
 
-## DotNetCommentGroup([WithoutHaste.DataFiles.DotNet.CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag)
+## DotNetCommentGroup([CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag)
 
-## DotNetCommentGroup([WithoutHaste.DataFiles.DotNet.DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
+## DotNetCommentGroup([DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
 
-## DotNetCommentGroup([WithoutHaste.DataFiles.DotNet.CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, [WithoutHaste.DataFiles.DotNet.DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
+## DotNetCommentGroup([CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
 
-## DotNetCommentGroup(WithoutHaste.DataFiles.DotNet.DotNetComment[] comments)
+## DotNetCommentGroup(DotNetComment[] comments)
 
-## DotNetCommentGroup([WithoutHaste.DataFiles.DotNet.CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, WithoutHaste.DataFiles.DotNet.DotNetComment[] comments)
+## DotNetCommentGroup([CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, DotNetComment[] comments)
 
-## DotNetCommentGroup([List&lt;WithoutHaste.DataFiles.DotNet.DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
+## DotNetCommentGroup([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
 
-## DotNetCommentGroup([WithoutHaste.DataFiles.DotNet.CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, [List&lt;WithoutHaste.DataFiles.DotNet.DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
+## DotNetCommentGroup([CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
 
 # Methods
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([WithoutHaste.DataFiles.DotNet.DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add(WithoutHaste.DataFiles.DotNet.DotNetComment[] comments)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add(DotNetComment[] comments)
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([List&lt;WithoutHaste.DataFiles.DotNet.DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
 
 # Static Methods
 

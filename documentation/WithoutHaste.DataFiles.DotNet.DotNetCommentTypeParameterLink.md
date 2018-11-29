@@ -15,7 +15,7 @@ Represents a link in the comments to an internal generic-type parameter.
 
 ## DotNetCommentTypeParameterLink([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name)
 
-## DotNetCommentTypeParameterLink([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name, [WithoutHaste.DataFiles.DotNet.CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag)
+## DotNetCommentTypeParameterLink([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name, [CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag)
 
 # Static Methods
 

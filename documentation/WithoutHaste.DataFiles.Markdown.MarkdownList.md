@@ -30,21 +30,21 @@ The length of the list. Nested lists count as 1 each.
 
 Creates an empty list.  
 
-## MarkdownList([bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isNumbered = False, WithoutHaste.DataFiles.Markdown.IMarkdownInList[] inList)
+## MarkdownList([bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isNumbered = False, IMarkdownInList[] inList)
 
 Creates a list of the specified MarkdownLines.  
 
-## MarkdownList([bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isNumbered = False, WithoutHaste.DataFiles.Markdown.IMarkdownInLine[] lines)
+## MarkdownList([bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isNumbered = False, IMarkdownInLine[] lines)
 
 Creates a list MarkdownLines containing the specified IMarkdownInline elements.  
 
 # Methods
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([WithoutHaste.DataFiles.Markdown.IMarkdownInList](WithoutHaste.DataFiles.Markdown.IMarkdownInList.md) line)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([IMarkdownInList](WithoutHaste.DataFiles.Markdown.IMarkdownInList.md) line)
 
 Adds element to the end of the list.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([WithoutHaste.DataFiles.Markdown.IMarkdownInLine](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) element)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([IMarkdownInLine](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) element)
 
 Adds new MarkdownLine containing the specified element to the end of the list.  
 

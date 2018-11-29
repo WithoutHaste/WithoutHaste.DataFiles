@@ -54,5 +54,5 @@ input "A,B{c,d},E[f,g,h]" returns ["A", "B{c,d}", "E[f,g,h]"]
 
 **Exceptions:**  
 * **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: Delimitor cannot be a supported brace character.  
-* **[WithoutHaste.DataFiles.StringFormatException](WithoutHaste.DataFiles.StringFormatException.md)**: Mismatched open/close braces.  
+* **[StringFormatException](WithoutHaste.DataFiles.StringFormatException.md)**: Mismatched open/close braces.  
 

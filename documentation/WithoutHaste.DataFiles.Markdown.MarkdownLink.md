@@ -6,7 +6,7 @@
 
 # Fields
 
-## protected [WithoutHaste.DataFiles.Markdown.MarkdownText](WithoutHaste.DataFiles.Markdown.MarkdownText.md) text
+## protected [MarkdownText](WithoutHaste.DataFiles.Markdown.MarkdownText.md) text
 
 Styled text of link.  
 
@@ -28,7 +28,7 @@ Link text and url are the same.
 
 ## MarkdownLink([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) url)
 
-## MarkdownLink([WithoutHaste.DataFiles.Markdown.MarkdownText](WithoutHaste.DataFiles.Markdown.MarkdownText.md) text, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) url)
+## MarkdownLink([MarkdownText](WithoutHaste.DataFiles.Markdown.MarkdownText.md) text, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) url)
 
 # Methods
 

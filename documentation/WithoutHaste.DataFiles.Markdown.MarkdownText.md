@@ -7,7 +7,7 @@ Represents plain text.
 
 # Properties
 
-## [WithoutHaste.DataFiles.Markdown.TextStyle](WithoutHaste.DataFiles.Markdown.TextStyle.md) Style { get; protected set; }
+## [TextStyle](WithoutHaste.DataFiles.Markdown.TextStyle.md) Style { get; protected set; }
 
 **Remarks:**  
 Supports multiple selections such as `TextStype.Bold | TextStyle.Italic`.  
@@ -21,7 +21,7 @@ Supports multiple selections such as `TextStype.Bold | TextStyle.Italic`.
 
 ## MarkdownText([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text)
 
-## MarkdownText([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text, [WithoutHaste.DataFiles.Markdown.TextStyle](WithoutHaste.DataFiles.Markdown.TextStyle.md) style)
+## MarkdownText([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text, [TextStyle](WithoutHaste.DataFiles.Markdown.TextStyle.md) style)
 
 # Methods
 

@@ -6,21 +6,21 @@ A node in a tree data structure made up of DotNetQualifiedClassNames organized b
 
 # Properties
 
-## [List&lt;WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassNameTreeNode&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Children { get; protected set; }
+## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Children { get; protected set; }
 
 ## DotNetQualifiedClassNameTreeNode Parent { get; protected set; }
 
-## [WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md) Value { get; protected set; }
+## [DotNetQualifiedClassName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md) Value { get; protected set; }
 
 # Methods
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Insert([WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md) name)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Insert([DotNetQualifiedClassName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md) name)
 
 Insert a new namespace into its proper position, based on the current node as the root.  
 
 # Static Methods
 
-## static DotNetQualifiedClassNameTreeNode Generate([List&lt;WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) names)
+## static DotNetQualifiedClassNameTreeNode Generate([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) names)
 
 Organize a list of namespaces into a tree, based on which namespaces are within other namespaces.  
 

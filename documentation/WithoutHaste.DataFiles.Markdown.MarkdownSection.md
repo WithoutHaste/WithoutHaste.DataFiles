@@ -17,7 +17,7 @@ Represents a header and all contents until the next header of the same depth.
 **Example B:**  
 "## Header" is depth 2  
 
-## WithoutHaste.DataFiles.Markdown.IMarkdownInSection[] Elements { get; }
+## IMarkdownInSection[] Elements { get; }
 
 All markdown elements within section.  
 
@@ -35,19 +35,19 @@ True if the section contains no elements.
 
 # Methods
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([WithoutHaste.DataFiles.Markdown.IMarkdownInSection](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) element)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([IMarkdownInSection](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) element)
 
 Adds the element to the end of this section.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add(WithoutHaste.DataFiles.Markdown.IMarkdownInSection[] elements)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add(IMarkdownInSection[] elements)
 
 Adds all the elements to the end of this section.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([List&lt;WithoutHaste.DataFiles.Markdown.IMarkdownInSection&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
 
 Adds all the elements to the end of this section.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddInLine([WithoutHaste.DataFiles.Markdown.IMarkdownInLine](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) element)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddInLine([IMarkdownInLine](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) element)
 
 Adds the element in a new MarkdownLine at the end of this section.  
 
@@ -55,23 +55,23 @@ Adds the element in a new MarkdownLine at the end of this section.
 
 Adds the text in a new MarkdownLine at the end of this section.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddInLine(WithoutHaste.DataFiles.Markdown.IMarkdownInLine[] elements)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddInLine(IMarkdownInLine[] elements)
 
 Adds the elements in a new MarkdownLine at the end of this section.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddInLine([List&lt;WithoutHaste.DataFiles.Markdown.IMarkdownInLine&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddInLine([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
 
 Adds the elements in a new MarkdownLine at the end of this section.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddInParagraph([WithoutHaste.DataFiles.Markdown.IMarkdownInSection](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) element)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddInParagraph([IMarkdownInSection](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) element)
 
 Adds the element in a new MarkdownParagraph at the end of this section.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddInParagraph(WithoutHaste.DataFiles.Markdown.IMarkdownInSection[] elements)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddInParagraph(IMarkdownInSection[] elements)
 
 Adds the elements in a new MarkdownParagraph at the end of this section.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddInParagraph([List&lt;WithoutHaste.DataFiles.Markdown.IMarkdownInSection&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddInParagraph([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
 
 Adds the elements in a new MarkdownParagraph at the end of this section.  
 
@@ -89,7 +89,7 @@ The new section
 **Parameters:**  
 * **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) header**: Section header  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddSection(MarkdownSection section)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddSection([MarkdownSection](WithoutHaste.DataFiles.Markdown.MarkdownSection.md) section)
 
 Adds existing section to the end of this section. Depths are updated.  
 

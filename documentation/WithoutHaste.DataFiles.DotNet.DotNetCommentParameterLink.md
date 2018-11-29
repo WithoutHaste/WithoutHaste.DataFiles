@@ -25,7 +25,7 @@ Name of the parameter in local method.
 
 ## DotNetCommentParameterLink([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name)
 
-## DotNetCommentParameterLink([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name, [WithoutHaste.DataFiles.DotNet.CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag)
+## DotNetCommentParameterLink([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name, [CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag)
 
 # Methods
 

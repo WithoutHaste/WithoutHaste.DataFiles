@@ -19,7 +19,7 @@ Class "System.Reflection.TypeInfo" has Depth = 4 because its inheritance path is
 **Example B:**  
 Class "System.Object" has Depth = 1 because its inheritance path is just "Object".  
 
-## [WithoutHaste.DataFiles.DotNet.DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) Name { get; protected set; }
+## [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) Name { get; protected set; }
 
 # Constructors
 
