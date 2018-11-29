@@ -23,7 +23,7 @@ namespace WithoutHaste.DataFiles.Excel
 		/// <param name="excelPackage"></param>
 		/// <param name="name">The name of the Worksheet.</param>
 		/// <returns>The new Worksheet.</returns>
-		/// <exception cref="ArgumentException">ExcelPackage cannot be null.</exception>
+		/// <exception cref="ArgumentException"><paramref name='excelPackage'/> cannot be null.</exception>
 		public static ExcelWorksheet AddWorksheet(ExcelPackage excelPackage, string name)
 		{
 			ExcelPackageCannotBeNull(excelPackage);
@@ -37,7 +37,7 @@ namespace WithoutHaste.DataFiles.Excel
 		/// <param name="excelPackage"></param>
 		/// <param name="name">The name of the Worksheet.</param>
 		/// <returns>The Worksheet, or null.</returns>
-		/// <exception cref="ArgumentException">ExcelPackage cannot be null.</exception>
+		/// <exception cref="ArgumentException"><paramref name='excelPackage'/> cannot be null.</exception>
 		public static ExcelWorksheet GetWorksheet(ExcelPackage excelPackage, string name)
 		{
 			ExcelPackageCannotBeNull(excelPackage);

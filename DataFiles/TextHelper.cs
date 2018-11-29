@@ -41,7 +41,7 @@ namespace WithoutHaste.DataFiles
 		/// <example>
 		///   <code>
 		///   string original = "A.B.C\.D\\.E";
-		///   string result = original('\', '.', '_');
+		///   string result = original.ReplaceUnescapedCharacters('\', '.', '_');
 		///   //result = "A_B_C\.D\\_E"
 		///   </code>
 		/// </example>
