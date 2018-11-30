@@ -32,21 +32,21 @@ Creates an empty list.
 
 ## MarkdownList([bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isNumbered = False, [IMarkdownInList[]](WithoutHaste.DataFiles.Markdown.IMarkdownInList.md) inList)
 
-Creates a list of the specified MarkdownLines.  
+Creates a list of the specified _elements_.  
 
 ## MarkdownList([bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isNumbered = False, [IMarkdownInLine[]](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) lines)
 
-Creates a list MarkdownLines containing the specified IMarkdownInline elements.  
+Creates a list of MarkdownLines, each containing one of the _inLineElements_.  
 
 # Methods
 
 ## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([IMarkdownInList](WithoutHaste.DataFiles.Markdown.IMarkdownInList.md) line)
 
-Adds element to the end of the list.  
+Adds _element_ to the end of the list.  
 
 ## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([IMarkdownInLine](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) element)
 
-Adds new MarkdownLine containing the specified element to the end of the list.  
+Adds new MarkdownLine containing the _element_ to the end of the list.  
 
 ## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToMarkdown([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) previousText)
 

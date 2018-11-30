@@ -63,22 +63,22 @@ namespace WithoutHaste.DataFiles.Markdown
 		}
 
 		/// <summary>
-		/// Creates a list of the specified MarkdownLines.
+		/// Creates a list of the specified <paramref name='elements'/>.
 		/// </summary>
-		public MarkdownList(bool isNumbered = false, params IMarkdownInList[] inList)
+		public MarkdownList(bool isNumbered = false, params IMarkdownInList[] elements)
 		{
 			Init(isNumbered);
-			UpdateDepths(inList.OfType<MarkdownList>().ToArray());
-			elements.AddRange(inList);
+			UpdateDepths(elements.OfType<MarkdownList>().ToArray());
+			this.elements.AddRange(elements);
 		}
 
 		/// <summary>
-		/// Creates a list MarkdownLines containing the specified IMarkdownInline elements.
+		/// Creates a list of MarkdownLines, each containing one of the <paramref name='inLineElements'/>.
 		/// </summary>
-		public MarkdownList(bool isNumbered = false, params IMarkdownInLine[] lines)
+		public MarkdownList(bool isNumbered = false, params IMarkdownInLine[] inLineElements)
 		{
 			Init(isNumbered);
-			elements.AddRange(lines.Select(line => new MarkdownLine(line)).Cast<IMarkdownInList>());
+			elements.AddRange(inLineElements.Select(line => new MarkdownLine(line)).Cast<IMarkdownInList>());
 		}
 
 		private void Init(bool isNumbered)
@@ -90,16 +90,16 @@ namespace WithoutHaste.DataFiles.Markdown
 		#endregion
 
 		/// <summary>
-		/// Adds element to the end of the list.
+		/// Adds <paramref name='element'/> to the end of the list.
 		/// </summary>
-		public void Add(IMarkdownInList line)
+		public void Add(IMarkdownInList element)
 		{
-			if(line is MarkdownList) UpdateDepth(line as MarkdownList);
-			elements.Add(line);
+			if(element is MarkdownList) UpdateDepth(element as MarkdownList);
+			elements.Add(element);
 		}
 
 		/// <summary>
-		/// Adds new MarkdownLine containing the specified element to the end of the list.
+		/// Adds new MarkdownLine containing the <paramref name='element'/> to the end of the list.
 		/// </summary>
 		public void Add(IMarkdownInLine element)
 		{

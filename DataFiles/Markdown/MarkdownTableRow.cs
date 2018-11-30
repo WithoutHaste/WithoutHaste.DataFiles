@@ -32,7 +32,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		}
 
 		/// <summary>Add a cell to the end of the row.</summary>
-		/// <param name="cell"></param>
+		/// <param name="cell">Contents of cell.</param>
 		public void Add(string cell)
 		{
 			Cells.Add(cell);

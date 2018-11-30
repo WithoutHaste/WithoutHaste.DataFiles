@@ -25,7 +25,7 @@ List of the cells in the row.
 Add a cell to the end of the row.  
 
 **Parameters:**  
-* **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) cell**:   
+* **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) cell**: Contents of cell.  
 
 ## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToMarkdown([List&lt;int&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) columnWidths)
 

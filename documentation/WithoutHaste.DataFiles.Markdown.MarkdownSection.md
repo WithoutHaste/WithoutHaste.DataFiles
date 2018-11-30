@@ -12,10 +12,10 @@ Represents a header and all contents until the next header of the same depth.
 0-indexed nesting depth of section.  
 
 **Example A:**  
-"# Header" is depth 1  
+`# Header` is depth 1  
 
 **Example B:**  
-"## Header" is depth 2  
+`## Header` is depth 2  
 
 ## [IMarkdownInSection[]](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) Elements { get; }
 
@@ -102,8 +102,7 @@ Returns true if the last element in the section has the specified type.
 
 ## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToMarkdown()
 
-**Misc:**  
-  
+Return markdown-formatted text, taking the previous text of the file into account.  
 
 ## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToMarkdown([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) previousText)
 

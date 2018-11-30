@@ -2987,22 +2987,22 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownList.#ctor(System.Boolean,WithoutHaste.DataFiles.Markdown.IMarkdownInList[])">
             <summary>
-            Creates a list of the specified MarkdownLines.
+            Creates a list of the specified <paramref name='elements'/>.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownList.#ctor(System.Boolean,WithoutHaste.DataFiles.Markdown.IMarkdownInLine[])">
             <summary>
-            Creates a list MarkdownLines containing the specified IMarkdownInline elements.
+            Creates a list of MarkdownLines, each containing one of the <paramref name='inLineElements'/>.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownList.Add(WithoutHaste.DataFiles.Markdown.IMarkdownInList)">
             <summary>
-            Adds element to the end of the list.
+            Adds <paramref name='element'/> to the end of the list.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownList.Add(WithoutHaste.DataFiles.Markdown.IMarkdownInLine)">
             <summary>
-            Adds new MarkdownLine containing the specified element to the end of the list.
+            Adds new MarkdownLine containing the <paramref name='element'/> to the end of the list.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownList.ToMarkdown(System.String)">
@@ -3090,8 +3090,8 @@
             <summary>
             0-indexed nesting depth of section.
             </summary>
-            <example>"# Header" is depth 1</example>
-            <example>"## Header" is depth 2</example>
+            <example><c># Header</c> is depth 1</example>
+            <example><c>## Header</c> is depth 2</example>
         </member>
         <member name="P:WithoutHaste.DataFiles.Markdown.MarkdownSection.Header">
             <summary>
@@ -3183,7 +3183,7 @@
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.ToMarkdown">
-            <inheritdoc />
+            <duplicate cref='M:WithoutHaste.DataFiles.Markdown.MarkdownSection.ToMarkdown(System.String)'/>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownSection.ToMarkdown(System.String)">
             <summary>
@@ -3242,7 +3242,7 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownTableRow.Add(System.String)">
             <summary>Add a cell to the end of the row.</summary>
-            <param name="cell"></param>
+            <param name="cell">Contents of cell.</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownTableRow.ToMarkdown(System.Collections.Generic.List{System.Int32})">
             <summary>

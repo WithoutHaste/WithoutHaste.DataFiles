@@ -47,12 +47,12 @@
 - MarkdownFile DONE
 - MarkdownInlineLink DONE
 - MarkdownLine DONE
-- MarkdownList
-- MarkdownParagraph
-- MarkdownSection
-- MarkdownTable
-- MarkdownTableRow
-- MarkdownText
+- MarkdownList DONE
+- MarkdownParagraph DONE
+- MarkdownSection DONE
+- MarkdownTable DONE
+- MarkdownTableRow DONE
+- MarkdownText - Global Enums - static return types not links
 - MarkdownLink
 - IMarkdownInLine
 - IMarkdownInList

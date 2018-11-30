@@ -14,8 +14,8 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <summary>
 		/// 0-indexed nesting depth of section.
 		/// </summary>
-		/// <example>"# Header" is depth 1</example>
-		/// <example>"## Header" is depth 2</example>
+		/// <example><c># Header</c> is depth 1</example>
+		/// <example><c>## Header</c> is depth 2</example>
 		public int Depth {
 			get {
 				return depth;
@@ -177,7 +177,7 @@ namespace WithoutHaste.DataFiles.Markdown
 			return (elements.Last().GetType() == type);
 		}
 
-		/// <inheritdoc />
+		/// <duplicate cref='ToMarkdown(string)'/>
 		public string ToMarkdown()
 		{
 			return ToMarkdown(null);
