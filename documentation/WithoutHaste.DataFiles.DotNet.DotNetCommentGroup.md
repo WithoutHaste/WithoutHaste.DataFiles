@@ -61,9 +61,9 @@ Empty constructor
 
 ## DotNetCommentGroup([CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
 
-## DotNetCommentGroup(DotNetComment[] comments)
+## DotNetCommentGroup([DotNetComment[]](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comments)
 
-## DotNetCommentGroup([CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, DotNetComment[] comments)
+## DotNetCommentGroup([CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) tag, [DotNetComment[]](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comments)
 
 ## DotNetCommentGroup([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
 
@@ -73,7 +73,7 @@ Empty constructor
 
 ## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add(DotNetComment[] comments)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([DotNetComment[]](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comments)
 
 ## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
 

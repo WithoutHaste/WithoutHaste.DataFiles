@@ -7,7 +7,7 @@ Represents a method that is an operator.
 
 # Fields
 
-## const [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.string[]) OperatorOrder
+## const [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) OperatorOrder
 
 Operators will be sorted into this order.  
 

@@ -6,7 +6,7 @@ Represents a markdown file.
 
 # Fields
 
-## const [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.string[]) Extensions
+## const [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) Extensions
 
 Accepted markdown file extensions.  
 

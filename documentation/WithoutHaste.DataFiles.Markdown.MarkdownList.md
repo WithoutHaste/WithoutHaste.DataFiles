@@ -30,11 +30,11 @@ The length of the list. Nested lists count as 1 each.
 
 Creates an empty list.  
 
-## MarkdownList([bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isNumbered = False, IMarkdownInList[] inList)
+## MarkdownList([bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isNumbered = False, [IMarkdownInList[]](WithoutHaste.DataFiles.Markdown.IMarkdownInList.md) inList)
 
 Creates a list of the specified MarkdownLines.  
 
-## MarkdownList([bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isNumbered = False, IMarkdownInLine[] lines)
+## MarkdownList([bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isNumbered = False, [IMarkdownInLine[]](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) lines)
 
 Creates a list MarkdownLines containing the specified IMarkdownInline elements.  
 

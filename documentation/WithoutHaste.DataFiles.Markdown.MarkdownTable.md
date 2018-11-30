@@ -20,7 +20,7 @@ Minimum column width is 3 to allow for minimum "---" contents indicating header/
 
 ## MarkdownTable([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) rows)
 
-## MarkdownTable(MarkdownTableRow[] rows)
+## MarkdownTable([MarkdownTableRow[]](WithoutHaste.DataFiles.Markdown.MarkdownTableRow.md) rows)
 
 # Methods
 

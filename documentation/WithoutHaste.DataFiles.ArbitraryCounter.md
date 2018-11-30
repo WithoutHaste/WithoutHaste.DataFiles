@@ -10,7 +10,7 @@ Using "integers" as an analogy, Counter values cannot be negative.
 
 # Fields
 
-## protected readonly [Char[]](https://docs.microsoft.com/en-us/dotnet/api/system.char[]) VALID_CHARACTERS
+## protected readonly [Char[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) VALID_CHARACTERS
 
 All valid characters, in order from smallest to largest.  
 
@@ -30,7 +30,7 @@ Current display value.
 
 # Constructors
 
-## ArbitraryCounter([Char[]](https://docs.microsoft.com/en-us/dotnet/api/system.char[]) validCharacters)
+## ArbitraryCounter([Char[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) validCharacters)
 
 Initialize at MINIMUM_VALUE.  
 

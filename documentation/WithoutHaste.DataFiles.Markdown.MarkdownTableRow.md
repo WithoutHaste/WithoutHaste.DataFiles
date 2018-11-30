@@ -16,7 +16,7 @@ List of the cells in the row.
 
 ## MarkdownTableRow([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) cells)
 
-## MarkdownTableRow([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.string[]) cells)
+## MarkdownTableRow([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) cells)
 
 # Methods
 

@@ -45,8 +45,8 @@
 - MarkdownCode DONE
 - MarkdownCodeBlock DONE
 - MarkdownFile DONE
-- MarkdownInlineLink
-- MarkdownLine
+- MarkdownInlineLink DONE
+- MarkdownLine - "protected List elements" - "IMarkdownInLine[] not a link"
 - MarkdownList
 - MarkdownParagraph
 - MarkdownSection

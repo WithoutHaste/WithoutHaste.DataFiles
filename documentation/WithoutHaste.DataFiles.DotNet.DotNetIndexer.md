@@ -44,7 +44,7 @@ Returns true if this indexer's signature matches the method signature.
 
 Returns true if this indexer's signature matches the method signature.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesArguments([System.Reflection.ParameterInfo[]](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo[]) otherParameters)
+## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesArguments([System.Reflection.ParameterInfo[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) otherParameters)
 
 Returns true if this method's parameter list matches the reflected ParameterInfo.  
 

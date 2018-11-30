@@ -36,7 +36,7 @@ Equality is based on the full namespace/name/generic-type-parameters of the meth
 
 Returns true if this member's name matches the provided name.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesArguments([System.Reflection.ParameterInfo[]](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo[]) parameters)
+## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesArguments([System.Reflection.ParameterInfo[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) parameters)
 
 Returns true if this method's parameter list matches the reflected ParameterInfo. Checks parameter types, not names.  
 

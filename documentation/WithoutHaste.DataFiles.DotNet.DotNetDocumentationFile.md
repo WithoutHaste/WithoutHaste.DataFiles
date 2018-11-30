@@ -10,7 +10,7 @@ Represents a .Net XML documentation file, such as those produced by Visual Studi
 
 Top-level delegates in assembly.  
 
-## readonly [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.string[]) Extensions
+## readonly [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) Extensions
 
 Accepted .Net XML documentation file extensions.  
 
@@ -49,7 +49,7 @@ Loads .Net XML documentation from XDocument.
 
 # Methods
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddAssemblyInfo([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) assemblyFilename, [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.string[]) thirdPartyAssemblyFilenames)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddAssemblyInfo([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) assemblyFilename, [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) thirdPartyAssemblyFilenames)
 
 Load additional documentation information from the assembly itself.  
 
@@ -59,7 +59,7 @@ Load additional documentation information from the assembly itself.
 
 Fill path and filename of the *.dll library being documentated.  
 
-#### [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.string[]) thirdPartyAssemblyFilenames
+#### [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) thirdPartyAssemblyFilenames
 
 List of third-party libraries referenced by your library.  
 These libraries will not be documented, but they must be loaded if you want to see the full type names for return types and parameter types from these libraries.  

@@ -20,7 +20,7 @@ Strongly-typed link.
 
 ## DotNetCommentParameter([DotNetCommentParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.md) link, [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
 
-## DotNetCommentParameter([DotNetCommentParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.md) link, DotNetComment[] comments)
+## DotNetCommentParameter([DotNetCommentParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.md) link, [DotNetComment[]](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comments)
 
 ## DotNetCommentParameter([DotNetCommentParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.md) link, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
 

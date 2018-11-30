@@ -39,7 +39,7 @@ Format:
 
 ## [System.Xml.XmlNode](https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlnode) StylesNode { get; protected set; }
 
-## [System.Xml.XmlNode[]](https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlnode[]) Tables { get; }
+## [System.Xml.XmlNode[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) Tables { get; }
 
 ## [System.Xml.XmlNode](https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlnode) WorkbookNode { get; protected set; }
 

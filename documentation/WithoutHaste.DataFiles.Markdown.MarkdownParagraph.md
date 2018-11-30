@@ -22,7 +22,7 @@ Ordered inline elements that make up this line.
 
 # Properties
 
-## IMarkdownInSection[] Elements { get; }
+## [IMarkdownInSection[]](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) Elements { get; }
 
 Ordered elements that make up this paragraph.  
 
@@ -35,7 +35,7 @@ True when there are no elements in the line.
 
 # Constructors
 
-## MarkdownParagraph(IMarkdownInSection[] elements)
+## MarkdownParagraph([IMarkdownInSection[]](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) elements)
 
 Initialize paragraph with any number of elements.  
 
@@ -61,7 +61,7 @@ Add an element to the end of the paragraph.
 
 Add elements to the end of the paragraph.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add(IMarkdownInSection[] elements)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([IMarkdownInSection[]](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) elements)
 
 Add elements to the end of the paragraph.  
 

@@ -40,7 +40,7 @@ string result = original.ReplaceUnescapedCharacters('\', '.', '_');
 //result = "A_B_C\.D\\_E"
 ```  
 
-## static [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.string[]) SplitIgnoreNested(this [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text, [char](https://docs.microsoft.com/en-us/dotnet/api/system.char) delimiter)
+## static [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) SplitIgnoreNested(this [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text, [char](https://docs.microsoft.com/en-us/dotnet/api/system.char) delimiter)
 
 Split _text_ on the _delimiter_   
 but do not split if _delimiter_ is nested within matched braces.  

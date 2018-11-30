@@ -52,7 +52,7 @@ Empty constructor
 
 ## DotNetQualifiedName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) fullNamespace, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) explicitInterface = null)
 
-## DotNetQualifiedName([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.string[]) names)
+## DotNetQualifiedName([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) names)
 
 Builds the qualified name from each segment provided, with the first string being the root namespace and the last string being the local name.  
 
@@ -76,7 +76,7 @@ Explicit interface implementations are considered only as a last resort.
 
 Names converted to strings must match exactly to be considered equal.  
 
-## [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.string[]) Flatten()
+## [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) Flatten()
 
 Returns an array of the name segments that make up this qualified name.  
 
@@ -135,7 +135,7 @@ A.B.C.LocalName
 
 # Static Methods
 
-## static [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Combine([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.string[]) names)
+## static [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Combine([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) names)
 
 Return the names combined with a '.' delimiter.  
 

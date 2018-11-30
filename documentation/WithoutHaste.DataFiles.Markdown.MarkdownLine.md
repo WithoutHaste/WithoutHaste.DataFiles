@@ -22,7 +22,7 @@ Ordered inline elements that make up this line.
 
 # Properties
 
-## IMarkdownInLine[] Elements { get; }
+## [IMarkdownInLine[]](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) Elements { get; }
 
 Ordered inline elements that make up this line.  
 
@@ -35,7 +35,7 @@ True when there are no elements in the line.
 
 # Constructors
 
-## MarkdownLine(IMarkdownInLine[] elements)
+## MarkdownLine([IMarkdownInLine[]](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) elements)
 
 Initialize line with any number of elements.  
 
@@ -61,7 +61,7 @@ Add an element to the end of the line.
 
 Add elements to the end of the line.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add(IMarkdownInLine[] elements)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([IMarkdownInLine[]](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) elements)
 
 Add elements to the end of the line.  
 

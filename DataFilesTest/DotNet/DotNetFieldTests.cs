@@ -24,6 +24,15 @@ namespace DataFilesTest
 			public T TField;
 		}
 
+		protected class C
+		{
+			public A FieldType;
+
+			public List<A> FieldList;
+
+			public A[] FieldArray;
+		}
+
 		[TestMethod]
 		public void DotNetField_Assembly_GetType()
 		{
@@ -50,6 +59,20 @@ namespace DataFilesTest
 			//assert
 			Assert.IsNotNull(dotNetType.Fields[0].TypeName);
 			Assert.AreEqual("T", dotNetType.Fields[0].TypeName.FullName);
+		}
+
+		[TestMethod]
+		public void DotNetField_Assembly_ArrayTypeField()
+		{
+			//arrange
+			Type type = typeof(C);
+			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:DataFilesTest.DotNetFieldTests.C'></member>", LoadOptions.PreserveWhitespace));
+			dotNetType.AddMember(DotNetField.FromVisualStudioXml(XElement.Parse("<member name='F:DataFilesTest.DotNetFieldTests.C.FieldArray'></member>", LoadOptions.PreserveWhitespace)));
+			//act
+			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			//assert
+			Assert.IsNotNull(dotNetType.Fields[0].TypeName);
+			Assert.AreEqual("DataFilesTest.DotNetFieldTests.A[]", dotNetType.Fields[0].TypeName.FullName);
 		}
 	}
 }

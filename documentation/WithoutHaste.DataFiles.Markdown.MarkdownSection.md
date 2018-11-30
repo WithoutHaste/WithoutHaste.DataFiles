@@ -17,7 +17,7 @@ Represents a header and all contents until the next header of the same depth.
 **Example B:**  
 "## Header" is depth 2  
 
-## IMarkdownInSection[] Elements { get; }
+## [IMarkdownInSection[]](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) Elements { get; }
 
 All markdown elements within section.  
 
@@ -39,7 +39,7 @@ True if the section contains no elements.
 
 Adds the element to the end of this section.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add(IMarkdownInSection[] elements)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([IMarkdownInSection[]](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) elements)
 
 Adds all the elements to the end of this section.  
 
@@ -55,7 +55,7 @@ Adds the element in a new MarkdownLine at the end of this section.
 
 Adds the text in a new MarkdownLine at the end of this section.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddInLine(IMarkdownInLine[] elements)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddInLine([IMarkdownInLine[]](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) elements)
 
 Adds the elements in a new MarkdownLine at the end of this section.  
 
@@ -67,7 +67,7 @@ Adds the elements in a new MarkdownLine at the end of this section.
 
 Adds the element in a new MarkdownParagraph at the end of this section.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddInParagraph(IMarkdownInSection[] elements)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddInParagraph([IMarkdownInSection[]](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) elements)
 
 Adds the elements in a new MarkdownParagraph at the end of this section.  
 

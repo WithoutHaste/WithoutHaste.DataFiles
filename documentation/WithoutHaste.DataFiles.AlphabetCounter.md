@@ -7,7 +7,7 @@ Counts "A", "B", "C", ..., "Z", "AA", "AB", ..., "AZ", "BA", "BB", ...
 
 # Fields
 
-## const [Char[]](https://docs.microsoft.com/en-us/dotnet/api/system.char[]) CHARACTERS
+## const [Char[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) CHARACTERS
 
 Valid characters.  
 

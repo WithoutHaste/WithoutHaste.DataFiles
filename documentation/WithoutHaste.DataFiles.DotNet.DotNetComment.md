@@ -35,7 +35,7 @@ Returns the CommentTag value that corresponds to the XElement.
 
 Returns false on unexpected xml formats.  
 
-## static [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsXmlTag([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element, [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.string[]) localNames)
+## static [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsXmlTag([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element, [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) localNames)
 
 Returns false on unexpected xml formats.  
 
@@ -50,7 +50,7 @@ Throws exception on unexpected xml formats.
 **Exceptions:**  
 * **[XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)**: XML tag does not have the expected local name, or is null  
 
-## static [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) ValidateXmlTag([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element, [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.string[]) localNames)
+## static [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) ValidateXmlTag([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element, [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) localNames)
 
 Throws exception on unexpected xml formats.  
 
