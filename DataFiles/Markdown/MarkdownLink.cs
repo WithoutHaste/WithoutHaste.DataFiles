@@ -43,7 +43,9 @@ namespace WithoutHaste.DataFiles.Markdown
 
 		#endregion
 
-		/// <inheritdoc />
+		/// <summary>
+		/// Outputs markdown-formatted text.
+		/// </summary>
 		public abstract string ToMarkdown(string previousText);
 	}
 }

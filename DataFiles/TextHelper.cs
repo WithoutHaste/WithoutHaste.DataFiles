@@ -117,7 +117,7 @@ namespace WithoutHaste.DataFiles
 		/// Returns empty string for empty matches.
 		/// </remarks>
 		/// <example>
-		/// input "A,B{c,d},E[f,g,h]" returns ["A", "B{c,d}", "E[f,g,h]"]
+		/// "A,B{c,d},E[f,g,h]".SplitIgnoreNested(",") returns ["A", "B{c,d}", "E[f,g,h]"]
 		/// </example>
 		/// <exception cref="ArgumentException">Delimitor cannot be a supported brace character.</exception>
 		/// <exception cref="StringFormatException">Mismatched open/close braces.</exception>

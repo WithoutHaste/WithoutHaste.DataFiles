@@ -9,7 +9,9 @@ namespace WithoutHaste.DataFiles.Markdown
 	/// <summary>
 	/// Represents markdown inline-style link.
 	/// </summary>
-	/// <example>Displays as: The quick brown fox [jumped over](https://www.google.com) the lazy dog.</example>
+	/// <example>
+	/// <c>new MarkdownInlineLink("google", "www.google.com")</c> is converted to string <c>[google](www.google.com)</c>.
+	/// </example>
 	public class MarkdownInlineLink : MarkdownLink
 	{
 		#region Constructors
@@ -24,7 +26,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		{
 		}
 
-		/// <summary></summary>
+		/// <summary>Accepts formatted text.</summary>
 		public MarkdownInlineLink(MarkdownText text, string url) : base(text, url)
 		{
 		}

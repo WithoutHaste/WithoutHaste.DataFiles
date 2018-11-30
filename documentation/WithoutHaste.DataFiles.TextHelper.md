@@ -50,7 +50,7 @@ Supports braces: {}, [], (), and `<>`.
 Returns empty string for empty matches.  
 
 **Example A:**  
-input "A,B{c,d},E[f,g,h]" returns ["A", "B{c,d}", "E[f,g,h]"]  
+"A,B{c,d},E[f,g,h]".SplitIgnoreNested(",") returns ["A", "B{c,d}", "E[f,g,h]"]  
 
 **Exceptions:**  
 * **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: Delimitor cannot be a supported brace character.  

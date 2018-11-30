@@ -9,7 +9,7 @@ Represents markdown inline-style link.
 
 ## Example A:
 
-Displays as: The quick brown fox [jumped over](https://www.google.com) the lazy dog.  
+`new MarkdownInlineLink("google", "www.google.com")` is converted to string `[google](www.google.com)`.  
 
 # Constructors
 
@@ -21,10 +21,11 @@ Link text and url are the same.
 
 ## MarkdownInlineLink([MarkdownText](WithoutHaste.DataFiles.Markdown.MarkdownText.md) text, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) url)
 
+Accepts formatted text.  
+
 # Methods
 
 ## virtual [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToMarkdown([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) previousText)
 
-**Misc:**  
-  
+Outputs markdown-formatted text.  
 

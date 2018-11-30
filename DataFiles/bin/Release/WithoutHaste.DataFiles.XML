@@ -2827,7 +2827,9 @@
             <summary>
             Represents markdown inline-style link.
             </summary>
-            <example>Displays as: The quick brown fox [jumped over](https://www.google.com) the lazy dog.</example>
+            <example>
+            <c>new MarkdownInlineLink("google", "www.google.com")</c> is converted to string <c>[google](www.google.com)</c>.
+            </example>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownInlineLink.#ctor(System.String)">
             <inheritdoc/>
@@ -2836,7 +2838,7 @@
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownInlineLink.#ctor(WithoutHaste.DataFiles.Markdown.MarkdownText,System.String)">
-            <summary></summary>
+            <summary>Accepts formatted text.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownInlineLink.ToMarkdown(System.String)">
             <inheritdoc />
@@ -2939,7 +2941,9 @@
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownLink.ToMarkdown(System.String)">
-            <inheritdoc />
+            <summary>
+            Outputs markdown-formatted text.
+            </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownList">
             <summary>
@@ -3355,7 +3359,7 @@
             Returns empty string for empty matches.
             </remarks>
             <example>
-            input "A,B{c,d},E[f,g,h]" returns ["A", "B{c,d}", "E[f,g,h]"]
+            "A,B{c,d},E[f,g,h]".SplitIgnoreNested(",") returns ["A", "B{c,d}", "E[f,g,h]"]
             </example>
             <exception cref="T:System.ArgumentException">Delimitor cannot be a supported brace character.</exception>
             <exception cref="T:WithoutHaste.DataFiles.StringFormatException">Mismatched open/close braces.</exception>

@@ -34,5 +34,5 @@ Link text and url are the same.
 
 ## abstract [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToMarkdown([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) previousText)
 
-Return markdown-formatted text.  
+Outputs markdown-formatted text.  
 
