@@ -43,7 +43,7 @@ Adds the element to the end of this section.
 
 Adds all the elements to the end of this section.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([List&lt;IMarkdownInSection&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
 
 Adds all the elements to the end of this section.  
 
@@ -59,7 +59,7 @@ Adds the text in a new MarkdownLine at the end of this section.
 
 Adds the elements in a new MarkdownLine at the end of this section.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddInLine([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddInLine([List&lt;IMarkdownInLine&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
 
 Adds the elements in a new MarkdownLine at the end of this section.  
 
@@ -71,7 +71,7 @@ Adds the element in a new MarkdownParagraph at the end of this section.
 
 Adds the elements in a new MarkdownParagraph at the end of this section.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddInParagraph([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddInParagraph([List&lt;IMarkdownInSection&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
 
 Adds the elements in a new MarkdownParagraph at the end of this section.  
 

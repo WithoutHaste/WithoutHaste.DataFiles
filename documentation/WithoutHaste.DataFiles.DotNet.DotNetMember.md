@@ -7,11 +7,11 @@ Represents anything that a class/struct/interface may contain.
 
 # Fields
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ExampleComments
+## [List&lt;DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ExampleComments
 
 Comments from "example" xml tags.  
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ExceptionComments
+## [List&lt;DotNetCommentQualifiedLinkedGroup&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ExceptionComments
 
 Comments from "exception" xml tags.  Only expected as top-level tags.  
 
@@ -19,11 +19,11 @@ Comments from "exception" xml tags.  Only expected as top-level tags.
 
 Any comments not within expected top-level tags.  
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ParameterComments
+## [List&lt;DotNetCommentParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ParameterComments
 
 Comments from "param" xml tags. Only expected as top-level tags.  
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) PermissionComments
+## [List&lt;DotNetCommentQualifiedLinkedGroup&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) PermissionComments
 
 Comments from "permission" xml tags. Only expected as top-level tags.  
 
@@ -48,7 +48,7 @@ Comments from "summary" xml tags. Only expected as a top-level tag.
 **Remarks:**  
 If there are multiple "summary" tags, their contents will be concatenated as if they were one tag.  
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) TypeParameterComments
+## [List&lt;DotNetCommentParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) TypeParameterComments
 
 Comments from "typeparam" xml tags. Only expected as top-level tags.  
 
@@ -103,7 +103,7 @@ Clears any existing comments before parsing the new ones.
 **Parameters:**  
 * **[System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) parent**: Expects the tag containing all documentation for this member.  
 
-## virtual [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) ResolveDuplicatedComments([Func](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) pathToThisDuplicate = null)
+## virtual [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) ResolveDuplicatedComments([Func&lt;DotNetQualifiedName,DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember, [List&lt;DotNetQualifiedName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) pathToThisDuplicate = null)
 
 For all "duplicate" comments, replace the comment with the duplicated comments.  
 
@@ -111,8 +111,8 @@ For all "duplicate" comments, replace the comment with the duplicated comments.
 Returns true if resolution is successful. Returns false if referenced member is not found, or if there is a reference loop.  
 
 **Parameters:**  
-* **[Func](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember**: Function that returns the selected member from all known members in the assembly.  
-* **[List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) pathToThisDuplicate**: List of named types/members that are duplicating each other, leading to this member. Used to avoid reference loops.  
+* **[Func&lt;DotNetQualifiedName,DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember**: Function that returns the selected member from all known members in the assembly.  
+* **[List&lt;DotNetQualifiedName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) pathToThisDuplicate**: List of named types/members that are duplicating each other, leading to this member. Used to avoid reference loops.  
 
 ## virtual [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToString()
 

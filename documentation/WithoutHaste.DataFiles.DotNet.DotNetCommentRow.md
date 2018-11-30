@@ -16,7 +16,7 @@ Represents a row of data in a .Net XML documentation table.
 
 # Fields
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Cells
+## [List&lt;DotNetCommentCell&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Cells
 
 # Properties
 
@@ -35,7 +35,7 @@ Number of columns (cells) in the row.
 
 # Constructors
 
-## DotNetCommentRow([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) cells, [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isHeader = False)
+## DotNetCommentRow([List&lt;DotNetCommentCell&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) cells, [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isHeader = False)
 
 # Static Methods
 

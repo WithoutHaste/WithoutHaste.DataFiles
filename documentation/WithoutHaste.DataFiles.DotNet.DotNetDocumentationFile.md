@@ -6,7 +6,7 @@ Represents a .Net XML documentation file, such as those produced by Visual Studi
 
 # Fields
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Delegates
+## [List&lt;DotNetDelegate&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Delegates
 
 Top-level delegates in assembly.  
 
@@ -14,7 +14,7 @@ Top-level delegates in assembly.
 
 Accepted .Net XML documentation file extensions.  
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Types
+## [List&lt;DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Types
 
 Top-level types in assembly.  
 

@@ -6,7 +6,7 @@ A node in a tree data structure made up of DotNetQualifiedClassNames organized b
 
 # Properties
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Children { get; protected set; }
+## [List&lt;DotNetQualifiedClassNameTreeNode&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Children { get; protected set; }
 
 ## DotNetQualifiedClassNameTreeNode Parent { get; protected set; }
 
@@ -20,7 +20,7 @@ Insert a new namespace into its proper position, based on the current node as th
 
 # Static Methods
 
-## static DotNetQualifiedClassNameTreeNode Generate([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) names)
+## static DotNetQualifiedClassNameTreeNode Generate([List&lt;DotNetQualifiedClassName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) names)
 
 Organize a list of namespaces into a tree, based on which namespaces are within other namespaces.  
 

@@ -40,7 +40,7 @@ Returns true if this member's name matches the provided name.
 
 Returns true if this method's parameter list matches the reflected ParameterInfo. Checks parameter types, not names.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesArguments([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) parameters)
+## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesArguments([List&lt;DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) parameters)
 
 Returns true if this method's parameter list matches the provided parameter list. Checks parameter types, not names.  
 

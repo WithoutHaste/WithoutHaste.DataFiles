@@ -102,7 +102,7 @@ Returns true if this Name is nested inside the other Name.
 **Example B:**  
 "System" is not within null or empty Name.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Localize([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
+## virtual [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Localize([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
 
 Simplifies this qualified name based on the _other_ name.  
 In other words, removes the portion of the namespace that this and the _other_ have in common.  
@@ -139,7 +139,7 @@ A.B.C.LocalName
 
 Return the names combined with a '.' delimiter.  
 
-## static [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Combine([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) names)
+## static [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Combine([List&lt;string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) names)
 
 Return the names combined with a '.' delimiter.  
 

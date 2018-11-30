@@ -20,5 +20,5 @@ Empty constructor
 
 ## DotNetCommentLinkedGroup([IDotNetCommentLink](WithoutHaste.DataFiles.DotNet.IDotNetCommentLink.md) link, [DotNetComment[]](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comments)
 
-## DotNetCommentLinkedGroup([IDotNetCommentLink](WithoutHaste.DataFiles.DotNet.IDotNetCommentLink.md) link, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
+## DotNetCommentLinkedGroup([IDotNetCommentLink](WithoutHaste.DataFiles.DotNet.IDotNetCommentLink.md) link, [List&lt;DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
 

@@ -242,5 +242,32 @@ namespace DataFilesTest
 			Assert.AreEqual("System.Int32", result.GenericTypeParameters[0].ToString());
 			Assert.AreEqual("System.String", result.FullTypeNamespace.GenericTypeParameters[0].ToString());
 		}
+
+		[TestMethod]
+		public void DotNetQualifiedTypeName_GetLocalized_GenericType_NotLocal()
+		{
+			//arrange
+			DotNetQualifiedTypeName a = DotNetQualifiedTypeName.FromVisualStudioXml("A.B.C.MyType{System.Int32}");
+			DotNetQualifiedTypeName b = DotNetQualifiedTypeName.FromVisualStudioXml("D.E");
+			//act
+			DotNetQualifiedTypeName result = a.GetLocalized(b);
+			//assert
+			Assert.AreEqual(a, result);
+			Assert.AreEqual("System.Int32", result.GenericTypeParameters[0].ToString());
+			Assert.AreEqual("A.B.C.MyType<System.Int32>", result.FullName);
+		}
+
+		[TestMethod]
+		public void DotNetQualifiedTypeName_GetLocalized_GenericType_LocalizeParameter()
+		{
+			//arrange
+			DotNetQualifiedTypeName a = DotNetQualifiedTypeName.FromVisualStudioXml("A.B.C.MyType{A.B.C.OtherType}");
+			DotNetQualifiedTypeName b = DotNetQualifiedTypeName.FromVisualStudioXml("A.B.C");
+			//act
+			DotNetQualifiedTypeName result = a.GetLocalized(b);
+			//assert
+			Assert.AreEqual("MyType<OtherType>", result.FullName);
+			Assert.AreEqual("OtherType", result.GenericTypeParameters[0].ToString());
+		}
 	}
 }

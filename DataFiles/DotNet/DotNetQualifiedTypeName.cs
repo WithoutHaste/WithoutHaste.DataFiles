@@ -227,6 +227,29 @@ namespace WithoutHaste.DataFiles.DotNet
 			return localNames;
 		}
 
+		/// <inheritdoc />
+		public new DotNetQualifiedTypeName GetLocalized(DotNetQualifiedName other)
+		{
+			DotNetQualifiedTypeName clone = this.Clone();
+			clone.Localize(other);
+			return clone;
+		}
+
+		/// <inheritdoc />
+		/// <remarks>
+		/// All generic parameters are also localized.
+		/// </remarks>
+		public override void Localize(DotNetQualifiedName other)
+		{
+			if(FullNamespace == null || other == null)
+				return;
+			base.Localize(other);
+			foreach(DotNetQualifiedTypeName p in GenericTypeParameters)
+			{
+				p.Localize(other);
+			}
+		}
+
 		#region Low Level
 
 		/// <summary>

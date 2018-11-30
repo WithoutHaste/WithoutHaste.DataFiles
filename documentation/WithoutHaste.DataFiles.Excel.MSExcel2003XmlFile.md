@@ -57,31 +57,31 @@ Load from file.
 
 # Methods
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddColumns([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) columns)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddColumns([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex, [List&lt;List&lt;object&gt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) columns)
 
 Creates Cells for each data values, adds sufficient Rows to the the specified Table to contain all the columns. Add all Cells to the Rows.  
 
 **Parameters:**  
 * **[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex**: 0-based table index within Workbook.  
-* **[List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) columns**: List of columns, each column being a list of values.  
+* **[List&lt;List&lt;object&gt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) columns**: List of columns, each column being a list of values.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddColumns([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) columns)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddColumns([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex, [List&lt;List&lt;System.Xml.XmlNode&gt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) columns)
 
 Adds sufficient Rows to the the specified Table to contain all the columns. Add all Cells to the Rows.  
 
 **Parameters:**  
 * **[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex**: 0-based table index within Workbook.  
-* **[List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) columns**: List of columns, each column being a list of "Cell" tags.  
+* **[List&lt;List&lt;System.Xml.XmlNode&gt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) columns**: List of columns, each column being a list of "Cell" tags.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddHeaderRow([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) headers)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddHeaderRow([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex, [List&lt;string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) headers)
 
 Adds a Row of header-style Cells to the specified Table.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddRow([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) cellValues)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddRow([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex, [List&lt;object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) cellValues)
 
 Creates Cells of the appropriate type for each value, and adds all Cells to a new Row in the specified Table.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddRow([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) cellNodes)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddRow([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex, [List&lt;System.Xml.XmlNode&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) cellNodes)
 
 Adds all Cells to a new Row in the specified Table.  
 
@@ -188,14 +188,14 @@ Returns an ss:Width attribute.
 
 Returns the number of Columns in the specified Table.  
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) GetColumnValues([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) header)
+## [List&lt;string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) GetColumnValues([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) header)
 
 Returns a list of values from the Cells in the column with the specified header.  
 
 **Remarks:**  
 The first row is skipped as the header row.  
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) GetColumnValues([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) columnIndex, [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) firstRowIsHeader = True)
+## [List&lt;string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) GetColumnValues([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) columnIndex, [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) firstRowIsHeader = True)
 
 Returns a list of values from the cells in the selected column.  
 
@@ -212,7 +212,7 @@ Returns -1 if header is not found.
 **Remarks:**  
 Only the first row in the table is searched for the header.  
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) GetHeaders([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex)
+## [List&lt;string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) GetHeaders([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex)
 
 Returns all the header values from the first row.  
 
@@ -220,7 +220,7 @@ Returns all the header values from the first row.
 
 Returns the number of Rows in the specified Table.  
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) GetRowValues([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) rowIndex)
+## [List&lt;string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) GetRowValues([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) rowIndex)
 
 Returns a list of values from the Cells in the specified Row.  
 
@@ -240,7 +240,7 @@ Removes a Style.
 
 Save file.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) SetColumnWidths([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) widths)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) SetColumnWidths([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) tableIndex, [List&lt;int&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) widths)
 
 Set column widths on the specified Table. Overwrites column widths if they were already set.  
 

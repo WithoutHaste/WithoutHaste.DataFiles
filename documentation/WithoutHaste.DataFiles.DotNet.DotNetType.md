@@ -6,28 +6,28 @@ Represents a data type.
 
 # Fields
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Delegates
+## [List&lt;DotNetDelegate&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Delegates
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Events
+## [List&lt;DotNetEvent&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Events
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Fields
+## [List&lt;DotNetField&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Fields
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ImplementedInterfaces
+## [List&lt;DotNetBaseType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ImplementedInterfaces
 
 Interfaces this type inherits from, if known  
 
 **Remarks:**  
 If an interface extends another interface, reflection reports that the type implements both interfaces.  
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Methods
+## [List&lt;DotNetMethod&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Methods
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) NestedTypes
+## [List&lt;DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) NestedTypes
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Properties
+## [List&lt;DotNetProperty&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Properties
 
 # Properties
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) AllMembers { get; }
+## [List&lt;DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) AllMembers { get; }
 
 Lists all methods, delegates, fields, properties, and events.  
 Does not include nested types.  
@@ -38,11 +38,11 @@ Base type this type inherits from. Null if not known or none exists.
 
 ## [TypeCategory](WithoutHaste.DataFiles.DotNet.TypeCategory.md) Category { get; protected set; }
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ConstantFields { get; }
+## [List&lt;DotNetField&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ConstantFields { get; }
 
 The subset of Fields that are constants.  
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ConstructorMethods { get; }
+## [List&lt;DotNetMethodConstructor&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ConstructorMethods { get; }
 
 The subset of Methods that are constructors.  
 
@@ -50,7 +50,7 @@ The subset of Methods that are constructors.
 
 The subset of Methods that are destructors. There can be zero or one destructors.  
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) IndexerProperties { get; }
+## [List&lt;DotNetIndexer&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) IndexerProperties { get; }
 
 The subset of Properties that are indexers.  
 
@@ -61,7 +61,7 @@ True if the type is sealed.
 **Remarks:**  
 Abstract classes, static classes, and interfaces cannot be sealed. Exceptions can be sealed.  
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) NestedEnums { get; }
+## [List&lt;DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) NestedEnums { get; }
 
 The subset of NestedTypes that are enums.  
 
@@ -69,23 +69,23 @@ The subset of NestedTypes that are enums.
 
 The number of types nested within this type, including sub-nested types and enums.  
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) NormalFields { get; }
+## [List&lt;DotNetField&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) NormalFields { get; }
 
 The subset of Fields that are not constant, or where the category is unknown.  
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) NormalMethods { get; }
+## [List&lt;DotNetMethod&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) NormalMethods { get; }
 
 The subset of Methods that are not static, nor constructors, nor destructors, nor operators.  
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) NormalProperties { get; }
+## [List&lt;DotNetProperty&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) NormalProperties { get; }
 
 The subset of Properties that are not indexers.  
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) OperatorMethods { get; }
+## [List&lt;DotNetMethodOperator&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) OperatorMethods { get; }
 
 The subset of Methods that are operator overloads.  
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) StaticMethods { get; }
+## [List&lt;DotNetMethod&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) StaticMethods { get; }
 
 The subset of Methods that are static (including extension methods), but not constructors, nor destructors, nor operators.  
 
@@ -107,36 +107,36 @@ Load additional documentation information from the assembly itself.
 
 Add a member to the correct level within this type.  
 
-## [DotNetEvent](WithoutHaste.DataFiles.DotNet.DotNetEvent.md) FindInheritedEvent([Func](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName)
+## [DotNetEvent](WithoutHaste.DataFiles.DotNet.DotNetEvent.md) FindInheritedEvent([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName)
 
 Returns the selected event, if it exists in this type.  
 
 **Parameters:**  
-* **[Func](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType**: Function that returns the selected type from all known types in the assembly.  
+* **[Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType**: Function that returns the selected type from all known types in the assembly.  
 * **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName**: Name of event, local to this type.  
 
-## [DotNetField](WithoutHaste.DataFiles.DotNet.DotNetField.md) FindInheritedField([Func](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName)
+## [DotNetField](WithoutHaste.DataFiles.DotNet.DotNetField.md) FindInheritedField([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName)
 
 Returns the selected field, if it exists in this type.  
 
 **Parameters:**  
-* **[Func](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType**: Function that returns the selected type from all known types in the assembly.  
+* **[Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType**: Function that returns the selected type from all known types in the assembly.  
 * **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName**: Name of field, local to this type.  
 
-## [DotNetMethod](WithoutHaste.DataFiles.DotNet.DotNetMethod.md) FindInheritedMethod([Func](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) methodName)
+## [DotNetMethod](WithoutHaste.DataFiles.DotNet.DotNetMethod.md) FindInheritedMethod([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) methodName)
 
 Returns the selected method, if it exists in this type.  
 
 **Parameters:**  
-* **[Func](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType**: Function that returns the selected type from all known types in the assembly.  
+* **[Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType**: Function that returns the selected type from all known types in the assembly.  
 * **[DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) methodName**: Name of method, local to this type.  
 
-## [DotNetProperty](WithoutHaste.DataFiles.DotNet.DotNetProperty.md) FindInheritedProperty([Func](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName)
+## [DotNetProperty](WithoutHaste.DataFiles.DotNet.DotNetProperty.md) FindInheritedProperty([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName)
 
 Returns the selected property, if it exists in this type.  
 
 **Parameters:**  
-* **[Func](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType**: Function that returns the selected type from all known types in the assembly.  
+* **[Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType**: Function that returns the selected type from all known types in the assembly.  
 * **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName**: Name of property, local to this type.  
 
 ## [DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) FindMember([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
@@ -163,14 +163,14 @@ Returns true if this member is defined within this type or any of its nested typ
 
 Returns true if this qualified name is defined within this type or any of its nested types.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) ResolveDuplicatedComments([Func](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) ResolveDuplicatedComments([Func&lt;DotNetQualifiedName,DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember)
 
 For all "duplicate" comments, replace the comment with the duplicated comments.  
 
 **Parameters:**  
-* **[Func](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember**: Function that returns the selected member from all known members in the assembly.  
+* **[Func&lt;DotNetQualifiedName,DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember**: Function that returns the selected member from all known members in the assembly.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) ResolveInheritedComments([Func](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) inheritancePath = null)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) ResolveInheritedComments([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [List&lt;DotNetQualifiedName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) inheritancePath = null)
 
 For all "inheritdoc" comments, replace the inheritance comment with the inherited comments.  
 
@@ -180,8 +180,8 @@ Interfaces can inherit from interfaces.
 Class members can inherit from their base class or from interfaces.  
 
 **Parameters:**  
-* **[Func](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType**: Function that returns the selected type from all known types in the assembly.  
-* **[List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) inheritancePath**: List of types or members inheriting from each other, from top level to bottom level. Used to avoid loops.  
+* **[Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType**: Function that returns the selected type from all known types in the assembly.  
+* **[List&lt;DotNetQualifiedName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) inheritancePath**: List of types or members inheriting from each other, from top level to bottom level. Used to avoid loops.  
 
 ## [DotNetDelegate](WithoutHaste.DataFiles.DotNet.DotNetDelegate.md) ToDelegate([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 

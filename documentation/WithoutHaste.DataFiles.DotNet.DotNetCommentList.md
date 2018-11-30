@@ -24,7 +24,7 @@ Represents a list in the comments.
 
 # Fields
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Items
+## [List&lt;DotNetCommentListItem&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Items
 
 Items in the list.  
 
@@ -45,7 +45,7 @@ Number of items in the list. Includes headers.
 
 # Constructors
 
-## DotNetCommentList([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) items, [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isNumbered = False)
+## DotNetCommentList([List&lt;DotNetCommentListItem&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) items, [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isNumbered = False)
 
 # Static Methods
 

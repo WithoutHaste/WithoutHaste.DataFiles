@@ -16,7 +16,7 @@ Displays as: The quick brown fox.  \\n
 
 # Fields
 
-## protected [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements
+## protected [List&lt;IMarkdownInLine&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements
 
 Ordered inline elements that make up this line.  
 
@@ -39,7 +39,7 @@ True when there are no elements in the line.
 
 Initialize line with any number of elements.  
 
-## MarkdownLine([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
+## MarkdownLine([List&lt;IMarkdownInLine&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
 
 Initialize line with any number of elements.  
 
@@ -57,7 +57,7 @@ Add a new MarkdownText containing the text to the end of the line.
 
 Add an element to the end of the line.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
+## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([List&lt;IMarkdownInLine&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
 
 Add elements to the end of the line.  
 

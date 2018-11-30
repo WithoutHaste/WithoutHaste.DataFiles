@@ -7,7 +7,7 @@ Global settings for the entire DotNet namespace.
 
 # Fields
 
-## static [Func](https://docs.microsoft.com/en-us/dotnet/api/system.func-3) AdditionalQualifiedNameConverter
+## static [Func&lt;string,int,string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-3) AdditionalQualifiedNameConverter
 
 A second level [WithoutHaste.DataFiles.DotNet.DotNetSettings.QualifiedNameConverter](WithoutHaste.DataFiles.DotNet.DotNetSettings.md) to provide further processing.  
 This method will be run after [WithoutHaste.DataFiles.DotNet.DotNetSettings.QualifiedNameConverter](WithoutHaste.DataFiles.DotNet.DotNetSettings.md) for each [WithoutHaste.DataFiles.DotNet.DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md).  
@@ -19,7 +19,7 @@ DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConve
 DotNetSettinsg.AdditionalQualifiedNameConverter = myCustomConverter;  
 string displayString = myQualifiedTypeName.FullName;  
 
-## static [Func](https://docs.microsoft.com/en-us/dotnet/api/system.func-3) QualifiedNameConverter
+## static [Func&lt;string,int,string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-3) QualifiedNameConverter
 
 When DotNetQualifiedNames are converted to strings, this converter will be automatically applied to each:  
 * generic type parameter  

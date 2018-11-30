@@ -690,6 +690,15 @@
             Does not include generic paremeters.
             </summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.GetLocalized(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <inheritdoc />
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.Localize(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <inheritdoc />
+            <remarks>
+            All generic parameters are also localized.
+            </remarks>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.Clone">
             <summary>
             Returns deep clone of qualified name.

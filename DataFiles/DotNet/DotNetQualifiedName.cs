@@ -242,7 +242,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <example>"System.Collections.Generic.List".Localize("System.Collections") returns "Generic.List".</example>
 		/// <example>"System.Collections.Generic.List".Localize("System.Collections.Standard.List") returns "Standard.List".</example>
 		/// <example>"System.Collections.Generic.List".Localize("System.Collections.Generic.List") returns "List".</example>
-		public void Localize(DotNetQualifiedName other)
+		public virtual void Localize(DotNetQualifiedName other)
 		{
 			if(FullNamespace == null || other == null)
 				return;
@@ -250,10 +250,11 @@ namespace WithoutHaste.DataFiles.DotNet
 			if(FullNamespace == other || other.IsWithin(FullNamespace))
 			{
 				FullNamespace = null;
-				return;
 			}
-
-			FullNamespace.Localize(other);
+			else
+			{
+				FullNamespace.Localize(other);
+			}
 		}
 
 		/// <summary>

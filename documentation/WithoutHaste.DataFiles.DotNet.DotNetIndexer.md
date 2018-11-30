@@ -6,7 +6,7 @@ Represents an indexer property.
 
 # Fields
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Parameters
+## [List&lt;DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Parameters
 
 # Properties
 
@@ -20,7 +20,7 @@ Returns indexer parameters format as "[TypeA,TypeB]".
 
 # Constructors
 
-## DotNetIndexer([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) parameters)
+## DotNetIndexer([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name, [List&lt;DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) parameters)
 
 # Methods
 

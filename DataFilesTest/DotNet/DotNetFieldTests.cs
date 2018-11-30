@@ -74,5 +74,19 @@ namespace DataFilesTest
 			Assert.IsNotNull(dotNetType.Fields[0].TypeName);
 			Assert.AreEqual("DataFilesTest.DotNetFieldTests.A[]", dotNetType.Fields[0].TypeName.FullName);
 		}
+
+		[TestMethod]
+		public void DotNetField_Assembly_ListTypeField()
+		{
+			//arrange
+			Type type = typeof(C);
+			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:DataFilesTest.DotNetFieldTests.C'></member>", LoadOptions.PreserveWhitespace));
+			dotNetType.AddMember(DotNetField.FromVisualStudioXml(XElement.Parse("<member name='F:DataFilesTest.DotNetFieldTests.C.FieldList'></member>", LoadOptions.PreserveWhitespace)));
+			//act
+			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			//assert
+			Assert.IsNotNull(dotNetType.Fields[0].TypeName);
+			Assert.AreEqual("System.Collections.Generic.List<DataFilesTest.DotNetFieldTests.A>", dotNetType.Fields[0].TypeName.FullName);
+		}
 	}
 }

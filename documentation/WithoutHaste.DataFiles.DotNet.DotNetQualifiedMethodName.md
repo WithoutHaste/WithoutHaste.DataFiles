@@ -19,7 +19,7 @@ Specific generic type aliases for this method. If null, the shared [WithoutHaste
 
 Default names that will be given to generic-method-types, in order.  
 
-## [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Parameters
+## [List&lt;DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Parameters
 
 # Properties
 
@@ -71,9 +71,9 @@ Fully qualified name of return data type, if known. Null if not known.
 
 Empty constructor  
 
-## DotNetQualifiedMethodName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) parameters, [DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) returnTypeName = null, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) genericTypeCount = 0, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) explicitInterface = null)
+## DotNetQualifiedMethodName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [List&lt;DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) parameters, [DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) returnTypeName = null, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) genericTypeCount = 0, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) explicitInterface = null)
 
-## DotNetQualifiedMethodName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) fullNamespace, [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) parameters, [DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) returnTypeName = null, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) genericTypeCount = 0, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) explicitInterface = null)
+## DotNetQualifiedMethodName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) fullNamespace, [List&lt;DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) parameters, [DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) returnTypeName = null, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) genericTypeCount = 0, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) explicitInterface = null)
 
 ## DotNetQualifiedMethodName([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) explicitInterface = null)
 
@@ -99,7 +99,7 @@ Methods are sorted:* **alphabetically by namespace**
 
 Returns true if this method's parameter list matches the reflected ParameterInfo. Checks parameter types, not names.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesArguments([List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) otherParameters)
+## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesArguments([List&lt;DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) otherParameters)
 
 Returns true if this method's parameter list matches the provided parameter list. Checks parameter types, not names.  
 
@@ -151,7 +151,7 @@ MyClass.op_Implicit(MyClass)~System.Int32
 **Parameters:**  
 * **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) signature**: Name may or may not start with "M:". Includes parameter list.  
 
-## static [List](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ParametersFromVisualStudioXml([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text)
+## static [List&lt;DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ParametersFromVisualStudioXml([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text)
 
 Parse .Net XML documentation parameter lists.  
 
