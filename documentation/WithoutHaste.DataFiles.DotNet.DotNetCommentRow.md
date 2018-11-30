@@ -20,7 +20,7 @@ Represents a row of data in a .Net XML documentation table.
 
 # Properties
 
-## [WithoutHaste.DataFiles.DotNet.DotNetCommentCell](WithoutHaste.DataFiles.DotNet.DotNetCommentCell.md) this[[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) columnIndex] { get; }
+## [DotNetCommentCell](WithoutHaste.DataFiles.DotNet.DotNetCommentCell.md) this[[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) columnIndex] { get; }
 
 Returns the selected cell of the row. Returns an empty cell if no cell is found.  
 

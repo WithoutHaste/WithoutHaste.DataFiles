@@ -30,7 +30,7 @@ Items in the list.
 
 # Properties
 
-## [WithoutHaste.DataFiles.DotNet.DotNetCommentListItem](WithoutHaste.DataFiles.DotNet.DotNetCommentListItem.md) this[[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) index] { get; }
+## [DotNetCommentListItem](WithoutHaste.DataFiles.DotNet.DotNetCommentListItem.md) this[[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) index] { get; }
 
 Access list items by 0-based index.  
 

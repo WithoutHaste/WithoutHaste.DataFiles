@@ -7,7 +7,7 @@ Represents a markdown list.
 
 # Properties
 
-## [WithoutHaste.DataFiles.Markdown.IMarkdownInList](WithoutHaste.DataFiles.Markdown.IMarkdownInList.md) this[[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) i] { get; }
+## [IMarkdownInList](WithoutHaste.DataFiles.Markdown.IMarkdownInList.md) this[[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) i] { get; }
 
 Get an element from the list by 0-based index.  
 

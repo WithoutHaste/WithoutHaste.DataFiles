@@ -30,7 +30,7 @@ Represents a table in the comments.
 
 # Properties
 
-## [WithoutHaste.DataFiles.DotNet.DotNetCommentCell](WithoutHaste.DataFiles.DotNet.DotNetCommentCell.md) this[[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) rowIndex,[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) columnIndex] { get; }
+## [DotNetCommentCell](WithoutHaste.DataFiles.DotNet.DotNetCommentCell.md) this[[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) rowIndex,[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) columnIndex] { get; }
 
 Returns the selected [WithoutHaste.DataFiles.DotNet.DotNetCommentCell](WithoutHaste.DataFiles.DotNet.DotNetCommentCell.md) of the table. Will return an empty [WithoutHaste.DataFiles.DotNet.DotNetCommentCell](WithoutHaste.DataFiles.DotNet.DotNetCommentCell.md) if the cell within range but does not actually exist.  
 

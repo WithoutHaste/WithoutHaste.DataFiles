@@ -39,7 +39,7 @@ Groups may include a link to something in the assembly which these comments are 
 
 # Properties
 
-## [WithoutHaste.DataFiles.DotNet.DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) this[[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) index] { get; }
+## [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) this[[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) index] { get; }
 
 Access comments by zero-based index.  
 
