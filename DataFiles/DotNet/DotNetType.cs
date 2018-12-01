@@ -405,7 +405,7 @@ namespace WithoutHaste.DataFiles.DotNet
 				Category = TypeCategory.Enum;
 			if(typeInfo.IsException())
 				Category = TypeCategory.Exception;
-			if(typeInfo.IsValueType)
+			if(typeInfo.IsValueType && !typeInfo.IsEnum())
 				Category = TypeCategory.Struct;
 
 			if(Category == TypeCategory.Unknown)

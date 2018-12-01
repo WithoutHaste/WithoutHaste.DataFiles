@@ -1,27 +1,24 @@
-# [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).TypeCategory
+# TypeCategory
 
-**Struct**  
-**Implements:** [IComparable](https://docs.microsoft.com/en-us/dotnet/api/system.icomparable), [IFormattable](https://docs.microsoft.com/en-us/dotnet/api/system.iformattable), [IConvertible](https://docs.microsoft.com/en-us/dotnet/api/system.iconvertible)  
+# Constants
 
-# Fields
+## 0: Unknown
 
-## const TypeCategory Abstract
+Not enough information is available to determine type category.  
 
-## const TypeCategory Enum
-
-## const TypeCategory Exception
-
-## const TypeCategory Interface
-
-## const TypeCategory Normal
+## 1: Normal
 
 No special category.  
 
-## const TypeCategory Static
+## 2: Abstract
 
-## const TypeCategory Struct
+## 3: Static
 
-## const TypeCategory Unknown
+## 4: Interface
 
-Not enough information is available to determine type category.  
+## 5: Enum
+
+## 6: Exception
+
+## 7: Struct
 

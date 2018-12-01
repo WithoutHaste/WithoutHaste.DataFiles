@@ -73,3 +73,10 @@ Represents a Markdown element that ends with a double endline.
 
   
 
+## Enums
+
+[**TextStyle**](WithoutHaste.DataFiles.Markdown.TextStyle.md)  
+Display style of text.  
+
+  
+

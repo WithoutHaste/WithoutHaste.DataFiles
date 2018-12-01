@@ -1,39 +1,36 @@
-# [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).MethodCategory
+# MethodCategory
 
-**Struct**  
-**Implements:** [IComparable](https://docs.microsoft.com/en-us/dotnet/api/system.icomparable), [IFormattable](https://docs.microsoft.com/en-us/dotnet/api/system.iformattable), [IConvertible](https://docs.microsoft.com/en-us/dotnet/api/system.iconvertible)  
+# Constants
 
-# Fields
-
-## const MethodCategory Abstract
-
-Abstract method.  
-
-## const MethodCategory Delegate
-
-Delegate type.  
-
-## const MethodCategory Extension
-
-Static extension method.  
-
-## const MethodCategory Normal
-
-No special category.  
-
-## const MethodCategory Protected
-
-Protected method.  
-
-## const MethodCategory Static
-
-Static method.  
-
-## const MethodCategory Unknown
+## 0: Unknown
 
 Not enough information is available to determine method category.  
 
-## const MethodCategory Virtual
+## 1: Normal
+
+No special category.  
+
+## 2: Static
+
+Static method.  
+
+## 3: Extension
+
+Static extension method.  
+
+## 4: Protected
+
+Protected method.  
+
+## 5: Abstract
+
+Abstract method.  
+
+## 6: Virtual
 
 Virtual method.  
+
+## 7: Delegate
+
+Delegate type.  
 

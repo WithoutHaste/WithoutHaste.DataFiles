@@ -1,49 +1,46 @@
-# [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).CommentTag
-
-**Struct**  
-**Implements:** [IComparable](https://docs.microsoft.com/en-us/dotnet/api/system.icomparable), [IFormattable](https://docs.microsoft.com/en-us/dotnet/api/system.iformattable), [IConvertible](https://docs.microsoft.com/en-us/dotnet/api/system.iconvertible)  
+# CommentTag
 
 The type of xml tag that the comment came from.  
 
-# Fields
+# Constants
 
-## const CommentTag C
+## 0: Unknown
 
-## const CommentTag Code
+## 1: C
 
-## const CommentTag Duplicate
+## 2: Code
 
-## const CommentTag Example
+## 3: Duplicate
 
-## const CommentTag Exception
+## 4: Example
 
-## const CommentTag InheritDoc
+## 5: Exception
 
-## const CommentTag List
+## 6: InheritDoc
 
-## const CommentTag Para
+## 7: List
 
-## const CommentTag Param
+## 8: Para
 
-## const CommentTag ParamRef
+## 9: Param
 
-## const CommentTag Permission
+## 10: ParamRef
 
-## const CommentTag Remarks
+## 11: Permission
 
-## const CommentTag Returns
+## 12: Remarks
 
-## const CommentTag See
+## 13: Returns
 
-## const CommentTag SeeAlso
+## 14: See
 
-## const CommentTag Summary
+## 15: SeeAlso
 
-## const CommentTag TypeParam
+## 16: Summary
 
-## const CommentTag TypeParamRef
+## 17: TypeParam
 
-## const CommentTag Unknown
+## 18: TypeParamRef
 
-## const CommentTag Value
+## 19: Value
 

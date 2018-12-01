@@ -1,18 +1,15 @@
-# [WithoutHaste.DataFiles.Markdown](TableOfContents.WithoutHaste.DataFiles.Markdown.md).TextStyle
-
-**Struct**  
-**Implements:** [IComparable](https://docs.microsoft.com/en-us/dotnet/api/system.icomparable), [IFormattable](https://docs.microsoft.com/en-us/dotnet/api/system.iformattable), [IConvertible](https://docs.microsoft.com/en-us/dotnet/api/system.iconvertible)  
+# TextStyle
 
 Display style of text.  
 
 **Remarks:**  
 Number enum values with powers of 2 to allow bitwise operations.  
 
-# Fields
+# Constants
 
-## const TextStyle Bold
+## 0: Normal
 
-## const TextStyle Italic
+## 1: Bold
 
-## const TextStyle Normal
+## 2: Italic
 

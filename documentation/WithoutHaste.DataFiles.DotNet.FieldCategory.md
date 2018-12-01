@@ -1,23 +1,20 @@
-# [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).FieldCategory
+# FieldCategory
 
-**Struct**  
-**Implements:** [IComparable](https://docs.microsoft.com/en-us/dotnet/api/system.icomparable), [IFormattable](https://docs.microsoft.com/en-us/dotnet/api/system.iformattable), [IConvertible](https://docs.microsoft.com/en-us/dotnet/api/system.iconvertible)  
+# Constants
 
-# Fields
+## 0: Unknown
 
-## const FieldCategory Abstract
+Not enough information is available to determine field category.  
 
-Abstract. Value only valid on properties and events.  
-
-## const FieldCategory Constant
-
-## const FieldCategory Normal
+## 1: Normal
 
 No special category.  
 
-## const FieldCategory ReadOnly
+## 2: Constant
 
-## const FieldCategory Unknown
+## 3: ReadOnly
 
-Not enough information is available to determine field category.  
+## 4: Abstract
+
+Abstract. Value only valid on properties and events.  
 

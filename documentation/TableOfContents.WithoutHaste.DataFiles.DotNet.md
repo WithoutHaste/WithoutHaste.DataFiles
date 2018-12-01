@@ -197,3 +197,30 @@ Represents anything in the comments that links to something in the assembly.
 
   
 
+## Enums
+
+[**AccessModifier**](WithoutHaste.DataFiles.DotNet.AccessModifier.md)  
+  
+
+  
+[**CommentTag**](WithoutHaste.DataFiles.DotNet.CommentTag.md)  
+The type of xml tag that the comment came from.  
+
+  
+[**FieldCategory**](WithoutHaste.DataFiles.DotNet.FieldCategory.md)  
+  
+
+  
+[**MethodCategory**](WithoutHaste.DataFiles.DotNet.MethodCategory.md)  
+  
+
+  
+[**ParameterCategory**](WithoutHaste.DataFiles.DotNet.ParameterCategory.md)  
+  
+
+  
+[**TypeCategory**](WithoutHaste.DataFiles.DotNet.TypeCategory.md)  
+  
+
+  
+

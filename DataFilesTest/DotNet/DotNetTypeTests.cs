@@ -34,6 +34,8 @@ namespace DataFilesTest
 
 		protected struct StructA { }
 
+		protected enum EnumA { Default=0 }
+
 		[TestMethod]
 		public void DotNetType_Assembly_Object()
 		{
@@ -141,6 +143,18 @@ namespace DataFilesTest
 			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
 			//assert
 			Assert.AreEqual(TypeCategory.Struct, dotNetType.Category);
+		}
+
+		[TestMethod]
+		public void DotNetType_Assembly_Enum()
+		{
+			//arrange
+			Type type = typeof(EnumA);
+			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("DataFilesTest.DotNetTypeTests.EnumA"));
+			//act
+			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			//assert
+			Assert.AreEqual(TypeCategory.Enum, dotNetType.Category);
 		}
 
 	}

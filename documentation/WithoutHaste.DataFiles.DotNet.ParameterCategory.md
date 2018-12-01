@@ -1,23 +1,20 @@
-# [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).ParameterCategory
+# ParameterCategory
 
-**Struct**  
-**Implements:** [IComparable](https://docs.microsoft.com/en-us/dotnet/api/system.icomparable), [IFormattable](https://docs.microsoft.com/en-us/dotnet/api/system.iformattable), [IConvertible](https://docs.microsoft.com/en-us/dotnet/api/system.iconvertible)  
+# Constants
 
-# Fields
+## 0: Unknown
 
-## const ParameterCategory Extension
+## 1: Normal
 
-## const ParameterCategory Normal
-
-## const ParameterCategory Optional
-
-## const ParameterCategory Out
-
-## const ParameterCategory OutOrRef
+## 2: OutOrRef
 
 Parameter is either an out or a ref parameter.  
 
-## const ParameterCategory Ref
+## 3: Out
 
-## const ParameterCategory Unknown
+## 4: Ref
+
+## 5: Optional
+
+## 6: Extension
 
