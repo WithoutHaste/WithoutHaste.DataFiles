@@ -46,8 +46,8 @@ comments
 - DotNetComment DONE
 - DotNetCommentCell DONE
 - DotNetCommentCode DONE
-- DotNetCommentCodeBlock
-- DotNetCommentDuplicate
+- DotNetCommentCodeBlock DONE
+- DotNetCommentDuplicate DONE
 - DotNetCommentGroup
 - DotNetCommentInherit
 - DotNetCommentLinkedGroup

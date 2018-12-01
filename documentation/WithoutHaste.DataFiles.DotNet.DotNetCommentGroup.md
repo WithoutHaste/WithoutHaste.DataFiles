@@ -7,32 +7,6 @@ Represents an ordered collection of comments.
 **Remarks:**  
 Groups may include a link to something in the assembly which these comments are documenting.  
 
-# Examples
-
-## Example A:
-
-`<summary>nested comments and/or plain text</summary>`  
-
-## Example B:
-
-`<remarks>nested comments and/or plain text</remarks>`  
-
-## Example C:
-
-`<example>nested comments and/or plain text</example>`  
-
-## Example D:
-
-`<para>nested comments and/or plain text</para>`  
-
-## Example E:
-
-`<returns>nested comments and/or plain text</returns>`  
-
-## Example F:
-
-`<value>nested comments and/or plain text</value>`  
-
 # Fields
 
 ## [List&lt;DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Comments
@@ -82,6 +56,24 @@ Empty constructor
 ## static DotNetCommentGroup FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
 
 Parses .Net XML documentation for any "grouping" tag.  
+
+**Example A:**  
+`<summary>nested comments and/or plain text</summary>`  
+
+**Example B:**  
+`<remarks>nested comments and/or plain text</remarks>`  
+
+**Example C:**  
+`<example>nested comments and/or plain text</example>`  
+
+**Example D:**  
+`<para>nested comments and/or plain text</para>`  
+
+**Example E:**  
+`<returns>nested comments and/or plain text</returns>`  
+
+**Example F:**  
+`<value>nested comments and/or plain text</value>`  
 
 # Derived By
 
