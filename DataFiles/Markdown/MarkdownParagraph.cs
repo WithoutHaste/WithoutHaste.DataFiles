@@ -110,7 +110,15 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// </summary>
 		public string ToMarkdown(string previousText)
 		{
-			string result = String.Join("", elements.Select(e => e.ToMarkdown(null)).ToArray());
+			StringBuilder builder = new StringBuilder();
+			string thisPreviousText = null;
+			foreach(IMarkdownInSection element in elements)
+			{
+				thisPreviousText = element.ToMarkdown(thisPreviousText);
+				builder.Append(thisPreviousText);
+			}
+
+			string result = builder.ToString();
 			result = result.TrimEnd();
 			return result + "  \n\n";
 		}

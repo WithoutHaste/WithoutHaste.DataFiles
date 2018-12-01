@@ -19,7 +19,8 @@ Operators will be sorted into this order.
 
 ## [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) CompareTo([object](https://docs.microsoft.com/en-us/dotnet/api/system.object) b)
 
-Methods are sorted:1. **alphabetically by namespace**  
+Methods are sorted:  
+1. **alphabetically by namespace**  
 2. **then into **  
 3. **then as a normal method (see **  
 
@@ -27,13 +28,15 @@ Methods are sorted:1. **alphabetically by namespace**
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) = DotNetMethodOperator a > DotNetMethodOperator b
 
-Methods are sorted:1. **alphabetically by namespace**  
+Methods are sorted:  
+1. **alphabetically by namespace**  
 2. **then into **  
 3. **then as a normal method (see **  
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) = DotNetMethodOperator a < DotNetMethodOperator b
 
-Methods are sorted:1. **alphabetically by namespace**  
+Methods are sorted:  
+1. **alphabetically by namespace**  
 2. **then into **  
 3. **then as a normal method (see **  
 

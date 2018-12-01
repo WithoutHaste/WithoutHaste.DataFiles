@@ -113,6 +113,10 @@ namespace WithoutHaste.DataFiles.Markdown
 				return "";
 
 			StringBuilder builder = new StringBuilder();
+			if(!String.IsNullOrEmpty(previousText) && !previousText.EndsWith("\n"))
+			{
+				builder.Append("  \n");
+			}
 
 			if(IsNumbered) ToMarkdownNumbered(builder);
 			else ToMarkdownBulleted(builder);
