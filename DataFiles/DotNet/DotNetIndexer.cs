@@ -13,17 +13,18 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// </summary>
 	public class DotNetIndexer : DotNetProperty
 	{
-		/// <summary></summary>
+		/// <summary>The list of indexer keys.</summary>
+		/// <example>Indexer <c>int this[string key]</c> has one parameter named "key".</example>
 		public List<DotNetParameter> Parameters = new List<DotNetParameter>();
 
-		/// <summary>Returns indexer parameters format as "[TypeA,TypeB]".</summary>
+		/// <summary>Returns indexer parameters formatted as "[TypeA,TypeB]".</summary>
 		public string ParameterTypesSignature {
 			get {
 				return "[" + String.Join(",", Parameters.Select(p => p.FullTypeName).ToArray()) + "]";
 			}
 		}
 
-		/// <summary>Returns indexer parameters format as "[TypeA a, TypeB b]".</summary>
+		/// <summary>Returns indexer parameters formatted as "[TypeA a, TypeB b]".</summary>
 		public string ParametersSignature {
 			get {
 				return "[" + String.Join(", ", Parameters.Select(p => p.FullTypeName + " " + p.Name).ToArray()) + "]";
@@ -42,6 +43,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Parse .Net XML documentation for Indexer data.
 		/// </summary>
 		/// <param name="memberElement">Expects tag name "member".</param>
+		/// <example><![CDATA[<member name="P:Namespace.Type.Item(System.Int32)"></member>]]></example>
 		public static new DotNetIndexer FromVisualStudioXml(XElement memberElement)
 		{
 			string xmlName = memberElement.Attribute("name")?.Value;

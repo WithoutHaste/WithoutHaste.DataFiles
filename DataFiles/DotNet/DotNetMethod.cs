@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
-	/// <summary></summary>
+	/// <summary>Mutually exclusive categories of methods.</summary>
 	public enum MethodCategory
 	{
 		/// <summary>Not enough information is available to determine method category.</summary>
@@ -37,7 +37,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public MethodCategory Category { get; protected set; }
 
-		/// <summary>Strongly typed name.</summary>
+		/// <summary>Strongly-typed name.</summary>
 		public DotNetQualifiedMethodName MethodName { get { return (Name as DotNetQualifiedMethodName); } }
 
 		#region Constructors
@@ -56,6 +56,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Parse .Net XML documentation for method signature data.
 		/// </summary>
 		/// <param name="memberElement">Expects tag "member".</param>
+		/// <example><![CDATA[<member name="M:Namespace.Type.MethodName(System.Int32,System.String)"></member>]]></example>
 		public static DotNetMethod FromVisualStudioXml(XElement memberElement)
 		{
 			string signature = memberElement.Attribute("name")?.Value;

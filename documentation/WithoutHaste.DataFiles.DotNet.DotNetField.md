@@ -16,6 +16,8 @@ For constant fields, the value of the constant. Null otherwise.
 
 ## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) FullTypeName { get; }
 
+The "FullName" of the field data type.  
+
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsStatic { get; protected set; }
 
 False means unknown or is not static.  
@@ -39,6 +41,9 @@ Load additional documentation information from the assembly itself.
 ## static DotNetField FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement)
 
 Parse .Net XML documentation for Field data.  
+
+**Example A:**  
+`<member name="F:Namespace.Type.FieldName"></member>`  
 
 **Parameters:**  
 * **[System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement**: Expects tag name "member".  

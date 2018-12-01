@@ -8,15 +8,20 @@ Represents an indexer property.
 
 ## [List&lt;DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Parameters
 
+The list of indexer keys.  
+
+**Example A:**  
+Indexer `int this[string key]` has one parameter named "key".  
+
 # Properties
 
 ## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ParametersSignature { get; }
 
-Returns indexer parameters format as "[TypeA a, TypeB b]".  
+Returns indexer parameters formatted as "[TypeA a, TypeB b]".  
 
 ## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ParameterTypesSignature { get; }
 
-Returns indexer parameters format as "[TypeA,TypeB]".  
+Returns indexer parameters formatted as "[TypeA,TypeB]".  
 
 # Constructors
 
@@ -60,6 +65,9 @@ Returns true if this method's signature matches the reflected MethodInfo.
 ## static DotNetIndexer FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement)
 
 Parse .Net XML documentation for Indexer data.  
+
+**Example A:**  
+`<member name="P:Namespace.Type.Item(System.Int32)"></member>`  
 
 **Parameters:**  
 * **[System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement**: Expects tag name "member".  

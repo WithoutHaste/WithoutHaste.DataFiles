@@ -64,7 +64,7 @@ namespace WithoutHaste.DataFiles.DotNet
 
 		/// <summary>
 		/// Methods are sorted:
-		/// <list type='numbered'>
+		/// <list type='number'>
 		///		<item>alphabetically by namespace</item>
 		///		<item>then into <see cref='OperatorOrder'/></item>
 		///		<item>then as a normal method (see <see cref='DotNetQualifiedMethodName.CompareTo(object)'/></item>

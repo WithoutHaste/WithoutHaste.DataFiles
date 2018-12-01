@@ -9,7 +9,8 @@ using System.Xml.Linq;
 namespace WithoutHaste.DataFiles.DotNet
 {
 	/// <summary>
-	/// Represents anything that a class/struct/interface may contain.
+	/// Represents any .Net construct that can have comments on it:
+	/// class, interface, struct, delegate, enum, method, field, property, event, etc.
 	/// </summary>
 	public abstract class DotNetMember
 	{

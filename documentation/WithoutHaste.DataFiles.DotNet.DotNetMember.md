@@ -3,7 +3,8 @@
 **Abstract**  
 **Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
 
-Represents anything that a class/struct/interface may contain.  
+Represents any .Net construct that can have comments on it:  
+class, interface, struct, delegate, enum, method, field, property, event, etc.  
 
 # Fields
 

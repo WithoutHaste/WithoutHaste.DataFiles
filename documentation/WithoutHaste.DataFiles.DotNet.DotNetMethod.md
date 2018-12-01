@@ -10,7 +10,7 @@ Represents a method.
 
 ## [DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) MethodName { get; }
 
-Strongly typed name.  
+Strongly-typed name.  
 
 # Constructors
 
@@ -66,6 +66,9 @@ Returns true if this method link and the method have matching signatures, based 
 ## static DotNetMethod FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement)
 
 Parse .Net XML documentation for method signature data.  
+
+**Example A:**  
+`<member name="M:Namespace.Type.MethodName(System.Int32,System.String)"></member>`  
 
 **Parameters:**  
 * **[System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement**: Expects tag "member".  

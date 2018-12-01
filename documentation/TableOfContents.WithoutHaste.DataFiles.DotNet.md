@@ -183,7 +183,8 @@ Represents a section of documentation, such as the contents of a `<summary></sum
 
   
 [**DotNetMember**](WithoutHaste.DataFiles.DotNet.DotNetMember.md)  
-Represents anything that a class/struct/interface may contain.  
+Represents any .Net construct that can have comments on it:  
+class, interface, struct, delegate, enum, method, field, property, event, etc.  
 
   
 [**DotNetReferenceGeneric**](WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric.md)  
@@ -209,11 +210,11 @@ The type of xml tag that the comment came from.
 
   
 [**FieldCategory**](WithoutHaste.DataFiles.DotNet.FieldCategory.md)  
-Mutually exclusive categories of fields, properties, and indexers.  
+Mutually exclusive categories of fields, properties, indexers, and events.  
 
   
 [**MethodCategory**](WithoutHaste.DataFiles.DotNet.MethodCategory.md)  
-  
+Mutually exclusive categories of methods.  
 
   
 [**ParameterCategory**](WithoutHaste.DataFiles.DotNet.ParameterCategory.md)  

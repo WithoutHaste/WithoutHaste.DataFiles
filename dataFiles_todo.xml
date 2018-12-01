@@ -47,13 +47,13 @@ constructs
 - DotNetDelegate DONE
 - DotNetDocumentationFile DONE
 - DotNetEvent DONE
-- DotNetField
-- DotNetIndexer
-- DotNetMember
-- DotNetMethod
-- DotNetMethodConstructor
-- DotNetMethodDestructor
-- DotNetMethodOperator
+- DotNetField DONE
+- DotNetIndexer DONE
+- DotNetMember DONE
+- DotNetMethod DONE
+- DotNetMethodConstructor DONE
+- DotNetMethodDestructor DONE
+- DotNetMethodOperator - list formatting
 - DotNetParameter
 - DotNetProperty
 - DotNetPropertyMethod
@@ -89,8 +89,8 @@ constructs
 enums
 - AccessModifier
 - CommentTag DONE
-- FieldCategory
-- MethodCategory
+- FieldCategory DONE
+- MethodCategory DONE
 - ParameterCategory
 - TypeCategory</Data>
         </Cell>

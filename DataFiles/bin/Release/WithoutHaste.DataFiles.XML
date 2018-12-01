@@ -148,13 +148,14 @@
             </summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetIndexer.Parameters">
-            <summary></summary>
+            <summary>The list of indexer keys.</summary>
+            <example>Indexer <c>int this[string key]</c> has one parameter named "key".</example>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetIndexer.ParameterTypesSignature">
-            <summary>Returns indexer parameters format as "[TypeA,TypeB]".</summary>
+            <summary>Returns indexer parameters formatted as "[TypeA,TypeB]".</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetIndexer.ParametersSignature">
-            <summary>Returns indexer parameters format as "[TypeA a, TypeB b]".</summary>
+            <summary>Returns indexer parameters formatted as "[TypeA a, TypeB b]".</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetIndexer.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetParameter})">
             <summary></summary>
@@ -164,6 +165,7 @@
             Parse .Net XML documentation for Indexer data.
             </summary>
             <param name="memberElement">Expects tag name "member".</param>
+            <example><![CDATA[<member name="P:Namespace.Type.Item(System.Int32)"></member>]]></example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetIndexer.AddAssemblyInfo(System.Reflection.PropertyInfo)">
             <summary>
@@ -615,7 +617,7 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator.CompareTo(System.Object)">
             <summary>
             Methods are sorted:
-            <list type='numbered'>
+            <list type='number'>
             	<item>alphabetically by namespace</item>
             	<item>then into <see cref='F:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator.OperatorOrder'/></item>
             	<item>then as a normal method (see <see cref='M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.CompareTo(System.Object)'/></item>
@@ -1409,7 +1411,7 @@
             </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.FieldCategory">
-            <summary>Mutually exclusive categories of fields, properties, and indexers.</summary>
+            <summary>Mutually exclusive categories of fields, properties, indexers, and events.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.FieldCategory.Unknown">
             <summary>Not enough information is available to determine field category.</summary>
@@ -1444,7 +1446,7 @@
             <summary>Fully qualified name of data type, if known. Null if not known.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetField.FullTypeName">
-            <summary></summary>
+            <summary>The "FullName" of the field data type.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetField.ConstantValue">
             <summary>For constant fields, the value of the constant. Null otherwise.</summary>
@@ -1457,6 +1459,7 @@
             Parse .Net XML documentation for Field data.
             </summary>
             <param name="memberElement">Expects tag name "member".</param>
+            <example><![CDATA[<member name="F:Namespace.Type.FieldName"></member>]]></example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetField.AddAssemblyInfo(System.Reflection.FieldInfo)">
             <summary>
@@ -1465,7 +1468,8 @@
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetMember">
             <summary>
-            Represents anything that a class/struct/interface may contain.
+            Represents any .Net construct that can have comments on it:
+            class, interface, struct, delegate, enum, method, field, property, event, etc.
             </summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetMember.Name">
@@ -1553,7 +1557,7 @@
             </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.MethodCategory">
-            <summary></summary>
+            <summary>Mutually exclusive categories of methods.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.MethodCategory.Unknown">
             <summary>Not enough information is available to determine method category.</summary>
@@ -1588,7 +1592,7 @@
             <summary></summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetMethod.MethodName">
-            <summary>Strongly typed name.</summary>
+            <summary>Strongly-typed name.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.#ctor">
             <summary>Empty constructor</summary>
@@ -1601,6 +1605,7 @@
             Parse .Net XML documentation for method signature data.
             </summary>
             <param name="memberElement">Expects tag "member".</param>
+            <example><![CDATA[<member name="M:Namespace.Type.MethodName(System.Int32,System.String)"></member>]]></example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.Is(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary>

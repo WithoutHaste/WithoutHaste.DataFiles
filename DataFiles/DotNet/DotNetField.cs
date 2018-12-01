@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
-	/// <summary>Mutually exclusive categories of fields, properties, and indexers.</summary>
+	/// <summary>Mutually exclusive categories of fields, properties, indexers, and events.</summary>
 	public enum FieldCategory
 	{
 		/// <summary>Not enough information is available to determine field category.</summary>
@@ -40,7 +40,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Fully qualified name of data type, if known. Null if not known.</summary>
 		public DotNetQualifiedTypeName TypeName { get; protected set; }
 
-		/// <summary></summary>
+		/// <summary>The "FullName" of the field data type.</summary>
 		public string FullTypeName { get { return TypeName.FullName; } }
 
 		/// <summary>For constant fields, the value of the constant. Null otherwise.</summary>
@@ -57,6 +57,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Parse .Net XML documentation for Field data.
 		/// </summary>
 		/// <param name="memberElement">Expects tag name "member".</param>
+		/// <example><![CDATA[<member name="F:Namespace.Type.FieldName"></member>]]></example>
 		public static DotNetField FromVisualStudioXml(XElement memberElement)
 		{
 			DotNetQualifiedName name = DotNetQualifiedName.FromVisualStudioXml(memberElement.Attribute("name")?.Value);
