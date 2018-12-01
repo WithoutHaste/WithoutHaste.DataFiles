@@ -451,7 +451,6 @@
             <summary>
             Represents a parameter description in the comments.
             </summary>
-            <example><![CDATA[<param name="myParam">nested comments</param>]]></example>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentParameter.ParameterLink">
             <summary>Strongly-typed link.</summary>
@@ -467,12 +466,12 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentParameter.FromVisualStudioXml(System.Xml.Linq.XElement)">
             <summary>Parses .Net XML documentation for param.</summary>
+            <example><![CDATA[<param name="myParam">nested comments</param>]]></example>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink">
             <summary>
             Represents a link in the comments to an internal parameter name.
             </summary>
-            <example><![CDATA[<paramref name="paramName" />]]></example>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.Name">
             <summary>Name of the parameter in local method.</summary>
@@ -488,6 +487,7 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.FromVisualStudioXml(System.Xml.Linq.XElement)">
             <summary>Parses .Net XML documentation for paramref.</summary>
+            <example><![CDATA[<paramref name="paramName" />]]></example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.ToString">
             <summary>Name</summary>
@@ -496,8 +496,6 @@
             <summary>
             Represents a section of comments that is linked to a fully qualified type or member.
             </summary>
-            <example><![CDATA[<permission cref="Namespace.Type.Member">nested comments</permission>]]></example>
-            <example><![CDATA[<exception cref="Namespace.ExceptionType">nested comments</exception>]]></example>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.QualifiedLink">
             <summary>Strongly-typed link.</summary>
@@ -513,6 +511,8 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(System.Xml.Linq.XElement)">
             <summary>Parses .Net XML documentation for permission or exception.</summary>
+            <example><![CDATA[<permission cref="Namespace.Type.Member">nested comments</permission>]]></example>
+            <example><![CDATA[<exception cref="Namespace.ExceptionType">nested comments</exception>]]></example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.Matches(WithoutHaste.DataFiles.DotNet.DotNetMember)">
             <summary>
@@ -523,8 +523,6 @@
             <summary>
             Represents a row of data in a .Net XML documentation table.
             </summary>
-            <example><![CDATA[<listheader><term>Header 1</term><term>Header 2</term></listheader>]]></example>
-            <example><![CDATA[<item><term>Cell 1</term><term>Cell 2</term></item>]]></example>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentRow.IsHeader">
             <summary></summary>
@@ -548,6 +546,8 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentRow.FromVisualStudioXml(System.Xml.Linq.XElement)">
             <summary>Parses .Net XML documentation "listheader" or "item", expecting one "term" per cell.</summary>
+            <example><![CDATA[<listheader><term>Header 1</term><term>Header 2</term></listheader>]]></example>
+            <example><![CDATA[<item><term>Cell 1</term><term>Cell 2</term></item>]]></example>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameter">
             <summary>
@@ -1245,8 +1245,6 @@
             <summary>
             Represents a link in the comments to an internal or extenal type or type.method().
             </summary>
-            <example><![CDATA[<exception cref="Namespace.ExceptionType">nested comments and/or plain text</exception>]]></example>
-            <example><![CDATA[<permission cref="Namespace.Type">nested comments and/or plain text</permission>]]></example>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.Name">
             <summary>Name of type or member.</summary>
@@ -1262,6 +1260,8 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.FromVisualStudioXml(System.Xml.Linq.XElement)">
             <summary>Parses .Net XML documentation tag that contains attribute cref.</summary>
+            <example><![CDATA[<exception cref="Namespace.ExceptionType">nested comments and/or plain text</exception>]]></example>
+            <example><![CDATA[<permission cref="Namespace.Type">nested comments and/or plain text</permission>]]></example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.FromVisualStudioXml(System.String)">
             <summary>Parses .Net XML documentation cref.</summary>

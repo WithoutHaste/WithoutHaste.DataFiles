@@ -10,7 +10,6 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <summary>
 	/// Represents a parameter description in the comments.
 	/// </summary>
-	/// <example><![CDATA[<param name="myParam">nested comments</param>]]></example>
 	public class DotNetCommentParameter : DotNetCommentLinkedGroup
 	{
 		/// <summary>Strongly-typed link.</summary>
@@ -37,6 +36,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>Parses .Net XML documentation for param.</summary>
+		/// <example><![CDATA[<param name="myParam">nested comments</param>]]></example>
 		public static new DotNetCommentParameter FromVisualStudioXml(XElement element)
 		{
 			ValidateXmlTag(element, "param");

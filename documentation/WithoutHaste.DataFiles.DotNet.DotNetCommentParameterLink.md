@@ -5,12 +5,6 @@
 
 Represents a link in the comments to an internal parameter name.  
 
-# Examples
-
-## Example A:
-
-`<paramref name="paramName" />`  
-
 # Properties
 
 ## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) FullName { get; }
@@ -38,6 +32,9 @@ Name
 ## static DotNetCommentParameterLink FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
 
 Parses .Net XML documentation for paramref.  
+
+**Example A:**  
+`<paramref name="paramName" />`  
 
 # Derived By
 

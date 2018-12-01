@@ -4,16 +4,6 @@
 
 Represents a section of comments that is linked to a fully qualified type or member.  
 
-# Examples
-
-## Example A:
-
-`<permission cref="Namespace.Type.Member">nested comments</permission>`  
-
-## Example B:
-
-`<exception cref="Namespace.ExceptionType">nested comments</exception>`  
-
 # Properties
 
 ## [DotNetCommentQualifiedLink](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.md) QualifiedLink { get; }
@@ -39,6 +29,12 @@ Returns true if link name matches the member name.
 ## static DotNetCommentQualifiedLinkedGroup FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
 
 Parses .Net XML documentation for permission or exception.  
+
+**Example A:**  
+`<permission cref="Namespace.Type.Member">nested comments</permission>`  
+
+**Example B:**  
+`<exception cref="Namespace.ExceptionType">nested comments</exception>`  
 
 # Derived By
 

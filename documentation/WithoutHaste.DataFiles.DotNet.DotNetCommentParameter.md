@@ -4,12 +4,6 @@
 
 Represents a parameter description in the comments.  
 
-# Examples
-
-## Example A:
-
-`<param name="myParam">nested comments</param>`  
-
 # Properties
 
 ## [DotNetCommentParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.md) ParameterLink { get; }
@@ -29,6 +23,9 @@ Strongly-typed link.
 ## static DotNetCommentParameter FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
 
 Parses .Net XML documentation for param.  
+
+**Example A:**  
+`<param name="myParam">nested comments</param>`  
 
 # Derived By
 

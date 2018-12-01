@@ -54,12 +54,12 @@ comments
 - DotNetCommentList DONE
 - DotNetCommentListItem DONE
 - DotNetCommentMethodLink DONE
-- DotNetCommentMethodLinkedGroup
-- DotNetCommentParameter
-- DotNetCommentParameterLink
-- DotNetCommentQualifiedLink
-- DotNetCommentQualifiedLinkedGroup
-- DotNetCommentRow
+- DotNetCommentMethodLinkedGroup DONE
+- DotNetCommentParameter DONE
+- DotNetCommentParameterLink DONE
+- DotNetCommentQualifiedLink DONE
+- DotNetCommentQualifiedLinkedGroup DONE
+- DotNetCommentRow - indexer param - indexer exceptions
 - DotNetCommentTable
 - DotNetCommentText
 - DotNetCommentTypeParameter

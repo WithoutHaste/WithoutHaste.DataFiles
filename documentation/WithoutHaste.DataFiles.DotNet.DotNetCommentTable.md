@@ -34,6 +34,13 @@ Represents a table in the comments.
 
 Returns the selected [WithoutHaste.DataFiles.DotNet.DotNetCommentCell](WithoutHaste.DataFiles.DotNet.DotNetCommentCell.md) of the table. Will return an empty [WithoutHaste.DataFiles.DotNet.DotNetCommentCell](WithoutHaste.DataFiles.DotNet.DotNetCommentCell.md) if the cell within range but does not actually exist.  
 
+**Exceptions:**  
+* **[IndexOutOfRangeException](https://docs.microsoft.com/en-us/dotnet/api/system.indexoutofrangeexception)**: Either the row or column index is out of range.  
+
+**Parameters:**  
+* **[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) rowIndex**: 0-based index of table row.  
+* **[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) columnIndex**: 0-based index of table column.  
+
 ## [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) ColumnCount { get; }
 
 Maximum number of columns in the table.  

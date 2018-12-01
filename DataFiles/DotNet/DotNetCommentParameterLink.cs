@@ -10,7 +10,6 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <summary>
 	/// Represents a link in the comments to an internal parameter name.
 	/// </summary>
-	/// <example><![CDATA[<paramref name="paramName" />]]></example>
 	public class DotNetCommentParameterLink : DotNetComment, IDotNetCommentLink
 	{
 		/// <summary>Name of the parameter in local method.</summary>
@@ -35,6 +34,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>Parses .Net XML documentation for paramref.</summary>
+		/// <example><![CDATA[<paramref name="paramName" />]]></example>
 		public static new DotNetCommentParameterLink FromVisualStudioXml(XElement element)
 		{
 			ValidateXmlTag(element, "paramref");

@@ -12,8 +12,6 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <summary>
 	/// Represents a section of comments that is linked to a fully qualified type or member.
 	/// </summary>
-	/// <example><![CDATA[<permission cref="Namespace.Type.Member">nested comments</permission>]]></example>
-	/// <example><![CDATA[<exception cref="Namespace.ExceptionType">nested comments</exception>]]></example>
 	public class DotNetCommentQualifiedLinkedGroup : DotNetCommentLinkedGroup
 	{
 		/// <summary>Strongly-typed link.</summary>
@@ -40,6 +38,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>Parses .Net XML documentation for permission or exception.</summary>
+		/// <example><![CDATA[<permission cref="Namespace.Type.Member">nested comments</permission>]]></example>
+		/// <example><![CDATA[<exception cref="Namespace.ExceptionType">nested comments</exception>]]></example>
 		public static new DotNetCommentQualifiedLinkedGroup FromVisualStudioXml(XElement element)
 		{
 			ValidateXmlTag(element, new string[] { "permission", "exception", "see", "seealso" });

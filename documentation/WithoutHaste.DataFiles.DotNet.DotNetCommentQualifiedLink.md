@@ -5,16 +5,6 @@
 
 Represents a link in the comments to an internal or extenal type or type.method().  
 
-# Examples
-
-## Example A:
-
-`<exception cref="Namespace.ExceptionType">nested comments and/or plain text</exception>`  
-
-## Example B:
-
-`<permission cref="Namespace.Type">nested comments and/or plain text</permission>`  
-
 # Properties
 
 ## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) FullName { get; }
@@ -42,6 +32,12 @@ Returns true if link name matches the member name.
 ## static DotNetCommentQualifiedLink FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
 
 Parses .Net XML documentation tag that contains attribute cref.  
+
+**Example A:**  
+`<exception cref="Namespace.ExceptionType">nested comments and/or plain text</exception>`  
+
+**Example B:**  
+`<permission cref="Namespace.Type">nested comments and/or plain text</permission>`  
 
 ## static DotNetCommentQualifiedLink FromVisualStudioXml([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) cref)
 

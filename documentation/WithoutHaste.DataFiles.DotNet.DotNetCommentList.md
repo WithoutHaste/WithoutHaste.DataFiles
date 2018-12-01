@@ -16,6 +16,9 @@ Items in the list.
 
 Access list items by 0-based index.  
 
+**Exceptions:**  
+* **[IndexOutOfRangeException](https://docs.microsoft.com/en-us/dotnet/api/system.indexoutofrangeexception)**:   
+
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsNumbered { get; protected set; }
 
 True for numbered lists.  
