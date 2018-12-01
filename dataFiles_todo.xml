@@ -53,7 +53,7 @@ constructs
 - DotNetMethod DONE
 - DotNetMethodConstructor DONE
 - DotNetMethodDestructor DONE
-- DotNetMethodOperator - list formatting
+- DotNetMethodOperator - See/SeeAlso with line in list
 - DotNetParameter
 - DotNetProperty
 - DotNetPropertyMethod

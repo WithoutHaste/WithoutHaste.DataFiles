@@ -6,17 +6,23 @@ Represents a listheader or item in a .Net XML documentation list.
 
 # Properties
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Description { get; protected set; }
+## [DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md) Description { get; protected set; }
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsHeader { get; protected set; }
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Term { get; protected set; }
+## [DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md) Term { get; protected set; }
 
 # Constructors
 
 ## DotNetCommentListItem()
 
 ## DotNetCommentListItem([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) term, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) description = null, [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isHeader = False)
+
+Plain text _term_ and _description_.  
+
+## DotNetCommentListItem([DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md) term, [DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md) description = null, [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isHeader = False)
+
+_term_ and _description_ containing more than plain text, such as a `see` tag.  
 
 # Static Methods
 

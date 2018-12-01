@@ -408,7 +408,10 @@
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentListItem.#ctor(System.String,System.String,System.Boolean)">
-            <summary></summary>
+            <summary>Plain text <paramref name='term'/> and <paramref name='description'/>.</summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentListItem.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentGroup,WithoutHaste.DataFiles.DotNet.DotNetCommentGroup,System.Boolean)">
+            <summary><paramref name='term'/> and <paramref name='description'/> containing more than plain text, such as a <c>see</c> tag.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentListItem.FromVisualStudioXml(System.Xml.Linq.XElement)">
             <summary>Parses .Net XML documentation listheader or item.</summary>

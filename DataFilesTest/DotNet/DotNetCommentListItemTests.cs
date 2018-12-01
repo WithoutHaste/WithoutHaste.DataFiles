@@ -33,7 +33,7 @@ namespace DataFilesTest
 			DotNetCommentListItem result = DotNetCommentListItem.FromVisualStudioXml(element);
 			//assert
 			Assert.AreEqual(true, result.IsHeader);
-			Assert.AreEqual(text, result.Term);
+			Assert.AreEqual(text, result.Term[0].ToString());
 			Assert.AreEqual(null, result.Description);
 		}
 
@@ -47,7 +47,7 @@ namespace DataFilesTest
 			DotNetCommentListItem result = DotNetCommentListItem.FromVisualStudioXml(element);
 			//assert
 			Assert.AreEqual(true, result.IsHeader);
-			Assert.AreEqual(text, result.Term);
+			Assert.AreEqual(text, result.Term[0].ToString());
 			Assert.AreEqual(null, result.Description);
 		}
 
@@ -62,8 +62,8 @@ namespace DataFilesTest
 			DotNetCommentListItem result = DotNetCommentListItem.FromVisualStudioXml(element);
 			//assert
 			Assert.AreEqual(true, result.IsHeader);
-			Assert.AreEqual(text, result.Term);
-			Assert.AreEqual(description, result.Description);
+			Assert.AreEqual(text, result.Term[0].ToString());
+			Assert.AreEqual(description, result.Description[0].ToString());
 		}
 
 		[TestMethod]
@@ -77,7 +77,7 @@ namespace DataFilesTest
 			//assert
 			Assert.AreEqual(true, result.IsHeader);
 			Assert.AreEqual(null, result.Term);
-			Assert.AreEqual(description, result.Description);
+			Assert.AreEqual(description, result.Description[0].ToString());
 		}
 
 		[TestMethod]
@@ -103,7 +103,7 @@ namespace DataFilesTest
 			DotNetCommentListItem result = DotNetCommentListItem.FromVisualStudioXml(element);
 			//assert
 			Assert.AreEqual(false, result.IsHeader);
-			Assert.AreEqual(text, result.Term);
+			Assert.AreEqual(text, result.Term[0].ToString());
 			Assert.AreEqual(null, result.Description);
 		}
 
@@ -117,7 +117,7 @@ namespace DataFilesTest
 			DotNetCommentListItem result = DotNetCommentListItem.FromVisualStudioXml(element);
 			//assert
 			Assert.AreEqual(false, result.IsHeader);
-			Assert.AreEqual(text, result.Term);
+			Assert.AreEqual(text, result.Term[0].ToString());
 			Assert.AreEqual(null, result.Description);
 		}
 
@@ -132,8 +132,8 @@ namespace DataFilesTest
 			DotNetCommentListItem result = DotNetCommentListItem.FromVisualStudioXml(element);
 			//assert
 			Assert.AreEqual(false, result.IsHeader);
-			Assert.AreEqual(text, result.Term);
-			Assert.AreEqual(description, result.Description);
+			Assert.AreEqual(text, result.Term[0].ToString());
+			Assert.AreEqual(description, result.Description[0].ToString());
 		}
 
 		[TestMethod]
@@ -147,7 +147,7 @@ namespace DataFilesTest
 			//assert
 			Assert.AreEqual(false, result.IsHeader);
 			Assert.AreEqual(null, result.Term);
-			Assert.AreEqual(description, result.Description);
+			Assert.AreEqual(description, result.Description[0].ToString());
 		}
 	}
 }

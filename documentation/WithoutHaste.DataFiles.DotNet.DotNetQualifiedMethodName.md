@@ -90,11 +90,11 @@ Returns deep clone of qualified name.
 ## virtual [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) CompareTo([object](https://docs.microsoft.com/en-us/dotnet/api/system.object) b)
 
 Methods are sorted:  
-* **alphabetically by namespace**  
-* **alphabetically by explicit interface implementation**  
-* **then parameter list, shortest to longest**  
-* **then alphabetically by parameter types**  
-* **then alphabetically by return type (for some operators)**  
+* alphabetically by namespace  
+* alphabetically by explicit interface implementation  
+* then parameter list, shortest to longest  
+* then alphabetically by parameter types  
+* then alphabetically by return type (for some operators)  
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesArguments([System.Reflection.ParameterInfo[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) otherParameters)
 
@@ -166,18 +166,18 @@ Expects: "(type, type, type)"
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) = DotNetQualifiedMethodName a > DotNetQualifiedMethodName b
 
 Methods are sorted:  
-* **alphabetically by namespace**  
-* **alphabetically by explicit interface implementation**  
-* **then parameter list, shortest to longest**  
-* **then alphabetically by parameter types**  
-* **then alphabetically by return type (for some operators)**  
+* alphabetically by namespace  
+* alphabetically by explicit interface implementation  
+* then parameter list, shortest to longest  
+* then alphabetically by parameter types  
+* then alphabetically by return type (for some operators)  
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) = DotNetQualifiedMethodName a < DotNetQualifiedMethodName b
 
 Methods are sorted:  
-* **alphabetically by namespace**  
-* **alphabetically by explicit interface implementation**  
-* **then parameter list, shortest to longest**  
-* **then alphabetically by parameter types**  
-* **then alphabetically by return type (for some operators)**  
+* alphabetically by namespace  
+* alphabetically by explicit interface implementation  
+* then parameter list, shortest to longest  
+* then alphabetically by parameter types  
+* then alphabetically by return type (for some operators)  
 

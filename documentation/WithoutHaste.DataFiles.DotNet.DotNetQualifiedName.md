@@ -155,10 +155,10 @@ Explicit interface implementations are considered only as a last resort.
 Parses a System.Reflection.AssemblyInfo full name.  
 
 **Misc:**  
-* **The escape character is '\'**  
-* **Nested types are separated with '+' instead of '.'**  
-* **Class declaration of generic types are shown the same as .Net XML documentation: MyType`1 for one generic type**  
-* **When a generic type is defined: System.Collections.Generic.List`1[U], where U is the type alias from the class declaration**  
+* The escape character is '\'  
+* Nested types are separated with '+' instead of '.'  
+* Class declaration of generic types are shown the same as .Net XML documentation: MyType`1 for one generic type  
+* When a generic type is defined: System.Collections.Generic.List`1[U], where U is the type alias from the class declaration  
 
 ## static DotNetQualifiedName FromAssemblyInfo([Type](https://docs.microsoft.com/en-us/dotnet/api/system.type) type)
 
@@ -179,12 +179,12 @@ Parses a .Net XML documentation type, method, or other member name.
 
 #### [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name
 
-* **Names starting with "T:" are parsed as Type names.**  
-* **Names starting with "M:" are parsed as Method names.**  
-* **Names starting with "F:" are parsed as Member names.**  
-* **Names starting with "P:" are parsed as Member names.**  
-* **Names starting with "E:" are parsed as Member names.**  
-* **All others are parsed as Member names.**  
+* Names starting with "T:" are parsed as Type names.  
+* Names starting with "M:" are parsed as Method names.  
+* Names starting with "F:" are parsed as Member names.  
+* Names starting with "P:" are parsed as Member names.  
+* Names starting with "E:" are parsed as Member names.  
+* All others are parsed as Member names.  
 
 # Operators
 

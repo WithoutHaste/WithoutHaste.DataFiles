@@ -17,20 +17,31 @@ namespace WithoutHaste.DataFiles.DotNet
 		public bool IsHeader { get; protected set; }
 
 		/// <summary></summary>
-		public string Term { get; protected set; }
+		public DotNetCommentGroup Term { get; protected set; }
 
 		/// <summary></summary>
-		public string Description { get; protected set; }
+		public DotNetCommentGroup Description { get; protected set; }
 
 		#region Constructors
 
 		/// <summary></summary>
-		public DotNetCommentListItem() : this(null, null, false)
+		public DotNetCommentListItem()
 		{
+			Term = null;
+			Description = null;
+			IsHeader = false;
 		}
 
-		/// <summary></summary>
+		/// <summary>Plain text <paramref name='term'/> and <paramref name='description'/>.</summary>
 		public DotNetCommentListItem(string term, string description = null, bool isHeader = false)
+		{
+			Term = new DotNetCommentGroup(new DotNetCommentText(term));
+			Description = new DotNetCommentGroup(new DotNetCommentText(description));
+			IsHeader = isHeader;
+		}
+
+		/// <summary><paramref name='term'/> and <paramref name='description'/> containing more than plain text, such as a <c>see</c> tag.</summary>
+		public DotNetCommentListItem(DotNetCommentGroup term, DotNetCommentGroup description = null, bool isHeader = false)
 		{
 			Term = term;
 			Description = description;
@@ -82,14 +93,14 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 
 			bool isHeader = (element.Name.LocalName == "listheader");
-			string term = null;
-			string description = null;
+			DotNetCommentGroup term = null;
+			DotNetCommentGroup description = null;
 
 			foreach(XNode node in element.Nodes())
 			{
 				if(node.NodeType == XmlNodeType.Text)
 				{
-					term = node.ToString();
+					term = DotNetCommentGroup.FromVisualStudioXml(element);
 					break;
 				}
 				if(node.NodeType == XmlNodeType.Element)
@@ -97,8 +108,8 @@ namespace WithoutHaste.DataFiles.DotNet
 					XElement child = (node as XElement);
 					switch(child.Name.LocalName)
 					{
-						case "term": term = child.Value; break;
-						case "description": description = child.Value; break;
+						case "term": term = DotNetCommentGroup.FromVisualStudioXml(child); break;
+						case "description": description = DotNetCommentGroup.FromVisualStudioXml(child); break;
 					}
 				}
 			}

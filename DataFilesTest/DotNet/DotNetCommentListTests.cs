@@ -121,9 +121,25 @@ namespace DataFilesTest
 			Assert.IsTrue(result is DotNetCommentList);
 			DotNetCommentList list = result as DotNetCommentList;
 			Assert.AreEqual(4, list.Length);
-			Assert.AreEqual("I1", list[1].Term);
+			Assert.AreEqual("I1", list[1].Term[0].ToString());
 			Assert.AreEqual(null, list[2].Term);
-			Assert.AreEqual("I3", list[3].Term);
+			Assert.AreEqual("I3", list[3].Term[0].ToString());
+		}
+
+		[TestMethod]
+		public void DotNetCommentList_FromXml_InlineTagsInItem()
+		{
+			//arrange
+			XElement element = XElement.Parse("<list type='number'><item>ABC <see cref='OtherClass'/> DEF</item></list>", LoadOptions.PreserveWhitespace);
+			//act
+			DotNetComment result = DotNetCommentList.FromVisualStudioXml(element);
+			//assert
+			Assert.IsTrue(result is DotNetCommentList);
+			DotNetCommentList list = result as DotNetCommentList;
+			Assert.AreEqual(1, list.Length);
+			DotNetCommentListItem item = list[0];
+			Assert.AreEqual(3, item.Term.Count);
+			Assert.IsNull(item.Description);
 		}
 	}
 }
