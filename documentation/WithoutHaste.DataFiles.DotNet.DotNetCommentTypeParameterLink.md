@@ -5,12 +5,6 @@
 
 Represents a link in the comments to an internal generic-type parameter.  
 
-# Examples
-
-## Example A:
-
-`<typeparamref name="T" />`  
-
 # Constructors
 
 ## DotNetCommentTypeParameterLink([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name)
@@ -22,4 +16,7 @@ Represents a link in the comments to an internal generic-type parameter.
 ## static DotNetCommentTypeParameterLink FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
 
 Parses .Net XML documentation for typeparamref.  
+
+**Example A:**  
+`<typeparamref name="T" />`  
 

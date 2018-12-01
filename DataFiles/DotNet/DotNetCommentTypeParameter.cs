@@ -10,7 +10,6 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <summary>
 	/// Represents a generic-type parameter description in the comments.
 	/// </summary>
-	/// <example><![CDATA[<typeparam name="T">nested comments</typeparam>]]></example>
 	public class DotNetCommentTypeParameter : DotNetCommentParameter
 	{
 		#region Constructors
@@ -34,6 +33,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>Parses .Net XML documentation for typeparam.</summary>
+		/// <example><![CDATA[<typeparam name="T">nested comments</typeparam>]]></example>
 		public static new DotNetCommentTypeParameter FromVisualStudioXml(XElement element)
 		{
 			ValidateXmlTag(element, "typeparam");

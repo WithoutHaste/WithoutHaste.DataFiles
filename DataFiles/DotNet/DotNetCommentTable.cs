@@ -15,7 +15,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		public List<DotNetCommentRow> Rows = new List<DotNetCommentRow>();
 
-		/// <summary>Number of rows in the table. Includes header rows and normal rows.</summary>
+		/// <summary>Number of rows in the table. Includes header rows and data rows.</summary>
 		public int RowCount { get { return Rows.Count; } }
 
 		/// <summary>Number of header rows in the table.</summary>

@@ -14,3 +14,5 @@ Represents a delegate type, categorized as a method.
 
 ## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddAssemblyInfo([System.Reflection.TypeInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.typeinfo) typeInfo)
 
+Add additional documentation information from the assembly itself.  
+

@@ -1,5 +1,7 @@
 # FieldCategory
 
+Mutually exclusive categories of fields, properties, and indexers.  
+
 # Constants
 
 ## 0: Unknown
@@ -16,5 +18,6 @@ No special category.
 
 ## 4: Abstract
 
-Abstract. Value only valid on properties and events.  
+**Remarks:**  
+Value only valid on properties and events.  
 

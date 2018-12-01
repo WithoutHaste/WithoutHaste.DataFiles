@@ -24,7 +24,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			Category = MethodCategory.Delegate;
 		}
 
-		/// <summary></summary>
+		/// <summary>Add additional documentation information from the assembly itself.</summary>
 		public void AddAssemblyInfo(TypeInfo typeInfo)
 		{
 			AddAssemblyInfo(typeInfo.DeclaredMethods.First(m => m.Name == "Invoke"));

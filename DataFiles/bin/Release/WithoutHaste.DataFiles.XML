@@ -83,7 +83,7 @@
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetBaseType.Depth">
             <summary>Returns the inheritance distance from here to the bottom.</summary>
-            <example>Class "System.Reflection.TypeInfo" has Depth = 4 because its inheritance path is "TypeInfo" -> "Type" -> "MemberInfo" -> "Object".</example>
+            <example>Class "System.Reflection.TypeInfo" has Depth = 4 because its inheritance path is "TypeInfo -> Type -> MemberInfo -> Object".</example>
             <example>Class "System.Object" has Depth = 1 because its inheritance path is just "Object".</example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetBaseType.#ctor(System.Type)">
@@ -140,7 +140,7 @@
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDelegate.AddAssemblyInfo(System.Reflection.TypeInfo)">
-            <summary></summary>
+            <summary>Add additional documentation information from the assembly itself.</summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetIndexer">
             <summary>
@@ -553,7 +553,6 @@
             <summary>
             Represents a generic-type parameter description in the comments.
             </summary>
-            <example><![CDATA[<typeparam name="T">nested comments</typeparam>]]></example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameter.#ctor(WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink,WithoutHaste.DataFiles.DotNet.DotNetComment)">
             <summary></summary>
@@ -566,12 +565,12 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameter.FromVisualStudioXml(System.Xml.Linq.XElement)">
             <summary>Parses .Net XML documentation for typeparam.</summary>
+            <example><![CDATA[<typeparam name="T">nested comments</typeparam>]]></example>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink">
             <summary>
             Represents a link in the comments to an internal generic-type parameter.
             </summary>
-            <example><![CDATA[<typeparamref name="T" />]]></example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink.#ctor(System.String)">
             <summary></summary>
@@ -581,6 +580,7 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink.FromVisualStudioXml(System.Xml.Linq.XElement)">
             <summary>Parses .Net XML documentation for typeparamref.</summary>
+            <example><![CDATA[<typeparamref name="T" />]]></example>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetMethodConstructor">
             <summary>
@@ -1347,7 +1347,7 @@
             <summary></summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentTable.RowCount">
-            <summary>Number of rows in the table. Includes header rows and normal rows.</summary>
+            <summary>Number of rows in the table. Includes header rows and data rows.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentTable.HeaderRowCount">
             <summary>Number of header rows in the table.</summary>
@@ -1401,6 +1401,7 @@
             Parse .Net XML documentation for Event data.
             </summary>
             <param name="memberElement">Expects tag name "member".</param>
+            <example><![CDATA[<member name="E:Namespace.Type.EventName"></member>]]></example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetEvent.AddAssemblyInfo(System.Reflection.EventInfo)">
             <summary>
@@ -1408,7 +1409,7 @@
             </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.FieldCategory">
-            <summary></summary>
+            <summary>Mutually exclusive categories of fields, properties, and indexers.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.FieldCategory.Unknown">
             <summary>Not enough information is available to determine field category.</summary>
@@ -1423,7 +1424,7 @@
             <summary></summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.FieldCategory.Abstract">
-            <summary>Abstract. Value only valid on properties and events.</summary>
+            <remarks>Value only valid on properties and events.</remarks>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetField">
             <summary>
@@ -2268,6 +2269,7 @@
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile">
             <summary>
             Represents a .Net XML documentation file, such as those produced by Visual Studio.
+            Can add additional documentation derived from the assembly itself.
             </summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.Extensions">
@@ -2296,7 +2298,7 @@
             </summary>
             <param name="filename">Full path, filename, and extension.</param>
             <exception cref="T:System.ArgumentException">Filename is null.</exception>
-            <exception cref="T:System.ArgumentException">Unexpected file extension.</exception>
+            <exception cref="T:System.ArgumentException">Unexpected file extension of the *.XML documentation file.</exception>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.#ctor(System.Xml.Linq.XDocument)">
             <summary>
@@ -2307,7 +2309,7 @@
             <summary>
             Load additional documentation information from the assembly itself.
             </summary>
-            <param name="assemblyFilename">Fill path and filename of the *.dll library being documentated.</param>
+            <param name="assemblyFilename">Full path and filename of the *.dll library being documentated.</param>
             <param name="thirdPartyAssemblyFilenames">
             List of third-party libraries referenced by your library.
             These libraries will not be documented, but they must be loaded if you want to see the full type names for return types and parameter types from these libraries.

@@ -20,6 +20,9 @@ Load additional documentation information from the assembly itself.
 
 Parse .Net XML documentation for Event data.  
 
+**Example A:**  
+`<member name="E:Namespace.Type.EventName"></member>`  
+
 **Parameters:**  
 * **[System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement**: Expects tag name "member".  
 

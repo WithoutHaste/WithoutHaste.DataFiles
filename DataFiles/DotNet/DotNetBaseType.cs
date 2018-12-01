@@ -20,7 +20,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		public DotNetBaseType BaseType { get; protected set; }
 
 		/// <summary>Returns the inheritance distance from here to the bottom.</summary>
-		/// <example>Class "System.Reflection.TypeInfo" has Depth = 4 because its inheritance path is "TypeInfo" -> "Type" -> "MemberInfo" -> "Object".</example>
+		/// <example>Class "System.Reflection.TypeInfo" has Depth = 4 because its inheritance path is "TypeInfo -> Type -> MemberInfo -> Object".</example>
 		/// <example>Class "System.Object" has Depth = 1 because its inheritance path is just "Object".</example>
 		public int Depth {
 			get {

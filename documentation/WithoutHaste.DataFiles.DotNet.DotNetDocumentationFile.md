@@ -3,6 +3,7 @@
 **Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
 
 Represents a .Net XML documentation file, such as those produced by Visual Studio.  
+Can add additional documentation derived from the assembly itself.  
 
 # Fields
 
@@ -38,7 +39,7 @@ Loads .Net XML documentation from file.
 
 **Exceptions:**  
 * **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: Filename is null.  
-* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: Unexpected file extension.  
+* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: Unexpected file extension of the *.XML documentation file.  
 
 **Parameters:**  
 * **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) filename**: Full path, filename, and extension.  
@@ -57,7 +58,7 @@ Load additional documentation information from the assembly itself.
 
 #### [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) assemblyFilename
 
-Fill path and filename of the *.dll library being documentated.  
+Full path and filename of the *.dll library being documentated.  
 
 #### [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) thirdPartyAssemblyFilenames
 

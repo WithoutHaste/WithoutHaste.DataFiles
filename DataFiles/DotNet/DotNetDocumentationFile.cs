@@ -11,6 +11,7 @@ namespace WithoutHaste.DataFiles.DotNet
 {
 	/// <summary>
 	/// Represents a .Net XML documentation file, such as those produced by Visual Studio.
+	/// Can add additional documentation derived from the assembly itself.
 	/// </summary>
 	public class DotNetDocumentationFile
 	{
@@ -49,7 +50,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// </summary>
 		/// <param name="filename">Full path, filename, and extension.</param>
 		/// <exception cref="ArgumentException">Filename is null.</exception>
-		/// <exception cref="ArgumentException">Unexpected file extension.</exception>
+		/// <exception cref="ArgumentException">Unexpected file extension of the *.XML documentation file.</exception>
 		public DotNetDocumentationFile(string filename)
 		{
 			if(!Extensions.Contains(Path.GetExtension(filename)))
@@ -81,7 +82,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>
 		/// Load additional documentation information from the assembly itself.
 		/// </summary>
-		/// <param name="assemblyFilename">Fill path and filename of the *.dll library being documentated.</param>
+		/// <param name="assemblyFilename">Full path and filename of the *.dll library being documentated.</param>
 		/// <param name="thirdPartyAssemblyFilenames">
 		/// List of third-party libraries referenced by your library.
 		/// These libraries will not be documented, but they must be loaded if you want to see the full type names for return types and parameter types from these libraries.

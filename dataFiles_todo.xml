@@ -38,54 +38,15 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">42</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">verify documentation: DotNet namespace
-comments
-- DotNetComment DONE
-- DotNetCommentCell DONE
-- DotNetCommentCode DONE
-- DotNetCommentCodeBlock DONE
-- DotNetCommentDuplicate DONE
-- DotNetCommentGroup DONE
-- DotNetCommentInherit DONE
-- DotNetCommentLinkedGroup DONE
-- DotNetCommentList DONE
-- DotNetCommentListItem DONE
-- DotNetCommentMethodLink DONE
-- DotNetCommentMethodLinkedGroup DONE
-- DotNetCommentParameter DONE
-- DotNetCommentParameterLink DONE
-- DotNetCommentQualifiedLink DONE
-- DotNetCommentQualifiedLinkedGroup DONE
-- DotNetCommentRow DONE
-- DotNetCommentTable - localise See/SeeAlso references
-- DotNetCommentText
-- DotNetCommentTypeParameter
-- DotNetCommentTypeParameterLink</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Test</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2018-11-20T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
           <Data ss:Type="Number">43</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
           <Data ss:Type="String">verify documentation: DotNet namespace
 constructs
-- DotNetBaseType
-- DotNetDelegate
-- DotNetDocumentationFile
-- DotNetEvent
+- DotNetBaseType DONE
+- DotNetDelegate DONE
+- DotNetDocumentationFile DONE
+- DotNetEvent DONE
 - DotNetField
 - DotNetIndexer
 - DotNetMember
@@ -412,6 +373,48 @@ could turn DotNetSettings.QualifiedNameConverter into a list or event so that an
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">42</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">verify documentation: DotNet namespace
+comments
+- DotNetComment DONE
+- DotNetCommentCell DONE
+- DotNetCommentCode DONE
+- DotNetCommentCodeBlock DONE
+- DotNetCommentDuplicate DONE
+- DotNetCommentGroup DONE
+- DotNetCommentInherit DONE
+- DotNetCommentLinkedGroup DONE
+- DotNetCommentList DONE
+- DotNetCommentListItem DONE
+- DotNetCommentMethodLink DONE
+- DotNetCommentMethodLinkedGroup DONE
+- DotNetCommentParameter DONE
+- DotNetCommentParameterLink DONE
+- DotNetCommentQualifiedLink DONE
+- DotNetCommentQualifiedLinkedGroup DONE
+- DotNetCommentRow DONE
+- DotNetCommentTable DONE
+- DotNetCommentText DONE
+- DotNetCommentTypeParameter DONE
+- DotNetCommentTypeParameterLink DONE</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Test</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-11-20T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-12-01T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>

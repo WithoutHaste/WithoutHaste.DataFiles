@@ -93,6 +93,7 @@ Represents a delegate type, categorized as a method.
   
 [**DotNetDocumentationFile**](WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.md)  
 Represents a .Net XML documentation file, such as those produced by Visual Studio.  
+Can add additional documentation derived from the assembly itself.  
 
   
 [**DotNetEvent**](WithoutHaste.DataFiles.DotNet.DotNetEvent.md)  
@@ -208,7 +209,7 @@ The type of xml tag that the comment came from.
 
   
 [**FieldCategory**](WithoutHaste.DataFiles.DotNet.FieldCategory.md)  
-  
+Mutually exclusive categories of fields, properties, and indexers.  
 
   
 [**MethodCategory**](WithoutHaste.DataFiles.DotNet.MethodCategory.md)  

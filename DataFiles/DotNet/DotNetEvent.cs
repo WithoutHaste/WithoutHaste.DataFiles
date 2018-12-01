@@ -25,6 +25,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Parse .Net XML documentation for Event data.
 		/// </summary>
 		/// <param name="memberElement">Expects tag name "member".</param>
+		/// <example><![CDATA[<member name="E:Namespace.Type.EventName"></member>]]></example>
 		public static new DotNetEvent FromVisualStudioXml(XElement memberElement)
 		{
 			DotNetQualifiedName name = DotNetQualifiedName.FromVisualStudioXml(memberElement.Attribute("name")?.Value);

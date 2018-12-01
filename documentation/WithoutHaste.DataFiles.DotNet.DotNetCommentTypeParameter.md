@@ -4,12 +4,6 @@
 
 Represents a generic-type parameter description in the comments.  
 
-# Examples
-
-## Example A:
-
-`<typeparam name="T">nested comments</typeparam>`  
-
 # Constructors
 
 ## DotNetCommentTypeParameter([DotNetCommentTypeParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink.md) link, [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
@@ -23,4 +17,7 @@ Represents a generic-type parameter description in the comments.
 ## static DotNetCommentTypeParameter FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
 
 Parses .Net XML documentation for typeparam.  
+
+**Example A:**  
+`<typeparam name="T">nested comments</typeparam>`  
 

@@ -35,7 +35,7 @@ Number of header rows in the table.
 
 ## [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) RowCount { get; }
 
-Number of rows in the table. Includes header rows and normal rows.  
+Number of rows in the table. Includes header rows and data rows.  
 
 # Constructors
 

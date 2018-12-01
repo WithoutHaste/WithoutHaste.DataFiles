@@ -14,7 +14,7 @@ Stub class: contains minimal information about the type.
 Returns the inheritance distance from here to the bottom.  
 
 **Example A:**  
-Class "System.Reflection.TypeInfo" has Depth = 4 because its inheritance path is "TypeInfo" -&gt; "Type" -&gt; "MemberInfo" -&gt; "Object".  
+Class "System.Reflection.TypeInfo" has Depth = 4 because its inheritance path is "TypeInfo -&gt; Type -&gt; MemberInfo -&gt; Object".  
 
 **Example B:**  
 Class "System.Object" has Depth = 1 because its inheritance path is just "Object".  

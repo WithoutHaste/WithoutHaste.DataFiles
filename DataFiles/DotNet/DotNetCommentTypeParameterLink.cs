@@ -10,7 +10,6 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <summary>
 	/// Represents a link in the comments to an internal generic-type parameter.
 	/// </summary>
-	/// <example><![CDATA[<typeparamref name="T" />]]></example>
 	public class DotNetCommentTypeParameterLink : DotNetCommentParameterLink
 	{
 		#region Constructors
@@ -27,6 +26,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>Parses .Net XML documentation for typeparamref.</summary>
+		/// <example><![CDATA[<typeparamref name="T" />]]></example>
 		public static new DotNetCommentTypeParameterLink FromVisualStudioXml(XElement element)
 		{
 			ValidateXmlTag(element, "typeparamref");
