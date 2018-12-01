@@ -162,11 +162,11 @@ Parses a System.Reflection.AssemblyInfo full name.
 
 ## static DotNetQualifiedName FromAssemblyInfo([Type](https://docs.microsoft.com/en-us/dotnet/api/system.type) type)
 
-See [WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.FromAssemblyInfo(System.Reflection.TypeInfo)](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md)  
+See [FromAssemblyInfo(System.Reflection.TypeInfo)](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md)  
 
 ## static DotNetQualifiedName FromAssemblyInfo([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) typeName)
 
-See [WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.FromAssemblyInfo(System.Reflection.TypeInfo)](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md)  
+See [FromAssemblyInfo(System.Reflection.TypeInfo)](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md)  
 
 ## static DotNetQualifiedName FromVisualStudioXml([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name)
 

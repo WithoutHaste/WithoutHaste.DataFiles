@@ -1342,22 +1342,6 @@
             <summary>
             Represents a table in the comments.
             </summary>
-            <example>
-            <![CDATA[
-             <list type="table">
-              <listheader>
-               <term>Column 1</term>
-               <term>Column 2</term>
-               <term>Column 3</term>
-              </listheader>
-              <item>
-               <term>Row 1, Cell 1</term>
-               <term>Row 1, Cell 2</term>
-               <term>Row 1, Cell 3</term>
-              </item>
-             </list>
-            ]]>
-            </example>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetCommentTable.Rows">
             <summary></summary>
@@ -1376,7 +1360,7 @@
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentTable.Item(System.Int32,System.Int32)">
             <summary>
-            Returns the selected <see cref="T:WithoutHaste.DataFiles.DotNet.DotNetCommentCell"/> of the table. Will return an empty <see cref="T:WithoutHaste.DataFiles.DotNet.DotNetCommentCell"/> if the cell within range but does not actually exist.
+            Returns the selected <see cref="T:WithoutHaste.DataFiles.DotNet.DotNetCommentCell"/> of the table. Will return a <see cref="F:WithoutHaste.DataFiles.DotNet.DotNetCommentCell.EmptyCell"/> if the cell is within range but does not actually exist.
             </summary>
             <param name="rowIndex">0-based index of table row.</param>
             <param name="columnIndex">0-based index of table column.</param>
@@ -1387,6 +1371,22 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentTable.FromVisualStudioXml(System.Xml.Linq.XElement)">
             <summary>Parses .Net XML documentation table.</summary>
+            <example>
+            <![CDATA[
+             <list type="table">
+              <listheader>
+               <term>Column 1</term>
+               <term>Column 2</term>
+               <term>Column 3</term>
+              </listheader>
+              <item>
+               <term>Row 1, Cell 1</term>
+               <term>Row 1, Cell 2</term>
+               <term>Row 1, Cell 3</term>
+              </item>
+             </list>
+            ]]>
+            </example>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetEvent">
             <summary>

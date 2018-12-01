@@ -10,22 +10,6 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <summary>
 	/// Represents a table in the comments.
 	/// </summary>
-	/// <example>
-	/// <![CDATA[
-	///  <list type="table">
-	///   <listheader>
-	///    <term>Column 1</term>
-	///    <term>Column 2</term>
-	///    <term>Column 3</term>
-	///   </listheader>
-	///   <item>
-	///    <term>Row 1, Cell 1</term>
-	///    <term>Row 1, Cell 2</term>
-	///    <term>Row 1, Cell 3</term>
-	///   </item>
-	///  </list>
-	/// ]]>
-	/// </example>
 	public class DotNetCommentTable : DotNetComment
 	{
 		/// <summary></summary>
@@ -50,7 +34,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>
-		/// Returns the selected <see cref="DotNetCommentCell"/> of the table. Will return an empty <see cref="DotNetCommentCell"/> if the cell within range but does not actually exist.
+		/// Returns the selected <see cref="DotNetCommentCell"/> of the table. Will return a <see cref="DotNetCommentCell.EmptyCell"/> if the cell is within range but does not actually exist.
 		/// </summary>
 		/// <param name="rowIndex">0-based index of table row.</param>
 		/// <param name="columnIndex">0-based index of table column.</param>
@@ -75,6 +59,22 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>Parses .Net XML documentation table.</summary>
+		/// <example>
+		/// <![CDATA[
+		///  <list type="table">
+		///   <listheader>
+		///    <term>Column 1</term>
+		///    <term>Column 2</term>
+		///    <term>Column 3</term>
+		///   </listheader>
+		///   <item>
+		///    <term>Row 1, Cell 1</term>
+		///    <term>Row 1, Cell 2</term>
+		///    <term>Row 1, Cell 3</term>
+		///   </item>
+		///  </list>
+		/// ]]>
+		/// </example>
 		public static new DotNetCommentTable FromVisualStudioXml(XElement element)
 		{
 			ValidateXmlTag(element, "list");

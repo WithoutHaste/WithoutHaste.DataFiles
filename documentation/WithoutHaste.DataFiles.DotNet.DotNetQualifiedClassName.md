@@ -13,7 +13,7 @@ such as `MyType<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13>`.
 
 ## protected [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) genericTypeAliases
 
-Specific generic type aliases for this type. If null, the shared [WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.GenericTypeNames](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md) will be used.  
+Specific generic type aliases for this type. If null, the shared [GenericTypeNames](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md) will be used.  
 
 ## static [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) GenericTypeNames
 

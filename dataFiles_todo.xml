@@ -59,8 +59,8 @@ comments
 - DotNetCommentParameterLink DONE
 - DotNetCommentQualifiedLink DONE
 - DotNetCommentQualifiedLinkedGroup DONE
-- DotNetCommentRow - indexer param - indexer exceptions
-- DotNetCommentTable
+- DotNetCommentRow DONE
+- DotNetCommentTable - localise See/SeeAlso references
 - DotNetCommentText
 - DotNetCommentTypeParameter
 - DotNetCommentTypeParameterLink</Data>
