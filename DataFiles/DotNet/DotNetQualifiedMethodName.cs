@@ -124,24 +124,32 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Parses a .Net XML documentation method signature.
 		/// </summary>
 		/// <example>
-		/// How .Net xml documentation formats generic types:
-		/// Backtics are followed by integers, identifying generic types.
-		///
-		/// Double backtics (such as ``1) on a method name indicate a count of generic types for the method.
-		/// Example: <![CDATA[MyMethod<A,B,C> is documented as MyMethod``3]]>
-		/// 
-		/// Anywhere else within this method's documentation that a double backtic appears, it indicates the index of the generic type in reference to the method declaration.
-		/// Example: <![CDATA[MyMethod<A,B,C>(A,B,C) is documented as MyMethod``3(``0,``1,``2)]]>
-		/// 
-		///	A method that uses both its own generic types AND generic types from the class declaration will look like this:
-		/// Example: <![CDATA[MyMethod<A,B,C>(A,B,C,T,U) is documented as MyMethod``3(``0,``1,``2,`0,`1)]]>
+		///   <para>
+		///   XML documentation of generic types: Backtics are followed by integers, identifying generic types.
+		///   </para>
+		///   <para>
+		///   Double backtics (such as ``1) on a method name indicate a count of generic types for the method.
+		///   For example, <![CDATA[MyMethod<A,B,C>]]> is documented as <c>MyMethod``3</c>.
+		///   </para>
+		///   <para>
+		///   Anywhere else within this method's documentation that a double backtic appears, it indicates the index of the generic type in reference to the method declaration.
+		///   For example, <![CDATA[MyMethod<A,B,C>(A,B,C)]]> is documented as <c>MyMethod``3(``0,``1,``2)</c>.
+		///   </para>
+		///   <para>
+		///	  A method that uses both its own generic types AND generic types from the class declaration will look like this:
+		///   For example, <![CDATA[MyMethod<A,B,C>(A,B,C,T,U)]]> is documented as <c>MyMethod``3(``0,``1,``2,`0,`1)</c>.
+		///   </para>
 		/// </example>
 		/// <example>
-		///	How .Net xml documentation formats implicit and explicit operators:
-		///	
-		///	<c>static explicit operator int(MyClass a)</c> becomes <c>MyClass.op_Explicit(MyClass)~System.Int32</c>.
-		///		
-		///	<c>static implicit operator int(MyClass a)</c> becomes <c>MyClass.op_Implicit(MyClass)~System.Int32</c>.
+		///   <para>
+		///	  XML documentation of implicit and explicit operators:
+		///   </para>
+		///	  <para>
+		///	  <c>static explicit operator int(MyClass a)</c> becomes <c>MyClass.op_Explicit(MyClass)~System.Int32</c>.
+		///	  </para>
+		///	  <para>
+		///	  <c>static implicit operator int(MyClass a)</c> becomes <c>MyClass.op_Implicit(MyClass)~System.Int32</c>.
+		///	  </para>
 		/// </example>
 		/// <param name="signature">Name may or may not start with "M:". Includes parameter list.</param>
 		public new static DotNetQualifiedMethodName FromVisualStudioXml(string signature)
