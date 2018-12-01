@@ -10,7 +10,6 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <summary>
 	/// Represents a section of code in the comments.
 	/// </summary>
-	/// <example><![CDATA[<code>code statements</code>]]></example>
 	public class DotNetCommentCodeBlock : DotNetCommentCode
 	{
 		/// <summary>Specify the language of the code block. Null if not known.</summary>
@@ -30,6 +29,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>Parses .Net XML documentation code tag.</summary>
+		/// <example><![CDATA[<code>code statements</code>]]></example>
 		public static new DotNetCommentCode FromVisualStudioXml(XElement element)
 		{
 			DotNetComment.ValidateXmlTag(element, "code");
@@ -38,7 +38,9 @@ namespace WithoutHaste.DataFiles.DotNet
 			return new DotNetCommentCodeBlock(element.Value);
 		}
 
-		/// <summary>Parses .Net XML documentation cdata tag.</summary>
+		/// <summary>Parses .Net XML documentation CDATA tag.</summary>
+		/// <remarks>Sets language to "xml".</remarks>
+		/// <example><![CDATA[<![CDATA[xml statements\]\]>]]></example>
 		public new static DotNetCommentCode FromVisualStudioXml(XCData element)
 		{
 			return new DotNetCommentCodeBlock(element.Value, "xml");

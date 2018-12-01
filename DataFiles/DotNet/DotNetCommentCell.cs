@@ -14,7 +14,6 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <remarks>
 	/// Does not inherit from DotNetCommentText because a cell cannot appear everywhere text can.
 	/// </remarks>
-	/// <example><![CDATA[<term>plain text</term>]]></example>
 	public class DotNetCommentCell
 	{
 		/// <summary>Default empty cell.</summary>
@@ -33,7 +32,8 @@ namespace WithoutHaste.DataFiles.DotNet
 			Text = text;
 		}
 
-		/// <summary>Parses .Net XML documentation term.</summary>
+		/// <summary>Parses .Net XML documentation term tag.</summary>
+		/// <example><![CDATA[<term>plain text</term>]]></example>
 		public static DotNetCommentCell FromVisualStudioXml(XElement element)
 		{
 			DotNetComment.ValidateXmlTag(element, "term");

@@ -10,7 +10,6 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <summary>
 	/// Represents an inline section of code in the comments.
 	/// </summary>
-	/// <example><![CDATA[<c>code fragment</c>]]></example>
 	public class DotNetCommentCode : DotNetCommentText
 	{
 		/// <summary></summary>
@@ -20,6 +19,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>Parses .Net XML documentation c tag.</summary>
+		/// <example><![CDATA[<c>code fragment</c>]]></example>
 		public new static DotNetCommentCode FromVisualStudioXml(XElement element)
 		{
 			DotNetComment.ValidateXmlTag(element, "c");

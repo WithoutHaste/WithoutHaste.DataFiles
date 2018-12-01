@@ -335,13 +335,13 @@
             <summary>
             Represents an inline section of code in the comments.
             </summary>
-            <example><![CDATA[<c>code fragment</c>]]></example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentCode.#ctor(System.String)">
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentCode.FromVisualStudioXml(System.Xml.Linq.XElement)">
             <summary>Parses .Net XML documentation c tag.</summary>
+            <example><![CDATA[<c>code fragment</c>]]></example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentCode.FromVisualStudioXml(System.Xml.Linq.XCData)">
             <summary>Parses .Net XML documentation CDATA tag.</summary>
@@ -350,7 +350,6 @@
             <summary>
             Represents a section of code in the comments.
             </summary>
-            <example><![CDATA[<code>code statements</code>]]></example>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentCodeBlock.Language">
             <summary>Specify the language of the code block. Null if not known.</summary>
@@ -363,9 +362,12 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentCodeBlock.FromVisualStudioXml(System.Xml.Linq.XElement)">
             <summary>Parses .Net XML documentation code tag.</summary>
+            <example><![CDATA[<code>code statements</code>]]></example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentCodeBlock.FromVisualStudioXml(System.Xml.Linq.XCData)">
-            <summary>Parses .Net XML documentation cdata tag.</summary>
+            <summary>Parses .Net XML documentation CDATA tag.</summary>
+            <remarks>Sets language to "xml".</remarks>
+            <example><![CDATA[<![CDATA[xml statements\]\]>]]></example>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup">
             <summary>
@@ -1166,7 +1168,6 @@
             <remarks>
             Does not inherit from DotNetCommentText because a cell cannot appear everywhere text can.
             </remarks>
-            <example><![CDATA[<term>plain text</term>]]></example>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetCommentCell.EmptyCell">
             <summary>Default empty cell.</summary>
@@ -1178,7 +1179,8 @@
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentCell.FromVisualStudioXml(System.Xml.Linq.XElement)">
-            <summary>Parses .Net XML documentation term.</summary>
+            <summary>Parses .Net XML documentation term tag.</summary>
+            <example><![CDATA[<term>plain text</term>]]></example>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentGroup">
             <summary>

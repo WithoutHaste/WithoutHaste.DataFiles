@@ -4,12 +4,6 @@
 
 Represents an inline section of code in the comments.  
 
-# Examples
-
-## Example A:
-
-`<c>code fragment</c>`  
-
 # Constructors
 
 ## DotNetCommentCode([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text)
@@ -19,6 +13,9 @@ Represents an inline section of code in the comments.
 ## static DotNetCommentCode FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
 
 Parses .Net XML documentation c tag.  
+
+**Example A:**  
+`<c>code fragment</c>`  
 
 ## static DotNetCommentCode FromVisualStudioXml([System.Xml.Linq.XCData](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xcdata) element)
 

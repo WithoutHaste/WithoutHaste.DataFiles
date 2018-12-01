@@ -4,12 +4,6 @@
 
 Represents a section of code in the comments.  
 
-# Examples
-
-## Example A:
-
-`<code>code statements</code>`  
-
 # Properties
 
 ## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Language { get; protected set; }
@@ -28,7 +22,16 @@ Specify the language of the code block. Null if not known.
 
 Parses .Net XML documentation code tag.  
 
+**Example A:**  
+`<code>code statements</code>`  
+
 ## static [DotNetCommentCode](WithoutHaste.DataFiles.DotNet.DotNetCommentCode.md) FromVisualStudioXml([System.Xml.Linq.XCData](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xcdata) element)
 
-Parses .Net XML documentation cdata tag.  
+Parses .Net XML documentation CDATA tag.  
+
+**Remarks:**  
+Sets language to "xml".  
+
+**Example A:**  
+`<![CDATA[xml statements\]\]>`  
 
