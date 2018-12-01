@@ -16,7 +16,7 @@ Represents a generic-type parameter that is not in a class declaration or a meth
 
 ## protected [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) genericTypeIndex
 
-0-based index in class's generic type list corresponding to this parameter.  
+0-based index in class&#96;s generic type list corresponding to this parameter.  
 
 # Properties
 
@@ -55,8 +55,8 @@ Alias of generic-type within assembly. Null if not known.
 # Derived By
 
 [WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric](WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric.md)  
-Represents a generic-type parameter that is in reference to a class's declared generic types.  
+Represents a generic-type parameter that is in reference to a class&#96;s declared generic types.  
 
 [WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric](WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric.md)  
-Represents a generic-type parameter that is in reference to a method's declared generic types.  
+Represents a generic-type parameter that is in reference to a method&#96;s declared generic types.  
 

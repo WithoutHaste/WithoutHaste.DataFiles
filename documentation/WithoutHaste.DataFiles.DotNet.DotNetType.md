@@ -149,7 +149,7 @@ Returns the selected type, whether it is this one or one of its nested types. Re
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Is([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 
-Returns true if this member's name matches the provided name.  
+Returns true if this member&#96;s name matches the provided name.  
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsDirectChild([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 
@@ -175,7 +175,7 @@ For all "duplicate" comments, replace the comment with the duplicated comments.
 For all "inheritdoc" comments, replace the inheritance comment with the inherited comments.  
 
 **Remarks:**  
-Classes can inherit from their base class (or the base class's base, etc).  
+Classes can inherit from their base class (or the base class&#96;s base, etc).  
 Interfaces can inherit from interfaces.  
 Class members can inherit from their base class or from interfaces.  
 

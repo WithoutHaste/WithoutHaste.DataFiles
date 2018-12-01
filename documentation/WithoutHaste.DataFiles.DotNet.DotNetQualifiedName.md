@@ -137,11 +137,11 @@ A.B.C.LocalName
 
 ## static [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Combine([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) names)
 
-Return the names combined with a '.' delimiter.  
+Return the names combined with a &#96;.&#96; delimiter.  
 
 ## static [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Combine([List&lt;string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) names)
 
-Return the names combined with a '.' delimiter.  
+Return the names combined with a &#96;.&#96; delimiter.  
 
 ## static [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) Compare([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) a, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) b)
 
@@ -155,8 +155,8 @@ Explicit interface implementations are considered only as a last resort.
 Parses a System.Reflection.AssemblyInfo full name.  
 
 **Misc:**  
-* The escape character is '\'  
-* Nested types are separated with '+' instead of '.'  
+* The escape character is &#96;\&#96;  
+* Nested types are separated with &#96;+&#96; instead of &#96;.&#96;  
 * Class declaration of generic types are shown the same as .Net XML documentation: MyType`1 for one generic type  
 * When a generic type is defined: System.Collections.Generic.List`1[U], where U is the type alias from the class declaration  
 

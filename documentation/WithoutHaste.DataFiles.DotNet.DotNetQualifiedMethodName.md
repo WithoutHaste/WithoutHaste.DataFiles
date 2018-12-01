@@ -98,24 +98,24 @@ Methods are sorted:
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesArguments([System.Reflection.ParameterInfo[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) otherParameters)
 
-Returns true if this method's parameter list matches the reflected ParameterInfo. Checks parameter types, not names.  
+Returns true if this method&#96;s parameter list matches the reflected ParameterInfo. Checks parameter types, not names.  
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesArguments([List&lt;DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) otherParameters)
 
-Returns true if this method's parameter list matches the provided parameter list. Checks parameter types, not names.  
+Returns true if this method&#96;s parameter list matches the provided parameter list. Checks parameter types, not names.  
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesLocalSignature([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) other)
 
-Returns true if this method's signature matches the other method signature.  
+Returns true if this method&#96;s signature matches the other method signature.  
 Looks at local name instead of entire namespace.  
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesSignature([System.Reflection.MethodInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.methodinfo) methodInfo)
 
-Returns true if this method's signature matches the reflected MethodInfo.  
+Returns true if this method&#96;s signature matches the reflected MethodInfo.  
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesSignature([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) other)
 
-Returns true if this method's signature matches the other method signature.  
+Returns true if this method&#96;s signature matches the other method signature.  
 
 ## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) SetLocalName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name)
 
@@ -133,7 +133,7 @@ How .Net xml documentation formats generic types:
               
                  Double backtics (such as ``1) on a method name indicate a count of generic types for the method.  
                  Example: ```MyMethod<A,B,C> is documented as MyMethod``3```                   
-            		Anywhere else within this method's documentation that a double backtic appears, it indicates the index of the generic type in reference to the method declaration.  
+            		Anywhere else within this method&#96;s documentation that a double backtic appears, it indicates the index of the generic type in reference to the method declaration.  
                  Example: ```MyMethod<A,B,C>(A,B,C) is documented as MyMethod``3(``0,``1,``2)```                   
             		A method that uses both its own generic types AND generic types from the class declaration will look like this:  
                  Example: ```MyMethod<A,B,C>(A,B,C,T,U) is documented as MyMethod``3(``0,``1,``2,`0,`1)```  

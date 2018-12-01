@@ -76,13 +76,20 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <remarks>Uses ** for bold and _ for italics.</remarks>
 		public string ToMarkdown(string previousText = null)
 		{
+			string text = Text;
+
+			//replace Markdown control characters
+			text = text.Replace("'", "&#96;");
+			text = text.Replace("<", "&lt;");
+			text = text.Replace(">", "&gt;");
+
 			if(Style == TextStyle.Bold)
-				return "**" + Text + "**";
+				return "**" + text + "**";
 			if(Style == TextStyle.Italic)
-				return "_" + Text + "_";
+				return "_" + text + "_";
 			if(Style == (TextStyle.Bold | TextStyle.Italic))
-				return "**_" + Text + "_**";
-			return Text;
+				return "**_" + text + "_**";
+			return text;
 		}
 	}
 }

@@ -97,11 +97,11 @@ Can add additional documentation derived from the assembly itself.
 
   
 [**DotNetEvent**](WithoutHaste.DataFiles.DotNet.DotNetEvent.md)  
-Represents a type's event.  
+Represents a type&#96;s event.  
 
   
 [**DotNetField**](WithoutHaste.DataFiles.DotNet.DotNetField.md)  
-Represents a type's field.  
+Represents a type&#96;s field.  
 
   
 [**DotNetIndexer**](WithoutHaste.DataFiles.DotNet.DotNetIndexer.md)  
@@ -129,7 +129,7 @@ Represents a parameter in a method signature.
 
   
 [**DotNetProperty**](WithoutHaste.DataFiles.DotNet.DotNetProperty.md)  
-Represents a type's property.  
+Represents a type&#96;s property.  
 
   
 [**DotNetPropertyMethod**](WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod.md)  
@@ -157,11 +157,11 @@ Represents a fully qualified type name, for return types / field types / propert
 
   
 [**DotNetReferenceClassGeneric**](WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric.md)  
-Represents a generic-type parameter that is in reference to a class's declared generic types.  
+Represents a generic-type parameter that is in reference to a class&#96;s declared generic types.  
 
   
 [**DotNetReferenceMethodGeneric**](WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric.md)  
-Represents a generic-type parameter that is in reference to a method's declared generic types.  
+Represents a generic-type parameter that is in reference to a method&#96;s declared generic types.  
 
   
 [**DotNetType**](WithoutHaste.DataFiles.DotNet.DotNetType.md)  
