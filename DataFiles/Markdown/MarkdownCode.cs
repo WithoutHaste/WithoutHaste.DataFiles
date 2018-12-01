@@ -25,7 +25,8 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <inheritdoc />
 		public string ToMarkdown(string previousText)
 		{
-			return String.Format("`{0}`", Text);
+			string escapedText = Text.Replace("`", "\\`");
+			return String.Format("`{0}`", escapedText);
 		}
 	}
 }

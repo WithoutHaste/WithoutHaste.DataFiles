@@ -50,7 +50,7 @@ Alias of generic-type within assembly. Null if not known.
 Parses a .Net XML documentation method-generic-type parameter.  
 
 **Example A:**  
-`Namespace.MyType.MyMethod<A>(A) is formatted as Namespace.MyType.MyMethod``1(``0)`  
+`Namespace.MyType.MyMethod<A>(A) is formatted as Namespace.MyType.MyMethod\`\`1(\`\`0)`  
 
 ### Exceptions
 

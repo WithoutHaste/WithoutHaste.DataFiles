@@ -48,7 +48,7 @@ Alias of generic-type within assembly. Null if not known.
 Parses a .Net XML documentation class-generic-type parameter.  
 
 **Example A:**  
-`Namespace.MyType<T>{ } is formatted as Namespace.MyType`1`  
+`Namespace.MyType<T>{ } is formatted as Namespace.MyType\`1`  
 
 ### Exceptions
 

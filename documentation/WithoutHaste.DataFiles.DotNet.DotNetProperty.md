@@ -8,11 +8,15 @@ Represents a type's property.
 
 ## [DotNetPropertyMethod](WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod.md) GetterMethod { get; protected set; }
 
+The "get" method of the property.  
+
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) HasGetterMethod { get; }
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) HasSetterMethod { get; }
 
 ## [DotNetPropertyMethod](WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod.md) SetterMethod { get; protected set; }
+
+The "set" method of the property.  
 
 # Constructors
 
@@ -29,6 +33,9 @@ Load additional documentation information from the assembly itself.
 ## static DotNetProperty FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement)
 
 Parse .Net XML documentation for Property data.  
+
+**Example A:**  
+`<member name="P:Namespace.Type.PropertyName"></member>`  
 
 **Parameters:**  
 * **[System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement**: Expects tag name "member".  

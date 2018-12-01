@@ -1,8 +1,12 @@
 # ParameterCategory
 
+Mutually exclusive parameter categories.  
+
 # Constants
 
 ## 0: Unknown
+
+Insufficient information to determine parameter category.  
 
 ## 1: Normal
 
@@ -16,5 +20,9 @@ Parameter is either an out or a ref parameter.
 
 ## 5: Optional
 
+Parameter has a default value.  
+
 ## 6: Extension
+
+The first parameter in an extension method, i.e. the type being extended.  
 

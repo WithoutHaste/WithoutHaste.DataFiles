@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
-	/// <summary></summary>
+	/// <summary>Mutually exclusive parameter categories.</summary>
 	public enum ParameterCategory
 	{
-		/// <summary></summary>
+		/// <summary>Insufficient information to determine parameter category.</summary>
 		Unknown = 0,
 		/// <summary></summary>
 		Normal,
@@ -20,14 +20,14 @@ namespace WithoutHaste.DataFiles.DotNet
 		Out,
 		/// <summary></summary>
 		Ref,
-		/// <summary></summary>
+		/// <summary>Parameter has a default value.</summary>
 		Optional,
-		/// <summary></summary>
+		/// <summary>The first parameter in an extension method, i.e. the type being extended.</summary>
 		Extension,
 	};
 
 	/// <summary>
-	/// Represents a normal-type parameter in a method signature.
+	/// Represents a parameter in a method signature.
 	/// </summary>
 	public class DotNetParameter
 	{
@@ -41,17 +41,23 @@ namespace WithoutHaste.DataFiles.DotNet
 		public string LocalTypeName { get { return TypeName?.LocalName; } }
 
 		/// <summary>Name of parameter. Null if not known.</summary>
+		/// <example>In <c>MethodName(int a, string b)</c>, the first parameter name is <c>a</c>.</example>
 		public string Name { get; protected set; }
 
 		/// <summary></summary>
 		public ParameterCategory Category { get; protected set; }
 
-		/// <summary>For optional parameters, the dafult value of the parameter. Null otherwise.</summary>
+		/// <summary>For optional parameters, the default value of the parameter. Null otherwise.</summary>
 		public object DefaultValue { get; protected set; }
 
 		/// <summary>
-		/// Returns formatted string "Type Name", "out Type Name" or "ref Type Name".
+		/// Returns formatted parameter with name.
 		/// </summary>
+		/// <example>MyType myName</example>
+		/// <example>out MyType myName</example>
+		/// <example>ref MyType myName</example>
+		/// <example>this MyType myName</example>
+		/// <example>MyType myName = defaultValue</example>
 		public string SignatureWithName {
 			get {
 				string signature = FullTypeName + " " + Name;
@@ -59,6 +65,8 @@ namespace WithoutHaste.DataFiles.DotNet
 					return "out " + signature;
 				if(Category == ParameterCategory.Ref)
 					return "ref " + signature;
+				if(Category == ParameterCategory.Extension)
+					return "this " + signature;
 				if(Category == ParameterCategory.Optional)
 				{
 					if(DefaultValue == null)
@@ -71,8 +79,13 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>
-		/// Returns formatted string "Type", "out Type" or "ref Type".
+		/// Returns formatted parameter without the name.
 		/// </summary>
+		/// <example>MyType</example>
+		/// <example>out MyType</example>
+		/// <example>ref MyType</example>
+		/// <example>this MyType</example>
+		/// <example>MyType = defaultValue</example>
 		public string SignatureWithoutName {
 			get {
 				string signature = FullTypeName;
@@ -80,6 +93,8 @@ namespace WithoutHaste.DataFiles.DotNet
 					return "out " + signature;
 				if(Category == ParameterCategory.Ref)
 					return "ref " + signature;
+				if(Category == ParameterCategory.Extension)
+					return "this " + signature;
 				if(Category == ParameterCategory.Optional)
 				{
 					if(DefaultValue == null)
@@ -101,7 +116,6 @@ namespace WithoutHaste.DataFiles.DotNet
 			Category = ParameterCategory.Unknown;
 		}
 
-		/// <summary></summary>
 		/// <remarks>Category defaults to Normal.</remarks>
 		/// <param name="typeName">Fully qualified data type name.</param>
 		public DotNetParameter(DotNetQualifiedTypeName typeName)
@@ -110,7 +124,6 @@ namespace WithoutHaste.DataFiles.DotNet
 			Category = ParameterCategory.Normal;
 		}
 
-		/// <summary></summary>
 		/// <param name="typeName">Fully qualified data type name.</param>
 		/// <param name="category">Category of parameter.</param>
 		public DotNetParameter(DotNetQualifiedTypeName typeName, ParameterCategory category)
@@ -187,7 +200,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			return !a.Equals(b);
 		}
 
-		/// <summary>Parameter type and category must be equal. Parameter name and default value are irrelevant.</summary>
+		/// <summary>For equality, parameter type and category must be equal. Parameter name and default value are irrelevant.</summary>
 		public override bool Equals(Object b)
 		{
 			if(!(b is DotNetParameter))
@@ -220,5 +233,5 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 	#endregion
-}
+	}
 }

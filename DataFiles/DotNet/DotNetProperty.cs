@@ -13,10 +13,10 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// </summary>
 	public class DotNetProperty : DotNetField
 	{
-		/// <summary></summary>
+		/// <summary>The "get" method of the property.</summary>
 		public DotNetPropertyMethod GetterMethod { get; protected set; }
 
-		/// <summary></summary>
+		/// <summary>The "set" method of the property.</summary>
 		public DotNetPropertyMethod SetterMethod { get; protected set; }
 
 		/// <summary></summary>
@@ -36,6 +36,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Parse .Net XML documentation for Property data.
 		/// </summary>
 		/// <param name="memberElement">Expects tag name "member".</param>
+		/// <example><![CDATA[<member name="P:Namespace.Type.PropertyName"></member>]]></example>
 		public static new DotNetProperty FromVisualStudioXml(XElement memberElement)
 		{
 			string xmlName = memberElement.Attribute("name")?.Value;

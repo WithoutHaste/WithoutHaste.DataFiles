@@ -1658,10 +1658,10 @@
             <summary></summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.ParameterCategory">
-            <summary></summary>
+            <summary>Mutually exclusive parameter categories.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.ParameterCategory.Unknown">
-            <summary></summary>
+            <summary>Insufficient information to determine parameter category.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.ParameterCategory.Normal">
             <summary></summary>
@@ -1676,14 +1676,14 @@
             <summary></summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.ParameterCategory.Optional">
-            <summary></summary>
+            <summary>Parameter has a default value.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.ParameterCategory.Extension">
-            <summary></summary>
+            <summary>The first parameter in an extension method, i.e. the type being extended.</summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetParameter">
             <summary>
-            Represents a normal-type parameter in a method signature.
+            Represents a parameter in a method signature.
             </summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.TypeName">
@@ -1697,34 +1697,43 @@
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.Name">
             <summary>Name of parameter. Null if not known.</summary>
+            <example>In <c>MethodName(int a, string b)</c>, the first parameter name is <c>a</c>.</example>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.Category">
             <summary></summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.DefaultValue">
-            <summary>For optional parameters, the dafult value of the parameter. Null otherwise.</summary>
+            <summary>For optional parameters, the default value of the parameter. Null otherwise.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.SignatureWithName">
             <summary>
-            Returns formatted string "Type Name", "out Type Name" or "ref Type Name".
+            Returns formatted parameter with name.
             </summary>
+            <example>MyType myName</example>
+            <example>out MyType myName</example>
+            <example>ref MyType myName</example>
+            <example>this MyType myName</example>
+            <example>MyType myName = defaultValue</example>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetParameter.SignatureWithoutName">
             <summary>
-            Returns formatted string "Type", "out Type" or "ref Type".
+            Returns formatted parameter without the name.
             </summary>
+            <example>MyType</example>
+            <example>out MyType</example>
+            <example>ref MyType</example>
+            <example>this MyType</example>
+            <example>MyType = defaultValue</example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.#ctor">
             <summary>Empty constructor.</summary>
             <remarks>Category defaults to Unknown.</remarks>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName)">
-            <summary></summary>
             <remarks>Category defaults to Normal.</remarks>
             <param name="typeName">Fully qualified data type name.</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.#ctor(WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName,WithoutHaste.DataFiles.DotNet.ParameterCategory)">
-            <summary></summary>
             <param name="typeName">Fully qualified data type name.</param>
             <param name="category">Category of parameter.</param>
         </member>
@@ -1753,7 +1762,7 @@
             <duplicate cref="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.Equals(System.Object)" />
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.Equals(System.Object)">
-            <summary>Parameter type and category must be equal. Parameter name and default value are irrelevant.</summary>
+            <summary>For equality, parameter type and category must be equal. Parameter name and default value are irrelevant.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.GetHashCode">
             <summary></summary>
@@ -1769,10 +1778,10 @@
             </summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetProperty.GetterMethod">
-            <summary></summary>
+            <summary>The "get" method of the property.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetProperty.SetterMethod">
-            <summary></summary>
+            <summary>The "set" method of the property.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetProperty.HasGetterMethod">
             <summary></summary>
@@ -1788,6 +1797,7 @@
             Parse .Net XML documentation for Property data.
             </summary>
             <param name="memberElement">Expects tag name "member".</param>
+            <example><![CDATA[<member name="P:Namespace.Type.PropertyName"></member>]]></example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetProperty.AddAssemblyInfo(System.Reflection.PropertyInfo)">
             <summary>

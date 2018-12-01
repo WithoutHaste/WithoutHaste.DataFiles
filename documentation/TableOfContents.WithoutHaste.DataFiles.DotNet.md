@@ -125,7 +125,7 @@ Represents a method that is an operator.
 
   
 [**DotNetParameter**](WithoutHaste.DataFiles.DotNet.DotNetParameter.md)  
-Represents a normal-type parameter in a method signature.  
+Represents a parameter in a method signature.  
 
   
 [**DotNetProperty**](WithoutHaste.DataFiles.DotNet.DotNetProperty.md)  
@@ -218,7 +218,7 @@ Mutually exclusive categories of methods.
 
   
 [**ParameterCategory**](WithoutHaste.DataFiles.DotNet.ParameterCategory.md)  
-  
+Mutually exclusive parameter categories.  
 
   
 [**TypeCategory**](WithoutHaste.DataFiles.DotNet.TypeCategory.md)  

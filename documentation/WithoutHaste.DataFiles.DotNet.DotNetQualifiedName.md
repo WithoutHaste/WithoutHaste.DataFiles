@@ -33,14 +33,14 @@ Null if there is no namespace.
 Local data type name, written in the c# style.  
 
 **Example A:**  
-`MyType<T> instead of MyType`1`  
+`MyType<T> instead of MyType\`1`  
 
 ## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) LocalXmlName { get; }
 
 Local data type name, written in the Xml style.  
 
 **Example A:**  
-`MyType`1 instead of MyType<T>`  
+`MyType\`1 instead of MyType<T>`  
 
 # Constructors
 
