@@ -28,3 +28,8 @@ True if text is null or empty string.
 
 Returns full text.  
 
+# Derived By
+
+[WithoutHaste.DataFiles.DotNet.DotNetCommentCode](WithoutHaste.DataFiles.DotNet.DotNetCommentCode.md)  
+Represents an inline section of code in the comments.  
+

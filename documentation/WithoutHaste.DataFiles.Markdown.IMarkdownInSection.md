@@ -4,6 +4,12 @@
 
 Represents a markdown element that can be included within a MarkdownSection.  
 
+# Methods
+
+## abstract [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToMarkdown([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) previousText)
+
+Return markdown-formatted text.  
+
 # Implemented By
 
 [WithoutHaste.DataFiles.Markdown.IMarkdownInLine](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md)  
@@ -41,10 +47,4 @@ Represents a markdown table.
 
 [WithoutHaste.DataFiles.Markdown.MarkdownText](WithoutHaste.DataFiles.Markdown.MarkdownText.md)  
 Represents plain text.  
-
-# Methods
-
-## abstract [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToMarkdown([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) previousText)
-
-Return markdown-formatted text.  
 

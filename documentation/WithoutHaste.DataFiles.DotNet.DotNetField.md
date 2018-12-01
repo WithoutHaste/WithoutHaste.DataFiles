@@ -43,3 +43,11 @@ Parse .Net XML documentation for Field data.
 **Parameters:**  
 * **[System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement**: Expects tag name "member".  
 
+# Derived By
+
+[WithoutHaste.DataFiles.DotNet.DotNetEvent](WithoutHaste.DataFiles.DotNet.DotNetEvent.md)  
+Represents a type's event.  
+
+[WithoutHaste.DataFiles.DotNet.DotNetProperty](WithoutHaste.DataFiles.DotNet.DotNetProperty.md)  
+Represents a type's property.  
+

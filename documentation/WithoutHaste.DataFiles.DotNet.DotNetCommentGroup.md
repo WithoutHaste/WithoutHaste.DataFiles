@@ -83,3 +83,8 @@ Empty constructor
 
 Parses .Net XML documentation for any "grouping" tag.  
 
+# Derived By
+
+[WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup.md)  
+Represents an ordered collection of comments that is linked to something in the assembly which it is documenting.  
+

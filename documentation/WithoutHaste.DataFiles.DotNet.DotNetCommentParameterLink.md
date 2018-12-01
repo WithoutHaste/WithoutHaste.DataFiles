@@ -39,3 +39,8 @@ Name
 
 Parses .Net XML documentation for paramref.  
 
+# Derived By
+
+[WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink.md)  
+Represents a link in the comments to an internal generic-type parameter.  
+

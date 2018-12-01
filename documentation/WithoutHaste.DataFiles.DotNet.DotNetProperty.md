@@ -33,3 +33,8 @@ Parse .Net XML documentation for Property data.
 **Parameters:**  
 * **[System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement**: Expects tag name "member".  
 
+# Derived By
+
+[WithoutHaste.DataFiles.DotNet.DotNetIndexer](WithoutHaste.DataFiles.DotNet.DotNetIndexer.md)  
+Represents an indexer property.  
+

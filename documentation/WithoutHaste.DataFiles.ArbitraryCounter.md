@@ -52,3 +52,8 @@ Increment a value.
 
 ## protected [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) SetValue([List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) start)
 
+# Derived By
+
+[WithoutHaste.DataFiles.AlphabetCounter](WithoutHaste.DataFiles.AlphabetCounter.md)  
+Counts "A", "B", "C", ..., "Z", "AA", "AB", ..., "AZ", "BA", "BB", ...  
+

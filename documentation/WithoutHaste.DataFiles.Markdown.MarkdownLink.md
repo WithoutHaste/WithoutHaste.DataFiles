@@ -36,3 +36,8 @@ Link text and url are the same.
 
 Outputs markdown-formatted text.  
 
+# Derived By
+
+[WithoutHaste.DataFiles.Markdown.MarkdownInlineLink](WithoutHaste.DataFiles.Markdown.MarkdownInlineLink.md)  
+Represents markdown inline-style link.  
+

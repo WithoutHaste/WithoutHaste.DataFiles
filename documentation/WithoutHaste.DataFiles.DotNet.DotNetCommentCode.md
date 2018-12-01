@@ -24,3 +24,8 @@ Parses .Net XML documentation c tag.
 
 Parses .Net XML documentation CDATA tag.  
 
+# Derived By
+
+[WithoutHaste.DataFiles.DotNet.DotNetCommentCodeBlock](WithoutHaste.DataFiles.DotNet.DotNetCommentCodeBlock.md)  
+Represents a section of code in the comments.  
+

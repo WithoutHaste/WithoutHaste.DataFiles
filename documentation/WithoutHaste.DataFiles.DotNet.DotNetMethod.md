@@ -80,3 +80,17 @@ Equality is based on the full namespace/name/generic-type-parameters of the meth
 
 Equality is based on the full namespace/name/generic-type-parameters of the method, and on parameter-types.  
 
+# Derived By
+
+[WithoutHaste.DataFiles.DotNet.DotNetDelegate](WithoutHaste.DataFiles.DotNet.DotNetDelegate.md)  
+Represents a delegate type, categorized as a method.  
+
+[WithoutHaste.DataFiles.DotNet.DotNetMethodConstructor](WithoutHaste.DataFiles.DotNet.DotNetMethodConstructor.md)  
+Represents a method that is a constructor.  
+
+[WithoutHaste.DataFiles.DotNet.DotNetMethodDestructor](WithoutHaste.DataFiles.DotNet.DotNetMethodDestructor.md)  
+Represents a method that is a destructor.  
+
+[WithoutHaste.DataFiles.DotNet.DotNetMethodOperator](WithoutHaste.DataFiles.DotNet.DotNetMethodOperator.md)  
+Represents a method that is an operator.  
+

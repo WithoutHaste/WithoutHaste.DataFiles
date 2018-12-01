@@ -217,3 +217,14 @@ Names are sorted alphabetically, per namespace, starting with the root.
 **Remarks:**  
 Explicit interface implementations are considered only as a last resort.  
 
+# Derived By
+
+[WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md)  
+Represents a fully qualified class name, for class declarations.  
+
+[WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md)  
+Represents a fully qualified method name.  
+
+[WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md)  
+Represents a fully qualified type name, for return types / field types / property types / parameter types.  
+

@@ -4,6 +4,12 @@
 
 Represents anything in the comments that links to something in the assembly.  
 
+# Properties
+
+## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) FullName { get; }
+
+Return the fully qualified name of the referenced assembly element.  
+
 # Implemented By
 
 [WithoutHaste.DataFiles.DotNet.DotNetCommentDuplicate](WithoutHaste.DataFiles.DotNet.DotNetCommentDuplicate.md)  
@@ -20,10 +26,4 @@ Represents a link in the comments to an internal or extenal type or type.method(
 
 [WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameterLink.md)  
 Represents a link in the comments to an internal generic-type parameter.  
-
-# Properties
-
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) FullName { get; }
-
-Return the fully qualified name of the referenced assembly element.  
 

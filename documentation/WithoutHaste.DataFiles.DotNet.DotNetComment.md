@@ -57,3 +57,26 @@ Throws exception on unexpected xml formats.
 **Exceptions:**  
 * **[XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)**: XML tag does not have any of the expected local names, or is null  
 
+# Derived By
+
+[WithoutHaste.DataFiles.DotNet.DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md)  
+Represents an ordered collection of comments.  
+
+[WithoutHaste.DataFiles.DotNet.DotNetCommentInherit](WithoutHaste.DataFiles.DotNet.DotNetCommentInherit.md)  
+Represents a the `<inheritdoc />` tag, which means that documentation should be inherited for the base class, interface, struct, or member.  
+
+[WithoutHaste.DataFiles.DotNet.DotNetCommentList](WithoutHaste.DataFiles.DotNet.DotNetCommentList.md)  
+Represents a list in the comments.  
+
+[WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.md)  
+Represents a link in the comments to an internal parameter name.  
+
+[WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.md)  
+Represents a link in the comments to an internal or extenal type or type.method().  
+
+[WithoutHaste.DataFiles.DotNet.DotNetCommentTable](WithoutHaste.DataFiles.DotNet.DotNetCommentTable.md)  
+Represents a table in the comments.  
+
+[WithoutHaste.DataFiles.DotNet.DotNetCommentText](WithoutHaste.DataFiles.DotNet.DotNetCommentText.md)  
+Represents a plain text segment of comments.  
+

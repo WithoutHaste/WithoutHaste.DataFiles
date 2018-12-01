@@ -52,3 +52,11 @@ Alias of generic-type within assembly. Null if not known.
 
 ## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) SetAlias([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) alias)
 
+# Derived By
+
+[WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric](WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric.md)  
+Represents a generic-type parameter that is in reference to a class's declared generic types.  
+
+[WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric](WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric.md)  
+Represents a generic-type parameter that is in reference to a method's declared generic types.  
+

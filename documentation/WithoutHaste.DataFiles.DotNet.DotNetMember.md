@@ -118,3 +118,14 @@ Returns true if resolution is successful. Returns false if referenced member is 
 
 Full name of member.  
 
+# Derived By
+
+[WithoutHaste.DataFiles.DotNet.DotNetField](WithoutHaste.DataFiles.DotNet.DotNetField.md)  
+Represents a type's field.  
+
+[WithoutHaste.DataFiles.DotNet.DotNetMethod](WithoutHaste.DataFiles.DotNet.DotNetMethod.md)  
+Represents a method.  
+
+[WithoutHaste.DataFiles.DotNet.DotNetType](WithoutHaste.DataFiles.DotNet.DotNetType.md)  
+Represents a data type.  
+

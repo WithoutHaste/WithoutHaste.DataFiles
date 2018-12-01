@@ -38,26 +38,32 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">41</Data>
+          <Data ss:Type="Number">42</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">verify documentation: Markdown namespace
-- MarkdownCode DONE
-- MarkdownCodeBlock DONE
-- MarkdownFile DONE
-- MarkdownInlineLink DONE
-- MarkdownLine DONE
-- MarkdownList DONE
-- MarkdownParagraph DONE
-- MarkdownSection DONE
-- MarkdownTable DONE
-- MarkdownTableRow DONE
-- MarkdownText - Global Enums - static return types not links
-- MarkdownLink
-- IMarkdownInLine
-- IMarkdownInList
-- IMarkdownInSection
-- IMarkdownIsBlock</Data>
+          <Data ss:Type="String">verify documentation: DotNet namespace
+comments
+- DotNetComment
+- DotNetCommentCell
+- DotNetCommentCode
+- DotNetCommentCodeBlock
+- DotNetCommentDuplicate
+- DotNetCommentGroup
+- DotNetCommentInherit
+- DotNetCommentLinkedGroup
+- DotNetCommentList
+- DotNetCommentListItem
+- DotNetCommentMethodLink
+- DotNetCommentMethodLinkedGroup
+- DotNetCommentParameter
+- DotNetCommentParameterLink
+- DotNetCommentQualifiedLink
+- DotNetCommentQualifiedLinkedGroup
+- DotNetCommentRow
+- DotNetCommentTable
+- DotNetCommentText
+- DotNetCommentTypeParameter
+- DotNetCommentTypeParameterLink</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -71,19 +77,70 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">42</Data>
+          <Data ss:Type="Number">43</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">verify documentation: DotNet namespace</Data>
+          <Data ss:Type="String">verify documentation: DotNet namespace
+constructs
+- DotNetBaseType
+- DotNetDelegate
+- DotNetDocumentationFile
+- DotNetEvent
+- DotNetField
+- DotNetIndexer
+- DotNetMember
+- DotNetMethod
+- DotNetMethodConstructor
+- DotNetMethodDestructor
+- DotNetMethodOperator
+- DotNetParameter
+- DotNetProperty
+- DotNetPropertyMethod
+- DotNetQualifiedClassName
+- DotNetQualifiedClassNameTreeNode
+- DotNetQualifiedMethodName
+- DotNetQualifiedName
+- DotNetQualifiedTypeName
+- DotNetReferenceClassGeneric
+- DotNetReferenceGeneric
+- DotNetReferenceMethodGeneric
+- DotNetSettings
+- DotNetType
+- IDotNetCommentLink
+- Utilities</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">Test</Data>
+          <Data ss:Type="String">Feature - Major</Data>
         </Cell>
         <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2018-11-20T00:00:00.000</Data>
+          <Data ss:Type="DateTime">2018-12-01T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">44</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">verify documentation: DotNet namespace
+enums
+- AccessModifier
+- CommentTag DONE
+- FieldCategory
+- MethodCategory
+- ParameterCategory
+- TypeCategory</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-12-01T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -355,6 +412,43 @@ could turn DotNetSettings.QualifiedNameConverter into a list or event so that an
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">41</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">verify documentation: Markdown namespace
+- MarkdownCode DONE
+- MarkdownCodeBlock DONE
+- MarkdownFile DONE
+- MarkdownInlineLink DONE
+- MarkdownLine DONE
+- MarkdownList DONE
+- MarkdownParagraph DONE
+- MarkdownSection DONE
+- MarkdownTable DONE
+- MarkdownTableRow DONE
+- MarkdownText DONE
+- MarkdownLink DONE
+- IMarkdownInLine DONE
+- IMarkdownInList DONE
+- IMarkdownInSection DONE
+- IMarkdownIsBlock DONE
+- TextStyle DONE</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Test</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-11-20T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-12-01T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -944,7 +1038,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">42</Data>
+          <Data ss:Type="Number">44</Data>
         </Cell>
       </Row>
       <Row>

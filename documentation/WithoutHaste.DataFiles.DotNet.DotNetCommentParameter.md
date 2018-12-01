@@ -30,3 +30,8 @@ Strongly-typed link.
 
 Parses .Net XML documentation for param.  
 
+# Derived By
+
+[WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameter](WithoutHaste.DataFiles.DotNet.DotNetCommentTypeParameter.md)  
+Represents a generic-type parameter description in the comments.  
+

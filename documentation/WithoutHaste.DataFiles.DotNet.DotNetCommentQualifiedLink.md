@@ -47,3 +47,11 @@ Parses .Net XML documentation tag that contains attribute cref.
 
 Parses .Net XML documentation cref.  
 
+# Derived By
+
+[WithoutHaste.DataFiles.DotNet.DotNetCommentDuplicate](WithoutHaste.DataFiles.DotNet.DotNetCommentDuplicate.md)  
+Represents a the `<duplicate cref="" />` tag, which means that documentation should be copied from the specified (cref) class, interface, struct, or member.  
+
+[WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.md)  
+Represents a link in the comments to an internal or extenal method.  
+

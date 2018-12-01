@@ -22,3 +22,11 @@ Empty constructor
 
 ## DotNetCommentLinkedGroup([IDotNetCommentLink](WithoutHaste.DataFiles.DotNet.IDotNetCommentLink.md) link, [List&lt;DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
 
+# Derived By
+
+[WithoutHaste.DataFiles.DotNet.DotNetCommentParameter](WithoutHaste.DataFiles.DotNet.DotNetCommentParameter.md)  
+Represents a parameter description in the comments.  
+
+[WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.md)  
+Represents a section of comments that is linked to a fully qualified type or member.  
+

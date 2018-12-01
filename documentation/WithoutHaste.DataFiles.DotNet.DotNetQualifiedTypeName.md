@@ -111,3 +111,8 @@ Parses a System.Reflection.AssemblyInfo full name.
 Parses a .Net XML documentation type name.  
 Not intended for type declarations. Intended for field types, property types, parameter types, and return types.  
 
+# Derived By
+
+[WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric](WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric.md)  
+Represents a generic-type parameter that is not in a class declaration or a method declaration.  
+
