@@ -99,6 +99,7 @@
     <Compile Include="DotNet\DotNetTypeTests.cs" />
     <Compile Include="DotNet\UtilitiesTests.cs" />
     <Compile Include="ExcelPackageHelperTests.cs" />
+    <Compile Include="Markdown\MarkdownCodeTests.cs" />
     <Compile Include="Markdown\MarkdownListTests.cs" />
     <Compile Include="Markdown\MarkdownParagraphTests.cs" />
     <Compile Include="Markdown\MarkdownSectionTests.cs" />

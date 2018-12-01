@@ -34,14 +34,14 @@ The number of generic-types required by the class declaration.
 Local data type name, written in the c# style.  
 
 **Example A:**  
-`MyType<T> instead of MyType\`1`  
+``MyType<T> instead of MyType`1``  
 
 ## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) LocalXmlName { get; }
 
 Local data type name, written in the Xml style.  
 
 **Example A:**  
-`MyType\`1 instead of MyType<T>`  
+``MyType`1 instead of MyType<T>``  
 
 # Constructors
 
@@ -78,9 +78,9 @@ and there are no important diffences in parsing the two.
 How .Net xml documentation formats generic types:  
 Backtics are followed by integers, identifying generic types.  
 
-Single backtics (such as `1) on a class declaration indicate a count of generic types for the class.`MyGenericType<T,U,V> is documented as MyGenericType\`3`  
+Single backtics (such as `1) on a class declaration indicate a count of generic types for the class.``MyGenericType<T,U,V> is documented as MyGenericType`3``  
 
-Anywhere else within this object's documentation that a single backtic appears, it indicates the index of the generic type in reference to the class declaration.`MyGenericType(T,U,V) is documented as MyGenericType.#ctor(\`0,\`1,\`2)`  
+Anywhere else within this object's documentation that a single backtic appears, it indicates the index of the generic type in reference to the class declaration.``MyGenericType(T,U,V) is documented as MyGenericType.#ctor(`0,`1,`2)``  
 
 **Parameters:**  
 * **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name**: Name may or may not start with "T:"  

@@ -2798,6 +2798,11 @@
         <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownCode.ToMarkdown(System.String)">
             <inheritdoc />
         </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownCode.GetLongestBacktics">
+            <summary>
+            Returns the longest substring in the code that is all backtics (`).
+            </summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.Markdown.MarkdownCodeBlock">
             <summary>
             Represents a code block or CDATA block.
