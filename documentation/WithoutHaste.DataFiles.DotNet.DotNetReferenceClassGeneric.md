@@ -3,7 +3,7 @@
 **Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) → [DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) → [DotNetReferenceGeneric](WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric.md)  
 **Implements:** [IComparable](https://docs.microsoft.com/en-us/dotnet/api/system.icomparable)  
 
-Represents a generic-type parameter that is in reference to a class&#96;s declared generic types.  
+Represents a generic-type parameter that is in reference to a class's declared generic types.  
 
 # Examples
 
@@ -56,12 +56,12 @@ Parses a .Net XML documentation class-generic-type parameter.
 
 _name_  
 
- is not in expected format: `Index.  
+ is not in expected format: &#96;Index.  
 
 ## static [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) HasExpectedVisualStudioXmlFormat([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name)
 
 Check if a string is properly formatted as a parameter referencing a class-generic-type.  
 
 **Example A:**  
-`0  
+&#96;0  
 

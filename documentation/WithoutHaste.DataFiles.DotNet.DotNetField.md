@@ -2,7 +2,7 @@
 
 **Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md)  
 
-Represents a type&#96;s field.  
+Represents a type's field.  
 
 # Properties
 
@@ -51,8 +51,8 @@ Parse .Net XML documentation for Field data.
 # Derived By
 
 [WithoutHaste.DataFiles.DotNet.DotNetEvent](WithoutHaste.DataFiles.DotNet.DotNetEvent.md)  
-Represents a type&#96;s event.  
+Represents a type's event.  
 
 [WithoutHaste.DataFiles.DotNet.DotNetProperty](WithoutHaste.DataFiles.DotNet.DotNetProperty.md)  
-Represents a type&#96;s property.  
+Represents a type's property.  
 

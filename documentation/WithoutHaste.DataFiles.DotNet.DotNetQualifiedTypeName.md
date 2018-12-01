@@ -95,10 +95,10 @@ Parses a System.Reflection.AssemblyInfo full name.
 Parses a System.Reflection.AssemblyInfo full name.  
 
 **Misc:**  
-* The escape character is &#96;\&#96;  
-* Nested types are separated with &#96;+&#96; instead of &#96;.&#96;  
-* Class declaration of generic types are shown the same as .Net XML documentation: MyType`1 for one generic type  
-* When a generic type is defined: System.Collections.Generic.List`1[U], where U is the type alias from the class declaration  
+* The escape character is '\'  
+* Nested types are separated with '+' instead of '.'  
+* Class declaration of generic types are shown the same as .Net XML documentation: MyType&#96;1 for one generic type  
+* When a generic type is defined: System.Collections.Generic.List&#96;1[U], where U is the type alias from the class declaration  
 
 **Parameters:**  
 * **[Type](https://docs.microsoft.com/en-us/dotnet/api/system.type) type**:   

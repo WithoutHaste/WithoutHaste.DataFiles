@@ -64,7 +64,7 @@ If there are multiple "value" tags, their contents will be concatenated as if th
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) HasComments { get; }
 
-True when there&#96;s at least one comment on this member.  
+True when there's at least one comment on this member.  
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) HasNoComments { get; }
 
@@ -122,7 +122,7 @@ Full name of member.
 # Derived By
 
 [WithoutHaste.DataFiles.DotNet.DotNetField](WithoutHaste.DataFiles.DotNet.DotNetField.md)  
-Represents a type&#96;s field.  
+Represents a type's field.  
 
 [WithoutHaste.DataFiles.DotNet.DotNetMethod](WithoutHaste.DataFiles.DotNet.DotNetMethod.md)  
 Represents a method.  

@@ -103,6 +103,7 @@
     <Compile Include="Markdown\MarkdownListTests.cs" />
     <Compile Include="Markdown\MarkdownParagraphTests.cs" />
     <Compile Include="Markdown\MarkdownSectionTests.cs" />
+    <Compile Include="Markdown\MarkdownTextTests.cs" />
     <Compile Include="MSExcel2003XmlFileTests.cs" />
     <Compile Include="TextHelperTests.cs" />
     <Compile Include="Utilities.cs" />

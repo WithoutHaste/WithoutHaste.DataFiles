@@ -35,27 +35,27 @@ Load additional documentation information from the assembly itself.
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([DotNetCommentQualifiedLinkedGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.md) linkedGroup)
 
-Returns true if this indexer&#96;s signature matches the link.  
+Returns true if this indexer's signature matches the link.  
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([DotNetCommentMethodLinkedGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup.md) linkedGroup)
 
-Returns true if this indexer&#96;s signature matches the link.  
+Returns true if this indexer's signature matches the link.  
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([DotNetCommentMethodLink](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.md) methodLink)
 
-Returns true if this indexer&#96;s signature matches the method signature.  
+Returns true if this indexer's signature matches the method signature.  
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) methodName)
 
-Returns true if this indexer&#96;s signature matches the method signature.  
+Returns true if this indexer's signature matches the method signature.  
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesArguments([System.Reflection.ParameterInfo[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) otherParameters)
 
-Returns true if this method&#96;s parameter list matches the reflected ParameterInfo.  
+Returns true if this method's parameter list matches the reflected ParameterInfo.  
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesSignature([System.Reflection.MethodInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.methodinfo) methodInfo)
 
-Returns true if this method&#96;s signature matches the reflected MethodInfo.  
+Returns true if this method's signature matches the reflected MethodInfo.  
 
 **Parameters:**  
 * **[System.Reflection.MethodInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.methodinfo) methodInfo**: Expects a method with name "get_Item".  

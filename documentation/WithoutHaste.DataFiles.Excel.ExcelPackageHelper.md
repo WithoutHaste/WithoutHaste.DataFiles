@@ -181,7 +181,7 @@ List of data values. Includes all cells to the bottom of the Worksheet.
 Searches first row for a particular value.  
 
 **Returns:**  
-Character name of the header&#96;s column, or null. Example: "A", "Z", "AA".  
+Character name of the header's column, or null. Example: "A", "Z", "AA".  
 
 **Exceptions:**  
 * **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: Worksheet cannot be null.  

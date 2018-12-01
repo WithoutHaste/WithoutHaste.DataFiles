@@ -79,7 +79,7 @@ namespace WithoutHaste.DataFiles.Markdown
 			string text = Text;
 
 			//replace Markdown control characters
-			text = text.Replace("'", "&#96;");
+			text = text.Replace("`", "&#96;");
 			text = text.Replace("<", "&lt;");
 			text = text.Replace(">", "&gt;");
 

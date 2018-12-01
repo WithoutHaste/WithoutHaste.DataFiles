@@ -2,7 +2,7 @@
 
 **Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) → [DotNetField](WithoutHaste.DataFiles.DotNet.DotNetField.md)  
 
-Represents a type&#96;s event.  
+Represents a type's event.  
 
 # Constructors
 
