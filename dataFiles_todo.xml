@@ -57,9 +57,9 @@ constructs
 - DotNetParameter DONE
 - DotNetProperty DONE
 - DotNetPropertyMethod DONE
-- DotNetQualifiedClassName
-- DotNetQualifiedClassNameTreeNode
-- DotNetQualifiedMethodName
+- DotNetQualifiedClassName DONE
+- DotNetQualifiedClassNameTreeNode DONE
+- DotNetQualifiedMethodName - don't cause a quote block
 - DotNetQualifiedName
 - DotNetQualifiedTypeName
 - DotNetReferenceClassGeneric

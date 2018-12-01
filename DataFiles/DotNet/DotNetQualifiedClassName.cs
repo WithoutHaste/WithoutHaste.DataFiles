@@ -92,9 +92,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		///   </para>
 		///   <para>
 		///     Single backtics (such as `1) on a class declaration indicate a count of generic types for the class.
-		///     <example><![CDATA[MyGenericType<T,U,V> is documented as MyGenericType`3]]></example>
-		///     Anywhere else within this object's documentation that a single backtic appears, it indicates the index of the generic type in reference to the class declaration.
-		///     <example><![CDATA[MyGenericType(T,U,V) is documented as MyGenericType.#ctor(`0,`1,`2)]]></example>
+		///     For example, <![CDATA[MyGenericType<T,U,V>]]> is documented as <c>MyGenericType`3</c>.
+		///     Anywhere else within this object's documentation that a single backtic appears, it indicates the zero-based index of the generic type in reference to the class declaration.
+		///     For example, the constructor <![CDATA[MyGenericType(T,U,V)]]> is documented as <c>MyGenericType.#ctor(`0,`1,`2)</c>.
 		///   </para>
 		/// </example>
 		/// <param name="name">Name may or may not start with "T:"</param>

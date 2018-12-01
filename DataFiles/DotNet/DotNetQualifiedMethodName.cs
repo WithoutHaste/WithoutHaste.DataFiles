@@ -124,28 +124,24 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Parses a .Net XML documentation method signature.
 		/// </summary>
 		/// <example>
-		///     How .Net xml documentation formats generic types:
-		///     Backtics are followed by integers, identifying generic types.
+		/// How .Net xml documentation formats generic types:
+		/// Backtics are followed by integers, identifying generic types.
 		///
-		///     Double backtics (such as ``1) on a method name indicate a count of generic types for the method.
-		///     Example: <![CDATA[MyMethod<A,B,C> is documented as MyMethod``3]]>
-		///     
-		///		Anywhere else within this method's documentation that a double backtic appears, it indicates the index of the generic type in reference to the method declaration.
-		///     Example: <![CDATA[MyMethod<A,B,C>(A,B,C) is documented as MyMethod``3(``0,``1,``2)]]>
-		///     
-		///		A method that uses both its own generic types AND generic types from the class declaration will look like this:
-		///     Example: <![CDATA[MyMethod<A,B,C>(A,B,C,T,U) is documented as MyMethod``3(``0,``1,``2,`0,`1)]]>
+		/// Double backtics (such as ``1) on a method name indicate a count of generic types for the method.
+		/// Example: <![CDATA[MyMethod<A,B,C> is documented as MyMethod``3]]>
+		/// 
+		/// Anywhere else within this method's documentation that a double backtic appears, it indicates the index of the generic type in reference to the method declaration.
+		/// Example: <![CDATA[MyMethod<A,B,C>(A,B,C) is documented as MyMethod``3(``0,``1,``2)]]>
+		/// 
+		///	A method that uses both its own generic types AND generic types from the class declaration will look like this:
+		/// Example: <![CDATA[MyMethod<A,B,C>(A,B,C,T,U) is documented as MyMethod``3(``0,``1,``2,`0,`1)]]>
 		/// </example>
 		/// <example>
-		///		How .Net xml documentation formats implicit and explicit operators:
+		///	How .Net xml documentation formats implicit and explicit operators:
+		///	
+		///	<c>static explicit operator int(MyClass a)</c> becomes <c>MyClass.op_Explicit(MyClass)~System.Int32</c>.
 		///		
-		///		static explicit operator int(MyClass a)
-		///		becomes
-		///		MyClass.op_Explicit(MyClass)~System.Int32
-		///		
-		///		static implicit operator int(MyClass a)
-		///		becomes
-		///		MyClass.op_Implicit(MyClass)~System.Int32
+		///	<c>static implicit operator int(MyClass a)</c> becomes <c>MyClass.op_Implicit(MyClass)~System.Int32</c>.
 		/// </example>
 		/// <param name="signature">Name may or may not start with "M:". Includes parameter list.</param>
 		public new static DotNetQualifiedMethodName FromVisualStudioXml(string signature)
@@ -407,7 +403,7 @@ namespace WithoutHaste.DataFiles.DotNet
 
 		/// <summary>
 		/// Methods are sorted:
-		/// <list type='numbered'>
+		/// <list type='number'>
 		///		<item>alphabetically by namespace</item>
 		///		<item>alphabetically by explicit interface implementation</item>
 		///		<item>then parameter list, shortest to longest</item>

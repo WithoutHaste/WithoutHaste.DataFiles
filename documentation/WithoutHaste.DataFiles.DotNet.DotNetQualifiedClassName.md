@@ -78,9 +78,10 @@ and there are no important diffences in parsing the two.
 How .Net xml documentation formats generic types:  
 Backtics are followed by integers, identifying generic types.  
 
-Single backtics (such as &#96;1) on a class declaration indicate a count of generic types for the class.``MyGenericType<T,U,V> is documented as MyGenericType`3``  
-
-Anywhere else within this object's documentation that a single backtic appears, it indicates the index of the generic type in reference to the class declaration.``MyGenericType(T,U,V) is documented as MyGenericType.#ctor(`0,`1,`2)``  
+Single backtics (such as &#96;1) on a class declaration indicate a count of generic types for the class.  
+For example, `MyGenericType<T,U,V>` is documented as ``MyGenericType`3``.  
+Anywhere else within this object's documentation that a single backtic appears, it indicates the zero-based index of the generic type in reference to the class declaration.  
+For example, the constructor `MyGenericType(T,U,V)` is documented as ``MyGenericType.#ctor(`0,`1,`2)``.  
 
 **Parameters:**  
 * **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name**: Name may or may not start with "T:"  
