@@ -4,46 +4,6 @@
 
 Represents a listheader or item in a .Net XML documentation list.  
 
-# Examples
-
-## Example A:
-
-Format options:
-```xml
-<listheader>
-  plain text
-</listheader>
-<listheader>
-  <term>Term</term>
-</listheader>
-<listheader>
-  <description>Description</description>
-</listheader>
-<listheader>
-  <term>Term</term>
-  <description>Description</description>
-</listheader>
-```  
-
-## Example B:
-
-Format options:
-```xml
-<item>
-  plain text
-</item>
-<item>
-  <term>Term</term>
-</item>
-<item>
-  <description>Description</description>
-</item>
-<item>
-  <term>Term</term>
-  <description>Description</description>
-</item>
-```  
-
 # Properties
 
 ## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Description { get; protected set; }
@@ -63,4 +23,40 @@ Format options:
 ## static DotNetCommentListItem FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
 
 Parses .Net XML documentation listheader or item.  
+
+**Example A:**  
+Format options:
+```xml
+<listheader>
+  plain text
+</listheader>
+<listheader>
+  <term>Term</term>
+</listheader>
+<listheader>
+  <description>Description</description>
+</listheader>
+<listheader>
+  <term>Term</term>
+  <description>Description</description>
+</listheader>
+```  
+
+**Example B:**  
+Format options:
+```xml
+<item>
+  plain text
+</item>
+<item>
+  <term>Term</term>
+</item>
+<item>
+  <description>Description</description>
+</item>
+<item>
+  <term>Term</term>
+  <description>Description</description>
+</item>
+```  
 

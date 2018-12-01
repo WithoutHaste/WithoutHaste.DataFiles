@@ -9,7 +9,6 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <summary>
 	/// Represents a link in the comments to an internal or extenal method.
 	/// </summary>
-	/// <example><![CDATA[<permission cref="Namespace.Type.Method(Type1, Type2)">nested comments and/or plain text</permission>]]></example>
 	public class DotNetCommentMethodLink : DotNetCommentQualifiedLink
 	{
 		/// <summary>Strongly typed name.</summary>
@@ -33,6 +32,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>Parses .Net XML documentation cref for methods.</summary>
+		/// <example><![CDATA[<permission cref="Namespace.Type.Method(Type1, Type2)">nested comments and/or plain text</permission>]]></example>
 		public static new DotNetCommentMethodLink FromVisualStudioXml(string cref)
 		{
 			DotNetQualifiedMethodName name = DotNetQualifiedMethodName.FromVisualStudioXml(cref);

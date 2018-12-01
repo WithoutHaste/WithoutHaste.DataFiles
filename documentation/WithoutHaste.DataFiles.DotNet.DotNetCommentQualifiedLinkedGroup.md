@@ -43,5 +43,5 @@ Parses .Net XML documentation for permission or exception.
 # Derived By
 
 [WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup.md)  
-Represents a section of comments that is linked to a fully qualified type or member.  
+Represents a section of comments that is linked to a method.  
 

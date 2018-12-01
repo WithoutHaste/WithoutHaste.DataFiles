@@ -5,12 +5,6 @@
 
 Represents a link in the comments to an internal or extenal method.  
 
-# Examples
-
-## Example A:
-
-`<permission cref="Namespace.Type.Method(Type1, Type2)">nested comments and/or plain text</permission>`  
-
 # Properties
 
 ## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) FullSignature { get; }
@@ -45,4 +39,7 @@ Returns true if this method link and the method have matching signatures, based 
 ## static DotNetCommentMethodLink FromVisualStudioXml([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) cref)
 
 Parses .Net XML documentation cref for methods.  
+
+**Example A:**  
+`<permission cref="Namespace.Type.Method(Type1, Type2)">nested comments and/or plain text</permission>`  
 

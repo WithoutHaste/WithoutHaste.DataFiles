@@ -4,3 +4,9 @@ E:\GitHub\WithoutHaste.DataFiles\ThirdPartyTest\bin\Release\Markdown.dll
 E:\GitHub\WithoutHaste.DataFiles\ThirdPartyTest\obj\Release\ThirdPartyTest.csprojResolveAssemblyReference.cache
 E:\GitHub\WithoutHaste.DataFiles\ThirdPartyTest\obj\Release\ThirdPartyTest.dll
 E:\GitHub\WithoutHaste.DataFiles\ThirdPartyTest\obj\Release\ThirdPartyTest.pdb
+C:\DataDrive\Github\WithoutHaste.DataFiles\ThirdPartyTest\bin\Release\ThirdPartyTest.dll
+C:\DataDrive\Github\WithoutHaste.DataFiles\ThirdPartyTest\bin\Release\ThirdPartyTest.pdb
+C:\DataDrive\Github\WithoutHaste.DataFiles\ThirdPartyTest\bin\Release\Markdown.dll
+C:\DataDrive\Github\WithoutHaste.DataFiles\ThirdPartyTest\obj\Release\ThirdPartyTest.csprojResolveAssemblyReference.cache
+C:\DataDrive\Github\WithoutHaste.DataFiles\ThirdPartyTest\obj\Release\ThirdPartyTest.dll
+C:\DataDrive\Github\WithoutHaste.DataFiles\ThirdPartyTest\obj\Release\ThirdPartyTest.pdb

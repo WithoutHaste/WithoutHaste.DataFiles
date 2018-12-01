@@ -10,24 +10,10 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <summary>
 	/// Represents a list in the comments.
 	/// </summary>
-	/// <example>
-	/// <![CDATA[
-	///  <list type="bullet"> <!-- type can also be "number" -->
-	///   <listheader>
-	///    <term>Term</term>
-	///    <description>Description</description>
-	///   </listheader>
-	///   <item>
-	///    <term>Term</term>
-	///    <description>Description</description>
-	///   </item>
-	///  </list>
-	/// ]]>
-	/// </example>
 	public class DotNetCommentList : DotNetComment
 	{
 		/// <summary>
-		/// True for numbered lists (numbering starts at 1).
+		/// True for numbered lists.
 		/// False for bulleted lists.
 		/// </summary>
 		public bool IsNumbered { get; protected set; }
@@ -57,8 +43,22 @@ namespace WithoutHaste.DataFiles.DotNet
 			IsNumbered = isNumbered;
 			Tag = CommentTag.List;
 		}
-		
+
 		/// <summary>Parses .Net XML documentation list (which may actually be a table).</summary>
+		/// <example>
+		/// <![CDATA[
+		///  <list type="bullet"> <!-- type can also be "number" -->
+		///   <listheader>
+		///    <term>Term</term>
+		///    <description>Description</description>
+		///   </listheader>
+		///   <item>
+		///    <term>Term</term>
+		///    <description>Description</description>
+		///   </item>
+		///  </list>
+		/// ]]>
+		/// </example>
 		public static new DotNetComment FromVisualStudioXml(XElement element)
 		{
 			ValidateXmlTag(element, "list");

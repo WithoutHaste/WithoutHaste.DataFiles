@@ -11,42 +11,6 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <summary>
 	/// Represents a listheader or item in a .Net XML documentation list.
 	/// </summary>
-	/// <example>
-	/// Format options:
-	/// <![CDATA[
-	///   <listheader>
-	///     plain text
-	///   </listheader>
-	///   <listheader>
-	///     <term>Term</term>
-	///   </listheader>
-	///   <listheader>
-	///     <description>Description</description>
-	///   </listheader>
-	///   <listheader>
-	///     <term>Term</term>
-	///     <description>Description</description>
-	///   </listheader>
-	/// ]]>
-	/// </example>
-	/// <example>
-	/// Format options:
-	/// <![CDATA[
-	///   <item>
-	///     plain text
-	///   </item>
-	///   <item>
-	///     <term>Term</term>
-	///   </item>
-	///   <item>
-	///     <description>Description</description>
-	///   </item>
-	///   <item>
-	///     <term>Term</term>
-	///     <description>Description</description>
-	///   </item>
-	/// ]]>
-	/// </example>
 	public class DotNetCommentListItem
 	{
 		/// <summary></summary>
@@ -74,6 +38,42 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>Parses .Net XML documentation listheader or item.</summary>
+		/// <example>
+		/// Format options:
+		/// <![CDATA[
+		///   <listheader>
+		///     plain text
+		///   </listheader>
+		///   <listheader>
+		///     <term>Term</term>
+		///   </listheader>
+		///   <listheader>
+		///     <description>Description</description>
+		///   </listheader>
+		///   <listheader>
+		///     <term>Term</term>
+		///     <description>Description</description>
+		///   </listheader>
+		/// ]]>
+		/// </example>
+		/// <example>
+		/// Format options:
+		/// <![CDATA[
+		///   <item>
+		///     plain text
+		///   </item>
+		///   <item>
+		///     <term>Term</term>
+		///   </item>
+		///   <item>
+		///     <description>Description</description>
+		///   </item>
+		///   <item>
+		///     <term>Term</term>
+		///     <description>Description</description>
+		///   </item>
+		/// ]]>
+		/// </example>
 		public static DotNetCommentListItem FromVisualStudioXml(XElement element)
 		{
 			if(!DotNetComment.IsXmlTag(element, new string[] { "listheader", "item" }))

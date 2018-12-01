@@ -2,17 +2,13 @@
 
 **Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) → [DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md) → [DotNetCommentLinkedGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentLinkedGroup.md) → [DotNetCommentQualifiedLinkedGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.md)  
 
-Represents a section of comments that is linked to a fully qualified type or member.  
+Represents a section of comments that is linked to a method.  
 
 # Examples
 
 ## Example A:
 
-`<permission cref="Namespace.Type.Member">nested comments</permission>`  
-
-## Example B:
-
-`<exception cref="Namespace.ExceptionType">nested comments</exception>`  
+`<permission cref="Namespace.Type.Method()">nested comments</permission>`  
 
 # Properties
 

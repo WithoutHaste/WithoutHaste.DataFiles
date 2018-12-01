@@ -48,12 +48,12 @@ comments
 - DotNetCommentCode DONE
 - DotNetCommentCodeBlock DONE
 - DotNetCommentDuplicate DONE
-- DotNetCommentGroup
-- DotNetCommentInherit
-- DotNetCommentLinkedGroup
-- DotNetCommentList
-- DotNetCommentListItem
-- DotNetCommentMethodLink
+- DotNetCommentGroup DONE
+- DotNetCommentInherit DONE
+- DotNetCommentLinkedGroup DONE
+- DotNetCommentList DONE
+- DotNetCommentListItem DONE
+- DotNetCommentMethodLink DONE
 - DotNetCommentMethodLinkedGroup
 - DotNetCommentParameter
 - DotNetCommentParameterLink

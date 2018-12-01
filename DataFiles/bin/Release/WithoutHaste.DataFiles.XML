@@ -112,10 +112,9 @@
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup">
             <summary>
-            Represents a section of comments that is linked to a fully qualified type or member.
+            Represents a section of comments that is linked to a method.
             </summary>
-            <example><![CDATA[<permission cref="Namespace.Type.Member">nested comments</permission>]]></example>
-            <example><![CDATA[<exception cref="Namespace.ExceptionType">nested comments</exception>]]></example>
+            <example><![CDATA[<permission cref="Namespace.Type.Method()">nested comments</permission>]]></example>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup.MethodLink">
             <summary>Strongly-typed link.</summary>
@@ -393,42 +392,6 @@
             <summary>
             Represents a listheader or item in a .Net XML documentation list.
             </summary>
-            <example>
-            Format options:
-            <![CDATA[
-              <listheader>
-                plain text
-              </listheader>
-              <listheader>
-                <term>Term</term>
-              </listheader>
-              <listheader>
-                <description>Description</description>
-              </listheader>
-              <listheader>
-                <term>Term</term>
-                <description>Description</description>
-              </listheader>
-            ]]>
-            </example>
-            <example>
-            Format options:
-            <![CDATA[
-              <item>
-                plain text
-              </item>
-              <item>
-                <term>Term</term>
-              </item>
-              <item>
-                <description>Description</description>
-              </item>
-              <item>
-                <term>Term</term>
-                <description>Description</description>
-              </item>
-            ]]>
-            </example>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentListItem.IsHeader">
             <summary></summary>
@@ -447,6 +410,42 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentListItem.FromVisualStudioXml(System.Xml.Linq.XElement)">
             <summary>Parses .Net XML documentation listheader or item.</summary>
+            <example>
+            Format options:
+            <![CDATA[
+              <listheader>
+                plain text
+              </listheader>
+              <listheader>
+                <term>Term</term>
+              </listheader>
+              <listheader>
+                <description>Description</description>
+              </listheader>
+              <listheader>
+                <term>Term</term>
+                <description>Description</description>
+              </listheader>
+            ]]>
+            </example>
+            <example>
+            Format options:
+            <![CDATA[
+              <item>
+                plain text
+              </item>
+              <item>
+                <term>Term</term>
+              </item>
+              <item>
+                <description>Description</description>
+              </item>
+              <item>
+                <term>Term</term>
+                <description>Description</description>
+              </item>
+            ]]>
+            </example>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentParameter">
             <summary>
@@ -1276,24 +1275,10 @@
             <summary>
             Represents a list in the comments.
             </summary>
-            <example>
-            <![CDATA[
-             <list type="bullet"> <!-- type can also be "number" -->
-              <listheader>
-               <term>Term</term>
-               <description>Description</description>
-              </listheader>
-              <item>
-               <term>Term</term>
-               <description>Description</description>
-              </item>
-             </list>
-            ]]>
-            </example>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentList.IsNumbered">
             <summary>
-            True for numbered lists (numbering starts at 1).
+            True for numbered lists.
             False for bulleted lists.
             </summary>
         </member>
@@ -1312,12 +1297,25 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentList.FromVisualStudioXml(System.Xml.Linq.XElement)">
             <summary>Parses .Net XML documentation list (which may actually be a table).</summary>
+            <example>
+            <![CDATA[
+             <list type="bullet"> <!-- type can also be "number" -->
+              <listheader>
+               <term>Term</term>
+               <description>Description</description>
+              </listheader>
+              <item>
+               <term>Term</term>
+               <description>Description</description>
+              </item>
+             </list>
+            ]]>
+            </example>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink">
             <summary>
             Represents a link in the comments to an internal or extenal method.
             </summary>
-            <example><![CDATA[<permission cref="Namespace.Type.Method(Type1, Type2)">nested comments and/or plain text</permission>]]></example>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.MethodName">
             <summary>Strongly typed name.</summary>
@@ -1333,6 +1331,7 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.FromVisualStudioXml(System.String)">
             <summary>Parses .Net XML documentation cref for methods.</summary>
+            <example><![CDATA[<permission cref="Namespace.Type.Method(Type1, Type2)">nested comments and/or plain text</permission>]]></example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.MatchesSignature(WithoutHaste.DataFiles.DotNet.DotNetMethod)">
             <summary>

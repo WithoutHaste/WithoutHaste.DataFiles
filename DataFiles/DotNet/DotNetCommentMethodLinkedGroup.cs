@@ -10,10 +10,9 @@ namespace WithoutHaste.DataFiles.DotNet
 	//todo: class needs a better name
 
 	/// <summary>
-	/// Represents a section of comments that is linked to a fully qualified type or member.
+	/// Represents a section of comments that is linked to a method.
 	/// </summary>
-	/// <example><![CDATA[<permission cref="Namespace.Type.Member">nested comments</permission>]]></example>
-	/// <example><![CDATA[<exception cref="Namespace.ExceptionType">nested comments</exception>]]></example>
+	/// <example><![CDATA[<permission cref="Namespace.Type.Method()">nested comments</permission>]]></example>
 	public class DotNetCommentMethodLinkedGroup : DotNetCommentQualifiedLinkedGroup
 	{
 		/// <summary>Strongly-typed link.</summary>

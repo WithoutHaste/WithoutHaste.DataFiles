@@ -48,7 +48,7 @@ Represents a link in the comments to an internal or extenal method.
 
   
 [**DotNetCommentMethodLinkedGroup**](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup.md)  
-Represents a section of comments that is linked to a fully qualified type or member.  
+Represents a section of comments that is linked to a method.  
 
   
 [**DotNetCommentParameter**](WithoutHaste.DataFiles.DotNet.DotNetCommentParameter.md)  
