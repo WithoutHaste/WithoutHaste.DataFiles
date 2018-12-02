@@ -64,7 +64,7 @@ constructs
 - DotNetQualifiedTypeName DONE
 - DotNetReferenceClassGeneric DONE
 - DotNetReferenceGeneric DONE
-- DotNetReferenceMethodGeneric
+- DotNetReferenceMethodGeneric DONE
 - DotNetSettings
 - DotNetType
 - IDotNetCommentLink

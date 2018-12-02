@@ -1007,6 +1007,12 @@
             <remarks>
             See <see cref="M:WithoutHaste.DataFiles.DotNet.DotNetSettings.DefaultQualifiedNameConverter(System.String,System.Int32)"/> for usage examples.
             </remarks>
+            <example>
+            <code>
+            	DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
+            	string displayString = myQualifiedTypeName.FullName;
+            </code>	
+            </example>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetSettings.AdditionalQualifiedNameConverter">
             <summary>
@@ -1016,9 +1022,11 @@
             Set to null to not use any converter.
             </summary>
             <example>
+            <code>
             	DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
-            	DotNetSettinsg.AdditionalQualifiedNameConverter = myCustomConverter;
+            	DotNetSettings.AdditionalQualifiedNameConverter = myCustomConverter;
             	string displayString = myQualifiedTypeName.FullName;
+            </code>	
             </example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetSettings.DefaultQualifiedNameConverter(System.String,System.Int32)">
@@ -1026,8 +1034,10 @@
             Converts all standard .Net types to their common aliases.
             </summary>
             <example>
+            <code>
             	DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
             	string displayString = myQualifiedTypeName.FullName;
+            </code>
             </example>
             <example>
             <![CDATA[
@@ -1037,22 +1047,10 @@
             ]]>
             </example>
             <param name="fullName">
-            	<example>
-            	For "System.Collections.Generic.List",
-            	fullName will be "System"
-            	then "System.Collections"
-            	then "System.Collections.Generic"
-            	then "System.Collections.Generic.List"
-            	</example>
+            When processing name "System.Collections.Generic.List", fullName will be "System" then "System.Collections" then "System.Collections.Generic" then "System.Collections.Generic.List".
             </param>
             <param name="depth">
-            	<example>
-            	For "System.Collections.Generic.List", 
-            	depth = 0 at "List"
-            	depth = 1 at "Generic"
-            	depth = 2 at "Collections"
-            	depth = 3 at "System"
-            	</example>
+            When processing name "System.Collections.Generic.List", depth will be 3 at "System", then 2 at "Collections", then 1 at "Generic", then 0 at "List".
             </param>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.CommentTag">

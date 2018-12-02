@@ -22,6 +22,12 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <remarks>
 		/// See <see cref="DefaultQualifiedNameConverter"/> for usage examples.
 		/// </remarks>
+		/// <example>
+		/// <code>
+		///		DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
+		///		string displayString = myQualifiedTypeName.FullName;
+		///	</code>	
+		/// </example>
 		public static Func<string, int, string> QualifiedNameConverter = null;
 
 		/// <summary>
@@ -31,9 +37,11 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Set to null to not use any converter.
 		/// </summary>
 		/// <example>
+		/// <code>
 		///		DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
-		///		DotNetSettinsg.AdditionalQualifiedNameConverter = myCustomConverter;
+		///		DotNetSettings.AdditionalQualifiedNameConverter = myCustomConverter;
 		///		string displayString = myQualifiedTypeName.FullName;
+		///	</code>	
 		/// </example>
 		public static Func<string, int, string> AdditionalQualifiedNameConverter = null;
 
@@ -41,8 +49,10 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Converts all standard .Net types to their common aliases.
 		/// </summary>
 		/// <example>
+		/// <code>
 		///		DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
 		///		string displayString = myQualifiedTypeName.FullName;
+		///	</code>
 		/// </example>
 		/// <example>
 		/// <![CDATA[
@@ -52,22 +62,10 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// ]]>
 		/// </example>
 		/// <param name="fullName">
-		///		<example>
-		///		For "System.Collections.Generic.List",
-		///		fullName will be "System"
-		///		then "System.Collections"
-		///		then "System.Collections.Generic"
-		///		then "System.Collections.Generic.List"
-		///		</example>
+		///	When processing name "System.Collections.Generic.List", fullName will be "System" then "System.Collections" then "System.Collections.Generic" then "System.Collections.Generic.List".
 		/// </param>
 		/// <param name="depth">
-		///		<example>
-		///		For "System.Collections.Generic.List", 
-		///		depth = 0 at "List"
-		///		depth = 1 at "Generic"
-		///		depth = 2 at "Collections"
-		///		depth = 3 at "System"
-		///		</example>
+		///	When processing name "System.Collections.Generic.List", depth will be 3 at "System", then 2 at "Collections", then 1 at "Generic", then 0 at "List".
 		/// </param>
 		public static string DefaultQualifiedNameConverter(string fullName, int depth)
 		{
