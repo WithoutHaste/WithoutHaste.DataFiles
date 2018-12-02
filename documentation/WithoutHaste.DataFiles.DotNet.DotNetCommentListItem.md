@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetCommentListItem
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+**Inheritance:** object  
 
 Represents a listheader or item in a .Net XML documentation list.  
 
@@ -8,7 +8,7 @@ Represents a listheader or item in a .Net XML documentation list.
 
 ## [DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md) Description { get; protected set; }
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsHeader { get; protected set; }
+## bool IsHeader { get; protected set; }
 
 ## [DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md) Term { get; protected set; }
 
@@ -16,11 +16,11 @@ Represents a listheader or item in a .Net XML documentation list.
 
 ## DotNetCommentListItem()
 
-## DotNetCommentListItem([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) term, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) description = null, [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isHeader = False)
+## DotNetCommentListItem(string term, string description = null, bool isHeader = False)
 
 Plain text _term_ and _description_.  
 
-## DotNetCommentListItem([DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md) term, [DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md) description = null, [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isHeader = False)
+## DotNetCommentListItem([DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md) term, [DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md) description = null, bool isHeader = False)
 
 _term_ and _description_ containing more than plain text, such as a `see` tag.  
 

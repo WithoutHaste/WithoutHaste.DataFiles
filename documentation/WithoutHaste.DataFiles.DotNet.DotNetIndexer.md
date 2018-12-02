@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetIndexer
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) → [DotNetField](WithoutHaste.DataFiles.DotNet.DotNetField.md) → [DotNetProperty](WithoutHaste.DataFiles.DotNet.DotNetProperty.md)  
+**Inheritance:** object → [DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) → [DotNetField](WithoutHaste.DataFiles.DotNet.DotNetField.md) → [DotNetProperty](WithoutHaste.DataFiles.DotNet.DotNetProperty.md)  
 
 Represents an indexer property.  
 
@@ -15,11 +15,11 @@ Indexer `int this[string key]` has one parameter named "key".
 
 # Properties
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ParametersSignature { get; }
+## string ParametersSignature { get; }
 
 Returns indexer parameters formatted as "[TypeA a, TypeB b]".  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ParameterTypesSignature { get; }
+## string ParameterTypesSignature { get; }
 
 Returns indexer parameters formatted as "[TypeA,TypeB]".  
 
@@ -29,31 +29,31 @@ Returns indexer parameters formatted as "[TypeA,TypeB]".
 
 # Methods
 
-## virtual [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddAssemblyInfo([System.Reflection.PropertyInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.propertyinfo) propertyInfo)
+## virtual void AddAssemblyInfo([System.Reflection.PropertyInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.propertyinfo) propertyInfo)
 
 Load additional documentation information from the assembly itself.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([DotNetCommentQualifiedLinkedGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.md) linkedGroup)
+## bool Matches([DotNetCommentQualifiedLinkedGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.md) linkedGroup)
 
 Returns true if this indexer's signature matches the link.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([DotNetCommentMethodLinkedGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup.md) linkedGroup)
+## bool Matches([DotNetCommentMethodLinkedGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLinkedGroup.md) linkedGroup)
 
 Returns true if this indexer's signature matches the link.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([DotNetCommentMethodLink](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.md) methodLink)
+## bool Matches([DotNetCommentMethodLink](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.md) methodLink)
 
 Returns true if this indexer's signature matches the method signature.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) methodName)
+## bool Matches([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) methodName)
 
 Returns true if this indexer's signature matches the method signature.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesArguments([System.Reflection.ParameterInfo[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) otherParameters)
+## bool MatchesArguments([System.Reflection.ParameterInfo[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) otherParameters)
 
 Returns true if this method's parameter list matches the reflected ParameterInfo.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesSignature([System.Reflection.MethodInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.methodinfo) methodInfo)
+## bool MatchesSignature([System.Reflection.MethodInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.methodinfo) methodInfo)
 
 Returns true if this method's signature matches the reflected MethodInfo.  
 

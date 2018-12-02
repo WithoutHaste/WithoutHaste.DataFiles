@@ -1,7 +1,7 @@
 # [WithoutHaste.DataFiles.Markdown](TableOfContents.WithoutHaste.DataFiles.Markdown.md).MarkdownLink
 
 **Abstract**  
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+**Inheritance:** object  
 **Implements:** [IMarkdownInLine](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md), [IMarkdownInSection](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md)  
 
 # Fields
@@ -12,27 +12,27 @@ Styled text of link.
 
 # Properties
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Text { get; }
+## string Text { get; }
 
 Plain text of link.  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Url { get; protected set; }
+## string Url { get; protected set; }
 
 Url of target.  
 
 # Constructors
 
-## MarkdownLink([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text)
+## MarkdownLink(string text)
 
 Link text and url are the same.  
 
-## MarkdownLink([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) url)
+## MarkdownLink(string text, string url)
 
-## MarkdownLink([MarkdownText](WithoutHaste.DataFiles.Markdown.MarkdownText.md) text, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) url)
+## MarkdownLink([MarkdownText](WithoutHaste.DataFiles.Markdown.MarkdownText.md) text, string url)
 
 # Methods
 
-## abstract [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToMarkdown([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) previousText)
+## abstract string ToMarkdown(string previousText)
 
 Outputs markdown-formatted text.  
 

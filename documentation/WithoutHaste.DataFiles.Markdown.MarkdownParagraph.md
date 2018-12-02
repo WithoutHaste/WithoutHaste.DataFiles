@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.Markdown](TableOfContents.WithoutHaste.DataFiles.Markdown.md).MarkdownParagraph
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+**Inheritance:** object  
 **Implements:** [IMarkdownIsBlock](WithoutHaste.DataFiles.Markdown.IMarkdownIsBlock.md), [IMarkdownInSection](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md)  
 
 Represents a grouping of elements that will end in a single double-line-break.  
@@ -29,7 +29,7 @@ Ordered elements that make up this paragraph.
 **Remarks:**  
 Expect mostly one plain text element.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsEmpty { get; }
+## bool IsEmpty { get; }
 
 True when there are no elements in the line.  
 
@@ -43,37 +43,37 @@ Initialize paragraph with any number of elements.
 
 Initialize paragraph with any number of elements.  
 
-## MarkdownParagraph([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text)
+## MarkdownParagraph(string text)
 
 Initialize paragraph with one MarkdownText element.  
 
 # Methods
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text)
+## void Add(string text)
 
 Add a new MarkdownText containing the text to the end of the paragraph.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([IMarkdownInSection](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) element)
+## void Add([IMarkdownInSection](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) element)
 
 Add an element to the end of the paragraph.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([List&lt;IMarkdownInSection&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
+## void Add([List&lt;IMarkdownInSection&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
 
 Add elements to the end of the paragraph.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([IMarkdownInSection[]](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) elements)
+## void Add([IMarkdownInSection[]](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) elements)
 
 Add elements to the end of the paragraph.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Prepend([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text)
+## void Prepend(string text)
 
 Add a new MarkdownText containing the text to the beginning of the paragraph.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Prepend([IMarkdownInSection](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) element)
+## void Prepend([IMarkdownInSection](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) element)
 
 Add an element to the beginning of the paragraph.  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToMarkdown([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) previousText)
+## string ToMarkdown(string previousText)
 
 Convert the paragraph to markdown-formatted text.  
 

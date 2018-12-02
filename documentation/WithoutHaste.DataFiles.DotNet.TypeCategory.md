@@ -18,9 +18,9 @@ No special category.
 
 ## 4: Interface
 
-## 5: Enum
+## 5: Struct
 
-## 6: Exception
+## 6: Enum
 
-## 7: Struct
+## 7: Exception
 

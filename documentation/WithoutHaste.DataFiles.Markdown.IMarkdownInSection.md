@@ -6,7 +6,7 @@ Represents a markdown element that can be included within a MarkdownSection.
 
 # Methods
 
-## abstract [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToMarkdown([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) previousText)
+## abstract string ToMarkdown(string previousText)
 
 Return markdown-formatted text.  
 

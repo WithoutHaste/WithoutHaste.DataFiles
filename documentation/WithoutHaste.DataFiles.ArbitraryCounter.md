@@ -1,7 +1,7 @@
 # [WithoutHaste.DataFiles](TableOfContents.WithoutHaste.DataFiles.md).ArbitraryCounter
 
 **Abstract**  
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+**Inheritance:** object  
 
 Counts using an arbitrary set of digits.  
 
@@ -20,11 +20,11 @@ Current internal value.
 
 # Properties
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) MINIMUM_VALUE { get; }
+## string MINIMUM_VALUE { get; }
 
 Counter can never decrement below the minimum value.  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Value { get; }
+## string Value { get; }
 
 Current display value.  
 
@@ -40,17 +40,17 @@ Initialize at MINIMUM_VALUE.
 
 Returns an independent copy of the value.  
 
-## protected [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Decrement([List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) value, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) delta)
+## protected void Decrement([List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) value, int delta)
 
 Increment a value.  
 
-## protected [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Increment([List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) value, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) delta)
+## protected void Increment([List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) value, int delta)
 
 Increment a value.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) SetValue([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) start)
+## void SetValue(string start)
 
-## protected [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) SetValue([List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) start)
+## protected void SetValue([List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) start)
 
 # Derived By
 

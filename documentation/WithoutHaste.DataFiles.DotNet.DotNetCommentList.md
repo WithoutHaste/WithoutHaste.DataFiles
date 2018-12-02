@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetCommentList
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md)  
+**Inheritance:** object → [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md)  
 
 Represents a list in the comments.  
 
@@ -12,25 +12,25 @@ Items in the list.
 
 # Properties
 
-## [DotNetCommentListItem](WithoutHaste.DataFiles.DotNet.DotNetCommentListItem.md) this[[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) index] { get; }
+## [DotNetCommentListItem](WithoutHaste.DataFiles.DotNet.DotNetCommentListItem.md) this[int index] { get; }
 
 Access list items by 0-based index.  
 
 **Exceptions:**  
 * **[IndexOutOfRangeException](https://docs.microsoft.com/en-us/dotnet/api/system.indexoutofrangeexception)**:   
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsNumbered { get; protected set; }
+## bool IsNumbered { get; protected set; }
 
 True for numbered lists.  
 False for bulleted lists.  
 
-## [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) Length { get; }
+## int Length { get; }
 
 Number of items in the list. Includes headers.  
 
 # Constructors
 
-## DotNetCommentList([List&lt;DotNetCommentListItem&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) items, [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isNumbered = False)
+## DotNetCommentList([List&lt;DotNetCommentListItem&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) items, bool isNumbered = False)
 
 # Static Methods
 

@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetParameter
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+**Inheritance:** object  
 
 Represents a parameter in a method signature.  
 
@@ -8,26 +8,26 @@ Represents a parameter in a method signature.
 
 ## [ParameterCategory](WithoutHaste.DataFiles.DotNet.ParameterCategory.md) Category { get; protected set; }
 
-## [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) DefaultValue { get; protected set; }
+## object DefaultValue { get; protected set; }
 
 For optional parameters, the default value of the parameter. Null otherwise.  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) FullTypeName { get; }
+## string FullTypeName { get; }
 
 Fully qualified data type name.  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) LocalTypeName { get; }
+## string LocalTypeName { get; }
 
 Local data type name.  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Name { get; protected set; }
+## string Name { get; protected set; }
 
 Name of parameter. Null if not known.  
 
 **Example A:**  
 In `MethodName(int a, string b)`, the first parameter name is `a`.  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) SignatureWithName { get; }
+## string SignatureWithName { get; }
 
 Returns formatted parameter with name.  
 
@@ -46,7 +46,7 @@ this MyType myName
 **Example E:**  
 MyType myName = defaultValue  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) SignatureWithoutName { get; }
+## string SignatureWithoutName { get; }
 
 Returns formatted parameter without the name.  
 
@@ -94,7 +94,7 @@ Category defaults to Normal.
 
 # Methods
 
-## virtual [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddAssemblyInfo([System.Reflection.ParameterInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo) parameterInfo)
+## virtual void AddAssemblyInfo([System.Reflection.ParameterInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo) parameterInfo)
 
 Load additional documentation information from the assembly itself.  
 
@@ -102,17 +102,17 @@ Load additional documentation information from the assembly itself.
 
 Returns deep clone of parameter.  
 
-## virtual [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Equals([object](https://docs.microsoft.com/en-us/dotnet/api/system.object) b)
+## virtual bool Equals(object b)
 
 For equality, parameter type and category must be equal. Parameter name and default value are irrelevant.  
 
-## virtual [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) GetHashCode()
+## virtual int GetHashCode()
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) SetIsExtension()
+## void SetIsExtension()
 
 Set that this parameter is the first parameter in an extension method.  
 
-## virtual [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToString()
+## virtual string ToString()
 
 Returns formatted parameter with name.  
 
@@ -133,17 +133,17 @@ MyType myName = defaultValue
 
 # Static Methods
 
-## static DotNetParameter FromVisualStudioXml([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) typeName)
+## static DotNetParameter FromVisualStudioXml(string typeName)
 
 Parses a .Net XML documentation parameter type name.  
 
 # Operators
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) = DotNetParameter a == DotNetParameter b
+## bool = DotNetParameter a == DotNetParameter b
 
 For equality, parameter type and category must be equal. Parameter name and default value are irrelevant.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) = DotNetParameter a != DotNetParameter b
+## bool = DotNetParameter a != DotNetParameter b
 
 For equality, parameter type and category must be equal. Parameter name and default value are irrelevant.  
 

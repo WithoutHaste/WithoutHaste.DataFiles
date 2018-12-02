@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetProperty
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) → [DotNetField](WithoutHaste.DataFiles.DotNet.DotNetField.md)  
+**Inheritance:** object → [DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) → [DotNetField](WithoutHaste.DataFiles.DotNet.DotNetField.md)  
 
 Represents a type's property.  
 
@@ -10,9 +10,9 @@ Represents a type's property.
 
 The "get" method of the property.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) HasGetterMethod { get; }
+## bool HasGetterMethod { get; }
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) HasSetterMethod { get; }
+## bool HasSetterMethod { get; }
 
 ## [DotNetPropertyMethod](WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod.md) SetterMethod { get; protected set; }
 
@@ -24,7 +24,7 @@ The "set" method of the property.
 
 # Methods
 
-## virtual [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddAssemblyInfo([System.Reflection.PropertyInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.propertyinfo) propertyInfo)
+## virtual void AddAssemblyInfo([System.Reflection.PropertyInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.propertyinfo) propertyInfo)
 
 Load additional documentation information from the assembly itself.  
 

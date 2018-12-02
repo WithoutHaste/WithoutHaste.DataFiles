@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetDocumentationFile
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+**Inheritance:** object  
 
 Represents a .Net XML documentation file, such as those produced by Visual Studio.  
 Can add additional documentation derived from the assembly itself.  
@@ -21,9 +21,9 @@ Top-level types in assembly.
 
 # Properties
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) AssemblyName { get; protected set; }
+## string AssemblyName { get; protected set; }
 
-## [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) TypeCount { get; }
+## int TypeCount { get; }
 
 Returns the full count of types within assembly, including nested types and enums.  
 
@@ -33,7 +33,7 @@ Returns the full count of types within assembly, including nested types and enum
 
 Empty constructor.  
 
-## DotNetDocumentationFile([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) filename)
+## DotNetDocumentationFile(string filename)
 
 Loads .Net XML documentation from file.  
 
@@ -42,7 +42,7 @@ Loads .Net XML documentation from file.
 * **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: Unexpected file extension of the *.XML documentation file.  
 
 **Parameters:**  
-* **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) filename**: Full path, filename, and extension.  
+* **string filename**: Full path, filename, and extension.  
 
 ## DotNetDocumentationFile([System.Xml.Linq.XDocument](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xdocument) document)
 
@@ -50,13 +50,13 @@ Loads .Net XML documentation from XDocument.
 
 # Methods
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddAssemblyInfo([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) assemblyFilename, [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) thirdPartyAssemblyFilenames)
+## void AddAssemblyInfo(string assemblyFilename, [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) thirdPartyAssemblyFilenames)
 
 Load additional documentation information from the assembly itself.  
 
 ### Parameters
 
-#### [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) assemblyFilename
+#### string assemblyFilename
 
 Full path and filename of the *.dll library being documentated.  
 

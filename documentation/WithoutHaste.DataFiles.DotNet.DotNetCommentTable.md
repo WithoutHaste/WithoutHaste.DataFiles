@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetCommentTable
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md)  
+**Inheritance:** object → [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md)  
 
 Represents a table in the comments.  
 
@@ -10,7 +10,7 @@ Represents a table in the comments.
 
 # Properties
 
-## [DotNetCommentCell](WithoutHaste.DataFiles.DotNet.DotNetCommentCell.md) this[[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) rowIndex,[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) columnIndex] { get; }
+## [DotNetCommentCell](WithoutHaste.DataFiles.DotNet.DotNetCommentCell.md) this[int rowIndex,int columnIndex] { get; }
 
 Returns the selected [DotNetCommentCell](WithoutHaste.DataFiles.DotNet.DotNetCommentCell.md) of the table. Will return a [DotNetCommentCell.EmptyCell](WithoutHaste.DataFiles.DotNet.DotNetCommentCell.md) if the cell is within range but does not actually exist.  
 
@@ -18,22 +18,22 @@ Returns the selected [DotNetCommentCell](WithoutHaste.DataFiles.DotNet.DotNetCom
 * **[IndexOutOfRangeException](https://docs.microsoft.com/en-us/dotnet/api/system.indexoutofrangeexception)**: Either the row or column index is out of range.  
 
 **Parameters:**  
-* **[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) rowIndex**: 0-based index of table row.  
-* **[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) columnIndex**: 0-based index of table column.  
+* **int rowIndex**: 0-based index of table row.  
+* **int columnIndex**: 0-based index of table column.  
 
-## [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) ColumnCount { get; }
+## int ColumnCount { get; }
 
 Maximum number of columns in the table.  
 
-## [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) DataRowCount { get; }
+## int DataRowCount { get; }
 
 Number of data (non-header) rows in the table.  
 
-## [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) HeaderRowCount { get; }
+## int HeaderRowCount { get; }
 
 Number of header rows in the table.  
 
-## [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) RowCount { get; }
+## int RowCount { get; }
 
 Number of rows in the table. Includes header rows and data rows.  
 

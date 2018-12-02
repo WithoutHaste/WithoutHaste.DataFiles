@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetQualifiedClassNameTreeNode
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+**Inheritance:** object  
 
 A node in a tree data structure made up of DotNetQualifiedClassNames organized by their namespaces.  
 
@@ -14,7 +14,7 @@ A node in a tree data structure made up of DotNetQualifiedClassNames organized b
 
 # Methods
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Insert([DotNetQualifiedClassName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md) name)
+## void Insert([DotNetQualifiedClassName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md) name)
 
 Insert a new namespace into its proper position, based on the current node as the root.  
 

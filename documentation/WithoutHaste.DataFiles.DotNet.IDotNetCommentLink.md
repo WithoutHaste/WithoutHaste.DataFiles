@@ -6,7 +6,7 @@ Represents anything in the comments that links to something in the assembly.
 
 # Properties
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) FullName { get; }
+## string FullName { get; }
 
 Return the fully qualified name of the referenced assembly element.  
 

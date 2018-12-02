@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetQualifiedClassName
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md)  
+**Inheritance:** object → [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md)  
 **Implements:** [IComparable](https://docs.microsoft.com/en-us/dotnet/api/system.icomparable)  
 
 Represents a fully qualified class name, for class declarations.  
@@ -25,18 +25,18 @@ Default names that will be given to generic-types, in order.
 
 Strongly-typed FullNamespace.  
 
-## [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) GenericTypeCount { get; protected set; }
+## int GenericTypeCount { get; protected set; }
 
 The number of generic-types required by the class declaration.  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) LocalName { get; }
+## string LocalName { get; }
 
 Local data type name, written in the c# style.  
 
 **Example A:**  
 ``MyType<T> instead of MyType`1``  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) LocalXmlName { get; }
+## string LocalXmlName { get; }
 
 Local data type name, written in the Xml style.  
 
@@ -49,13 +49,13 @@ Local data type name, written in the Xml style.
 
 Empty constructor  
 
-## DotNetQualifiedClassName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) genericTypeCount = 0)
+## DotNetQualifiedClassName(string localName, int genericTypeCount = 0)
 
-## DotNetQualifiedClassName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [DotNetQualifiedClassName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md) fullNamespace, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) genericTypeCount = 0)
+## DotNetQualifiedClassName(string localName, [DotNetQualifiedClassName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md) fullNamespace, int genericTypeCount = 0)
 
 # Methods
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddAssemblyInfo([System.Reflection.TypeInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.typeinfo) typeInfo)
+## void AddAssemblyInfo([System.Reflection.TypeInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.typeinfo) typeInfo)
 
 Load additional documentation information from the assembly itself.  
 
@@ -65,7 +65,7 @@ Returns deep clone of qualified name.
 
 # Static Methods
 
-## static DotNetQualifiedClassName FromVisualStudioXml([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name)
+## static DotNetQualifiedClassName FromVisualStudioXml(string name)
 
 Parses a .Net XML documentation type name or namespace name.  
 
@@ -84,5 +84,5 @@ Anywhere else within this object's documentation that a single backtic appears, 
 For example, the constructor `MyGenericType(T,U,V)` is documented as ``MyGenericType.#ctor(`0,`1,`2)``.  
 
 **Parameters:**  
-* **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name**: Name may or may not start with "T:"  
+* **string name**: Name may or may not start with "T:"  
 

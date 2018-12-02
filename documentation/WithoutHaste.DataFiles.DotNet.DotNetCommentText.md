@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetCommentText
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md)  
+**Inheritance:** object → [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md)  
 
 Represents a plain text segment of comments.  
 
@@ -12,19 +12,19 @@ So if each line starts with two tabs, two tabs will be removed from the beginnin
 
 # Properties
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsEmpty { get; }
+## bool IsEmpty { get; }
 
 True if text is null or empty string.  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Text { get; protected set; }
+## string Text { get; protected set; }
 
 # Constructors
 
-## DotNetCommentText([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text)
+## DotNetCommentText(string text)
 
 # Methods
 
-## virtual [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToString()
+## virtual string ToString()
 
 Returns full text.  
 

@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetCommentRow
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+**Inheritance:** object  
 
 Represents a row of data in a .Net XML documentation table.  
 
@@ -10,7 +10,7 @@ Represents a row of data in a .Net XML documentation table.
 
 # Properties
 
-## [DotNetCommentCell](WithoutHaste.DataFiles.DotNet.DotNetCommentCell.md) this[[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) columnIndex] { get; }
+## [DotNetCommentCell](WithoutHaste.DataFiles.DotNet.DotNetCommentCell.md) this[int columnIndex] { get; }
 
 Returns the selected cell of the row. Returns an empty cell if no cell is found.  
 
@@ -21,17 +21,17 @@ Returns an empty cell because Row does not know the number of columns in the Tab
 * **[IndexOutOfRangeException](https://docs.microsoft.com/en-us/dotnet/api/system.indexoutofrangeexception)**: Column index is negative.  
 
 **Parameters:**  
-* **[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) columnIndex**: 0-based index of table column.  
+* **int columnIndex**: 0-based index of table column.  
 
-## [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) ColumnCount { get; }
+## int ColumnCount { get; }
 
 Number of columns (cells) in the row.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsHeader { get; protected set; }
+## bool IsHeader { get; protected set; }
 
 # Constructors
 
-## DotNetCommentRow([List&lt;DotNetCommentCell&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) cells, [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isHeader = False)
+## DotNetCommentRow([List&lt;DotNetCommentCell&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) cells, bool isHeader = False)
 
 # Static Methods
 

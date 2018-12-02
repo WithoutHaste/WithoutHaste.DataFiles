@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetCommentCell
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+**Inheritance:** object  
 
 Represents a cell in a table in .Net XML documentation.  
 
@@ -15,13 +15,13 @@ Default empty cell.
 
 # Properties
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Text { get; protected set; }
+## string Text { get; protected set; }
 
 Cell contents.  
 
 # Constructors
 
-## DotNetCommentCell([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text)
+## DotNetCommentCell(string text)
 
 # Static Methods
 

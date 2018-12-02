@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetQualifiedMethodName
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md)  
+**Inheritance:** object → [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md)  
 **Implements:** [IComparable](https://docs.microsoft.com/en-us/dotnet/api/system.icomparable)  
 
 Represents a fully qualified method name.  
@@ -27,34 +27,34 @@ Default names that will be given to generic-method-types, in order.
 
 Strongly-typed FullNamespace.  
 
-## [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) GenericTypeCount { get; protected set; }
+## int GenericTypeCount { get; protected set; }
 
 The number of generic-types required by the method declaration.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsGeneric { get; }
+## bool IsGeneric { get; }
 
 True for generic methods.  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) LocalName { get; }
+## string LocalName { get; }
 
 Local method name with generic type parameters (if applicable).  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) LocalXmlName { get; }
+## string LocalXmlName { get; }
 
 Local data type name, written in the Xml style.  
 
 **Example A:**  
 ``MyType`1 instead of MyType<T>``  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ParametersWithNames { get; }
+## string ParametersWithNames { get; }
 
 Returns parameter list formatted as: (TypeA a, TypeB b)  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ParametersWithoutNames { get; }
+## string ParametersWithoutNames { get; }
 
 Returns parameter list formatted as: (TypeA, TypeB)  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) ReturnTypeIsPartOfSignature { get; }
+## bool ReturnTypeIsPartOfSignature { get; }
 
 True if the return type is necessary for distinguishing this method name from others.  
 
@@ -71,15 +71,15 @@ Fully qualified name of return data type, if known. Null if not known.
 
 Empty constructor  
 
-## DotNetQualifiedMethodName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [List&lt;DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) parameters, [DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) returnTypeName = null, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) genericTypeCount = 0, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) explicitInterface = null)
+## DotNetQualifiedMethodName(string localName, [List&lt;DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) parameters, [DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) returnTypeName = null, int genericTypeCount = 0, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) explicitInterface = null)
 
-## DotNetQualifiedMethodName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) fullNamespace, [List&lt;DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) parameters, [DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) returnTypeName = null, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) genericTypeCount = 0, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) explicitInterface = null)
+## DotNetQualifiedMethodName(string localName, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) fullNamespace, [List&lt;DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) parameters, [DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) returnTypeName = null, int genericTypeCount = 0, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) explicitInterface = null)
 
 ## DotNetQualifiedMethodName([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) explicitInterface = null)
 
 # Methods
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddAssemblyInfo([System.Reflection.MethodInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.methodinfo) methodInfo)
+## void AddAssemblyInfo([System.Reflection.MethodInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.methodinfo) methodInfo)
 
 Load additional documentation information from the assembly itself.  
 
@@ -87,7 +87,7 @@ Load additional documentation information from the assembly itself.
 
 Returns deep clone of qualified name.  
 
-## virtual [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) CompareTo([object](https://docs.microsoft.com/en-us/dotnet/api/system.object) b)
+## virtual int CompareTo(object b)
 
 Methods are sorted:  
 1. alphabetically by namespace  
@@ -96,34 +96,34 @@ Methods are sorted:
 4. then alphabetically by parameter types  
 5. then alphabetically by return type (for some operators)  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesArguments([System.Reflection.ParameterInfo[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) otherParameters)
+## bool MatchesArguments([System.Reflection.ParameterInfo[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) otherParameters)
 
 Returns true if this method's parameter list matches the reflected ParameterInfo. Checks parameter types, not names.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesArguments([List&lt;DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) otherParameters)
+## bool MatchesArguments([List&lt;DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) otherParameters)
 
 Returns true if this method's parameter list matches the provided parameter list. Checks parameter types, not names.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesLocalSignature([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) other)
+## bool MatchesLocalSignature([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) other)
 
 Returns true if this method's signature matches the other method signature.  
 Looks at local name instead of entire namespace.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesSignature([System.Reflection.MethodInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.methodinfo) methodInfo)
+## bool MatchesSignature([System.Reflection.MethodInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.methodinfo) methodInfo)
 
 Returns true if this method's signature matches the reflected MethodInfo.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) MatchesSignature([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) other)
+## bool MatchesSignature([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) other)
 
 Returns true if this method's signature matches the other method signature.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) SetLocalName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name)
+## void SetLocalName(string name)
 
 Set the local name of the method. Does not affect generic type parameters or method parameters.  
 
 # Static Methods
 
-## static DotNetQualifiedMethodName FromVisualStudioXml([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) signature)
+## static DotNetQualifiedMethodName FromVisualStudioXml(string signature)
 
 Parses a .Net XML documentation method signature.  
 
@@ -147,18 +147,18 @@ XML documentation of implicit and explicit operators:
 `static implicit operator int(MyClass a)` becomes `MyClass.op_Implicit(MyClass)~System.Int32`.  
 
 **Parameters:**  
-* **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) signature**: Name may or may not start with "M:". Includes parameter list.  
+* **string signature**: Name may or may not start with "M:". Includes parameter list.  
 
-## static [List&lt;DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ParametersFromVisualStudioXml([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text)
+## static [List&lt;DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ParametersFromVisualStudioXml(string text)
 
 Parse .Net XML documentation parameter lists.  
 
 **Parameters:**  
-* **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text**: Expects: null, or empty string, or "(type, type, type)"  
+* **string text**: Expects: null, or empty string, or "(type, type, type)"  
 
 # Operators
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) = DotNetQualifiedMethodName a > DotNetQualifiedMethodName b
+## bool = DotNetQualifiedMethodName a > DotNetQualifiedMethodName b
 
 Methods are sorted:  
 1. alphabetically by namespace  
@@ -167,7 +167,7 @@ Methods are sorted:
 4. then alphabetically by parameter types  
 5. then alphabetically by return type (for some operators)  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) = DotNetQualifiedMethodName a < DotNetQualifiedMethodName b
+## bool = DotNetQualifiedMethodName a < DotNetQualifiedMethodName b
 
 Methods are sorted:  
 1. alphabetically by namespace  

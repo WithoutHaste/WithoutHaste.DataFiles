@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.Markdown](TableOfContents.WithoutHaste.DataFiles.Markdown.md).MarkdownTable
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+**Inheritance:** object  
 **Implements:** [IMarkdownIsBlock](WithoutHaste.DataFiles.Markdown.IMarkdownIsBlock.md), [IMarkdownInSection](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md)  
 
 Represents a markdown table.  
@@ -10,7 +10,7 @@ Markdown requires each table to have exactly 1 header row, so the first row is a
 
 # Fields
 
-## const [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) MINIMUM_COLUMN_WIDTH
+## const int MINIMUM_COLUMN_WIDTH
 
 Minimum column width is 3 to allow for minimum "---" contents indicating header/data divider.  
 
@@ -24,11 +24,11 @@ Minimum column width is 3 to allow for minimum "---" contents indicating header/
 
 # Methods
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([MarkdownTableRow](WithoutHaste.DataFiles.Markdown.MarkdownTableRow.md) row)
+## void Add([MarkdownTableRow](WithoutHaste.DataFiles.Markdown.MarkdownTableRow.md) row)
 
 Add a row to the end of the table.  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToMarkdown([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) previousText)
+## string ToMarkdown(string previousText)
 
 Return markdown-formatted text.  
 

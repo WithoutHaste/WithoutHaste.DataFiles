@@ -1,31 +1,31 @@
 # [WithoutHaste.DataFiles](TableOfContents.WithoutHaste.DataFiles.md).TextHelper
 
 **Static**  
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+**Inheritance:** object  
 
 Contains operations for parsing and editing text.  
 
 # Static Methods
 
-## static [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsAllWhitespace(this [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text)
+## static bool IsAllWhitespace(this string text)
 
 Returns true if text is empty or contains only whitespace characters.  
 
-## static [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) RemoveFromEnd(this [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) end)
+## static string RemoveFromEnd(this string text, string end)
 
 Removes the _end_ string from the end of _text_, if it exists there.  
 
-## static [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) RemoveFromStart(this [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) start)
+## static string RemoveFromStart(this string text, string start)
 
 Removes the _start_ string from the beginning of _text_, if it exists there.  
 
-## static [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) RemoveOuterBraces(this [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text)
+## static string RemoveOuterBraces(this string text)
 
 Removes outer matched pairs of braces from string.  
 Only changes string if first and last characters are a matched pair of braces.  
 Supports {}, [], (), and `<>`.  
 
-## static [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ReplaceUnescapedCharacters(this [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text, [char](https://docs.microsoft.com/en-us/dotnet/api/system.char) escapeChar, [char](https://docs.microsoft.com/en-us/dotnet/api/system.char) searchChar, [char](https://docs.microsoft.com/en-us/dotnet/api/system.char) replacementChar)
+## static string ReplaceUnescapedCharacters(this string text, char escapeChar, char searchChar, char replacementChar)
 
 Replaces all instances of the unescaped _searchChar_ in the _text_.  
 
@@ -40,7 +40,7 @@ string result = original.ReplaceUnescapedCharacters('\', '.', '_');
 //result = "A_B_C\.D\\_E"
 ```  
 
-## static [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) SplitIgnoreNested(this [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text, [char](https://docs.microsoft.com/en-us/dotnet/api/system.char) delimiter)
+## static [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) SplitIgnoreNested(this string text, char delimiter)
 
 Split _text_ on the _delimiter_   
 but do not split if _delimiter_ is nested within matched braces.  

@@ -1,7 +1,7 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetSettings
 
 **Static**  
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+**Inheritance:** object  
 
 Global settings for the entire DotNet namespace.  
 
@@ -43,7 +43,7 @@ string displayString = myQualifiedTypeName.FullName;
 
 # Static Methods
 
-## static [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) DefaultQualifiedNameConverter([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) fullName, [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) depth)
+## static string DefaultQualifiedNameConverter(string fullName, int depth)
 
 Converts all standard .Net types to their common aliases.  
 
@@ -63,6 +63,6 @@ string displayString = myQualifiedTypeName.FullName;
 ```  
 
 **Parameters:**  
-* **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) fullName**: When processing name "System.Collections.Generic.List", fullName will be "System" then "System.Collections" then "System.Collections.Generic" then "System.Collections.Generic.List".  
-* **[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) depth**: When processing name "System.Collections.Generic.List", depth will be 3 at "System", then 2 at "Collections", then 1 at "Generic", then 0 at "List".  
+* **string fullName**: When processing name "System.Collections.Generic.List", fullName will be "System" then "System.Collections" then "System.Collections.Generic" then "System.Collections.Generic.List".  
+* **int depth**: When processing name "System.Collections.Generic.List", depth will be 3 at "System", then 2 at "Collections", then 1 at "Generic", then 0 at "List".  
 

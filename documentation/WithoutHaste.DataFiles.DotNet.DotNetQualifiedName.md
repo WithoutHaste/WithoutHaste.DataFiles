@@ -1,13 +1,13 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetQualifiedName
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+**Inheritance:** object  
 **Implements:** [IComparable](https://docs.microsoft.com/en-us/dotnet/api/system.icomparable)  
 
 Represents a fully qualified type name or member name.  
 
 # Fields
 
-## protected [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName
+## protected string localName
 
 Name without namespace or declaring type or generic type parameters.  
 
@@ -17,7 +17,7 @@ Name without namespace or declaring type or generic type parameters.
 
 The interface being implemented, if this is a property or method with an explicit interface implementation.  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) FullName { get; }
+## string FullName { get; }
 
 Fully qualified name.  
 
@@ -28,14 +28,14 @@ Fully qualified namespace.
 **Remarks:**  
 Null if there is no namespace.  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) LocalName { get; }
+## string LocalName { get; }
 
 Local data type name, written in the c# style.  
 
 **Example A:**  
 ``MyType<T> instead of MyType`1``  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) LocalXmlName { get; }
+## string LocalXmlName { get; }
 
 Local data type name, written in the Xml style.  
 
@@ -48,9 +48,9 @@ Local data type name, written in the Xml style.
 
 Empty constructor  
 
-## DotNetQualifiedName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) explicitInterface = null)
+## DotNetQualifiedName(string localName, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) explicitInterface = null)
 
-## DotNetQualifiedName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) fullNamespace, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) explicitInterface = null)
+## DotNetQualifiedName(string localName, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) fullNamespace, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) explicitInterface = null)
 
 ## DotNetQualifiedName([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) names)
 
@@ -65,14 +65,14 @@ Builds the qualified name from each segment provided, with the first string bein
 
 Returns deep clone of qualified name.  
 
-## virtual [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) CompareTo([object](https://docs.microsoft.com/en-us/dotnet/api/system.object) b)
+## virtual int CompareTo(object b)
 
 Names are sorted alphabetically, per namespace, starting with the root.  
 
 **Remarks:**  
 Explicit interface implementations are considered only as a last resort.  
 
-## virtual [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Equals([object](https://docs.microsoft.com/en-us/dotnet/api/system.object) b)
+## virtual bool Equals(object b)
 
 Names converted to strings must match exactly to be considered equal.  
 
@@ -86,13 +86,13 @@ Does not include explicit interface implementations.
 **Example A:**  
 "System.Collections.Generic".Flatten() returns ["System", "Collections", "Generic"].  
 
-## virtual [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) GetHashCode()
+## virtual int GetHashCode()
 
 ## DotNetQualifiedName GetLocalized([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
 
 Returns a new name object which has been localized to the provided other name. The current object is not altered.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsWithin([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
+## bool IsWithin([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
 
 Returns true if this Name is nested inside the other Name.  
 
@@ -102,7 +102,7 @@ Returns true if this Name is nested inside the other Name.
 **Example B:**  
 "System" is not within null or empty Name.  
 
-## virtual [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Localize([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
+## virtual void Localize([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
 
 Simplifies this qualified name based on the _other_ name.  
 In other words, removes the portion of the namespace that this and the _other_ have in common.  
@@ -126,7 +126,7 @@ Preserves explicit interface implementations.
 
 Convert a base-type DotNetQualifiedName to a DotNetQualifiedTypeName.  
 
-## virtual [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToString()
+## virtual string ToString()
 
 Returns dot notation of namespaces and local name.  
 
@@ -135,15 +135,15 @@ A.B.C.LocalName
 
 # Static Methods
 
-## static [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Combine([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) names)
+## static string Combine([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) names)
 
 Return the names combined with a '.' delimiter.  
 
-## static [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Combine([List&lt;string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) names)
+## static string Combine([List&lt;string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) names)
 
 Return the names combined with a '.' delimiter.  
 
-## static [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) Compare([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) a, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) b)
+## static int Compare([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) a, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) b)
 
 Names are sorted alphabetically, per namespace, starting with the root.  
 
@@ -164,17 +164,17 @@ Parses a System.Reflection.AssemblyInfo full name.
 
 See [FromAssemblyInfo(System.Reflection.TypeInfo)](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md)  
 
-## static DotNetQualifiedName FromAssemblyInfo([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) typeName)
+## static DotNetQualifiedName FromAssemblyInfo(string typeName)
 
 See [FromAssemblyInfo(System.Reflection.TypeInfo)](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md)  
 
-## static DotNetQualifiedName FromVisualStudioXml([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name)
+## static DotNetQualifiedName FromVisualStudioXml(string name)
 
 Parses a .Net XML documentation type, method, or other member name.  
 
 ### Parameters
 
-#### [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name
+#### string name
 
 * Names starting with "T:" are parsed as Type names.  
 * Names starting with "M:" are parsed as Method names.  
@@ -185,29 +185,29 @@ Parses a .Net XML documentation type, method, or other member name.
 
 # Operators
 
-## implicit [string](https://docs.microsoft.com/en-us/dotnet/api/system.string)(DotNetQualifiedName name)
+## implicit string(DotNetQualifiedName name)
 
 Returns dot notation of namespaces and local name.  
 
 **Example A:**  
 A.B.C.LocalName  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) = DotNetQualifiedName a == DotNetQualifiedName b
+## bool = DotNetQualifiedName a == DotNetQualifiedName b
 
 Names converted to strings must match exactly to be considered equal.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) = DotNetQualifiedName a != DotNetQualifiedName b
+## bool = DotNetQualifiedName a != DotNetQualifiedName b
 
 Names converted to strings must match exactly to be considered equal.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) = DotNetQualifiedName a > DotNetQualifiedName b
+## bool = DotNetQualifiedName a > DotNetQualifiedName b
 
 Names are sorted alphabetically, per namespace, starting with the root.  
 
 **Remarks:**  
 Explicit interface implementations are considered only as a last resort.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) = DotNetQualifiedName a < DotNetQualifiedName b
+## bool = DotNetQualifiedName a < DotNetQualifiedName b
 
 Names are sorted alphabetically, per namespace, starting with the root.  
 

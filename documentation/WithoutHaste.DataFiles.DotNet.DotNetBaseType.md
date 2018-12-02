@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetBaseType
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+**Inheritance:** object  
 
 Represents a node in an inheriance hierarchy.  
 Stub class: contains minimal information about the type.  
@@ -9,7 +9,7 @@ Stub class: contains minimal information about the type.
 
 ## DotNetBaseType BaseType { get; protected set; }
 
-## [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) Depth { get; }
+## int Depth { get; }
 
 Returns the inheritance distance from here to the bottom.  
 

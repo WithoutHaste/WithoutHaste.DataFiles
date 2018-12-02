@@ -1,7 +1,7 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetMember
 
 **Abstract**  
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+**Inheritance:** object  
 
 Represents any .Net construct that can have comments on it:  
 class, interface, struct, delegate, enum, method, field, property, event, etc.  
@@ -62,11 +62,11 @@ If there are multiple "value" tags, their contents will be concatenated as if th
 
 # Properties
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) HasComments { get; }
+## bool HasComments { get; }
 
 True when there's at least one comment on this member.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) HasNoComments { get; }
+## bool HasNoComments { get; }
 
 True when there are no comments on this member.  
 
@@ -78,23 +78,23 @@ True when there are no comments on this member.
 
 # Methods
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) ClearComments()
+## void ClearComments()
 
 Removes all comments from member.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) CopyComments([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) original)
+## void CopyComments([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) original)
 
 Shallow-copies all comments from the _original_ member to this member.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([DotNetCommentQualifiedLink](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.md) link)
+## bool Matches([DotNetCommentQualifiedLink](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.md) link)
 
 Returns true if member name matches the link name.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Matches([DotNetCommentQualifiedLinkedGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.md) group)
+## bool Matches([DotNetCommentQualifiedLinkedGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.md) group)
 
 Returns true if member name matches the link name.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) ParseVisualStudioXmlDocumentation([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) parent)
+## void ParseVisualStudioXmlDocumentation([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) parent)
 
 Parse .Net XML documentation about this member.  
 
@@ -104,7 +104,7 @@ Clears any existing comments before parsing the new ones.
 **Parameters:**  
 * **[System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) parent**: Expects the tag containing all documentation for this member.  
 
-## virtual [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) ResolveDuplicatedComments([Func&lt;DotNetQualifiedName,DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember, [List&lt;DotNetQualifiedName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) pathToThisDuplicate = null)
+## virtual bool ResolveDuplicatedComments([Func&lt;DotNetQualifiedName,DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember, [List&lt;DotNetQualifiedName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) pathToThisDuplicate = null)
 
 For all "duplicate" comments, replace the comment with the duplicated comments.  
 
@@ -115,7 +115,7 @@ Returns true if resolution is successful. Returns false if referenced member is 
 * **[Func&lt;DotNetQualifiedName,DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember**: Function that returns the selected member from all known members in the assembly.  
 * **[List&lt;DotNetQualifiedName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) pathToThisDuplicate**: List of named types/members that are duplicating each other, leading to this member. Used to avoid reference loops.  
 
-## virtual [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToString()
+## virtual string ToString()
 
 Full name of member.  
 

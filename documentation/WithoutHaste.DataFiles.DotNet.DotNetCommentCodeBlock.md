@@ -1,20 +1,20 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetCommentCodeBlock
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) → [DotNetCommentText](WithoutHaste.DataFiles.DotNet.DotNetCommentText.md) → [DotNetCommentCode](WithoutHaste.DataFiles.DotNet.DotNetCommentCode.md)  
+**Inheritance:** object → [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) → [DotNetCommentText](WithoutHaste.DataFiles.DotNet.DotNetCommentText.md) → [DotNetCommentCode](WithoutHaste.DataFiles.DotNet.DotNetCommentCode.md)  
 
 Represents a section of code in the comments.  
 
 # Properties
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) Language { get; protected set; }
+## string Language { get; protected set; }
 
 Specify the language of the code block. Null if not known.  
 
 # Constructors
 
-## DotNetCommentCodeBlock([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text)
+## DotNetCommentCodeBlock(string text)
 
-## DotNetCommentCodeBlock([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) language)
+## DotNetCommentCodeBlock(string text, string language)
 
 # Static Methods
 

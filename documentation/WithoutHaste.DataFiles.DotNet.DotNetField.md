@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetField
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md)  
+**Inheritance:** object → [DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md)  
 
 Represents a type's field.  
 
@@ -10,15 +10,15 @@ Represents a type's field.
 
 ## [FieldCategory](WithoutHaste.DataFiles.DotNet.FieldCategory.md) Category { get; protected set; }
 
-## [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) ConstantValue { get; protected set; }
+## object ConstantValue { get; protected set; }
 
 For constant fields, the value of the constant. Null otherwise.  
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) FullTypeName { get; }
+## string FullTypeName { get; }
 
 The "FullName" of the field data type.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsStatic { get; protected set; }
+## bool IsStatic { get; protected set; }
 
 False means unknown or is not static.  
 
@@ -32,7 +32,7 @@ Fully qualified name of data type, if known. Null if not known.
 
 # Methods
 
-## virtual [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddAssemblyInfo([System.Reflection.FieldInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.fieldinfo) fieldInfo)
+## virtual void AddAssemblyInfo([System.Reflection.FieldInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.fieldinfo) fieldInfo)
 
 Load additional documentation information from the assembly itself.  
 

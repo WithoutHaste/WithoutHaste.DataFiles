@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetCommentGroup
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md)  
+**Inheritance:** object → [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md)  
 
 Represents an ordered collection of comments.  
 
@@ -13,15 +13,15 @@ Groups may include a link to something in the assembly which these comments are 
 
 # Properties
 
-## [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) this[[int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) index] { get; }
+## [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) this[int index] { get; }
 
 Access comments by zero-based index.  
 
-## [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) Count { get; }
+## int Count { get; }
 
 The number of comments in the group. Does not count nested comments.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsEmpty { get; }
+## bool IsEmpty { get; }
 
 # Constructors
 
@@ -45,11 +45,11 @@ Empty constructor
 
 # Methods
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
+## void Add([DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([DotNetComment[]](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comments)
+## void Add([DotNetComment[]](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comments)
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) Add([List&lt;DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
+## void Add([List&lt;DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
 
 # Static Methods
 

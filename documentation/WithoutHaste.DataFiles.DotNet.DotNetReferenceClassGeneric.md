@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetReferenceClassGeneric
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) → [DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) → [DotNetReferenceGeneric](WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric.md)  
+**Inheritance:** object → [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) → [DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) → [DotNetReferenceGeneric](WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric.md)  
 **Implements:** [IComparable](https://docs.microsoft.com/en-us/dotnet/api/system.icomparable)  
 
 Represents a generic-type parameter that is in reference to a class's declared generic types.  
@@ -19,31 +19,31 @@ class MyGeneric<T,U>
 
 # Properties
 
-## [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) LocalName { get; }
+## string LocalName { get; }
 
 # Constructors
 
-## DotNetReferenceClassGeneric([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) genericTypeIndex, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) alias = null)
+## DotNetReferenceClassGeneric(int genericTypeIndex, string alias = null)
 
 **Exceptions:**  
 * **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: _genericTypeIndex_ cannot be less than 0.  
 
 ### Parameters
 
-#### [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) genericTypeIndex
+#### int genericTypeIndex
 
 0-based index of type in class declaration type parameter list.  
 
 **Example A:**  
 `Index 0 refers to "T" in "class MyGeneric<T,U> { }"`  
 
-#### [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) alias
+#### string alias
 
 Alias of generic-type within assembly. Null if not known.  
 
 # Static Methods
 
-## static DotNetReferenceClassGeneric FromVisualStudioXml([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name)
+## static DotNetReferenceClassGeneric FromVisualStudioXml(string name)
 
 Parses a .Net XML documentation class-generic-type parameter.  
 
@@ -53,7 +53,7 @@ Parses a .Net XML documentation class-generic-type parameter.
 **Exceptions:**  
 * **[XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)**: _name_ is not in expected format: `` `Index``.  
 
-## static [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) HasExpectedVisualStudioXmlFormat([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name)
+## static bool HasExpectedVisualStudioXmlFormat(string name)
 
 Check if a string is properly formatted as a parameter referencing a class-generic-type.  
 

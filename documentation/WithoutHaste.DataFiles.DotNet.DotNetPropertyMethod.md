@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetPropertyMethod
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object)  
+**Inheritance:** object  
 
 Represents a getter or a setter method of a property.  
 
@@ -8,13 +8,13 @@ Represents a getter or a setter method of a property.
 
 ## [AccessModifier](WithoutHaste.DataFiles.DotNet.AccessModifier.md) AccessModifier { get; protected set; }
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsAbstract { get; protected set; }
+## bool IsAbstract { get; protected set; }
 
 # Constructors
 
 ## DotNetPropertyMethod()
 
-## DotNetPropertyMethod([AccessModifier](WithoutHaste.DataFiles.DotNet.AccessModifier.md) accessModifier, [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) isAbstract)
+## DotNetPropertyMethod([AccessModifier](WithoutHaste.DataFiles.DotNet.AccessModifier.md) accessModifier, bool isAbstract)
 
 # Static Methods
 

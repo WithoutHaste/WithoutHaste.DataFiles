@@ -1,6 +1,6 @@
 # [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md).DotNetType
 
-**Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md)  
+**Inheritance:** object → [DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md)  
 
 Represents a data type: a class, interface, struct, or enum.  
 
@@ -69,7 +69,7 @@ The subset of Methods that are destructors. There can be zero or one destructors
 
 The subset of Properties that are indexers.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsSealed { get; protected set; }
+## bool IsSealed { get; protected set; }
 
 True if the type is sealed.  
 
@@ -80,7 +80,7 @@ Abstract classes, static classes, and interfaces cannot be sealed. Exceptions ca
 
 The subset of NestedTypes that are enums.  
 
-## [int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) NestedTypeCount { get; }
+## int NestedTypeCount { get; }
 
 The number of types nested within this type, including sub-nested types and enums.  
 
@@ -114,29 +114,29 @@ Strongly-typed name.
 
 # Methods
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddAssemblyInfo([System.Reflection.TypeInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.typeinfo) typeInfo, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+## void AddAssemblyInfo([System.Reflection.TypeInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.typeinfo) typeInfo, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 
 Load additional documentation information from the assembly itself for this type or one of its nested type descendents.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddMember([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) member)
+## void AddMember([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) member)
 
 Add a member to this type or one of its nested type descendents.  
 
-## [DotNetEvent](WithoutHaste.DataFiles.DotNet.DotNetEvent.md) FindInheritedEvent([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName)
+## [DotNetEvent](WithoutHaste.DataFiles.DotNet.DotNetEvent.md) FindInheritedEvent([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, string localName)
 
 Returns the selected event, if it exists in this type.  
 
 **Parameters:**  
 * **[Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType**: Function that returns the selected type from all known types in the assembly.  
-* **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName**: Name of event, local to this type.  
+* **string localName**: Name of event, local to this type.  
 
-## [DotNetField](WithoutHaste.DataFiles.DotNet.DotNetField.md) FindInheritedField([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName)
+## [DotNetField](WithoutHaste.DataFiles.DotNet.DotNetField.md) FindInheritedField([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, string localName)
 
 Returns the selected field, if it exists in this type.  
 
 **Parameters:**  
 * **[Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType**: Function that returns the selected type from all known types in the assembly.  
-* **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName**: Name of field, local to this type.  
+* **string localName**: Name of field, local to this type.  
 
 ## [DotNetMethod](WithoutHaste.DataFiles.DotNet.DotNetMethod.md) FindInheritedMethod([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) methodName)
 
@@ -146,13 +146,13 @@ Returns the selected method, if it exists in this type.
 * **[Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType**: Function that returns the selected type from all known types in the assembly.  
 * **[DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) methodName**: Name of method, local to this type.  
 
-## [DotNetProperty](WithoutHaste.DataFiles.DotNet.DotNetProperty.md) FindInheritedProperty([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName)
+## [DotNetProperty](WithoutHaste.DataFiles.DotNet.DotNetProperty.md) FindInheritedProperty([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, string localName)
 
 Returns the selected property, if it exists in this type.  
 
 **Parameters:**  
 * **[Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType**: Function that returns the selected type from all known types in the assembly.  
-* **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName**: Name of property, local to this type.  
+* **string localName**: Name of property, local to this type.  
 
 ## [DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) FindMember([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 
@@ -162,30 +162,30 @@ Returns the specified member from this type of its nested type descendents. Can 
 
 Returns the selected type, whether it is the current type or one of its nested type descendents. Returns null if the type is not found.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Is([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+## bool Is([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 
 Returns true if this member's name matches the provided name.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) IsDirectChild([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+## bool IsDirectChild([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 
 Returns true if this qualified name is defined directly within this type.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Owns([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) member)
+## bool Owns([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) member)
 
 Returns true if this member is defined within this type or any of its nested type descendents.  
 
-## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Owns([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+## bool Owns([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 
 Returns true if this qualified name is defined within this type or any of its nested type dscendents.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) ResolveDuplicatedComments([Func&lt;DotNetQualifiedName,DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember)
+## void ResolveDuplicatedComments([Func&lt;DotNetQualifiedName,DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember)
 
 For all "duplicate" comments, replace the comment with the duplicated comments.  
 
 **Parameters:**  
 * **[Func&lt;DotNetQualifiedName,DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember**: Function that returns the selected member from all known members in the assembly.  
 
-## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) ResolveInheritedComments([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [List&lt;DotNetQualifiedName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) inheritancePath = null)
+## void ResolveInheritedComments([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [List&lt;DotNetQualifiedName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) inheritancePath = null)
 
 For all "inheritdoc" comments, replace the inheritance comment with the inherited comments.  
 
@@ -212,7 +212,7 @@ The new delegate, or null if the type is not found.
 **Parameters:**  
 * **[DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name**: The fully qualified name of the delegate.  
 
-## virtual [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToString()
+## virtual string ToString()
 
 Returns FullName of type.  
 
