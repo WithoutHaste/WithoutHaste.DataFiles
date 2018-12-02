@@ -33,7 +33,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>If this is a generic type, these are the specified parameter types.</summary>
-		/// <example><![CDATA[In parameter type List<System.String>, System.String is the generic-type parameter of List.]]></example>
+		/// <example>In parameter type <![CDATA[List<System.String>]]>, System.String is the generic-type parameter of List.</example>
 		public List<DotNetQualifiedTypeName> GenericTypeParameters = new List<DotNetQualifiedTypeName>();
 
 		#region Constructors
@@ -56,7 +56,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			this.FullNamespace = fullNamespace;
 		}
 
-		/// See <see cref="DotNetQualifiedTypeName(string,List{DotNetQualifiedTypeName},DotNetQualifiedTypeName)" />
+		/// <summary></summary>
 		public DotNetQualifiedTypeName(string localName, List<DotNetQualifiedTypeName> genericTypeParameters) : this(localName, genericTypeParameters, null)
 		{
 		}
@@ -120,7 +120,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Parses a System.Reflection.AssemblyInfo full name.
 		/// </summary>
 		/// <list>
-		///   <item>The escape character is '\'</item>
+		///   <item>The escape character is backslash (\)</item>
 		///   <item>Nested types are separated with '+' instead of '.'</item>
 		///   <item>Class declaration of generic types are shown the same as .Net XML documentation: MyType`1 for one generic type</item>
 		///   <item>When a generic type is defined: System.Collections.Generic.List`1[U], where U is the type alias from the class declaration</item>

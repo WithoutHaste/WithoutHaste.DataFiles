@@ -59,9 +59,9 @@ constructs
 - DotNetPropertyMethod DONE
 - DotNetQualifiedClassName DONE
 - DotNetQualifiedClassNameTreeNode DONE
-- DotNetQualifiedMethodName - don't cause a quote block
-- DotNetQualifiedName
-- DotNetQualifiedTypeName
+- DotNetQualifiedMethodName DONE
+- DotNetQualifiedName DONE
+- DotNetQualifiedTypeName - constructor exception formatting
 - DotNetReferenceClassGeneric
 - DotNetReferenceGeneric
 - DotNetReferenceMethodGeneric

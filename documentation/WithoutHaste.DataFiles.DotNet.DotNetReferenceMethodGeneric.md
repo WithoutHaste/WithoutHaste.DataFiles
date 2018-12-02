@@ -52,13 +52,8 @@ Parses a .Net XML documentation method-generic-type parameter.
 **Example A:**  
 ```Namespace.MyType.MyMethod<A>(A) is formatted as Namespace.MyType.MyMethod``1(``0)```  
 
-### Exceptions
-
-#### [XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)
-
-_name_  
-
- is not in expected format: &#96;&#96;Index.  
+**Exceptions:**  
+* **[XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)**: _name_ is not in expected format: &#96;&#96;Index.  
 
 ## static [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) HasExpectedVisualStudioXmlFormat([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name)
 

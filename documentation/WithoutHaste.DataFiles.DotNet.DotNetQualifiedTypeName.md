@@ -12,7 +12,7 @@ Represents a fully qualified type name, for return types / field types / propert
 If this is a generic type, these are the specified parameter types.  
 
 **Example A:**  
-`In parameter type List<System.String>, System.String is the generic-type parameter of List.`  
+In parameter type `List<System.String>`, System.String is the generic-type parameter of List.  
 
 # Properties
 
@@ -36,18 +36,10 @@ Empty constructor
 
 ## DotNetQualifiedTypeName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [List&lt;DotNetQualifiedTypeName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) genericTypeParameters)
 
-**Misc:**  
-See [DotNetQualifiedTypeName(string, List&lt;WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName&gt;, WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName)](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md)  
-
 ## DotNetQualifiedTypeName([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName, [List&lt;DotNetQualifiedTypeName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) genericTypeParameters, [DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) fullNamespace)
 
-### Exceptions
-
-#### [ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)
-
-_genericTypeParameters_  
-
- cannot be null.  
+**Exceptions:**  
+* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: _genericTypeParameters_ cannot be null.  
 
 **Parameters:**  
 * **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName**:   
@@ -95,7 +87,7 @@ Parses a System.Reflection.AssemblyInfo full name.
 Parses a System.Reflection.AssemblyInfo full name.  
 
 **Misc:**  
-* The escape character is '\'  
+* The escape character is backslash (\)  
 * Nested types are separated with '+' instead of '.'  
 * Class declaration of generic types are shown the same as .Net XML documentation: MyType&#96;1 for one generic type  
 * When a generic type is defined: System.Collections.Generic.List&#96;1[U], where U is the type alias from the class declaration  

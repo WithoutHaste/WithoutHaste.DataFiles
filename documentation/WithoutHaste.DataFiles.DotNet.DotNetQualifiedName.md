@@ -155,7 +155,7 @@ Explicit interface implementations are considered only as a last resort.
 Parses a System.Reflection.AssemblyInfo full name.  
 
 **Misc:**  
-* The escape character is '\'  
+* The escape character is backslash (\)  
 * Nested types are separated with '+' instead of '.'  
 * Class declaration of generic types are shown the same as .Net XML documentation: MyType&#96;1 for one generic type  
 * When a generic type is defined: System.Collections.Generic.List&#96;1[U], where U is the type alias from the class declaration  
@@ -171,9 +171,6 @@ See [FromAssemblyInfo(System.Reflection.TypeInfo)](WithoutHaste.DataFiles.DotNet
 ## static DotNetQualifiedName FromVisualStudioXml([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name)
 
 Parses a .Net XML documentation type, method, or other member name.  
-
-**Exceptions:**  
-* **[XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)**: Name does not start with /[TMFPE]:/  
 
 ### Parameters
 

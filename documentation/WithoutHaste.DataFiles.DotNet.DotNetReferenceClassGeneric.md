@@ -50,13 +50,8 @@ Parses a .Net XML documentation class-generic-type parameter.
 **Example A:**  
 ``Namespace.MyType<T>{ } is formatted as Namespace.MyType`1``  
 
-### Exceptions
-
-#### [XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)
-
-_name_  
-
- is not in expected format: &#96;Index.  
+**Exceptions:**  
+* **[XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)**: _name_ is not in expected format: &#96;Index.  
 
 ## static [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) HasExpectedVisualStudioXmlFormat([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name)
 

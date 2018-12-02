@@ -642,7 +642,7 @@
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.GenericTypeParameters">
             <summary>If this is a generic type, these are the specified parameter types.</summary>
-            <example><![CDATA[In parameter type List<System.String>, System.String is the generic-type parameter of List.]]></example>
+            <example>In parameter type <![CDATA[List<System.String>]]>, System.String is the generic-type parameter of List.</example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.#ctor">
             <summary>Empty constructor</summary>
@@ -654,7 +654,7 @@
             <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.#ctor(System.String,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName})">
-            See <see cref="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.#ctor(System.String,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName},WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName)" />
+            <summary></summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.#ctor(System.String,System.Collections.Generic.List{WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName},WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName)">
             <param name="localName"></param>
@@ -678,7 +678,7 @@
             Parses a System.Reflection.AssemblyInfo full name.
             </summary>
             <list>
-              <item>The escape character is '\'</item>
+              <item>The escape character is backslash (\)</item>
               <item>Nested types are separated with '+' instead of '.'</item>
               <item>Class declaration of generic types are shown the same as .Net XML documentation: MyType`1 for one generic type</item>
               <item>When a generic type is defined: System.Collections.Generic.List`1[U], where U is the type alias from the class declaration</item>
@@ -811,9 +811,7 @@
             Parse .Net XML documentation parameter lists.
             </summary>
             <param name="text">
-            Expects: null
-            Expects: empty string
-            Expects: "(type, type, type)"
+            Expects: null, or empty string, or "(type, type, type)"
             </param>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.MatchesSignature(System.Reflection.MethodInfo)">
@@ -2129,7 +2127,6 @@
                 <item>All others are parsed as Member names.</item>
               </list>
             </param>
-            <exception cref="T:WithoutHaste.DataFiles.XmlFormatException">Name does not start with /[TMFPE]:/</exception>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.MemberNameFromVisualStudioXml(System.String)">
             <summary>
@@ -2156,7 +2153,7 @@
             Parses a System.Reflection.AssemblyInfo full name.
             </summary>
             <list>
-              <item>The escape character is '\'</item>
+              <item>The escape character is backslash (\)</item>
               <item>Nested types are separated with '+' instead of '.'</item>
               <item>Class declaration of generic types are shown the same as .Net XML documentation: MyType`1 for one generic type</item>
               <item>When a generic type is defined: System.Collections.Generic.List`1[U], where U is the type alias from the class declaration</item>

@@ -83,7 +83,6 @@ namespace WithoutHaste.DataFiles.DotNet
 		///     <item>All others are parsed as Member names.</item>
 		///   </list>
 		/// </param>
-		/// <exception cref="XmlFormatException">Name does not start with /[TMFPE]:/</exception>
 		public static DotNetQualifiedName FromVisualStudioXml(string name)
 		{
 			if(String.IsNullOrEmpty(name))
@@ -155,7 +154,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Parses a System.Reflection.AssemblyInfo full name.
 		/// </summary>
 		/// <list>
-		///   <item>The escape character is '\'</item>
+		///   <item>The escape character is backslash (\)</item>
 		///   <item>Nested types are separated with '+' instead of '.'</item>
 		///   <item>Class declaration of generic types are shown the same as .Net XML documentation: MyType`1 for one generic type</item>
 		///   <item>When a generic type is defined: System.Collections.Generic.List`1[U], where U is the type alias from the class declaration</item>

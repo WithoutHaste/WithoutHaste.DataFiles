@@ -154,9 +154,7 @@ XML documentation of implicit and explicit operators:
 Parse .Net XML documentation parameter lists.  
 
 **Parameters:**  
-* **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text**: Expects: null
-Expects: empty string
-Expects: "(type, type, type)"  
+* **[string](https://docs.microsoft.com/en-us/dotnet/api/system.string) text**: Expects: null, or empty string, or "(type, type, type)"  
 
 # Operators
 

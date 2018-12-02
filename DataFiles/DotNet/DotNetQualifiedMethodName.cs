@@ -210,9 +210,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Parse .Net XML documentation parameter lists.
 		/// </summary>
 		/// <param name="text">
-		/// Expects: null
-		/// Expects: empty string
-		/// Expects: "(type, type, type)"
+		/// Expects: null, or empty string, or "(type, type, type)"
 		/// </param>
 		public static List<DotNetParameter> ParametersFromVisualStudioXml(string text)
 		{
