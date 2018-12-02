@@ -9,7 +9,7 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <summary>
 	/// Represents a generic-type parameter that is not in a class declaration or a method declaration.
 	/// </summary>
-	/// <example><![CDATA[The "U"s in MyMethod(List<U> list, U obj).]]></example>
+	/// <example>The "U"s in MyMethod(<![CDATA[List<U>]]> list, U obj).</example>
 	public abstract class DotNetReferenceGeneric : DotNetQualifiedTypeName
 	{
 		/// <summary>
@@ -25,11 +25,11 @@ namespace WithoutHaste.DataFiles.DotNet
 
 		/// <param name="genericTypeIndex">
 		///   0-based index of type in class or method declaration type parameter list.
-		///   <example><![CDATA[Index 0 refers to "T" in "class MyGeneric<T,U> { }"]]></example>
-		///   <example><![CDATA[Index 0 refers to "A" in "void MyMethod<A,B>() { }"]]></example>
+		///   <example>Index 0 refers to "T" in <![CDATA[class MyGeneric<T,U> { }]]>.</example>
+		///   <example>Index 0 refers to "A" in <![CDATA[void MyMethod<A,B>() { }]]>.</example>
 		/// </param>
 		/// <param name="alias">Alias of generic-type within assembly. Null if not known.</param>
-		/// <exception cref="ArgumentException">GenericTypeIndex cannot be less than 0.</exception>
+		/// <exception cref="ArgumentException"><paramref name='genericTypeIndex'/> cannot be less than 0.</exception>
 		public DotNetReferenceGeneric(int genericTypeIndex, string alias = null)
 		{
 			if(genericTypeIndex < 0)

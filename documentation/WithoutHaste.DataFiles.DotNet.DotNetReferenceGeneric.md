@@ -10,7 +10,7 @@ Represents a generic-type parameter that is not in a class declaration or a meth
 
 ## Example A:
 
-`The "U"s in MyMethod(List<U> list, U obj).`  
+The "U"s in MyMethod(`List<U>` list, U obj).  
 
 # Fields
 
@@ -30,7 +30,7 @@ Whether this refers to a class-generic or method-generic is determined by the su
 ## DotNetReferenceGeneric([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) genericTypeIndex, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) alias = null)
 
 **Exceptions:**  
-* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: GenericTypeIndex cannot be less than 0.  
+* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: _genericTypeIndex_ cannot be less than 0.  
 
 ### Parameters
 
@@ -39,10 +39,10 @@ Whether this refers to a class-generic or method-generic is determined by the su
 0-based index of type in class or method declaration type parameter list.  
 
 **Example A:**  
-`Index 0 refers to "T" in "class MyGeneric<T,U> { }"`  
+Index 0 refers to "T" in `class MyGeneric<T,U> { }`.  
 
 **Example B:**  
-`Index 0 refers to "A" in "void MyMethod<A,B>() { }"`  
+Index 0 refers to "A" in `void MyMethod<A,B>() { }`.  
 
 #### [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) alias
 

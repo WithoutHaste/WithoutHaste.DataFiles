@@ -30,10 +30,10 @@ namespace WithoutHaste.DataFiles.DotNet
 
 		/// <param name="genericTypeIndex">
 		///   0-based index of type in method declaration type parameter list.
-		///   <example><![CDATA[Index 0 refers to "A" in "void MyMethod<A,B>() { }"]]></example>
+		///   <example>Index 0 refers to "A" in <![CDATA[void MyMethod<A,B>() { }]]></example>
 		/// </param>
 		/// <param name="alias">Alias of generic-type within assembly. Null if not known.</param>
-		/// <exception cref="ArgumentException">GenericTypeIndex cannot be less than 0.</exception>
+		/// <exception cref="ArgumentException"><paramref name='genericTypeIndex'/> cannot be less than 0.</exception>
 		public DotNetReferenceMethodGeneric(int genericTypeIndex, string alias = null) : base(genericTypeIndex, alias)
 		{
 		}
@@ -41,7 +41,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>
 		/// Parses a .Net XML documentation method-generic-type parameter.
 		/// </summary>
-		/// <example><![CDATA[Namespace.MyType.MyMethod<A>(A) is formatted as Namespace.MyType.MyMethod``1(``0)]]></example>
+		/// <example><![CDATA[Namespace.MyType.MyMethod<A>(A)]]> is formatted as <c>Namespace.MyType.MyMethod``1(``0)</c>.</example>
 		/// <exception cref="XmlFormatException"><paramref name="name"/> is not in expected format: ``Index.</exception>
 		public static new DotNetReferenceMethodGeneric FromVisualStudioXml(string name)
 		{
@@ -58,7 +58,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>
 		/// Check if a string is properly formatted as a parameter referencing a method-generic-type.
 		/// </summary>
-		/// <example>``0</example>
+		/// <example><c>``0</c>, <c>``1</c>, <c>``2</c>, etc.</example>
 		public static bool HasExpectedVisualStudioXmlFormat(string name)
 		{
 			Regex regex = new Regex(@"^\`\`\d+$");

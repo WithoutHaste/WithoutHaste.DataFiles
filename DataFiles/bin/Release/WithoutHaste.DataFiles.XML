@@ -290,26 +290,26 @@
               <example><![CDATA[Index 0 refers to "T" in "class MyGeneric<T,U> { }"]]></example>
             </param>
             <param name="alias">Alias of generic-type within assembly. Null if not known.</param>
-            <exception cref="T:System.ArgumentException">GenericTypeIndex cannot be less than 0.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name='genericTypeIndex'/> cannot be less than 0.</exception>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric.FromVisualStudioXml(System.String)">
             <summary>
             Parses a .Net XML documentation class-generic-type parameter.
             </summary>
-            <example><![CDATA[Namespace.MyType<T>{ } is formatted as Namespace.MyType`1]]></example>
-            <exception cref="T:WithoutHaste.DataFiles.XmlFormatException"><paramref name="name"/> is not in expected format: `Index.</exception>
+            <example><![CDATA[Namespace.MyType<T>{ }]]> is formatted as <c>Namespace.MyType`1</c>.</example>
+            <exception cref="T:WithoutHaste.DataFiles.XmlFormatException"><paramref name="name"/> is not in expected format: <c>`Index</c>.</exception>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric.HasExpectedVisualStudioXmlFormat(System.String)">
             <summary>
             Check if a string is properly formatted as a parameter referencing a class-generic-type.
             </summary>
-            <example>`0</example>
+            <example><c>`0</c>, <c>`1</c>, <c>`2</c>, etc.</example>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric">
             <summary>
             Represents a generic-type parameter that is not in a class declaration or a method declaration.
             </summary>
-            <example><![CDATA[The "U"s in MyMethod(List<U> list, U obj).]]></example>
+            <example>The "U"s in MyMethod(<![CDATA[List<U>]]> list, U obj).</example>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric.Alias">
             <summary>
@@ -323,11 +323,11 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric.#ctor(System.Int32,System.String)">
             <param name="genericTypeIndex">
               0-based index of type in class or method declaration type parameter list.
-              <example><![CDATA[Index 0 refers to "T" in "class MyGeneric<T,U> { }"]]></example>
-              <example><![CDATA[Index 0 refers to "A" in "void MyMethod<A,B>() { }"]]></example>
+              <example>Index 0 refers to "T" in <![CDATA[class MyGeneric<T,U> { }]]>.</example>
+              <example>Index 0 refers to "A" in <![CDATA[void MyMethod<A,B>() { }]]>.</example>
             </param>
             <param name="alias">Alias of generic-type within assembly. Null if not known.</param>
-            <exception cref="T:System.ArgumentException">GenericTypeIndex cannot be less than 0.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name='genericTypeIndex'/> cannot be less than 0.</exception>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric.SetAlias(System.String)">
             <summary></summary>
@@ -964,23 +964,23 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric.#ctor(System.Int32,System.String)">
             <param name="genericTypeIndex">
               0-based index of type in method declaration type parameter list.
-              <example><![CDATA[Index 0 refers to "A" in "void MyMethod<A,B>() { }"]]></example>
+              <example>Index 0 refers to "A" in <![CDATA[void MyMethod<A,B>() { }]]></example>
             </param>
             <param name="alias">Alias of generic-type within assembly. Null if not known.</param>
-            <exception cref="T:System.ArgumentException">GenericTypeIndex cannot be less than 0.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name='genericTypeIndex'/> cannot be less than 0.</exception>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric.FromVisualStudioXml(System.String)">
             <summary>
             Parses a .Net XML documentation method-generic-type parameter.
             </summary>
-            <example><![CDATA[Namespace.MyType.MyMethod<A>(A) is formatted as Namespace.MyType.MyMethod``1(``0)]]></example>
+            <example><![CDATA[Namespace.MyType.MyMethod<A>(A)]]> is formatted as <c>Namespace.MyType.MyMethod``1(``0)</c>.</example>
             <exception cref="T:WithoutHaste.DataFiles.XmlFormatException"><paramref name="name"/> is not in expected format: ``Index.</exception>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric.HasExpectedVisualStudioXmlFormat(System.String)">
             <summary>
             Check if a string is properly formatted as a parameter referencing a method-generic-type.
             </summary>
-            <example>``0</example>
+            <example><c>``0</c>, <c>``1</c>, <c>``2</c>, etc.</example>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.IDotNetCommentLink">
             <summary>

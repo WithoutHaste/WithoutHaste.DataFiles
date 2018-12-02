@@ -61,9 +61,9 @@ constructs
 - DotNetQualifiedClassNameTreeNode DONE
 - DotNetQualifiedMethodName DONE
 - DotNetQualifiedName DONE
-- DotNetQualifiedTypeName - constructor exception formatting
-- DotNetReferenceClassGeneric
-- DotNetReferenceGeneric
+- DotNetQualifiedTypeName DONE
+- DotNetReferenceClassGeneric DONE
+- DotNetReferenceGeneric DONE
 - DotNetReferenceMethodGeneric
 - DotNetSettings
 - DotNetType

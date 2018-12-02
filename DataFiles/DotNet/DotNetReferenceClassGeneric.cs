@@ -31,7 +31,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		///   <example><![CDATA[Index 0 refers to "T" in "class MyGeneric<T,U> { }"]]></example>
 		/// </param>
 		/// <param name="alias">Alias of generic-type within assembly. Null if not known.</param>
-		/// <exception cref="ArgumentException">GenericTypeIndex cannot be less than 0.</exception>
+		/// <exception cref="ArgumentException"><paramref name='genericTypeIndex'/> cannot be less than 0.</exception>
 		public DotNetReferenceClassGeneric(int genericTypeIndex, string alias = null) : base(genericTypeIndex, alias)
 		{
 		}
@@ -39,8 +39,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>
 		/// Parses a .Net XML documentation class-generic-type parameter.
 		/// </summary>
-		/// <example><![CDATA[Namespace.MyType<T>{ } is formatted as Namespace.MyType`1]]></example>
-		/// <exception cref="XmlFormatException"><paramref name="name"/> is not in expected format: `Index.</exception>
+		/// <example><![CDATA[Namespace.MyType<T>{ }]]> is formatted as <c>Namespace.MyType`1</c>.</example>
+		/// <exception cref="XmlFormatException"><paramref name="name"/> is not in expected format: <c>`Index</c>.</exception>
 		public static new DotNetReferenceClassGeneric FromVisualStudioXml(string name)
 		{
 			if(!HasExpectedVisualStudioXmlFormat(name))
@@ -56,7 +56,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>
 		/// Check if a string is properly formatted as a parameter referencing a class-generic-type.
 		/// </summary>
-		/// <example>`0</example>
+		/// <example><c>`0</c>, <c>`1</c>, <c>`2</c>, etc.</example>
 		public static bool HasExpectedVisualStudioXmlFormat(string name)
 		{
 			Regex regex = new Regex(@"^\`\d+$");

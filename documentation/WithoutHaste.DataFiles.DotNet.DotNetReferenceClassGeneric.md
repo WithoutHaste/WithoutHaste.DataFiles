@@ -26,7 +26,7 @@ class MyGeneric<T,U>
 ## DotNetReferenceClassGeneric([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) genericTypeIndex, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) alias = null)
 
 **Exceptions:**  
-* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: GenericTypeIndex cannot be less than 0.  
+* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: _genericTypeIndex_ cannot be less than 0.  
 
 ### Parameters
 
@@ -48,15 +48,15 @@ Alias of generic-type within assembly. Null if not known.
 Parses a .Net XML documentation class-generic-type parameter.  
 
 **Example A:**  
-``Namespace.MyType<T>{ } is formatted as Namespace.MyType`1``  
+`Namespace.MyType<T>{ }` is formatted as ``Namespace.MyType`1``.  
 
 **Exceptions:**  
-* **[XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)**: _name_ is not in expected format: &#96;Index.  
+* **[XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)**: _name_ is not in expected format: `` `Index``.  
 
 ## static [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) HasExpectedVisualStudioXmlFormat([string](https://docs.microsoft.com/en-us/dotnet/api/system.string) name)
 
 Check if a string is properly formatted as a parameter referencing a class-generic-type.  
 
 **Example A:**  
-&#96;0  
+`` `0``, `` `1``, `` `2``, etc.  
 

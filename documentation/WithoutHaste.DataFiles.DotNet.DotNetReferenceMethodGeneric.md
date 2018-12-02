@@ -28,7 +28,7 @@ class MyGeneric<T,U>
 ## DotNetReferenceMethodGeneric([int](https://docs.microsoft.com/en-us/dotnet/api/system.int32) genericTypeIndex, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) alias = null)
 
 **Exceptions:**  
-* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: GenericTypeIndex cannot be less than 0.  
+* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: _genericTypeIndex_ cannot be less than 0.  
 
 ### Parameters
 
@@ -37,7 +37,7 @@ class MyGeneric<T,U>
 0-based index of type in method declaration type parameter list.  
 
 **Example A:**  
-`Index 0 refers to "A" in "void MyMethod<A,B>() { }"`  
+Index 0 refers to "A" in `void MyMethod<A,B>() { }`  
 
 #### [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) alias
 
@@ -50,7 +50,7 @@ Alias of generic-type within assembly. Null if not known.
 Parses a .Net XML documentation method-generic-type parameter.  
 
 **Example A:**  
-```Namespace.MyType.MyMethod<A>(A) is formatted as Namespace.MyType.MyMethod``1(``0)```  
+`Namespace.MyType.MyMethod<A>(A)` is formatted as ```Namespace.MyType.MyMethod``1(``0)```.  
 
 **Exceptions:**  
 * **[XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)**: _name_ is not in expected format: &#96;&#96;Index.  
@@ -60,5 +60,5 @@ Parses a .Net XML documentation method-generic-type parameter.
 Check if a string is properly formatted as a parameter referencing a method-generic-type.  
 
 **Example A:**  
-&#96;&#96;0  
+``` ``0```, ``` ``1```, ``` ``2```, etc.  
 
