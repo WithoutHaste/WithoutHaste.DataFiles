@@ -1,6 +1,6 @@
 # FieldCategory
 
-Mutually exclusive categories of fields, properties, indexers, and events.  
+Categories of fields, properties, indexers, and events.  
 
 # Constants
 

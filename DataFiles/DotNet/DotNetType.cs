@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
-	/// <summary></summary>
+	/// <summary>Privacy/access modifiers.</summary>
 	public enum AccessModifier {
 		/// <summary>Not enough information is available to determine access modifier.</summary>
 		Unknown = 0,
@@ -24,7 +24,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		Private
 	};
 
-	/// <summary></summary>
+	/// <summary>Categories of data types for classes, interfaces, structs, and enums.</summary>
 	public enum TypeCategory {
 		/// <summary>Not enough information is available to determine type category.</summary>
 		Unknown = 0,
@@ -37,22 +37,22 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary></summary>
 		Interface,
 		/// <summary></summary>
+		Struct,
+		/// <summary></summary>
 		Enum,
 		/// <summary></summary>
 		Exception,
-		/// <summary></summary>
-		Struct
 	};
 
 	/// <summary>
-	/// Represents a data type.
+	/// Represents a data type: a class, interface, struct, or enum.
 	/// </summary>
 	public class DotNetType : DotNetMember
 	{
 		/// <summary></summary>
 		public TypeCategory Category { get; protected set; }
 
-		/// <summary>Strongly typed name.</summary>
+		/// <summary>Strongly-typed name.</summary>
 		public DotNetQualifiedClassName TypeName { get { return (Name as DotNetQualifiedClassName); } }
 
 		/// <summary>True if the type is sealed.</summary>
@@ -62,7 +62,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Base type this type inherits from. Null if not known or none exists.</summary>
 		public DotNetBaseType BaseType { get; protected set; }
 
-		/// <summary>Interfaces this type inherits from, if known</summary>
+		/// <summary>Interfaces this type implements, if known.</summary>
 		/// <remarks>If an interface extends another interface, reflection reports that the type implements both interfaces.</remarks>
 		public List<DotNetBaseType> ImplementedInterfaces = new List<DotNetBaseType>();
 
@@ -75,7 +75,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 		}
 
-		/// <summary></summary>
+		/// <summary>Data types defined/nested within this type.</summary>
 		public List<DotNetType> NestedTypes = new List<DotNetType>();
 		/// <summary>The subset of NestedTypes that are enums.</summary>
 		public List<DotNetType> NestedEnums {
@@ -84,10 +84,10 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 		}
 
-		/// <summary></summary>
+		/// <summary>Delegates defined within this type.</summary>
 		public List<DotNetDelegate> Delegates = new List<DotNetDelegate>();
 
-		/// <summary></summary>
+		/// <summary>All methods defined within this type.</summary>
 		public List<DotNetMethod> Methods = new List<DotNetMethod>();
 		/// <summary>The subset of Methods that are constructors.</summary>
 		public List<DotNetMethodConstructor> ConstructorMethods { get { return Methods.OfType<DotNetMethodConstructor>().ToList(); } }
@@ -100,7 +100,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>The subset of Methods that are not static, nor constructors, nor destructors, nor operators.</summary>
 		public List<DotNetMethod> NormalMethods { get { return Methods.Where(m => (m.Category != MethodCategory.Static) && (m.Category != MethodCategory.Extension) && !(m is DotNetMethodConstructor) && !(m is DotNetMethodDestructor) && !(m is DotNetMethodOperator)).ToList(); } }
 
-		/// <summary></summary>
+		/// <summary>All fields defined within this type.</summary>
+		/// <remarks>By the .Net definition of "field", meaning that properties and events are not included.</remarks>
 		public List<DotNetField> Fields = new List<DotNetField>();
 		/// <summary>The subset of Fields that are constants.</summary>
 		public List<DotNetField> ConstantFields {
@@ -115,14 +116,14 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 		}
 
-		/// <summary></summary>
+		/// <summary>All properties defined within the type.</summary>
 		public List<DotNetProperty> Properties = new List<DotNetProperty>();
 		/// <summary>The subset of Properties that are indexers.</summary>
 		public List<DotNetIndexer> IndexerProperties { get { return Properties.OfType<DotNetIndexer>().Cast<DotNetIndexer>().ToList(); } }
 		/// <summary>The subset of Properties that are not indexers.</summary>
 		public List<DotNetProperty> NormalProperties { get { return Properties.Where(p => !(p is DotNetIndexer)).ToList(); } }
 
-		/// <summary></summary>
+		/// <summary>All events defined within the type.</summary>
 		public List<DotNetEvent> Events = new List<DotNetEvent>();
 
 		/// <summary>
@@ -154,6 +155,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Parse .Net XML documentation for Type data.
 		/// </summary>
 		/// <param name="memberElement">Expects tag name "member".</param>
+		/// <example><![CDATA[<member name="T:Namespace.Type"></member>]]></example>
 		public static DotNetType FromVisualStudioXml(XElement memberElement)
 		{
 			DotNetQualifiedClassName name = DotNetQualifiedClassName.FromVisualStudioXml(memberElement.Attribute("name")?.Value);
@@ -173,7 +175,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>
-		/// Returns true if this member is defined within this type or any of its nested types.
+		/// Returns true if this member is defined within this type or any of its nested type descendents.
 		/// </summary>
 		public bool Owns(DotNetMember member)
 		{
@@ -181,7 +183,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>
-		/// Returns true if this qualified name is defined within this type or any of its nested types.
+		/// Returns true if this qualified name is defined within this type or any of its nested type dscendents.
 		/// </summary>
 		public bool Owns(DotNetQualifiedName name)
 		{
@@ -203,6 +205,9 @@ namespace WithoutHaste.DataFiles.DotNet
 			return (Name.FullName == name.FullNamespace);
 		}
 
+		/// <summary>
+		/// Returns the selected field/property/event/method/delegate/type from this type.
+		/// </summary>
 		private DotNetMember GetDirectChild(DotNetQualifiedName name)
 		{
 			if(name is DotNetQualifiedMethodName)
@@ -232,7 +237,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>
-		/// Returns the selected type, whether it is this one or one of its nested types. Returns null if the type is not found.
+		/// Returns the selected type, whether it is the current type or one of its nested type descendents. Returns null if the type is not found.
 		/// </summary>
 		public DotNetType FindType(DotNetQualifiedName name)
 		{
@@ -329,7 +334,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>
-		/// Returns the specified member, of any type.
+		/// Returns the specified member from this type of its nested type descendents. Can return a field, property, event, method, delegate, or type.
 		/// </summary>
 		public DotNetMember FindMember(DotNetQualifiedName name)
 		{
@@ -346,7 +351,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>
-		/// Add a member to the correct level within this type.
+		/// Add a member to this type or one of its nested type descendents.
 		/// </summary>
 		public void AddMember(DotNetMember member)
 		{
@@ -373,7 +378,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>
-		/// Load additional documentation information from the assembly itself.
+		/// Load additional documentation information from the assembly itself for this type or one of its nested type descendents.
 		/// </summary>
 		public void AddAssemblyInfo(TypeInfo typeInfo, DotNetQualifiedName name)
 		{
@@ -393,6 +398,9 @@ namespace WithoutHaste.DataFiles.DotNet
 			//no error if type is not found
 		}
 
+		/// <summary>
+		/// Load additional information from the assembly for this type.
+		/// </summary>
 		private void AddAssemblyInfo(TypeInfo typeInfo)
 		{
 			if(typeInfo.Attributes.IsAbstract())
@@ -665,11 +673,11 @@ namespace WithoutHaste.DataFiles.DotNet
 		#region Convert
 
 		/// <summary>
-		/// Converts the type into a delegate, transfering all applicable data.
+		/// Converts the selected type into a delegate, transfering all applicable data.
 		/// </summary>
 		/// <remarks>
-		/// If the <paramref name="name"/> refers to a sub-type, that type is the one converted.
-		/// The sub-type is removed from its parent and the new delegate is added in its place
+		/// If the <paramref name="name"/> refers to a nested type descendent, that type is the one converted.
+		/// The nested type is removed from its parent and the new delegate is added in its place
 		/// </remarks>
 		/// <param name="name">The fully qualified name of the delegate.</param>
 		/// <returns>The new delegate, or null if the type is not found.</returns>
@@ -709,7 +717,7 @@ namespace WithoutHaste.DataFiles.DotNet
 
 		#region Low Level
 
-		/// <summary></summary>
+		/// <summary>Returns FullName of type.</summary>
 		public override string ToString()
 		{
 			return Name.FullName;

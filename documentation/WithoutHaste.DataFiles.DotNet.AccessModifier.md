@@ -1,5 +1,7 @@
 # AccessModifier
 
+Privacy/access modifiers.  
+
 # Constants
 
 ## 0: Unknown

@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
-	/// <summary>Mutually exclusive categories of fields, properties, indexers, and events.</summary>
+	/// <summary>Categories of fields, properties, indexers, and events.</summary>
 	public enum FieldCategory
 	{
 		/// <summary>Not enough information is available to determine field category.</summary>

@@ -65,7 +65,7 @@ constructs
 - DotNetReferenceClassGeneric DONE
 - DotNetReferenceGeneric DONE
 - DotNetReferenceMethodGeneric DONE
-- DotNetSettings
+- DotNetSettings DONE
 - DotNetType
 - IDotNetCommentLink
 - Utilities</Data>
@@ -87,12 +87,12 @@ constructs
         <Cell ss:StyleID="paragraph">
           <Data ss:Type="String">verify documentation: DotNet namespace
 enums
-- AccessModifier
+- AccessModifier DONE
 - CommentTag DONE
 - FieldCategory DONE
 - MethodCategory DONE
 - ParameterCategory DONE
-- TypeCategory</Data>
+- TypeCategory DONE</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>

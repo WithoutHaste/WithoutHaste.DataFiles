@@ -1414,7 +1414,7 @@
             </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.FieldCategory">
-            <summary>Mutually exclusive categories of fields, properties, indexers, and events.</summary>
+            <summary>Categories of fields, properties, indexers, and events.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.FieldCategory.Unknown">
             <summary>Not enough information is available to determine field category.</summary>
@@ -1560,7 +1560,7 @@
             </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.MethodCategory">
-            <summary>Mutually exclusive categories of methods.</summary>
+            <summary></summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.MethodCategory.Unknown">
             <summary>Not enough information is available to determine method category.</summary>
@@ -1658,22 +1658,22 @@
             <summary></summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.ParameterCategory">
-            <summary>Mutually exclusive parameter categories.</summary>
+            <summary></summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.ParameterCategory.Unknown">
             <summary>Insufficient information to determine parameter category.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.ParameterCategory.Normal">
-            <summary></summary>
+            <summary>Normal parameter.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.ParameterCategory.OutOrRef">
             <summary>Parameter is either an out or a ref parameter.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.ParameterCategory.Out">
-            <summary></summary>
+            <summary>An out parameter.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.ParameterCategory.Ref">
-            <summary></summary>
+            <summary>A ref parameter.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.ParameterCategory.Optional">
             <summary>Parameter has a default value.</summary>
@@ -1828,7 +1828,7 @@
             <summary>Returns full text.</summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.AccessModifier">
-            <summary></summary>
+            <summary>Privacy/access modifiers.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.AccessModifier.Unknown">
             <summary>Not enough information is available to determine access modifier.</summary>
@@ -1849,7 +1849,7 @@
             <summary></summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.TypeCategory">
-            <summary></summary>
+            <summary>Categories of data types for classes, interfaces, structs, and enums.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Unknown">
             <summary>Not enough information is available to determine type category.</summary>
@@ -1866,25 +1866,25 @@
         <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Interface">
             <summary></summary>
         </member>
+        <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Struct">
+            <summary></summary>
+        </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Enum">
             <summary></summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Exception">
             <summary></summary>
         </member>
-        <member name="F:WithoutHaste.DataFiles.DotNet.TypeCategory.Struct">
-            <summary></summary>
-        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetType">
             <summary>
-            Represents a data type.
+            Represents a data type: a class, interface, struct, or enum.
             </summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.Category">
             <summary></summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.TypeName">
-            <summary>Strongly typed name.</summary>
+            <summary>Strongly-typed name.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.IsSealed">
             <summary>True if the type is sealed.</summary>
@@ -1894,23 +1894,23 @@
             <summary>Base type this type inherits from. Null if not known or none exists.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.ImplementedInterfaces">
-            <summary>Interfaces this type inherits from, if known</summary>
+            <summary>Interfaces this type implements, if known.</summary>
             <remarks>If an interface extends another interface, reflection reports that the type implements both interfaces.</remarks>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.NestedTypeCount">
             <summary>The number of types nested within this type, including sub-nested types and enums.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.NestedTypes">
-            <summary></summary>
+            <summary>Data types defined/nested within this type.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.NestedEnums">
             <summary>The subset of NestedTypes that are enums.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.Delegates">
-            <summary></summary>
+            <summary>Delegates defined within this type.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.Methods">
-            <summary></summary>
+            <summary>All methods defined within this type.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.ConstructorMethods">
             <summary>The subset of Methods that are constructors.</summary>
@@ -1928,7 +1928,8 @@
             <summary>The subset of Methods that are not static, nor constructors, nor destructors, nor operators.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.Fields">
-            <summary></summary>
+            <summary>All fields defined within this type.</summary>
+            <remarks>By the .Net definition of "field", meaning that properties and events are not included.</remarks>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.ConstantFields">
             <summary>The subset of Fields that are constants.</summary>
@@ -1937,7 +1938,7 @@
             <summary>The subset of Fields that are not constant, or where the category is unknown.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.Properties">
-            <summary></summary>
+            <summary>All properties defined within the type.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.IndexerProperties">
             <summary>The subset of Properties that are indexers.</summary>
@@ -1946,7 +1947,7 @@
             <summary>The subset of Properties that are not indexers.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetType.Events">
-            <summary></summary>
+            <summary>All events defined within the type.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.AllMembers">
             <summary>
@@ -1962,6 +1963,7 @@
             Parse .Net XML documentation for Type data.
             </summary>
             <param name="memberElement">Expects tag name "member".</param>
+            <example><![CDATA[<member name="T:Namespace.Type"></member>]]></example>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.Is(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary>
@@ -1970,12 +1972,12 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.Owns(WithoutHaste.DataFiles.DotNet.DotNetMember)">
             <summary>
-            Returns true if this member is defined within this type or any of its nested types.
+            Returns true if this member is defined within this type or any of its nested type descendents.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.Owns(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary>
-            Returns true if this qualified name is defined within this type or any of its nested types.
+            Returns true if this qualified name is defined within this type or any of its nested type dscendents.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.IsDirectChild(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
@@ -1983,9 +1985,14 @@
             Returns true if this qualified name is defined directly within this type.
             </summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.GetDirectChild(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary>
+            Returns the selected field/property/event/method/delegate/type from this type.
+            </summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.FindType(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary>
-            Returns the selected type, whether it is this one or one of its nested types. Returns null if the type is not found.
+            Returns the selected type, whether it is the current type or one of its nested type descendents. Returns null if the type is not found.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.FindInheritedField(System.Func{WithoutHaste.DataFiles.DotNet.DotNetQualifiedName,WithoutHaste.DataFiles.DotNet.DotNetType},System.String)">
@@ -2018,17 +2025,22 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.FindMember(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary>
-            Returns the specified member, of any type.
+            Returns the specified member from this type of its nested type descendents. Can return a field, property, event, method, delegate, or type.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.AddMember(WithoutHaste.DataFiles.DotNet.DotNetMember)">
             <summary>
-            Add a member to the correct level within this type.
+            Add a member to this type or one of its nested type descendents.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.AddAssemblyInfo(System.Reflection.TypeInfo,WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary>
-            Load additional documentation information from the assembly itself.
+            Load additional documentation information from the assembly itself for this type or one of its nested type descendents.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.AddAssemblyInfo(System.Reflection.TypeInfo)">
+            <summary>
+            Load additional information from the assembly for this type.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.GetFullListOfLocalNames">
@@ -2058,17 +2070,17 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.ToDelegate(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <summary>
-            Converts the type into a delegate, transfering all applicable data.
+            Converts the selected type into a delegate, transfering all applicable data.
             </summary>
             <remarks>
-            If the <paramref name="name"/> refers to a sub-type, that type is the one converted.
-            The sub-type is removed from its parent and the new delegate is added in its place
+            If the <paramref name="name"/> refers to a nested type descendent, that type is the one converted.
+            The nested type is removed from its parent and the new delegate is added in its place
             </remarks>
             <param name="name">The fully qualified name of the delegate.</param>
             <returns>The new delegate, or null if the type is not found.</returns>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.ToString">
-            <summary></summary>
+            <summary>Returns FullName of type.</summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetQualifiedName">
             <summary>

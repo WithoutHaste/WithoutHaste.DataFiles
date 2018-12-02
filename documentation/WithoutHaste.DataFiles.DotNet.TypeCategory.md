@@ -1,5 +1,7 @@
 # TypeCategory
 
+Categories of data types for classes, interfaces, structs, and enums.  
+
 # Constants
 
 ## 0: Unknown

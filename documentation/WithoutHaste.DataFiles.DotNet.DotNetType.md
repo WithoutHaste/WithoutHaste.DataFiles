@@ -2,28 +2,43 @@
 
 **Inheritance:** [object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md)  
 
-Represents a data type.  
+Represents a data type: a class, interface, struct, or enum.  
 
 # Fields
 
 ## [List&lt;DotNetDelegate&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Delegates
 
+Delegates defined within this type.  
+
 ## [List&lt;DotNetEvent&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Events
+
+All events defined within the type.  
 
 ## [List&lt;DotNetField&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Fields
 
+All fields defined within this type.  
+
+**Remarks:**  
+By the .Net definition of "field", meaning that properties and events are not included.  
+
 ## [List&lt;DotNetBaseType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ImplementedInterfaces
 
-Interfaces this type inherits from, if known  
+Interfaces this type implements, if known.  
 
 **Remarks:**  
 If an interface extends another interface, reflection reports that the type implements both interfaces.  
 
 ## [List&lt;DotNetMethod&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Methods
 
+All methods defined within this type.  
+
 ## [List&lt;DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) NestedTypes
 
+Data types defined/nested within this type.  
+
 ## [List&lt;DotNetProperty&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Properties
+
+All properties defined within the type.  
 
 # Properties
 
@@ -91,7 +106,7 @@ The subset of Methods that are static (including extension methods), but not con
 
 ## [DotNetQualifiedClassName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md) TypeName { get; }
 
-Strongly typed name.  
+Strongly-typed name.  
 
 # Constructors
 
@@ -101,11 +116,11 @@ Strongly typed name.
 
 ## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddAssemblyInfo([System.Reflection.TypeInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.typeinfo) typeInfo, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 
-Load additional documentation information from the assembly itself.  
+Load additional documentation information from the assembly itself for this type or one of its nested type descendents.  
 
 ## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) AddMember([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) member)
 
-Add a member to the correct level within this type.  
+Add a member to this type or one of its nested type descendents.  
 
 ## [DotNetEvent](WithoutHaste.DataFiles.DotNet.DotNetEvent.md) FindInheritedEvent([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) localName)
 
@@ -141,11 +156,11 @@ Returns the selected property, if it exists in this type.
 
 ## [DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) FindMember([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 
-Returns the specified member, of any type.  
+Returns the specified member from this type of its nested type descendents. Can return a field, property, event, method, delegate, or type.  
 
 ## DotNetType FindType([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 
-Returns the selected type, whether it is this one or one of its nested types. Returns null if the type is not found.  
+Returns the selected type, whether it is the current type or one of its nested type descendents. Returns null if the type is not found.  
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Is([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 
@@ -157,11 +172,11 @@ Returns true if this qualified name is defined directly within this type.
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Owns([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) member)
 
-Returns true if this member is defined within this type or any of its nested types.  
+Returns true if this member is defined within this type or any of its nested type descendents.  
 
 ## [bool](https://docs.microsoft.com/en-us/dotnet/api/system.boolean) Owns([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 
-Returns true if this qualified name is defined within this type or any of its nested types.  
+Returns true if this qualified name is defined within this type or any of its nested type dscendents.  
 
 ## [void](https://docs.microsoft.com/en-us/dotnet/api/system.void) ResolveDuplicatedComments([Func&lt;DotNetQualifiedName,DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember)
 
@@ -185,11 +200,11 @@ Class members can inherit from their base class or from interfaces.
 
 ## [DotNetDelegate](WithoutHaste.DataFiles.DotNet.DotNetDelegate.md) ToDelegate([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
 
-Converts the type into a delegate, transfering all applicable data.  
+Converts the selected type into a delegate, transfering all applicable data.  
 
 **Remarks:**  
-If the _name_ refers to a sub-type, that type is the one converted.  
-The sub-type is removed from its parent and the new delegate is added in its place  
+If the _name_ refers to a nested type descendent, that type is the one converted.  
+The nested type is removed from its parent and the new delegate is added in its place  
 
 **Returns:**  
 The new delegate, or null if the type is not found.  
@@ -199,11 +214,16 @@ The new delegate, or null if the type is not found.
 
 ## virtual [string](https://docs.microsoft.com/en-us/dotnet/api/system.string) ToString()
 
+Returns FullName of type.  
+
 # Static Methods
 
 ## static DotNetType FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement)
 
 Parse .Net XML documentation for Type data.  
+
+**Example A:**  
+`<member name="T:Namespace.Type"></member>`  
 
 **Parameters:**  
 * **[System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement**: Expects tag name "member".  

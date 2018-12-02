@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
-	/// <summary>Mutually exclusive parameter categories.</summary>
+	/// <summary></summary>
 	public enum ParameterCategory
 	{
 		/// <summary>Insufficient information to determine parameter category.</summary>
 		Unknown = 0,
-		/// <summary></summary>
+		/// <summary>Normal parameter.</summary>
 		Normal,
 		/// <summary>Parameter is either an out or a ref parameter.</summary>
 		OutOrRef,
-		/// <summary></summary>
+		/// <summary>An out parameter.</summary>
 		Out,
-		/// <summary></summary>
+		/// <summary>A ref parameter.</summary>
 		Ref,
 		/// <summary>Parameter has a default value.</summary>
 		Optional,

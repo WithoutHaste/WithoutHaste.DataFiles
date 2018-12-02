@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
-	/// <summary>Mutually exclusive categories of methods.</summary>
+	/// <summary></summary>
 	public enum MethodCategory
 	{
 		/// <summary>Not enough information is available to determine method category.</summary>

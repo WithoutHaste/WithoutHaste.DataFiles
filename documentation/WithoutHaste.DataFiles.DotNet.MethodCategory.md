@@ -1,7 +1,5 @@
 # MethodCategory
 
-Mutually exclusive categories of methods.  
-
 # Constants
 
 ## 0: Unknown

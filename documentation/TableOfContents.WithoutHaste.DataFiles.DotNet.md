@@ -165,7 +165,7 @@ Represents a generic-type parameter that is in reference to a method's declared 
 
   
 [**DotNetType**](WithoutHaste.DataFiles.DotNet.DotNetType.md)  
-Represents a data type.  
+Represents a data type: a class, interface, struct, or enum.  
 
   
 
@@ -202,7 +202,7 @@ Represents anything in the comments that links to something in the assembly.
 ## Enums
 
 [**AccessModifier**](WithoutHaste.DataFiles.DotNet.AccessModifier.md)  
-  
+Privacy/access modifiers.  
 
   
 [**CommentTag**](WithoutHaste.DataFiles.DotNet.CommentTag.md)  
@@ -210,19 +210,19 @@ The type of xml tag that the comment came from.
 
   
 [**FieldCategory**](WithoutHaste.DataFiles.DotNet.FieldCategory.md)  
-Mutually exclusive categories of fields, properties, indexers, and events.  
+Categories of fields, properties, indexers, and events.  
 
   
 [**MethodCategory**](WithoutHaste.DataFiles.DotNet.MethodCategory.md)  
-Mutually exclusive categories of methods.  
+  
 
   
 [**ParameterCategory**](WithoutHaste.DataFiles.DotNet.ParameterCategory.md)  
-Mutually exclusive parameter categories.  
+  
 
   
 [**TypeCategory**](WithoutHaste.DataFiles.DotNet.TypeCategory.md)  
-  
+Categories of data types for classes, interfaces, structs, and enums.  
 
   
 

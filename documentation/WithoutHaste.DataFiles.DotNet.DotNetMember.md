@@ -128,5 +128,5 @@ Represents a type's field.
 Represents a method.  
 
 [WithoutHaste.DataFiles.DotNet.DotNetType](WithoutHaste.DataFiles.DotNet.DotNetType.md)  
-Represents a data type.  
+Represents a data type: a class, interface, struct, or enum.  
 
