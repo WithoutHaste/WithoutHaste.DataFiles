@@ -10,21 +10,29 @@ Using "integers" as an analogy, Counter values cannot be negative.
 
 # Fields
 
-## protected readonly [Char[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) VALID_CHARACTERS
+## VALID_CHARACTERS
+
+**protected readonly [Char[]](https://docs.microsoft.com/en-us/dotnet/api/system.array)**  
 
 All valid characters, in order from smallest to largest.  
 
-## protected [List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) value
+## value
+
+**protected [List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 Current internal value.  
 
 # Properties
 
-## string MINIMUM_VALUE { get; }
+## MINIMUM_VALUE
+
+**string { public get; }**  
 
 Counter can never decrement below the minimum value.  
 
-## string Value { get; }
+## Value
+
+**string { public get; }**  
 
 Current display value.  
 
@@ -36,21 +44,31 @@ Initialize at MINIMUM_VALUE.
 
 # Methods
 
-## protected [List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) CopyValue()
+## CopyValue()
+
+**protected [List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 Returns an independent copy of the value.  
 
-## protected void Decrement([List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) value, int delta)
+## Decrement([List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) value, int delta)
+
+**protected void**  
 
 Increment a value.  
 
-## protected void Increment([List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) value, int delta)
+## Increment([List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) value, int delta)
+
+**protected void**  
 
 Increment a value.  
 
-## void SetValue(string start)
+## SetValue(string start)
 
-## protected void SetValue([List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) start)
+**void**  
+
+## SetValue([List&lt;char&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) start)
+
+**protected void**  
 
 # Derived By
 

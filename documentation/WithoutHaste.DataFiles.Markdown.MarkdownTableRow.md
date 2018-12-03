@@ -6,7 +6,9 @@ Represents one row in a Markdown table.
 
 # Fields
 
-## [List&lt;string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Cells
+## Cells
+
+**[List&lt;string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 List of the cells in the row.  
 
@@ -20,14 +22,18 @@ List of the cells in the row.
 
 # Methods
 
-## void Add(string cell)
+## Add(string cell)
+
+**void**  
 
 Add a cell to the end of the row.  
 
 **Parameters:**  
 * **string cell**: Contents of cell.  
 
-## string ToMarkdown([List&lt;int&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) columnWidths)
+## ToMarkdown([List&lt;int&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) columnWidths)
+
+**string**  
 
 Return markdown-formatted text.  
 

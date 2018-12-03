@@ -7,35 +7,47 @@ Represents a fully qualified type name or member name.
 
 # Fields
 
-## protected string localName
+## localName
+
+**protected string**  
 
 Name without namespace or declaring type or generic type parameters.  
 
 # Properties
 
-## DotNetQualifiedName ExplicitInterface { get; protected set; }
+## ExplicitInterface
+
+**DotNetQualifiedName { public get; protected set; }**  
 
 The interface being implemented, if this is a property or method with an explicit interface implementation.  
 
-## string FullName { get; }
+## FullName
+
+**string { public get; }**  
 
 Fully qualified name.  
 
-## DotNetQualifiedName FullNamespace { get; protected set; }
+## FullNamespace
+
+**DotNetQualifiedName { public get; protected set; }**  
 
 Fully qualified namespace.  
 
 **Remarks:**  
 Null if there is no namespace.  
 
-## string LocalName { get; }
+## LocalName
+
+**string { public get; }**  
 
 Local data type name, written in the c# style.  
 
 **Example A:**  
 ``MyType<T> instead of MyType`1``  
 
-## string LocalXmlName { get; }
+## LocalXmlName
+
+**string { public get; }**  
 
 Local data type name, written in the Xml style.  
 
@@ -61,22 +73,30 @@ Builds the qualified name from each segment provided, with the first string bein
 
 # Methods
 
-## virtual DotNetQualifiedName Clone()
+## Clone()
+
+**virtual DotNetQualifiedName**  
 
 Returns deep clone of qualified name.  
 
-## virtual int CompareTo(object b)
+## CompareTo(object b)
+
+**virtual int**  
 
 Names are sorted alphabetically, per namespace, starting with the root.  
 
 **Remarks:**  
 Explicit interface implementations are considered only as a last resort.  
 
-## virtual bool Equals(object b)
+## Equals(object b)
+
+**virtual bool**  
 
 Names converted to strings must match exactly to be considered equal.  
 
-## [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) Flatten()
+## Flatten()
+
+**[String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array)**  
 
 Returns an array of the name segments that make up this qualified name.  
 
@@ -86,13 +106,19 @@ Does not include explicit interface implementations.
 **Example A:**  
 "System.Collections.Generic".Flatten() returns ["System", "Collections", "Generic"].  
 
-## virtual int GetHashCode()
+## GetHashCode()
 
-## DotNetQualifiedName GetLocalized([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
+**virtual int**  
+
+## GetLocalized([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
+
+**DotNetQualifiedName**  
 
 Returns a new name object which has been localized to the provided other name. The current object is not altered.  
 
-## bool IsWithin([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
+## IsWithin([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
+
+**bool**  
 
 Returns true if this Name is nested inside the other Name.  
 
@@ -102,7 +128,9 @@ Returns true if this Name is nested inside the other Name.
 **Example B:**  
 "System" is not within null or empty Name.  
 
-## virtual void Localize([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
+## Localize([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
+
+**virtual void**  
 
 Simplifies this qualified name based on the _other_ name.  
 In other words, removes the portion of the namespace that this and the _other_ have in common.  
@@ -122,11 +150,15 @@ Preserves explicit interface implementations.
 **Example C:**  
 "System.Collections.Generic.List".Localize("System.Collections.Generic.List") returns "List".  
 
-## [DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) ToDotNetQualifiedTypeName()
+## ToDotNetQualifiedTypeName()
+
+**[DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md)**  
 
 Convert a base-type DotNetQualifiedName to a DotNetQualifiedTypeName.  
 
-## virtual string ToString()
+## ToString()
+
+**virtual string**  
 
 Returns dot notation of namespaces and local name.  
 
@@ -135,22 +167,30 @@ A.B.C.LocalName
 
 # Static Methods
 
-## static string Combine([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) names)
+## Combine([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) names)
+
+**static string**  
 
 Return the names combined with a '.' delimiter.  
 
-## static string Combine([List&lt;string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) names)
+## Combine([List&lt;string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) names)
+
+**static string**  
 
 Return the names combined with a '.' delimiter.  
 
-## static int Compare([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) a, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) b)
+## Compare([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) a, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) b)
+
+**static int**  
 
 Names are sorted alphabetically, per namespace, starting with the root.  
 
 **Remarks:**  
 Explicit interface implementations are considered only as a last resort.  
 
-## static DotNetQualifiedName FromAssemblyInfo([System.Reflection.TypeInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.typeinfo) typeInfo)
+## FromAssemblyInfo([System.Reflection.TypeInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.typeinfo) typeInfo)
+
+**static DotNetQualifiedName**  
 
 Parses a System.Reflection.AssemblyInfo full name.  
 
@@ -160,15 +200,21 @@ Parses a System.Reflection.AssemblyInfo full name.
 * Class declaration of generic types are shown the same as .Net XML documentation: MyType&#96;1 for one generic type  
 * When a generic type is defined: System.Collections.Generic.List&#96;1[U], where U is the type alias from the class declaration  
 
-## static DotNetQualifiedName FromAssemblyInfo([Type](https://docs.microsoft.com/en-us/dotnet/api/system.type) type)
+## FromAssemblyInfo([Type](https://docs.microsoft.com/en-us/dotnet/api/system.type) type)
+
+**static DotNetQualifiedName**  
 
 See [FromAssemblyInfo(System.Reflection.TypeInfo)](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md)  
 
-## static DotNetQualifiedName FromAssemblyInfo(string typeName)
+## FromAssemblyInfo(string typeName)
+
+**static DotNetQualifiedName**  
 
 See [FromAssemblyInfo(System.Reflection.TypeInfo)](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md)  
 
-## static DotNetQualifiedName FromVisualStudioXml(string name)
+## FromVisualStudioXml(string name)
+
+**static DotNetQualifiedName**  
 
 Parses a .Net XML documentation type, method, or other member name.  
 

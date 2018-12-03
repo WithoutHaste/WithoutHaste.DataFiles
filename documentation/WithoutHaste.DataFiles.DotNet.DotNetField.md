@@ -6,23 +6,35 @@ Represents a type's field.
 
 # Properties
 
-## [AccessModifier](WithoutHaste.DataFiles.DotNet.AccessModifier.md) AccessModifier { get; protected set; }
+## AccessModifier
 
-## [FieldCategory](WithoutHaste.DataFiles.DotNet.FieldCategory.md) Category { get; protected set; }
+**[AccessModifier](WithoutHaste.DataFiles.DotNet.AccessModifier.md) { public get; protected set; }**  
 
-## object ConstantValue { get; protected set; }
+## Category
+
+**[FieldCategory](WithoutHaste.DataFiles.DotNet.FieldCategory.md) { public get; protected set; }**  
+
+## ConstantValue
+
+**object { public get; protected set; }**  
 
 For constant fields, the value of the constant. Null otherwise.  
 
-## string FullTypeName { get; }
+## FullTypeName
+
+**string { public get; }**  
 
 The "FullName" of the field data type.  
 
-## bool IsStatic { get; protected set; }
+## IsStatic
+
+**bool { public get; protected set; }**  
 
 False means unknown or is not static.  
 
-## [DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) TypeName { get; protected set; }
+## TypeName
+
+**[DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) { public get; protected set; }**  
 
 Fully qualified name of data type, if known. Null if not known.  
 
@@ -32,13 +44,17 @@ Fully qualified name of data type, if known. Null if not known.
 
 # Methods
 
-## virtual void AddAssemblyInfo([System.Reflection.FieldInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.fieldinfo) fieldInfo)
+## AddAssemblyInfo([System.Reflection.FieldInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.fieldinfo) fieldInfo)
+
+**virtual void**  
 
 Load additional documentation information from the assembly itself.  
 
 # Static Methods
 
-## static DotNetField FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement)
+## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement)
+
+**static DotNetField**  
 
 Parse .Net XML documentation for Field data.  
 

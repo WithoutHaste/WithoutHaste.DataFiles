@@ -7,7 +7,9 @@ Represents inline code or CDATA.
 
 # Fields
 
-## readonly string Text
+## Text
+
+**readonly string**  
 
 Full text of code.  
 
@@ -17,7 +19,9 @@ Full text of code.
 
 # Methods
 
-## string ToMarkdown(string previousText)
+## ToMarkdown(string previousText)
+
+**string**  
 
 Return markdown-formatted text.  
 

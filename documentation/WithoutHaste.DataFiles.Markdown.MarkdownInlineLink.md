@@ -25,7 +25,9 @@ Accepts formatted text.
 
 # Methods
 
-## virtual string ToMarkdown(string previousText)
+## ToMarkdown(string previousText)
+
+**virtual string**  
 
 Outputs markdown-formatted text.  
 

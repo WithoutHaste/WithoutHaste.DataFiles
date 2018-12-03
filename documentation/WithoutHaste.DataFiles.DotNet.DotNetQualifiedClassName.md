@@ -11,32 +11,44 @@ such as `MyType<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13>`.
 
 # Fields
 
-## protected [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) genericTypeAliases
+## genericTypeAliases
+
+**protected [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array)**  
 
 Specific generic type aliases for this type. If null, the shared [GenericTypeNames](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md) will be used.  
 
-## static [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) GenericTypeNames
+## GenericTypeNames
+
+**static [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array)**  
 
 Default names that will be given to generic-types, in order.  
 
 # Properties
 
-## DotNetQualifiedClassName FullClassNamespace { get; }
+## FullClassNamespace
+
+**DotNetQualifiedClassName { public get; }**  
 
 Strongly-typed FullNamespace.  
 
-## int GenericTypeCount { get; protected set; }
+## GenericTypeCount
+
+**int { public get; protected set; }**  
 
 The number of generic-types required by the class declaration.  
 
-## string LocalName { get; }
+## LocalName
+
+**string { public get; }**  
 
 Local data type name, written in the c# style.  
 
 **Example A:**  
 ``MyType<T> instead of MyType`1``  
 
-## string LocalXmlName { get; }
+## LocalXmlName
+
+**string { public get; }**  
 
 Local data type name, written in the Xml style.  
 
@@ -55,17 +67,23 @@ Empty constructor
 
 # Methods
 
-## void AddAssemblyInfo([System.Reflection.TypeInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.typeinfo) typeInfo)
+## AddAssemblyInfo([System.Reflection.TypeInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.typeinfo) typeInfo)
+
+**void**  
 
 Load additional documentation information from the assembly itself.  
 
-## DotNetQualifiedClassName Clone()
+## Clone()
+
+**DotNetQualifiedClassName**  
 
 Returns deep clone of qualified name.  
 
 # Static Methods
 
-## static DotNetQualifiedClassName FromVisualStudioXml(string name)
+## FromVisualStudioXml(string name)
+
+**static DotNetQualifiedClassName**  
 
 Parses a .Net XML documentation type name or namespace name.  
 

@@ -21,7 +21,9 @@ class MyGeneric<T,U>
 
 # Properties
 
-## string LocalName { get; }
+## LocalName
+
+**string { public get; }**  
 
 # Constructors
 
@@ -45,7 +47,9 @@ Alias of generic-type within assembly. Null if not known.
 
 # Static Methods
 
-## static DotNetReferenceMethodGeneric FromVisualStudioXml(string name)
+## FromVisualStudioXml(string name)
+
+**static DotNetReferenceMethodGeneric**  
 
 Parses a .Net XML documentation method-generic-type parameter.  
 
@@ -55,7 +59,9 @@ Parses a .Net XML documentation method-generic-type parameter.
 **Exceptions:**  
 * **[XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)**: _name_ is not in expected format: &#96;&#96;Index.  
 
-## static bool HasExpectedVisualStudioXmlFormat(string name)
+## HasExpectedVisualStudioXmlFormat(string name)
+
+**static bool**  
 
 Check if a string is properly formatted as a parameter referencing a method-generic-type.  
 

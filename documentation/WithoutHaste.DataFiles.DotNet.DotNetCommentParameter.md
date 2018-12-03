@@ -6,7 +6,9 @@ Represents a parameter description in the comments.
 
 # Properties
 
-## [DotNetCommentParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.md) ParameterLink { get; }
+## ParameterLink
+
+**[DotNetCommentParameterLink](WithoutHaste.DataFiles.DotNet.DotNetCommentParameterLink.md) { public get; }**  
 
 Strongly-typed link.  
 
@@ -20,7 +22,9 @@ Strongly-typed link.
 
 # Static Methods
 
-## static DotNetCommentParameter FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+
+**static DotNetCommentParameter**  
 
 Parses .Net XML documentation for param.  
 

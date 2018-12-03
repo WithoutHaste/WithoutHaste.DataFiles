@@ -13,7 +13,9 @@ Represents a link in the comments to an internal generic-type parameter.
 
 # Static Methods
 
-## static DotNetCommentTypeParameterLink FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+
+**static DotNetCommentTypeParameterLink**  
 
 Parses .Net XML documentation for typeparamref.  
 

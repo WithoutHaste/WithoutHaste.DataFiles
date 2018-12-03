@@ -10,7 +10,9 @@ Represents a method that is a constructor.
 
 # Methods
 
-## void AddAssemblyInfo([System.Reflection.ConstructorInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.constructorinfo) constructorInfo)
+## AddAssemblyInfo([System.Reflection.ConstructorInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.constructorinfo) constructorInfo)
+
+**void**  
 
 Load additional documentation information from the assembly itself.  
 

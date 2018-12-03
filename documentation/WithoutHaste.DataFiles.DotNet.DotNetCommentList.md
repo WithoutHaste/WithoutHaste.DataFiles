@@ -6,25 +6,33 @@ Represents a list in the comments.
 
 # Fields
 
-## [List&lt;DotNetCommentListItem&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Items
+## Items
+
+**[List&lt;DotNetCommentListItem&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 Items in the list.  
 
 # Properties
 
-## [DotNetCommentListItem](WithoutHaste.DataFiles.DotNet.DotNetCommentListItem.md) this[int index] { get; }
+## this[int index]
+
+**[DotNetCommentListItem](WithoutHaste.DataFiles.DotNet.DotNetCommentListItem.md) { public get; }**  
 
 Access list items by 0-based index.  
 
 **Exceptions:**  
 * **[IndexOutOfRangeException](https://docs.microsoft.com/en-us/dotnet/api/system.indexoutofrangeexception)**:   
 
-## bool IsNumbered { get; protected set; }
+## IsNumbered
+
+**bool { public get; protected set; }**  
 
 True for numbered lists.  
 False for bulleted lists.  
 
-## int Length { get; }
+## Length
+
+**int { public get; }**  
 
 Number of items in the list. Includes headers.  
 
@@ -34,7 +42,9 @@ Number of items in the list. Includes headers.
 
 # Static Methods
 
-## static [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+
+**static [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md)**  
 
 Parses .Net XML documentation list (which may actually be a table).  
 

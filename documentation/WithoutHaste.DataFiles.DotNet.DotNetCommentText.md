@@ -12,11 +12,15 @@ So if each line starts with two tabs, two tabs will be removed from the beginnin
 
 # Properties
 
-## bool IsEmpty { get; }
+## IsEmpty
+
+**bool { public get; }**  
 
 True if text is null or empty string.  
 
-## string Text { get; protected set; }
+## Text
+
+**string { public get; protected set; }**  
 
 # Constructors
 
@@ -24,7 +28,9 @@ True if text is null or empty string.
 
 # Methods
 
-## virtual string ToString()
+## ToString()
+
+**virtual string**  
 
 Returns full text.  
 

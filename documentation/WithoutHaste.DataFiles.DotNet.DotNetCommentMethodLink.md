@@ -7,7 +7,9 @@ Represents a link in the comments to an internal or extenal method.
 
 # Properties
 
-## string FullSignature { get; }
+## FullSignature
+
+**string { public get; }**  
 
 Fully qualified method name with parameters.  
 
@@ -20,7 +22,9 @@ Namespace.Type.Method(int,string)
 **Example C:**  
 `Namespace.Type.Method(System.Collections.Generic.List<int>)`  
 
-## [DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) MethodName { get; }
+## MethodName
+
+**[DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) { public get; }**  
 
 Strongly typed name.  
 
@@ -30,13 +34,17 @@ Strongly typed name.
 
 # Methods
 
-## bool MatchesSignature([DotNetMethod](WithoutHaste.DataFiles.DotNet.DotNetMethod.md) method)
+## MatchesSignature([DotNetMethod](WithoutHaste.DataFiles.DotNet.DotNetMethod.md) method)
+
+**bool**  
 
 Returns true if this method link and the method have matching signatures, based on the fully qualified name and the list of parameter types.  
 
 # Static Methods
 
-## static DotNetCommentMethodLink FromVisualStudioXml(string cref)
+## FromVisualStudioXml(string cref)
+
+**static DotNetCommentMethodLink**  
 
 Parses .Net XML documentation cref for methods.  
 

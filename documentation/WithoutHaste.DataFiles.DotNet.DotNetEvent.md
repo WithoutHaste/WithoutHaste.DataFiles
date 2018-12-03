@@ -10,13 +10,17 @@ Represents a type's event.
 
 # Methods
 
-## void AddAssemblyInfo([System.Reflection.EventInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.eventinfo) eventInfo)
+## AddAssemblyInfo([System.Reflection.EventInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.eventinfo) eventInfo)
+
+**void**  
 
 Load additional documentation information from the assembly itself.  
 
 # Static Methods
 
-## static DotNetEvent FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement)
+## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement)
+
+**static DotNetEvent**  
 
 Parse .Net XML documentation for Event data.  
 

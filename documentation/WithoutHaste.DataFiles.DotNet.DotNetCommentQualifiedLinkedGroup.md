@@ -6,7 +6,9 @@ Represents a section of comments that is linked to a fully qualified type or mem
 
 # Properties
 
-## [DotNetCommentQualifiedLink](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.md) QualifiedLink { get; }
+## QualifiedLink
+
+**[DotNetCommentQualifiedLink](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.md) { public get; }**  
 
 Strongly-typed link.  
 
@@ -20,13 +22,17 @@ Strongly-typed link.
 
 # Methods
 
-## bool Matches([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) member)
+## Matches([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) member)
+
+**bool**  
 
 Returns true if link name matches the member name.  
 
 # Static Methods
 
-## static DotNetCommentQualifiedLinkedGroup FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+
+**static DotNetCommentQualifiedLinkedGroup**  
 
 Parses .Net XML documentation for permission or exception.  
 

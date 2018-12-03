@@ -14,13 +14,17 @@ The "U"s in MyMethod(`List<U>` list, U obj).
 
 # Fields
 
-## protected int genericTypeIndex
+## genericTypeIndex
+
+**protected int**  
 
 0-based index in class's generic type list corresponding to this parameter.  
 
 # Properties
 
-## string Alias { get; protected set; }
+## Alias
+
+**string { public get; protected set; }**  
 
 The generic-type alias specified in the assembly. Null if not known.  
 Whether this refers to a class-generic or method-generic is determined by the subclass.  
@@ -50,7 +54,9 @@ Alias of generic-type within assembly. Null if not known.
 
 # Methods
 
-## void SetAlias(string alias)
+## SetAlias(string alias)
+
+**void**  
 
 # Derived By
 

@@ -7,20 +7,28 @@ Represents a markdown list.
 
 # Properties
 
-## [IMarkdownInList](WithoutHaste.DataFiles.Markdown.IMarkdownInList.md) this[int i] { get; }
+## this[int i]
+
+**[IMarkdownInList](WithoutHaste.DataFiles.Markdown.IMarkdownInList.md) { public get; }**  
 
 Get an element from the list by 0-based index.  
 
-## int Depth { get; protected set; }
+## Depth
+
+**int { public get; protected set; }**  
 
 0-indexed nesting depth of list.  
 
-## bool IsNumbered { get; protected set; }
+## IsNumbered
+
+**bool { public get; protected set; }**  
 
 True means the list will be numbered.   
 False means the list will be bulleted.  
 
-## int Length { get; }
+## Length
+
+**int { public get; }**  
 
 The length of the list. Nested lists count as 1 each.  
 
@@ -40,15 +48,21 @@ Creates a list of MarkdownLines, each containing one of the _inLineElements_.
 
 # Methods
 
-## void Add([IMarkdownInList](WithoutHaste.DataFiles.Markdown.IMarkdownInList.md) element)
+## Add([IMarkdownInList](WithoutHaste.DataFiles.Markdown.IMarkdownInList.md) element)
+
+**void**  
 
 Adds _element_ to the end of the list.  
 
-## void Add([IMarkdownInLine](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) element)
+## Add([IMarkdownInLine](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) element)
+
+**void**  
 
 Adds new MarkdownLine containing the _element_ to the end of the list.  
 
-## string ToMarkdown(string previousText)
+## ToMarkdown(string previousText)
+
+**string**  
 
 Return markdown-formatted text.  
 

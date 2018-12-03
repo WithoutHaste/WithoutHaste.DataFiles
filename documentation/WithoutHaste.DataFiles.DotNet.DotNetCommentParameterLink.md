@@ -7,11 +7,15 @@ Represents a link in the comments to an internal parameter name.
 
 # Properties
 
-## string FullName { get; }
+## FullName
+
+**string { public get; }**  
 
 Return the fully qualified name of the referenced assembly element.  
 
-## string Name { get; protected set; }
+## Name
+
+**string { public get; protected set; }**  
 
 Name of the parameter in local method.  
 
@@ -23,13 +27,17 @@ Name of the parameter in local method.
 
 # Methods
 
-## virtual string ToString()
+## ToString()
+
+**virtual string**  
 
 Name  
 
 # Static Methods
 
-## static DotNetCommentParameterLink FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+
+**static DotNetCommentParameterLink**  
 
 Parses .Net XML documentation for paramref.  
 

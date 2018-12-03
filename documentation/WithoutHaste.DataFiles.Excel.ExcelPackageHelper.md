@@ -7,21 +7,29 @@ Extensions for EPPlus OfficeOpenXml.ExcelPackage.
 
 # Fields
 
-## const string MIN_COLUMN_CHAR
+## MIN_COLUMN_CHAR
+
+**const string**  
 
 Minimum column character in excel.  
 
-## const int MIN_COLUMN_INDEX
+## MIN_COLUMN_INDEX
+
+**const int**  
 
 Minimum column index in excel.  
 
-## const int MIN_ROW_INDEX
+## MIN_ROW_INDEX
+
+**const int**  
 
 Minimum row index in excel.  
 
 # Static Methods
 
-## static OfficeOpenXml.ExcelWorksheet AddWorksheet(OfficeOpenXml.ExcelPackage excelPackage, string name)
+## AddWorksheet(OfficeOpenXml.ExcelPackage excelPackage, string name)
+
+**static OfficeOpenXml.ExcelWorksheet**  
 
 Add a new Worksheet to an ExcelPackage.  
 
@@ -35,7 +43,9 @@ The new Worksheet.
 * **OfficeOpenXml.ExcelPackage excelPackage**:   
 * **string name**: The name of the Worksheet.  
 
-## static void AppendRow(OfficeOpenXml.ExcelWorksheet worksheet, [List&lt;string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) values)
+## AppendRow(OfficeOpenXml.ExcelWorksheet worksheet, [List&lt;string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) values)
+
+**static void**  
 
 Add a new row of data to the end of the Worksheet.  
 
@@ -47,7 +57,9 @@ Add a new row of data to the end of the Worksheet.
 * **OfficeOpenXml.ExcelWorksheet worksheet**:   
 * **[List&lt;string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) values**: The data values for the row.  
 
-## static void AppendRow(OfficeOpenXml.ExcelWorksheet worksheet, [List&lt;int&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) values)
+## AppendRow(OfficeOpenXml.ExcelWorksheet worksheet, [List&lt;int&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) values)
+
+**static void**  
 
 Add a new row of data to the end of the Worksheet.  
 
@@ -59,7 +71,9 @@ Add a new row of data to the end of the Worksheet.
 * **OfficeOpenXml.ExcelWorksheet worksheet**:   
 * **[List&lt;int&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) values**: The data values for the row.  
 
-## static void AppendRow(OfficeOpenXml.ExcelWorksheet worksheet, [List&lt;decimal&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) values)
+## AppendRow(OfficeOpenXml.ExcelWorksheet worksheet, [List&lt;decimal&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) values)
+
+**static void**  
 
 Add a new row of data to the end of the Worksheet.  
 
@@ -71,7 +85,9 @@ Add a new row of data to the end of the Worksheet.
 * **OfficeOpenXml.ExcelWorksheet worksheet**:   
 * **[List&lt;decimal&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) values**: The data values for the row.  
 
-## static void AppendRow(OfficeOpenXml.ExcelWorksheet worksheet, [List&lt;object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) values)
+## AppendRow(OfficeOpenXml.ExcelWorksheet worksheet, [List&lt;object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) values)
+
+**static void**  
 
 Add a new row of data to the end of the Worksheet.  
 
@@ -83,14 +99,18 @@ Add a new row of data to the end of the Worksheet.
 * **OfficeOpenXml.ExcelWorksheet worksheet**:   
 * **[List&lt;object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) values**: The data values for the row.  
 
-## static void Clear(OfficeOpenXml.ExcelWorksheet worksheet)
+## Clear(OfficeOpenXml.ExcelWorksheet worksheet)
+
+**static void**  
 
 Remove all rows and columns from Worksheet.  
 
 **Exceptions:**  
 * **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: Worksheet cannot be null.  
 
-## static string ColumnChar(int columnNumber)
+## ColumnChar(int columnNumber)
+
+**static string**  
 
 Convert column integer index to character index.  
 
@@ -106,28 +126,36 @@ Convert column integer index to character index.
 **Parameters:**  
 * **int columnNumber**: 1-based index of column  
 
-## static int CountColumns(OfficeOpenXml.ExcelWorksheet worksheet)
+## CountColumns(OfficeOpenXml.ExcelWorksheet worksheet)
+
+**static int**  
 
 Returns the number of columns in the Worksheet.  
 
 **Exceptions:**  
 * **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: Worksheet cannot be null.  
 
-## static int CountRows(OfficeOpenXml.ExcelWorksheet worksheet)
+## CountRows(OfficeOpenXml.ExcelWorksheet worksheet)
+
+**static int**  
 
 Returns the number of rows in the Worksheet.  
 
 **Exceptions:**  
 * **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: Worksheet cannot be null.  
 
-## static int CountWorksheets(OfficeOpenXml.ExcelPackage excelPackage)
+## CountWorksheets(OfficeOpenXml.ExcelPackage excelPackage)
+
+**static int**  
 
 Returns the number of Worksheets in the ExcelPacakge.  
 
 **Exceptions:**  
 * **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: ExcelPackage cannot be null.  
 
-## static [List&lt;object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) GetColumnByChar(OfficeOpenXml.ExcelWorksheet worksheet, string column, bool skipFirstRow = True)
+## GetColumnByChar(OfficeOpenXml.ExcelWorksheet worksheet, string column, bool skipFirstRow = True)
+
+**static [List&lt;object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 Returns all values from one column, specified by the character name of the column.  
 
@@ -142,7 +170,9 @@ List of data values. Includes all cells to the bottom of the Worksheet.
 * **string column**: Character name of column. Example: "A", "Z", "AA".  
 * **bool skipFirstRow**: If true, the first value in the column is not included. Intended for skipping the header value.  
 
-## static [List&lt;object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) GetColumnByHeader(OfficeOpenXml.ExcelWorksheet worksheet, string header)
+## GetColumnByHeader(OfficeOpenXml.ExcelWorksheet worksheet, string header)
+
+**static [List&lt;object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 Returns all the values from one column, specified by the header value.  
 
@@ -156,7 +186,9 @@ List of data values, not including the header. Includes all cells to the bottom 
 * **OfficeOpenXml.ExcelWorksheet worksheet**:   
 * **string header**:   
 
-## static [List&lt;object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) GetColumnByIndex(OfficeOpenXml.ExcelWorksheet worksheet, int column, bool skipFirstRow = True)
+## GetColumnByIndex(OfficeOpenXml.ExcelWorksheet worksheet, int column, bool skipFirstRow = True)
+
+**static [List&lt;object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 Returns all values from one column, specified by the integer index of the column.  
 
@@ -171,7 +203,9 @@ List of data values. Includes all cells to the bottom of the Worksheet.
 * **int column**: Integer index of column, starting at 1.  
 * **bool skipFirstRow**: If true, the first value in the column is not included. Intended for skipping the header value.  
 
-## static string GetColumnCharForHeader(OfficeOpenXml.ExcelWorksheet worksheet, string header)
+## GetColumnCharForHeader(OfficeOpenXml.ExcelWorksheet worksheet, string header)
+
+**static string**  
 
 Searches first row for a particular value.  
 
@@ -186,7 +220,9 @@ Character name of the header's column, or null. Example: "A", "Z", "AA".
 * **OfficeOpenXml.ExcelWorksheet worksheet**:   
 * **string header**: Header value.  
 
-## static [List&lt;object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) GetRow(OfficeOpenXml.ExcelWorksheet worksheet, int row)
+## GetRow(OfficeOpenXml.ExcelWorksheet worksheet, int row)
+
+**static [List&lt;object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 Returns all the values from one row, specified by the 0-indexed row number.  
 
@@ -198,7 +234,9 @@ Returns all the values from one row, specified by the 0-indexed row number.
 * **OfficeOpenXml.ExcelWorksheet worksheet**:   
 * **int row**: Row number, starting at 1.  
 
-## static OfficeOpenXml.ExcelWorksheet GetWorksheet(OfficeOpenXml.ExcelPackage excelPackage, string name)
+## GetWorksheet(OfficeOpenXml.ExcelPackage excelPackage, string name)
+
+**static OfficeOpenXml.ExcelWorksheet**  
 
 Searches the ExcelPackage for a Worksheet by name.  
 
@@ -212,7 +250,9 @@ The Worksheet, or null.
 * **OfficeOpenXml.ExcelPackage excelPackage**:   
 * **string name**: The name of the Worksheet.  
 
-## static void SetColumnByChar(OfficeOpenXml.ExcelWorksheet worksheet, string column, [List&lt;object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) values, bool skipFirstRow = True)
+## SetColumnByChar(OfficeOpenXml.ExcelWorksheet worksheet, string column, [List&lt;object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) values, bool skipFirstRow = True)
+
+**static void**  
 
 Set an entire column of values at once.  
 
@@ -226,7 +266,9 @@ Set an entire column of values at once.
 * **[List&lt;object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) values**: Data values for the column.  
 * **bool skipFirstRow**: If true, values[0] is applied to row 2 instead of 1. Intended for indicating the first row is for headers.  
 
-## static void SetColumnByHeader(OfficeOpenXml.ExcelWorksheet worksheet, string header, [List&lt;object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) values)
+## SetColumnByHeader(OfficeOpenXml.ExcelWorksheet worksheet, string header, [List&lt;object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) values)
+
+**static void**  
 
 Set an entire column of values at once.  
 
@@ -239,7 +281,9 @@ Set an entire column of values at once.
 * **string header**: Header value of column.  
 * **[List&lt;object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) values**: Data values for the column. Should not include the header.  
 
-## static void SetColumnByIndex(OfficeOpenXml.ExcelWorksheet worksheet, int column, [List&lt;object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) values, bool skipFirstRow = True)
+## SetColumnByIndex(OfficeOpenXml.ExcelWorksheet worksheet, int column, [List&lt;object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) values, bool skipFirstRow = True)
+
+**static void**  
 
 Set an entire column of values at once.  
 

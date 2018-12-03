@@ -16,20 +16,26 @@ Displays as: The quick brown fox.\\n\\n
 
 # Fields
 
-## protected [List&lt;IMarkdownInSection&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements
+## elements
+
+**protected [List&lt;IMarkdownInSection&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 Ordered inline elements that make up this line.  
 
 # Properties
 
-## [IMarkdownInSection[]](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) Elements { get; }
+## Elements
+
+**[IMarkdownInSection[]](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) { public get; }**  
 
 Ordered elements that make up this paragraph.  
 
 **Remarks:**  
 Expect mostly one plain text element.  
 
-## bool IsEmpty { get; }
+## IsEmpty
+
+**bool { public get; }**  
 
 True when there are no elements in the line.  
 
@@ -49,31 +55,45 @@ Initialize paragraph with one MarkdownText element.
 
 # Methods
 
-## void Add(string text)
+## Add(string text)
+
+**void**  
 
 Add a new MarkdownText containing the text to the end of the paragraph.  
 
-## void Add([IMarkdownInSection](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) element)
+## Add([IMarkdownInSection](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) element)
+
+**void**  
 
 Add an element to the end of the paragraph.  
 
-## void Add([List&lt;IMarkdownInSection&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
+## Add([List&lt;IMarkdownInSection&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
+
+**void**  
 
 Add elements to the end of the paragraph.  
 
-## void Add([IMarkdownInSection[]](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) elements)
+## Add([IMarkdownInSection[]](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) elements)
+
+**void**  
 
 Add elements to the end of the paragraph.  
 
-## void Prepend(string text)
+## Prepend(string text)
+
+**void**  
 
 Add a new MarkdownText containing the text to the beginning of the paragraph.  
 
-## void Prepend([IMarkdownInSection](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) element)
+## Prepend([IMarkdownInSection](WithoutHaste.DataFiles.Markdown.IMarkdownInSection.md) element)
+
+**void**  
 
 Add an element to the beginning of the paragraph.  
 
-## string ToMarkdown(string previousText)
+## ToMarkdown(string previousText)
+
+**string**  
 
 Convert the paragraph to markdown-formatted text.  
 

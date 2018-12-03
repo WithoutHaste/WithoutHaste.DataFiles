@@ -6,9 +6,13 @@ Represents a method.
 
 # Properties
 
-## [MethodCategory](WithoutHaste.DataFiles.DotNet.MethodCategory.md) Category { get; protected set; }
+## Category
 
-## [DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) MethodName { get; }
+**[MethodCategory](WithoutHaste.DataFiles.DotNet.MethodCategory.md) { public get; protected set; }**  
+
+## MethodName
+
+**[DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) { public get; }**  
 
 Strongly-typed name.  
 
@@ -22,48 +26,70 @@ Empty constructor
 
 # Methods
 
-## virtual void AddAssemblyInfo([System.Reflection.MethodInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.methodinfo) methodInfo)
+## AddAssemblyInfo([System.Reflection.MethodInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.methodinfo) methodInfo)
+
+**virtual void**  
 
 Load additional documentation information from the assembly itself.  
 
-## virtual bool Equals(object b)
+## Equals(object b)
+
+**virtual bool**  
 
 Equality is based on the full namespace/name/generic-type-parameters of the method, and on parameter-types.  
 
-## virtual int GetHashCode()
+## GetHashCode()
 
-## bool Is([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+**virtual int**  
+
+## Is([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+
+**bool**  
 
 Returns true if this member's name matches the provided name.  
 
-## bool MatchesArguments([System.Reflection.ParameterInfo[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) parameters)
+## MatchesArguments([System.Reflection.ParameterInfo[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) parameters)
+
+**bool**  
 
 Returns true if this method's parameter list matches the reflected ParameterInfo. Checks parameter types, not names.  
 
-## bool MatchesArguments([List&lt;DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) parameters)
+## MatchesArguments([List&lt;DotNetParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) parameters)
+
+**bool**  
 
 Returns true if this method's parameter list matches the provided parameter list. Checks parameter types, not names.  
 
-## bool MatchesLocalSignature([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) name)
+## MatchesLocalSignature([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) name)
+
+**bool**  
 
 Returns true if this method's signature matches the other method signature.  
 Looks at local name instead of entire namespace.  
 
-## bool MatchesSignature([System.Reflection.MethodInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.methodinfo) methodInfo)
+## MatchesSignature([System.Reflection.MethodInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.methodinfo) methodInfo)
+
+**bool**  
 
 Returns true if this method's signature matches the reflected MethodInfo.  
 
-## bool MatchesSignature([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) name)
+## MatchesSignature([DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) name)
+
+**bool**  
 
 Returns true if this method's signature matches the other method signature.  
 
-## bool MatchesSignature([DotNetCommentMethodLink](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.md) link)
+## MatchesSignature([DotNetCommentMethodLink](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.md) link)
+
+**bool**  
 
 Returns true if this method link and the method have matching signatures, based on the fully qualified name and the list of parameter types.  
 
 # Static Methods
 
-## static DotNetMethod FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement)
+## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement)
+
+**static DotNetMethod**  
 
 Parse .Net XML documentation for method signature data.  
 

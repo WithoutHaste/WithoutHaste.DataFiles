@@ -6,7 +6,9 @@ Represents a markdown file.
 
 # Fields
 
-## const [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) Extensions
+## Extensions
+
+**const [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array)**  
 
 Accepted markdown file extensions.  
 
@@ -18,7 +20,9 @@ Create an empty markdown file.
 
 # Methods
 
-## [MarkdownSection](WithoutHaste.DataFiles.Markdown.MarkdownSection.md) AddSection(string header)
+## AddSection(string header)
+
+**[MarkdownSection](WithoutHaste.DataFiles.Markdown.MarkdownSection.md)**  
 
 Creates new section and adds it to the end of the file. Defaults to depth 1.  
 
@@ -28,14 +32,18 @@ The new section
 **Parameters:**  
 * **string header**: Section header  
 
-## void AddSection([MarkdownSection](WithoutHaste.DataFiles.Markdown.MarkdownSection.md) section)
+## AddSection([MarkdownSection](WithoutHaste.DataFiles.Markdown.MarkdownSection.md) section)
+
+**void**  
 
 Adds existing section to the end of this file. Depths are not updated.  
 
 **Parameters:**  
 * **[MarkdownSection](WithoutHaste.DataFiles.Markdown.MarkdownSection.md) section**: Existing section.  
 
-## string ToMarkdown()
+## ToMarkdown()
+
+**string**  
 
 Returns full markdown text for file, formatted for legibility.  
 

@@ -7,11 +7,15 @@ Represents a link in the comments to an internal or extenal type or type.method(
 
 # Properties
 
-## string FullName { get; }
+## FullName
+
+**string { public get; }**  
 
 Return the fully qualified name of the referenced assembly element.  
 
-## [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) Name { get; protected set; }
+## Name
+
+**[DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) { public get; protected set; }**  
 
 Name of type or member.  
 
@@ -23,13 +27,17 @@ Name of type or member.
 
 # Methods
 
-## bool Matches([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) member)
+## Matches([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) member)
+
+**bool**  
 
 Returns true if link name matches the member name.  
 
 # Static Methods
 
-## static DotNetCommentQualifiedLink FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+
+**static DotNetCommentQualifiedLink**  
 
 Parses .Net XML documentation tag that contains attribute cref.  
 
@@ -39,7 +47,9 @@ Parses .Net XML documentation tag that contains attribute cref.
 **Example B:**  
 `<permission cref="Namespace.Type">nested comments and/or plain text</permission>`  
 
-## static DotNetCommentQualifiedLink FromVisualStudioXml(string cref)
+## FromVisualStudioXml(string cref)
+
+**static DotNetCommentQualifiedLink**  
 
 Parses .Net XML documentation cref.  
 

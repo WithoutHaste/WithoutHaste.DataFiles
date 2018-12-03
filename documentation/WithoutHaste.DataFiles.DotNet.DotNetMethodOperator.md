@@ -7,7 +7,9 @@ Represents a method that is an operator.
 
 # Fields
 
-## const [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) OperatorOrder
+## OperatorOrder
+
+**const [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array)**  
 
 Operators will be sorted into this order.  
 
@@ -17,7 +19,9 @@ Operators will be sorted into this order.
 
 # Methods
 
-## int CompareTo(object b)
+## CompareTo(object b)
+
+**int**  
 
 Methods are sorted:  
 1. alphabetically by namespace  

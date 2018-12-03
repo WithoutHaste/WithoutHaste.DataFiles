@@ -6,7 +6,9 @@ Represents a section of code in the comments.
 
 # Properties
 
-## string Language { get; protected set; }
+## Language
+
+**string { public get; protected set; }**  
 
 Specify the language of the code block. Null if not known.  
 
@@ -18,14 +20,18 @@ Specify the language of the code block. Null if not known.
 
 # Static Methods
 
-## static [DotNetCommentCode](WithoutHaste.DataFiles.DotNet.DotNetCommentCode.md) FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+
+**static [DotNetCommentCode](WithoutHaste.DataFiles.DotNet.DotNetCommentCode.md)**  
 
 Parses .Net XML documentation code tag.  
 
 **Example A:**  
 `<code>code statements</code>`  
 
-## static [DotNetCommentCode](WithoutHaste.DataFiles.DotNet.DotNetCommentCode.md) FromVisualStudioXml([System.Xml.Linq.XCData](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xcdata) element)
+## FromVisualStudioXml([System.Xml.Linq.XCData](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xcdata) element)
+
+**static [DotNetCommentCode](WithoutHaste.DataFiles.DotNet.DotNetCommentCode.md)**  
 
 Parses .Net XML documentation CDATA tag.  
 

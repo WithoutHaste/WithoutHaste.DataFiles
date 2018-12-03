@@ -6,9 +6,13 @@ Represents a getter or a setter method of a property.
 
 # Properties
 
-## [AccessModifier](WithoutHaste.DataFiles.DotNet.AccessModifier.md) AccessModifier { get; protected set; }
+## AccessModifier
 
-## bool IsAbstract { get; protected set; }
+**[AccessModifier](WithoutHaste.DataFiles.DotNet.AccessModifier.md) { public get; protected set; }**  
+
+## IsAbstract
+
+**bool { public get; protected set; }**  
 
 # Constructors
 
@@ -18,7 +22,9 @@ Represents a getter or a setter method of a property.
 
 # Static Methods
 
-## static DotNetPropertyMethod FromAssemblyInfo([System.Reflection.MethodInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.methodinfo) methodInfo)
+## FromAssemblyInfo([System.Reflection.MethodInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.methodinfo) methodInfo)
+
+**static DotNetPropertyMethod**  
 
 Load additional documentation information from the assembly itself.  
 

@@ -6,28 +6,40 @@ Represents a parameter in a method signature.
 
 # Properties
 
-## [ParameterCategory](WithoutHaste.DataFiles.DotNet.ParameterCategory.md) Category { get; protected set; }
+## Category
 
-## object DefaultValue { get; protected set; }
+**[ParameterCategory](WithoutHaste.DataFiles.DotNet.ParameterCategory.md) { public get; protected set; }**  
+
+## DefaultValue
+
+**object { public get; protected set; }**  
 
 For optional parameters, the default value of the parameter. Null otherwise.  
 
-## string FullTypeName { get; }
+## FullTypeName
+
+**string { public get; }**  
 
 Fully qualified data type name.  
 
-## string LocalTypeName { get; }
+## LocalTypeName
+
+**string { public get; }**  
 
 Local data type name.  
 
-## string Name { get; protected set; }
+## Name
+
+**string { public get; protected set; }**  
 
 Name of parameter. Null if not known.  
 
 **Example A:**  
 In `MethodName(int a, string b)`, the first parameter name is `a`.  
 
-## string SignatureWithName { get; }
+## SignatureWithName
+
+**string { public get; }**  
 
 Returns formatted parameter with name.  
 
@@ -46,7 +58,9 @@ this MyType myName
 **Example E:**  
 MyType myName = defaultValue  
 
-## string SignatureWithoutName { get; }
+## SignatureWithoutName
+
+**string { public get; }**  
 
 Returns formatted parameter without the name.  
 
@@ -65,7 +79,9 @@ this MyType
 **Example E:**  
 MyType = defaultValue  
 
-## [DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) TypeName { get; protected set; }
+## TypeName
+
+**[DotNetQualifiedTypeName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.md) { public get; protected set; }**  
 
 Fully qualified data type name object.  
 
@@ -94,25 +110,37 @@ Category defaults to Normal.
 
 # Methods
 
-## virtual void AddAssemblyInfo([System.Reflection.ParameterInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo) parameterInfo)
+## AddAssemblyInfo([System.Reflection.ParameterInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo) parameterInfo)
+
+**virtual void**  
 
 Load additional documentation information from the assembly itself.  
 
-## DotNetParameter Clone()
+## Clone()
+
+**DotNetParameter**  
 
 Returns deep clone of parameter.  
 
-## virtual bool Equals(object b)
+## Equals(object b)
+
+**virtual bool**  
 
 For equality, parameter type and category must be equal. Parameter name and default value are irrelevant.  
 
-## virtual int GetHashCode()
+## GetHashCode()
 
-## void SetIsExtension()
+**virtual int**  
+
+## SetIsExtension()
+
+**void**  
 
 Set that this parameter is the first parameter in an extension method.  
 
-## virtual string ToString()
+## ToString()
+
+**virtual string**  
 
 Returns formatted parameter with name.  
 
@@ -133,7 +161,9 @@ MyType myName = defaultValue
 
 # Static Methods
 
-## static DotNetParameter FromVisualStudioXml(string typeName)
+## FromVisualStudioXml(string typeName)
+
+**static DotNetParameter**  
 
 Parses a .Net XML documentation parameter type name.  
 

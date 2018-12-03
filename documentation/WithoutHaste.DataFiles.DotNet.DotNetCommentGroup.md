@@ -9,19 +9,27 @@ Groups may include a link to something in the assembly which these comments are 
 
 # Fields
 
-## [List&lt;DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Comments
+## Comments
+
+**[List&lt;DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 # Properties
 
-## [DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) this[int index] { get; }
+## this[int index]
+
+**[DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) { public get; }**  
 
 Access comments by zero-based index.  
 
-## int Count { get; }
+## Count
+
+**int { public get; }**  
 
 The number of comments in the group. Does not count nested comments.  
 
-## bool IsEmpty { get; }
+## IsEmpty
+
+**bool { public get; }**  
 
 # Constructors
 
@@ -45,15 +53,23 @@ Empty constructor
 
 # Methods
 
-## void Add([DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
+## Add([DotNetComment](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comment)
 
-## void Add([DotNetComment[]](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comments)
+**void**  
 
-## void Add([List&lt;DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
+## Add([DotNetComment[]](WithoutHaste.DataFiles.DotNet.DotNetComment.md) comments)
+
+**void**  
+
+## Add([List&lt;DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) comments)
+
+**void**  
 
 # Static Methods
 
-## static DotNetCommentGroup FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+
+**static DotNetCommentGroup**  
 
 Parses .Net XML documentation for any "grouping" tag.  
 

@@ -8,52 +8,72 @@ class, interface, struct, delegate, enum, method, field, property, event, etc.
 
 # Fields
 
-## [List&lt;DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ExampleComments
+## ExampleComments
+
+**[List&lt;DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 Comments from "example" xml tags.  
 
-## [List&lt;DotNetCommentQualifiedLinkedGroup&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ExceptionComments
+## ExceptionComments
+
+**[List&lt;DotNetCommentQualifiedLinkedGroup&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 Comments from "exception" xml tags.  Only expected as top-level tags.  
 
-## [DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md) FloatingComments
+## FloatingComments
+
+**[DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md)**  
 
 Any comments not within expected top-level tags.  
 
-## [List&lt;DotNetCommentParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ParameterComments
+## ParameterComments
+
+**[List&lt;DotNetCommentParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 Comments from "param" xml tags. Only expected as top-level tags.  
 
-## [List&lt;DotNetCommentQualifiedLinkedGroup&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) PermissionComments
+## PermissionComments
+
+**[List&lt;DotNetCommentQualifiedLinkedGroup&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 Comments from "permission" xml tags. Only expected as top-level tags.  
 
-## [DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md) RemarksComments
+## RemarksComments
+
+**[DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md)**  
 
 Comments from "remarks" xml tags. Only expected as a top-level tag.  
 
 **Remarks:**  
 If there are multiple "remarks" tags, their contents will be concatenated as if they were one tag.  
 
-## [DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md) ReturnsComments
+## ReturnsComments
+
+**[DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md)**  
 
 Comments from "returns" xml tags. Only expected as a top-level tag.  
 
 **Remarks:**  
 If there are multiple "returns" tags, their contents will be concatenated as if they were one tag.  
 
-## [DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md) SummaryComments
+## SummaryComments
+
+**[DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md)**  
 
 Comments from "summary" xml tags. Only expected as a top-level tag.  
 
 **Remarks:**  
 If there are multiple "summary" tags, their contents will be concatenated as if they were one tag.  
 
-## [List&lt;DotNetCommentParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) TypeParameterComments
+## TypeParameterComments
+
+**[List&lt;DotNetCommentParameter&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 Comments from "typeparam" xml tags. Only expected as top-level tags.  
 
-## [DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md) ValueComments
+## ValueComments
+
+**[DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md)**  
 
 Comments from "value" xml tags. Only expected as a top-level tag.  
 
@@ -62,15 +82,21 @@ If there are multiple "value" tags, their contents will be concatenated as if th
 
 # Properties
 
-## bool HasComments { get; }
+## HasComments
+
+**bool { public get; }**  
 
 True when there's at least one comment on this member.  
 
-## bool HasNoComments { get; }
+## HasNoComments
+
+**bool { public get; }**  
 
 True when there are no comments on this member.  
 
-## [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) Name { get; protected set; }
+## Name
+
+**[DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) { public get; protected set; }**  
 
 # Constructors
 
@@ -78,23 +104,33 @@ True when there are no comments on this member.
 
 # Methods
 
-## void ClearComments()
+## ClearComments()
+
+**void**  
 
 Removes all comments from member.  
 
-## void CopyComments([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) original)
+## CopyComments([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) original)
+
+**void**  
 
 Shallow-copies all comments from the _original_ member to this member.  
 
-## bool Matches([DotNetCommentQualifiedLink](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.md) link)
+## Matches([DotNetCommentQualifiedLink](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLink.md) link)
+
+**bool**  
 
 Returns true if member name matches the link name.  
 
-## bool Matches([DotNetCommentQualifiedLinkedGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.md) group)
+## Matches([DotNetCommentQualifiedLinkedGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentQualifiedLinkedGroup.md) group)
+
+**bool**  
 
 Returns true if member name matches the link name.  
 
-## void ParseVisualStudioXmlDocumentation([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) parent)
+## ParseVisualStudioXmlDocumentation([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) parent)
+
+**void**  
 
 Parse .Net XML documentation about this member.  
 
@@ -104,7 +140,9 @@ Clears any existing comments before parsing the new ones.
 **Parameters:**  
 * **[System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) parent**: Expects the tag containing all documentation for this member.  
 
-## virtual bool ResolveDuplicatedComments([Func&lt;DotNetQualifiedName,DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember, [List&lt;DotNetQualifiedName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) pathToThisDuplicate = null)
+## ResolveDuplicatedComments([Func&lt;DotNetQualifiedName,DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember, [List&lt;DotNetQualifiedName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) pathToThisDuplicate = null)
+
+**virtual bool**  
 
 For all "duplicate" comments, replace the comment with the duplicated comments.  
 
@@ -115,7 +153,9 @@ Returns true if resolution is successful. Returns false if referenced member is 
 * **[Func&lt;DotNetQualifiedName,DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember**: Function that returns the selected member from all known members in the assembly.  
 * **[List&lt;DotNetQualifiedName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) pathToThisDuplicate**: List of named types/members that are duplicating each other, leading to this member. Used to avoid reference loops.  
 
-## virtual string ToString()
+## ToString()
+
+**virtual string**  
 
 Full name of member.  
 

@@ -12,7 +12,9 @@ Represents a section of comments that is linked to a method.
 
 # Properties
 
-## [DotNetCommentMethodLink](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.md) MethodLink { get; }
+## MethodLink
+
+**[DotNetCommentMethodLink](WithoutHaste.DataFiles.DotNet.DotNetCommentMethodLink.md) { public get; }**  
 
 Strongly-typed link.  
 

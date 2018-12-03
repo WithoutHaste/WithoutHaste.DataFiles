@@ -7,7 +7,9 @@ Global settings for the entire DotNet namespace.
 
 # Fields
 
-## static [Func&lt;string,int,string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-3) AdditionalQualifiedNameConverter
+## AdditionalQualifiedNameConverter
+
+**static [Func&lt;string,int,string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-3)**  
 
 A second level [QualifiedNameConverter](WithoutHaste.DataFiles.DotNet.DotNetSettings.md) to provide further processing.  
 This method will be run after [QualifiedNameConverter](WithoutHaste.DataFiles.DotNet.DotNetSettings.md) for each [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md).  
@@ -22,7 +24,9 @@ DotNetSettings.AdditionalQualifiedNameConverter = myCustomConverter;
 string displayString = myQualifiedTypeName.FullName;
 ```  
 
-## static [Func&lt;string,int,string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-3) QualifiedNameConverter
+## QualifiedNameConverter
+
+**static [Func&lt;string,int,string&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-3)**  
 
 When DotNetQualifiedNames are converted to strings, this converter will be automatically applied to each:  
 * generic type parameter  
@@ -43,7 +47,9 @@ string displayString = myQualifiedTypeName.FullName;
 
 # Static Methods
 
-## static string DefaultQualifiedNameConverter(string fullName, int depth)
+## DefaultQualifiedNameConverter(string fullName, int depth)
+
+**static string**  
 
 Converts all standard .Net types to their common aliases.  
 

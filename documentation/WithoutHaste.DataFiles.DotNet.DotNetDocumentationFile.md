@@ -7,23 +7,33 @@ Can add additional documentation derived from the assembly itself.
 
 # Fields
 
-## [List&lt;DotNetDelegate&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Delegates
+## Delegates
+
+**[List&lt;DotNetDelegate&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 Top-level delegates in assembly.  
 
-## readonly [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) Extensions
+## Extensions
+
+**readonly [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array)**  
 
 Accepted .Net XML documentation file extensions.  
 
-## [List&lt;DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Types
+## Types
+
+**[List&lt;DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 Top-level types in assembly.  
 
 # Properties
 
-## string AssemblyName { get; protected set; }
+## AssemblyName
 
-## int TypeCount { get; }
+**string { public get; protected set; }**  
+
+## TypeCount
+
+**int { public get; }**  
 
 Returns the full count of types within assembly, including nested types and enums.  
 
@@ -50,7 +60,9 @@ Loads .Net XML documentation from XDocument.
 
 # Methods
 
-## void AddAssemblyInfo(string assemblyFilename, [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) thirdPartyAssemblyFilenames)
+## AddAssemblyInfo(string assemblyFilename, [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) thirdPartyAssemblyFilenames)
+
+**void**  
 
 Load additional documentation information from the assembly itself.  
 

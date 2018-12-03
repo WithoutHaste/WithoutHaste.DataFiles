@@ -7,50 +7,70 @@ Represents a section of documentation, such as the contents of a `<summary></sum
 
 # Properties
 
-## [CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) Tag { get; protected set; }
+## Tag
+
+**[CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) { public get; protected set; }**  
 
 The type of xml tag that the comment came from.  
 
 # Methods
 
-## virtual string ToString()
+## ToString()
+
+**virtual string**  
 
 Defaults to the CommentTag text.  
 
 # Static Methods
 
-## static DotNetComment FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+
+**static DotNetComment**  
 
 Parses top-level .Net XML documentation comments. Returns null if no comments are found.  
 
-## static [DotNetCommentText](WithoutHaste.DataFiles.DotNet.DotNetCommentText.md) FromVisualStudioXml(string text)
+## FromVisualStudioXml(string text)
+
+**static [DotNetCommentText](WithoutHaste.DataFiles.DotNet.DotNetCommentText.md)**  
 
 Creates a plain text comment.  
 
-## static [CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md) GetTag([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## GetTag([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+
+**static [CommentTag](WithoutHaste.DataFiles.DotNet.CommentTag.md)**  
 
 Returns the CommentTag value that corresponds to the XElement.  
 
-## static bool IsXmlTag([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element, string localName)
+## IsXmlTag([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element, string localName)
+
+**static bool**  
 
 Returns false on unexpected xml formats.  
 
-## static bool IsXmlTag([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element, [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) localNames)
+## IsXmlTag([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element, [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) localNames)
+
+**static bool**  
 
 Returns false on unexpected xml formats.  
 
-## static [List&lt;DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ParseSection([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## ParseSection([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+
+**static [List&lt;DotNetComment&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 Parses inner .Net XML documentation comments.  
 
-## static void ValidateXmlTag([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element, string localName)
+## ValidateXmlTag([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element, string localName)
+
+**static void**  
 
 Throws exception on unexpected xml formats.  
 
 **Exceptions:**  
 * **[XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)**: XML tag does not have the expected local name, or is null  
 
-## static void ValidateXmlTag([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element, [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) localNames)
+## ValidateXmlTag([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element, [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) localNames)
+
+**static void**  
 
 Throws exception on unexpected xml formats.  
 

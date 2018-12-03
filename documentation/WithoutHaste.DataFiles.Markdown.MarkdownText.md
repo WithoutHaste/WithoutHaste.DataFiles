@@ -7,7 +7,9 @@ Represents plain text.
 
 # Properties
 
-## [TextStyle](WithoutHaste.DataFiles.Markdown.TextStyle.md) Style { get; protected set; }
+## Style
+
+**[TextStyle](WithoutHaste.DataFiles.Markdown.TextStyle.md) { public get; protected set; }**  
 
 **Remarks:**  
 Supports multiple selections such as `TextStype.Bold | TextStyle.Italic`.  
@@ -15,7 +17,9 @@ Supports multiple selections such as `TextStype.Bold | TextStyle.Italic`.
 **Misc:**  
   
 
-## string Text { get; protected set; }
+## Text
+
+**string { public get; protected set; }**  
 
 # Constructors
 
@@ -25,27 +29,35 @@ Supports multiple selections such as `TextStype.Bold | TextStyle.Italic`.
 
 # Methods
 
-## string ToMarkdown(string previousText = null)
+## ToMarkdown(string previousText = null)
+
+**string**  
 
 Return markdown-formatted text.  
 
 # Static Methods
 
-## static MarkdownText Bold(string text)
+## Bold(string text)
+
+**static MarkdownText**  
 
 Generate bold text.  
 
 **Remarks:**  
 _text_ is trimmed to conform to Markdown formatting requirements.  
 
-## static MarkdownText BoldItalic(string text)
+## BoldItalic(string text)
+
+**static MarkdownText**  
 
 Generate bold-italic text.  
 
 **Remarks:**  
 _text_ is trimmed to conform to Markdown formatting requirements.  
 
-## static MarkdownText Italic(string text)
+## Italic(string text)
+
+**static MarkdownText**  
 
 Generate italic text.  
 

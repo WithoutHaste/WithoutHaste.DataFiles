@@ -6,7 +6,9 @@ Represents an ordered collection of comments that is linked to something in the 
 
 # Properties
 
-## [IDotNetCommentLink](WithoutHaste.DataFiles.DotNet.IDotNetCommentLink.md) Link { get; protected set; }
+## Link
+
+**[IDotNetCommentLink](WithoutHaste.DataFiles.DotNet.IDotNetCommentLink.md) { public get; protected set; }**  
 
 Reference link from comments to something in the assembly.  
 

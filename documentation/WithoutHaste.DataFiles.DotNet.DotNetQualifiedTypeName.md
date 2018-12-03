@@ -7,7 +7,9 @@ Represents a fully qualified type name, for return types / field types / propert
 
 # Fields
 
-## [List&lt;DotNetQualifiedTypeName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) GenericTypeParameters
+## GenericTypeParameters
+
+**[List&lt;DotNetQualifiedTypeName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 If this is a generic type, these are the specified parameter types.  
 
@@ -16,11 +18,15 @@ In parameter type `List<System.String>`, System.String is the generic-type param
 
 # Properties
 
-## DotNetQualifiedTypeName FullTypeNamespace { get; }
+## FullTypeNamespace
+
+**DotNetQualifiedTypeName { public get; }**  
 
 Strongly-typed FullNamespace.  
 
-## string LocalName { get; }
+## LocalName
+
+**string { public get; }**  
 
 Local data type name with generic type parameters (if applicable).  
 
@@ -48,15 +54,21 @@ Empty constructor
 
 # Methods
 
-## DotNetQualifiedTypeName Clone()
+## Clone()
+
+**DotNetQualifiedTypeName**  
 
 Returns deep clone of qualified name.  
 
-## DotNetQualifiedTypeName GetLocalized([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
+## GetLocalized([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
+
+**DotNetQualifiedTypeName**  
 
 Returns a new name object which has been localized to the provided other name. The current object is not altered.  
 
-## virtual void Localize([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
+## Localize([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
+
+**virtual void**  
 
 Simplifies this qualified name based on the _other_ name.  
 In other words, removes the portion of the namespace that this and the _other_ have in common.  
@@ -78,11 +90,15 @@ Preserves explicit interface implementations.
 
 # Static Methods
 
-## static DotNetQualifiedTypeName FromAssemblyInfo([Type](https://docs.microsoft.com/en-us/dotnet/api/system.type) type)
+## FromAssemblyInfo([Type](https://docs.microsoft.com/en-us/dotnet/api/system.type) type)
+
+**static DotNetQualifiedTypeName**  
 
 Parses a System.Reflection.AssemblyInfo full name.  
 
-## static DotNetQualifiedTypeName FromAssemblyInfo([Type](https://docs.microsoft.com/en-us/dotnet/api/system.type) type, [List&lt;DotNetQualifiedTypeName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) bubbleUpParameters = null)
+## FromAssemblyInfo([Type](https://docs.microsoft.com/en-us/dotnet/api/system.type) type, [List&lt;DotNetQualifiedTypeName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) bubbleUpParameters = null)
+
+**static DotNetQualifiedTypeName**  
 
 Parses a System.Reflection.AssemblyInfo full name.  
 
@@ -96,9 +112,13 @@ Parses a System.Reflection.AssemblyInfo full name.
 * **[Type](https://docs.microsoft.com/en-us/dotnet/api/system.type) type**:   
 * **[List&lt;DotNetQualifiedTypeName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) bubbleUpParameters**: Optional. When reflection gives type information about a generic type nested inside a generic type, all the generic-type-arguments are listed in the inner-most type. This is for passing that information back up the chain of types.  
 
-## static DotNetQualifiedTypeName FromAssemblyInfo(string typeName)
+## FromAssemblyInfo(string typeName)
 
-## static DotNetQualifiedTypeName FromVisualStudioXml(string typeName)
+**static DotNetQualifiedTypeName**  
+
+## FromVisualStudioXml(string typeName)
+
+**static DotNetQualifiedTypeName**  
 
 Parses a .Net XML documentation type name.  
 Not intended for type declarations. Intended for field types, property types, parameter types, and return types.  

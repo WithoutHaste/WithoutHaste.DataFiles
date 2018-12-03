@@ -7,11 +7,15 @@ Represents a code block or CDATA block.
 
 # Fields
 
-## readonly string Language
+## Language
+
+**readonly string**  
 
 Language tag supported by highlight.js for syntax highlighting.  
 
-## readonly string Text
+## Text
+
+**readonly string**  
 
 Full text of code, with endline characters between lines.  
 
@@ -23,7 +27,9 @@ Full text of code, with endline characters between lines.
 
 # Methods
 
-## string ToMarkdown(string previousText)
+## ToMarkdown(string previousText)
+
+**string**  
 
 Return markdown-formatted text.  
 

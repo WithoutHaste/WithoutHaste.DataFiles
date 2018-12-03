@@ -7,18 +7,24 @@ Generic System.Xml.XmlDocument utilities.
 
 # Static Methods
 
-## static void Validate([System.Xml.XmlNode](https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlnode) node, string localName)
+## Validate([System.Xml.XmlNode](https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlnode) node, string localName)
+
+**static void**  
 
 Throw exception if XmlNode does not exist, or does not have the expected LocalName.  
 
 **Exceptions:**  
 * **[XmlNodeException](WithoutHaste.DataFiles.XmlNodeException.md)**:   
 
-## static string XmlToString([System.Xml.XmlDocument](https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmldocument) xmlDocument)
+## XmlToString([System.Xml.XmlDocument](https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmldocument) xmlDocument)
+
+**static string**  
 
 Returns a string containing the entire contents of the XmlDocument.  
 
-## static string XmlToString([System.Xml.XmlNode](https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlnode) xmlNode)
+## XmlToString([System.Xml.XmlNode](https://docs.microsoft.com/en-us/dotnet/api/system.xml.xmlnode) xmlNode)
+
+**static string**  
 
 Returns a string containing the entire contents of the XmlNode.  
 

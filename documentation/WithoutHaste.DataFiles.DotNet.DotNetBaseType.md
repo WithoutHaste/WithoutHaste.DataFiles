@@ -7,9 +7,13 @@ Stub class: contains minimal information about the type.
 
 # Properties
 
-## DotNetBaseType BaseType { get; protected set; }
+## BaseType
 
-## int Depth { get; }
+**DotNetBaseType { public get; protected set; }**  
+
+## Depth
+
+**int { public get; }**  
 
 Returns the inheritance distance from here to the bottom.  
 
@@ -19,7 +23,9 @@ Class "System.Reflection.TypeInfo" has Depth = 4 because its inheritance path is
 **Example B:**  
 Class "System.Object" has Depth = 1 because its inheritance path is just "Object".  
 
-## [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) Name { get; protected set; }
+## Name
+
+**[DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) { public get; protected set; }**  
 
 # Constructors
 

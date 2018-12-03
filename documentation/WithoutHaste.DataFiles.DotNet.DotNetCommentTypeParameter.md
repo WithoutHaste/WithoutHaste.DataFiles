@@ -14,7 +14,9 @@ Represents a generic-type parameter description in the comments.
 
 # Static Methods
 
-## static DotNetCommentTypeParameter FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+
+**static DotNetCommentTypeParameter**  
 
 Parses .Net XML documentation for typeparam.  
 

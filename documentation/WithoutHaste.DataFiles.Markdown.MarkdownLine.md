@@ -16,20 +16,26 @@ Displays as: The quick brown fox.  \\n
 
 # Fields
 
-## protected [List&lt;IMarkdownInLine&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements
+## elements
+
+**protected [List&lt;IMarkdownInLine&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 Ordered inline elements that make up this line.  
 
 # Properties
 
-## [IMarkdownInLine[]](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) Elements { get; }
+## Elements
+
+**[IMarkdownInLine[]](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) { public get; }**  
 
 Ordered inline elements that make up this line.  
 
 **Remarks:**  
 Expect mostly one plain text element.  
 
-## bool IsEmpty { get; }
+## IsEmpty
+
+**bool { public get; }**  
 
 True when there are no elements in the line.  
 
@@ -49,35 +55,51 @@ Initialize line with one MarkdownText element.
 
 # Methods
 
-## void Add(string text)
+## Add(string text)
+
+**void**  
 
 Add a new MarkdownText containing the text to the end of the line.  
 
-## void Add([IMarkdownInLine](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) element)
+## Add([IMarkdownInLine](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) element)
+
+**void**  
 
 Add an element to the end of the line.  
 
-## void Add([List&lt;IMarkdownInLine&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
+## Add([List&lt;IMarkdownInLine&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) elements)
+
+**void**  
 
 Add elements to the end of the line.  
 
-## void Add([IMarkdownInLine[]](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) elements)
+## Add([IMarkdownInLine[]](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) elements)
+
+**void**  
 
 Add elements to the end of the line.  
 
-## void Concat([MarkdownLine](WithoutHaste.DataFiles.Markdown.MarkdownLine.md) other)
+## Concat([MarkdownLine](WithoutHaste.DataFiles.Markdown.MarkdownLine.md) other)
+
+**void**  
 
 Appends the contents of the second line to end of this line.  
 
-## void Prepend(string text)
+## Prepend(string text)
+
+**void**  
 
 Add a new MarkdownText containing the text to the beginning of the line.  
 
-## void Prepend([IMarkdownInLine](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) element)
+## Prepend([IMarkdownInLine](WithoutHaste.DataFiles.Markdown.IMarkdownInLine.md) element)
+
+**void**  
 
 Add an element to the beginning of the line.  
 
-## virtual string ToMarkdown(string previousText)
+## ToMarkdown(string previousText)
+
+**virtual string**  
 
 Return markdown-formatted text.  
 

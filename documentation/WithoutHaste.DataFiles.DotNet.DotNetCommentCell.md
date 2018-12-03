@@ -9,13 +9,17 @@ Does not inherit from DotNetCommentText because a cell cannot appear everywhere 
 
 # Fields
 
-## const DotNetCommentCell EmptyCell
+## EmptyCell
+
+**const DotNetCommentCell**  
 
 Default empty cell.  
 
 # Properties
 
-## string Text { get; protected set; }
+## Text
+
+**string { public get; protected set; }**  
 
 Cell contents.  
 
@@ -25,7 +29,9 @@ Cell contents.
 
 # Static Methods
 
-## static DotNetCommentCell FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+
+**static DotNetCommentCell**  
 
 Parses .Net XML documentation term tag.  
 

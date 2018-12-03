@@ -6,11 +6,17 @@ Represents a listheader or item in a .Net XML documentation list.
 
 # Properties
 
-## [DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md) Description { get; protected set; }
+## Description
 
-## bool IsHeader { get; protected set; }
+**[DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md) { public get; protected set; }**  
 
-## [DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md) Term { get; protected set; }
+## IsHeader
+
+**bool { public get; protected set; }**  
+
+## Term
+
+**[DotNetCommentGroup](WithoutHaste.DataFiles.DotNet.DotNetCommentGroup.md) { public get; protected set; }**  
 
 # Constructors
 
@@ -26,7 +32,9 @@ _term_ and _description_ containing more than plain text, such as a `see` tag.
 
 # Static Methods
 
-## static DotNetCommentListItem FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+
+**static DotNetCommentListItem**  
 
 Parses .Net XML documentation listheader or item.  
 

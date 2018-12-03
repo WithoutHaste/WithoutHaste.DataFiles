@@ -6,7 +6,9 @@ Represents anything in the comments that links to something in the assembly.
 
 # Properties
 
-## string FullName { get; }
+## FullName
+
+**string { public get; }**  
 
 Return the fully qualified name of the referenced assembly element.  
 

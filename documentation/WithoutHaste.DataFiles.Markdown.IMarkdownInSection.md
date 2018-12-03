@@ -6,7 +6,9 @@ Represents a markdown element that can be included within a MarkdownSection.
 
 # Methods
 
-## abstract string ToMarkdown(string previousText)
+## ToMarkdown(string previousText)
+
+**abstract string**  
 
 Return markdown-formatted text.  
 

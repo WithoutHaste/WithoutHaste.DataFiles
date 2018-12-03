@@ -6,17 +6,23 @@
 
 # Fields
 
-## protected [MarkdownText](WithoutHaste.DataFiles.Markdown.MarkdownText.md) text
+## text
+
+**protected [MarkdownText](WithoutHaste.DataFiles.Markdown.MarkdownText.md)**  
 
 Styled text of link.  
 
 # Properties
 
-## string Text { get; }
+## Text
+
+**string { public get; }**  
 
 Plain text of link.  
 
-## string Url { get; protected set; }
+## Url
+
+**string { public get; protected set; }**  
 
 Url of target.  
 
@@ -32,7 +38,9 @@ Link text and url are the same.
 
 # Methods
 
-## abstract string ToMarkdown(string previousText)
+## ToMarkdown(string previousText)
+
+**abstract string**  
 
 Outputs markdown-formatted text.  
 

@@ -6,105 +6,151 @@ Represents a data type: a class, interface, struct, or enum.
 
 # Fields
 
-## [List&lt;DotNetDelegate&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Delegates
+## Delegates
+
+**[List&lt;DotNetDelegate&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 Delegates defined within this type.  
 
-## [List&lt;DotNetEvent&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Events
+## Events
+
+**[List&lt;DotNetEvent&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 All events defined within the type.  
 
-## [List&lt;DotNetField&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Fields
+## Fields
+
+**[List&lt;DotNetField&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 All fields defined within this type.  
 
 **Remarks:**  
 By the .Net definition of "field", meaning that properties and events are not included.  
 
-## [List&lt;DotNetBaseType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ImplementedInterfaces
+## ImplementedInterfaces
+
+**[List&lt;DotNetBaseType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 Interfaces this type implements, if known.  
 
 **Remarks:**  
 If an interface extends another interface, reflection reports that the type implements both interfaces.  
 
-## [List&lt;DotNetMethod&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Methods
+## Methods
+
+**[List&lt;DotNetMethod&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 All methods defined within this type.  
 
-## [List&lt;DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) NestedTypes
+## NestedTypes
+
+**[List&lt;DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 Data types defined/nested within this type.  
 
-## [List&lt;DotNetProperty&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Properties
+## Properties
+
+**[List&lt;DotNetProperty&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 All properties defined within the type.  
 
 # Properties
 
-## [List&lt;DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) AllMembers { get; }
+## AllMembers
+
+**[List&lt;DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) { public get; }**  
 
 Lists all methods, delegates, fields, properties, and events.  
 Does not include nested types.  
 
-## [DotNetBaseType](WithoutHaste.DataFiles.DotNet.DotNetBaseType.md) BaseType { get; protected set; }
+## BaseType
+
+**[DotNetBaseType](WithoutHaste.DataFiles.DotNet.DotNetBaseType.md) { public get; protected set; }**  
 
 Base type this type inherits from. Null if not known or none exists.  
 
-## [TypeCategory](WithoutHaste.DataFiles.DotNet.TypeCategory.md) Category { get; protected set; }
+## Category
 
-## [List&lt;DotNetField&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ConstantFields { get; }
+**[TypeCategory](WithoutHaste.DataFiles.DotNet.TypeCategory.md) { public get; protected set; }**  
+
+## ConstantFields
+
+**[List&lt;DotNetField&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) { public get; }**  
 
 The subset of Fields that are constants.  
 
-## [List&lt;DotNetMethodConstructor&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) ConstructorMethods { get; }
+## ConstructorMethods
+
+**[List&lt;DotNetMethodConstructor&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) { public get; }**  
 
 The subset of Methods that are constructors.  
 
-## [DotNetMethodDestructor](WithoutHaste.DataFiles.DotNet.DotNetMethodDestructor.md) DestructorMethod { get; }
+## DestructorMethod
+
+**[DotNetMethodDestructor](WithoutHaste.DataFiles.DotNet.DotNetMethodDestructor.md) { public get; }**  
 
 The subset of Methods that are destructors. There can be zero or one destructors.  
 
-## [List&lt;DotNetIndexer&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) IndexerProperties { get; }
+## IndexerProperties
+
+**[List&lt;DotNetIndexer&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) { public get; }**  
 
 The subset of Properties that are indexers.  
 
-## bool IsSealed { get; protected set; }
+## IsSealed
+
+**bool { public get; protected set; }**  
 
 True if the type is sealed.  
 
 **Remarks:**  
 Abstract classes, static classes, and interfaces cannot be sealed. Exceptions can be sealed.  
 
-## [List&lt;DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) NestedEnums { get; }
+## NestedEnums
+
+**[List&lt;DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) { public get; }**  
 
 The subset of NestedTypes that are enums.  
 
-## int NestedTypeCount { get; }
+## NestedTypeCount
+
+**int { public get; }**  
 
 The number of types nested within this type, including sub-nested types and enums.  
 
-## [List&lt;DotNetField&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) NormalFields { get; }
+## NormalFields
+
+**[List&lt;DotNetField&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) { public get; }**  
 
 The subset of Fields that are not constant, or where the category is unknown.  
 
-## [List&lt;DotNetMethod&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) NormalMethods { get; }
+## NormalMethods
+
+**[List&lt;DotNetMethod&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) { public get; }**  
 
 The subset of Methods that are not static, nor constructors, nor destructors, nor operators.  
 
-## [List&lt;DotNetProperty&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) NormalProperties { get; }
+## NormalProperties
+
+**[List&lt;DotNetProperty&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) { public get; }**  
 
 The subset of Properties that are not indexers.  
 
-## [List&lt;DotNetMethodOperator&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) OperatorMethods { get; }
+## OperatorMethods
+
+**[List&lt;DotNetMethodOperator&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) { public get; }**  
 
 The subset of Methods that are operator overloads.  
 
-## [List&lt;DotNetMethod&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) StaticMethods { get; }
+## StaticMethods
+
+**[List&lt;DotNetMethod&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) { public get; }**  
 
 The subset of Methods that are static (including extension methods), but not constructors, nor destructors, nor operators.  
 
-## [DotNetQualifiedClassName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md) TypeName { get; }
+## TypeName
+
+**[DotNetQualifiedClassName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md) { public get; }**  
 
 Strongly-typed name.  
 
@@ -114,15 +160,21 @@ Strongly-typed name.
 
 # Methods
 
-## void AddAssemblyInfo([System.Reflection.TypeInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.typeinfo) typeInfo, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+## AddAssemblyInfo([System.Reflection.TypeInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.typeinfo) typeInfo, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+
+**void**  
 
 Load additional documentation information from the assembly itself for this type or one of its nested type descendents.  
 
-## void AddMember([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) member)
+## AddMember([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) member)
+
+**void**  
 
 Add a member to this type or one of its nested type descendents.  
 
-## [DotNetEvent](WithoutHaste.DataFiles.DotNet.DotNetEvent.md) FindInheritedEvent([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, string localName)
+## FindInheritedEvent([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, string localName)
+
+**[DotNetEvent](WithoutHaste.DataFiles.DotNet.DotNetEvent.md)**  
 
 Returns the selected event, if it exists in this type.  
 
@@ -130,7 +182,9 @@ Returns the selected event, if it exists in this type.
 * **[Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType**: Function that returns the selected type from all known types in the assembly.  
 * **string localName**: Name of event, local to this type.  
 
-## [DotNetField](WithoutHaste.DataFiles.DotNet.DotNetField.md) FindInheritedField([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, string localName)
+## FindInheritedField([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, string localName)
+
+**[DotNetField](WithoutHaste.DataFiles.DotNet.DotNetField.md)**  
 
 Returns the selected field, if it exists in this type.  
 
@@ -138,7 +192,9 @@ Returns the selected field, if it exists in this type.
 * **[Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType**: Function that returns the selected type from all known types in the assembly.  
 * **string localName**: Name of field, local to this type.  
 
-## [DotNetMethod](WithoutHaste.DataFiles.DotNet.DotNetMethod.md) FindInheritedMethod([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) methodName)
+## FindInheritedMethod([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) methodName)
+
+**[DotNetMethod](WithoutHaste.DataFiles.DotNet.DotNetMethod.md)**  
 
 Returns the selected method, if it exists in this type.  
 
@@ -146,7 +202,9 @@ Returns the selected method, if it exists in this type.
 * **[Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType**: Function that returns the selected type from all known types in the assembly.  
 * **[DotNetQualifiedMethodName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md) methodName**: Name of method, local to this type.  
 
-## [DotNetProperty](WithoutHaste.DataFiles.DotNet.DotNetProperty.md) FindInheritedProperty([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, string localName)
+## FindInheritedProperty([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, string localName)
+
+**[DotNetProperty](WithoutHaste.DataFiles.DotNet.DotNetProperty.md)**  
 
 Returns the selected property, if it exists in this type.  
 
@@ -154,38 +212,54 @@ Returns the selected property, if it exists in this type.
 * **[Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType**: Function that returns the selected type from all known types in the assembly.  
 * **string localName**: Name of property, local to this type.  
 
-## [DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) FindMember([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+## FindMember([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+
+**[DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md)**  
 
 Returns the specified member from this type of its nested type descendents. Can return a field, property, event, method, delegate, or type.  
 
-## DotNetType FindType([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+## FindType([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+
+**DotNetType**  
 
 Returns the selected type, whether it is the current type or one of its nested type descendents. Returns null if the type is not found.  
 
-## bool Is([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+## Is([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+
+**bool**  
 
 Returns true if this member's name matches the provided name.  
 
-## bool IsDirectChild([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+## IsDirectChild([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+
+**bool**  
 
 Returns true if this qualified name is defined directly within this type.  
 
-## bool Owns([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) member)
+## Owns([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) member)
+
+**bool**  
 
 Returns true if this member is defined within this type or any of its nested type descendents.  
 
-## bool Owns([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+## Owns([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+
+**bool**  
 
 Returns true if this qualified name is defined within this type or any of its nested type dscendents.  
 
-## void ResolveDuplicatedComments([Func&lt;DotNetQualifiedName,DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember)
+## ResolveDuplicatedComments([Func&lt;DotNetQualifiedName,DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember)
+
+**void**  
 
 For all "duplicate" comments, replace the comment with the duplicated comments.  
 
 **Parameters:**  
 * **[Func&lt;DotNetQualifiedName,DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember**: Function that returns the selected member from all known members in the assembly.  
 
-## void ResolveInheritedComments([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [List&lt;DotNetQualifiedName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) inheritancePath = null)
+## ResolveInheritedComments([Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType, [List&lt;DotNetQualifiedName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) inheritancePath = null)
+
+**void**  
 
 For all "inheritdoc" comments, replace the inheritance comment with the inherited comments.  
 
@@ -198,7 +272,9 @@ Class members can inherit from their base class or from interfaces.
 * **[Func&lt;DotNetQualifiedName,DotNetType&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindType**: Function that returns the selected type from all known types in the assembly.  
 * **[List&lt;DotNetQualifiedName&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) inheritancePath**: List of types or members inheriting from each other, from top level to bottom level. Used to avoid loops.  
 
-## [DotNetDelegate](WithoutHaste.DataFiles.DotNet.DotNetDelegate.md) ToDelegate([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+## ToDelegate([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
+
+**[DotNetDelegate](WithoutHaste.DataFiles.DotNet.DotNetDelegate.md)**  
 
 Converts the selected type into a delegate, transfering all applicable data.  
 
@@ -212,13 +288,17 @@ The new delegate, or null if the type is not found.
 **Parameters:**  
 * **[DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name**: The fully qualified name of the delegate.  
 
-## virtual string ToString()
+## ToString()
+
+**virtual string**  
 
 Returns FullName of type.  
 
 # Static Methods
 
-## static DotNetType FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement)
+## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement)
+
+**static DotNetType**  
 
 Parse .Net XML documentation for Type data.  
 

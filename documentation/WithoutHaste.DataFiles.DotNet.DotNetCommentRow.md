@@ -6,11 +6,15 @@ Represents a row of data in a .Net XML documentation table.
 
 # Fields
 
-## [List&lt;DotNetCommentCell&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Cells
+## Cells
+
+**[List&lt;DotNetCommentCell&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 # Properties
 
-## [DotNetCommentCell](WithoutHaste.DataFiles.DotNet.DotNetCommentCell.md) this[int columnIndex] { get; }
+## this[int columnIndex]
+
+**[DotNetCommentCell](WithoutHaste.DataFiles.DotNet.DotNetCommentCell.md) { public get; }**  
 
 Returns the selected cell of the row. Returns an empty cell if no cell is found.  
 
@@ -23,11 +27,15 @@ Returns an empty cell because Row does not know the number of columns in the Tab
 **Parameters:**  
 * **int columnIndex**: 0-based index of table column.  
 
-## int ColumnCount { get; }
+## ColumnCount
+
+**int { public get; }**  
 
 Number of columns (cells) in the row.  
 
-## bool IsHeader { get; protected set; }
+## IsHeader
+
+**bool { public get; protected set; }**  
 
 # Constructors
 
@@ -35,7 +43,9 @@ Number of columns (cells) in the row.
 
 # Static Methods
 
-## static DotNetCommentRow FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+
+**static DotNetCommentRow**  
 
 Parses .Net XML documentation "listheader" or "item", expecting one "term" per cell.  
 

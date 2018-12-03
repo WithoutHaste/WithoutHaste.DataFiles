@@ -6,11 +6,15 @@ Represents a table in the comments.
 
 # Fields
 
-## [List&lt;DotNetCommentRow&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) Rows
+## Rows
+
+**[List&lt;DotNetCommentRow&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1)**  
 
 # Properties
 
-## [DotNetCommentCell](WithoutHaste.DataFiles.DotNet.DotNetCommentCell.md) this[int rowIndex,int columnIndex] { get; }
+## this[int rowIndex,int columnIndex]
+
+**[DotNetCommentCell](WithoutHaste.DataFiles.DotNet.DotNetCommentCell.md) { public get; }**  
 
 Returns the selected [DotNetCommentCell](WithoutHaste.DataFiles.DotNet.DotNetCommentCell.md) of the table. Will return a [DotNetCommentCell.EmptyCell](WithoutHaste.DataFiles.DotNet.DotNetCommentCell.md) if the cell is within range but does not actually exist.  
 
@@ -21,19 +25,27 @@ Returns the selected [DotNetCommentCell](WithoutHaste.DataFiles.DotNet.DotNetCom
 * **int rowIndex**: 0-based index of table row.  
 * **int columnIndex**: 0-based index of table column.  
 
-## int ColumnCount { get; }
+## ColumnCount
+
+**int { public get; }**  
 
 Maximum number of columns in the table.  
 
-## int DataRowCount { get; }
+## DataRowCount
+
+**int { public get; }**  
 
 Number of data (non-header) rows in the table.  
 
-## int HeaderRowCount { get; }
+## HeaderRowCount
+
+**int { public get; }**  
 
 Number of header rows in the table.  
 
-## int RowCount { get; }
+## RowCount
+
+**int { public get; }**  
 
 Number of rows in the table. Includes header rows and data rows.  
 
@@ -43,7 +55,9 @@ Number of rows in the table. Includes header rows and data rows.
 
 # Static Methods
 
-## static DotNetCommentTable FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+
+**static DotNetCommentTable**  
 
 Parses .Net XML documentation table.  
 

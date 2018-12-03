@@ -6,15 +6,23 @@ Represents a type's property.
 
 # Properties
 
-## [DotNetPropertyMethod](WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod.md) GetterMethod { get; protected set; }
+## GetterMethod
+
+**[DotNetPropertyMethod](WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod.md) { public get; protected set; }**  
 
 The "get" method of the property.  
 
-## bool HasGetterMethod { get; }
+## HasGetterMethod
 
-## bool HasSetterMethod { get; }
+**bool { public get; }**  
 
-## [DotNetPropertyMethod](WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod.md) SetterMethod { get; protected set; }
+## HasSetterMethod
+
+**bool { public get; }**  
+
+## SetterMethod
+
+**[DotNetPropertyMethod](WithoutHaste.DataFiles.DotNet.DotNetPropertyMethod.md) { public get; protected set; }**  
 
 The "set" method of the property.  
 
@@ -24,13 +32,17 @@ The "set" method of the property.
 
 # Methods
 
-## virtual void AddAssemblyInfo([System.Reflection.PropertyInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.propertyinfo) propertyInfo)
+## AddAssemblyInfo([System.Reflection.PropertyInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.propertyinfo) propertyInfo)
+
+**virtual void**  
 
 Load additional documentation information from the assembly itself.  
 
 # Static Methods
 
-## static DotNetProperty FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement)
+## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement)
+
+**static DotNetProperty**  
 
 Parse .Net XML documentation for Property data.  
 

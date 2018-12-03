@@ -10,14 +10,18 @@ Represents an inline section of code in the comments.
 
 # Static Methods
 
-## static DotNetCommentCode FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) element)
+
+**static DotNetCommentCode**  
 
 Parses .Net XML documentation c tag.  
 
 **Example A:**  
 `<c>code fragment</c>`  
 
-## static DotNetCommentCode FromVisualStudioXml([System.Xml.Linq.XCData](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xcdata) element)
+## FromVisualStudioXml([System.Xml.Linq.XCData](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xcdata) element)
+
+**static DotNetCommentCode**  
 
 Parses .Net XML documentation CDATA tag.  
 
