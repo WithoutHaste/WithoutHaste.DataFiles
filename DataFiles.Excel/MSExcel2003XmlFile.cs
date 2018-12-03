@@ -308,7 +308,7 @@ namespace WithoutHaste.DataFiles.Excel
 
 			foreach(XmlNode cellNode in cellNodes)
 			{
-				XmlDocumentHelper.Validate(cellNode, LocalNames.Cell);
+				Utilities.Validate(cellNode, LocalNames.Cell);
 				rowNode.AppendChild(cellNode);
 			}
 		}

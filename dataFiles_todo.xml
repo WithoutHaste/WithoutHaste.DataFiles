@@ -38,24 +38,6 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">14</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">re-run EarlyDocs on this
-- installing local test NuGet package</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Documentation</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2018-09-19T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
           <Data ss:Type="Number">18</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -305,6 +287,88 @@ could turn DotNetSettings.QualifiedNameConverter into a list or event so that an
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">46</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">Move Excel namespace to its own project in the solution
+- recompile DataFiles and EarlyDocs without Excel in it
+- update DataFiles and add to DataFiles.Excel
+- rerun documentation</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-12-03T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-12-03T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">45</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">Analysis of dependencies:
+DataFiles
+ - System.*
+DataFiles.Excel
+ - EPPlus
+ - System.*
+DataFiles.Markdown
+ - System.*
+DataFiles.DotNet
+ - DataFiles.TextHelper
+ - System.*
+EarlyDocs
+ - DataFiles.Counters
+ - DataFiles.DotNet
+ - DataFiles.Markdown
+
+Therefore, it makes sense to move Excel to its own project, because it depends on a third-party library.
+
+And it makes sense to keep the rest together because they rely on each other (somewhat), and EarlyDocs relies on all of them.</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-12-02T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-12-03T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">14</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">re-run EarlyDocs on this
+- installing local test NuGet package</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Documentation</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-19T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-12-02T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -1046,7 +1110,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">44</Data>
+          <Data ss:Type="Number">46</Data>
         </Cell>
       </Row>
       <Row>

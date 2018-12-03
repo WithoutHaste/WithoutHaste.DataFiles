@@ -42,6 +42,5 @@ namespace DataFilesTest
 			Assert.AreEqual("a&gt;a", result);
 		}
 
-		[TestMethod]
 	}
 }

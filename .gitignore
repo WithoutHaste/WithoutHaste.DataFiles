@@ -2,6 +2,10 @@ DataFiles/*.cd
 DataFiles/.vs/*
 DataFiles/bin/Debug/*
 DataFiles/obj/*
+DataFiles.Excel/*.cd
+DataFiles.Excel/.vs/*
+DataFiles.Excel/bin/Debug/*
+DataFiles.Excel/obj/*
 DataFilesTest/.vs/*
 DataFilesTest/bin/*
 DataFilesTest/obj/*

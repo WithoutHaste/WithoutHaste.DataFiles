@@ -34,10 +34,6 @@
     <DocumentationFile>bin\Release\WithoutHaste.DataFiles.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
-      <HintPath>packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -82,10 +78,8 @@
     <Compile Include="DotNet\DotNetReferenceMethodGeneric.cs" />
     <Compile Include="DotNet\IDotNetCommentLink.cs" />
     <Compile Include="DotNet\DotNetSettings.cs" />
-    <Compile Include="Excel\ExcelPackageHelper.cs" />
     <Compile Include="exceptions\StringFormatException.cs" />
     <Compile Include="exceptions\XmlFormatException.cs" />
-    <Compile Include="exceptions\XmlNodeException.cs" />
     <Compile Include="Markdown\IMarkdownInLine.cs" />
     <Compile Include="Markdown\IMarkdownInList.cs" />
     <Compile Include="Markdown\IMarkdownInSection.cs" />
@@ -103,7 +97,6 @@
     <Compile Include="Markdown\MarkdownTableRow.cs" />
     <Compile Include="Markdown\MarkdownText.cs" />
     <Compile Include="Markdown\Utilities.cs" />
-    <Compile Include="Excel\MSExcel2003XmlFile.cs" />
     <Compile Include="DotNet\DotNetComment.cs" />
     <Compile Include="DotNet\DotNetCommentCell.cs" />
     <Compile Include="DotNet\DotNetCommentGroup.cs" />
@@ -138,8 +131,7 @@
     <!--<EarlyDocsSkip>True</EarlyDocsSkip>-->
   </PropertyGroup>
   <ItemGroup>
-    <EarlyDocsInclude Include="$(ProjectDir)$(OutDir)EPPlus.dll">
-    </EarlyDocsInclude>
+    <!--<EarlyDocsInclude Include="$(ProjectDir)$(OutDir)EPPlus.dll"></EarlyDocsInclude>-->
   </ItemGroup>
   <Import Project="packages\EarlyDocs.1.0.0\build\EarlyDocs.targets" Condition="Exists('packages\EarlyDocs.1.0.0\build\EarlyDocs.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

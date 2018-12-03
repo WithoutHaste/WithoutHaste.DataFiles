@@ -1,4 +1,4 @@
-# Contents of [WithoutHaste.DataFiles](TableOfContents.WithoutHaste.DataFiles.md).Excel
+# Contents of WithoutHaste.DataFiles.Excel
 
 ## Concrete Types
 
@@ -11,6 +11,13 @@ Building a Microsoft Excel 2003 Xml file with XmlDocument.
 
 [**ExcelPackageHelper**](WithoutHaste.DataFiles.Excel.ExcelPackageHelper.md)  
 Extensions for EPPlus OfficeOpenXml.ExcelPackage.  
+
+  
+
+## Exceptions
+
+[**XmlNodeException**](WithoutHaste.DataFiles.Excel.XmlNodeException.md)  
+Exceptions related to XmlNode objects.  
 
   
 

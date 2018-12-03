@@ -8,7 +8,6 @@
 [WithoutHaste.DataFiles.TextHelper](WithoutHaste.DataFiles.TextHelper.md)  
 [WithoutHaste.DataFiles.XmlDocumentHelper](WithoutHaste.DataFiles.XmlDocumentHelper.md)  
 [WithoutHaste.DataFiles.XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)  
-[WithoutHaste.DataFiles.XmlNodeException](WithoutHaste.DataFiles.XmlNodeException.md)  
 
 ### [WithoutHaste.DataFiles.DotNet](TableOfContents.WithoutHaste.DataFiles.DotNet.md)
 
@@ -64,11 +63,6 @@
 [WithoutHaste.DataFiles.DotNet.MethodCategory](WithoutHaste.DataFiles.DotNet.MethodCategory.md)  
 [WithoutHaste.DataFiles.DotNet.ParameterCategory](WithoutHaste.DataFiles.DotNet.ParameterCategory.md)  
 [WithoutHaste.DataFiles.DotNet.TypeCategory](WithoutHaste.DataFiles.DotNet.TypeCategory.md)  
-
-### [WithoutHaste.DataFiles.Excel](TableOfContents.WithoutHaste.DataFiles.Excel.md)
-
-[WithoutHaste.DataFiles.Excel.ExcelPackageHelper](WithoutHaste.DataFiles.Excel.ExcelPackageHelper.md)  
-[WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile](WithoutHaste.DataFiles.Excel.MSExcel2003XmlFile.md)  
 
 ### [WithoutHaste.DataFiles.Markdown](TableOfContents.WithoutHaste.DataFiles.Markdown.md)
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WithoutHaste.DataFiles
+namespace WithoutHaste.DataFiles.Excel
 {
 	/// <summary>
 	/// Exceptions related to XmlNode objects.
