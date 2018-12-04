@@ -64,7 +64,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		public CommentTag Tag { get; protected set; }
 
 		/// <summary>Parses top-level .Net XML documentation comments. Returns null if no comments are found.</summary>
-		/// <remarks>Unrecognized tags will be converted to plain text comments.</remarks>
+		/// <returns>Returns null if the element name is not recognized.</returns>
 		public static DotNetComment FromVisualStudioXml(XElement element)
 		{
 			switch(element.Name.LocalName)
@@ -121,7 +121,7 @@ namespace WithoutHaste.DataFiles.DotNet
 						break;
 					return new DotNetCommentDuplicate(DotNetCommentQualifiedLink.FromVisualStudioXml(duplicateCref));
 			}
-			return new DotNetCommentText(element.ToString());
+			return null;
 		}
 
 		/// <summary>Creates a plain text comment.</summary>
@@ -168,11 +168,15 @@ namespace WithoutHaste.DataFiles.DotNet
 						break;
 					case XmlNodeType.Element:
 						comment = DotNetComment.FromVisualStudioXml(node as XElement);
+						if(comment == null)
+							break;
 						comments.Add(comment);
 						previousCommentWasAParagraphTag = !nonParagraphTags.Contains(comment.Tag);
 						break;
 					case XmlNodeType.Text:
 						comment = DotNetComment.FromVisualStudioXml(node.ToString());
+						if(comment == null)
+							break;
 						if(previousCommentWasAParagraphTag && comment.ToString() == "\n")
 							break;
 						comments.Add(comment);
