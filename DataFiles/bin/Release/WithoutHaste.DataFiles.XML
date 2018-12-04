@@ -2947,6 +2947,14 @@
             <inheritdoc />
             <remarks>Uses ** for bold and _ for italics.</remarks>
         </member>
+        <member name="M:WithoutHaste.DataFiles.Markdown.MarkdownText.EscapeControlCharacters(System.String)">
+            <summary>
+            Replaces Markdown control characters with HTML encoded equivalents.
+            </summary>
+            <remarks>
+            Handles backtic (`), open angle brace (<![CDATA[<]]>), and close angle brace (<![CDATA[>]]>).
+            </remarks>
+        </member>
         <member name="M:WithoutHaste.DataFiles.Markdown.Utilities.EnsureTwoEndlines(System.String)">
             <summary>
             Ensure that string is null or ends with two end line characters.

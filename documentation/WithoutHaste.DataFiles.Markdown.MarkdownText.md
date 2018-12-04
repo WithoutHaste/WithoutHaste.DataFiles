@@ -29,6 +29,13 @@ Supports multiple selections such as `TextStype.Bold | TextStyle.Italic`.
 
 # Methods
 
+## EscapeControlCharacters(string)
+
+Replaces Markdown control characters with HTML encoded equivalents.  
+
+**Remarks:**  
+Handles backtic (&#96;), open angle brace (`<`), and close angle brace (`>`).  
+
 ## ToMarkdown(string previousText = null)
 
 **string**  

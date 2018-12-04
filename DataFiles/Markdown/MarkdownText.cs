@@ -83,11 +83,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		public string ToMarkdown(string previousText = null)
 		{
 			string text = Text ?? "";
-
-			//replace Markdown control characters
-			text = text.Replace("`", "&#96;");
-			text = text.Replace("<", "&lt;");
-			text = text.Replace(">", "&gt;");
+			text = EscapeControlCharacters(text);
 
 			if(Style == TextStyle.Bold)
 				return "**" + text + "**";
@@ -95,6 +91,20 @@ namespace WithoutHaste.DataFiles.Markdown
 				return "_" + text + "_";
 			if(Style == (TextStyle.Bold | TextStyle.Italic))
 				return "**_" + text + "_**";
+			return text;
+		}
+
+		/// <summary>
+		/// Replaces Markdown control characters with HTML encoded equivalents.
+		/// </summary>
+		/// <remarks>
+		/// Handles backtic (`), open angle brace (<![CDATA[<]]>), and close angle brace (<![CDATA[>]]>).
+		/// </remarks>
+		public static string EscapeControlCharacters(string text)
+		{
+			text = text.Replace("`", "&#96;");
+			text = text.Replace("<", "&lt;");
+			text = text.Replace(">", "&gt;");
 			return text;
 		}
 	}
