@@ -265,6 +265,19 @@ namespace DataFilesTest
 		}
 
 		[TestMethod]
+		public void DotNetDocumentationFile_SmokeTest_Drawing_Colors()
+		{
+			//arrange
+			string xmlDocumentationFilename = "../../../../WithoutHaste.Drawing.Colors/Colors/bin/Debug/WithoutHaste.Drawing.Colors.XML";
+			string dllFilename = "../../../../WithoutHaste.Drawing.Colors/Colors/bin/Debug/WithoutHaste.Drawing.Colors.dll";
+			//act
+			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
+			xmlDocumentation.AddAssemblyInfo(dllFilename);
+			//assert
+			Assert.IsTrue(xmlDocumentation.Types.Count(t => t.Category != TypeCategory.Unknown) > 0);
+		}
+
+		[TestMethod]
 		public void DotNetDocumentationFile_OrphanedMember_Ignore()
 		{
 			//arrange

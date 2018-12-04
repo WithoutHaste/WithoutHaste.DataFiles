@@ -29,6 +29,9 @@ Defaults to the CommentTag text.
 
 Parses top-level .Net XML documentation comments. Returns null if no comments are found.  
 
+**Remarks:**  
+Unrecognized tags will be converted to plain text comments.  
+
 ## FromVisualStudioXml(string text)
 
 **static [DotNetCommentText](WithoutHaste.DataFiles.DotNet.DotNetCommentText.md)**  

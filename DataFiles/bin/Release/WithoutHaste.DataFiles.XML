@@ -1128,6 +1128,7 @@
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetComment.FromVisualStudioXml(System.Xml.Linq.XElement)">
             <summary>Parses top-level .Net XML documentation comments. Returns null if no comments are found.</summary>
+            <remarks>Unrecognized tags will be converted to plain text comments.</remarks>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetComment.FromVisualStudioXml(System.String)">
             <summary>Creates a plain text comment.</summary>
