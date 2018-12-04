@@ -100,6 +100,8 @@ namespace WithoutHaste.DataFiles.DotNet
 			{
 				if(node.NodeType == XmlNodeType.Text)
 				{
+					if(node.ToString().IsAllWhitespace())
+						continue;
 					term = DotNetCommentGroup.FromVisualStudioXml(element);
 					break;
 				}
