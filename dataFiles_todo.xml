@@ -38,6 +38,30 @@
       </Row>
       <Row>
         <Cell>
+          <Data ss:Type="Number">47</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">move DotNetQualifiedClassName.GenericTypeNames
+and DotNetQualifiedMethodName.GenericTypeNames
+to DotNetDocumentationFile
+- make them not global, so files don't cross pollute
+- and still let QualifiedNames look them up as needed
+Also, let QualifiedNames look up current ClassName/MethodName generic aliases
+
+design requires much thought</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Bug - Minor</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-12-03T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
           <Data ss:Type="Number">18</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -1110,7 +1134,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">46</Data>
+          <Data ss:Type="Number">47</Data>
         </Cell>
       </Row>
       <Row>
