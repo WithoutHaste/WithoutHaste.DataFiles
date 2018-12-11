@@ -19,31 +19,48 @@ class MyGeneric<T,U>
 }
 ```  
 
-# Properties
-
-## LocalName
-
-**string { public get; }**  
-
 # Constructors
+
+## DotNetReferenceMethodGeneric(int)
+
+Creates a generic-type using the [DotNetQualifiedMethodName.DefaultGenericTypeNames](WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.md).  
+
+**Remarks:**  
+Index value will be set to 0 if it is less than 0.  
+Alias will be set to "?" if the index value is out of range.  
+
+**Parameters:**  
 
 ## DotNetReferenceMethodGeneric(int genericTypeIndex, string alias = null)
 
-**Exceptions:**  
-* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: _genericTypeIndex_ cannot be less than 0.  
+Creates a generic-type using the provided alias.  
 
-### Parameters
+**Remarks:**  
+Index value will be set to 0 if it is less than 0.  
 
-#### int genericTypeIndex
+**Parameters:**  
+* **int genericTypeIndex**: 0-based index of generic-type in relation to the method's declaration.  
+* **string alias**: The provided value will be used for the type alias, regardless of the index.  
 
-0-based index of type in method declaration type parameter list.  
+# Methods
 
-**Example A:**  
-Index 0 refers to "A" in `void MyMethod<A,B>() { }`  
+## Clone()
 
-#### string alias
+Returns deep clone of generic reference name.  
 
-Alias of generic-type within assembly. Null if not known.  
+## GetLocalized([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md))
+
+Returns a new name object which has been localized to the provided other name. The current object is not altered.  
+
+## MatchesSignature([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md))
+
+Returns true if these types match. Does not look at aliases.  
+
+## MatchesSignature([Type](https://docs.microsoft.com/en-us/dotnet/api/system.type))
+
+Returns true if this generic type matches the reflected type.  
+Compares generic indexes and whether it is a class-generic or method-generic.  
+Does not compare aliases or which specific class/method the type is referencing.  
 
 # Static Methods
 
@@ -51,13 +68,22 @@ Alias of generic-type within assembly. Null if not known.
 
 **static DotNetReferenceMethodGeneric**  
 
-Parses a .Net XML documentation method-generic-type parameter.  
+Parses a .Net XML documentation type names that reference method generic type parameters.  
+
+**Returns:**  
+Returns a default value if the _typeName_ is not in the correct format.  
 
 **Example A:**  
-`Namespace.MyType.MyMethod<A>(A)` is formatted as ```Namespace.MyType.MyMethod``1(``0)```.  
+Given:
+```xml
+public class MyType
+{ 
+	public void MyMethod<A>(A a) { }
+}
+```
 
-**Exceptions:**  
-* **[XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)**: _name_ is not in expected format: &#96;&#96;Index.  
+   
+the type of the method parameter is formatted as ``` ``0```.  
 
 ## HasExpectedVisualStudioXmlFormat(string name)
 

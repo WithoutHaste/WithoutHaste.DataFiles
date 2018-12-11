@@ -220,24 +220,6 @@ namespace DataFilesTest
 		}
 
 		[TestMethod]
-		public void DotNetDocumentationFile_CommentFromXml_NameConflict()
-		{
-			//arrange
-			XDocument document = XDocument.Load("data/DotNetDocumentationFile_NameConflict.xml", LoadOptions.PreserveWhitespace);
-			//act
-			DotNetDocumentationFile file = new DotNetDocumentationFile(document);
-			//assert
-			Assert.AreEqual(7, file.TypeCount);
-
-			DotNetType typeGenericClass = file.Types[1];
-			Assert.AreEqual("A.GenericClass<TXXX,UX,V,W,T2X,U2X,V2X,W2,T3,U3,V3,W3>", typeGenericClass.Name.FullName);
-
-			DotNetType typeB = file.Types[0];
-			DotNetMethod methodBGenericMethod = typeB.Methods[2];
-			Assert.AreEqual("A.B.GenericMethod<AXXX,BX,CX,A2,B2,C2,A3,B3,C3,A4,B4,C4>", methodBGenericMethod.Name.FullName);
-		}
-
-		[TestMethod]
 		public void DotNetDocumentationFile_SmokeTest_EarlyDocsTest()
 		{
 			//arrange

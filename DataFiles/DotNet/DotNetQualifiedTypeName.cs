@@ -227,7 +227,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			return localNames;
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		public new DotNetQualifiedTypeName GetLocalized(DotNetQualifiedName other)
 		{
 			DotNetQualifiedTypeName clone = this.Clone();

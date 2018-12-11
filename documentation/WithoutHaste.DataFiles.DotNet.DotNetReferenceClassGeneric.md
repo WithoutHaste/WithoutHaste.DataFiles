@@ -17,31 +17,49 @@ class MyGeneric<T,U>
 }
 ```  
 
-# Properties
-
-## LocalName
-
-**string { public get; }**  
-
 # Constructors
+
+## DotNetReferenceClassGeneric(int)
+
+Creates a generic-type using the [DotNetQualifiedClassName.DefaultGenericTypeNames](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md).  
+
+**Remarks:**  
+Index value will be set to 0 if it is less than 0.  
+Alias will be set to "?" if the index value is out of range.  
+
+**Parameters:**  
 
 ## DotNetReferenceClassGeneric(int genericTypeIndex, string alias = null)
 
-**Exceptions:**  
-* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: _genericTypeIndex_ cannot be less than 0.  
+Creates a generic-type using the provided alias.  
 
-### Parameters
+**Remarks:**  
+Index value will be set to 0 if it is less than 0.  
 
-#### int genericTypeIndex
+**Parameters:**  
+* **int genericTypeIndex**: 0-based index of generic-type in relation to the class's declaration.  
+* **string alias**: The provided value will be used for the type alias, regardless of the index.  
 
-0-based index of type in class declaration type parameter list.  
+# Methods
 
-**Example A:**  
-`Index 0 refers to "T" in "class MyGeneric<T,U> { }"`  
+## Clone()
 
-#### string alias
+Returns deep clone of generic reference name.  
 
-Alias of generic-type within assembly. Null if not known.  
+## GetLocalized([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md))
+
+**Misc:**  
+  
+
+## MatchesSignature([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md))
+
+Returns true if these types match. Does not look at aliases.  
+
+## MatchesSignature([Type](https://docs.microsoft.com/en-us/dotnet/api/system.type))
+
+Returns true if this generic type matches the reflected type.  
+Compares generic indexes and whether it is a class-generic or method-generic.  
+Does not compare aliases or which specific class/method the type is referencing.  
 
 # Static Methods
 
@@ -49,13 +67,22 @@ Alias of generic-type within assembly. Null if not known.
 
 **static DotNetReferenceClassGeneric**  
 
-Parses a .Net XML documentation class-generic-type parameter.  
+Parses a .Net XML documentation type names that reference class generic types parameters.  
+
+**Returns:**  
+Returns a default value if the _typeName_ is not in the correct format.  
 
 **Example A:**  
-`Namespace.MyType<T>{ }` is formatted as ``Namespace.MyType`1``.  
+Given:
+```xml
+public class MyType<T>
+{ 
+	T MyField;
+}
+```
 
-**Exceptions:**  
-* **[XmlFormatException](WithoutHaste.DataFiles.XmlFormatException.md)**: _name_ is not in expected format: `` `Index``.  
+   
+the type of the field is formatted as `` `0``.  
 
 ## HasExpectedVisualStudioXmlFormat(string name)
 

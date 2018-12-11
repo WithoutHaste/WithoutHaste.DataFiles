@@ -224,7 +224,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>
 		/// Returns a new name object which has been localized to the provided other name. The current object is not altered.
 		/// </summary>
-		public DotNetQualifiedName GetLocalized(DotNetQualifiedName other)
+		public virtual DotNetQualifiedName GetLocalized(DotNetQualifiedName other)
 		{
 			DotNetQualifiedName clone = this.Clone();
 			clone.Localize(other);

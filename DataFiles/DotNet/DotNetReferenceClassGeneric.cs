@@ -21,33 +21,54 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// </example>
 	public class DotNetReferenceClassGeneric : DotNetReferenceGeneric
 	{
-		/// <summary></summary>
-		public override string LocalName { get { return DotNetQualifiedClassName.GenericTypeNames[genericTypeIndex]; } }
-
 		#region Constructors
 
-		/// <param name="genericTypeIndex">
-		///   0-based index of type in class declaration type parameter list.
-		///   <example><![CDATA[Index 0 refers to "T" in "class MyGeneric<T,U> { }"]]></example>
-		/// </param>
-		/// <param name="alias">Alias of generic-type within assembly. Null if not known.</param>
-		/// <exception cref="ArgumentException"><paramref name='genericTypeIndex'/> cannot be less than 0.</exception>
-		public DotNetReferenceClassGeneric(int genericTypeIndex, string alias = null) : base(genericTypeIndex, alias)
+		/// <summary>
+		/// Creates a generic-type using the <see cref='DotNetQualifiedClassName.DefaultGenericTypeNames'/>.
+		/// </summary>
+		/// <remarks>
+		/// Index value will be set to 0 if it is less than 0.
+		/// Alias will be set to "?" if the index value is out of range.
+		/// </remarks>
+		/// <param name="genericTypeIndex">0-based index of generic-type in relation to the class's declaration.</param>
+		public DotNetReferenceClassGeneric(int genericTypeIndex)
 		{
+			this.genericTypeIndex = (genericTypeIndex < 0) ? 0 : genericTypeIndex;
+			this.Alias = (genericTypeIndex < DotNetQualifiedClassName.DefaultGenericTypeNames.Length) ? DotNetQualifiedClassName.DefaultGenericTypeNames[this.genericTypeIndex] : "?";
 		}
 
 		/// <summary>
-		/// Parses a .Net XML documentation class-generic-type parameter.
+		/// Creates a generic-type using the provided alias.
 		/// </summary>
-		/// <example><![CDATA[Namespace.MyType<T>{ }]]> is formatted as <c>Namespace.MyType`1</c>.</example>
-		/// <exception cref="XmlFormatException"><paramref name="name"/> is not in expected format: <c>`Index</c>.</exception>
-		public static new DotNetReferenceClassGeneric FromVisualStudioXml(string name)
+		/// <remarks>
+		/// Index value will be set to 0 if it is less than 0.
+		/// </remarks>
+		/// <param name="genericTypeIndex">0-based index of generic-type in relation to the class's declaration.</param>
+		/// <param name="alias">The provided value will be used for the type alias, regardless of the index.</param>
+		public DotNetReferenceClassGeneric(int genericTypeIndex, string alias)
 		{
-			if(!HasExpectedVisualStudioXmlFormat(name))
-				throw new XmlFormatException("Generic parameters that refer to class-generic-types should be in the format `Index, where Index is the 0-based index of the generic type in the class declaraction.");
+			this.genericTypeIndex = (genericTypeIndex < 0) ? 0 : genericTypeIndex;
+			this.Alias = alias;
+		}
 
-			int genericTypeIndex = 0;
-			Int32.TryParse(name.Substring(name.IndexOf("`") + 1), out genericTypeIndex);
+		/// <summary>
+		/// Parses a .Net XML documentation type names that reference class generic types parameters.
+		/// </summary>
+		/// <example>
+		/// Given:
+		/// <![CDATA[
+		/// public class MyType<T>
+		/// { 
+		///		T MyField;
+		/// }
+		/// ]]> 
+		/// the type of the field is formatted as <c>`0</c>.</example>
+		/// <returns>Returns a default value if the <paramref name='typeName'/> is not in the correct format.</returns>
+		public static new DotNetReferenceClassGeneric FromVisualStudioXml(string typeName)
+		{
+			if(!HasExpectedVisualStudioXmlFormat(typeName))
+				return new DotNetReferenceClassGeneric(0);
+			int genericTypeIndex = Int32.Parse(typeName.Substring(1));
 			return new DotNetReferenceClassGeneric(genericTypeIndex);
 		}
 
@@ -63,5 +84,51 @@ namespace WithoutHaste.DataFiles.DotNet
 			Match match = regex.Match(name);
 			return regex.Match(name).Success;
 		}
+
+		/// <summary>
+		/// Returns true if these types match. Does not look at aliases.
+		/// </summary>
+		public bool MatchesSignature(DotNetQualifiedName other)
+		{
+			if(!(other is DotNetReferenceClassGeneric))
+				return false;
+			return (genericTypeIndex == (other as DotNetReferenceClassGeneric).genericTypeIndex);
+		}
+
+		/// <summary>
+		/// Returns true if this generic type matches the reflected type.
+		/// Compares generic indexes and whether it is a class-generic or method-generic.
+		/// Does not compare aliases or which specific class/method the type is referencing.
+		/// </summary>
+		public bool MatchesSignature(Type type)
+		{
+			if(!type.IsGenericParameter)
+				return false;
+			if(type.DeclaringType == null)
+				return false;
+			if(type.GenericParameterPosition != this.genericTypeIndex)
+				return false;
+			return true;
+		}
+
+		/// <inheritdoc/>
+		public new DotNetReferenceClassGeneric GetLocalized(DotNetQualifiedName other)
+		{
+			DotNetReferenceClassGeneric clone = this.Clone();
+			clone.Localize(other);
+			return clone;
+		}
+
+		#region Low Level
+
+		/// <summary>
+		/// Returns deep clone of generic reference name.
+		/// </summary>
+		public new DotNetReferenceClassGeneric Clone()
+		{
+			return new DotNetReferenceClassGeneric(genericTypeIndex, Alias);
+		}
+
+		#endregion
 	}
 }

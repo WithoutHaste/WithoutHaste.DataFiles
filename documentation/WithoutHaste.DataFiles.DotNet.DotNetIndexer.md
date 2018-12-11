@@ -80,6 +80,12 @@ Returns true if this method's signature matches the reflected MethodInfo.
 **Parameters:**  
 * **[System.Reflection.MethodInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.methodinfo) methodInfo**: Expects a method with name "get_Item".  
 
+## PushGenericTypes([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array))
+
+Update field type with the class's generic-type aliases.  
+
+**Parameters:**  
+
 # Static Methods
 
 ## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement)

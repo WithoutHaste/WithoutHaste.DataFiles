@@ -150,5 +150,19 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 			return true;
 		}
+
+		/// <inheritdoc/>
+		internal override void PushGenericTypes(string[] genericTypeAliases)
+		{
+			base.PushGenericTypes(genericTypeAliases);
+			foreach(DotNetParameter parameter in Parameters)
+			{
+				parameter.PushClassGenericTypes(genericTypeAliases);
+			}
+			if(TypeName is DotNetReferenceClassGeneric)
+			{
+				(TypeName as DotNetReferenceClassGeneric).SetAlias(genericTypeAliases);
+			}
+		}
 	}
 }

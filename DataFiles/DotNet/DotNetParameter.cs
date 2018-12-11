@@ -167,9 +167,72 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>
 		/// Set that this parameter is the first parameter in an extension method.
 		/// </summary>
-		public void SetIsExtension()
+		internal void SetIsExtension()
 		{
 			Category = ParameterCategory.Extension;
+		}
+
+		/// <summary>
+		/// Update method/indexer parameters with the class's generic-type aliases.
+		/// </summary>
+		/// <param name="classGenericTypeAliases">Ordered list of aliases.</param>
+		internal void PushClassGenericTypes(string[] classGenericTypeAliases)
+		{
+			if(TypeName is DotNetReferenceClassGeneric)
+			{
+				(TypeName as DotNetReferenceClassGeneric).SetAlias(classGenericTypeAliases);
+			}
+		}
+
+		/// <summary>
+		/// Update method parameters with the method's generic-type aliases.
+		/// </summary>
+		/// <param name="methodGenericTypeAliases">Ordered list of aliases.</param>
+		internal void PushMethodGenericTypes(string[] methodGenericTypeAliases)
+		{
+			if(TypeName is DotNetReferenceMethodGeneric)
+			{
+				(TypeName as DotNetReferenceMethodGeneric).SetAlias(methodGenericTypeAliases);
+			}
+		}
+
+		/// <summary>
+		/// Returns true if signatures match. Looks at types only, not at names.
+		/// </summary>
+		public bool MatchesSignature(DotNetParameter other)
+		{
+			if(TypeName is DotNetReferenceClassGeneric)
+			{
+				return (TypeName as DotNetReferenceClassGeneric).MatchesSignature(other.TypeName);
+			}
+			else if(TypeName is DotNetReferenceMethodGeneric)
+			{
+				return (TypeName as DotNetReferenceMethodGeneric).MatchesSignature(other.TypeName);
+			}
+			else
+			{
+				return (TypeName.FullName == other.TypeName.FullName);
+			}
+		}
+
+		/// <summary>
+		/// Returns true if signatures match. Looks at types only, not at names.
+		/// </summary>
+		public bool MatchesSignature(ParameterInfo parameterInfo)
+		{
+			if(TypeName is DotNetReferenceClassGeneric)
+			{
+				return (TypeName as DotNetReferenceClassGeneric).MatchesSignature(parameterInfo.ParameterType);
+			}
+			else if(TypeName is DotNetReferenceMethodGeneric)
+			{
+				return (TypeName as DotNetReferenceMethodGeneric).MatchesSignature(parameterInfo.ParameterType);
+			}
+			else
+			{
+				string otherName = DotNetQualifiedTypeName.FromAssemblyInfo(parameterInfo.ParameterType).FullName;
+				return (FullTypeName == otherName);
+			}
 		}
 
 		#region Low Level

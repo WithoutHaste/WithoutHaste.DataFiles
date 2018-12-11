@@ -186,6 +186,15 @@ namespace WithoutHaste.DataFiles.DotNet
 			return localNames;
 		}
 
+		/// <summary>
+		/// Update method parameter types and return type with the class's generic-type aliases.
+		/// </summary>
+		/// <param name="classGenericTypeAliases">Ordered list of aliases.</param>
+		internal void PushClassGenericTypes(string[] classGenericTypeAliases)
+		{
+			MethodName.PushClassGenericTypes(classGenericTypeAliases);
+		}
+
 		#region Low Level
 
 		/// <duplicate cref='Equals(Object)' />

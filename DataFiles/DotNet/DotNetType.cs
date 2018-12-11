@@ -53,7 +53,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		public TypeCategory Category { get; protected set; }
 
 		/// <summary>Strongly-typed name.</summary>
-		public DotNetQualifiedClassName TypeName { get { return (Name as DotNetQualifiedClassName); } }
+		public DotNetQualifiedClassName ClassName { get { return (Name as DotNetQualifiedClassName); } }
 
 		/// <summary>True if the type is sealed.</summary>
 		/// <remarks>Abstract classes, static classes, and interfaces cannot be sealed. Exceptions can be sealed.</remarks>
@@ -360,7 +360,14 @@ namespace WithoutHaste.DataFiles.DotNet
 				if(member is DotNetEvent) Events.Add(member as DotNetEvent);
 				else if(member is DotNetProperty) Properties.Add(member as DotNetProperty);
 				else if(member is DotNetField) Fields.Add(member as DotNetField);
-				else if(member is DotNetMethod) Methods.Add(member as DotNetMethod);
+				else if(member is DotNetMethod)
+				{
+					Methods.Add(member as DotNetMethod);
+					if(member is DotNetMethodConstructor)
+					{
+						(member as DotNetMethodConstructor).SetClassName(ClassName);
+					}
+				}
 				else if(member is DotNetType) NestedTypes.Add(member as DotNetType);
 				else
 					throw new XmlFormatException("Member with unknown category added to type: " + member.Name.FullName);
@@ -420,6 +427,8 @@ namespace WithoutHaste.DataFiles.DotNet
 				Category = TypeCategory.Normal;
 
 			IsSealed = typeInfo.IsSealed;
+
+			ClassName.AddAssemblyInfo(typeInfo);
 
 			if(typeInfo.BaseType != null)
 			{
@@ -489,6 +498,38 @@ namespace WithoutHaste.DataFiles.DotNet
 				if(nestedType == null)
 					continue;
 				nestedType.AddAssemblyInfo(typeInfo, qualifiedName);
+			}
+
+			PushGenericTypes();
+		}
+
+		/// <summary>
+		/// Push updates to generic-type aliases to all members.
+		/// </summary>
+		private void PushGenericTypes()
+		{
+			if(!ClassName.IsGeneric)
+				return;
+			string[] aliases = ClassName.GenericTypeAliases;
+			foreach(DotNetField field in Fields)
+			{
+				field.PushGenericTypes(aliases);
+			}
+			foreach(DotNetProperty property in Properties)
+			{
+				property.PushGenericTypes(aliases);
+			}
+			foreach(DotNetEvent _event in Events)
+			{
+				_event.PushGenericTypes(aliases);
+			}
+			foreach(DotNetMethod method in Methods)
+			{
+				method.PushClassGenericTypes(aliases);
+			}
+			foreach(DotNetDelegate _delegate in Delegates)
+			{
+				_delegate.PushClassGenericTypes(aliases);
 			}
 		}
 

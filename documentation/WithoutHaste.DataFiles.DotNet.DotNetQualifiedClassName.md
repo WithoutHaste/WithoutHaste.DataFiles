@@ -11,17 +11,15 @@ such as `MyType<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13>`.
 
 # Fields
 
+## DefaultGenericTypeNames
+
+Default names that will be given to generic-types, in order.  
+
 ## genericTypeAliases
 
 **protected [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array)**  
 
-Specific generic type aliases for this type. If null, the shared [GenericTypeNames](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md) will be used.  
-
-## GenericTypeNames
-
-**static [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array)**  
-
-Default names that will be given to generic-types, in order.  
+Specific generic type aliases for this method. Defaults to the [DefaultGenericTypeNames](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md) values.  
 
 # Properties
 
@@ -31,11 +29,26 @@ Default names that will be given to generic-types, in order.
 
 Strongly-typed FullNamespace.  
 
+## GenericTypeAliases
+
+**{ }**  
+
+A copy of the ordered list of generic-type aliases used by this class name.  
+
+**Remarks:**  
+Non-generic class names may still have default alias values.  
+
 ## GenericTypeCount
 
 **int { public get; protected set; }**  
 
 The number of generic-types required by the class declaration.  
+
+## IsGeneric
+
+**{ }**  
+
+True if this is a generic class name.  
 
 ## LocalName
 

@@ -203,6 +203,9 @@
             Returns true if this indexer's signature matches the method signature.
             </summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetIndexer.PushGenericTypes(System.String[])">
+            <inheritdoc/>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetMethodDestructor">
             <summary>
             Represents a method that is a destructor.
@@ -281,23 +284,40 @@
             ]]>
             </example>
         </member>
-        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric.LocalName">
-            <summary></summary>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric.#ctor(System.Int32)">
+            <summary>
+            Creates a generic-type using the <see cref='F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.DefaultGenericTypeNames'/>.
+            </summary>
+            <remarks>
+            Index value will be set to 0 if it is less than 0.
+            Alias will be set to "?" if the index value is out of range.
+            </remarks>
+            <param name="genericTypeIndex">0-based index of generic-type in relation to the class's declaration.</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric.#ctor(System.Int32,System.String)">
-            <param name="genericTypeIndex">
-              0-based index of type in class declaration type parameter list.
-              <example><![CDATA[Index 0 refers to "T" in "class MyGeneric<T,U> { }"]]></example>
-            </param>
-            <param name="alias">Alias of generic-type within assembly. Null if not known.</param>
-            <exception cref="T:System.ArgumentException"><paramref name='genericTypeIndex'/> cannot be less than 0.</exception>
+            <summary>
+            Creates a generic-type using the provided alias.
+            </summary>
+            <remarks>
+            Index value will be set to 0 if it is less than 0.
+            </remarks>
+            <param name="genericTypeIndex">0-based index of generic-type in relation to the class's declaration.</param>
+            <param name="alias">The provided value will be used for the type alias, regardless of the index.</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric.FromVisualStudioXml(System.String)">
             <summary>
-            Parses a .Net XML documentation class-generic-type parameter.
+            Parses a .Net XML documentation type names that reference class generic types parameters.
             </summary>
-            <example><![CDATA[Namespace.MyType<T>{ }]]> is formatted as <c>Namespace.MyType`1</c>.</example>
-            <exception cref="T:WithoutHaste.DataFiles.XmlFormatException"><paramref name="name"/> is not in expected format: <c>`Index</c>.</exception>
+            <example>
+            Given:
+            <![CDATA[
+            public class MyType<T>
+            { 
+            	T MyField;
+            }
+            ]]> 
+            the type of the field is formatted as <c>`0</c>.</example>
+            <returns>Returns a default value if the <paramref name='typeName'/> is not in the correct format.</returns>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric.HasExpectedVisualStudioXmlFormat(System.String)">
             <summary>
@@ -305,11 +325,34 @@
             </summary>
             <example><c>`0</c>, <c>`1</c>, <c>`2</c>, etc.</example>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric.MatchesSignature(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary>
+            Returns true if these types match. Does not look at aliases.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric.MatchesSignature(System.Type)">
+            <summary>
+            Returns true if this generic type matches the reflected type.
+            Compares generic indexes and whether it is a class-generic or method-generic.
+            Does not compare aliases or which specific class/method the type is referencing.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric.GetLocalized(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceClassGeneric.Clone">
+            <summary>
+            Returns deep clone of generic reference name.
+            </summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric">
             <summary>
             Represents a generic-type parameter that is not in a class declaration or a method declaration.
             </summary>
             <example>The "U"s in MyMethod(<![CDATA[List<U>]]> list, U obj).</example>
+        </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric.LocalName">
+            <summary></summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric.Alias">
             <summary>
@@ -320,17 +363,16 @@
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric.genericTypeIndex">
             <summary>0-based index in class's generic type list corresponding to this parameter.</summary>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric.#ctor(System.Int32,System.String)">
-            <param name="genericTypeIndex">
-              0-based index of type in class or method declaration type parameter list.
-              <example>Index 0 refers to "T" in <![CDATA[class MyGeneric<T,U> { }]]>.</example>
-              <example>Index 0 refers to "A" in <![CDATA[void MyMethod<A,B>() { }]]>.</example>
-            </param>
-            <param name="alias">Alias of generic-type within assembly. Null if not known.</param>
-            <exception cref="T:System.ArgumentException"><paramref name='genericTypeIndex'/> cannot be less than 0.</exception>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric.SetAlias(System.String[])">
+            <summary>
+            Set the generic-type alias of this type, based on this ordered list of aliases.
+            </summary>
+            <returns>Returns False if the index is out of bounds and the alias is not updated.</returns>
         </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric.SetAlias(System.String)">
-            <summary></summary>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceGeneric.Localize(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary>
+            Generic type references cannot be localized.
+            </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetCommentCode">
             <summary>
@@ -600,6 +642,11 @@
             Load additional documentation information from the assembly itself.
             </summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethodConstructor.SetClassName(WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName)">
+            <summary>
+            Constructors need to reference the actual name of their type so they display the right name with aliases.
+            </summary>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetMethodOperator">
             <summary>
             Represents a method that is an operator.
@@ -697,7 +744,7 @@
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.GetLocalized(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
-            <inheritdoc />
+            <inheritdoc/>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedTypeName.Localize(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
             <inheritdoc />
@@ -719,7 +766,7 @@
             such as <![CDATA[MyMethod<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13>]]>.
             </remarks>
         </member>
-        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.GenericTypeNames">
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.DefaultGenericTypeNames">
             <summary>Default names that will be given to generic-method-types, in order.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.FullClassNamespace">
@@ -746,7 +793,7 @@
             <summary>The number of generic-types required by the method declaration.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.genericTypeAliases">
-            <summary>Specific generic type aliases for this method. If null, the shared <see cref="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.GenericTypeNames"/> will be used.</summary>
+            <summary>Specific generic type aliases for this method. Defaults to the <see cref='F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.DefaultGenericTypeNames'/> values.</summary>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.Parameters">
             <summary></summary>
@@ -848,6 +895,23 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.SetLocalName(System.String)">
             <summary>Set the local name of the method. Does not affect generic type parameters or method parameters.</summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.PushMethodGenericTypes(System.String[])">
+            <summary>
+            Update method parameter types and return type with the method's generic-type aliases.
+            </summary>
+            <param name="methodGenericTypeAliases">Ordered list of aliases.</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.PushClassGenericTypes(System.String[])">
+            <summary>
+            Update method parameter types and return type with the class's generic-type aliases.
+            </summary>
+            <param name="classGenericTypeAliases">Ordered list of aliases.</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.SetClassName(WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName)">
+            <summary>
+            Constructors need to reference the actual name of their type so they display the right name with aliases.
+            </summary>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.op_LessThan(WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName,WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName)">
             <duplicate cref='M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.CompareTo(System.Object)' />
         </member>
@@ -880,7 +944,7 @@
             such as <![CDATA[MyType<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13>]]>.
             </remarks>
         </member>
-        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.GenericTypeNames">
+        <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.DefaultGenericTypeNames">
             <summary>Default names that will be given to generic-types, in order.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.FullClassNamespace">
@@ -894,11 +958,22 @@
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.LocalXmlName">
             <inheritdoc/>
         </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.IsGeneric">
+            <summary>
+            True if this is a generic class name.
+            </summary>
+        </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.GenericTypeCount">
             <summary>The number of generic-types required by the class declaration.</summary>
         </member>
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.GenericTypeAliases">
+            <summary>
+            A copy of the ordered list of generic-type aliases used by this class name.
+            </summary>
+            <remarks>Non-generic class names may still have default alias values.</remarks>
+        </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.genericTypeAliases">
-            <summary>Specific generic type aliases for this type. If null, the shared <see cref="F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.GenericTypeNames"/> will be used.</summary>
+            <summary>Specific generic type aliases for this method. Defaults to the <see cref='F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.DefaultGenericTypeNames'/> values.</summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.#ctor">
             <summary>Empty constructor</summary>
@@ -958,29 +1033,66 @@
             ]]>
             </example>
         </member>
-        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric.LocalName">
-            <summary></summary>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric.#ctor(System.Int32)">
+            <summary>
+            Creates a generic-type using the <see cref='F:WithoutHaste.DataFiles.DotNet.DotNetQualifiedMethodName.DefaultGenericTypeNames'/>.
+            </summary>
+            <remarks>
+            Index value will be set to 0 if it is less than 0.
+            Alias will be set to "?" if the index value is out of range.
+            </remarks>
+            <param name="genericTypeIndex">0-based index of generic-type in relation to the method's declaration.</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric.#ctor(System.Int32,System.String)">
-            <param name="genericTypeIndex">
-              0-based index of type in method declaration type parameter list.
-              <example>Index 0 refers to "A" in <![CDATA[void MyMethod<A,B>() { }]]></example>
-            </param>
-            <param name="alias">Alias of generic-type within assembly. Null if not known.</param>
-            <exception cref="T:System.ArgumentException"><paramref name='genericTypeIndex'/> cannot be less than 0.</exception>
+            <summary>
+            Creates a generic-type using the provided alias.
+            </summary>
+            <remarks>
+            Index value will be set to 0 if it is less than 0.
+            </remarks>
+            <param name="genericTypeIndex">0-based index of generic-type in relation to the method's declaration.</param>
+            <param name="alias">The provided value will be used for the type alias, regardless of the index.</param>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric.FromVisualStudioXml(System.String)">
             <summary>
-            Parses a .Net XML documentation method-generic-type parameter.
+            Parses a .Net XML documentation type names that reference method generic type parameters.
             </summary>
-            <example><![CDATA[Namespace.MyType.MyMethod<A>(A)]]> is formatted as <c>Namespace.MyType.MyMethod``1(``0)</c>.</example>
-            <exception cref="T:WithoutHaste.DataFiles.XmlFormatException"><paramref name="name"/> is not in expected format: ``Index.</exception>
+            <example>
+            Given:
+            <![CDATA[
+            public class MyType
+            { 
+            	public void MyMethod<A>(A a) { }
+            }
+            ]]> 
+            the type of the method parameter is formatted as <c>``0</c>.</example>
+            <returns>Returns a default value if the <paramref name='typeName'/> is not in the correct format.</returns>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric.HasExpectedVisualStudioXmlFormat(System.String)">
             <summary>
             Check if a string is properly formatted as a parameter referencing a method-generic-type.
             </summary>
             <example><c>``0</c>, <c>``1</c>, <c>``2</c>, etc.</example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric.MatchesSignature(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <summary>
+            Returns true if these types match. Does not look at aliases.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric.MatchesSignature(System.Type)">
+            <summary>
+            Returns true if this generic type matches the reflected type.
+            Compares generic indexes and whether it is a class-generic or method-generic.
+            Does not compare aliases or which specific class/method the type is referencing.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric.GetLocalized(WithoutHaste.DataFiles.DotNet.DotNetQualifiedName)">
+            <inheritdoc/>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetReferenceMethodGeneric.Clone">
+            <summary>
+            Returns deep clone of generic reference name.
+            </summary>
         </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.IDotNetCommentLink">
             <summary>
@@ -1470,6 +1582,12 @@
             Load additional documentation information from the assembly itself.
             </summary>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetField.PushGenericTypes(System.String[])">
+            <summary>
+            Update field type with the class's generic-type aliases.
+            </summary>
+            <param name="genericTypeAliases">Ordered list of aliases.</param>
+        </member>
         <member name="T:WithoutHaste.DataFiles.DotNet.DotNetMember">
             <summary>
             Represents any .Net construct that can have comments on it:
@@ -1646,6 +1764,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.PushClassGenericTypes(System.String[])">
+            <summary>
+            Update method parameter types and return type with the class's generic-type aliases.
+            </summary>
+            <param name="classGenericTypeAliases">Ordered list of aliases.</param>
+        </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetMethod.op_Equality(WithoutHaste.DataFiles.DotNet.DotNetMethod,WithoutHaste.DataFiles.DotNet.DotNetMethod)">
             <duplicate cref='M:WithoutHaste.DataFiles.DotNet.DotNetMethod.Equals(System.Object)' />
         </member>
@@ -1751,6 +1875,28 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.SetIsExtension">
             <summary>
             Set that this parameter is the first parameter in an extension method.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.PushClassGenericTypes(System.String[])">
+            <summary>
+            Update method/indexer parameters with the class's generic-type aliases.
+            </summary>
+            <param name="classGenericTypeAliases">Ordered list of aliases.</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.PushMethodGenericTypes(System.String[])">
+            <summary>
+            Update method parameters with the method's generic-type aliases.
+            </summary>
+            <param name="methodGenericTypeAliases">Ordered list of aliases.</param>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.MatchesSignature(WithoutHaste.DataFiles.DotNet.DotNetParameter)">
+            <summary>
+            Returns true if signatures match. Looks at types only, not at names.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.MatchesSignature(System.Reflection.ParameterInfo)">
+            <summary>
+            Returns true if signatures match. Looks at types only, not at names.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetParameter.ToString">
@@ -1884,7 +2030,7 @@
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.Category">
             <summary></summary>
         </member>
-        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.TypeName">
+        <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.ClassName">
             <summary>Strongly-typed name.</summary>
         </member>
         <member name="P:WithoutHaste.DataFiles.DotNet.DotNetType.IsSealed">
@@ -2042,6 +2188,11 @@
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.AddAssemblyInfo(System.Reflection.TypeInfo)">
             <summary>
             Load additional information from the assembly for this type.
+            </summary>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.PushGenericTypes">
+            <summary>
+            Push updates to generic-type aliases to all members.
             </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetType.GetFullListOfLocalNames">
@@ -2348,11 +2499,6 @@
             To document the return type of <c>public Company.SomeType MyMethod() {}</c>, the library for <c>Company.SomeType</c> must be loaded.
             </example>
             </param>
-        </member>
-        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.ResolveGenericTypeNameConflicts">
-            <summary>
-            Ensure that default generic-type names do not conflict with actual types used in assembly.
-            </summary>
         </member>
         <member name="M:WithoutHaste.DataFiles.DotNet.DotNetDocumentationFile.GetFullListOfLocalNames">
             <summary>

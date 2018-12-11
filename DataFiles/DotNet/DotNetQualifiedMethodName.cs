@@ -17,7 +17,7 @@ namespace WithoutHaste.DataFiles.DotNet
 	public class DotNetQualifiedMethodName : DotNetQualifiedName, IComparable
 	{
 		/// <summary>Default names that will be given to generic-method-types, in order.</summary>
-		public static string[] GenericTypeNames = new string[] { "A", "B", "C", "A2", "B2", "C2", "A3", "B3", "C3", "A4", "B4", "C4" };
+		public static readonly string[] DefaultGenericTypeNames = new string[] { "A", "B", "C", "D", "A2", "B2", "C2", "D2", "A3", "B3", "C3", "D3" };
 
 		/// <summary>
 		/// Strongly-typed FullNamespace.
@@ -35,10 +35,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			get {
 				if(GenericTypeCount == 0)
 					return localName;
-				if(genericTypeAliases != null)
-					return String.Format("{0}<{1}>", localName, String.Join(",", genericTypeAliases));
-				else
-					return String.Format("{0}<{1}>", localName, String.Join(",", GenericTypeNames.Take(GenericTypeCount).ToArray()));
+				return String.Format("{0}<{1}>", localName, String.Join(",", genericTypeAliases.Take(GenericTypeCount).ToArray()));
 			}
 		}
 
@@ -71,8 +68,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>The number of generic-types required by the method declaration.</summary>
 		public int GenericTypeCount { get; protected set; }
 
-		/// <summary>Specific generic type aliases for this method. If null, the shared <see cref="GenericTypeNames"/> will be used.</summary>
-		protected string[] genericTypeAliases;
+		/// <summary>Specific generic type aliases for this method. Defaults to the <see cref='DefaultGenericTypeNames'/> values.</summary>
+		protected string[] genericTypeAliases = DefaultGenericTypeNames.Select(x => x).ToArray();
 
 		/// <summary></summary>
 		public List<DotNetParameter> Parameters = new List<DotNetParameter>();
@@ -299,7 +296,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// </summary>
 		public bool MatchesLocalSignature(DotNetQualifiedMethodName other)
 		{
-			if(this.LocalName != other.LocalName)
+			if(this.LocalXmlName != other.LocalXmlName)
 				return false;
 
 			if(this.GenericTypeCount != other.GenericTypeCount)
@@ -324,8 +321,7 @@ namespace WithoutHaste.DataFiles.DotNet
 
 			for(int i = 0; i < Parameters.Count; i++)
 			{
-				string otherName = DotNetQualifiedTypeName.FromAssemblyInfo(otherParameters[i].ParameterType).FullName;
-				if(Parameters[i].FullTypeName != otherName)
+				if(!Parameters[i].MatchesSignature(otherParameters[i]))
 					return false;
 			}
 			return true;
@@ -341,7 +337,7 @@ namespace WithoutHaste.DataFiles.DotNet
 
 			for(int i = 0; i < Parameters.Count; i++)
 			{
-				if(Parameters[i].TypeName.FullName != otherParameters[i].TypeName.FullName)
+				if(!(Parameters[i].MatchesSignature(otherParameters[i])))
 					return false;
 			}
 			return true;
@@ -352,12 +348,6 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// </summary>
 		public void AddAssemblyInfo(MethodInfo methodInfo)
 		{
-			if(IsGeneric)
-			{
-				Type[] genericTypes = methodInfo.GetGenericArguments();
-				this.genericTypeAliases = genericTypes.Select(g => g.ToString()).ToArray();
-			}
-
 			if(methodInfo.DeclaringType != null && FullNamespace != null && FullNamespace is DotNetQualifiedClassName)
 			{
 				(FullNamespace as DotNetQualifiedClassName).AddAssemblyInfo(methodInfo.DeclaringType.GetTypeInfo());
@@ -385,12 +375,61 @@ namespace WithoutHaste.DataFiles.DotNet
 			{
 				this.Parameters[0].SetIsExtension();
 			}
+
+			if(IsGeneric)
+			{
+				Type[] genericTypes = methodInfo.GetGenericArguments();
+				this.genericTypeAliases = genericTypes.Select(g => g.ToString()).ToArray();
+				PushMethodGenericTypes(this.genericTypeAliases);
+			}
 		}
 
 		/// <summary>Set the local name of the method. Does not affect generic type parameters or method parameters.</summary>
 		public void SetLocalName(string name)
 		{
 			this.localName = name;
+		}
+
+		/// <summary>
+		/// Update method parameter types and return type with the method's generic-type aliases.
+		/// </summary>
+		/// <param name="methodGenericTypeAliases">Ordered list of aliases.</param>
+		internal void PushMethodGenericTypes(string[] methodGenericTypeAliases)
+		{
+			if(!IsGeneric)
+				return;
+			foreach(DotNetParameter parameter in Parameters)
+			{
+				parameter.PushMethodGenericTypes(methodGenericTypeAliases);
+			}
+			if(ReturnTypeName is DotNetReferenceMethodGeneric)
+			{
+				(ReturnTypeName as DotNetReferenceMethodGeneric).SetAlias(methodGenericTypeAliases);
+			}
+		}
+
+		/// <summary>
+		/// Update method parameter types and return type with the class's generic-type aliases.
+		/// </summary>
+		/// <param name="classGenericTypeAliases">Ordered list of aliases.</param>
+		internal void PushClassGenericTypes(string[] classGenericTypeAliases)
+		{
+			foreach(DotNetParameter parameter in Parameters)
+			{
+				parameter.PushClassGenericTypes(classGenericTypeAliases);
+			}
+			if(ReturnTypeName is DotNetReferenceClassGeneric)
+			{
+				(ReturnTypeName as DotNetReferenceClassGeneric).SetAlias(classGenericTypeAliases);
+			}
+		}
+
+		/// <summary>
+		/// Constructors need to reference the actual name of their type so they display the right name with aliases.
+		/// </summary>
+		internal void SetClassName(DotNetQualifiedClassName className)
+		{
+			FullNamespace = className;
 		}
 
 		#region Low Level

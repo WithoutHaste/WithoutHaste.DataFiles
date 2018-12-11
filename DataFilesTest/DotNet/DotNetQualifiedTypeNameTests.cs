@@ -88,8 +88,8 @@ namespace DataFilesTest
 		{
 			//arrange
 			string input = "``10";
-			string expectedLocalName = "B4";
-			string expectedQualifiedName = "B4";
+			string expectedLocalName = "C3";
+			string expectedQualifiedName = "C3";
 			//act
 			DotNetQualifiedTypeName result = DotNetQualifiedTypeName.FromVisualStudioXml(input);
 			//assert

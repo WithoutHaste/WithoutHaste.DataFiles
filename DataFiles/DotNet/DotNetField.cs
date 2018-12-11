@@ -108,5 +108,17 @@ namespace WithoutHaste.DataFiles.DotNet
 
 			TypeName = DotNetQualifiedTypeName.FromAssemblyInfo(fieldInfo.FieldType);
 		}
+
+		/// <summary>
+		/// Update field type with the class's generic-type aliases.
+		/// </summary>
+		/// <param name="genericTypeAliases">Ordered list of aliases.</param>
+		internal virtual void PushGenericTypes(string[] genericTypeAliases)
+		{
+			if(TypeName is DotNetReferenceClassGeneric)
+			{
+				(TypeName as DotNetReferenceClassGeneric).SetAlias(genericTypeAliases);
+			}
+		}
 	}
 }

@@ -30,5 +30,13 @@ namespace WithoutHaste.DataFiles.DotNet
 				index++;
 			}
 		}
+
+		/// <summary>
+		/// Constructors need to reference the actual name of their type so they display the right name with aliases.
+		/// </summary>
+		internal void SetClassName(DotNetQualifiedClassName className)
+		{
+			MethodName.SetClassName(className);
+		}
 	}
 }

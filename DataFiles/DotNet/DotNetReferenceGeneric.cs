@@ -12,6 +12,9 @@ namespace WithoutHaste.DataFiles.DotNet
 	/// <example>The "U"s in MyMethod(<![CDATA[List<U>]]> list, U obj).</example>
 	public abstract class DotNetReferenceGeneric : DotNetQualifiedTypeName
 	{
+		/// <summary></summary>
+		public override string LocalName { get { return Alias; } }
+
 		/// <summary>
 		/// The generic-type alias specified in the assembly. Null if not known.
 		/// Whether this refers to a class-generic or method-generic is determined by the subclass.
@@ -21,32 +24,24 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>0-based index in class's generic type list corresponding to this parameter.</summary>
 		protected int genericTypeIndex = 0;
 
-		#region Constructors
-
-		/// <param name="genericTypeIndex">
-		///   0-based index of type in class or method declaration type parameter list.
-		///   <example>Index 0 refers to "T" in <![CDATA[class MyGeneric<T,U> { }]]>.</example>
-		///   <example>Index 0 refers to "A" in <![CDATA[void MyMethod<A,B>() { }]]>.</example>
-		/// </param>
-		/// <param name="alias">Alias of generic-type within assembly. Null if not known.</param>
-		/// <exception cref="ArgumentException"><paramref name='genericTypeIndex'/> cannot be less than 0.</exception>
-		public DotNetReferenceGeneric(int genericTypeIndex, string alias = null)
+		/// <summary>
+		/// Set the generic-type alias of this type, based on this ordered list of aliases.
+		/// </summary>
+		/// <returns>Returns False if the index is out of bounds and the alias is not updated.</returns>
+		internal bool SetAlias(string[] genericTypeAliases)
 		{
-			if(genericTypeIndex < 0)
-				throw new ArgumentException("GenericTypeIndex cannot be less than 0.", "genericTypeIndex");
-
-			FullNamespace = null;
-			Alias = alias;
-			this.localName = null;
-			this.genericTypeIndex = genericTypeIndex;
+			if(genericTypeIndex < 0 || genericTypeIndex >= genericTypeAliases.Length)
+				return false;
+			Alias = genericTypeAliases[genericTypeIndex];
+			return true;
 		}
 
-		#endregion
-
-		/// <summary></summary>
-		public void SetAlias(string alias)
+		/// <summary>
+		/// Generic type references cannot be localized.
+		/// </summary>
+		public override void Localize(DotNetQualifiedName other)
 		{
-			this.Alias = alias;
+			return;
 		}
 	}
 }

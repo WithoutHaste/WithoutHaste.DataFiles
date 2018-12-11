@@ -29,34 +29,22 @@ The "U"s in MyMethod(`List<U>` list, U obj).
 The generic-type alias specified in the assembly. Null if not known.  
 Whether this refers to a class-generic or method-generic is determined by the subclass.  
 
-# Constructors
+## LocalName
 
-## DotNetReferenceGeneric(int genericTypeIndex, string alias = null)
-
-**Exceptions:**  
-* **[ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/system.argumentexception)**: _genericTypeIndex_ cannot be less than 0.  
-
-### Parameters
-
-#### int genericTypeIndex
-
-0-based index of type in class or method declaration type parameter list.  
-
-**Example A:**  
-Index 0 refers to "T" in `class MyGeneric<T,U> { }`.  
-
-**Example B:**  
-Index 0 refers to "A" in `void MyMethod<A,B>() { }`.  
-
-#### string alias
-
-Alias of generic-type within assembly. Null if not known.  
+**{ }**  
 
 # Methods
 
-## SetAlias(string alias)
+## Localize([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md))
 
-**void**  
+Generic type references cannot be localized.  
+
+## SetAlias([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array))
+
+Set the generic-type alias of this type, based on this ordered list of aliases.  
+
+**Returns:**  
+Returns False if the index is out of bounds and the alias is not updated.  
 
 # Derived By
 

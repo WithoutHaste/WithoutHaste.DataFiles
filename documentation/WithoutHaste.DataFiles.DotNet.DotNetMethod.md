@@ -85,6 +85,12 @@ Returns true if this method's signature matches the other method signature.
 
 Returns true if this method link and the method have matching signatures, based on the fully qualified name and the list of parameter types.  
 
+## PushClassGenericTypes([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array))
+
+Update method parameter types and return type with the class's generic-type aliases.  
+
+**Parameters:**  
+
 # Static Methods
 
 ## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement)

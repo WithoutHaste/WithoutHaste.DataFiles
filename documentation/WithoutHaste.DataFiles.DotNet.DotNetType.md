@@ -73,6 +73,12 @@ Base type this type inherits from. Null if not known or none exists.
 
 **[TypeCategory](WithoutHaste.DataFiles.DotNet.TypeCategory.md) { public get; protected set; }**  
 
+## ClassName
+
+**{ }**  
+
+Strongly-typed name.  
+
 ## ConstantFields
 
 **[List&lt;DotNetField&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) { public get; }**  
@@ -147,12 +153,6 @@ The subset of Methods that are operator overloads.
 **[List&lt;DotNetMethod&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1) { public get; }**  
 
 The subset of Methods that are static (including extension methods), but not constructors, nor destructors, nor operators.  
-
-## TypeName
-
-**[DotNetQualifiedClassName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md) { public get; }**  
-
-Strongly-typed name.  
 
 # Constructors
 
@@ -247,6 +247,10 @@ Returns true if this member is defined within this type or any of its nested typ
 **bool**  
 
 Returns true if this qualified name is defined within this type or any of its nested type dscendents.  
+
+## PushGenericTypes()
+
+Push updates to generic-type aliases to all members.  
 
 ## ResolveDuplicatedComments([Func&lt;DotNetQualifiedName,DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember)
 

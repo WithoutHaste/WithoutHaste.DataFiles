@@ -17,7 +17,7 @@ namespace WithoutHaste.DataFiles.DotNet
 	public class DotNetQualifiedClassName : DotNetQualifiedName
 	{
 		/// <summary>Default names that will be given to generic-types, in order.</summary>
-		public static string[] GenericTypeNames = new string[] { "T", "U", "V", "W", "T2", "U2", "V2", "W2", "T3", "U3", "V3", "W3" };
+		public static readonly string[] DefaultGenericTypeNames = new string[] { "T", "U", "V", "W", "T2", "U2", "V2", "W2", "T3", "U3", "V3", "W3" };
 
 		/// <summary>
 		/// Strongly-typed FullNamespace.
@@ -35,10 +35,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			get {
 				if(GenericTypeCount == 0)
 					return localName;
-				if(genericTypeAliases != null)
-					return String.Format("{0}<{1}>", localName, String.Join(",", genericTypeAliases));
-				else
-					return String.Format("{0}<{1}>", localName, String.Join(",", GenericTypeNames.Take(GenericTypeCount).ToArray()));
+				return String.Format("{0}<{1}>", localName, String.Join(",", genericTypeAliases.Take(GenericTypeCount).ToArray()));
 			}
 		}
 
@@ -51,11 +48,22 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 		}
 
+		/// <summary>
+		/// True if this is a generic class name.
+		/// </summary>
+		public bool IsGeneric { get { return (GenericTypeCount > 0); } }
+
 		/// <summary>The number of generic-types required by the class declaration.</summary>
 		public int GenericTypeCount { get; protected set; }
 
-		/// <summary>Specific generic type aliases for this type. If null, the shared <see cref="GenericTypeNames"/> will be used.</summary>
-		protected string[] genericTypeAliases;
+		/// <summary>
+		/// A copy of the ordered list of generic-type aliases used by this class name.
+		/// </summary>
+		/// <remarks>Non-generic class names may still have default alias values.</remarks>
+		public string[] GenericTypeAliases { get { return genericTypeAliases.Select(x => x).ToArray(); } }
+
+		/// <summary>Specific generic type aliases for this method. Defaults to the <see cref='DefaultGenericTypeNames'/> values.</summary>
+		protected string[] genericTypeAliases = DefaultGenericTypeNames.Select(x => x).ToArray();
 
 		#region Constructors
 

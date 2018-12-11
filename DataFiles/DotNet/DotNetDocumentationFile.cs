@@ -72,7 +72,6 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			LoadAssemblyInfoFromXml(document);
 			LoadMembersInfoFromXml(document);
-			ResolveGenericTypeNameConflicts();
 			ResolveDuplicatedComments();
 			ResolveInheritedComments();
 		}
@@ -161,35 +160,6 @@ namespace WithoutHaste.DataFiles.DotNet
 						break;
 				}
 			}
-		}
-
-		/// <summary>
-		/// Ensure that default generic-type names do not conflict with actual types used in assembly.
-		/// </summary>
-		private void ResolveGenericTypeNameConflicts()
-		{
-			string filler = "X";
-			bool foundConflict = false;
-			List<string> actualNames = GetFullListOfLocalNames();
-			do
-			{
-				foundConflict = false;
-				foreach(string actualName in actualNames)
-				{
-					if(DotNetQualifiedMethodName.GenericTypeNames.Contains(actualName))
-					{
-						foundConflict = true;
-						int index = Array.IndexOf(DotNetQualifiedMethodName.GenericTypeNames, actualName);
-						DotNetQualifiedMethodName.GenericTypeNames[index] = actualName + filler;
-					}
-					if(DotNetQualifiedClassName.GenericTypeNames.Contains(actualName))
-					{
-						foundConflict = true;
-						int index = Array.IndexOf(DotNetQualifiedClassName.GenericTypeNames, actualName);
-						DotNetQualifiedClassName.GenericTypeNames[index] = actualName + filler;
-					}
-				}
-			} while(foundConflict); //in case the updated generic-type names now conflict with other actual type names
 		}
 
 		internal void ResolveInheritedComments()

@@ -132,6 +132,26 @@ For equality, parameter type and category must be equal. Parameter name and defa
 
 **virtual int**  
 
+## MatchesSignature([DotNetParameter](WithoutHaste.DataFiles.DotNet.DotNetParameter.md))
+
+Returns true if signatures match. Looks at types only, not at names.  
+
+## MatchesSignature([System.Reflection.ParameterInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.parameterinfo))
+
+Returns true if signatures match. Looks at types only, not at names.  
+
+## PushClassGenericTypes([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array))
+
+Update method/indexer parameters with the class's generic-type aliases.  
+
+**Parameters:**  
+
+## PushMethodGenericTypes([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array))
+
+Update method parameters with the method's generic-type aliases.  
+
+**Parameters:**  
+
 ## SetIsExtension()
 
 **void**  
