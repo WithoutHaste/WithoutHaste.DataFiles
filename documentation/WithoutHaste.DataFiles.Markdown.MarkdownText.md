@@ -29,13 +29,6 @@ Supports multiple selections such as `TextStype.Bold | TextStyle.Italic`.
 
 # Methods
 
-## EscapeControlCharacters(string)
-
-Replaces Markdown control characters with HTML encoded equivalents.  
-
-**Remarks:**  
-Handles backtic (&#96;), open angle brace (`<`), and close angle brace (`>`).  
-
 ## ToMarkdown(string previousText = null)
 
 **string**  
@@ -61,6 +54,15 @@ Generate bold-italic text.
 
 **Remarks:**  
 _text_ is trimmed to conform to Markdown formatting requirements.  
+
+## EscapeControlCharacters(string text)
+
+**static string**  
+
+Replaces Markdown control characters with HTML encoded equivalents.  
+
+**Remarks:**  
+Handles backtic (&#96;), open angle brace (`<`), and close angle brace (`>`).  
 
 ## Italic(string text)
 

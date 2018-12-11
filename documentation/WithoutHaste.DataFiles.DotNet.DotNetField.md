@@ -50,12 +50,6 @@ Fully qualified name of data type, if known. Null if not known.
 
 Load additional documentation information from the assembly itself.  
 
-## PushGenericTypes([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array))
-
-Update field type with the class's generic-type aliases.  
-
-**Parameters:**  
-
 # Static Methods
 
 ## FromVisualStudioXml([System.Xml.Linq.XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement) memberElement)

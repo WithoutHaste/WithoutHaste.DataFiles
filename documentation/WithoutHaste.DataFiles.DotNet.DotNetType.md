@@ -75,7 +75,7 @@ Base type this type inherits from. Null if not known or none exists.
 
 ## ClassName
 
-**{ }**  
+**[DotNetQualifiedClassName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md) { public get; }**  
 
 Strongly-typed name.  
 
@@ -247,10 +247,6 @@ Returns true if this member is defined within this type or any of its nested typ
 **bool**  
 
 Returns true if this qualified name is defined within this type or any of its nested type dscendents.  
-
-## PushGenericTypes()
-
-Push updates to generic-type aliases to all members.  
 
 ## ResolveDuplicatedComments([Func&lt;DotNetQualifiedName,DotNetMember&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.func-2) FindMember)
 

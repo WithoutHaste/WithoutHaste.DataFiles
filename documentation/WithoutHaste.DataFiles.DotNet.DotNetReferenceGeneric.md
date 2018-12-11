@@ -31,20 +31,15 @@ Whether this refers to a class-generic or method-generic is determined by the su
 
 ## LocalName
 
-**{ }**  
+**string { public get; }**  
 
 # Methods
 
-## Localize([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md))
+## Localize([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
+
+**virtual void**  
 
 Generic type references cannot be localized.  
-
-## SetAlias([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array))
-
-Set the generic-type alias of this type, based on this ordered list of aliases.  
-
-**Returns:**  
-Returns False if the index is out of bounds and the alias is not updated.  
 
 # Derived By
 

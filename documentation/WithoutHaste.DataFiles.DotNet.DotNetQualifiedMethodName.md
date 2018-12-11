@@ -13,6 +13,8 @@ such as `MyMethod<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13>`.
 
 ## DefaultGenericTypeNames
 
+**const [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array)**  
+
 Default names that will be given to generic-method-types, in order.  
 
 ## genericTypeAliases
@@ -154,22 +156,6 @@ Returns true if this method's signature matches the reflected MethodInfo.
 **bool**  
 
 Returns true if this method's signature matches the other method signature.  
-
-## PushClassGenericTypes([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array))
-
-Update method parameter types and return type with the class's generic-type aliases.  
-
-**Parameters:**  
-
-## PushMethodGenericTypes([String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array))
-
-Update method parameter types and return type with the method's generic-type aliases.  
-
-**Parameters:**  
-
-## SetClassName([DotNetQualifiedClassName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md))
-
-Constructors need to reference the actual name of their type so they display the right name with aliases.  
 
 ## SetLocalName(string name)
 

@@ -19,7 +19,7 @@ class MyGeneric<T,U>
 
 # Constructors
 
-## DotNetReferenceClassGeneric(int)
+## DotNetReferenceClassGeneric(int genericTypeIndex)
 
 Creates a generic-type using the [DotNetQualifiedClassName.DefaultGenericTypeNames](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md).  
 
@@ -28,8 +28,9 @@ Index value will be set to 0 if it is less than 0.
 Alias will be set to "?" if the index value is out of range.  
 
 **Parameters:**  
+* **int genericTypeIndex**: 0-based index of generic-type in relation to the class's declaration.  
 
-## DotNetReferenceClassGeneric(int genericTypeIndex, string alias = null)
+## DotNetReferenceClassGeneric(int genericTypeIndex, string alias)
 
 Creates a generic-type using the provided alias.  
 
@@ -44,18 +45,26 @@ Index value will be set to 0 if it is less than 0.
 
 ## Clone()
 
+**DotNetReferenceClassGeneric**  
+
 Returns deep clone of generic reference name.  
 
-## GetLocalized([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md))
+## GetLocalized([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
+
+**DotNetReferenceClassGeneric**  
 
 **Misc:**  
   
 
-## MatchesSignature([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md))
+## MatchesSignature([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
+
+**bool**  
 
 Returns true if these types match. Does not look at aliases.  
 
-## MatchesSignature([Type](https://docs.microsoft.com/en-us/dotnet/api/system.type))
+## MatchesSignature([Type](https://docs.microsoft.com/en-us/dotnet/api/system.type) type)
+
+**bool**  
 
 Returns true if this generic type matches the reflected type.  
 Compares generic indexes and whether it is a class-generic or method-generic.  
@@ -63,7 +72,7 @@ Does not compare aliases or which specific class/method the type is referencing.
 
 # Static Methods
 
-## FromVisualStudioXml(string name)
+## FromVisualStudioXml(string typeName)
 
 **static DotNetReferenceClassGeneric**  
 

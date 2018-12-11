@@ -112,7 +112,7 @@ Does not include explicit interface implementations.
 
 ## GetLocalized([DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) other)
 
-**DotNetQualifiedName**  
+**virtual DotNetQualifiedName**  
 
 Returns a new name object which has been localized to the provided other name. The current object is not altered.  
 

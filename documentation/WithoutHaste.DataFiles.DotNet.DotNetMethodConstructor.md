@@ -16,7 +16,3 @@ Represents a method that is a constructor.
 
 Load additional documentation information from the assembly itself.  
 
-## SetClassName([DotNetQualifiedClassName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedClassName.md))
-
-Constructors need to reference the actual name of their type so they display the right name with aliases.  
-
