@@ -38,30 +38,6 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">47</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">move DotNetQualifiedClassName.GenericTypeNames
-and DotNetQualifiedMethodName.GenericTypeNames
-to DotNetDocumentationFile
-- make them not global, so files don't cross pollute
-- and still let QualifiedNames look them up as needed
-Also, let QualifiedNames look up current ClassName/MethodName generic aliases
-
-design requires much thought</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Bug - Minor</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2018-12-03T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
           <Data ss:Type="Number">18</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -311,6 +287,47 @@ could turn DotNetSettings.QualifiedNameConverter into a list or event so that an
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">48</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">bug: generic types (field type, parameter type, etc) not displaying correctly
+
+structural issue
+
+decisions:
+1) either you've loaded just the VS XML or you've loaded both that and the Assembly info
+1A) if just the VS XML, there are no generic type aliases; the defaults will be used all over
+1B) if both, then all generic type aliases have been loaded
+
+changes:
+1) remove "ResolveGenericTypeNameConflicts" as it is unnecessary
+2) default all generic types (field type, parameter type, etc) to using the default aliases when they are first created from VS XML
+3) if method assembly info is loaded, push the updated aliases to the method parameters
+4) if type assembly info is loaded, push the updated aliases to fields, properties, indexers and indexer parameters, events, and method parameters.
+
+testing:
+- type of field
+- type of property
+- type of parameter of indexer
+- type of event
+- return type of method (to class or to method)
+- type of parameter of method (to class or to method)</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Bug - Minor</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-12-10T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-12-11T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -1134,7 +1151,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">47</Data>
+          <Data ss:Type="Number">48</Data>
         </Cell>
       </Row>
       <Row>

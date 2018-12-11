@@ -62,6 +62,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CountersTests.cs" />
+    <Compile Include="DotNet\DotNetReferenceMethodGenericTests.cs" />
     <Compile Include="DotNet\DotNetCommentCellTests.cs" />
     <Compile Include="DotNet\DotNetCommentCodeTests.cs" />
     <Compile Include="DotNet\DotNetCommentGroupTests.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="DotNet\DotNetMethodTests.cs" />
     <Compile Include="DotNet\DotNetQualifiedNameTests.cs" />
     <Compile Include="DotNet\DotNetQualifiedTypeNameTests.cs" />
+    <Compile Include="DotNet\DotNetReferenceClassGenericTests.cs" />
     <Compile Include="DotNet\DotNetSettingsTests.cs" />
     <Compile Include="DotNet\DotNetTypeTests.cs" />
     <Compile Include="DotNet\UtilitiesTests.cs" />
