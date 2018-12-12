@@ -260,6 +260,32 @@ namespace DataFilesTest
 		}
 
 		[TestMethod]
+		public void DotNetDocumentationFile_SmokeTest_Drawing_Shapes()
+		{
+			//arrange
+			string xmlDocumentationFilename = "../../../../WithoutHaste.Drawing.Shapes/Shapes/bin/Debug/WithoutHaste.Drawing.Shapes.XML";
+			string dllFilename = "../../../../WithoutHaste.Drawing.Shapes/Shapes/bin/Debug/WithoutHaste.Drawing.Shapes.dll";
+			//act
+			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
+			xmlDocumentation.AddAssemblyInfo(dllFilename);
+			//assert
+			Assert.IsTrue(xmlDocumentation.Types.Count(t => t.Category != TypeCategory.Unknown) > 0);
+		}
+
+		[TestMethod]
+		public void DotNetDocumentationFile_SmokeTest_Windows_GUI()
+		{
+			//arrange
+			string xmlDocumentationFilename = "../../../../WithoutHaste.Windows.GUI/GUI/bin/Debug/WithoutHaste.Windows.GUI.XML";
+			string dllFilename = "../../../../WithoutHaste.Windows.GUI/GUI/bin/Debug/WithoutHaste.Windows.GUI.dll";
+			//act
+			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
+			xmlDocumentation.AddAssemblyInfo(dllFilename);
+			//assert
+			Assert.IsTrue(xmlDocumentation.Types.Count(t => t.Category != TypeCategory.Unknown) > 0);
+		}
+
+		[TestMethod]
 		public void DotNetDocumentationFile_OrphanedMember_Ignore()
 		{
 			//arrange

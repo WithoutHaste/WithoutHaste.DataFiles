@@ -222,6 +222,8 @@ namespace WithoutHaste.DataFiles.DotNet
 			if(pathToThisDuplicate.Contains(this.Name))
 				return false; //avoid reference loops
 			DotNetMember copyFrom = FindMember(DuplicatesFrom);
+			if(copyFrom == null)
+				return false;
 			if(copyFrom.DuplicatesDocumentation)
 			{
 				pathToThisDuplicate.Add(copyFrom.Name);
