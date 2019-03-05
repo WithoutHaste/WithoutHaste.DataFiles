@@ -82,6 +82,24 @@ for conditional compilation of extension method handling</Data>
       </Row>
       <Row>
         <Cell>
+          <Data ss:Type="Number">51</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">Assembly.LoadFrom
+catch BadImageFormatException, give message about which frameworks are supported</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Bug - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-05T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
           <Data ss:Type="Number">50</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -1214,7 +1232,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">50</Data>
+          <Data ss:Type="Number">51</Data>
         </Cell>
       </Row>
       <Row>
