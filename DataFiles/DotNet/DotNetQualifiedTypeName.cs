@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
@@ -142,17 +141,17 @@ namespace WithoutHaste.DataFiles.DotNet
 				typeName = ""; //todo: this should not be necessary, track down case in EarlyDocs
 			List<DotNetQualifiedTypeName> parameters = new List<DotNetQualifiedTypeName>();
 			int genericParameterCount = 0;
-			if(type.GenericTypeArguments.Length > 0)
+			if(type.ContainsGenericParameters) //generic type, with parameters unspecified
 			{
-				parameters = type.GenericTypeArguments.Select(a => FromAssemblyInfo(a)).ToList();
+				parameters = type.GetGenericArguments().Select(a => FromAssemblyInfo(a)).ToList();
 				typeName = typeName.Substring(0, typeName.IndexOf("["));
 
 				Int32.TryParse(typeName.Substring(typeName.LastIndexOf("`") + 1), out genericParameterCount);
 				typeName = typeName.Substring(0, typeName.LastIndexOf("`"));
 			}
-			else if(type.GetTypeInfo().GenericTypeParameters.Length > 0)
+			else if(type.GetGenericArguments().Length > 0) //generic type, with specific parameter types
 			{
-				parameters = type.GetTypeInfo().GenericTypeParameters.Select(p => new DotNetReferenceClassGeneric(p.GenericParameterPosition, p.Name)).Cast<DotNetQualifiedTypeName>().ToList();
+				parameters = type.GetGenericArguments().Select(p => new DotNetReferenceClassGeneric(p.GenericParameterPosition, p.Name)).Cast<DotNetQualifiedTypeName>().ToList();
 				genericParameterCount = parameters.Count;
 				typeName = typeName.Substring(0, typeName.LastIndexOf("`"));
 

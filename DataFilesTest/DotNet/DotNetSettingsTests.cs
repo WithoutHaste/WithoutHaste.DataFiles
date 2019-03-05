@@ -10,17 +10,18 @@ namespace DataFilesTest
 	[TestClass]
 	public class DotNetSettingsTests
 	{
-		[TestInitialize]
-		public void DotNetSettings_TestInitialize()
-		{
-			DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
-		}
+		//todo: only available in framework 3.5 and higher
+		//[TestInitialize]
+		//public void DotNetSettings_TestInitialize()
+		//{
+		//	DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
+		//}
 
-		[TestCleanup]
-		public void DotNetSettings_TestCleanup()
-		{
-			DotNetSettings.QualifiedNameConverter = null;
-		}
+		//[TestCleanup]
+		//public void DotNetSettings_TestCleanup()
+		//{
+		//	DotNetSettings.QualifiedNameConverter = null;
+		//}
 
 		[TestMethod]
 		public void DotNetSettings_DefaultQualifiedNameConverter_AliasesType()

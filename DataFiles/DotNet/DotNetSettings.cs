@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
@@ -20,6 +19,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Set to null to not use any converter.
 		/// </summary>
 		/// <remarks>
+		/// Setting is only available with target framework 3.5 or higher. If setting is unavailable, it will set to <see cref="DefaultQualifiedNameConverter"/> by default.
+		/// 
 		/// See <see cref="DefaultQualifiedNameConverter"/> for usage examples.
 		/// </remarks>
 		/// <example>
@@ -28,7 +29,11 @@ namespace WithoutHaste.DataFiles.DotNet
 		///		string displayString = myQualifiedTypeName.FullName;
 		///	</code>	
 		/// </example>
+#if FUNCS
 		public static Func<string, int, string> QualifiedNameConverter = null;
+#else
+		internal static Func<string, int, string> QualifiedNameConverter = DefaultQualifiedNameConverter;
+#endif
 
 		/// <summary>
 		/// A second level <see cref="QualifiedNameConverter"/> to provide further processing.
@@ -36,6 +41,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// 
 		/// Set to null to not use any converter.
 		/// </summary>
+		/// <remarks>
+		/// Setting is only available with target framework 3.5 or higher.
+		/// </remarks>
 		/// <example>
 		/// <code>
 		///		DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
@@ -43,7 +51,11 @@ namespace WithoutHaste.DataFiles.DotNet
 		///		string displayString = myQualifiedTypeName.FullName;
 		///	</code>	
 		/// </example>
+#if FUNCS
 		public static Func<string, int, string> AdditionalQualifiedNameConverter = null;
+#else
+		internal static Func<string, int, string> AdditionalQualifiedNameConverter = null;
+#endif
 
 		/// <summary>
 		/// Converts all standard .Net types to their common aliases.

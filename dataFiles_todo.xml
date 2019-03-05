@@ -68,7 +68,18 @@ big difference between Reflection versions:
 "TypeInfo" is not in 2.0
 
 left off at https://stackoverflow.com/questions/3436526/detect-target-framework-version-at-compile-time
-for conditional compilation of extension method handling</Data>
+for conditional compilation of extension method handling
+and
+https://stackoverflow.com/questions/38476796/how-to-set-net-core-in-if-statement-for-compilation
+and
+https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-if
+and
+https://docs.microsoft.com/en-us/dotnet/core/tutorials/libraries#how-to-multitarget
+
+Func type is not in .Net 2.0 either
+LINQlone does define it, but I don't want users to have to install LINQlone
+and DotNetSettings.QualifiedNameConverter is a Func
+Func is in .Net 3.5 and higher</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>

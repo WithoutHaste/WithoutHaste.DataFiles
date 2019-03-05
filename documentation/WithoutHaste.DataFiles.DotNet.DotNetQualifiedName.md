@@ -188,7 +188,7 @@ Names are sorted alphabetically, per namespace, starting with the root.
 **Remarks:**  
 Explicit interface implementations are considered only as a last resort.  
 
-## FromAssemblyInfo([System.Reflection.TypeInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.typeinfo) typeInfo)
+## FromAssemblyInfo([Type](https://docs.microsoft.com/en-us/dotnet/api/system.type) type)
 
 **static DotNetQualifiedName**  
 
@@ -200,17 +200,11 @@ Parses a System.Reflection.AssemblyInfo full name.
 * Class declaration of generic types are shown the same as .Net XML documentation: MyType&#96;1 for one generic type  
 * When a generic type is defined: System.Collections.Generic.List&#96;1[U], where U is the type alias from the class declaration  
 
-## FromAssemblyInfo([Type](https://docs.microsoft.com/en-us/dotnet/api/system.type) type)
-
-**static DotNetQualifiedName**  
-
-See [FromAssemblyInfo(System.Reflection.TypeInfo)](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md)  
-
 ## FromAssemblyInfo(string typeName)
 
 **static DotNetQualifiedName**  
 
-See [FromAssemblyInfo(System.Reflection.TypeInfo)](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md)  
+See [FromAssemblyInfo(Type)](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md)  
 
 ## FromVisualStudioXml(string name)
 

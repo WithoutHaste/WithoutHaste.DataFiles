@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
@@ -194,13 +193,13 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Return the names combined with a '.' delimiter.</summary>
 		public static string Combine(params string[] names)
 		{
-			return String.Join(".", names.Where(n => !String.IsNullOrEmpty(n)));
+			return String.Join(".", names.Where(n => !String.IsNullOrEmpty(n)).ToArray());
 		}
 
 		/// <summary>Return the names combined with a '.' delimiter.</summary>
 		public static string Combine(List<string> names)
 		{
-			return String.Join(".", names.Where(n => !String.IsNullOrEmpty(n)));
+			return String.Join(".", names.Where(n => !String.IsNullOrEmpty(n)).ToArray());
 		}
 
 		/// <summary>Returns true if this Name is nested inside the other Name.</summary>

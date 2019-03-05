@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles
 {
@@ -125,7 +124,7 @@ namespace WithoutHaste.DataFiles
 		{
 			char[] supportedBraces = new char[] { '{', '}', '[', ']', '(', ')', '<', '>' };
 			if(supportedBraces.Contains(delimiter))
-				throw new ArgumentException("Delimitor cannot be a supported brace character: " + String.Join(",", supportedBraces) + ".");
+				throw new ArgumentException("Delimitor cannot be a supported brace character: " + String.Join(",", supportedBraces.Select(x => x.ToString()).ToArray()) + ".");
 
 			if(text == null) return new string[] { };
 
