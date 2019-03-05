@@ -93,6 +93,26 @@ Func is in .Net 3.5 and higher</Data>
       </Row>
       <Row>
         <Cell>
+          <Data ss:Type="Number">52</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">DotNet/Utilities
+"string innerText = String.Concat(parent.Nodes());"
+does not work in NuGet System.Xml.Linq
+no link from NuGet to any documentation, and it isn't a GitHub project</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Bug - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-05T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
           <Data ss:Type="Number">51</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -1243,7 +1263,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">51</Data>
+          <Data ss:Type="Number">52</Data>
         </Cell>
       </Row>
       <Row>

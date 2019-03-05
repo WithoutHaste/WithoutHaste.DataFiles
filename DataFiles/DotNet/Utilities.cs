@@ -36,11 +36,59 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <remarks>Does not preserve attributes of the root element.</remarks>
 		internal static XElement CleanWhitespaces(this XElement parent)
 		{
-			string innerText = String.Concat(parent.Nodes());
+			//string innerText = String.Concat(parent.Nodes()); //from higher framework of .Net - not compatible with NuGet System.Xml.Linq
+			string innerText = XElementContentsToString(parent);
 			innerText = innerText.TrimFromStartAsBlock();
 			innerText = innerText.Trim();
 			XElement cleanParent = XElement.Parse("<" + parent.Name + ">" + innerText + "</" + parent.Name + ">", LoadOptions.PreserveWhitespace);
 			return cleanParent;
+		}
+
+		/// <summary>
+		/// Override NuGet System.Xml.Linq XNode.ToString() which just throws a System.IO.FileNotFoundException.
+		/// </summary>
+		/// <returns>Should return the exact string representation of the node, including the surrounding tags if applicable.</returns>
+		internal static string XNodeToString(XNode node)
+		{
+			if(node is XText)
+			{
+				if(node is XCData)
+				{
+					return String.Format("<![CDATA[{0}]]>", (node as XCData).Value);
+				}
+				return (node as XText).Value;
+			}
+			if(node is XElement)
+			{
+				StringBuilder builder = new StringBuilder();
+				XElement nodeElement = (node as XElement);
+				builder.Append(String.Format("<{0} ", nodeElement.Name));
+				foreach(XAttribute attribute in nodeElement.Attributes())
+				{
+					builder.Append(String.Format("{0}=\"{1}\" ", attribute.Name, attribute.Value)); //todo: what if there were double-quote marks in the value?
+				}
+				builder.Append(">");
+				builder.Append(XElementContentsToString(nodeElement));
+				builder.Append(String.Format("<\\{0}>", nodeElement.Name));
+				return builder.ToString();
+			}
+			return null; //unknown node type
+		}
+
+		/// <summary>
+		/// .Net 2.0 compatibility:
+		/// NuGet System.Xml.Linq does not support XNode.ToString() - it just throws a System.IO.FileNotFoundException
+		/// so this is replacing it
+		/// </summary>
+		/// <returns>Should return the exact string contents of the element, with all inner elements converted to strings.</returns>
+		private static string XElementContentsToString(XElement parent)
+		{
+			StringBuilder builder = new StringBuilder();
+			foreach(XNode node in parent.Nodes())
+			{
+				builder.Append(XNodeToString(node));
+			}
+			return builder.ToString();
 		}
 
 		/// <summary>

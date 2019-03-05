@@ -174,7 +174,7 @@ namespace WithoutHaste.DataFiles.DotNet
 						previousCommentWasAParagraphTag = !nonParagraphTags.Contains(comment.Tag);
 						break;
 					case XmlNodeType.Text:
-						comment = DotNetComment.FromVisualStudioXml(node.ToString());
+						comment = DotNetComment.FromVisualStudioXml(Utilities.XNodeToString(node));
 						if(comment == null)
 							break;
 						if(previousCommentWasAParagraphTag && comment.ToString() == "\n")
