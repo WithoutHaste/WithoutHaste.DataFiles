@@ -38,6 +38,69 @@
       </Row>
       <Row>
         <Cell>
+          <Data ss:Type="Number">49</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">can it be ported to .Net 2.0?
+created branch "port-to-dotnet-2.0"
+ignoring DataFiles.Excel - it is in its own project already
+installing LINQlone to replace System.Linq
+https://www.nuget.org/packages/LINQlone/
+
+https://www.nuget.org/packages/System.Xml.Linq/
+this might be same thing for System.Xml.Linq
+installing it to test
+looks ok so far
+
+System.Reflection.TypeInfo - 4.5 minimum
+testing the 2.0 version capabilities in temp project
+
+Assembly.LoadFrom: BadImageFormatException
+"Could not load file or assembly 'file:///E:\GitHub\EarlyDocs\Test\bin\Debug\Test.dll' or one of its dependencies. This assembly is built by a runtime newer than the currently loaded runtime and cannot be loaded."
+
+maybe System.Reflection can only load dll's compiled with lower or equal versions of .Net?
+yeah, it works fine loading a 2.0 library, but fails on 4.5.2
+THEREFORE
+I will need multiple compiled versions of WithoutHaste.DataFiles
+a 2.0 version, and a 4.5 version at least (ideally, compiled for every .Net version)
+
+big difference between Reflection versions:
+"TypeInfo" is not in 2.0
+
+left off at https://stackoverflow.com/questions/3436526/detect-target-framework-version-at-compile-time
+for conditional compilation of extension method handling</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-04T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">50</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">note WithoutHaste.DataFiles dependency on:
+LINQlone NuGet library
+System.Xml.Linq NuGet library</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Documentation</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-04T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
           <Data ss:Type="Number">18</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -1151,7 +1214,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">48</Data>
+          <Data ss:Type="Number">50</Data>
         </Cell>
       </Row>
       <Row>

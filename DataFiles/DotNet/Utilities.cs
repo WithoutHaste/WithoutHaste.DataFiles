@@ -4,7 +4,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace WithoutHaste.DataFiles.DotNet
@@ -124,23 +123,9 @@ namespace WithoutHaste.DataFiles.DotNet
 			return ((typeAttributes & TypeAttributes.Abstract) == TypeAttributes.Abstract);
 		}
 
-		internal static bool IsEnum(this TypeInfo typeInfo)
-		{
-			return (typeInfo.BaseType != null && typeInfo.BaseType.Name == "Enum");
-		}
-
 		internal static bool IsEnum(this Type type)
 		{
 			return (type.BaseType != null && type.BaseType.Name == "Enum");
-		}
-
-		internal static bool IsException(this TypeInfo typeInfo)
-		{
-			if(typeInfo.FullName == "System.Exception")
-				return true;
-			if(typeInfo.BaseType == null)
-				return false;
-			return typeInfo.BaseType.IsException();
 		}
 
 		internal static bool IsException(this Type type)
@@ -150,15 +135,6 @@ namespace WithoutHaste.DataFiles.DotNet
 			if(type.BaseType == null)
 				return false;
 			return type.BaseType.IsException();
-		}
-
-		internal static bool IsDelegate(this TypeInfo typeInfo)
-		{
-			if(typeInfo.FullName == "System.Delegate")
-				return true;
-			if(typeInfo.BaseType == null)
-				return false;
-			return typeInfo.BaseType.IsDelegate();
 		}
 
 		internal static bool IsDelegate(this Type type)
@@ -214,6 +190,78 @@ namespace WithoutHaste.DataFiles.DotNet
 				|| _object is double
 				|| _object is decimal
 			);
+		}
+
+		internal static FieldInfo[] GetDeclaredFields(this Type type)
+		{
+			List<FieldInfo> results = new List<FieldInfo>();
+			//public instance fields
+			results.AddRange(type.GetFields(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public));
+			//public static fields
+			results.AddRange(type.GetFields(BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.Public));
+			//protected/private instance fields
+			results.AddRange(type.GetFields(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.NonPublic)); //.Where(f => f.IsPrivate == false));
+			//protected/private static fields
+			results.AddRange(type.GetFields(BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.NonPublic)); //.Where(f => f.IsPrivate == false));
+			return results.ToArray();
+		}
+
+		internal static PropertyInfo[] GetDeclaredProperties(this Type type)
+		{
+			List<PropertyInfo> results = new List<PropertyInfo>();
+			//public instance properties
+			results.AddRange(type.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public));
+			//public static properties
+			results.AddRange(type.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.Public));
+			//protected/private instance properties
+			results.AddRange(type.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.NonPublic)); //.Where(f => f.IsPrivate == false));
+			//protected/private static properties
+			results.AddRange(type.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.NonPublic)); //.Where(f => f.IsPrivate == false));
+			return results.ToArray();
+		}
+
+		internal static MethodInfo[] GetDeclaredMethods(this Type type)
+		{
+			List<MethodInfo> results = new List<MethodInfo>();
+			//public instance methods
+			results.AddRange(type.GetMethods(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public));
+			//public static methods
+			results.AddRange(type.GetMethods(BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.Public));
+			//protected/private instance methods
+			results.AddRange(type.GetMethods(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.NonPublic)); //.Where(f => f.IsPrivate == false));
+			//protected/private static methods
+			results.AddRange(type.GetMethods(BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.NonPublic)); //.Where(f => f.IsPrivate == false));
+			return results.ToArray();
+		}
+
+		internal static ConstructorInfo[] GetDeclaredConstructors(this Type type)
+		{
+			List<ConstructorInfo> results = new List<ConstructorInfo>();
+			results.AddRange(type.GetConstructors(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public));
+			results.AddRange(type.GetConstructors(BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.Public));
+			results.AddRange(type.GetConstructors(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.NonPublic));
+			results.AddRange(type.GetConstructors(BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.NonPublic));
+			return results.ToArray();
+		}
+
+		internal static EventInfo[] GetDeclaredEvents(this Type type)
+		{
+			List<EventInfo> results = new List<EventInfo>();
+			results.AddRange(type.GetEvents(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public));
+			results.AddRange(type.GetEvents(BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.Public));
+			results.AddRange(type.GetEvents(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.NonPublic));
+			results.AddRange(type.GetEvents(BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.NonPublic));
+			return results.ToArray();
+		}
+
+		internal static Type[] GetDeclaredNestedTypes(this Type type)
+		{
+			List<Type> results = new List<Type>();
+			results.AddRange(type.GetNestedTypes(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public));
+			results.AddRange(type.GetNestedTypes(BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.Public));
+			results.AddRange(type.GetNestedTypes(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.NonPublic));
+			results.AddRange(type.GetNestedTypes(BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.NonPublic));
+			return results.ToArray();
 		}
 	}
 }

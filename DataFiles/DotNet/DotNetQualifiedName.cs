@@ -159,18 +159,12 @@ namespace WithoutHaste.DataFiles.DotNet
 		///   <item>Class declaration of generic types are shown the same as .Net XML documentation: MyType`1 for one generic type</item>
 		///   <item>When a generic type is defined: System.Collections.Generic.List`1[U], where U is the type alias from the class declaration</item>
 		/// </list>
-		public static DotNetQualifiedName FromAssemblyInfo(TypeInfo typeInfo)
-		{
-			return FromAssemblyInfo(typeInfo.FullName);
-		}
-
-		/// <summary>See <see cref="FromAssemblyInfo(TypeInfo)"/></summary>
 		public static DotNetQualifiedName FromAssemblyInfo(Type type)
 		{
 			return FromAssemblyInfo(type.FullName);
 		}
 
-		/// <summary>See <see cref="FromAssemblyInfo(TypeInfo)"/></summary>
+		/// <summary>See <see cref="FromAssemblyInfo(Type)"/></summary>
 		public static DotNetQualifiedName FromAssemblyInfo(string typeName)
 		{
 			typeName = typeName.ReplaceUnescapedCharacters('\\', '+', '.');

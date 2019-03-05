@@ -101,9 +101,9 @@ namespace WithoutHaste.DataFiles.DotNet
 			}
 
 			Assembly assembly = Assembly.LoadFrom(assemblyFilename);
-			foreach(TypeInfo typeInfo in assembly.DefinedTypes)
+			foreach(Type type in assembly.GetTypes())
 			{
-				AddAssemblyInfoToType(typeInfo);
+				AddAssemblyInfoToType(type);
 			}
 
 			ResolveDuplicatedComments();
@@ -218,31 +218,31 @@ namespace WithoutHaste.DataFiles.DotNet
 			//no exception if type not found, member is ignored
 		}
 
-		private void AddAssemblyInfoToType(TypeInfo typeInfo)
+		private void AddAssemblyInfoToType(Type type)
 		{
-			DotNetQualifiedName qualifiedName = DotNetQualifiedName.FromAssemblyInfo(typeInfo);
-			DotNetType type = Types.FirstOrDefault(x => x.Is(qualifiedName) || x.Owns(qualifiedName));
-			if(type == null)
+			DotNetQualifiedName qualifiedName = DotNetQualifiedName.FromAssemblyInfo(type);
+			DotNetType dotNetType = Types.FirstOrDefault(x => x.Is(qualifiedName) || x.Owns(qualifiedName));
+			if(dotNetType == null)
 				return; //no error if type is not found
 
-			if(typeInfo.IsDelegate())
+			if(type.IsDelegate())
 			{
-				ConvertTypeToDelegate(typeInfo, qualifiedName, type);
+				ConvertTypeToDelegate(type, qualifiedName, dotNetType);
 				return;
 			}
 
-			type.AddAssemblyInfo(typeInfo, qualifiedName);
+			dotNetType.AddAssemblyInfo(type, qualifiedName);
 		}
 
-		private void ConvertTypeToDelegate(TypeInfo typeInfo, DotNetQualifiedName qualifiedName, DotNetType type)
+		private void ConvertTypeToDelegate(Type type, DotNetQualifiedName qualifiedName, DotNetType dotNetType)
 		{
-			DotNetDelegate _delegate = type.ToDelegate(qualifiedName);
-			if(type.Is(qualifiedName))
+			DotNetDelegate _delegate = dotNetType.ToDelegate(qualifiedName);
+			if(dotNetType.Is(qualifiedName))
 			{
-				Types.Remove(type);
+				Types.Remove(dotNetType);
 				Delegates.Add(_delegate);
 			}
-			_delegate.AddAssemblyInfo(typeInfo);
+			_delegate.AddAssemblyInfo(type);
 		}
 
 		/// <summary>

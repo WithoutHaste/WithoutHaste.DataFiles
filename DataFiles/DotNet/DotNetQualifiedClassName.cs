@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
@@ -136,12 +135,12 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>
 		/// Load additional documentation information from the assembly itself.
 		/// </summary>
-		public void AddAssemblyInfo(TypeInfo typeInfo)
+		public void AddAssemblyInfo(Type type)
 		{
-			genericTypeAliases = typeInfo.GenericTypeParameters.Select(p => p.Name).ToArray();
-			if(typeInfo.DeclaringType != null && isNestedClass())
+			genericTypeAliases = type.GetGenericArguments().Select(p => p.Name).ToArray();
+			if(type.DeclaringType != null && isNestedClass())
 			{
-				(FullNamespace as DotNetQualifiedClassName).AddAssemblyInfo(typeInfo.DeclaringType.GetTypeInfo());
+				(FullNamespace as DotNetQualifiedClassName).AddAssemblyInfo(type.DeclaringType);
 			}
 		}
 

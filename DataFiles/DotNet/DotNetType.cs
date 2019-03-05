@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace WithoutHaste.DataFiles.DotNet
@@ -133,11 +132,27 @@ namespace WithoutHaste.DataFiles.DotNet
 		public List<DotNetMember> AllMembers {
 			get {
 				List<DotNetMember> members = new List<DotNetMember>();
-				members.AddRange(Methods);
-				members.AddRange(Fields);
-				members.AddRange(Properties);
-				members.AddRange(Events);
-				members.AddRange(Delegates);
+				//because LINQlone does not support members.AddRange(Methods), etc
+				foreach(DotNetMember method in Methods)
+				{
+					members.Add(method);
+				}
+				foreach(DotNetMember field in Fields)
+				{
+					members.Add(field);
+				}
+				foreach(DotNetMember property in Properties)
+				{
+					members.Add(property);
+				}
+				foreach(DotNetMember _event in Events)
+				{
+					members.Add(_event);
+				}
+				foreach(DotNetMember _delegate in Delegates)
+				{
+					members.Add(_delegate);
+				}
 				return members;
 			}
 		}
@@ -223,10 +238,20 @@ namespace WithoutHaste.DataFiles.DotNet
 						return _delegate;
 				}
 			}
-			foreach(DotNetField field in Fields.Union(Properties).Union(Events))
+			foreach(DotNetField field in Fields)
 			{
 				if(field.Name.LocalName == name.LocalName)
 					return field;
+			}
+			foreach(DotNetField property in Properties)
+			{
+				if(property.Name.LocalName == name.LocalName)
+					return property;
+			}
+			foreach(DotNetField _event in Events)
+			{
+				if(_event.Name.LocalName == name.LocalName)
+					return _event;
 			}
 			foreach(DotNetType nestedType in NestedTypes)
 			{
@@ -387,18 +412,18 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>
 		/// Load additional documentation information from the assembly itself for this type or one of its nested type descendents.
 		/// </summary>
-		public void AddAssemblyInfo(TypeInfo typeInfo, DotNetQualifiedName name)
+		public void AddAssemblyInfo(Type type, DotNetQualifiedName name)
 		{
 			if(this.Is(name))
 			{
-				AddAssemblyInfo(typeInfo);
+				AddAssemblyInfo(type);
 				return;
 			}
 			foreach(DotNetType nestedType in NestedTypes)
 			{
 				if(nestedType.Is(name) || nestedType.Owns(name))
 				{
-					nestedType.AddAssemblyInfo(typeInfo, name);
+					nestedType.AddAssemblyInfo(type, name);
 					return;
 				}
 			}
@@ -408,62 +433,64 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>
 		/// Load additional information from the assembly for this type.
 		/// </summary>
-		private void AddAssemblyInfo(TypeInfo typeInfo)
+		private void AddAssemblyInfo(Type type)
 		{
-			if(typeInfo.Attributes.IsAbstract())
+			if(type.Attributes.IsAbstract())
 				Category = TypeCategory.Abstract;
-			if(typeInfo.Attributes.IsStatic())
+			if(type.Attributes.IsStatic())
 				Category = TypeCategory.Static;
-			if(typeInfo.Attributes.IsInterface())
+			if(type.Attributes.IsInterface())
 				Category = TypeCategory.Interface;
-			if(typeInfo.IsEnum())
+			if(type.IsEnum())
 				Category = TypeCategory.Enum;
-			if(typeInfo.IsException())
+			if(type.IsException())
 				Category = TypeCategory.Exception;
-			if(typeInfo.IsValueType && !typeInfo.IsEnum())
+			if(type.IsValueType && !type.IsEnum())
 				Category = TypeCategory.Struct;
 
 			if(Category == TypeCategory.Unknown)
 				Category = TypeCategory.Normal;
 
-			IsSealed = typeInfo.IsSealed;
+			IsSealed = type.IsSealed;
 
-			ClassName.AddAssemblyInfo(typeInfo);
+			ClassName.AddAssemblyInfo(type);
 
-			if(typeInfo.BaseType != null)
+			if(type.BaseType != null)
 			{
-				BaseType = new DotNetBaseType(typeInfo.BaseType);
+				BaseType = new DotNetBaseType(type.BaseType);
 			}
-			if(typeInfo.ImplementedInterfaces != null)
+
+			Type[] implementedInterfaces = type.GetInterfaces();
+			if(implementedInterfaces != null)
 			{
-				foreach(Type interfaceType in typeInfo.ImplementedInterfaces)
+				foreach(Type interfaceType in implementedInterfaces)
 				{
 					ImplementedInterfaces.Add(new DotNetBaseType(interfaceType));
 				}
 			}
 			
-			foreach(FieldInfo fieldInfo in typeInfo.DeclaredFields)
+			foreach(FieldInfo fieldInfo in type.GetDeclaredFields())
 			{
 				DotNetField field = Fields.FirstOrDefault(f => fieldInfo.Name == f.Name.LocalName);
 				if(field == null)
 					continue;
 				field.AddAssemblyInfo(fieldInfo);
 			}
-			foreach(PropertyInfo propertyInfo in typeInfo.DeclaredProperties.Where(x => x.GetMethod == null || x.GetMethod.GetParameters().Count() == 0))
+			foreach(PropertyInfo propertyInfo in type.GetDeclaredProperties().Where(x => x.GetGetMethod() == null || x.GetGetMethod().GetParameters().Count() == 0))
 			{
 				DotNetProperty property = Properties.FirstOrDefault(p => propertyInfo.Name == DotNetQualifiedName.Combine(p.Name.ExplicitInterface, p.Name.LocalName));
 				if(property == null)
 					continue;
 				property.AddAssemblyInfo(propertyInfo);
 			}
-			foreach(PropertyInfo propertyInfo in typeInfo.DeclaredProperties.Where(x => x.GetMethod != null && x.GetMethod.GetParameters().Count() > 0))
+			foreach(PropertyInfo propertyInfo in type.GetDeclaredProperties().Where(x => x.GetGetMethod() != null && x.GetGetMethod().GetParameters().Count() > 0))
 			{
 				DotNetIndexer indexer = Properties.OfType<DotNetIndexer>().Cast<DotNetIndexer>().FirstOrDefault(i => i.MatchesSignature(propertyInfo.GetGetMethod()));
 				if(indexer == null)
 					continue;
 				indexer.AddAssemblyInfo(propertyInfo);
 			}
-			foreach(MethodInfo methodInfo in typeInfo.DeclaredMethods)
+			foreach(MethodInfo methodInfo in type.GetDeclaredMethods())
 			{
 				DotNetMethod method = Methods.FirstOrDefault(m => m.MatchesSignature(methodInfo));
 				if(method == null) continue;
@@ -476,14 +503,14 @@ namespace WithoutHaste.DataFiles.DotNet
 
 				method.AddAssemblyInfo(methodInfo);
 			}
-			foreach(ConstructorInfo constructorInfo in typeInfo.DeclaredConstructors)
+			foreach(ConstructorInfo constructorInfo in type.GetDeclaredConstructors())
 			{
 				DotNetMethodConstructor method = Methods.OfType<DotNetMethodConstructor>().Cast<DotNetMethodConstructor>().FirstOrDefault(m => m.MatchesArguments(constructorInfo.GetParameters()));
 				if(method == null)
 					continue;
 				method.AddAssemblyInfo(constructorInfo);
 			}
-			foreach(EventInfo eventInfo in typeInfo.DeclaredEvents)
+			foreach(EventInfo eventInfo in type.GetDeclaredEvents())
 			{
 				DotNetEvent e = Events.FirstOrDefault(m => m.Name.LocalName == eventInfo.Name);
 				if(e == null)
@@ -491,13 +518,13 @@ namespace WithoutHaste.DataFiles.DotNet
 				e.AddAssemblyInfo(eventInfo);
 			}
 
-			foreach(TypeInfo nestedTypeInfo in typeInfo.DeclaredNestedTypes)
+			foreach(Type nestedType in type.GetDeclaredNestedTypes())
 			{
-				DotNetQualifiedName qualifiedName = DotNetQualifiedName.FromAssemblyInfo(nestedTypeInfo);
-				DotNetType nestedType = NestedTypes.FirstOrDefault(x => x.Owns(qualifiedName));
-				if(nestedType == null)
+				DotNetQualifiedName qualifiedName = DotNetQualifiedName.FromAssemblyInfo(nestedType);
+				DotNetType dotNetNestedType = NestedTypes.FirstOrDefault(x => x.Owns(qualifiedName));
+				if(dotNetNestedType == null)
 					continue;
-				nestedType.AddAssemblyInfo(typeInfo, qualifiedName);
+				dotNetNestedType.AddAssemblyInfo(type, qualifiedName);
 			}
 
 			PushGenericTypes();
