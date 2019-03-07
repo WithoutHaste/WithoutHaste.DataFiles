@@ -38,35 +38,24 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">53</Data>
+          <Data ss:Type="Number">65</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">solve all current Test errors</Data>
+          <Data ss:Type="String">? create T4 in DataFiles project that will read in DataFiles.csproj and output a csproj for each target framework
+- save to same directory
+- name like DataFiles.net20.csproj
+- update &lt;TargetFrameworkVersion&gt; line
+- update References - Nuget packages or core packages
+- update EarlyDocs - just for the highest framework
+? then write a command line script to compile each of these
+- name like WithoutHaste.DataFiles.net20.dll
+- save to normal output directory</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">Bug - Major</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2019-03-06T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
-          <Data ss:Type="Number">54</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">get .csproj Import working for DefineConstants
-move them into a reusable .targets file
-use this for WithoutHaste.DataFiles and for Test</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Feature - Minor</Data>
+          <Data ss:Type="String">Feature - Major</Data>
         </Cell>
         <Cell ss:StyleID="cellShortDate">
           <Data ss:Type="DateTime">2019-03-06T00:00:00.000</Data>
@@ -77,13 +66,31 @@ use this for WithoutHaste.DataFiles and for Test</Data>
           <Data ss:Type="Number">55</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">in Test: update commented out tests to check for which target framework is being used</Data>
+          <Data ss:Type="String">in Test: update commented out tests to check for which target framework is being used
+! Test project must target 3.5 or higher</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Test</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-06T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">53</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">solve all current Test errors</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Bug - Major</Data>
         </Cell>
         <Cell ss:StyleID="cellShortDate">
           <Data ss:Type="DateTime">2019-03-06T00:00:00.000</Data>
@@ -204,6 +211,23 @@ get this working for DataFiles</Data>
         <Cell ss:StyleID="paragraph">
           <Data ss:Type="String">verify EarlyDocs works with multi-targeting and this library
 before first publishing this library to NuGet</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-06T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">62</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">what is .Net Core vs .Net Framework?</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -486,6 +510,70 @@ could turn DotNetSettings.QualifiedNameConverter into a list or event so that an
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">64</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">installing VS 2017 Community
+- it was already installed but I wasn't using it</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-06T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-06T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">63</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">update version number
+- never mind, zero releases so far so still on version 1.0.0</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Skip</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-06T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-06T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">54</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">get .csproj Import working for DefineConstants
+move them into a reusable .targets file
+use this for WithoutHaste.DataFiles and for Test</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Minor</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-06T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-06T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -1434,7 +1522,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">61</Data>
+          <Data ss:Type="Number">65</Data>
         </Cell>
       </Row>
       <Row>

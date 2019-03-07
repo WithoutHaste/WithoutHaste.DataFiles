@@ -286,4 +286,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Import Project="$(ProjectDir)\..\MultiTargetSymbols.targets"/>
 </Project>

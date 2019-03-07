@@ -54,10 +54,6 @@ Loads .Net XML documentation from file.
 **Parameters:**  
 * **string filename**: Full path, filename, and extension.  
 
-## DotNetDocumentationFile([System.Xml.Linq.XDocument](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xdocument) document)
-
-Loads .Net XML documentation from XDocument.  
-
 # Methods
 
 ## AddAssemblyInfo(string assemblyFilename, [String[]](https://docs.microsoft.com/en-us/dotnet/api/system.array) thirdPartyAssemblyFilenames)

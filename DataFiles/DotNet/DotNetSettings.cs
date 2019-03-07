@@ -19,7 +19,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Set to null to not use any converter.
 		/// </summary>
 		/// <remarks>
-		/// Setting is only available with target framework 3.5 or higher. If setting is unavailable, it will set to <see cref="DefaultQualifiedNameConverter"/> by default.
+		/// Setting always defaults to <see cref="DefaultQualifiedNameConverter"/>.
+		/// With target frameworks 3.5 or higher, you can change this setting.
 		/// 
 		/// See <see cref="DefaultQualifiedNameConverter"/> for usage examples.
 		/// </remarks>
@@ -30,7 +31,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		///	</code>	
 		/// </example>
 #if FUNCS
-		public static Func<string, int, string> QualifiedNameConverter = null;
+		public static Func<string, int, string> QualifiedNameConverter = DefaultQualifiedNameConverter;
 #else
 		internal static Func<string, int, string> QualifiedNameConverter = DefaultQualifiedNameConverter;
 #endif
@@ -42,7 +43,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Set to null to not use any converter.
 		/// </summary>
 		/// <remarks>
-		/// Setting is only available with target framework 3.5 or higher.
+		/// Setting always defaults to null.
+		/// With target frameworks 3.5 or higher, you can change this setting.
 		/// </remarks>
 		/// <example>
 		/// <code>
