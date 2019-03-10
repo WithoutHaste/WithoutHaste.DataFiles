@@ -1,6 +1,7 @@
 DataFiles/*.cd
 DataFiles/.vs/*
 DataFiles/bin/Debug/*
+DataFiles/logs/*
 DataFiles/obj/*
 DataFiles.Excel/*.cd
 DataFiles.Excel/.vs/*

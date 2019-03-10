@@ -17,6 +17,20 @@ foreach(string version in targetFrameworkVersions)
 
 	SaveOutput("DataFiles." + netVersion + ".csproj");
 }
+
+foreach(string version in targetFrameworkVersions) 
+{
+	string netVersion = version.Replace("v", "net").Replace(".", "");
+	WriteLine("msbuild DataFiles." + netVersion + ".csproj /P:Configuration=Debug -fl -flp:logfile=logs\\DataFilesOutput." + netVersion + ".Debug.log;verbosity=normal");
+}
+SaveOutput("compileDebugProjects.bat");
+
+foreach(string version in targetFrameworkVersions) 
+{
+	string netVersion = version.Replace("v", "net").Replace(".", "");
+	WriteLine("msbuild DataFiles." + netVersion + ".csproj /P:Configuration=Release -fl -flp:logfile=logs\\DataFilesOutput." + netVersion + ".Release.log;verbosity=normal");
+}
+SaveOutput("compileReleaseProjects.bat");
 #>
 
 <#+

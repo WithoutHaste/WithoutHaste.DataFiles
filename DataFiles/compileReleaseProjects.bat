@@ -1,0 +1,13 @@
+msbuild DataFiles.net20.csproj /P:Configuration=Release -fl -flp:logfile=logs\DataFilesOutput.net20.Release.log;verbosity=normal
+msbuild DataFiles.net30.csproj /P:Configuration=Release -fl -flp:logfile=logs\DataFilesOutput.net30.Release.log;verbosity=normal
+msbuild DataFiles.net35.csproj /P:Configuration=Release -fl -flp:logfile=logs\DataFilesOutput.net35.Release.log;verbosity=normal
+msbuild DataFiles.net40.csproj /P:Configuration=Release -fl -flp:logfile=logs\DataFilesOutput.net40.Release.log;verbosity=normal
+msbuild DataFiles.net45.csproj /P:Configuration=Release -fl -flp:logfile=logs\DataFilesOutput.net45.Release.log;verbosity=normal
+msbuild DataFiles.net451.csproj /P:Configuration=Release -fl -flp:logfile=logs\DataFilesOutput.net451.Release.log;verbosity=normal
+msbuild DataFiles.net452.csproj /P:Configuration=Release -fl -flp:logfile=logs\DataFilesOutput.net452.Release.log;verbosity=normal
+msbuild DataFiles.net46.csproj /P:Configuration=Release -fl -flp:logfile=logs\DataFilesOutput.net46.Release.log;verbosity=normal
+msbuild DataFiles.net461.csproj /P:Configuration=Release -fl -flp:logfile=logs\DataFilesOutput.net461.Release.log;verbosity=normal
+msbuild DataFiles.net462.csproj /P:Configuration=Release -fl -flp:logfile=logs\DataFilesOutput.net462.Release.log;verbosity=normal
+msbuild DataFiles.net47.csproj /P:Configuration=Release -fl -flp:logfile=logs\DataFilesOutput.net47.Release.log;verbosity=normal
+msbuild DataFiles.net471.csproj /P:Configuration=Release -fl -flp:logfile=logs\DataFilesOutput.net471.Release.log;verbosity=normal
+msbuild DataFiles.net472.csproj /P:Configuration=Release -fl -flp:logfile=logs\DataFilesOutput.net472.Release.log;verbosity=normal
