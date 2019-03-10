@@ -58,7 +58,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <example><![CDATA[<member name="M:Namespace.Type.MethodName(System.Int32,System.String)"></member>]]></example>
 		public static DotNetMethod FromVisualStudioXml(XElement memberElement)
 		{
-			string signature = memberElement.Attribute("name")?.Value;
+			string signature = memberElement.GetAttributeValue("name");
 			if(signature == null)
 				return new DotNetMethod();
 

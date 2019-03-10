@@ -173,7 +173,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <example><![CDATA[<member name="T:Namespace.Type"></member>]]></example>
 		public static DotNetType FromVisualStudioXml(XElement memberElement)
 		{
-			DotNetQualifiedClassName name = DotNetQualifiedClassName.FromVisualStudioXml(memberElement.Attribute("name")?.Value);
+			DotNetQualifiedClassName name = DotNetQualifiedClassName.FromVisualStudioXml(memberElement.GetAttributeValue("name"));
 			DotNetType type = new DotNetType(name);
 			type.ParseVisualStudioXmlDocumentation(memberElement);
 			return type;

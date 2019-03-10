@@ -45,7 +45,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <example><![CDATA[<member name="P:Namespace.Type.Item(System.Int32)"></member>]]></example>
 		public static new DotNetIndexer FromVisualStudioXml(XElement memberElement)
 		{
-			string xmlName = memberElement.Attribute("name")?.Value;
+			string xmlName = memberElement.GetAttributeValue("name");
 			string xmlParameters = xmlName.Substring(xmlName.IndexOf("("));
 			xmlName = xmlName.Substring(0, xmlName.IndexOf("("));
 

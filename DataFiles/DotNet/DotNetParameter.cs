@@ -34,10 +34,22 @@ namespace WithoutHaste.DataFiles.DotNet
 		public DotNetQualifiedTypeName TypeName { get; protected set; }
 
 		/// <summary>Fully qualified data type name.</summary>
-		public string FullTypeName { get { return TypeName?.FullName; } }
+		public string FullTypeName {
+			get {
+				if(TypeName == null)
+					return null;
+				return TypeName.FullName;
+			}
+		}
 
 		/// <summary>Local data type name.</summary>
-		public string LocalTypeName { get { return TypeName?.LocalName; } }
+		public string LocalTypeName {
+			get {
+				if(TypeName == null)
+					return null;
+				return TypeName.LocalName;
+			}
+		}
 
 		/// <summary>Name of parameter. Null if not known.</summary>
 		/// <example>In <c>MethodName(int a, string b)</c>, the first parameter name is <c>a</c>.</example>

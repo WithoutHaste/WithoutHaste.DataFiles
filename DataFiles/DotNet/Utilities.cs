@@ -11,6 +11,19 @@ namespace WithoutHaste.DataFiles.DotNet
 	internal static class Utilities
 	{
 		/// <summary>
+		/// Returns the value of the attribute, or null if the attribute does not exist.
+		/// </summary>
+		internal static string GetAttributeValue(this XElement element, string attributeName)
+		{
+			if(element == null)
+				return null;
+			XAttribute attribute = element.Attribute(attributeName);
+			if(attribute == null)
+				return null;
+			return attribute.Value;
+		}
+
+		/// <summary>
 		/// Trims leading and trailing whitespaces. Will leave one leading and one trailing space, but won't add them.
 		/// </summary>
 		internal static string TrimAllowOneSpace(this string text)

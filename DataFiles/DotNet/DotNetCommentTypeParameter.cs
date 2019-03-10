@@ -37,7 +37,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			ValidateXmlTag(element, "typeparam");
 			return new DotNetCommentTypeParameter(
-				new DotNetCommentTypeParameterLink(element.Attribute("name")?.Value),
+				new DotNetCommentTypeParameterLink(element.GetAttributeValue("name")),
 				ParseSection(element)
 			);
 		}

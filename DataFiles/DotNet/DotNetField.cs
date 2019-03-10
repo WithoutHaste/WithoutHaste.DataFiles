@@ -59,7 +59,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <example><![CDATA[<member name="F:Namespace.Type.FieldName"></member>]]></example>
 		public static DotNetField FromVisualStudioXml(XElement memberElement)
 		{
-			DotNetQualifiedName name = DotNetQualifiedName.FromVisualStudioXml(memberElement.Attribute("name")?.Value);
+			DotNetQualifiedName name = DotNetQualifiedName.FromVisualStudioXml(memberElement.GetAttributeValue("name"));
 			DotNetField field = new DotNetField(name);
 			field.ParseVisualStudioXmlDocumentation(memberElement);
 			return field;

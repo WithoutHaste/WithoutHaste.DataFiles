@@ -52,7 +52,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		internal DotNetQualifiedName DuplicatesFrom {
 			get {
 				DotNetCommentDuplicate comment = FloatingComments.Comments.OfType<DotNetCommentDuplicate>().FirstOrDefault();
-				return comment?.Name;
+				if(comment == null)
+					return null;
+				return comment.Name;
 			}
 		}
 

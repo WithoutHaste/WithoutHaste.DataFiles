@@ -40,7 +40,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			ValidateXmlTag(element, "param");
 			return new DotNetCommentParameter(
-				new DotNetCommentParameterLink(element.Attribute("name")?.Value),
+				new DotNetCommentParameterLink(element.GetAttributeValue("name")),
 				ParseSection(element)
 			);
 		}

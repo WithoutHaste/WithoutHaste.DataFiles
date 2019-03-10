@@ -38,7 +38,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <example><![CDATA[<member name="P:Namespace.Type.PropertyName"></member>]]></example>
 		public static new DotNetProperty FromVisualStudioXml(XElement memberElement)
 		{
-			string xmlName = memberElement.Attribute("name")?.Value;
+			string xmlName = memberElement.GetAttributeValue("name");
 			if(xmlName.IndexOf("(") > -1)
 			{
 				return DotNetIndexer.FromVisualStudioXml(memberElement);

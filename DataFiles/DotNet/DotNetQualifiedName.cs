@@ -270,7 +270,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <example>A.B.C.LocalName</example>
 		public static implicit operator string(DotNetQualifiedName name)
 		{
-			return name?.ToString();
+			if(name == null)
+				return null;
+			return name.ToString();
 		}
 
 		/// <summary>Returns dot notation of namespaces and local name.</summary>

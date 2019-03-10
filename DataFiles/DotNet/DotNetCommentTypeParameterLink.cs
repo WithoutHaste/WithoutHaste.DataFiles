@@ -29,7 +29,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		public static new DotNetCommentTypeParameterLink FromVisualStudioXml(XElement element)
 		{
 			ValidateXmlTag(element, "typeparamref");
-			return new DotNetCommentTypeParameterLink(element.Attribute("name")?.Value, DotNetComment.GetTag(element));
+			return new DotNetCommentTypeParameterLink(element.GetAttributeValue("name"), DotNetComment.GetTag(element));
 		}
 
 		#endregion

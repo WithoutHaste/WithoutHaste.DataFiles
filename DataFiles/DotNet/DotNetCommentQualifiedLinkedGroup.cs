@@ -44,7 +44,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			ValidateXmlTag(element, new string[] { "permission", "exception", "see", "seealso" });
 			CommentTag tag = DotNetComment.GetTag(element);
 
-			DotNetCommentQualifiedLink link = DotNetCommentQualifiedLink.FromVisualStudioXml(element.Attribute("cref")?.Value);
+			DotNetCommentQualifiedLink link = DotNetCommentQualifiedLink.FromVisualStudioXml(element.GetAttributeValue("cref"));
 			List<DotNetComment> comments = ParseSection(element);
 
 			if(link is DotNetCommentMethodLink)
