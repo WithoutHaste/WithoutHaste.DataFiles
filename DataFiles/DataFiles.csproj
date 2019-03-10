@@ -135,6 +135,17 @@
   </PropertyGroup>
   <ItemGroup>
     <!--<EarlyDocsInclude Include="$(ProjectDir)$(OutDir)EPPlus.dll"></EarlyDocsInclude>-->
+    <Content Include="generateProjectFiles.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>generateProjectFiles.txt</LastGenOutput>
+    </Content>
+    <Content Include="generateSolutionFiles.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>generateSolutionFiles.txt</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="packages\EarlyDocs.1.0.0\build\EarlyDocs.targets" Condition="Exists('packages\EarlyDocs.1.0.0\build\EarlyDocs.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -150,5 +161,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <Import Project="$(ProjectDir)\..\MultiTargetSymbols.targets"/>
+  <Import Project="$(ProjectDir)\..\MultiTargetSymbols.targets" />
 </Project>

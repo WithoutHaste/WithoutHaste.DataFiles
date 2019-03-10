@@ -30,6 +30,13 @@ private void GenerateOutput(string version, string[] lines)
 			outputLine = outputLine.Replace("v2.0", version);
 		}
 
+		//no generated project should produce its own T4 generated projects
+		if(outputLine.Contains("Files.tt"))
+		{
+			i += 3;
+			continue;
+		}
+
 		//System.Linq starts with v3.5
 		//System.Xml.Linq starts with v3.5
 		//System.Core library starts with v3.5
