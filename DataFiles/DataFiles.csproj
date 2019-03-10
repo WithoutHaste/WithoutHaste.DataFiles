@@ -139,9 +139,19 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>generateProjectFiles.txt</LastGenOutput>
     </Content>
+    <Content Include="generateProjectFiles.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>generateProjectFiles.tt</DependentUpon>
+    </Content>
     <Content Include="generateSolutionFiles.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>generateSolutionFiles.txt</LastGenOutput>
+    </Content>
+    <Content Include="generateSolutionFiles.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>generateSolutionFiles.tt</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

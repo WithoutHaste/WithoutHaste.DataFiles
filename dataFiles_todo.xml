@@ -38,18 +38,28 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">65</Data>
+          <Data ss:Type="Number">67</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">? create T4 in DataFiles project that will read in DataFiles.csproj and output a csproj for each target framework
-- save to same directory
-- name like DataFiles.net20.csproj
-- update &lt;TargetFrameworkVersion&gt; line
-- update References - Nuget packages or core packages
-- update EarlyDocs - just for the highest framework
-? then write a command line script to compile each of these
-- name like WithoutHaste.DataFiles.net20.dll
-- save to normal output directory</Data>
+          <Data ss:Type="String">remove .Net 6.0 Null Conditional operators from code base
+"object?.attribute"</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Bug - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-10T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">66</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">script to compile all targeted versions of DataFiles</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -58,7 +68,7 @@
           <Data ss:Type="String">Feature - Major</Data>
         </Cell>
         <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2019-03-06T00:00:00.000</Data>
+          <Data ss:Type="DateTime">2019-03-10T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -510,6 +520,34 @@ could turn DotNetSettings.QualifiedNameConverter into a list or event so that an
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">65</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">? create T4 in DataFiles project that will read in DataFiles.csproj and output a csproj for each target framework
+- save to same directory
+- name like DataFiles.net20.csproj
+- update &lt;TargetFrameworkVersion&gt; line
+- update References - Nuget packages or core packages
+- update EarlyDocs - just for the highest framework
+? then write a command line script to compile each of these
+- name like WithoutHaste.DataFiles.net20.dll
+- save to normal output directory</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-06T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-10T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -1522,7 +1560,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">65</Data>
+          <Data ss:Type="Number">67</Data>
         </Cell>
       </Row>
       <Row>

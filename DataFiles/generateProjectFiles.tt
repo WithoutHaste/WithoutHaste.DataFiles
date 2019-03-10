@@ -12,15 +12,15 @@ string[] modelLines = LoadFile(modelProjectFileName);
 
 foreach(string version in targetFrameworkVersions) 
 {
-	GenerateOutput(version, modelLines);
-
 	string netVersion = version.Replace("v", "net").Replace(".", "");
+	GenerateOutput(version, netVersion, modelLines);
+
 	SaveOutput("DataFiles." + netVersion + ".csproj");
 }
 #>
 
 <#+
-private void GenerateOutput(string version, string[] lines)
+private void GenerateOutput(string version, string netVersion, string[] lines)
 {
 	for(int i = 0; i < lines.Length; i++)
 	{
@@ -29,11 +29,20 @@ private void GenerateOutput(string version, string[] lines)
 		{
 			outputLine = outputLine.Replace("v2.0", version);
 		}
+		if(outputLine.Contains("<AssemblyName>"))
+		{
+			outputLine = outputLine.Replace("DataFiles", "DataFiles." + netVersion);
+		}
 
 		//no generated project should produce its own T4 generated projects
-		if(outputLine.Contains("Files.tt"))
+		if(outputLine.Contains("ProjectFiles.tt") || outputLine.Contains("SolutionFiles.tt"))
 		{
 			i += 3;
+			continue;
+		}
+		if(outputLine.Contains("ProjectFiles.txt") || outputLine.Contains("SolutionFiles.txt"))
+		{
+			i += 4;
 			continue;
 		}
 

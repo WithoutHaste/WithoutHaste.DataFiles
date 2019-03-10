@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WithoutHaste.DataFiles</RootNamespace>
-    <AssemblyName>WithoutHaste.DataFiles</AssemblyName>
+    <AssemblyName>WithoutHaste.DataFiles.net20</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
