@@ -235,7 +235,8 @@ namespace WithoutHaste.DataFiles.DotNet
 #if EXTENSION_METHODS
 		internal static bool IsExtension(this MethodInfo methodInfo)
 		{
-			return methodInfo.CustomAttributes.Any(attr => attr.AttributeType == typeof(System.Runtime.CompilerServices.ExtensionAttribute));
+			object extensionAttribute = methodInfo.GetCustomAttributes(false).OfType<System.Runtime.CompilerServices.ExtensionAttribute>().FirstOrDefault();
+			return (extensionAttribute != null);
 		}
 #endif
 
