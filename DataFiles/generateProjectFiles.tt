@@ -1,0 +1,93 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ output extension=".txt" #>
+<#
+string modelProjectFileName = this.Host.ResolvePath("DataFiles.csproj");
+string[] targetFrameworkVersions = new string[] {"v2.0", "v3.0", "v3.5", "v4.0", "v4.5", "v4.5.1", "v4.5.2", "v4.6", "v4.6.1", "v4.6.2", "v4.7", "v4.7.1", "v4.7.2"};
+
+string[] modelLines = LoadFile(modelProjectFileName);
+
+foreach(string version in targetFrameworkVersions) 
+{
+	GenerateOutput(version, modelLines);
+
+	string netVersion = version.Replace("v", "net").Replace(".", "");
+	SaveOutput("DataFiles." + netVersion + ".csproj");
+}
+#>
+
+<#+
+private void GenerateOutput(string version, string[] lines)
+{
+	for(int i = 0; i < lines.Length; i++)
+	{
+		string outputLine = lines[i];
+		if(outputLine.Contains("<TargetFrameworkVersion>v2.0</TargetFrameworkVersion>"))
+		{
+			outputLine = outputLine.Replace("v2.0", version);
+		}
+
+		//System.Linq starts with v3.5
+		//System.Xml.Linq starts with v3.5
+		//System.Core library starts with v3.5
+		bool is35OrHigher = (version != "v2.0" && version != "v3.0");
+		if(is35OrHigher)
+		{
+			if(outputLine.Contains("<Reference Include=\"System\""))
+			{
+				WriteLine(CurrentIndent + "    <Reference Include=\"System.Core\" />");
+			}
+			if(outputLine.Contains("<Reference Include=\"LINQlone"))
+			{
+				WriteLine(CurrentIndent + "    <Reference Include=\"System.Linq\" />");
+				i += 3;
+				continue;				
+			}
+			if(outputLine.Contains("<Reference Include=\"System.Xml.Linq"))
+			{
+				WriteLine(CurrentIndent + "    <Reference Include=\"System.Xml.Linq\" />");
+				i += 3;
+				continue;				
+			}
+		}
+
+		//I only want documentation generated from the version I'm used to working in - 4.5
+		bool is45 = (version == "v4.5");
+		if(!is45)
+		{
+			if(outputLine.Contains("<DocumentationFile>"))
+			{
+				continue;
+			}
+			if(outputLine.Contains("<EarlyDocsSkip>"))
+			{
+				WriteLine(CurrentIndent + "    <EarlyDocsSkip>True</EarlyDocsSkip>");
+				continue;
+			}
+		}
+
+		WriteLine(CurrentIndent + outputLine);
+	}
+}
+#>
+
+<#+
+private string[] LoadFile(string fileName)
+{
+	return File.ReadLines(fileName).ToArray();
+}
+#>
+
+<#+
+private void SaveOutput(string outputFileName) 
+{
+	string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
+	string outputFilePath = Path.Combine(templateDirectory, outputFileName);
+	File.WriteAllText(outputFilePath, this.GenerationEnvironment.ToString()); 
+	this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
+}
+#>
+
