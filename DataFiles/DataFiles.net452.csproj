@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\WithoutHaste.DataFiles.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\WithoutHaste.DataFiles.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Linq" />
@@ -124,7 +126,7 @@
     <EarlyDocsDllFile>$(ProjectDir)$(OutDir)WithoutHaste.DataFiles.dll</EarlyDocsDllFile>
     <EarlyDocsXmlFile>$(ProjectDir)$(OutDir)WithoutHaste.DataFiles.XML</EarlyDocsXmlFile>
     <EarlyDocsOutputDir>$(ProjectDir)..\documentation\</EarlyDocsOutputDir>
-    <EarlyDocsSkip>True</EarlyDocsSkip>
+    <!--<EarlyDocsSkip>True</EarlyDocsSkip>-->
   </PropertyGroup>
   <ItemGroup>
     <!--<EarlyDocsInclude Include="$(ProjectDir)$(OutDir)EPPlus.dll"></EarlyDocsInclude>-->

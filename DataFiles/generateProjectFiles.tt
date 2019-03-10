@@ -84,9 +84,9 @@ private void GenerateOutput(string version, string netVersion, string[] lines)
 			}
 		}
 
-		//I only want documentation generated from the version I'm used to working in - 4.5
-		bool is45 = (version == "v4.5");
-		if(!is45)
+		//I only want documentation generated from the version I'm used to working in - 4.5.2
+		bool is452 = (version == "v4.5.2");
+		if(!is452)
 		{
 			if(outputLine.Contains("<DocumentationFile>"))
 			{
