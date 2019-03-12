@@ -9,4 +9,5 @@ DataFiles.Excel/bin/Debug/*
 DataFiles.Excel/obj/*
 DataFilesTest/.vs/*
 DataFilesTest/bin/*
+DataFilesTest/logs/*
 DataFilesTest/obj/*

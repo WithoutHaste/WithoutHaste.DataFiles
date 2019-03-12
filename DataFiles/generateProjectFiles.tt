@@ -68,11 +68,10 @@ private void GenerateOutput(string version, string netVersion, string[] lines)
 		{
 			if(outputLine.Contains("<Reference Include=\"System\""))
 			{
-				WriteLine(CurrentIndent + "    <Reference Include=\"System.Core\" />");
+				WriteLine(CurrentIndent + "    <Reference Include=\"System.Core\" />"); //System.Core includes namespace System.Linq
 			}
 			if(outputLine.Contains("<Reference Include=\"LINQlone"))
 			{
-				WriteLine(CurrentIndent + "    <Reference Include=\"System.Linq\" />");
 				i += 3;
 				continue;				
 			}

@@ -35,7 +35,6 @@
     <DocumentationFile>bin\Release\WithoutHaste.DataFiles.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System.Linq" />
     <Reference Include="System.Core" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />

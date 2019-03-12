@@ -38,6 +38,24 @@
       </Row>
       <Row>
         <Cell>
+          <Data ss:Type="Number">71</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">move testing of Excel to its own project
+so it can be on its own target framework</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-12T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
           <Data ss:Type="Number">68</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -48,7 +66,7 @@ The "RunEarlyDocs" task could not be loaded from the assembly E:\GitHub\WithoutH
           <Data ss:Type="String">Todo</Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">Bug - Major</Data>
+          <Data ss:Type="String">Task</Data>
         </Cell>
         <Cell ss:StyleID="cellShortDate">
           <Data ss:Type="DateTime">2019-03-10T00:00:00.000</Data>
@@ -503,6 +521,52 @@ could turn DotNetSettings.QualifiedNameConverter into a list or event so that an
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">70</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">building DataFiles
+4.0 cannot targer System.Linq ?
+fixed it - System.Core includes namespace System.Linq, there is no System.Linq.dll to reference</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-12T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-12T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">69</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">installing framework .Net 4.6.2 on PC
+installing framework .Net 4.7 on PC
+.Net 4.7.1 seems to work
+installing framework .Net 4.7.2 on PC
+https://docs.microsoft.com/en-us/dotnet/framework/install/guide-for-developers</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-12T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-12T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -1584,7 +1648,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">68</Data>
+          <Data ss:Type="Number">71</Data>
         </Cell>
       </Row>
       <Row>

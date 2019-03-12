@@ -17,6 +17,13 @@ foreach(string version in targetFrameworkVersions)
 
 	SaveOutput("../DataFilesTest/DataFilesTest." + netVersion + ".csproj");
 }
+
+foreach(string version in targetFrameworkVersions) 
+{
+	string netVersion = version.Replace("v", "net").Replace(".", "");
+	WriteLine("msbuild DataFilesTest." + netVersion + ".csproj /P:Configuration=Debug -fl -flp:logfile=logs\\DataFilesTestOutput." + netVersion + ".Debug.log;verbosity=normal");
+}
+SaveOutput("../DataFilesTest/compileDebugProjects.bat");
 #>
 
 <#+
@@ -52,11 +59,10 @@ private void GenerateOutput(string version, string netVersion, string[] lines)
 		{
 			if(outputLine.Contains("<Reference Include=\"System\""))
 			{
-				WriteLine(CurrentIndent + "    <Reference Include=\"System.Core\" />");
+				WriteLine(CurrentIndent + "    <Reference Include=\"System.Core\" />"); //System.Core includes namespace System.Linq
 			}
 			if(outputLine.Contains("<Reference Include=\"LINQlone"))
 			{
-				WriteLine(CurrentIndent + "    <Reference Include=\"System.Linq\" />");
 				i += 3;
 				continue;				
 			}
@@ -72,11 +78,13 @@ private void GenerateOutput(string version, string netVersion, string[] lines)
 		if(outputLine.Contains("MultiTargetSymbols.targets"))
 		{
 			string justNumbers = netVersion.Replace("net", "");
-			WriteLine(CurrentIndent + "  <DefineConstants>$(DefineConstants);DATAFILES_TARGET_" + justNumbers + "</DefineConstants>");
+			WriteLine(CurrentIndent + "  <PropertyGroup>");
+			WriteLine(CurrentIndent + "    <DefineConstants>$(DefineConstants);DATAFILES_TARGET_" + justNumbers + "</DefineConstants>");
 			if(is35OrHigher)
 			{
-				WriteLine(CurrentIndent + "  <DefineConstants>$(DefineConstants);DATAFILES_TARGET_35ORHIGHER</DefineConstants>");
+				WriteLine(CurrentIndent + "    <DefineConstants>$(DefineConstants);DATAFILES_TARGET_35ORHIGHER</DefineConstants>");
 			}
+			WriteLine(CurrentIndent + "  </PropertyGroup>");
 		}
 
 		WriteLine(CurrentIndent + outputLine);
