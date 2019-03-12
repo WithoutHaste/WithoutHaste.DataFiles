@@ -40,7 +40,7 @@ namespace DataFilesTest
 			Type type = typeof(OneGenericClass<>);
 			//act
 			DotNetQualifiedClassName result = DotNetQualifiedName.FromAssemblyInfo(type) as DotNetQualifiedClassName;
-			result.AddAssemblyInfo(type.GetTypeInfo());
+			result.AddAssemblyInfo(type);
 			//assert
 			Assert.AreEqual(expectedFullName, result.FullName);
 		}
@@ -65,7 +65,7 @@ namespace DataFilesTest
 			Type type = typeof(TwoGenericClass<,>);
 			//act
 			DotNetQualifiedClassName result = DotNetQualifiedName.FromAssemblyInfo(type) as DotNetQualifiedClassName;
-			result.AddAssemblyInfo(type.GetTypeInfo());
+			result.AddAssemblyInfo(type);
 			//assert
 			Assert.AreEqual(expectedFullName, result.FullName);
 		}
@@ -90,7 +90,7 @@ namespace DataFilesTest
 			Type type = typeof(TwoGenericClass<,>.NestedClass);
 			//act
 			DotNetQualifiedClassName result = DotNetQualifiedName.FromAssemblyInfo(type) as DotNetQualifiedClassName;
-			result.AddAssemblyInfo(type.GetTypeInfo());
+			result.AddAssemblyInfo(type);
 			//assert
 			Assert.AreEqual(expectedFullName, result.FullName);
 		}

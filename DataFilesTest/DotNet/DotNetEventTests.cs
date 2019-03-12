@@ -25,7 +25,7 @@ namespace DataFilesTest
 			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:A'></member>", LoadOptions.PreserveWhitespace));
 			dotNetType.AddMember(DotNetEvent.FromVisualStudioXml(XElement.Parse("<member name='E:A.EventA'></member>", LoadOptions.PreserveWhitespace)));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			//assert
 			Assert.AreEqual(1, dotNetType.Events.Count);
 			Assert.AreEqual("System.EventHandler", dotNetType.Events[0].FullTypeName);

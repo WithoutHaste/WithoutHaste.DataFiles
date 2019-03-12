@@ -172,14 +172,13 @@ namespace DataFilesTest
 			XElement methodXmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.NormalClass.MethodOneGeneric``1' />", LoadOptions.PreserveWhitespace);
 			string expectedFullName = "DataFilesTest.DotNetMethodTests.NormalClass.MethodOneGeneric<CustomA>";
 			Type type = typeof(NormalClass);
-			TypeInfo typeInfo = type.GetTypeInfo();
 			//act
 			DotNetType typeResult = DotNetType.FromVisualStudioXml(typeXmlElement);
 			DotNetMethod methodResult = DotNetMethod.FromVisualStudioXml(methodXmlElement);
 			typeResult.AddMember(methodResult);
 
-			Assert.IsTrue(methodResult.MatchesSignature(typeInfo.DeclaredMethods.First(m => m.Name == "MethodOneGeneric")));
-			typeResult.AddAssemblyInfo(typeInfo, typeResult.Name);
+			Assert.IsTrue(methodResult.MatchesSignature(type.GetDeclaredMethods().First(m => m.Name == "MethodOneGeneric")));
+			typeResult.AddAssemblyInfo(type, typeResult.Name);
 			//assert
 			Assert.AreEqual(expectedFullName, typeResult.Methods[0].Name.FullName);
 		}
@@ -228,7 +227,7 @@ namespace DataFilesTest
 			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("DataFilesTest.DotNetMethodTests.NormalClass"));
 			dotNetType.AddMember(DotNetMethod.FromVisualStudioXml(xmlMemberElement));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			DotNetMethod result = dotNetType.Methods[0];
 			//assert
 			Assert.AreEqual(1, result.MethodName.Parameters.Count);
@@ -247,7 +246,7 @@ namespace DataFilesTest
 			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("DataFilesTest.DotNetMethodTests.NormalClass"));
 			dotNetType.AddMember(DotNetMethod.FromVisualStudioXml(xmlMemberElement));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			DotNetMethod result = dotNetType.Methods[0];
 			//assert
 			Assert.AreEqual(1, result.MethodName.Parameters.Count);
@@ -266,7 +265,7 @@ namespace DataFilesTest
 			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("DataFilesTest.DotNetMethodTests.NormalClass"));
 			dotNetType.AddMember(DotNetMethod.FromVisualStudioXml(xmlMemberElement));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			DotNetMethod result = dotNetType.Methods[0];
 			//assert
 			Assert.AreEqual(2, result.MethodName.Parameters.Count);
@@ -410,7 +409,7 @@ namespace DataFilesTest
 			//arrange
 			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodTests.AbstractClass.MethodProtected()'></member>", LoadOptions.PreserveWhitespace);
 			Type type = typeof(AbstractClass);
-			MethodInfo methodInfo = type.GetTypeInfo().DeclaredMethods.First(m => m.Name == "MethodProtected");
+			MethodInfo methodInfo = type.GetDeclaredMethods().First(m => m.Name == "MethodProtected");
 			//act
 			DotNetMethod result = DotNetMethod.FromVisualStudioXml(xmlElement);
 			result.AddAssemblyInfo(methodInfo);
@@ -447,7 +446,7 @@ namespace DataFilesTest
 			//arrange
 			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.StaticTestClass.MethodExtension(System.String,System.String)'></member>", LoadOptions.PreserveWhitespace);
 			Type type = typeof(StaticTestClass);
-			MethodInfo methodInfo = type.GetTypeInfo().DeclaredMethods.First(m => m.Name == "MethodExtension");
+			MethodInfo methodInfo = type.GetDeclaredMethods().First(m => m.Name == "MethodExtension");
 			//act
 			DotNetMethod result = DotNetMethod.FromVisualStudioXml(xmlElement);
 			result.AddAssemblyInfo(methodInfo);

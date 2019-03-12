@@ -384,11 +384,11 @@ namespace DataFilesTest
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			DotNetType inheritanceTypeA = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassA");
-			inheritanceTypeA.AddAssemblyInfo(typeof(InheritanceClassA).GetTypeInfo(), inheritanceTypeA.Name);
+			inheritanceTypeA.AddAssemblyInfo(typeof(InheritanceClassA), inheritanceTypeA.Name);
 			DotNetType inheritanceTypeB = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassB");
-			inheritanceTypeB.AddAssemblyInfo(typeof(InheritanceClassB).GetTypeInfo(), inheritanceTypeB.Name);
+			inheritanceTypeB.AddAssemblyInfo(typeof(InheritanceClassB), inheritanceTypeB.Name);
 			DotNetType inheritanceTypeC = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceInterfaceC");
-			inheritanceTypeC.AddAssemblyInfo(typeof(InheritanceInterfaceC).GetTypeInfo(), inheritanceTypeC.Name);
+			inheritanceTypeC.AddAssemblyInfo(typeof(InheritanceInterfaceC), inheritanceTypeC.Name);
 			xmlDocumentation.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(inheritanceTypeA.SummaryComments[0], inheritanceTypeB.SummaryComments[0]);
@@ -408,15 +408,15 @@ namespace DataFilesTest
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			DotNetType inheritanceTypeA = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassA");
-			inheritanceTypeA.AddAssemblyInfo(typeof(InheritanceClassA).GetTypeInfo(), inheritanceTypeA.Name);
+			inheritanceTypeA.AddAssemblyInfo(typeof(InheritanceClassA), inheritanceTypeA.Name);
 			DotNetType inheritanceTypeB = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassB");
-			inheritanceTypeB.AddAssemblyInfo(typeof(InheritanceClassB).GetTypeInfo(), inheritanceTypeB.Name);
+			inheritanceTypeB.AddAssemblyInfo(typeof(InheritanceClassB), inheritanceTypeB.Name);
 			DotNetType inheritanceTypeC = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceInterfaceC");
-			inheritanceTypeC.AddAssemblyInfo(typeof(InheritanceInterfaceC).GetTypeInfo(), inheritanceTypeC.Name);
+			inheritanceTypeC.AddAssemblyInfo(typeof(InheritanceInterfaceC), inheritanceTypeC.Name);
 			DotNetType inheritanceTypeD = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassD");
-			inheritanceTypeD.AddAssemblyInfo(typeof(InheritanceClassD).GetTypeInfo(), inheritanceTypeD.Name);
+			inheritanceTypeD.AddAssemblyInfo(typeof(InheritanceClassD), inheritanceTypeD.Name);
 			DotNetType inheritanceTypeE = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassE");
-			inheritanceTypeE.AddAssemblyInfo(typeof(InheritanceClassE).GetTypeInfo(), inheritanceTypeE.Name);
+			inheritanceTypeE.AddAssemblyInfo(typeof(InheritanceClassE), inheritanceTypeE.Name);
 			xmlDocumentation.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(inheritanceTypeA.SummaryComments[0], inheritanceTypeB.SummaryComments[0]);
@@ -446,11 +446,11 @@ namespace DataFilesTest
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			DotNetType inheritanceTypeF = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceInterfaceF");
-			inheritanceTypeF.AddAssemblyInfo(typeof(InheritanceInterfaceF).GetTypeInfo(), inheritanceTypeF.Name);
+			inheritanceTypeF.AddAssemblyInfo(typeof(InheritanceInterfaceF), inheritanceTypeF.Name);
 			DotNetType inheritanceTypeG = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceInterfaceG");
-			inheritanceTypeG.AddAssemblyInfo(typeof(InheritanceInterfaceG).GetTypeInfo(), inheritanceTypeG.Name);
+			inheritanceTypeG.AddAssemblyInfo(typeof(InheritanceInterfaceG), inheritanceTypeG.Name);
 			DotNetType inheritanceTypeH = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassH");
-			inheritanceTypeH.AddAssemblyInfo(typeof(InheritanceClassH).GetTypeInfo(), inheritanceTypeH.Name);
+			inheritanceTypeH.AddAssemblyInfo(typeof(InheritanceClassH), inheritanceTypeH.Name);
 			xmlDocumentation.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(inheritanceTypeG.Properties[0].SummaryComments[0], inheritanceTypeH.Properties.First(p => p.Name.LocalName == "PropertyA").SummaryComments[0]);
@@ -464,7 +464,7 @@ namespace DataFilesTest
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			DotNetType inheritanceTypeA = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassA");
-			inheritanceTypeA.AddAssemblyInfo(typeof(InheritanceClassA).GetTypeInfo(), inheritanceTypeA.Name);
+			inheritanceTypeA.AddAssemblyInfo(typeof(InheritanceClassA), inheritanceTypeA.Name);
 			xmlDocumentation.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(CommentTag.InheritDoc, inheritanceTypeA.FloatingComments[0].Tag);
@@ -480,9 +480,9 @@ namespace DataFilesTest
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			DotNetType inheritanceTypeI = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassI");
-			inheritanceTypeI.AddAssemblyInfo(typeof(InheritanceClassI).GetTypeInfo(), inheritanceTypeI.Name);
+			inheritanceTypeI.AddAssemblyInfo(typeof(InheritanceClassI), inheritanceTypeI.Name);
 			DotNetType inheritanceTypeJ = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassJ");
-			inheritanceTypeJ.AddAssemblyInfo(typeof(InheritanceClassJ).GetTypeInfo(), inheritanceTypeJ.Name);
+			inheritanceTypeJ.AddAssemblyInfo(typeof(InheritanceClassJ), inheritanceTypeJ.Name);
 			xmlDocumentation.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(inheritanceTypeI.Methods[0].SummaryComments[0], inheritanceTypeJ.Methods[0].SummaryComments[0]);
@@ -496,11 +496,11 @@ namespace DataFilesTest
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			DotNetType inheritanceTypeF = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceInterfaceF");
-			inheritanceTypeF.AddAssemblyInfo(typeof(InheritanceInterfaceF).GetTypeInfo(), inheritanceTypeF.Name);
+			inheritanceTypeF.AddAssemblyInfo(typeof(InheritanceInterfaceF), inheritanceTypeF.Name);
 			DotNetType inheritanceTypeG = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceInterfaceG");
-			inheritanceTypeG.AddAssemblyInfo(typeof(InheritanceInterfaceG).GetTypeInfo(), inheritanceTypeG.Name);
+			inheritanceTypeG.AddAssemblyInfo(typeof(InheritanceInterfaceG), inheritanceTypeG.Name);
 			DotNetType inheritanceTypeH2 = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassH2");
-			inheritanceTypeH2.AddAssemblyInfo(typeof(InheritanceClassH2).GetTypeInfo(), inheritanceTypeH2.Name);
+			inheritanceTypeH2.AddAssemblyInfo(typeof(InheritanceClassH2), inheritanceTypeH2.Name);
 			xmlDocumentation.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(inheritanceTypeF.Properties[0].SummaryComments[0], inheritanceTypeH2.Properties.First(p => p.Name.ExplicitInterface.LocalName == "InheritanceInterfaceF").SummaryComments[0]);

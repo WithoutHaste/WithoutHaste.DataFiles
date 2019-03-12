@@ -29,11 +29,10 @@ namespace DataFilesTest
 			//arrange
 			XElement xmlElement = XElement.Parse("<member name='T:DataFileTest.DotNetDelegateTests.GlobalDelegate' />", LoadOptions.PreserveWhitespace);
 			Type type = typeof(GlobalDelegate);
-			TypeInfo delegateInfo = type.GetTypeInfo();
 			//act
 			DotNetType typeResult = DotNetType.FromVisualStudioXml(xmlElement);
 			DotNetDelegate delegateResult = typeResult.ToDelegate(typeResult.Name);
-			delegateResult.AddAssemblyInfo(delegateInfo);
+			delegateResult.AddAssemblyInfo(type);
 			//assert
 			Assert.AreEqual(2, delegateResult.MethodName.Parameters.Count);
 			Assert.AreEqual("a", delegateResult.MethodName.Parameters[0].Name);

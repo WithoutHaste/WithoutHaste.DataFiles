@@ -24,12 +24,11 @@ namespace DataFilesTest
 			XElement typeXmlElement = XElement.Parse("<member name='T:DataFilesTest.DotNetReferenceMethodGenericTests.ClassGeneric`1' />", LoadOptions.PreserveWhitespace);
 			XElement methodXmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetReferenceMethodGenericTests.ClassGeneric`1.MethodB``1(`0,``0)' />", LoadOptions.PreserveWhitespace);
 			Type type = typeof(ClassGeneric<>);
-			TypeInfo typeInfo = type.GetTypeInfo();
 			//act
 			DotNetType typeResult = DotNetType.FromVisualStudioXml(typeXmlElement);
 			DotNetMethod methodResult = DotNetMethod.FromVisualStudioXml(methodXmlElement);
 			typeResult.AddMember(methodResult);
-			typeResult.AddAssemblyInfo(typeInfo, typeResult.Name);
+			typeResult.AddAssemblyInfo(type, typeResult.Name);
 			//assert
 			Assert.AreEqual(MethodCategory.Normal, methodResult.Category);
 			Assert.AreEqual("Apple", methodResult.MethodName.Parameters[0].TypeName);

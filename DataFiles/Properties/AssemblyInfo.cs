@@ -16,6 +16,19 @@ using System.Runtime.InteropServices;
 
 // Set test project access
 [assembly:InternalsVisibleTo("DataFilesTest")]
+[assembly:InternalsVisibleTo("DataFilesTest.net20")]
+[assembly:InternalsVisibleTo("DataFilesTest.net30")]
+[assembly:InternalsVisibleTo("DataFilesTest.net35")]
+[assembly:InternalsVisibleTo("DataFilesTest.net40")]
+[assembly:InternalsVisibleTo("DataFilesTest.net45")]
+[assembly:InternalsVisibleTo("DataFilesTest.net451")]
+[assembly:InternalsVisibleTo("DataFilesTest.net452")]
+[assembly:InternalsVisibleTo("DataFilesTest.net46")]
+[assembly:InternalsVisibleTo("DataFilesTest.net461")]
+[assembly:InternalsVisibleTo("DataFilesTest.net462")]
+[assembly:InternalsVisibleTo("DataFilesTest.net47")]
+[assembly:InternalsVisibleTo("DataFilesTest.net471")]
+[assembly:InternalsVisibleTo("DataFilesTest.net472")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 

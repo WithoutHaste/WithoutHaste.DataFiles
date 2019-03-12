@@ -27,7 +27,7 @@ namespace DataFilesTest
 			string filename = "data/DotNetCommentInherit_TypeFromBaseType.xml";
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
-			file.Types.First(t => t.Name.LocalName == "DerivedType").AddAssemblyInfo(typeof(DerivedType).GetTypeInfo(), new DotNetQualifiedName("DataFilesTest", "DotNetCommentInheritTests", "DerivedType"));
+			file.Types.First(t => t.Name.LocalName == "DerivedType").AddAssemblyInfo(typeof(DerivedType), new DotNetQualifiedName("DataFilesTest", "DotNetCommentInheritTests", "DerivedType"));
 			file.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(2, file.Types.Count);
@@ -41,7 +41,7 @@ namespace DataFilesTest
 			string filename = "data/DotNetCommentInherit_TypeFromBaseType.xml";
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
-			file.Types.First(t => t.Name.LocalName == "DerivedType").AddAssemblyInfo(typeof(DerivedType).GetTypeInfo(), new DotNetQualifiedName("DataFilesTest", "DotNetCommentInheritTests", "DerivedType"));
+			file.Types.First(t => t.Name.LocalName == "DerivedType").AddAssemblyInfo(typeof(DerivedType), new DotNetQualifiedName("DataFilesTest", "DotNetCommentInheritTests", "DerivedType"));
 			file.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(2, file.Types.Count);
@@ -55,7 +55,7 @@ namespace DataFilesTest
 			string filename = "data/DotNetCommentInherit_TypeFromBaseType.xml";
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
-			file.Types.First(t => t.Name.LocalName == "DerivedType").AddAssemblyInfo(typeof(DerivedType).GetTypeInfo(), new DotNetQualifiedName("DataFilesTest", "DotNetCommentInheritTests", "DerivedType"));
+			file.Types.First(t => t.Name.LocalName == "DerivedType").AddAssemblyInfo(typeof(DerivedType), new DotNetQualifiedName("DataFilesTest", "DotNetCommentInheritTests", "DerivedType"));
 			file.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(2, file.Types.Count);
@@ -69,7 +69,7 @@ namespace DataFilesTest
 			string filename = "data/DotNetCommentInherit_TypeFromBaseType.xml";
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
-			file.Types.First(t => t.Name.LocalName == "DerivedType").AddAssemblyInfo(typeof(DerivedType).GetTypeInfo(), new DotNetQualifiedName("DataFilesTest", "DotNetCommentInheritTests", "DerivedType"));
+			file.Types.First(t => t.Name.LocalName == "DerivedType").AddAssemblyInfo(typeof(DerivedType), new DotNetQualifiedName("DataFilesTest", "DotNetCommentInheritTests", "DerivedType"));
 			file.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(2, file.Types.Count);
@@ -83,7 +83,7 @@ namespace DataFilesTest
 			string filename = "data/DotNetCommentInherit_TypeFromBaseType.xml";
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
-			file.Types.First(t => t.Name.LocalName == "DerivedType").AddAssemblyInfo(typeof(DerivedType).GetTypeInfo(), new DotNetQualifiedName("DataFilesTest", "DotNetCommentInheritTests", "DerivedType"));
+			file.Types.First(t => t.Name.LocalName == "DerivedType").AddAssemblyInfo(typeof(DerivedType), new DotNetQualifiedName("DataFilesTest", "DotNetCommentInheritTests", "DerivedType"));
 			file.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(2, file.Types.Count);

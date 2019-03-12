@@ -35,9 +35,12 @@ private void GenerateOutput(string version, string netVersion, string[] lines)
 		if(outputLine.Contains("<TargetFrameworkVersion>"))
 		{
 			string testVersion = version;
-			if(testVersion == "v2.0" || testVersion == "v3.0")
+			if(testVersion == "v2.0" || testVersion == "v3.0" || testVersion == "v3.5")
 			{
-				testVersion = "v3.5"; //minimum target framework for a unit test project
+				//3.5 is listed as the minimum for unit test projects
+				//but System.Threading.Tasks type is in 4.0
+				//so using minimum of 4.0
+				testVersion = "v4.0"; //minimum target framework for a unit test project
 			}
 
 			outputLine = outputLine.Replace("v4.5.2", testVersion);
