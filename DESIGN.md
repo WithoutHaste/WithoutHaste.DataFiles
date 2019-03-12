@@ -29,3 +29,18 @@ Library LINQlone does include its own 2.0 Func object.
 DotNetSettings.QualifiedNameConverter and AdditionalQualifiedNameConverter are Func-types. I don't want users to have to use the same 2.0 compatibility library I'm using.
 
 Instead, I'll make these settings only available with frameworks 3.5 and higher.
+
+## Building
+
+After making changes to the solution: re-run generateSolutionFiles.tt
+
+After making changes to the DataFiles project: re-run generateProjectFiles.tt
+
+After making changes to the DataFilesTest project: re-run generateTestProjectFiles.tt
+
+To build and test all targeted versions:  
+1) Command Prompt: DataFiles folder: compileDebugProjects.bat  
+2) Command Prompt: DataFilesTest folder: compileDebugProjects.bat  
+3) Visual Studio Command Prompt: DataFilesTest folder: runTestsDebugProjects.bat  
+- verify tests successful  
+4) Command Prompt: DataFiles folder: compileReleaseProjects.bat  

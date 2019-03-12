@@ -1,0 +1,13 @@
+mstest /testcontainer:bin\Debug\DataFilesTest.net20.dll /resultsfile:logs\DataFilesTestOutput.net20.Debug.log
+mstest /testcontainer:bin\Debug\DataFilesTest.net30.dll /resultsfile:logs\DataFilesTestOutput.net30.Debug.log
+mstest /testcontainer:bin\Debug\DataFilesTest.net35.dll /resultsfile:logs\DataFilesTestOutput.net35.Debug.log
+mstest /testcontainer:bin\Debug\DataFilesTest.net40.dll /resultsfile:logs\DataFilesTestOutput.net40.Debug.log
+mstest /testcontainer:bin\Debug\DataFilesTest.net45.dll /resultsfile:logs\DataFilesTestOutput.net45.Debug.log
+mstest /testcontainer:bin\Debug\DataFilesTest.net451.dll /resultsfile:logs\DataFilesTestOutput.net451.Debug.log
+mstest /testcontainer:bin\Debug\DataFilesTest.net452.dll /resultsfile:logs\DataFilesTestOutput.net452.Debug.log
+mstest /testcontainer:bin\Debug\DataFilesTest.net46.dll /resultsfile:logs\DataFilesTestOutput.net46.Debug.log
+mstest /testcontainer:bin\Debug\DataFilesTest.net461.dll /resultsfile:logs\DataFilesTestOutput.net461.Debug.log
+mstest /testcontainer:bin\Debug\DataFilesTest.net462.dll /resultsfile:logs\DataFilesTestOutput.net462.Debug.log
+mstest /testcontainer:bin\Debug\DataFilesTest.net47.dll /resultsfile:logs\DataFilesTestOutput.net47.Debug.log
+mstest /testcontainer:bin\Debug\DataFilesTest.net471.dll /resultsfile:logs\DataFilesTestOutput.net471.Debug.log
+mstest /testcontainer:bin\Debug\DataFilesTest.net472.dll /resultsfile:logs\DataFilesTestOutput.net472.Debug.log

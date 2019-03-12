@@ -24,6 +24,13 @@ foreach(string version in targetFrameworkVersions)
 	WriteLine("msbuild DataFilesTest." + netVersion + ".csproj /P:Configuration=Debug -fl -flp:logfile=logs\\DataFilesTestOutput." + netVersion + ".Debug.log;verbosity=normal");
 }
 SaveOutput("../DataFilesTest/compileDebugProjects.bat");
+
+foreach(string version in targetFrameworkVersions) 
+{
+	string netVersion = version.Replace("v", "net").Replace(".", "");
+	WriteLine("mstest /testcontainer:bin\\Debug\\DataFilesTest." + netVersion + ".dll /resultsfile:logs\\DataFilesTestOutput." + netVersion + ".Debug.log");
+}
+SaveOutput("../DataFilesTest/runTestsDebugProjects.bat");
 #>
 
 <#+
