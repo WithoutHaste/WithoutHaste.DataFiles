@@ -131,7 +131,7 @@
     <EarlyDocsDllFile>$(ProjectDir)$(OutDir)WithoutHaste.DataFiles.dll</EarlyDocsDllFile>
     <EarlyDocsXmlFile>$(ProjectDir)$(OutDir)WithoutHaste.DataFiles.XML</EarlyDocsXmlFile>
     <EarlyDocsOutputDir>$(ProjectDir)..\documentation\</EarlyDocsOutputDir>
-    <!--<EarlyDocsSkip>True</EarlyDocsSkip>-->
+    <EarlyDocsSkip>True</EarlyDocsSkip>
   </PropertyGroup>
   <ItemGroup>
     <!--<EarlyDocsInclude Include="$(ProjectDir)$(OutDir)EPPlus.dll"></EarlyDocsInclude>-->
@@ -152,6 +152,15 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>generateSolutionFiles.tt</DependentUpon>
+    </Content>
+    <Content Include="generateTestProjectFiles.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>generateTestProjectFiles.txt</LastGenOutput>
+    </Content>
+    <Content Include="generateTestProjectFiles.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>generateTestProjectFiles.tt</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

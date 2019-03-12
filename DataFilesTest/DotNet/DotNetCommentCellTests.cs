@@ -13,13 +13,6 @@ namespace DataFilesTest
 		[TestMethod]
 		public void DotNetCommentCell_FromXml_Empty()
 		{
-			//TODO better solution
-			if(!Utilities.DataFilesTargetFramework.StartsWith("v3.5"))
-			{
-				//so that System.Xml.linq types match
-				return;
-			}
-
 			//arrange
 			XElement element = XElement.Parse("<term/>", LoadOptions.PreserveWhitespace);
 			//act
@@ -31,13 +24,6 @@ namespace DataFilesTest
 		[TestMethod]
 		public void DotNetCommentCell_FromXml_Full()
 		{
-			//TODO better solution
-			if(!Utilities.DataFilesTargetFramework.StartsWith("v3.5"))
-			{
-				//so that System.Xml.linq types match
-				return;
-			}
-
 			//arrange
 			string text = "Lorem ipsum dolor sit amet";
 			XElement element = XElement.Parse("<term>" + text + "</term>", LoadOptions.PreserveWhitespace);

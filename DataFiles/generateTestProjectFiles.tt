@@ -5,7 +5,7 @@
 <#@ import namespace="System.Linq" #>
 <#@ output extension=".txt" #>
 <#
-string modelProjectFileName = this.Host.ResolvePath("DataFiles.csproj");
+string modelProjectFileName = this.Host.ResolvePath("../DataFilesTest/DataFilesTest.csproj");
 string[] targetFrameworkVersions = new string[] {"v2.0", "v3.0", "v3.5", "v4.0", "v4.5", "v4.5.1", "v4.5.2", "v4.6", "v4.6.1", "v4.6.2", "v4.7", "v4.7.1", "v4.7.2"};
 
 string[] modelLines = LoadFile(modelProjectFileName);
@@ -15,22 +15,8 @@ foreach(string version in targetFrameworkVersions)
 	string netVersion = version.Replace("v", "net").Replace(".", "");
 	GenerateOutput(version, netVersion, modelLines);
 
-	SaveOutput("DataFiles." + netVersion + ".csproj");
+	SaveOutput("../DataFilesTest/DataFilesTest." + netVersion + ".csproj");
 }
-
-foreach(string version in targetFrameworkVersions) 
-{
-	string netVersion = version.Replace("v", "net").Replace(".", "");
-	WriteLine("msbuild DataFiles." + netVersion + ".csproj /P:Configuration=Debug -fl -flp:logfile=logs\\DataFilesOutput." + netVersion + ".Debug.log;verbosity=normal");
-}
-SaveOutput("compileDebugProjects.bat");
-
-foreach(string version in targetFrameworkVersions) 
-{
-	string netVersion = version.Replace("v", "net").Replace(".", "");
-	WriteLine("msbuild DataFiles." + netVersion + ".csproj /P:Configuration=Release -fl -flp:logfile=logs\\DataFilesOutput." + netVersion + ".Release.log;verbosity=normal");
-}
-SaveOutput("compileReleaseProjects.bat");
 #>
 
 <#+
@@ -39,25 +25,23 @@ private void GenerateOutput(string version, string netVersion, string[] lines)
 	for(int i = 0; i < lines.Length; i++)
 	{
 		string outputLine = lines[i];
-		if(outputLine.Contains("<TargetFrameworkVersion>v2.0</TargetFrameworkVersion>"))
+		if(outputLine.Contains("<TargetFrameworkVersion>"))
 		{
-			outputLine = outputLine.Replace("v2.0", version);
+			string testVersion = version;
+			if(testVersion == "v2.0" || testVersion == "v3.0")
+			{
+				testVersion = "v3.5"; //minimum target framework for a unit test project
+			}
+
+			outputLine = outputLine.Replace("v4.5.2", testVersion);
 		}
 		if(outputLine.Contains("<AssemblyName>"))
 		{
-			outputLine = outputLine.Replace("DataFiles", "DataFiles." + netVersion);
+			outputLine = outputLine.Replace("DataFilesTest", "DataFilesTest." + netVersion);
 		}
-
-		//no generated project should produce its own T4 generated projects
-		if(outputLine.Contains("ProjectFiles.tt") || outputLine.Contains("SolutionFiles.tt"))
+		if(outputLine.Contains("<ProjectReference") && outputLine.Contains("DataFiles.csproj"))
 		{
-			i += 3;
-			continue;
-		}
-		if(outputLine.Contains("ProjectFiles.txt") || outputLine.Contains("SolutionFiles.txt"))
-		{
-			i += 4;
-			continue;
+			outputLine = outputLine.Replace("csproj", netVersion + ".csproj");
 		}
 
 		//System.Linq starts with v3.5
@@ -84,26 +68,14 @@ private void GenerateOutput(string version, string netVersion, string[] lines)
 			}
 		}
 
-		//I only want documentation generated from the version I'm used to working in - 4.5.2
-		bool is452 = (version == "v4.5.2");
-		if(is452)
+		//add a line for tell which target framwork DataFiles is using
+		if(outputLine.Contains("MultiTargetSymbols.targets"))
 		{
-			if(outputLine.Contains("<EarlyDocsSkip>"))
+			string justNumbers = netVersion.Replace("net", "");
+			WriteLine(CurrentIndent + "  <DefineConstants>$(DefineConstants);DATAFILES_TARGET_" + justNumbers + "</DefineConstants>");
+			if(is35OrHigher)
 			{
-				WriteLine(CurrentIndent + "    <EarlyDocsSkip>False</EarlyDocsSkip>");
-				continue;
-			}
-		}
-		if(!is452)
-		{
-			if(outputLine.Contains("<DocumentationFile>"))
-			{
-				continue;
-			}
-			if(outputLine.Contains("<EarlyDocsSkip>"))
-			{
-				WriteLine(CurrentIndent + "    <EarlyDocsSkip>True</EarlyDocsSkip>");
-				continue;
+				WriteLine(CurrentIndent + "  <DefineConstants>$(DefineConstants);DATAFILES_TARGET_35ORHIGHER</DefineConstants>");
 			}
 		}
 

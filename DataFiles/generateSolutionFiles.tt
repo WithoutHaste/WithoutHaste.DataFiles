@@ -28,6 +28,10 @@ private void GenerateOutput(string version, string[] lines)
 		{
 			outputLine = outputLine.Replace("csproj", version + ".csproj");
 		}
+		if(outputLine.Contains("DataFilesTest.csproj"))
+		{
+			outputLine = outputLine.Replace("csproj", version + ".csproj");
+		}
 
 		WriteLine(CurrentIndent + outputLine);
 	}

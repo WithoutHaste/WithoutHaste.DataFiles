@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B33EAC6A-56F6-4962-A863-9826A79FE1FF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataFilesTest</RootNamespace>
+    <AssemblyName>DataFilesTest.net20</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\DataFiles\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\DataFiles\packages\System.Xml.Linq.3.5.21022.801\lib\net20\System.Xml.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="CountersTests.cs" />
+    <Compile Include="DotNet\DotNetReferenceMethodGenericTests.cs" />
+    <Compile Include="DotNet\DotNetCommentCellTests.cs" />
+    <Compile Include="DotNet\DotNetCommentCodeTests.cs" />
+    <Compile Include="DotNet\DotNetCommentGroupTests.cs" />
+    <Compile Include="DotNet\DotNetCommentCodeBlockTests.cs" />
+    <Compile Include="DotNet\DotNetCommentInheritTests.cs" />
+    <Compile Include="DotNet\DotNetCommentListItemTests.cs" />
+    <Compile Include="DotNet\DotNetCommentListTests.cs" />
+    <Compile Include="DotNet\DotNetCommentMethodLinkedGroupTests.cs" />
+    <Compile Include="DotNet\DotNetCommentMethodLinkTests.cs" />
+    <Compile Include="DotNet\DotNetCommentParameterLinkTests.cs" />
+    <Compile Include="DotNet\DotNetCommentParameterTests.cs" />
+    <Compile Include="DotNet\DotNetCommentPermissionTests.cs" />
+    <Compile Include="DotNet\DotNetCommentQualifiedLinkedGroupTests.cs" />
+    <Compile Include="DotNet\DotNetCommentQualifiedLinkTests.cs" />
+    <Compile Include="DotNet\DotNetCommentRowTests.cs" />
+    <Compile Include="DotNet\DotNetCommentTableTests.cs" />
+    <Compile Include="DotNet\DotNetCommentTextTests.cs" />
+    <Compile Include="DotNet\DotNetCommentTypeParameterTests.cs" />
+    <Compile Include="DotNet\DotNetCommentTypeParameterLinkTests.cs" />
+    <Compile Include="DotNet\DotNetDelegateTests.cs" />
+    <Compile Include="DotNet\DotNetEventTests.cs" />
+    <Compile Include="DotNet\DotNetFieldTests.cs" />
+    <Compile Include="DotNet\DotNetIndexerTests.cs" />
+    <Compile Include="DotNet\DotNetMethodConstructorTests.cs" />
+    <Compile Include="DotNet\DotNetMethodOperatorTests.cs" />
+    <Compile Include="DotNet\DotNetParameterTests.cs" />
+    <Compile Include="DotNet\DotNetPropertyTests.cs" />
+    <Compile Include="DotNet\DotNetQualifiedClassNameTests.cs" />
+    <Compile Include="DotNet\DotNetQualifiedClassNameTreeNodeTests.cs" />
+    <Compile Include="DotNet\DotNetQualifiedMethodNameTests.cs" />
+    <Compile Include="DotNet\DotNetMethodTests.cs" />
+    <Compile Include="DotNet\DotNetQualifiedNameTests.cs" />
+    <Compile Include="DotNet\DotNetQualifiedTypeNameTests.cs" />
+    <Compile Include="DotNet\DotNetReferenceClassGenericTests.cs" />
+    <Compile Include="DotNet\DotNetSettingsTests.cs" />
+    <Compile Include="DotNet\DotNetTypeTests.cs" />
+    <Compile Include="DotNet\UtilitiesTests.cs" />
+    <Compile Include="Excel\ExcelPackageHelperTests.cs" />
+    <Compile Include="Excel\UtilityTests.cs" />
+    <Compile Include="Markdown\MarkdownCodeTests.cs" />
+    <Compile Include="Markdown\MarkdownListTests.cs" />
+    <Compile Include="Markdown\MarkdownParagraphTests.cs" />
+    <Compile Include="Markdown\MarkdownSectionTests.cs" />
+    <Compile Include="Markdown\MarkdownTextTests.cs" />
+    <Compile Include="Excel\MSExcel2003XmlFileTests.cs" />
+    <Compile Include="TextHelperTests.cs" />
+    <Compile Include="Utilities.cs" />
+    <Compile Include="DotNet\DotNetDocumentationFileTests.cs" />
+    <Compile Include="XmlDocumentHelperTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataFiles.Excel\DataFiles.Excel.csproj">
+      <Project>{3875cb15-aff5-4550-ba1e-fd40edc03132}</Project>
+      <Name>DataFiles.Excel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataFiles\DataFiles.net20.csproj">
+      <Project>{1b0b7e3b-8708-4799-b768-1949da9dd755}</Project>
+      <Name>DataFiles</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\DotNetCommentGroup_XmlCommentsNestedInTag.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetCommentInherit_TypeFromBaseType.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetCommentTable_Full.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetCommentText_Inline_RealExample_B.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_DuplicateComments_Loop.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_DuplicateComments_MultipleLevelsDeep.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_DuplicateComments_OneLevelDeep.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_Full.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_InheritComments_DifferentGenericAliases.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_InheritComments_ExplicitInterfaces.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_InheritComments_MultipleLevelsDeep.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_inheritComments_NoBaseType.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_InheritComments_OrderOfInterfaces.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_NameConflict.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_OrphanedMember.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_InheritComments_OneLevelDeep.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_AddHeaderRow_GetHeaders.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_AddStyle.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_AddStyle_Overwrite.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_AddWorksheet.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_Attribute.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_Attribute_Uri.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_DateCell.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_DateTypeAttribute.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_Default.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_EmptyCell.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_HeaderCell.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_NameAttribute.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_NumberCell.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_NumberTypeAttribute.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_ParagraphCell.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_RemoveStyle.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_SetColumnWidths.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_SetColumnWidths_Overwrite.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_StringTypeAttribute.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_StyleIdAttribute.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_TextCell.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_TextCell_StyleId.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_TypeAttribute.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\MSExcel2003XmlFile_WidthAttribute.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_Assembly.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\DotNetDocumentationFile_Type.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <DefineConstants>$(DefineConstants);DATAFILES_TARGET_20</DefineConstants>
+  <Import Project="$(ProjectDir)\..\MultiTargetSymbols.targets"/>
+</Project>

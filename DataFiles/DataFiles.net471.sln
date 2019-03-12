@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFiles", "DataFiles.net471.csproj", "{1B0B7E3B-8708-4799-B768-1949DA9DD755}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFilesTest", "..\DataFilesTest\DataFilesTest.csproj", "{B33EAC6A-56F6-4962-A863-9826A79FE1FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataFilesTest", "..\DataFilesTest\DataFilesTest.net471.csproj", "{B33EAC6A-56F6-4962-A863-9826A79FE1FF}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4E58384E-3669-4674-96B5-A5697D77F3D0} = {4E58384E-3669-4674-96B5-A5697D77F3D0}
 	EndProjectSection

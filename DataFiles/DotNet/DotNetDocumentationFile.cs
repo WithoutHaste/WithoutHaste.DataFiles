@@ -60,18 +60,13 @@ namespace WithoutHaste.DataFiles.DotNet
 			Load(document);
 		}
 
-#if SYSTEM_XML_LINQ
 		/// <summary>
 		/// Loads .Net XML documentation from XDocument.
 		/// </summary>
-		/// <remarks>
-		/// Only available with target framework 3.5 or later.
-		/// </remarks>
 		public DotNetDocumentationFile(XDocument document)
 		{
 			Load(document);
 		}
-#endif
 
 		private void Load(XDocument document)
 		{

@@ -19,18 +19,5 @@ namespace DataFilesTest
 				return reader.ReadToEnd().Replace("\r", "");
 			}
 		}
-
-		//TODO remove
-		private static string _dataFilesTargetFramework = null;
-		public static string DataFilesTargetFramework {
-			get {
-				if(_dataFilesTargetFramework == null)
-				{
-					Assembly assembly = typeof(DotNetSettings).Assembly;
-					_dataFilesTargetFramework = assembly.ImageRuntimeVersion;
-				}
-				return _dataFilesTargetFramework;
-			}
-		}
 	}
 }
