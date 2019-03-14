@@ -11,3 +11,7 @@ DataFilesTest/.vs/*
 DataFilesTest/bin/*
 DataFilesTest/logs/*
 DataFilesTest/obj/*
+ThirdPartyTest/.vs/*
+ThirdPartyTest/bin/*
+ThirdPartyTest/logs/*
+ThirdPartyTest/obj/*
