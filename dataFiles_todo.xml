@@ -38,16 +38,35 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">53</Data>
+          <Data ss:Type="Number">73</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">solve all current Test errors</Data>
+          <Data ss:Type="String">can I get a shorter summary from running mstest? with full info to logs still?</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
         </Cell>
         <Cell>
-          <Data ss:Type="String">Bug - Major</Data>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-12T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">53</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">solve all current Test errors
+in net20.sln
+then try running all the tests again</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Test</Data>
         </Cell>
         <Cell ss:StyleID="cellShortDate">
           <Data ss:Type="DateTime">2019-03-06T00:00:00.000</Data>
@@ -105,6 +124,23 @@ catch BadImageFormatException, give message about which frameworks are supported
         </Cell>
         <Cell ss:StyleID="cellShortDate">
           <Data ss:Type="DateTime">2019-03-06T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">75</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">add test cases for encoded "&lt;" within plain text in xml</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Bug - Minor</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-14T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -1687,7 +1723,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">72</Data>
+          <Data ss:Type="Number">75</Data>
         </Cell>
       </Row>
       <Row>

@@ -63,13 +63,18 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <returns>Should return the exact string representation of the node, including the surrounding tags if applicable.</returns>
 		internal static string XNodeToString(XNode node)
 		{
+#if SYSTEM_XML_LINQ
+			return node.ToString();
+#else
 			if(node is XText)
 			{
 				if(node is XCData)
 				{
 					return String.Format("<![CDATA[{0}]]>", (node as XCData).Value);
 				}
-				return (node as XText).Value;
+				string plainText = (node as XText).Value;
+				plainText = plainText.Replace("<", "&lt;"); //encode open-tag character
+				return plainText;
 			}
 			if(node is XElement)
 			{
@@ -82,10 +87,11 @@ namespace WithoutHaste.DataFiles.DotNet
 				}
 				builder.Append(">");
 				builder.Append(XElementContentsToString(nodeElement));
-				builder.Append(String.Format("<\\{0}>", nodeElement.Name));
+				builder.Append(String.Format("</{0}>", nodeElement.Name));
 				return builder.ToString();
 			}
 			return null; //unknown node type
+#endif
 		}
 
 		/// <summary>
@@ -99,7 +105,8 @@ namespace WithoutHaste.DataFiles.DotNet
 			StringBuilder builder = new StringBuilder();
 			foreach(XNode node in parent.Nodes())
 			{
-				builder.Append(XNodeToString(node));
+				string nodeString = XNodeToString(node);
+				builder.Append(nodeString);
 			}
 			return builder.ToString();
 		}

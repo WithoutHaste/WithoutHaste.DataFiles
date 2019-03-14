@@ -196,7 +196,7 @@ namespace WithoutHaste.DataFiles.DotNet
 						}
 						break;
 					case XmlNodeType.Text:
-						comment = DotNetComment.FromVisualStudioXml(node.ToString());
+						comment = DotNetComment.FromVisualStudioXml(Utilities.XNodeToString(node));
 						if(comment == null)
 							break;
 						if(previousCommentWasAParagraphTag && comment.ToString() == "\n")

@@ -20,7 +20,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// </summary>
 		/// <remarks>
 		/// Setting always defaults to <see cref="DefaultQualifiedNameConverter"/>.
-		/// With target frameworks 3.5 or higher, you can change this setting.
+		/// With target frameworks less than 3.5, you can turn this on or off with <see cref='UseDefaultQualifiedNameConverter(bool)'/>.
+		/// With target frameworks 3.5 or higher, you can set this to a custom function.
 		/// 
 		/// See <see cref="DefaultQualifiedNameConverter"/> for usage examples.
 		/// </remarks>
@@ -34,6 +35,21 @@ namespace WithoutHaste.DataFiles.DotNet
 		public static Func<string, int, string> QualifiedNameConverter = DefaultQualifiedNameConverter;
 #else
 		internal static Func<string, int, string> QualifiedNameConverter = DefaultQualifiedNameConverter;
+
+		/// <summary>
+		/// Toggle the <see cref="DefaultQualifiedNameConverter"/> on and off.
+		/// </summary>
+		/// <remarks>
+		/// Only available in target frameworks less than 3.5.
+		/// </remarks>
+		/// <param name="useDefault">True to use the default converter, false to not use a converter.</param>
+		public static void UseDefaultQualifiedNameConverter(bool useDefault)
+		{
+			if(useDefault)
+				QualifiedNameConverter = DefaultQualifiedNameConverter;
+			else
+				QualifiedNameConverter = null;
+		}
 #endif
 
 		/// <summary>

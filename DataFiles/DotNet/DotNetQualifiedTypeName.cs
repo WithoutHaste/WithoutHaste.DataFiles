@@ -141,27 +141,35 @@ namespace WithoutHaste.DataFiles.DotNet
 				typeName = ""; //todo: this should not be necessary, track down case in EarlyDocs
 			List<DotNetQualifiedTypeName> parameters = new List<DotNetQualifiedTypeName>();
 			int genericParameterCount = 0;
-			if(type.ContainsGenericParameters) //generic type, with parameters unspecified
+			if(!type.IsGenericParameter)
 			{
-				parameters = type.GetGenericArguments().Select(a => FromAssemblyInfo(a)).ToList();
-				typeName = typeName.Substring(0, typeName.IndexOf("["));
-
-				Int32.TryParse(typeName.Substring(typeName.LastIndexOf("`") + 1), out genericParameterCount);
-				typeName = typeName.Substring(0, typeName.LastIndexOf("`"));
-			}
-			else if(type.GetGenericArguments().Length > 0) //generic type, with specific parameter types
-			{
-				parameters = type.GetGenericArguments().Select(p => new DotNetReferenceClassGeneric(p.GenericParameterPosition, p.Name)).Cast<DotNetQualifiedTypeName>().ToList();
-				genericParameterCount = parameters.Count;
-				typeName = typeName.Substring(0, typeName.LastIndexOf("`"));
-
-				if(bubbleUpParameters != null)
+				if(type.ContainsGenericParameters) //generic type, with parameters unspecified
 				{
-					if(parameters.Count > bubbleUpParameters.Count)
-						throw new Exception("Type has more generic-type-parameters than expected.");
-					int remainder = bubbleUpParameters.Count - parameters.Count;
-					parameters = bubbleUpParameters.Skip(remainder).ToList();
-					bubbleUpParameters = bubbleUpParameters.Take(remainder).ToList();
+					parameters = type.GetGenericArguments().Select(a => FromAssemblyInfo(a)).ToList();
+					typeName = typeName.Substring(0, typeName.IndexOf("["));
+
+					Int32.TryParse(typeName.Substring(typeName.LastIndexOf("`") + 1), out genericParameterCount);
+					typeName = typeName.Substring(0, typeName.LastIndexOf("`"));
+				}
+				else if(type.GetGenericArguments().Length > 0) //generic type, with specific parameter types
+				{
+					int parameterPosition = 0;
+					foreach(Type parameter in type.GetGenericArguments())
+					{
+						parameters.Add(new DotNetReferenceClassGeneric(parameterPosition, parameter.Name));
+						parameterPosition++;
+					}
+					genericParameterCount = parameters.Count;
+					typeName = typeName.Substring(0, typeName.LastIndexOf("`"));
+
+					if(bubbleUpParameters != null)
+					{
+						if(parameters.Count > bubbleUpParameters.Count)
+							throw new Exception("Type has more generic-type-parameters than expected.");
+						int remainder = bubbleUpParameters.Count - parameters.Count;
+						parameters = bubbleUpParameters.Skip(remainder).ToList();
+						bubbleUpParameters = bubbleUpParameters.Take(remainder).ToList();
+					}
 				}
 			}
 

@@ -19,5 +19,10 @@ namespace DataFilesTest
 				return reader.ReadToEnd().Replace("\r", "");
 			}
 		}
+
+		public static string XNodeToString(XNode node)
+		{
+			return WithoutHaste.DataFiles.DotNet.Utilities.XNodeToString(node);
+		}
 	}
 }

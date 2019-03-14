@@ -10,6 +10,26 @@ namespace DataFilesTest
 	[TestClass]
 	public class DotNetCommentMethodLinkTests
 	{
+		[ClassInitialize]
+		public static void Initialize(TestContext context)
+		{
+#if DATAFILES_TARGET_20 || DATAFILES_TARGET_30
+			DotNetSettings.UseDefaultQualifiedNameConverter(false);
+#else
+			DotNetSettings.QualifiedNameConverter = null;
+#endif
+		}
+
+		[ClassCleanup]
+		public static void Cleanup()
+		{
+#if DATAFILES_TARGET_20 || DATAFILES_TARGET_30
+			DotNetSettings.UseDefaultQualifiedNameConverter(true);
+#else
+			DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
+#endif
+		}
+
 		[TestMethod]
 		public void DotNetCommentMethodLink_FromXml_NoParameters()
 		{

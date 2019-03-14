@@ -99,7 +99,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			{
 				if(node.NodeType == XmlNodeType.Text)
 				{
-					if(node.ToString().IsAllWhitespace())
+					if(Utilities.XNodeToString(node).IsAllWhitespace())
 						continue;
 					term = DotNetCommentGroup.FromVisualStudioXml(element);
 					break;

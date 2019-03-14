@@ -159,7 +159,7 @@ namespace WithoutHaste.DataFiles.DotNet
 				switch(node.NodeType)
 				{
 					case XmlNodeType.CDATA:
-						if(node.ToString().Contains("\n"))
+						if(Utilities.XNodeToString(node).Contains("\n"))
 						{
 							comment = DotNetCommentCodeBlock.FromVisualStudioXml(node as XCData);
 							comments.Add(comment);
