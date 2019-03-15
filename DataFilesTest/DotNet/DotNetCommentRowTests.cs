@@ -41,7 +41,7 @@ namespace DataFilesTest
 		public void DotNetCommentRow_FromXml_Header()
 		{
 			//arrange
-			XElement table = XElement.Load("data/DotNetCommentTable_Full.xml");
+			XElement table = XElement.Load(Utilities.GetPathTo("data/DotNetCommentTable_Full.xml"));
 			XElement element = table.Elements("listheader").First();
 			//act
 			DotNetCommentRow result = DotNetCommentRow.FromVisualStudioXml(element);
@@ -58,7 +58,7 @@ namespace DataFilesTest
 		public void DotNetCommentRow_FromXml_Data()
 		{
 			//arrange
-			XElement table = XElement.Load("data/DotNetCommentTable_Full.xml");
+			XElement table = XElement.Load(Utilities.GetPathTo("data/DotNetCommentTable_Full.xml"));
 			XElement element = table.Elements("item").First();
 			//act
 			DotNetCommentRow result = DotNetCommentRow.FromVisualStudioXml(element);

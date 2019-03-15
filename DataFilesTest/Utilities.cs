@@ -24,5 +24,20 @@ namespace DataFilesTest
 		{
 			return WithoutHaste.DataFiles.DotNet.Utilities.XNodeToString(node);
 		}
+
+		public static string GetProjectDirectory()
+		{
+			string workingDirectory = Environment.CurrentDirectory; //should be in a bin folder, but may be different during tests
+			while(!workingDirectory.EndsWith("DataFilesTest"))
+			{
+				workingDirectory = Directory.GetParent(workingDirectory).FullName;
+			}
+			return workingDirectory;
+		}
+
+		public static string GetPathTo(string relativeToProjectDirectory)
+		{
+			return Path.Combine(Utilities.GetProjectDirectory(), relativeToProjectDirectory);
+		}
 	}
 }

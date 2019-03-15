@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Xml;
@@ -24,7 +25,7 @@ namespace DataFilesTest
 		public void DotNetCommentInherit_FromAssembly_TypeFromBaseType()
 		{
 			//arrange
-			string filename = "data/DotNetCommentInherit_TypeFromBaseType.xml";
+			string filename = Utilities.GetPathTo("data/DotNetCommentInherit_TypeFromBaseType.xml");
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
 			file.Types.First(t => t.Name.LocalName == "DerivedType").AddAssemblyInfo(typeof(DerivedType), new DotNetQualifiedName("DataFilesTest", "DotNetCommentInheritTests", "DerivedType"));
@@ -38,7 +39,7 @@ namespace DataFilesTest
 		public void DotNetCommentInherit_FromAssembly_FieldFromBaseType()
 		{
 			//arrange
-			string filename = "data/DotNetCommentInherit_TypeFromBaseType.xml";
+			string filename = Utilities.GetPathTo("data/DotNetCommentInherit_TypeFromBaseType.xml");
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
 			file.Types.First(t => t.Name.LocalName == "DerivedType").AddAssemblyInfo(typeof(DerivedType), new DotNetQualifiedName("DataFilesTest", "DotNetCommentInheritTests", "DerivedType"));
@@ -52,7 +53,7 @@ namespace DataFilesTest
 		public void DotNetCommentInherit_FromAssembly_PropertyFromBaseType()
 		{
 			//arrange
-			string filename = "data/DotNetCommentInherit_TypeFromBaseType.xml";
+			string filename = Utilities.GetPathTo("data/DotNetCommentInherit_TypeFromBaseType.xml");
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
 			file.Types.First(t => t.Name.LocalName == "DerivedType").AddAssemblyInfo(typeof(DerivedType), new DotNetQualifiedName("DataFilesTest", "DotNetCommentInheritTests", "DerivedType"));
@@ -66,7 +67,7 @@ namespace DataFilesTest
 		public void DotNetCommentInherit_FromAssembly_EventFromBaseType()
 		{
 			//arrange
-			string filename = "data/DotNetCommentInherit_TypeFromBaseType.xml";
+			string filename = Utilities.GetPathTo("data/DotNetCommentInherit_TypeFromBaseType.xml");
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
 			file.Types.First(t => t.Name.LocalName == "DerivedType").AddAssemblyInfo(typeof(DerivedType), new DotNetQualifiedName("DataFilesTest", "DotNetCommentInheritTests", "DerivedType"));
@@ -80,7 +81,7 @@ namespace DataFilesTest
 		public void DotNetCommentInherit_FromAssembly_MethodFromBaseType()
 		{
 			//arrange
-			string filename = "data/DotNetCommentInherit_TypeFromBaseType.xml";
+			string filename = Utilities.GetPathTo("data/DotNetCommentInherit_TypeFromBaseType.xml");
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
 			file.Types.First(t => t.Name.LocalName == "DerivedType").AddAssemblyInfo(typeof(DerivedType), new DotNetQualifiedName("DataFilesTest", "DotNetCommentInheritTests", "DerivedType"));

@@ -28,7 +28,7 @@ namespace DataFilesTest
 		public void DotNetCommentTable_FromXml_Full()
 		{
 			//arrange
-			XElement element = XElement.Load("data/DotNetCommentTable_Full.xml");
+			XElement element = XElement.Load(Utilities.GetPathTo("data/DotNetCommentTable_Full.xml"));
 			//act
 			DotNetCommentTable result = DotNetCommentTable.FromVisualStudioXml(element);
 			//assert

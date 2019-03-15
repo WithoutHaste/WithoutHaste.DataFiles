@@ -115,7 +115,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_LoadFromFile()
 		{
 			//arrange
-			string filename = "data/DotNetDocumentationFile_Assembly.xml";
+			string filename = Utilities.GetPathTo("data/DotNetDocumentationFile_Assembly.xml");
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
 			//assert
@@ -126,7 +126,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_LoadFromXDocument()
 		{
 			//arrange
-			XDocument document = XDocument.Load("data/DotNetDocumentationFile_Assembly.xml", LoadOptions.PreserveWhitespace);
+			XDocument document = XDocument.Load(Utilities.GetPathTo("data/DotNetDocumentationFile_Assembly.xml"), LoadOptions.PreserveWhitespace);
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(document);
 			//assert
@@ -137,7 +137,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_CommentFromXml_Full()
 		{
 			//arrange
-			XDocument document = XDocument.Load("data/DotNetDocumentationFile_Full.xml", LoadOptions.PreserveWhitespace);
+			XDocument document = XDocument.Load(Utilities.GetPathTo("data/DotNetDocumentationFile_Full.xml"), LoadOptions.PreserveWhitespace);
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(document);
 			//assert
@@ -309,7 +309,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_OrphanedMember_Ignore()
 		{
 			//arrange
-			string filename = "data/DotNetDocumentationFile_OrphanedMember.xml";
+			string filename = Utilities.GetPathTo("data/DotNetDocumentationFile_OrphanedMember.xml");
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
 			//assert
@@ -320,7 +320,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_DuplicateComments_OneLevelDeep()
 		{
 			//arrange
-			string filename = "data/DotNetDocumentationFile_DuplicateComments_OneLevelDeep.xml";
+			string filename = Utilities.GetPathTo("data/DotNetDocumentationFile_DuplicateComments_OneLevelDeep.xml");
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
 
@@ -364,7 +364,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_DuplicateComments_MultipleLevelsDeep()
 		{
 			//arrange
-			string filename = "data/DotNetDocumentationFile_DuplicateComments_MultipleLevelsDeep.xml";
+			string filename = Utilities.GetPathTo("data/DotNetDocumentationFile_DuplicateComments_MultipleLevelsDeep.xml");
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
 			DotNetType typeA = file.Types.FirstOrDefault(m => m.Name.LocalName == "TypeA");
@@ -384,7 +384,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_DuplicateComments_Loop()
 		{
 			//arrange
-			string filename = "data/DotNetDocumentationFile_DuplicateComments_Loop.xml";
+			string filename = Utilities.GetPathTo("data/DotNetDocumentationFile_DuplicateComments_Loop.xml");
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
 			DotNetType typeA = file.Types.FirstOrDefault(m => m.Name.LocalName == "TypeA");
@@ -400,7 +400,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_InheritComments_OneLevelDeep()
 		{
 			//arrange
-			string xmlDocumentationFilename = "data/DotNetDocumentationFile_InheritComments_OneLevelDeep.xml";
+			string xmlDocumentationFilename = Utilities.GetPathTo("data/DotNetDocumentationFile_InheritComments_OneLevelDeep.xml");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			DotNetType inheritanceTypeA = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassA");
@@ -424,7 +424,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_InheritComments_MultipleLevelsDeep()
 		{
 			//arrange
-			string xmlDocumentationFilename = "data/DotNetDocumentationFile_InheritComments_MultipleLevelsDeep.xml";
+			string xmlDocumentationFilename = Utilities.GetPathTo("data/DotNetDocumentationFile_InheritComments_MultipleLevelsDeep.xml");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			DotNetType inheritanceTypeA = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassA");
@@ -462,7 +462,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_InheritComments_OrderOfInterfaces()
 		{
 			//arrange
-			string xmlDocumentationFilename = "data/DotNetDocumentationFile_InheritComments_OrderOfInterfaces.xml";
+			string xmlDocumentationFilename = Utilities.GetPathTo("data/DotNetDocumentationFile_InheritComments_OrderOfInterfaces.xml");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			DotNetType inheritanceTypeF = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceInterfaceF");
@@ -480,7 +480,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_InheritComments_NoBaseType()
 		{
 			//arrange
-			string xmlDocumentationFilename = "data/DotNetDocumentationFile_InheritComments_NoBaseType.xml";
+			string xmlDocumentationFilename = Utilities.GetPathTo("data/DotNetDocumentationFile_InheritComments_NoBaseType.xml");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			DotNetType inheritanceTypeA = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassA");
@@ -496,7 +496,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_InheritComments_DifferentGenericAliases()
 		{
 			//arrange
-			string xmlDocumentationFilename = "data/DotNetDocumentationFile_InheritComments_DifferentGenericAliases.xml";
+			string xmlDocumentationFilename = Utilities.GetPathTo("data/DotNetDocumentationFile_InheritComments_DifferentGenericAliases.xml");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			DotNetType inheritanceTypeI = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassI");
@@ -512,7 +512,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_InheritComments_ExplicitInterfaces()
 		{
 			//arrange
-			string xmlDocumentationFilename = "data/DotNetDocumentationFile_InheritComments_ExplicitInterfaces.xml";
+			string xmlDocumentationFilename = Utilities.GetPathTo("data/DotNetDocumentationFile_InheritComments_ExplicitInterfaces.xml");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			DotNetType inheritanceTypeF = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceInterfaceF");

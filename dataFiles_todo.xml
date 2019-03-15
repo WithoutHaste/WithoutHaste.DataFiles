@@ -38,29 +38,16 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">73</Data>
+          <Data ss:Type="Number">79</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">can I get a shorter summary from running mstest? with full info to logs still?</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Task</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2019-03-12T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
-          <Data ss:Type="Number">53</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">solve all current Test errors
-in net20.sln
-then try running all the tests again</Data>
+          <Data ss:Type="String">.Net 2.0 test ran ok
+try .Net 3.0 - working
+try .Net 3.5 - working
+try .Net 4.0 - working
+try .Net 4.5 - working
+some tests pass in VS but fail from command prompt because of "current directory"
+- fixing that</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -69,7 +56,7 @@ then try running all the tests again</Data>
           <Data ss:Type="String">Test</Data>
         </Cell>
         <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2019-03-06T00:00:00.000</Data>
+          <Data ss:Type="DateTime">2019-03-15T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -505,6 +492,48 @@ make one object that can regex break apart all those names into their parts</Dat
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">73</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">can I get a shorter summary from running mstest? with full info to logs still?</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Skip</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-12T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-15T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">53</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">solve all current Test errors
+in net20.sln
+then try running all the tests again</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Test</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-06T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-15T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -1779,7 +1808,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">78</Data>
+          <Data ss:Type="Number">79</Data>
         </Cell>
       </Row>
       <Row>

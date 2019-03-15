@@ -79,7 +79,7 @@ namespace DataFilesTest
 		public void DotNetCommentText_FromXml_InLine_RealExample_B()
 		{
 			//arrange
-			XDocument document = XDocument.Load("data/DotNetCommentText_Inline_RealExample_B.xml", LoadOptions.PreserveWhitespace);
+			XDocument document = XDocument.Load(Utilities.GetPathTo("data/DotNetCommentText_Inline_RealExample_B.xml"), LoadOptions.PreserveWhitespace);
 			XElement element = document.Elements().First();
 			string inner = String.Concat(element.Nodes().Select(node => Utilities.XNodeToString(node)));
 			//act
