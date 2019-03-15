@@ -10,8 +10,8 @@ namespace DataFilesTest
 	[TestClass]
 	public class DotNetCommentMethodLinkTests
 	{
-		[ClassInitialize]
-		public static void Initialize(TestContext context)
+		[TestInitialize]
+		public void Initialize()
 		{
 #if DATAFILES_TARGET_20 || DATAFILES_TARGET_30
 			DotNetSettings.UseDefaultQualifiedNameConverter(false);
@@ -20,8 +20,8 @@ namespace DataFilesTest
 #endif
 		}
 
-		[ClassCleanup]
-		public static void Cleanup()
+		[TestCleanup]
+		public void Cleanup()
 		{
 #if DATAFILES_TARGET_20 || DATAFILES_TARGET_30
 			DotNetSettings.UseDefaultQualifiedNameConverter(true);

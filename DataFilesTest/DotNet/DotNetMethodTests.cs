@@ -69,6 +69,26 @@ namespace DataFilesTest
 			protected void MethodProtected() { }
 		}
 
+		[TestInitialize]
+		public void Initialize()
+		{
+#if DATAFILES_TARGET_20 || DATAFILES_TARGET_30
+			DotNetSettings.UseDefaultQualifiedNameConverter(false);
+#else
+			DotNetSettings.QualifiedNameConverter = null;
+#endif
+		}
+
+		[TestCleanup]
+		public void Cleanup()
+		{
+#if DATAFILES_TARGET_20 || DATAFILES_TARGET_30
+			DotNetSettings.UseDefaultQualifiedNameConverter(true);
+#else
+			DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
+#endif
+		}
+
 		[TestMethod]
 		public void DotNetMethod_FromXml_GenericParameter()
 		{
@@ -451,8 +471,13 @@ namespace DataFilesTest
 			DotNetMethod result = DotNetMethod.FromVisualStudioXml(xmlElement);
 			result.AddAssemblyInfo(methodInfo);
 			//assert
+#if DATAFILES_TARGET_20 || DATAFILES_TARGET_30
+			Assert.AreEqual(MethodCategory.Static, result.Category);
+			Assert.AreEqual(ParameterCategory.Normal, result.MethodName.Parameters[0].Category);
+#else
 			Assert.AreEqual(MethodCategory.Extension, result.Category);
 			Assert.AreEqual(ParameterCategory.Extension, result.MethodName.Parameters[0].Category);
+#endif
 			Assert.AreEqual(ParameterCategory.Normal, result.MethodName.Parameters[1].Category);
 		}
 	}

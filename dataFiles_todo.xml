@@ -74,6 +74,24 @@ then try running all the tests again</Data>
       </Row>
       <Row>
         <Cell>
+          <Data ss:Type="Number">76</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">full list of features: what .Net constructs can be deciphered by this library
+EarlyDocs can point at it</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Documentation</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-15T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
           <Data ss:Type="Number">68</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -418,6 +436,25 @@ could turn DotNetSettings.QualifiedNameConverter into a list or event so that an
         </Cell>
         <Cell ss:StyleID="cellShortDate">
           <Data ss:Type="DateTime">2018-10-22T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">77</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">DotNet:
+refactor all the the indexof and substring in figuring out type names
+make one object that can regex break apart all those names into their parts</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-15T00:00:00.000</Data>
         </Cell>
       </Row>
     </Table>
@@ -1723,7 +1760,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">75</Data>
+          <Data ss:Type="Number">77</Data>
         </Cell>
       </Row>
       <Row>

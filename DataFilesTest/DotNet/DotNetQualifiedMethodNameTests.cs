@@ -25,6 +25,26 @@ namespace DataFilesTest
 			public void MethodTwo<CustomA, CustomB>(CustomA a, CustomB b) { }
 		}
 
+		[TestInitialize]
+		public void Initialize()
+		{
+#if DATAFILES_TARGET_20 || DATAFILES_TARGET_30
+			DotNetSettings.UseDefaultQualifiedNameConverter(false);
+#else
+			DotNetSettings.QualifiedNameConverter = null;
+#endif
+		}
+
+		[TestCleanup]
+		public void Cleanup()
+		{
+#if DATAFILES_TARGET_20 || DATAFILES_TARGET_30
+			DotNetSettings.UseDefaultQualifiedNameConverter(true);
+#else
+			DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
+#endif
+		}
+
 		[TestMethod]
 		public void DotNetQualifiedMethodName_FromXml_ClassGenericParameters_OneGeneric()
 		{

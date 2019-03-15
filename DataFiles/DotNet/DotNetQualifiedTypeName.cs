@@ -145,21 +145,35 @@ namespace WithoutHaste.DataFiles.DotNet
 			{
 				if(type.ContainsGenericParameters) //generic type, with parameters unspecified
 				{
-					parameters = type.GetGenericArguments().Select(a => FromAssemblyInfo(a)).ToList();
-					typeName = typeName.Substring(0, typeName.IndexOf("["));
+					if(bubbleUpParameters != null && bubbleUpParameters.Count > 0) //actually, this is a generic type with specific parameter types that has a nested generic type within it
+					{
+						parameters = new List<DotNetQualifiedTypeName>(bubbleUpParameters);
+					}
+					else
+					{
+						parameters = type.GetGenericArguments().Select(a => FromAssemblyInfo(a)).ToList();
+					}
 
+					if(typeName.Contains("["))
+					{
+						typeName = typeName.Substring(0, typeName.IndexOf("["));
+					}
 					Int32.TryParse(typeName.Substring(typeName.LastIndexOf("`") + 1), out genericParameterCount);
 					typeName = typeName.Substring(0, typeName.LastIndexOf("`"));
 				}
 				else if(type.GetGenericArguments().Length > 0) //generic type, with specific parameter types
 				{
-					int parameterPosition = 0;
+					//TODO is this all correct? what case where these commented out statements meant to handle?
+					//int parameterPosition = 0;
 					foreach(Type parameter in type.GetGenericArguments())
 					{
-						parameters.Add(new DotNetReferenceClassGeneric(parameterPosition, parameter.Name));
-						parameterPosition++;
+						parameters.Add(FromAssemblyInfo(parameter));
+						//parameters.Add(new DotNetReferenceClassGeneric(parameterPosition, parameter.Name));
+						//parameterPosition++;
 					}
-					genericParameterCount = parameters.Count;
+					typeName = typeName.Substring(0, typeName.IndexOf("["));
+					string numberString = typeName.Substring(typeName.LastIndexOf("`") + 1);
+					Int32.TryParse(numberString, out genericParameterCount);
 					typeName = typeName.Substring(0, typeName.LastIndexOf("`"));
 
 					if(bubbleUpParameters != null)
