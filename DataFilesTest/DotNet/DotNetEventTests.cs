@@ -15,6 +15,11 @@ namespace DataFilesTest
 		protected class A
 		{
 			public event EventHandler EventA;
+
+			private void ClearCompilerWarnings()
+			{
+				EventA.Invoke(this, new EventArgs());
+			}
 		}
 
 		[TestMethod]

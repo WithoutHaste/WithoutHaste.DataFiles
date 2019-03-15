@@ -21,6 +21,11 @@ namespace DataFilesTest
 			public string PropertyA { get; set; }
 			public event EventHandler EventA;
 			public virtual void MethodA() { }
+
+			private void ClearCompilerWarnings()
+			{
+				EventA.Invoke(this, new EventArgs());
+			}
 		}
 
 		protected interface InheritanceInterfaceC
@@ -38,6 +43,11 @@ namespace DataFilesTest
 
 			public double PropertyC { get; set; }
 			public void MethodC() { }
+
+			private void ClearCompilerWarnings()
+			{
+				EventA.Invoke(this, new EventArgs());
+			}
 		}
 
 		protected class InheritanceClassD : InheritanceClassB
@@ -53,6 +63,11 @@ namespace DataFilesTest
 
 			public new double PropertyC { get; set; }
 			public new void MethodC() { }
+
+			private void ClearCompilerWarnings()
+			{
+				EventA.Invoke(this, new EventArgs());
+			}
 		}
 
 		//----------------------------------
