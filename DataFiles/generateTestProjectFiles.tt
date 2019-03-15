@@ -27,10 +27,12 @@ SaveOutput("../DataFilesTest/compileDebugProjects.bat");
 
 //from Stack Overflow: remove all nested files/directories under selected directory
 //must remove old results files or the tests won't run
+WriteLine("REM remove everything from the logs folder so new results can be saved");
 WriteLine("set folder=\"logs\"");
 WriteLine("cd /d %folder%");
 WriteLine("for /F \"delims=\" %%i in ('dir /b') do (rmdir \"%%i\" /s/q || del \"%%i\" /s/q)");
 WriteLine("cd ..");
+WriteLine("REM run tests");
 foreach(string version in targetFrameworkVersions) 
 {
 	string netVersion = version.Replace("v", "net").Replace(".", "");
