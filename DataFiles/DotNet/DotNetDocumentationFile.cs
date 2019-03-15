@@ -90,17 +90,18 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// To document the return type of <c>public Company.SomeType MyMethod() {}</c>, the library for <c>Company.SomeType</c> must be loaded.
 		/// </example>
 		/// </param>
+		/// <exception cref="LoadException">Error loading an assembly.</exception>
 		public void AddAssemblyInfo(string assemblyFilename, params string[] thirdPartyAssemblyFilenames)
 		{
 			if(thirdPartyAssemblyFilenames != null)
 			{
 				foreach(string thirdParty in thirdPartyAssemblyFilenames)
 				{
-					Assembly.LoadFrom(thirdParty);
+					LoadAssembly(thirdParty);
 				}
 			}
 
-			Assembly assembly = Assembly.LoadFrom(assemblyFilename);
+			Assembly assembly = LoadAssembly(assemblyFilename);
 			foreach(Type type in assembly.GetTypes())
 			{
 				AddAssemblyInfoToType(type);
@@ -108,6 +109,22 @@ namespace WithoutHaste.DataFiles.DotNet
 
 			ResolveDuplicatedComments();
 			ResolveInheritedComments();
+		}
+
+		/// <summary>
+		/// Load assembly, with error handling.
+		/// </summary>
+		/// <exception cref="LoadException"></exception>
+		private Assembly LoadAssembly(string fileName)
+		{
+			try
+			{
+				return Assembly.LoadFrom(fileName);
+			}
+			catch(BadImageFormatException)
+			{
+				throw new LoadException(String.Format("Failed to load assembly: {0}. Possible reason: the assembly is for a later target framework than is currently running. Possible reason: the assembly is 32-bit while the one currently running is 64-bit (or the reverse).", fileName));
+			}
 		}
 
 		private void LoadAssemblyInfoFromXml(XDocument document)

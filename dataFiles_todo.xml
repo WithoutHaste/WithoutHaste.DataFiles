@@ -56,30 +56,13 @@ EarlyDocs can point at it</Data>
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">68</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">v4.5.2
-The "RunEarlyDocs" task could not be loaded from the assembly E:\GitHub\WithoutHaste.DataFiles\DataFiles\packages\EarlyDocs.1.0.0\build\*Undefined*packages\EarlyDocs.1.0.0\ref\net452\EarlyDocs.dll.</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Task</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2019-03-10T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
           <Data ss:Type="Number">51</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
           <Data ss:Type="String">Assembly.LoadFrom
 catch BadImageFormatException, give message about which frameworks are supported
-- add test case</Data>
+- add test case
+--hmm it isn't throwing an error for the test</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>

@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using WithoutHaste.DataFiles;
 using WithoutHaste.DataFiles.DotNet;
 
 namespace DataFilesTest
@@ -254,6 +255,36 @@ namespace DataFilesTest
 			Assert.AreEqual(1, methodEB.MethodName.Parameters.Count);
 			Assert.AreEqual("System.Collections.Generic.List<Test.SingleGenericTypeD<T>>", methodEB.MethodName.Parameters[0].FullTypeName);
 		}
+
+#if DATAFILES_TARGET_20
+		[TestMethod]
+		[ExpectedException(typeof(LoadException))]
+		public void DotNetDocumentationFile_AddAssemblyInfo_LaterTargetFramework()
+		{
+			//arrange
+			XDocument document = XDocument.Load(Utilities.GetPathTo("data/DotNetDocumentationFile_Assembly.xml"), LoadOptions.PreserveWhitespace);
+			DotNetDocumentationFile file = new DotNetDocumentationFile(document);
+			string laterFrameworkDllFilename = Path.Combine(Utilities.GetProjectDirectory(), "../LaterFrameworkTest/bin/Debug/LaterFrameworkTest.dll");
+			//act
+			file.AddAssemblyInfo(laterFrameworkDllFilename);
+			//assert exception
+		}
+
+
+		[TestMethod]
+		[ExpectedException(typeof(LoadException))]
+		public void DotNetDocumentationFile_AddAssemblyInfo_ThirdParty_LaterTargetFramework()
+		{
+			//arrange
+			string xmlDocumentationFilename = Path.Combine(Utilities.GetProjectDirectory(), "../DataFiles/bin/Debug/WithoutHaste.DataFiles.XML");
+			string dllFilename = Path.Combine(Utilities.GetProjectDirectory(), "../DataFiles/bin/Debug/WithoutHaste.DataFiles.dll");
+			string laterFrameworkDllFilename = Path.Combine(Utilities.GetProjectDirectory(), "../LaterFrameworkTest/bin/Debug/LaterFrameworkTest.dll");
+			//act
+			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
+			xmlDocumentation.AddAssemblyInfo(dllFilename, laterFrameworkDllFilename);
+			//assert exception
+		}
+#endif
 
 		[TestMethod]
 		public void DotNetDocumentationFile_SmokeTest_EarlyDocsTest()

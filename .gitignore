@@ -11,6 +11,9 @@ DataFilesTest/.vs/*
 DataFilesTest/bin/*
 DataFilesTest/logs/*
 DataFilesTest/obj/*
+LaterFrameworkTest/.vs/*
+LaterFrameworkTest/bin/Release/*
+LaterFrameworkTest/obj/*
 ThirdPartyTest/.vs/*
 ThirdPartyTest/bin/*
 ThirdPartyTest/logs/*
