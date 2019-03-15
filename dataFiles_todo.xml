@@ -129,6 +129,25 @@ catch BadImageFormatException, give message about which frameworks are supported
       </Row>
       <Row>
         <Cell>
+          <Data ss:Type="Number">78</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">documentation:
+note the few difference between target frameworks
+- 2.0/3.0 can toggle QualifiedNameConverter on and off with a method</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Documentation</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-15T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
           <Data ss:Type="Number">57</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -1760,7 +1779,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">77</Data>
+          <Data ss:Type="Number">78</Data>
         </Cell>
       </Row>
       <Row>

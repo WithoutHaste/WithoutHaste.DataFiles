@@ -471,7 +471,7 @@ namespace DataFilesTest
 			DotNetMethod result = DotNetMethod.FromVisualStudioXml(xmlElement);
 			result.AddAssemblyInfo(methodInfo);
 			//assert
-#if DATAFILES_TARGET_20 || DATAFILES_TARGET_30
+#if DATAFILES_TARGET_20
 			Assert.AreEqual(MethodCategory.Static, result.Category);
 			Assert.AreEqual(ParameterCategory.Normal, result.MethodName.Parameters[0].Category);
 #else

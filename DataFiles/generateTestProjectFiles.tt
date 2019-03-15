@@ -25,10 +25,16 @@ foreach(string version in targetFrameworkVersions)
 }
 SaveOutput("../DataFilesTest/compileDebugProjects.bat");
 
+//from Stack Overflow: remove all nested files/directories under selected directory
+//must remove old results files or the tests won't run
+WriteLine("set folder=\"logs\"");
+WriteLine("cd /d %folder%");
+WriteLine("for /F \"delims=\" %%i in ('dir /b') do (rmdir \"%%i\" /s/q || del \"%%i\" /s/q)");
+WriteLine("cd ..");
 foreach(string version in targetFrameworkVersions) 
 {
 	string netVersion = version.Replace("v", "net").Replace(".", "");
-	WriteLine("mstest /testcontainer:bin\\Debug\\DataFilesTest." + netVersion + ".dll /resultsfile:logs\\DataFilesTestOutput." + netVersion + ".Debug.log");
+	WriteLine("mstest /testcontainer:bin\\Debug\\DataFilesTest." + netVersion + ".dll /resultsfile:logs\\DataFilesTestOutput." + netVersion + ".Debug.trx");
 }
 SaveOutput("../DataFilesTest/runTestsDebugProjects.bat");
 #>
