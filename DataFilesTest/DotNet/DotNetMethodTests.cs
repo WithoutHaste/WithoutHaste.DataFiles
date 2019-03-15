@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Xml;
@@ -441,9 +442,9 @@ namespace DataFilesTest
 		public void DotNetMethod_ThirdPartyTypes()
 		{
 			//arrange
-			string xmlDocumentationFilename = "../../../ThirdPartyTest/bin/Debug/ThirdPartyTest.XML";
-			string dllFilename = "../../../ThirdPartyTest/bin/Debug/ThirdPartyTest.dll";
-			string thirdPartyDllFilename = "../../../ThirdPartyTest/bin/Debug/Markdown.dll";
+			string xmlDocumentationFilename = Path.Combine(Utilities.GetProjectDirectory(), "../ThirdPartyTest/bin/Debug/ThirdPartyTest.XML");
+			string dllFilename = Path.Combine(Utilities.GetProjectDirectory(), "../ThirdPartyTest/bin/Debug/ThirdPartyTest.dll");
+			string thirdPartyDllFilename = Path.Combine(Utilities.GetProjectDirectory(), "../ThirdPartyTest/bin/Debug/Markdown.dll");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			xmlDocumentation.AddAssemblyInfo(dllFilename, thirdPartyDllFilename);

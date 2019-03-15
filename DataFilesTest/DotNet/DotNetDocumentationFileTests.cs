@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Xml;
@@ -243,8 +244,8 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_SmokeTest_EarlyDocsTest()
 		{
 			//arrange
-			string xmlDocumentationFilename = "../../../../EarlyDocs/Test/bin/Debug/Test.XML";
-			string dllFilename = "../../../../EarlyDocs/Test/bin/Debug/Test.dll";
+			string xmlDocumentationFilename = Path.Combine(Utilities.GetProjectDirectory(), "../../EarlyDocs/Test/bin/Debug/Test.XML");
+			string dllFilename = Path.Combine(Utilities.GetProjectDirectory(), "../../EarlyDocs/Test/bin/Debug/Test.dll");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			xmlDocumentation.AddAssemblyInfo(dllFilename);
@@ -256,8 +257,8 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_SmokeTest_DataFiles()
 		{
 			//arrange
-			string xmlDocumentationFilename = "../../../DataFiles/bin/Debug/WithoutHaste.DataFiles.XML";
-			string dllFilename = "../../../DataFiles/bin/Debug/WithoutHaste.DataFiles.dll";
+			string xmlDocumentationFilename = Path.Combine(Utilities.GetProjectDirectory(), "../DataFiles/bin/Debug/WithoutHaste.DataFiles.XML");
+			string dllFilename = Path.Combine(Utilities.GetProjectDirectory(), "../DataFiles/bin/Debug/WithoutHaste.DataFiles.dll");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			//xmlDocumentation.AddAssemblyForReference("System.Xml");
@@ -270,8 +271,8 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_SmokeTest_Drawing_Colors()
 		{
 			//arrange
-			string xmlDocumentationFilename = "../../../../WithoutHaste.Drawing.Colors/Colors/bin/Debug/WithoutHaste.Drawing.Colors.XML";
-			string dllFilename = "../../../../WithoutHaste.Drawing.Colors/Colors/bin/Debug/WithoutHaste.Drawing.Colors.dll";
+			string xmlDocumentationFilename = Path.Combine(Utilities.GetProjectDirectory(), "../../WithoutHaste.Drawing.Colors/Colors/bin/Debug/WithoutHaste.Drawing.Colors.XML");
+			string dllFilename = Path.Combine(Utilities.GetProjectDirectory(), "../../WithoutHaste.Drawing.Colors/Colors/bin/Debug/WithoutHaste.Drawing.Colors.dll");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			xmlDocumentation.AddAssemblyInfo(dllFilename);
@@ -283,8 +284,8 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_SmokeTest_Drawing_Shapes()
 		{
 			//arrange
-			string xmlDocumentationFilename = "../../../../WithoutHaste.Drawing.Shapes/Shapes/bin/Debug/WithoutHaste.Drawing.Shapes.XML";
-			string dllFilename = "../../../../WithoutHaste.Drawing.Shapes/Shapes/bin/Debug/WithoutHaste.Drawing.Shapes.dll";
+			string xmlDocumentationFilename = Path.Combine(Utilities.GetProjectDirectory(), "../../WithoutHaste.Drawing.Shapes/Shapes/bin/Debug/WithoutHaste.Drawing.Shapes.XML");
+			string dllFilename = Path.Combine(Utilities.GetProjectDirectory(), "../../WithoutHaste.Drawing.Shapes/Shapes/bin/Debug/WithoutHaste.Drawing.Shapes.dll");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			xmlDocumentation.AddAssemblyInfo(dllFilename);
@@ -296,8 +297,8 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_SmokeTest_Windows_GUI()
 		{
 			//arrange
-			string xmlDocumentationFilename = "../../../../WithoutHaste.Windows.GUI/GUI/bin/Debug/WithoutHaste.Windows.GUI.XML";
-			string dllFilename = "../../../../WithoutHaste.Windows.GUI/GUI/bin/Debug/WithoutHaste.Windows.GUI.dll";
+			string xmlDocumentationFilename = Path.Combine(Utilities.GetProjectDirectory(), "../../WithoutHaste.Windows.GUI/GUI/bin/Debug/WithoutHaste.Windows.GUI.XML");
+			string dllFilename = Path.Combine(Utilities.GetProjectDirectory(), "../../WithoutHaste.Windows.GUI/GUI/bin/Debug/WithoutHaste.Windows.GUI.dll");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			xmlDocumentation.AddAssemblyInfo(dllFilename);
