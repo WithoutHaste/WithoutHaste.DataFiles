@@ -92,17 +92,15 @@ private void GenerateOutput(string version, string netVersion, string[] lines)
 			}
 		}
 
-		//add a line for tell which target framwork DataFiles is using
-		if(outputLine.Contains("MultiTargetSymbols.targets"))
+		//tell which target framwork DataFiles is using
+		if(outputLine.Contains("DATAFILES_TARGET"))
 		{
 			string justNumbers = netVersion.Replace("net", "");
-			WriteLine(CurrentIndent + "  <PropertyGroup>");
-			WriteLine(CurrentIndent + "    <DefineConstants>$(DefineConstants);DATAFILES_TARGET_" + justNumbers + "</DefineConstants>");
+			outputLine = outputLine.Replace("_20", "_" + justNumbers);
 			if(is35OrHigher)
 			{
 				WriteLine(CurrentIndent + "    <DefineConstants>$(DefineConstants);DATAFILES_TARGET_35ORHIGHER</DefineConstants>");
 			}
-			WriteLine(CurrentIndent + "  </PropertyGroup>");
 		}
 
 		WriteLine(CurrentIndent + outputLine);

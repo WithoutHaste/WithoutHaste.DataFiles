@@ -1,4 +1,4 @@
-# Contents of WithoutHaste.DataFiles.Excel
+# Contents of [WithoutHaste.DataFiles](TableOfContents.WithoutHaste.DataFiles.md).Excel
 
 ## Concrete Types
 

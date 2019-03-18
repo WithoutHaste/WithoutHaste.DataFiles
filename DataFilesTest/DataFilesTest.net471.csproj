@@ -105,7 +105,6 @@
     <Compile Include="TextHelperTests.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="DotNet\DotNetDocumentationFileTests.cs" />
-    <Compile Include="XmlDocumentHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -274,8 +273,8 @@
   </Target>
   -->
   <PropertyGroup>
-    <DefineConstants>$(DefineConstants);DATAFILES_TARGET_471</DefineConstants>
     <DefineConstants>$(DefineConstants);DATAFILES_TARGET_35ORHIGHER</DefineConstants>
+    <DefineConstants>$(DefineConstants);DATAFILES_TARGET_471</DefineConstants>
   </PropertyGroup>
   <Import Project="$(ProjectDir)\..\MultiTargetSymbols.targets" />
 </Project>

@@ -456,6 +456,27 @@ make one object that can regex break apart all those names into their parts</Dat
       </Row>
       <Row>
         <Cell>
+          <Data ss:Type="Number">82</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">update main test project so it has the right DATAFILES_TARGET constant
+and update creation of derived projects to replace that with their own</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-18T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-18T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
           <Data ss:Type="Number">80</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -1835,7 +1856,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">81</Data>
+          <Data ss:Type="Number">82</Data>
         </Cell>
       </Row>
       <Row>

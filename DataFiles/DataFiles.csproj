@@ -81,6 +81,7 @@
     <Compile Include="DotNet\DotNetReferenceMethodGeneric.cs" />
     <Compile Include="DotNet\IDotNetCommentLink.cs" />
     <Compile Include="DotNet\DotNetSettings.cs" />
+    <Compile Include="exceptions\LoadException.cs" />
     <Compile Include="exceptions\StringFormatException.cs" />
     <Compile Include="exceptions\XmlFormatException.cs" />
     <Compile Include="Markdown\IMarkdownInLine.cs" />
@@ -119,7 +120,6 @@
     <Compile Include="DotNet\Utilities.cs" />
     <Compile Include="DotNet\DotNetDocumentationFile.cs" />
     <Compile Include="TextHelper.cs" />
-    <Compile Include="XmlDocumentHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

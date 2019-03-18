@@ -107,7 +107,6 @@
     <Compile Include="TextHelperTests.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="DotNet\DotNetDocumentationFileTests.cs" />
-    <Compile Include="XmlDocumentHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
