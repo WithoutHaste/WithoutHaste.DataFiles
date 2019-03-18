@@ -1,6 +1,12 @@
 # WithoutHaste.DataFiles
 
-.Net library for loading or creating XmlDocument, ExcelPackage, .Net XML documentation, or Markdown files.
+.Net library for consuming or creating various data files.
+
+Use WithoutHaste.DataFiles.DotNet to load .Net documentation information from an XML file and to load the library structure from the assembly itself.  
+
+Use WithoutHaste.DataFiles.Markdown to create Markdown documents.  
+
+Use WithoutHaste.DataFiles.Excel to load, edit, or create Excel documents. _(not released)_
 
 This library is under active development. Report bugs and request features on [Github](https://github.com/WithoutHaste/WithoutHaste.DataFiles/issues), or to wohaste@gmail.com.
 

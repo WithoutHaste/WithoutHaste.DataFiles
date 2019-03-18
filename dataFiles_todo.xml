@@ -43,7 +43,8 @@
         <Cell ss:StyleID="paragraph">
           <Data ss:Type="String">documentation:
 note the few difference between target frameworks
-- 2.0/3.0 can toggle QualifiedNameConverter on and off with a method</Data>
+- 2.0/3.0 can toggle QualifiedNameConverter on and off with a method
+- or should I have one folder for 2.0 docs and one for 4.5.2 docs so that I can link to each for pre/post 3.5 differences?</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -71,43 +72,6 @@ before first publishing this library to NuGet</Data>
         </Cell>
         <Cell ss:StyleID="cellShortDate">
           <Data ss:Type="DateTime">2019-03-06T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
-          <Data ss:Type="Number">50</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">note WithoutHaste.DataFiles dependency on:
-LINQlone NuGet library
-System.Xml.Linq NuGet library
-for just the target frameworks that need them</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Documentation</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2019-03-04T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
-          <Data ss:Type="Number">18</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">update repository summary</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Documentation</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2018-09-20T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -416,6 +380,49 @@ make one object that can regex break apart all those names into their parts</Dat
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">18</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">update repository summary</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Documentation</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2018-09-20T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-18T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">50</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">note WithoutHaste.DataFiles dependency on:
+LINQlone NuGet library
+System.Xml.Linq NuGet library
+for just the target frameworks that need them</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Documentation</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-04T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-18T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
