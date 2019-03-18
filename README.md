@@ -4,14 +4,24 @@
 
 This library is under active development. Report bugs and request features on [Github](https://github.com/WithoutHaste/WithoutHaste.DataFiles/issues), or to wohaste@gmail.com.
 
+## Namespace
+
+Library WithoutHaste.DataFiles includes:  
+* WithoutHaste.DataFiles.DotNet
+* WithoutHaste.DataFiles.Markdown
+
+Library WithoutHaste.DataFiles.Excel includes:  
+* WithoutHaste.DataFiles.Excel _(not released)_
+
 ## Dependencies
 
-* WithoutHaste.DataFiles _(includes DataFiles.DotNet and DataFiles.Markdown)_
+* WithoutHaste.DataFiles
   * Target Frameworks 2.0 | 3.0
     * [LINQlone library](https://www.nuget.org/packages/LINQlone/): a core System.Linq replacement
     * [System.Xml.Linq library](https://www.nuget.org/packages/System.Xml.Linq/): a core System.Xml.Linq replacement
   * Target Frameworks 3.5 | 4.0 | 4.5 | 4.5.1 | 4.5.2 | 4.6 | 4.6.1 | 4.6.2 | 4.7 | 4.7.1 | 4.7.2
     * No dependencies
+	
 * WithoutHaste.DataFiles.Excel _(not released)_
   * OfficeOpenXml from [EPPlus v4.5.2.1](https://www.nuget.org/packages/EPPlus/) NuGet package
 
