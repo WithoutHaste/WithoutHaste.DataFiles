@@ -33,9 +33,9 @@ namespace WithoutHaste.DataFiles.Markdown
 		#endregion
 
 		/// <inheritdoc />
-		public override string ToMarkdown(string previousText)
+		public override string ToMarkdownString(string previousText)
 		{
-			return String.Format("[{0}]({1})", text.ToMarkdown(), Url);
+			return String.Format("[{0}]({1})", text.ToMarkdownString(), Url);
 		}
 	}
 }

@@ -40,7 +40,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <summary>
 		/// Return markdown-formatted text.
 		/// </summary>
-		public string ToMarkdown(string previousText)
+		public string ToMarkdownString(string previousText)
 		{
 			List<int> columnWidths = GetColumnWidths();
 			StringBuilder builder = new StringBuilder();
@@ -71,7 +71,7 @@ namespace WithoutHaste.DataFiles.Markdown
 			bool finishedHeader = false;
 			foreach(MarkdownTableRow row in Rows)
 			{
-				builder.Append(row.ToMarkdown(columnWidths));
+				builder.Append(row.ToMarkdownString(columnWidths));
 				if(!finishedHeader)
 				{
 					builder.Append(DividerToMarkdown(columnWidths));

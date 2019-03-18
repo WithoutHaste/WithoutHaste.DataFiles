@@ -79,7 +79,7 @@ namespace WithoutHaste.DataFiles.Markdown
 
 		/// <inheritdoc />
 		/// <remarks>Uses ** for bold and _ for italics.</remarks>
-		public string ToMarkdown(string previousText = null)
+		public string ToMarkdownString(string previousText = null)
 		{
 			string text = Text ?? "";
 			text = EscapeControlCharacters(text);

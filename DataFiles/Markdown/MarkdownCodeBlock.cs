@@ -34,7 +34,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		}
 
 		/// <inheritdoc />
-		public string ToMarkdown(string previousText)
+		public string ToMarkdownString(string previousText)
 		{
 			string text = Text;
 			if(!text.EndsWith("\n"))
