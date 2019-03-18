@@ -12,6 +12,8 @@ A list of C# constructs that this library can interpret/handle.
   * Private
   * Constant
   * ReadOnly
+  
+* Namespaces
 
 * Types
   * Concrete Classes
