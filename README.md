@@ -28,8 +28,8 @@ Library WithoutHaste.DataFiles.Excel includes:
 ## Documentation
 
 For a quick list of the language constructs these libraries can handle:  
-[DataFiles.DotNet: Summary](DOTNET_SUMMARY.md)  
-[DataFiles.Markdown: Summary](MARKDOWN_SUMMARY.md)  
+[WithoutHaste.DataFiles.DotNet Summary](DOTNET_SUMMARY.md)  
+[WithoutHaste.DataFiles.Markdown Summary](MARKDOWN_SUMMARY.md)  
 
 For full documentation of these libraries:  
 [WithoutHaste.DataFiles Table of Contents](documentation/TableOfContents.md)  
