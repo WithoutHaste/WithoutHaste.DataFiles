@@ -226,5 +226,18 @@ namespace DataFilesTest
 			//assert
 			Assert.AreEqual(expectedResult, result);
 		}
+
+		[TestMethod]
+		public void Utilities_XNodeToString_PlainTextWithLessThanCode()
+		{
+			//arrange
+			string elementString = "<tag>some plain &lt; text</tag>";
+			string expectedResult = "<tag >some plain &lt; text</tag>";
+			XElement element = XElement.Parse(elementString, LoadOptions.PreserveWhitespace);
+			//act
+			string result = WithoutHaste.DataFiles.DotNet.Utilities.XNodeToString(element);
+			//assert
+			Assert.AreEqual(expectedResult, result);
+		}
 	}
 }
