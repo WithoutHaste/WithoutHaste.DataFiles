@@ -6,7 +6,7 @@ This library is under active development. Report bugs and request features on [G
 
 ## Dependencies
 
-* WithoutHaste.DataFiles
+* WithoutHaste.DataFiles _(includes DataFiles.DotNet and DataFiles.Markdown)_
   * Target Frameworks 2.0 | 3.0
     * [LINQlone library](https://www.nuget.org/packages/LINQlone/): a core System.Linq replacement
     * [System.Xml.Linq library](https://www.nuget.org/packages/System.Xml.Linq/): a core System.Xml.Linq replacement
