@@ -43,15 +43,9 @@ For programmers working on this project:
 
 Uses [Semantic Versioning 2.0.0](https://semver.org/).
 
-Version 2.0.0 under development:  
+Initial Release - v1.0.0 under development:
 _For WithoutHaste.DataFiles only_  
+- Support for parsing Visual Studio XML documentation files and assembly information.  
+- Support for creating Markdown files.  
 - Install with NuGet  
-- Include builds for all .Net frameworks >= 2.0  
-
-[Initial Release - v1.0.0](https://github.com/WithoutHaste/WithoutHaste.DataFiles/releases/tag/v1.0.0)  
-_For WithoutHaste.DataFiles and WithoutHaste.DataFiles.Excel_  
-- Support for creating Microsoft Excel 2003 XML files.
-- Support for creating XLSX files with the [EPPlus](https://www.nuget.org/packages/EPPlus/) OfficeOpenXml library.
-- Support for creating Markdown files.
-- Support for parsing Visual Studio XML documentation files and assembly information.
-- Uses library [EPPlus](https://www.nuget.org/packages/EPPlus/) version 4.5.2.1
+- Includes builds for all .Net frameworks >= 2.0  

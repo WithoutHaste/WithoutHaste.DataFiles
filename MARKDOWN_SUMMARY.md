@@ -2,7 +2,7 @@
 
 # DataFiles.Markdown Summary
 
-This document contains a list of Markdown constructs that this library can interpret/handle.
+A list of Markdown constructs that this library can interpret/handle.
 
 * Headers
 * Text
