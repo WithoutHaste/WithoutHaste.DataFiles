@@ -52,7 +52,7 @@ A list of C# constructs that this library can interpret/handle.
     * Operator Methods
       * Implicit Conversion
       * Explicit Conversion
-      * + ++ - -- * \ %
+      * \+ ++ - -- * \ %
       * == != > >= < <= && || ^ ! ~
       * << >>
 	* Parameters
