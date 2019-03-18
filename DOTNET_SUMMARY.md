@@ -80,7 +80,7 @@ A list of C# constructs that this library can interpret/handle.
   * "typeparamref" tag
   * "see" tag
   * "seealso" tag
-  * Any "cref" attributes shown [here](https://github.com/WithoutHaste/EarlyDocs/blob/master/HowToUseXmlComments.md)
+  * Any "cref" attributes shown [here](https://github.com/WithoutHaste/EarlyDocs/blob/master/HowToUseXmlComments.md#cref-attribute)
   * Custom tags
     * "inheritdoc" tag
     * "duplicate" tag
