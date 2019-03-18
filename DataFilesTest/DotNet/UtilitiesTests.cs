@@ -200,5 +200,31 @@ namespace DataFilesTest
 			//assert
 			Assert.AreEqual(false, result);
 		}
+
+		[TestMethod]
+		public void Utilities_XNodeToString_AttributeValueWithDoubleQuotes()
+		{
+			//arrange
+			string elementString = "<tag attr='\"with quotes\"'></tag>";
+			string expectedResult = "<tag attr=\"\"with quotes\"\" ></tag>";
+			XElement element = XElement.Parse(elementString, LoadOptions.PreserveWhitespace);
+			//act
+			string result = WithoutHaste.DataFiles.DotNet.Utilities.XNodeToString(element);
+			//assert
+			Assert.AreEqual(expectedResult, result);
+		}
+
+		[TestMethod]
+		public void Utilities_XNodeToString_AttributeValueWithSingleQuotes()
+		{
+			//arrange
+			string elementString = "<tag attr=\"'with quotes'\"></tag>";
+			string expectedResult = "<tag attr=\"'with quotes'\" ></tag>";
+			XElement element = XElement.Parse(elementString, LoadOptions.PreserveWhitespace);
+			//act
+			string result = WithoutHaste.DataFiles.DotNet.Utilities.XNodeToString(element);
+			//assert
+			Assert.AreEqual(expectedResult, result);
+		}
 	}
 }
