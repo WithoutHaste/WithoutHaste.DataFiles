@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
@@ -142,27 +141,49 @@ namespace WithoutHaste.DataFiles.DotNet
 				typeName = ""; //todo: this should not be necessary, track down case in EarlyDocs
 			List<DotNetQualifiedTypeName> parameters = new List<DotNetQualifiedTypeName>();
 			int genericParameterCount = 0;
-			if(type.GenericTypeArguments.Length > 0)
+			if(!type.IsGenericParameter)
 			{
-				parameters = type.GenericTypeArguments.Select(a => FromAssemblyInfo(a)).ToList();
-				typeName = typeName.Substring(0, typeName.IndexOf("["));
-
-				Int32.TryParse(typeName.Substring(typeName.LastIndexOf("`") + 1), out genericParameterCount);
-				typeName = typeName.Substring(0, typeName.LastIndexOf("`"));
-			}
-			else if(type.GetTypeInfo().GenericTypeParameters.Length > 0)
-			{
-				parameters = type.GetTypeInfo().GenericTypeParameters.Select(p => new DotNetReferenceClassGeneric(p.GenericParameterPosition, p.Name)).Cast<DotNetQualifiedTypeName>().ToList();
-				genericParameterCount = parameters.Count;
-				typeName = typeName.Substring(0, typeName.LastIndexOf("`"));
-
-				if(bubbleUpParameters != null)
+				if(type.ContainsGenericParameters) //generic type, with parameters unspecified
 				{
-					if(parameters.Count > bubbleUpParameters.Count)
-						throw new Exception("Type has more generic-type-parameters than expected.");
-					int remainder = bubbleUpParameters.Count - parameters.Count;
-					parameters = bubbleUpParameters.Skip(remainder).ToList();
-					bubbleUpParameters = bubbleUpParameters.Take(remainder).ToList();
+					if(bubbleUpParameters != null && bubbleUpParameters.Count > 0) //actually, this is a generic type with specific parameter types that has a nested generic type within it
+					{
+						parameters = new List<DotNetQualifiedTypeName>(bubbleUpParameters);
+					}
+					else
+					{
+						parameters = type.GetGenericArguments().Select(a => FromAssemblyInfo(a)).ToList();
+					}
+
+					if(typeName.Contains("["))
+					{
+						typeName = typeName.Substring(0, typeName.IndexOf("["));
+					}
+					Int32.TryParse(typeName.Substring(typeName.LastIndexOf("`") + 1), out genericParameterCount);
+					typeName = typeName.Substring(0, typeName.LastIndexOf("`"));
+				}
+				else if(type.GetGenericArguments().Length > 0) //generic type, with specific parameter types
+				{
+					//TODO is this all correct? what case where these commented out statements meant to handle?
+					//int parameterPosition = 0;
+					foreach(Type parameter in type.GetGenericArguments())
+					{
+						parameters.Add(FromAssemblyInfo(parameter));
+						//parameters.Add(new DotNetReferenceClassGeneric(parameterPosition, parameter.Name));
+						//parameterPosition++;
+					}
+					typeName = typeName.Substring(0, typeName.IndexOf("["));
+					string numberString = typeName.Substring(typeName.LastIndexOf("`") + 1);
+					Int32.TryParse(numberString, out genericParameterCount);
+					typeName = typeName.Substring(0, typeName.LastIndexOf("`"));
+
+					if(bubbleUpParameters != null)
+					{
+						if(parameters.Count > bubbleUpParameters.Count)
+							throw new Exception("Type has more generic-type-parameters than expected.");
+						int remainder = bubbleUpParameters.Count - parameters.Count;
+						parameters = bubbleUpParameters.Skip(remainder).ToList();
+						bubbleUpParameters = bubbleUpParameters.Take(remainder).ToList();
+					}
 				}
 			}
 

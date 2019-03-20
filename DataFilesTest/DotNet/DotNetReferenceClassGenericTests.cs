@@ -32,12 +32,11 @@ namespace DataFilesTest
 			XElement typeXmlElement = XElement.Parse("<member name='T:DataFilesTest.DotNetReferenceClassGenericTests.ClassGeneric`1' />", LoadOptions.PreserveWhitespace);
 			XElement methodXmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetReferenceClassGenericTests.ClassGeneric`1.#ctor(`0)' />", LoadOptions.PreserveWhitespace);
 			Type type = typeof(ClassGeneric<>);
-			TypeInfo typeInfo = type.GetTypeInfo();
 			//act
 			DotNetType typeResult = DotNetType.FromVisualStudioXml(typeXmlElement);
 			DotNetMethod methodResult = DotNetMethod.FromVisualStudioXml(methodXmlElement);
 			typeResult.AddMember(methodResult);
-			typeResult.AddAssemblyInfo(typeInfo, typeResult.Name);
+			typeResult.AddAssemblyInfo(type, typeResult.Name);
 			//assert
 			Assert.AreEqual(MethodCategory.Normal, methodResult.Category);
 			Assert.AreEqual("Apple", methodResult.MethodName.Parameters[0].TypeName);
@@ -50,12 +49,11 @@ namespace DataFilesTest
 			XElement typeXmlElement = XElement.Parse("<member name='T:DataFilesTest.DotNetReferenceClassGenericTests.ClassGeneric`1' />", LoadOptions.PreserveWhitespace);
 			XElement methodXmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetReferenceClassGenericTests.ClassGeneric`1.MethodA' />", LoadOptions.PreserveWhitespace);
 			Type type = typeof(ClassGeneric<>);
-			TypeInfo typeInfo = type.GetTypeInfo();
 			//act
 			DotNetType typeResult = DotNetType.FromVisualStudioXml(typeXmlElement);
 			DotNetMethod methodResult = DotNetMethod.FromVisualStudioXml(methodXmlElement);
 			typeResult.AddMember(methodResult);
-			typeResult.AddAssemblyInfo(typeInfo, typeResult.Name);
+			typeResult.AddAssemblyInfo(type, typeResult.Name);
 			//assert
 			Assert.AreEqual(MethodCategory.Normal, methodResult.Category);
 			Assert.AreEqual("Apple", methodResult.MethodName.ReturnTypeName);
@@ -69,7 +67,7 @@ namespace DataFilesTest
 			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:DataFilesTest.DotNetReferenceClassGenericTests.ClassGeneric`1'></member>", LoadOptions.PreserveWhitespace));
 			dotNetType.AddMember(DotNetField.FromVisualStudioXml(XElement.Parse("<member name='F:DataFilesTest.DotNetReferenceClassGenericTests.ClassGeneric`1.FieldA'></member>", LoadOptions.PreserveWhitespace)));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			//assert
 			Assert.IsNotNull(dotNetType.Fields[0].TypeName);
 			Assert.AreEqual("Apple", dotNetType.Fields[0].TypeName.FullName);
@@ -83,7 +81,7 @@ namespace DataFilesTest
 			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:DataFilesTest.DotNetReferenceClassGenericTests.ClassGeneric`1'></member>", LoadOptions.PreserveWhitespace));
 			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:DataFilesTest.DotNetReferenceClassGenericTests.ClassGeneric`1.PropertyA'></member>", LoadOptions.PreserveWhitespace)));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			//assert
 			Assert.IsNotNull(dotNetType.Properties[0].TypeName);
 			Assert.AreEqual("Apple", dotNetType.Properties[0].TypeName.FullName);
@@ -97,7 +95,7 @@ namespace DataFilesTest
 			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:DataFilesTest.DotNetReferenceClassGenericTests.ClassGeneric`1'></member>", LoadOptions.PreserveWhitespace));
 			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:DataFilesTest.DotNetReferenceClassGenericTests.ClassGeneric`1.Item(`0)'></member>", LoadOptions.PreserveWhitespace)));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			//assert
 			Assert.IsTrue(dotNetType.Properties[0] is DotNetIndexer);
 			DotNetIndexer indexer = (dotNetType.Properties[0] as DotNetIndexer);

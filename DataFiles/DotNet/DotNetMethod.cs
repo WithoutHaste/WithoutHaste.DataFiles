@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Reflection;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace WithoutHaste.DataFiles.DotNet
@@ -59,7 +58,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <example><![CDATA[<member name="M:Namespace.Type.MethodName(System.Int32,System.String)"></member>]]></example>
 		public static DotNetMethod FromVisualStudioXml(XElement memberElement)
 		{
-			string signature = memberElement.Attribute("name")?.Value;
+			string signature = memberElement.GetAttributeValue("name");
 			if(signature == null)
 				return new DotNetMethod();
 
@@ -149,8 +148,10 @@ namespace WithoutHaste.DataFiles.DotNet
 				if(methodInfo.IsStatic)
 				{
 					Category = MethodCategory.Static;
+#if EXTENSION_METHODS
 					if(methodInfo.IsExtension())
 						Category = MethodCategory.Extension;
+#endif
 				}
 				else if(methodInfo.IsAbstract)
 					Category = MethodCategory.Abstract;
@@ -195,7 +196,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			MethodName.PushClassGenericTypes(classGenericTypeAliases);
 		}
 
-		#region Low Level
+#region Low Level
 
 		/// <duplicate cref='Equals(Object)' />
 		public static bool operator ==(DotNetMethod a, DotNetMethod b)
@@ -246,6 +247,6 @@ namespace WithoutHaste.DataFiles.DotNet
 			return Name.GetHashCode() & MethodName.Parameters.GetHashCode();
 		}
 
-		#endregion
+#endregion
 	}
 }

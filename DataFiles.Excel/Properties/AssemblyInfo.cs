@@ -15,7 +15,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCulture("")]
 
 // Set test project access
-[assembly:InternalsVisibleTo("DataFilesTest")]
+[assembly:InternalsVisibleTo("ExcelTest")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 

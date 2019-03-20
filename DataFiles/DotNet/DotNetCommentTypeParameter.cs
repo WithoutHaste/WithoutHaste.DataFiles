@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace WithoutHaste.DataFiles.DotNet
@@ -38,7 +37,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			ValidateXmlTag(element, "typeparam");
 			return new DotNetCommentTypeParameter(
-				new DotNetCommentTypeParameterLink(element.Attribute("name")?.Value),
+				new DotNetCommentTypeParameterLink(element.GetAttributeValue("name")),
 				ParseSection(element)
 			);
 		}

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace WithoutHaste.DataFiles.DotNet
@@ -30,7 +29,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		public static new DotNetCommentTypeParameterLink FromVisualStudioXml(XElement element)
 		{
 			ValidateXmlTag(element, "typeparamref");
-			return new DotNetCommentTypeParameterLink(element.Attribute("name")?.Value, DotNetComment.GetTag(element));
+			return new DotNetCommentTypeParameterLink(element.GetAttributeValue("name"), DotNetComment.GetTag(element));
 		}
 
 		#endregion

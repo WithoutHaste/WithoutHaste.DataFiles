@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles.Markdown
 {
@@ -44,7 +43,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <remarks>Column widths are padded an additional 1 space on left and right, per Markdown formatting.</remarks>
 		/// <remarks>Line feed, new line, and tab characters are removed.</remarks>
 		/// <exception cref="ArgumentException">ColumnWidths cannot be null or shorter than the row.</exception>
-		public string ToMarkdown(List<int> columnWidths)
+		public string ToMarkdownString(List<int> columnWidths)
 		{
 			if(columnWidths == null || columnWidths.Count < Cells.Count)
 				throw new ArgumentException("ColumnWidths cannot be null or shorter than the row.");

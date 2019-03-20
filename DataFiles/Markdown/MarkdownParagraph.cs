@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles.Markdown
 {
@@ -108,13 +107,13 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <summary>
 		/// Convert the paragraph to markdown-formatted text.
 		/// </summary>
-		public string ToMarkdown(string previousText)
+		public string ToMarkdownString(string previousText)
 		{
 			StringBuilder builder = new StringBuilder();
 			string thisPreviousText = null;
 			foreach(IMarkdownInSection element in elements)
 			{
-				thisPreviousText = element.ToMarkdown(thisPreviousText);
+				thisPreviousText = element.ToMarkdownString(thisPreviousText);
 				builder.Append(thisPreviousText);
 			}
 

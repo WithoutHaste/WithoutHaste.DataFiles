@@ -160,11 +160,13 @@ The subset of Methods that are static (including extension methods), but not con
 
 # Methods
 
-## AddAssemblyInfo([System.Reflection.TypeInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.typeinfo) typeInfo, [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md) name)
-
-**void**  
+## AddAssemblyInfo([Type](https://docs.microsoft.com/en-us/dotnet/api/system.type), [DotNetQualifiedName](WithoutHaste.DataFiles.DotNet.DotNetQualifiedName.md))
 
 Load additional documentation information from the assembly itself for this type or one of its nested type descendents.  
+
+## AddAssemblyInfo([Type](https://docs.microsoft.com/en-us/dotnet/api/system.type))
+
+Load additional information from the assembly for this type.  
 
 ## AddMember([DotNetMember](WithoutHaste.DataFiles.DotNet.DotNetMember.md) member)
 

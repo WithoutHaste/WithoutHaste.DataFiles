@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -100,7 +99,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			{
 				if(node.NodeType == XmlNodeType.Text)
 				{
-					if(node.ToString().IsAllWhitespace())
+					if(Utilities.XNodeToString(node).IsAllWhitespace())
 						continue;
 					term = DotNetCommentGroup.FromVisualStudioXml(element);
 					break;

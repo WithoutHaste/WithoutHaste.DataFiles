@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
@@ -159,18 +158,12 @@ namespace WithoutHaste.DataFiles.DotNet
 		///   <item>Class declaration of generic types are shown the same as .Net XML documentation: MyType`1 for one generic type</item>
 		///   <item>When a generic type is defined: System.Collections.Generic.List`1[U], where U is the type alias from the class declaration</item>
 		/// </list>
-		public static DotNetQualifiedName FromAssemblyInfo(TypeInfo typeInfo)
-		{
-			return FromAssemblyInfo(typeInfo.FullName);
-		}
-
-		/// <summary>See <see cref="FromAssemblyInfo(TypeInfo)"/></summary>
 		public static DotNetQualifiedName FromAssemblyInfo(Type type)
 		{
 			return FromAssemblyInfo(type.FullName);
 		}
 
-		/// <summary>See <see cref="FromAssemblyInfo(TypeInfo)"/></summary>
+		/// <summary>See <see cref="FromAssemblyInfo(Type)"/></summary>
 		public static DotNetQualifiedName FromAssemblyInfo(string typeName)
 		{
 			typeName = typeName.ReplaceUnescapedCharacters('\\', '+', '.');
@@ -200,13 +193,13 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <summary>Return the names combined with a '.' delimiter.</summary>
 		public static string Combine(params string[] names)
 		{
-			return String.Join(".", names.Where(n => !String.IsNullOrEmpty(n)));
+			return String.Join(".", names.Where(n => !String.IsNullOrEmpty(n)).ToArray());
 		}
 
 		/// <summary>Return the names combined with a '.' delimiter.</summary>
 		public static string Combine(List<string> names)
 		{
-			return String.Join(".", names.Where(n => !String.IsNullOrEmpty(n)));
+			return String.Join(".", names.Where(n => !String.IsNullOrEmpty(n)).ToArray());
 		}
 
 		/// <summary>Returns true if this Name is nested inside the other Name.</summary>
@@ -277,7 +270,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <example>A.B.C.LocalName</example>
 		public static implicit operator string(DotNetQualifiedName name)
 		{
-			return name?.ToString();
+			if(name == null)
+				return null;
+			return name.ToString();
 		}
 
 		/// <summary>Returns dot notation of namespaces and local name.</summary>

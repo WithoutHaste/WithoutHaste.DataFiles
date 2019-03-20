@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -52,7 +52,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		internal DotNetQualifiedName DuplicatesFrom {
 			get {
 				DotNetCommentDuplicate comment = FloatingComments.Comments.OfType<DotNetCommentDuplicate>().FirstOrDefault();
-				return comment?.Name;
+				if(comment == null)
+					return null;
+				return comment.Name;
 			}
 		}
 
@@ -194,7 +196,7 @@ namespace WithoutHaste.DataFiles.DotNet
 						}
 						break;
 					case XmlNodeType.Text:
-						comment = DotNetComment.FromVisualStudioXml(node.ToString());
+						comment = DotNetComment.FromVisualStudioXml(Utilities.XNodeToString(node));
 						if(comment == null)
 							break;
 						if(previousCommentWasAParagraphTag && comment.ToString() == "\n")

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1B0B7E3B-8708-4799-B768-1949DA9DD755}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WithoutHaste.DataFiles</RootNamespace>
+    <AssemblyName>WithoutHaste.DataFiles.net461</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Core" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Counters.cs" />
+    <Compile Include="DotNet\DotNetBaseType.cs" />
+    <Compile Include="DotNet\DotNetCommentDuplicate.cs" />
+    <Compile Include="DotNet\DotNetCommentInherit.cs" />
+    <Compile Include="DotNet\DotNetCommentMethodLinkedGroup.cs" />
+    <Compile Include="DotNet\DotNetDelegate.cs" />
+    <Compile Include="DotNet\DotNetIndexer.cs" />
+    <Compile Include="DotNet\DotNetMethodDestructor.cs" />
+    <Compile Include="DotNet\DotNetPropertyMethod.cs" />
+    <Compile Include="DotNet\DotNetQualifiedClassNameTreeNode.cs" />
+    <Compile Include="DotNet\DotNetReferenceClassGeneric.cs" />
+    <Compile Include="DotNet\DotNetReferenceGeneric.cs" />
+    <Compile Include="DotNet\DotNetCommentCode.cs" />
+    <Compile Include="DotNet\DotNetCommentCodeBlock.cs" />
+    <Compile Include="DotNet\DotNetCommentLinkedGroup.cs" />
+    <Compile Include="DotNet\DotNetCommentListItem.cs" />
+    <Compile Include="DotNet\DotNetCommentParameter.cs" />
+    <Compile Include="DotNet\DotNetCommentParameterLink.cs" />
+    <Compile Include="DotNet\DotNetCommentQualifiedLinkedGroup.cs" />
+    <Compile Include="DotNet\DotNetCommentRow.cs" />
+    <Compile Include="DotNet\DotNetCommentTypeParameter.cs" />
+    <Compile Include="DotNet\DotNetCommentTypeParameterLink.cs" />
+    <Compile Include="DotNet\DotNetMethodConstructor.cs" />
+    <Compile Include="DotNet\DotNetMethodOperator.cs" />
+    <Compile Include="DotNet\DotNetQualifiedTypeName.cs" />
+    <Compile Include="DotNet\DotNetQualifiedMethodName.cs" />
+    <Compile Include="DotNet\DotNetQualifiedClassName.cs" />
+    <Compile Include="DotNet\DotNetReferenceMethodGeneric.cs" />
+    <Compile Include="DotNet\IDotNetCommentLink.cs" />
+    <Compile Include="DotNet\DotNetSettings.cs" />
+    <Compile Include="exceptions\StringFormatException.cs" />
+    <Compile Include="exceptions\XmlFormatException.cs" />
+    <Compile Include="Markdown\IMarkdownInLine.cs" />
+    <Compile Include="Markdown\IMarkdownInList.cs" />
+    <Compile Include="Markdown\IMarkdownInSection.cs" />
+    <Compile Include="Markdown\IMarkdownIsBlock.cs" />
+    <Compile Include="Markdown\MarkdownCode.cs" />
+    <Compile Include="Markdown\MarkdownCodeBlock.cs" />
+    <Compile Include="Markdown\MarkdownFile.cs" />
+    <Compile Include="Markdown\MarkdownInlineLink.cs" />
+    <Compile Include="Markdown\MarkdownLine.cs" />
+    <Compile Include="Markdown\MarkdownLink.cs" />
+    <Compile Include="Markdown\MarkdownList.cs" />
+    <Compile Include="Markdown\MarkdownParagraph.cs" />
+    <Compile Include="Markdown\MarkdownSection.cs" />
+    <Compile Include="Markdown\MarkdownTable.cs" />
+    <Compile Include="Markdown\MarkdownTableRow.cs" />
+    <Compile Include="Markdown\MarkdownText.cs" />
+    <Compile Include="Markdown\Utilities.cs" />
+    <Compile Include="DotNet\DotNetComment.cs" />
+    <Compile Include="DotNet\DotNetCommentCell.cs" />
+    <Compile Include="DotNet\DotNetCommentGroup.cs" />
+    <Compile Include="DotNet\DotNetCommentQualifiedLink.cs" />
+    <Compile Include="DotNet\DotNetCommentList.cs" />
+    <Compile Include="DotNet\DotNetCommentMethodLink.cs" />
+    <Compile Include="DotNet\DotNetCommentTable.cs" />
+    <Compile Include="DotNet\DotNetEvent.cs" />
+    <Compile Include="DotNet\DotNetField.cs" />
+    <Compile Include="DotNet\DotNetMember.cs" />
+    <Compile Include="DotNet\DotNetMethod.cs" />
+    <Compile Include="DotNet\DotNetParameter.cs" />
+    <Compile Include="DotNet\DotNetProperty.cs" />
+    <Compile Include="DotNet\DotNetCommentText.cs" />
+    <Compile Include="DotNet\DotNetType.cs" />
+    <Compile Include="DotNet\DotNetQualifiedName.cs" />
+    <Compile Include="DotNet\Utilities.cs" />
+    <Compile Include="DotNet\DotNetDocumentationFile.cs" />
+    <Compile Include="TextHelper.cs" />
+    <Compile Include="XmlDocumentHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <EarlyDocsDllFile>$(ProjectDir)$(OutDir)WithoutHaste.DataFiles.dll</EarlyDocsDllFile>
+    <EarlyDocsXmlFile>$(ProjectDir)$(OutDir)WithoutHaste.DataFiles.XML</EarlyDocsXmlFile>
+    <EarlyDocsOutputDir>$(ProjectDir)..\documentation\</EarlyDocsOutputDir>
+    <EarlyDocsSkip>True</EarlyDocsSkip>
+  </PropertyGroup>
+  <ItemGroup>
+    <!--<EarlyDocsInclude Include="$(ProjectDir)$(OutDir)EPPlus.dll"></EarlyDocsInclude>-->
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="packages\EarlyDocs.1.0.0\build\EarlyDocs.targets" Condition="Exists('packages\EarlyDocs.1.0.0\build\EarlyDocs.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\EarlyDocs.1.0.0\build\EarlyDocs.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EarlyDocs.1.0.0\build\EarlyDocs.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Import Project="$(ProjectDir)\..\MultiTargetSymbols.targets" />
+</Project>

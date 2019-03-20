@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles.Markdown
 {
@@ -177,16 +176,16 @@ namespace WithoutHaste.DataFiles.Markdown
 			return (elements.Last().GetType() == type);
 		}
 
-		/// <duplicate cref='ToMarkdown(string)'/>
-		public string ToMarkdown()
+		/// <duplicate cref='ToMarkdownString(string)'/>
+		public string ToMarkdownString()
 		{
-			return ToMarkdown(null);
+			return ToMarkdownString(null);
 		}
 
 		/// <summary>
 		/// Return markdown-formatted text, taking the previous text of the file into account.
 		/// </summary>
-		public string ToMarkdown(string previousText)
+		public string ToMarkdownString(string previousText)
 		{
 			StringBuilder builder = new StringBuilder();
 
@@ -215,11 +214,11 @@ namespace WithoutHaste.DataFiles.Markdown
 			{
 				if(element is MarkdownSection)
 				{
-					thisPreviousText = (element as MarkdownSection).ToMarkdown(thisPreviousText);
+					thisPreviousText = (element as MarkdownSection).ToMarkdownString(thisPreviousText);
 				}
 				else
 				{
-					thisPreviousText = element.ToMarkdown(thisPreviousText);
+					thisPreviousText = element.ToMarkdownString(thisPreviousText);
 				}
 				builder.Append(thisPreviousText);
 			}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <!-- frameworks supporting extensions methods -->
+	<DefineConstants Condition="'$(TargetFrameworkVersion.Substring(1,2))' == '3' Or '$(TargetFrameworkVersion.Substring(1,2))' == '4'">$(DefineConstants);EXTENSION_METHODS</DefineConstants>
+	<!-- frameworks supporting Func type -->
+	<!-- frameworks supporting System.Xml.Linq -->
+	<DefineConstants Condition="'$(TargetFrameworkVersion)' == 'v3.5' Or '$(TargetFrameworkVersion.Substring(1,2))' == '4'">$(DefineConstants);FUNCS;SYSTEM_XML_LINQ</DefineConstants>
+	<!-- indicate which framework is in use -->
+	<DefineConstants Condition="'$(TargetFrameworkVersion)' == 'v2.0'">$(DefineConstants);TARGET_20</DefineConstants>
+	<DefineConstants Condition="'$(TargetFrameworkVersion)' == 'v3.0'">$(DefineConstants);TARGET_30</DefineConstants>
+	<DefineConstants Condition="'$(TargetFrameworkVersion)' == 'v3.5'">$(DefineConstants);TARGET_35</DefineConstants>
+	<DefineConstants Condition="'$(TargetFrameworkVersion)' == 'v4.0'">$(DefineConstants);TARGET_40</DefineConstants>
+	<DefineConstants Condition="'$(TargetFrameworkVersion)' == 'v4.5'">$(DefineConstants);TARGET_45</DefineConstants>
+	<DefineConstants Condition="'$(TargetFrameworkVersion)' == 'v4.5.1'">$(DefineConstants);TARGET_451</DefineConstants>
+	<DefineConstants Condition="'$(TargetFrameworkVersion)' == 'v4.5.2'">$(DefineConstants);TARGET_452</DefineConstants>
+	<DefineConstants Condition="'$(TargetFrameworkVersion)' == 'v4.6'">$(DefineConstants);TARGET_46</DefineConstants>
+	<DefineConstants Condition="'$(TargetFrameworkVersion)' == 'v4.6.1'">$(DefineConstants);TARGET_461</DefineConstants>
+	<DefineConstants Condition="'$(TargetFrameworkVersion)' == 'v4.6.2'">$(DefineConstants);TARGET_462</DefineConstants>
+	<DefineConstants Condition="'$(TargetFrameworkVersion)' == 'v4.7'">$(DefineConstants);TARGET_47</DefineConstants>
+	<DefineConstants Condition="'$(TargetFrameworkVersion)' == 'v4.7.1'">$(DefineConstants);TARGET_471</DefineConstants>
+	<DefineConstants Condition="'$(TargetFrameworkVersion)' == 'v4.7.2'">$(DefineConstants);TARGET_472</DefineConstants>
+  </PropertyGroup>
+</Project>

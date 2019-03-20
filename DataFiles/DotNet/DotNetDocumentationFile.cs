@@ -76,7 +76,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			ResolveInheritedComments();
 		}
 
-		#endregion
+#endregion
 
 		/// <summary>
 		/// Load additional documentation information from the assembly itself.
@@ -90,24 +90,41 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// To document the return type of <c>public Company.SomeType MyMethod() {}</c>, the library for <c>Company.SomeType</c> must be loaded.
 		/// </example>
 		/// </param>
+		/// <exception cref="LoadException">Error loading an assembly.</exception>
 		public void AddAssemblyInfo(string assemblyFilename, params string[] thirdPartyAssemblyFilenames)
 		{
 			if(thirdPartyAssemblyFilenames != null)
 			{
 				foreach(string thirdParty in thirdPartyAssemblyFilenames)
 				{
-					Assembly.LoadFrom(thirdParty);
+					LoadAssembly(thirdParty);
 				}
 			}
 
-			Assembly assembly = Assembly.LoadFrom(assemblyFilename);
-			foreach(TypeInfo typeInfo in assembly.DefinedTypes)
+			Assembly assembly = LoadAssembly(assemblyFilename);
+			foreach(Type type in assembly.GetTypes())
 			{
-				AddAssemblyInfoToType(typeInfo);
+				AddAssemblyInfoToType(type);
 			}
 
 			ResolveDuplicatedComments();
 			ResolveInheritedComments();
+		}
+
+		/// <summary>
+		/// Load assembly, with error handling.
+		/// </summary>
+		/// <exception cref="LoadException"></exception>
+		private Assembly LoadAssembly(string fileName)
+		{
+			try
+			{
+				return Assembly.LoadFrom(fileName);
+			}
+			catch(BadImageFormatException)
+			{
+				throw new LoadException(String.Format("Failed to load assembly: {0}. Possible reason: the assembly is for a later target framework than is currently running. Possible reason: the assembly is 32-bit while the one currently running is 64-bit (or the reverse).", fileName));
+			}
 		}
 
 		private void LoadAssemblyInfoFromXml(XDocument document)
@@ -218,31 +235,31 @@ namespace WithoutHaste.DataFiles.DotNet
 			//no exception if type not found, member is ignored
 		}
 
-		private void AddAssemblyInfoToType(TypeInfo typeInfo)
+		private void AddAssemblyInfoToType(Type type)
 		{
-			DotNetQualifiedName qualifiedName = DotNetQualifiedName.FromAssemblyInfo(typeInfo);
-			DotNetType type = Types.FirstOrDefault(x => x.Is(qualifiedName) || x.Owns(qualifiedName));
-			if(type == null)
+			DotNetQualifiedName qualifiedName = DotNetQualifiedName.FromAssemblyInfo(type);
+			DotNetType dotNetType = Types.FirstOrDefault(x => x.Is(qualifiedName) || x.Owns(qualifiedName));
+			if(dotNetType == null)
 				return; //no error if type is not found
 
-			if(typeInfo.IsDelegate())
+			if(type.IsDelegate())
 			{
-				ConvertTypeToDelegate(typeInfo, qualifiedName, type);
+				ConvertTypeToDelegate(type, qualifiedName, dotNetType);
 				return;
 			}
 
-			type.AddAssemblyInfo(typeInfo, qualifiedName);
+			dotNetType.AddAssemblyInfo(type, qualifiedName);
 		}
 
-		private void ConvertTypeToDelegate(TypeInfo typeInfo, DotNetQualifiedName qualifiedName, DotNetType type)
+		private void ConvertTypeToDelegate(Type type, DotNetQualifiedName qualifiedName, DotNetType dotNetType)
 		{
-			DotNetDelegate _delegate = type.ToDelegate(qualifiedName);
-			if(type.Is(qualifiedName))
+			DotNetDelegate _delegate = dotNetType.ToDelegate(qualifiedName);
+			if(dotNetType.Is(qualifiedName))
 			{
-				Types.Remove(type);
+				Types.Remove(dotNetType);
 				Delegates.Add(_delegate);
 			}
-			_delegate.AddAssemblyInfo(typeInfo);
+			_delegate.AddAssemblyInfo(type);
 		}
 
 		/// <summary>

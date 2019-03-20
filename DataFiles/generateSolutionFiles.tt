@@ -1,0 +1,57 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ output extension=".txt" #>
+<#
+string modelProjectFileName = this.Host.ResolvePath("DataFiles.sln");
+string[] targetFrameworkVersions = new string[] {"v2.0", "v3.0", "v3.5", "v4.0", "v4.5", "v4.5.1", "v4.5.2", "v4.6", "v4.6.1", "v4.6.2", "v4.7", "v4.7.1", "v4.7.2"};
+
+string[] modelLines = LoadFile(modelProjectFileName);
+
+foreach(string version in targetFrameworkVersions) 
+{
+	string netVersion = version.Replace("v", "net").Replace(".", "");
+	GenerateOutput(netVersion, modelLines);
+	SaveOutput("DataFiles." + netVersion + ".sln");
+}
+#>
+
+<#+
+private void GenerateOutput(string version, string[] lines)
+{
+	for(int i = 0; i < lines.Length; i++)
+	{
+		string outputLine = lines[i];
+		if(outputLine.Contains("DataFiles.csproj"))
+		{
+			outputLine = outputLine.Replace("csproj", version + ".csproj");
+		}
+		if(outputLine.Contains("DataFilesTest.csproj"))
+		{
+			outputLine = outputLine.Replace("csproj", version + ".csproj");
+		}
+
+		WriteLine(CurrentIndent + outputLine);
+	}
+}
+#>
+
+<#+
+private string[] LoadFile(string fileName)
+{
+	return File.ReadLines(fileName).ToArray();
+}
+#>
+
+<#+
+private void SaveOutput(string outputFileName) 
+{
+	string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
+	string outputFilePath = Path.Combine(templateDirectory, outputFileName);
+	File.WriteAllText(outputFilePath, this.GenerationEnvironment.ToString()); 
+	this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
+}
+#>
+

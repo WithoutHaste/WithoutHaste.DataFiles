@@ -82,9 +82,7 @@ Empty constructor
 
 # Methods
 
-## AddAssemblyInfo([System.Reflection.TypeInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.typeinfo) typeInfo)
-
-**void**  
+## AddAssemblyInfo([Type](https://docs.microsoft.com/en-us/dotnet/api/system.type))
 
 Load additional documentation information from the assembly itself.  
 

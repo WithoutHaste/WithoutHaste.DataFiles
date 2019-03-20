@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles.Markdown
 {
@@ -70,7 +69,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <summary>
 		/// Returns full markdown text for file, formatted for legibility.
 		/// </summary>
-		public string ToMarkdown()
+		public string ToMarkdownString()
 		{
 			StringBuilder builder = new StringBuilder();
 
@@ -79,11 +78,11 @@ namespace WithoutHaste.DataFiles.Markdown
 			{
 				if(element is MarkdownSection)
 				{
-					previousText = (element as MarkdownSection).ToMarkdown(previousText);
+					previousText = (element as MarkdownSection).ToMarkdownString(previousText);
 				}
 				else
 				{
-					previousText = element.ToMarkdown(previousText);
+					previousText = element.ToMarkdownString(previousText);
 				}
 				builder.Append(previousText);
 			}

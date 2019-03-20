@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
@@ -20,6 +19,10 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// Set to null to not use any converter.
 		/// </summary>
 		/// <remarks>
+		/// Setting always defaults to <see cref="DefaultQualifiedNameConverter"/>.
+		/// With target frameworks less than 3.5, you can turn this on or off with <see cref='UseDefaultQualifiedNameConverter(bool)'/>.
+		/// With target frameworks 3.5 or higher, you can set this to a custom function.
+		/// 
 		/// See <see cref="DefaultQualifiedNameConverter"/> for usage examples.
 		/// </remarks>
 		/// <example>
@@ -28,7 +31,26 @@ namespace WithoutHaste.DataFiles.DotNet
 		///		string displayString = myQualifiedTypeName.FullName;
 		///	</code>	
 		/// </example>
-		public static Func<string, int, string> QualifiedNameConverter = null;
+#if FUNCS
+		public static Func<string, int, string> QualifiedNameConverter = DefaultQualifiedNameConverter;
+#else
+		internal static Func<string, int, string> QualifiedNameConverter = DefaultQualifiedNameConverter;
+
+		/// <summary>
+		/// Toggle the <see cref="DefaultQualifiedNameConverter"/> on and off.
+		/// </summary>
+		/// <remarks>
+		/// Only available in target frameworks less than 3.5.
+		/// </remarks>
+		/// <param name="useDefault">True to use the default converter, false to not use a converter.</param>
+		public static void UseDefaultQualifiedNameConverter(bool useDefault)
+		{
+			if(useDefault)
+				QualifiedNameConverter = DefaultQualifiedNameConverter;
+			else
+				QualifiedNameConverter = null;
+		}
+#endif
 
 		/// <summary>
 		/// A second level <see cref="QualifiedNameConverter"/> to provide further processing.
@@ -36,6 +58,10 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// 
 		/// Set to null to not use any converter.
 		/// </summary>
+		/// <remarks>
+		/// Setting always defaults to null.
+		/// With target frameworks 3.5 or higher, you can change this setting.
+		/// </remarks>
 		/// <example>
 		/// <code>
 		///		DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
@@ -43,7 +69,11 @@ namespace WithoutHaste.DataFiles.DotNet
 		///		string displayString = myQualifiedTypeName.FullName;
 		///	</code>	
 		/// </example>
+#if FUNCS
 		public static Func<string, int, string> AdditionalQualifiedNameConverter = null;
+#else
+		internal static Func<string, int, string> AdditionalQualifiedNameConverter = null;
+#endif
 
 		/// <summary>
 		/// Converts all standard .Net types to their common aliases.

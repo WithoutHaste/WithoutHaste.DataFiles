@@ -33,6 +33,26 @@ namespace DataFilesTest
 			public A[] FieldArray;
 		}
 
+		[TestInitialize]
+		public void Initialize()
+		{
+#if DATAFILES_TARGET_20 || DATAFILES_TARGET_30
+			DotNetSettings.UseDefaultQualifiedNameConverter(false);
+#else
+			DotNetSettings.QualifiedNameConverter = null;
+#endif
+		}
+
+		[TestCleanup]
+		public void Cleanup()
+		{
+#if DATAFILES_TARGET_20 || DATAFILES_TARGET_30
+			DotNetSettings.UseDefaultQualifiedNameConverter(true);
+#else
+			DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
+#endif
+		}
+
 		[TestMethod]
 		public void DotNetField_Assembly_GetType()
 		{
@@ -41,7 +61,7 @@ namespace DataFilesTest
 			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:A'></member>", LoadOptions.PreserveWhitespace));
 			dotNetType.AddMember(DotNetField.FromVisualStudioXml(XElement.Parse("<member name='F:A.IntField'></member>", LoadOptions.PreserveWhitespace)));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			//assert
 			Assert.IsNotNull(dotNetType.Fields[0].TypeName);
 			Assert.AreEqual("System.Int32", dotNetType.Fields[0].TypeName.FullName);
@@ -55,7 +75,7 @@ namespace DataFilesTest
 			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:DataFilesTest.DotNetFieldTests.B'></member>", LoadOptions.PreserveWhitespace));
 			dotNetType.AddMember(DotNetField.FromVisualStudioXml(XElement.Parse("<member name='F:DataFilesTest.DotNetFieldTests.B.TField'></member>", LoadOptions.PreserveWhitespace)));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			//assert
 			Assert.IsNotNull(dotNetType.Fields[0].TypeName);
 			Assert.AreEqual("T", dotNetType.Fields[0].TypeName.FullName);
@@ -69,7 +89,7 @@ namespace DataFilesTest
 			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:DataFilesTest.DotNetFieldTests.C'></member>", LoadOptions.PreserveWhitespace));
 			dotNetType.AddMember(DotNetField.FromVisualStudioXml(XElement.Parse("<member name='F:DataFilesTest.DotNetFieldTests.C.FieldArray'></member>", LoadOptions.PreserveWhitespace)));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			//assert
 			Assert.IsNotNull(dotNetType.Fields[0].TypeName);
 			Assert.AreEqual("DataFilesTest.DotNetFieldTests.A[]", dotNetType.Fields[0].TypeName.FullName);
@@ -83,7 +103,7 @@ namespace DataFilesTest
 			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:DataFilesTest.DotNetFieldTests.C'></member>", LoadOptions.PreserveWhitespace));
 			dotNetType.AddMember(DotNetField.FromVisualStudioXml(XElement.Parse("<member name='F:DataFilesTest.DotNetFieldTests.C.FieldList'></member>", LoadOptions.PreserveWhitespace)));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			//assert
 			Assert.IsNotNull(dotNetType.Fields[0].TypeName);
 			Assert.AreEqual("System.Collections.Generic.List<DataFilesTest.DotNetFieldTests.A>", dotNetType.Fields[0].TypeName.FullName);

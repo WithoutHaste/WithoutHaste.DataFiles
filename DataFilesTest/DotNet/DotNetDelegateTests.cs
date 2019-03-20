@@ -23,17 +23,36 @@ namespace DataFilesTest
 			}
 		}
 
+		[TestInitialize]
+		public void Initialize()
+		{
+#if DATAFILES_TARGET_20 || DATAFILES_TARGET_30
+			DotNetSettings.UseDefaultQualifiedNameConverter(false);
+#else
+			DotNetSettings.QualifiedNameConverter = null;
+#endif
+		}
+
+		[TestCleanup]
+		public void Cleanup()
+		{
+#if DATAFILES_TARGET_20 || DATAFILES_TARGET_30
+			DotNetSettings.UseDefaultQualifiedNameConverter(true);
+#else
+			DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
+#endif
+		}
+
 		[TestMethod]
 		public void DotNetDelegate_ConvertFromType_Global()
 		{
 			//arrange
 			XElement xmlElement = XElement.Parse("<member name='T:DataFileTest.DotNetDelegateTests.GlobalDelegate' />", LoadOptions.PreserveWhitespace);
 			Type type = typeof(GlobalDelegate);
-			TypeInfo delegateInfo = type.GetTypeInfo();
 			//act
 			DotNetType typeResult = DotNetType.FromVisualStudioXml(xmlElement);
 			DotNetDelegate delegateResult = typeResult.ToDelegate(typeResult.Name);
-			delegateResult.AddAssemblyInfo(delegateInfo);
+			delegateResult.AddAssemblyInfo(type);
 			//assert
 			Assert.AreEqual(2, delegateResult.MethodName.Parameters.Count);
 			Assert.AreEqual("a", delegateResult.MethodName.Parameters[0].Name);

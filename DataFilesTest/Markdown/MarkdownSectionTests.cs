@@ -16,7 +16,7 @@ namespace DataFilesTest
 			MarkdownSection section = new MarkdownSection("Header");
 			string previousText = null;
 			//act
-			string text = section.ToMarkdown(previousText);
+			string text = section.ToMarkdownString(previousText);
 			//assert
 			Assert.AreEqual("# Header\n\n", text);
 		}
@@ -28,7 +28,7 @@ namespace DataFilesTest
 			MarkdownSection section = new MarkdownSection("Header");
 			string previousText = "A";
 			//act
-			string text = section.ToMarkdown(previousText);
+			string text = section.ToMarkdownString(previousText);
 			//assert
 			Assert.AreEqual("\n\n# Header\n\n", text);
 		}
@@ -40,7 +40,7 @@ namespace DataFilesTest
 			MarkdownSection section = new MarkdownSection("Header");
 			string previousText = "\n";
 			//act
-			string text = section.ToMarkdown(previousText);
+			string text = section.ToMarkdownString(previousText);
 			//assert
 			Assert.AreEqual("# Header\n\n", text);
 		}
@@ -52,7 +52,7 @@ namespace DataFilesTest
 			MarkdownSection section = new MarkdownSection("Header");
 			string previousText = "The quick brown fox\n\n";
 			//act
-			string text = section.ToMarkdown(previousText);
+			string text = section.ToMarkdownString(previousText);
 			//assert
 			Assert.AreEqual("# Header\n\n", text);
 		}
@@ -64,7 +64,7 @@ namespace DataFilesTest
 			MarkdownSection section = new MarkdownSection("Header");
 			string previousText = "The quick brown fox\n";
 			//act
-			string text = section.ToMarkdown(previousText);
+			string text = section.ToMarkdownString(previousText);
 			//assert
 			Assert.AreEqual("\n# Header\n\n", text);
 		}
@@ -76,7 +76,7 @@ namespace DataFilesTest
 			MarkdownSection section = new MarkdownSection("Header");
 			string previousText = "The quick brown fox";
 			//act
-			string text = section.ToMarkdown(previousText);
+			string text = section.ToMarkdownString(previousText);
 			//assert
 			Assert.AreEqual("\n\n# Header\n\n", text);
 		}
@@ -90,7 +90,7 @@ namespace DataFilesTest
 			sectionA.Add(text);
 			MarkdownSection sectionB = sectionA.AddSection("B");
 			//act
-			string result = sectionA.ToMarkdown();
+			string result = sectionA.ToMarkdownString();
 			//assert
 			Assert.AreEqual("# A\n\nText\n\n## B\n\n", result);
 		}

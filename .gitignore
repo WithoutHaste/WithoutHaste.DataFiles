@@ -1,6 +1,7 @@
 DataFiles/*.cd
 DataFiles/.vs/*
 DataFiles/bin/Debug/*
+DataFiles/logs/*
 DataFiles/obj/*
 DataFiles.Excel/*.cd
 DataFiles.Excel/.vs/*
@@ -8,4 +9,12 @@ DataFiles.Excel/bin/Debug/*
 DataFiles.Excel/obj/*
 DataFilesTest/.vs/*
 DataFilesTest/bin/*
+DataFilesTest/logs/*
 DataFilesTest/obj/*
+LaterFrameworkTest/.vs/*
+LaterFrameworkTest/bin/Release/*
+LaterFrameworkTest/obj/*
+ThirdPartyTest/.vs/*
+ThirdPartyTest/bin/*
+ThirdPartyTest/logs/*
+ThirdPartyTest/obj/*

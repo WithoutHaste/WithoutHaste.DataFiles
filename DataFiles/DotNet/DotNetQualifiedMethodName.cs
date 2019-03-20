@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
@@ -350,7 +349,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			if(methodInfo.DeclaringType != null && FullNamespace != null && FullNamespace is DotNetQualifiedClassName)
 			{
-				(FullNamespace as DotNetQualifiedClassName).AddAssemblyInfo(methodInfo.DeclaringType.GetTypeInfo());
+				(FullNamespace as DotNetQualifiedClassName).AddAssemblyInfo(methodInfo.DeclaringType);
 			}
 
 			if(methodInfo.ReturnType != null)
@@ -371,10 +370,12 @@ namespace WithoutHaste.DataFiles.DotNet
 				this.Parameters[index].AddAssemblyInfo(parameterInfo);
 				index++;
 			}
+#if EXTENSION_METHODS
 			if(methodInfo.IsExtension() && this.Parameters.Count > 0)
 			{
 				this.Parameters[0].SetIsExtension();
 			}
+#endif
 
 			if(IsGeneric)
 			{
@@ -432,7 +433,7 @@ namespace WithoutHaste.DataFiles.DotNet
 			FullNamespace = className;
 		}
 
-		#region Low Level
+#region Low Level
 
 		/// <duplicate cref='CompareTo(object)' />
 		public static bool operator <(DotNetQualifiedMethodName a, DotNetQualifiedMethodName b)
@@ -514,6 +515,6 @@ namespace WithoutHaste.DataFiles.DotNet
 			return new DotNetQualifiedMethodName(localName, clonedFullNamespace, clonedParameters, clonedReturnTypeName, GenericTypeCount, clonedExplicitInterface);
 		}
 
-		#endregion
+#endregion
 	}
 }

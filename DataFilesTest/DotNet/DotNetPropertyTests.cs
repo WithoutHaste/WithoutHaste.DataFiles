@@ -16,7 +16,7 @@ namespace DataFilesTest
 		{
 			public abstract int AbstractProperty { get; set; }
 
-			public int GetOnlyProperty { get; }
+			public int GetOnlyProperty { get { return 0; } }
 		}
 
 		protected interface IInterfaceA
@@ -44,6 +44,26 @@ namespace DataFilesTest
 			int IInterfaceB.SharedMethod(int a) { return 1;  }
 		}
 
+		[TestInitialize]
+		public void Initialize()
+		{
+#if DATAFILES_TARGET_20 || DATAFILES_TARGET_30
+			DotNetSettings.UseDefaultQualifiedNameConverter(false);
+#else
+			DotNetSettings.QualifiedNameConverter = null;
+#endif
+		}
+
+		[TestCleanup]
+		public void Cleanup()
+		{
+#if DATAFILES_TARGET_20 || DATAFILES_TARGET_30
+			DotNetSettings.UseDefaultQualifiedNameConverter(true);
+#else
+			DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
+#endif
+		}
+
 		[TestMethod]
 		public void DotNetProperty_Assembly_Abstract()
 		{
@@ -52,7 +72,7 @@ namespace DataFilesTest
 			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:AbstractClass'></member>", LoadOptions.PreserveWhitespace));
 			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:AbstractClass.AbstractProperty'></member>", LoadOptions.PreserveWhitespace)));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			//assert
 			Assert.AreEqual("AbstractProperty", dotNetType.Properties[0].Name.LocalName);
 			Assert.AreEqual(FieldCategory.Abstract, dotNetType.Properties[0].Category);
@@ -68,7 +88,7 @@ namespace DataFilesTest
 			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:AbstractClass'></member>", LoadOptions.PreserveWhitespace));
 			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:AbstractClass.GetOnlyProperty'></member>", LoadOptions.PreserveWhitespace)));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			//assert
 			Assert.AreEqual("GetOnlyProperty", dotNetType.Properties[0].Name.LocalName);
 			Assert.IsTrue(dotNetType.Properties[0].HasGetterMethod);
@@ -86,7 +106,7 @@ namespace DataFilesTest
 			dotNetType.AddMember(DotNetMethod.FromVisualStudioXml(XElement.Parse("<member name='M:DataFilesTest.DotNetPropertyTests.ExplicitInterfaceImplementation.DataFilesTest#DotNetPropertyTests#IInterfaceA#SharedMethod(System.Int32)'></member>", LoadOptions.PreserveWhitespace)));
 			dotNetType.AddMember(DotNetMethod.FromVisualStudioXml(XElement.Parse("<member name='M:DataFilesTest.DotNetPropertyTests.ExplicitInterfaceImplementation.DataFilesTest#DotNetPropertyTests#IInterfaceB#SharedMethod(System.Int32)'></member>", LoadOptions.PreserveWhitespace)));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			//assert
 			Assert.AreEqual(2, dotNetType.Properties.Count);
 			Assert.AreEqual("DataFilesTest.DotNetPropertyTests.IInterfaceA", dotNetType.Properties[0].Name.ExplicitInterface);

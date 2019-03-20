@@ -18,7 +18,7 @@ namespace DataFilesTest
 			MarkdownParagraph p3 = new MarkdownParagraph("The Lazy Dog    \n\t  \n\n");
 			MarkdownParagraph paragraph = new MarkdownParagraph(p1, p2, p3);
 			//act
-			string result = paragraph.ToMarkdown(null);
+			string result = paragraph.ToMarkdownString(null);
 			//assert
 			Assert.AreEqual("The Quick Brown Fox  \n\nJumped Over  \n\nThe Lazy Dog  \n\n", result);
 		}

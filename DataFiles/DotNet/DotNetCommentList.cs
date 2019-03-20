@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace WithoutHaste.DataFiles.DotNet
@@ -63,7 +62,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		{
 			ValidateXmlTag(element, "list");
 
-			string type = element.Attribute("type")?.Value;
+			string type = element.GetAttributeValue("type");
 			if(type == "table")
 			{
 				return DotNetCommentTable.FromVisualStudioXml(element);

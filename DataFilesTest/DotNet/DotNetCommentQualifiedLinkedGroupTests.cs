@@ -32,7 +32,7 @@ namespace DataFilesTest
 			string fullNamespace = "System.X";
 			string typeName = "ArgumentException";
 			string qualifiedName = fullNamespace + "." + typeName;
-			string comments = Utilities.LoadText("data/DotNetCommentGroup_XmlCommentsNestedInTag.txt");
+			string comments = Utilities.LoadText(Utilities.GetPathTo("data/DotNetCommentGroup_XmlCommentsNestedInTag.txt"));
 			XElement element = XElement.Parse("<exception cref='" + qualifiedName + "'>" + comments + "</exception>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentQualifiedLinkedGroup result = DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
@@ -67,7 +67,7 @@ namespace DataFilesTest
 			string methodName = "MyMethod";
 			string parameters = "(int, string)";
 			string qualifiedName = fullNamespace + "." + typeName + "." + methodName;
-			string comments = Utilities.LoadText("data/DotNetCommentGroup_XmlCommentsNestedInTag.txt");
+			string comments = Utilities.LoadText(Utilities.GetPathTo("data/DotNetCommentGroup_XmlCommentsNestedInTag.txt"));
 			XElement element = XElement.Parse("<permission cref='" + qualifiedName + parameters + "'>" + comments + "</permission>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentQualifiedLinkedGroup result = DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
@@ -100,7 +100,7 @@ namespace DataFilesTest
 			string typeName = "MyType";
 			string memberName = "MyMember";
 			string qualifiedName = fullNamespace + "." + typeName + "." + memberName;
-			string comments = Utilities.LoadText("data/DotNetCommentGroup_XmlCommentsNestedInTag.txt");
+			string comments = Utilities.LoadText(Utilities.GetPathTo("data/DotNetCommentGroup_XmlCommentsNestedInTag.txt"));
 			XElement element = XElement.Parse("<permission cref='" + qualifiedName + "'>" + comments + "</permission>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentQualifiedLinkedGroup result = DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);

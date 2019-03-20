@@ -16,6 +16,10 @@ This method will be run after [QualifiedNameConverter](WithoutHaste.DataFiles.Do
   
 Set to null to not use any converter.  
 
+**Remarks:**  
+Setting always defaults to null.  
+With target frameworks 3.5 or higher, you can change this setting.  
+
 **Example A:**  
 
 ```
@@ -36,6 +40,9 @@ When DotNetQualifiedNames are converted to strings, this converter will be autom
 Set to null to not use any converter.  
 
 **Remarks:**  
+Setting always defaults to [DefaultQualifiedNameConverter(string, int)](WithoutHaste.DataFiles.DotNet.DotNetSettings.md).  
+With target frameworks 3.5 or higher, you can change this setting.  
+  
 See [DefaultQualifiedNameConverter(string, int)](WithoutHaste.DataFiles.DotNet.DotNetSettings.md) for usage examples.  
 
 **Example A:**  

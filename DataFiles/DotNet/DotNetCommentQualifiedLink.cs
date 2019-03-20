@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace WithoutHaste.DataFiles.DotNet
@@ -16,7 +15,13 @@ namespace WithoutHaste.DataFiles.DotNet
 		public DotNetQualifiedName Name { get; protected set; }
 
 		/// <inheritdoc />
-		public string FullName { get { return Name?.FullName; } }
+		public string FullName {
+			get {
+				if(Name == null)
+					return null;
+				return Name.FullName;
+			}
+		}
 
 		#region Constructors
 
@@ -38,7 +43,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <example><![CDATA[<permission cref="Namespace.Type">nested comments and/or plain text</permission>]]></example>
 		public static new DotNetCommentQualifiedLink FromVisualStudioXml(XElement element)
 		{
-			DotNetCommentQualifiedLink link = FromVisualStudioXml(element.Attribute("cref")?.Value);
+			DotNetCommentQualifiedLink link = FromVisualStudioXml(element.GetAttributeValue("cref"));
 			link.Tag = DotNetComment.GetTag(element);
 			return link;
 		}

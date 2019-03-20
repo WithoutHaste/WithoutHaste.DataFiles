@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using WithoutHaste.DataFiles;
 using WithoutHaste.DataFiles.DotNet;
 
 namespace DataFilesTest
@@ -20,6 +22,11 @@ namespace DataFilesTest
 			public string PropertyA { get; set; }
 			public event EventHandler EventA;
 			public virtual void MethodA() { }
+
+			private void ClearCompilerWarnings()
+			{
+				EventA.Invoke(this, new EventArgs());
+			}
 		}
 
 		protected interface InheritanceInterfaceC
@@ -37,6 +44,11 @@ namespace DataFilesTest
 
 			public double PropertyC { get; set; }
 			public void MethodC() { }
+
+			private void ClearCompilerWarnings()
+			{
+				EventA.Invoke(this, new EventArgs());
+			}
 		}
 
 		protected class InheritanceClassD : InheritanceClassB
@@ -52,6 +64,11 @@ namespace DataFilesTest
 
 			public new double PropertyC { get; set; }
 			public new void MethodC() { }
+
+			private void ClearCompilerWarnings()
+			{
+				EventA.Invoke(this, new EventArgs());
+			}
 		}
 
 		//----------------------------------
@@ -91,11 +108,31 @@ namespace DataFilesTest
 
 		//---------------------------------------------
 
+		[TestInitialize]
+		public void Initialize()
+		{
+#if DATAFILES_TARGET_20 || DATAFILES_TARGET_30
+			DotNetSettings.UseDefaultQualifiedNameConverter(false);
+#else
+			DotNetSettings.QualifiedNameConverter = null;
+#endif
+		}
+
+		[TestCleanup]
+		public void Cleanup()
+		{
+#if DATAFILES_TARGET_20 || DATAFILES_TARGET_30
+			DotNetSettings.UseDefaultQualifiedNameConverter(true);
+#else
+			DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
+#endif
+		}
+
 		[TestMethod]
 		public void DotNetDocumentationFile_LoadFromFile()
 		{
 			//arrange
-			string filename = "data/DotNetDocumentationFile_Assembly.xml";
+			string filename = Utilities.GetPathTo("data/DotNetDocumentationFile_Assembly.xml");
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
 			//assert
@@ -106,7 +143,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_LoadFromXDocument()
 		{
 			//arrange
-			XDocument document = XDocument.Load("data/DotNetDocumentationFile_Assembly.xml", LoadOptions.PreserveWhitespace);
+			XDocument document = XDocument.Load(Utilities.GetPathTo("data/DotNetDocumentationFile_Assembly.xml"), LoadOptions.PreserveWhitespace);
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(document);
 			//assert
@@ -117,7 +154,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_CommentFromXml_Full()
 		{
 			//arrange
-			XDocument document = XDocument.Load("data/DotNetDocumentationFile_Full.xml", LoadOptions.PreserveWhitespace);
+			XDocument document = XDocument.Load(Utilities.GetPathTo("data/DotNetDocumentationFile_Full.xml"), LoadOptions.PreserveWhitespace);
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(document);
 			//assert
@@ -219,12 +256,42 @@ namespace DataFilesTest
 			Assert.AreEqual("System.Collections.Generic.List<Test.SingleGenericTypeD<T>>", methodEB.MethodName.Parameters[0].FullTypeName);
 		}
 
+#if DATAFILES_TARGET_20
+		[TestMethod]
+		[ExpectedException(typeof(LoadException))]
+		public void DotNetDocumentationFile_AddAssemblyInfo_LaterTargetFramework()
+		{
+			//arrange
+			XDocument document = XDocument.Load(Utilities.GetPathTo("data/DotNetDocumentationFile_Assembly.xml"), LoadOptions.PreserveWhitespace);
+			DotNetDocumentationFile file = new DotNetDocumentationFile(document);
+			string laterFrameworkDllFilename = Path.Combine(Utilities.GetProjectDirectory(), "../LaterFrameworkTest/bin/Debug/LaterFrameworkTest.dll");
+			//act
+			file.AddAssemblyInfo(laterFrameworkDllFilename);
+			//assert exception
+		}
+
+
+		[TestMethod]
+		[ExpectedException(typeof(LoadException))]
+		public void DotNetDocumentationFile_AddAssemblyInfo_ThirdParty_LaterTargetFramework()
+		{
+			//arrange
+			string xmlDocumentationFilename = Path.Combine(Utilities.GetProjectDirectory(), "../DataFiles/bin/Debug/WithoutHaste.DataFiles.XML");
+			string dllFilename = Path.Combine(Utilities.GetProjectDirectory(), "../DataFiles/bin/Debug/WithoutHaste.DataFiles.dll");
+			string laterFrameworkDllFilename = Path.Combine(Utilities.GetProjectDirectory(), "../LaterFrameworkTest/bin/Debug/LaterFrameworkTest.dll");
+			//act
+			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
+			xmlDocumentation.AddAssemblyInfo(dllFilename, laterFrameworkDllFilename);
+			//assert exception
+		}
+#endif
+
 		[TestMethod]
 		public void DotNetDocumentationFile_SmokeTest_EarlyDocsTest()
 		{
 			//arrange
-			string xmlDocumentationFilename = "../../../../EarlyDocs/Test/bin/Debug/Test.XML";
-			string dllFilename = "../../../../EarlyDocs/Test/bin/Debug/Test.dll";
+			string xmlDocumentationFilename = Path.Combine(Utilities.GetProjectDirectory(), "../../EarlyDocs/Test/bin/Debug/Test.XML");
+			string dllFilename = Path.Combine(Utilities.GetProjectDirectory(), "../../EarlyDocs/Test/bin/Debug/Test.dll");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			xmlDocumentation.AddAssemblyInfo(dllFilename);
@@ -236,8 +303,8 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_SmokeTest_DataFiles()
 		{
 			//arrange
-			string xmlDocumentationFilename = "../../../DataFiles/bin/Debug/WithoutHaste.DataFiles.XML";
-			string dllFilename = "../../../DataFiles/bin/Debug/WithoutHaste.DataFiles.dll";
+			string xmlDocumentationFilename = Path.Combine(Utilities.GetProjectDirectory(), "../DataFiles/bin/Debug/WithoutHaste.DataFiles.XML");
+			string dllFilename = Path.Combine(Utilities.GetProjectDirectory(), "../DataFiles/bin/Debug/WithoutHaste.DataFiles.dll");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			//xmlDocumentation.AddAssemblyForReference("System.Xml");
@@ -250,8 +317,8 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_SmokeTest_Drawing_Colors()
 		{
 			//arrange
-			string xmlDocumentationFilename = "../../../../WithoutHaste.Drawing.Colors/Colors/bin/Debug/WithoutHaste.Drawing.Colors.XML";
-			string dllFilename = "../../../../WithoutHaste.Drawing.Colors/Colors/bin/Debug/WithoutHaste.Drawing.Colors.dll";
+			string xmlDocumentationFilename = Path.Combine(Utilities.GetProjectDirectory(), "../../WithoutHaste.Drawing.Colors/Colors/bin/Debug/WithoutHaste.Drawing.Colors.XML");
+			string dllFilename = Path.Combine(Utilities.GetProjectDirectory(), "../../WithoutHaste.Drawing.Colors/Colors/bin/Debug/WithoutHaste.Drawing.Colors.dll");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			xmlDocumentation.AddAssemblyInfo(dllFilename);
@@ -263,8 +330,8 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_SmokeTest_Drawing_Shapes()
 		{
 			//arrange
-			string xmlDocumentationFilename = "../../../../WithoutHaste.Drawing.Shapes/Shapes/bin/Debug/WithoutHaste.Drawing.Shapes.XML";
-			string dllFilename = "../../../../WithoutHaste.Drawing.Shapes/Shapes/bin/Debug/WithoutHaste.Drawing.Shapes.dll";
+			string xmlDocumentationFilename = Path.Combine(Utilities.GetProjectDirectory(), "../../WithoutHaste.Drawing.Shapes/Shapes/bin/Debug/WithoutHaste.Drawing.Shapes.XML");
+			string dllFilename = Path.Combine(Utilities.GetProjectDirectory(), "../../WithoutHaste.Drawing.Shapes/Shapes/bin/Debug/WithoutHaste.Drawing.Shapes.dll");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			xmlDocumentation.AddAssemblyInfo(dllFilename);
@@ -276,8 +343,8 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_SmokeTest_Windows_GUI()
 		{
 			//arrange
-			string xmlDocumentationFilename = "../../../../WithoutHaste.Windows.GUI/GUI/bin/Debug/WithoutHaste.Windows.GUI.XML";
-			string dllFilename = "../../../../WithoutHaste.Windows.GUI/GUI/bin/Debug/WithoutHaste.Windows.GUI.dll";
+			string xmlDocumentationFilename = Path.Combine(Utilities.GetProjectDirectory(), "../../WithoutHaste.Windows.GUI/GUI/bin/Debug/WithoutHaste.Windows.GUI.XML");
+			string dllFilename = Path.Combine(Utilities.GetProjectDirectory(), "../../WithoutHaste.Windows.GUI/GUI/bin/Debug/WithoutHaste.Windows.GUI.dll");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			xmlDocumentation.AddAssemblyInfo(dllFilename);
@@ -289,7 +356,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_OrphanedMember_Ignore()
 		{
 			//arrange
-			string filename = "data/DotNetDocumentationFile_OrphanedMember.xml";
+			string filename = Utilities.GetPathTo("data/DotNetDocumentationFile_OrphanedMember.xml");
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
 			//assert
@@ -300,7 +367,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_DuplicateComments_OneLevelDeep()
 		{
 			//arrange
-			string filename = "data/DotNetDocumentationFile_DuplicateComments_OneLevelDeep.xml";
+			string filename = Utilities.GetPathTo("data/DotNetDocumentationFile_DuplicateComments_OneLevelDeep.xml");
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
 
@@ -344,7 +411,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_DuplicateComments_MultipleLevelsDeep()
 		{
 			//arrange
-			string filename = "data/DotNetDocumentationFile_DuplicateComments_MultipleLevelsDeep.xml";
+			string filename = Utilities.GetPathTo("data/DotNetDocumentationFile_DuplicateComments_MultipleLevelsDeep.xml");
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
 			DotNetType typeA = file.Types.FirstOrDefault(m => m.Name.LocalName == "TypeA");
@@ -364,7 +431,7 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_DuplicateComments_Loop()
 		{
 			//arrange
-			string filename = "data/DotNetDocumentationFile_DuplicateComments_Loop.xml";
+			string filename = Utilities.GetPathTo("data/DotNetDocumentationFile_DuplicateComments_Loop.xml");
 			//act
 			DotNetDocumentationFile file = new DotNetDocumentationFile(filename);
 			DotNetType typeA = file.Types.FirstOrDefault(m => m.Name.LocalName == "TypeA");
@@ -380,15 +447,15 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_InheritComments_OneLevelDeep()
 		{
 			//arrange
-			string xmlDocumentationFilename = "data/DotNetDocumentationFile_InheritComments_OneLevelDeep.xml";
+			string xmlDocumentationFilename = Utilities.GetPathTo("data/DotNetDocumentationFile_InheritComments_OneLevelDeep.xml");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			DotNetType inheritanceTypeA = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassA");
-			inheritanceTypeA.AddAssemblyInfo(typeof(InheritanceClassA).GetTypeInfo(), inheritanceTypeA.Name);
+			inheritanceTypeA.AddAssemblyInfo(typeof(InheritanceClassA), inheritanceTypeA.Name);
 			DotNetType inheritanceTypeB = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassB");
-			inheritanceTypeB.AddAssemblyInfo(typeof(InheritanceClassB).GetTypeInfo(), inheritanceTypeB.Name);
+			inheritanceTypeB.AddAssemblyInfo(typeof(InheritanceClassB), inheritanceTypeB.Name);
 			DotNetType inheritanceTypeC = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceInterfaceC");
-			inheritanceTypeC.AddAssemblyInfo(typeof(InheritanceInterfaceC).GetTypeInfo(), inheritanceTypeC.Name);
+			inheritanceTypeC.AddAssemblyInfo(typeof(InheritanceInterfaceC), inheritanceTypeC.Name);
 			xmlDocumentation.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(inheritanceTypeA.SummaryComments[0], inheritanceTypeB.SummaryComments[0]);
@@ -404,19 +471,19 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_InheritComments_MultipleLevelsDeep()
 		{
 			//arrange
-			string xmlDocumentationFilename = "data/DotNetDocumentationFile_InheritComments_MultipleLevelsDeep.xml";
+			string xmlDocumentationFilename = Utilities.GetPathTo("data/DotNetDocumentationFile_InheritComments_MultipleLevelsDeep.xml");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			DotNetType inheritanceTypeA = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassA");
-			inheritanceTypeA.AddAssemblyInfo(typeof(InheritanceClassA).GetTypeInfo(), inheritanceTypeA.Name);
+			inheritanceTypeA.AddAssemblyInfo(typeof(InheritanceClassA), inheritanceTypeA.Name);
 			DotNetType inheritanceTypeB = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassB");
-			inheritanceTypeB.AddAssemblyInfo(typeof(InheritanceClassB).GetTypeInfo(), inheritanceTypeB.Name);
+			inheritanceTypeB.AddAssemblyInfo(typeof(InheritanceClassB), inheritanceTypeB.Name);
 			DotNetType inheritanceTypeC = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceInterfaceC");
-			inheritanceTypeC.AddAssemblyInfo(typeof(InheritanceInterfaceC).GetTypeInfo(), inheritanceTypeC.Name);
+			inheritanceTypeC.AddAssemblyInfo(typeof(InheritanceInterfaceC), inheritanceTypeC.Name);
 			DotNetType inheritanceTypeD = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassD");
-			inheritanceTypeD.AddAssemblyInfo(typeof(InheritanceClassD).GetTypeInfo(), inheritanceTypeD.Name);
+			inheritanceTypeD.AddAssemblyInfo(typeof(InheritanceClassD), inheritanceTypeD.Name);
 			DotNetType inheritanceTypeE = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassE");
-			inheritanceTypeE.AddAssemblyInfo(typeof(InheritanceClassE).GetTypeInfo(), inheritanceTypeE.Name);
+			inheritanceTypeE.AddAssemblyInfo(typeof(InheritanceClassE), inheritanceTypeE.Name);
 			xmlDocumentation.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(inheritanceTypeA.SummaryComments[0], inheritanceTypeB.SummaryComments[0]);
@@ -442,15 +509,15 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_InheritComments_OrderOfInterfaces()
 		{
 			//arrange
-			string xmlDocumentationFilename = "data/DotNetDocumentationFile_InheritComments_OrderOfInterfaces.xml";
+			string xmlDocumentationFilename = Utilities.GetPathTo("data/DotNetDocumentationFile_InheritComments_OrderOfInterfaces.xml");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			DotNetType inheritanceTypeF = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceInterfaceF");
-			inheritanceTypeF.AddAssemblyInfo(typeof(InheritanceInterfaceF).GetTypeInfo(), inheritanceTypeF.Name);
+			inheritanceTypeF.AddAssemblyInfo(typeof(InheritanceInterfaceF), inheritanceTypeF.Name);
 			DotNetType inheritanceTypeG = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceInterfaceG");
-			inheritanceTypeG.AddAssemblyInfo(typeof(InheritanceInterfaceG).GetTypeInfo(), inheritanceTypeG.Name);
+			inheritanceTypeG.AddAssemblyInfo(typeof(InheritanceInterfaceG), inheritanceTypeG.Name);
 			DotNetType inheritanceTypeH = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassH");
-			inheritanceTypeH.AddAssemblyInfo(typeof(InheritanceClassH).GetTypeInfo(), inheritanceTypeH.Name);
+			inheritanceTypeH.AddAssemblyInfo(typeof(InheritanceClassH), inheritanceTypeH.Name);
 			xmlDocumentation.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(inheritanceTypeG.Properties[0].SummaryComments[0], inheritanceTypeH.Properties.First(p => p.Name.LocalName == "PropertyA").SummaryComments[0]);
@@ -460,11 +527,11 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_InheritComments_NoBaseType()
 		{
 			//arrange
-			string xmlDocumentationFilename = "data/DotNetDocumentationFile_InheritComments_NoBaseType.xml";
+			string xmlDocumentationFilename = Utilities.GetPathTo("data/DotNetDocumentationFile_InheritComments_NoBaseType.xml");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			DotNetType inheritanceTypeA = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassA");
-			inheritanceTypeA.AddAssemblyInfo(typeof(InheritanceClassA).GetTypeInfo(), inheritanceTypeA.Name);
+			inheritanceTypeA.AddAssemblyInfo(typeof(InheritanceClassA), inheritanceTypeA.Name);
 			xmlDocumentation.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(CommentTag.InheritDoc, inheritanceTypeA.FloatingComments[0].Tag);
@@ -476,13 +543,13 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_InheritComments_DifferentGenericAliases()
 		{
 			//arrange
-			string xmlDocumentationFilename = "data/DotNetDocumentationFile_InheritComments_DifferentGenericAliases.xml";
+			string xmlDocumentationFilename = Utilities.GetPathTo("data/DotNetDocumentationFile_InheritComments_DifferentGenericAliases.xml");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			DotNetType inheritanceTypeI = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassI");
-			inheritanceTypeI.AddAssemblyInfo(typeof(InheritanceClassI).GetTypeInfo(), inheritanceTypeI.Name);
+			inheritanceTypeI.AddAssemblyInfo(typeof(InheritanceClassI), inheritanceTypeI.Name);
 			DotNetType inheritanceTypeJ = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassJ");
-			inheritanceTypeJ.AddAssemblyInfo(typeof(InheritanceClassJ).GetTypeInfo(), inheritanceTypeJ.Name);
+			inheritanceTypeJ.AddAssemblyInfo(typeof(InheritanceClassJ), inheritanceTypeJ.Name);
 			xmlDocumentation.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(inheritanceTypeI.Methods[0].SummaryComments[0], inheritanceTypeJ.Methods[0].SummaryComments[0]);
@@ -492,15 +559,15 @@ namespace DataFilesTest
 		public void DotNetDocumentationFile_InheritComments_ExplicitInterfaces()
 		{
 			//arrange
-			string xmlDocumentationFilename = "data/DotNetDocumentationFile_InheritComments_ExplicitInterfaces.xml";
+			string xmlDocumentationFilename = Utilities.GetPathTo("data/DotNetDocumentationFile_InheritComments_ExplicitInterfaces.xml");
 			//act
 			DotNetDocumentationFile xmlDocumentation = new DotNetDocumentationFile(xmlDocumentationFilename);
 			DotNetType inheritanceTypeF = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceInterfaceF");
-			inheritanceTypeF.AddAssemblyInfo(typeof(InheritanceInterfaceF).GetTypeInfo(), inheritanceTypeF.Name);
+			inheritanceTypeF.AddAssemblyInfo(typeof(InheritanceInterfaceF), inheritanceTypeF.Name);
 			DotNetType inheritanceTypeG = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceInterfaceG");
-			inheritanceTypeG.AddAssemblyInfo(typeof(InheritanceInterfaceG).GetTypeInfo(), inheritanceTypeG.Name);
+			inheritanceTypeG.AddAssemblyInfo(typeof(InheritanceInterfaceG), inheritanceTypeG.Name);
 			DotNetType inheritanceTypeH2 = xmlDocumentation.Types.First(t => t.Name.LocalName == "InheritanceClassH2");
-			inheritanceTypeH2.AddAssemblyInfo(typeof(InheritanceClassH2).GetTypeInfo(), inheritanceTypeH2.Name);
+			inheritanceTypeH2.AddAssemblyInfo(typeof(InheritanceClassH2), inheritanceTypeH2.Name);
 			xmlDocumentation.ResolveInheritedComments();
 			//assert
 			Assert.AreEqual(inheritanceTypeF.Properties[0].SummaryComments[0], inheritanceTypeH2.Properties.First(p => p.Name.ExplicitInterface.LocalName == "InheritanceInterfaceF").SummaryComments[0]);

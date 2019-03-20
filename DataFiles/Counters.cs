@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles
 {
@@ -18,7 +17,7 @@ namespace WithoutHaste.DataFiles
 		public string MINIMUM_VALUE { get { return VALID_CHARACTERS[0].ToString(); } }
 
 		/// <summary>Current display value.</summary>
-		public string Value { get { return String.Join("", value); } }
+		public string Value { get { return String.Join("", value.Select(x => x.ToString()).ToArray()); } }
 
 		/// <summary>Current internal value.</summary>
 		protected List<char> value;

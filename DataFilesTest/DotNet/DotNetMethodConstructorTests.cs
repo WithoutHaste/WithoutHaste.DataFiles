@@ -30,8 +30,7 @@ namespace DataFilesTest
 			//arrange
 			XElement xmlElement = XElement.Parse("<member name='M:DataFilesTest.DotNetMethodConstructorTests.ClassA.#cctor' />", LoadOptions.PreserveWhitespace);
 			Type type = typeof(ClassA);
-			TypeInfo typeInfo = type.GetTypeInfo();
-			ConstructorInfo constructorInfo = typeInfo.DeclaredConstructors.First(m => m.Name == ".cctor");
+			ConstructorInfo constructorInfo = type.GetDeclaredConstructors().First(m => m.Name == ".cctor");
 			//act
 			DotNetMethod result = DotNetMethod.FromVisualStudioXml(xmlElement);
 			DotNetMethodConstructor constructorResult = (result as DotNetMethodConstructor);

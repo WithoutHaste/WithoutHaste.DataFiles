@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WithoutHaste.DataFiles</RootNamespace>
     <AssemblyName>WithoutHaste.DataFiles</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,18 +35,20 @@
     <DocumentationFile>bin\Release\WithoutHaste.DataFiles.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationCore" />
+    <Reference Include="LINQlone, Version=1.1.0.0, Culture=neutral, PublicKeyToken=50a8fe7ae68cb959, processorArchitecture=MSIL">
+      <HintPath>packages\LINQlone.1.1.0\lib\LINQlone.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Security" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\System.Xml.Linq.3.5.21022.801\lib\net20\System.Xml.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Counters.cs" />
@@ -78,6 +81,7 @@
     <Compile Include="DotNet\DotNetReferenceMethodGeneric.cs" />
     <Compile Include="DotNet\IDotNetCommentLink.cs" />
     <Compile Include="DotNet\DotNetSettings.cs" />
+    <Compile Include="exceptions\LoadException.cs" />
     <Compile Include="exceptions\StringFormatException.cs" />
     <Compile Include="exceptions\XmlFormatException.cs" />
     <Compile Include="Markdown\IMarkdownInLine.cs" />
@@ -116,7 +120,6 @@
     <Compile Include="DotNet\Utilities.cs" />
     <Compile Include="DotNet\DotNetDocumentationFile.cs" />
     <Compile Include="TextHelper.cs" />
-    <Compile Include="XmlDocumentHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -128,10 +131,40 @@
     <EarlyDocsDllFile>$(ProjectDir)$(OutDir)WithoutHaste.DataFiles.dll</EarlyDocsDllFile>
     <EarlyDocsXmlFile>$(ProjectDir)$(OutDir)WithoutHaste.DataFiles.XML</EarlyDocsXmlFile>
     <EarlyDocsOutputDir>$(ProjectDir)..\documentation\</EarlyDocsOutputDir>
-    <!--<EarlyDocsSkip>True</EarlyDocsSkip>-->
+    <EarlyDocsSkip>True</EarlyDocsSkip>
   </PropertyGroup>
   <ItemGroup>
     <!--<EarlyDocsInclude Include="$(ProjectDir)$(OutDir)EPPlus.dll"></EarlyDocsInclude>-->
+    <Content Include="generateProjectFiles.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>generateProjectFiles.txt</LastGenOutput>
+    </Content>
+    <Content Include="generateProjectFiles.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>generateProjectFiles.tt</DependentUpon>
+    </Content>
+    <Content Include="generateSolutionFiles.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>generateSolutionFiles.txt</LastGenOutput>
+    </Content>
+    <Content Include="generateSolutionFiles.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>generateSolutionFiles.tt</DependentUpon>
+    </Content>
+    <Content Include="generateTestProjectFiles.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>generateTestProjectFiles.txt</LastGenOutput>
+    </Content>
+    <Content Include="generateTestProjectFiles.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>generateTestProjectFiles.tt</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="packages\EarlyDocs.1.0.0\build\EarlyDocs.targets" Condition="Exists('packages\EarlyDocs.1.0.0\build\EarlyDocs.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -147,4 +180,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Import Project="$(ProjectDir)\..\MultiTargetSymbols.targets" />
 </Project>

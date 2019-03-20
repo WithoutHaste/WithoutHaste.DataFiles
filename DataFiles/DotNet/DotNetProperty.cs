@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace WithoutHaste.DataFiles.DotNet
@@ -39,7 +38,7 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <example><![CDATA[<member name="P:Namespace.Type.PropertyName"></member>]]></example>
 		public static new DotNetProperty FromVisualStudioXml(XElement memberElement)
 		{
-			string xmlName = memberElement.Attribute("name")?.Value;
+			string xmlName = memberElement.GetAttributeValue("name");
 			if(xmlName.IndexOf("(") > -1)
 			{
 				return DotNetIndexer.FromVisualStudioXml(memberElement);
@@ -58,8 +57,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// </summary>
 		public virtual void AddAssemblyInfo(PropertyInfo propertyInfo)
 		{
-			GetterMethod = DotNetPropertyMethod.FromAssemblyInfo(propertyInfo.GetMethod);
-			SetterMethod = DotNetPropertyMethod.FromAssemblyInfo(propertyInfo.SetMethod);
+			GetterMethod = DotNetPropertyMethod.FromAssemblyInfo(propertyInfo.GetGetMethod());
+			SetterMethod = DotNetPropertyMethod.FromAssemblyInfo(propertyInfo.GetSetMethod());
 			TypeName = DotNetQualifiedTypeName.FromAssemblyInfo(propertyInfo.PropertyType);
 
 			Category = FieldCategory.Normal;

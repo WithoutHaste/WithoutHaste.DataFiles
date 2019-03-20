@@ -79,9 +79,9 @@ namespace DataFilesTest
 		public void DotNetCommentText_FromXml_InLine_RealExample_B()
 		{
 			//arrange
-			XDocument document = XDocument.Load("data/DotNetCommentText_Inline_RealExample_B.xml", LoadOptions.PreserveWhitespace);
+			XDocument document = XDocument.Load(Utilities.GetPathTo("data/DotNetCommentText_Inline_RealExample_B.xml"), LoadOptions.PreserveWhitespace);
 			XElement element = document.Elements().First();
-			string inner = String.Concat(element.Nodes());
+			string inner = String.Concat(element.Nodes().Select(node => Utilities.XNodeToString(node)));
 			//act
 			DotNetComment result = DotNetComment.FromVisualStudioXml(element);
 			DotNetCommentGroup groupResult = result as DotNetCommentGroup;
@@ -114,7 +114,7 @@ namespace DataFilesTest
             Tests the display of common data types that have recognized aliases in .Net.
             Also common data types that have long fully-qualified names.
             </summary>", LoadOptions.PreserveWhitespace);
-			string originalText = element.Nodes().First().ToString();
+			string originalText = Utilities.XNodeToString(element.Nodes().First());
 			string expectedResult = "Tests the display of common data types that have recognized aliases in .Net.\nAlso common data types that have long fully-qualified names.";
 			//act
 			DotNetCommentText result = DotNetCommentText.FromVisualStudioXml(originalText);

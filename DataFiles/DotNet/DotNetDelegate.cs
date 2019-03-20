@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles.DotNet
 {
@@ -25,9 +24,9 @@ namespace WithoutHaste.DataFiles.DotNet
 		}
 
 		/// <summary>Add additional documentation information from the assembly itself.</summary>
-		public void AddAssemblyInfo(TypeInfo typeInfo)
+		public void AddAssemblyInfo(Type type)
 		{
-			AddAssemblyInfo(typeInfo.DeclaredMethods.First(m => m.Name == "Invoke"));
+			AddAssemblyInfo(type.GetMethods().First(m => m.Name == "Invoke"));
 		}
 	}
 }

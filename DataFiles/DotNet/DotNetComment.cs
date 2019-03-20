@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -82,13 +82,17 @@ namespace WithoutHaste.DataFiles.DotNet
 
 				case "exception":
 				case "permission":
-					if(String.IsNullOrEmpty(element.Attribute("cref")?.Value))
+					if(element.Attribute("cref") == null)
+						break;
+					if(String.IsNullOrEmpty(element.Attribute("cref").Value))
 						break;
 					return DotNetCommentQualifiedLinkedGroup.FromVisualStudioXml(element);
 
 				case "see":
 				case "seealso":
-					if(String.IsNullOrEmpty(element.Attribute("cref")?.Value))
+					if(element.Attribute("cref") == null)
+						break;
+					if(String.IsNullOrEmpty(element.Attribute("cref").Value))
 						break;
 					if(element.Nodes().Count() == 0)
 						return DotNetCommentQualifiedLink.FromVisualStudioXml(element);
@@ -116,7 +120,9 @@ namespace WithoutHaste.DataFiles.DotNet
 				case "inheritdoc":
 					return new DotNetCommentInherit();
 				case "duplicate":
-					string duplicateCref = element.Attribute("cref")?.Value;
+					if(element.Attribute("cref") == null)
+						break;
+					string duplicateCref = element.Attribute("cref").Value;
 					if(String.IsNullOrEmpty(duplicateCref))
 						break;
 					return new DotNetCommentDuplicate(DotNetCommentQualifiedLink.FromVisualStudioXml(duplicateCref));
@@ -153,7 +159,7 @@ namespace WithoutHaste.DataFiles.DotNet
 				switch(node.NodeType)
 				{
 					case XmlNodeType.CDATA:
-						if(node.ToString().Contains("\n"))
+						if(Utilities.XNodeToString(node).Contains("\n"))
 						{
 							comment = DotNetCommentCodeBlock.FromVisualStudioXml(node as XCData);
 							comments.Add(comment);
@@ -174,7 +180,7 @@ namespace WithoutHaste.DataFiles.DotNet
 						previousCommentWasAParagraphTag = !nonParagraphTags.Contains(comment.Tag);
 						break;
 					case XmlNodeType.Text:
-						comment = DotNetComment.FromVisualStudioXml(node.ToString());
+						comment = DotNetComment.FromVisualStudioXml(Utilities.XNodeToString(node));
 						if(comment == null)
 							break;
 						if(previousCommentWasAParagraphTag && comment.ToString() == "\n")
@@ -193,8 +199,14 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <exception cref="XmlFormatException">XML tag does not have the expected local name, or is null</exception>
 		public static void ValidateXmlTag(XElement element, string localName)
 		{
-			if(element == null || element.Name.LocalName != localName)
-				throw new XmlFormatException(String.Format("Unexpected xml element '{0}'. Expecting '{1}'.", element?.Name.LocalName, localName));
+			string elementName = null;
+			if(element != null)
+				elementName = element.Name.LocalName;
+
+			if(elementName == null || elementName != localName)
+			{
+				throw new XmlFormatException(String.Format("Unexpected xml element '{0}'. Expecting '{1}'.", elementName, localName));
+			}
 		}
 
 		/// <summary>
@@ -203,8 +215,12 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// <exception cref="XmlFormatException">XML tag does not have any of the expected local names, or is null</exception>
 		public static void ValidateXmlTag(XElement element, string[] localNames)
 		{
-			if(element == null || !localNames.Contains(element.Name.LocalName))
-				throw new XmlFormatException(String.Format("Unexpected xml element '{0}'. Expecting any of {1}.", element?.Name.LocalName, String.Join(", ", localNames.Select(x => "'"+x+"'").ToArray())));
+			string elementName = null;
+			if(element != null)
+				elementName = element.Name.LocalName;
+
+			if(elementName == null || !localNames.Contains(elementName))
+				throw new XmlFormatException(String.Format("Unexpected xml element '{0}'. Expecting any of {1}.", elementName, String.Join(", ", localNames.Select(x => "'"+x+"'").ToArray())));
 		}
 
 		/// <summary>

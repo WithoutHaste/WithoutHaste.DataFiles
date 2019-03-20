@@ -15,7 +15,7 @@ namespace DataFilesTest
 			//arrange
 			MarkdownText text = new MarkdownText("a`a");
 			//act
-			string result = text.ToMarkdown(null);
+			string result = text.ToMarkdownString(null);
 			//assert
 			Assert.AreEqual("a&#96;a", result);
 		}
@@ -26,7 +26,7 @@ namespace DataFilesTest
 			//arrange
 			MarkdownText text = new MarkdownText("a<a");
 			//act
-			string result = text.ToMarkdown(null);
+			string result = text.ToMarkdownString(null);
 			//assert
 			Assert.AreEqual("a&lt;a", result);
 		}
@@ -37,7 +37,7 @@ namespace DataFilesTest
 			//arrange
 			MarkdownText text = new MarkdownText("a>a");
 			//act
-			string result = text.ToMarkdown(null);
+			string result = text.ToMarkdownString(null);
 			//assert
 			Assert.AreEqual("a&gt;a", result);
 		}

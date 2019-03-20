@@ -15,7 +15,7 @@ namespace DataFilesTest
 			//arrange
 			MarkdownCode code = new MarkdownCode("a`a");
 			//act
-			string text = code.ToMarkdown(null);
+			string text = code.ToMarkdownString(null);
 			//assert
 			Assert.AreEqual("``a`a``", text);
 		}
@@ -26,7 +26,7 @@ namespace DataFilesTest
 			//arrange
 			MarkdownCode code = new MarkdownCode("a``a");
 			//act
-			string text = code.ToMarkdown(null);
+			string text = code.ToMarkdownString(null);
 			//assert
 			Assert.AreEqual("```a``a```", text);
 		}
@@ -37,7 +37,7 @@ namespace DataFilesTest
 			//arrange
 			MarkdownCode code = new MarkdownCode("a```a");
 			//act
-			string text = code.ToMarkdown(null);
+			string text = code.ToMarkdownString(null);
 			//assert
 			Assert.AreEqual("````a```a````", text);
 		}
@@ -48,7 +48,7 @@ namespace DataFilesTest
 			//arrange
 			MarkdownCode code = new MarkdownCode("a``a```a`a");
 			//act
-			string text = code.ToMarkdown(null);
+			string text = code.ToMarkdownString(null);
 			//assert
 			Assert.AreEqual("````a``a```a`a````", text);
 		}
@@ -59,7 +59,7 @@ namespace DataFilesTest
 			//arrange
 			MarkdownCode code = new MarkdownCode("`aa");
 			//act
-			string text = code.ToMarkdown(null);
+			string text = code.ToMarkdownString(null);
 			//assert
 			Assert.AreEqual("`` `aa``", text);
 		}
@@ -70,7 +70,7 @@ namespace DataFilesTest
 			//arrange
 			MarkdownCode code = new MarkdownCode("``aa");
 			//act
-			string text = code.ToMarkdown(null);
+			string text = code.ToMarkdownString(null);
 			//assert
 			Assert.AreEqual("``` ``aa```", text);
 		}
@@ -81,7 +81,7 @@ namespace DataFilesTest
 			//arrange
 			MarkdownCode code = new MarkdownCode("aa`");
 			//act
-			string text = code.ToMarkdown(null);
+			string text = code.ToMarkdownString(null);
 			//assert
 			Assert.AreEqual("``aa` ``", text);
 		}
@@ -92,7 +92,7 @@ namespace DataFilesTest
 			//arrange
 			MarkdownCode code = new MarkdownCode("aa``");
 			//act
-			string text = code.ToMarkdown(null);
+			string text = code.ToMarkdownString(null);
 			//assert
 			Assert.AreEqual("```aa`` ```", text);
 		}

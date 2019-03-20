@@ -28,7 +28,7 @@ namespace DataFilesTest
 		{
 			//arrange
 			string name = "test";
-			string comments = Utilities.LoadText("data/DotNetCommentGroup_XmlCommentsNestedInTag.txt");
+			string comments = Utilities.LoadText(Utilities.GetPathTo("data/DotNetCommentGroup_XmlCommentsNestedInTag.txt"));
 			XElement element = XElement.Parse("<typeparam name='" + name + "'>" + comments + "</typeparam>", LoadOptions.PreserveWhitespace);
 			//act
 			DotNetCommentTypeParameter result = DotNetCommentTypeParameter.FromVisualStudioXml(element);

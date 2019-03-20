@@ -36,6 +36,26 @@ namespace DataFilesTest
 
 		protected enum EnumA { Default=0 }
 
+		[TestInitialize]
+		public void Initialize()
+		{
+#if DATAFILES_TARGET_20 || DATAFILES_TARGET_30
+			DotNetSettings.UseDefaultQualifiedNameConverter(false);
+#else
+			DotNetSettings.QualifiedNameConverter = null;
+#endif
+		}
+
+		[TestCleanup]
+		public void Cleanup()
+		{
+#if DATAFILES_TARGET_20 || DATAFILES_TARGET_30
+			DotNetSettings.UseDefaultQualifiedNameConverter(true);
+#else
+			DotNetSettings.QualifiedNameConverter = DotNetSettings.DefaultQualifiedNameConverter;
+#endif
+		}
+
 		[TestMethod]
 		public void DotNetType_Assembly_Object()
 		{
@@ -43,7 +63,7 @@ namespace DataFilesTest
 			Type type = typeof(System.Object);
 			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("System.Object"));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			//assert
 			Assert.IsNull(dotNetType.BaseType);
 		}
@@ -55,7 +75,7 @@ namespace DataFilesTest
 			Type type = typeof(ChildOfObject);
 			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("ChildOfObject"));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			//assert
 			Assert.IsNotNull(dotNetType.BaseType);
 			Assert.AreEqual(1, dotNetType.BaseType.Depth);
@@ -69,7 +89,7 @@ namespace DataFilesTest
 			Type type = typeof(ChildOfValue);
 			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("ChildOfValue"));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			//assert
 			Assert.IsNotNull(dotNetType.BaseType);
 			Assert.AreEqual(2, dotNetType.BaseType.Depth);
@@ -84,7 +104,7 @@ namespace DataFilesTest
 			Type type = typeof(GrandChildOfObject);
 			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("GrandChildOfObject"));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			//assert
 			Assert.IsNotNull(dotNetType.BaseType);
 			Assert.AreEqual(2, dotNetType.BaseType.Depth);
@@ -99,7 +119,7 @@ namespace DataFilesTest
 			Type type = typeof(ChildOfOneInterface);
 			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("ChildOfOneInterface"));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			//assert
 			Assert.AreEqual(1, dotNetType.ImplementedInterfaces.Count);
 			Assert.AreEqual("I1", dotNetType.ImplementedInterfaces[0].Name.LocalName);
@@ -112,7 +132,7 @@ namespace DataFilesTest
 			Type type = typeof(ChildOfTwoInterfaces);
 			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("ChildOfTwoInterfaces"));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			//assert
 			Assert.AreEqual(2, dotNetType.ImplementedInterfaces.Count);
 			Assert.AreEqual("I1", dotNetType.ImplementedInterfaces[0].Name.LocalName);
@@ -126,7 +146,7 @@ namespace DataFilesTest
 			Type type = typeof(ChildOfChildInterface);
 			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("ChildOfChildInterface"));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			//assert
 			Assert.AreEqual(2, dotNetType.ImplementedInterfaces.Count);
 			Assert.AreEqual(1, dotNetType.ImplementedInterfaces.Count(i => i.Name.LocalName == "I1"));
@@ -140,7 +160,7 @@ namespace DataFilesTest
 			Type type = typeof(StructA);
 			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("DataFilesTest.DotNetTypeTests.StructA"));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			//assert
 			Assert.AreEqual(TypeCategory.Struct, dotNetType.Category);
 		}
@@ -152,7 +172,7 @@ namespace DataFilesTest
 			Type type = typeof(EnumA);
 			DotNetType dotNetType = new DotNetType(new DotNetQualifiedClassName("DataFilesTest.DotNetTypeTests.EnumA"));
 			//act
-			dotNetType.AddAssemblyInfo(type.GetTypeInfo(), dotNetType.Name);
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
 			//assert
 			Assert.AreEqual(TypeCategory.Enum, dotNetType.Category);
 		}

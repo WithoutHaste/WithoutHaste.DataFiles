@@ -12,9 +12,7 @@ Represents a delegate type, categorized as a method.
 
 # Methods
 
-## AddAssemblyInfo([System.Reflection.TypeInfo](https://docs.microsoft.com/en-us/dotnet/api/system.reflection.typeinfo) typeInfo)
-
-**void**  
+## AddAssemblyInfo([Type](https://docs.microsoft.com/en-us/dotnet/api/system.type))
 
 Add additional documentation information from the assembly itself.  
 

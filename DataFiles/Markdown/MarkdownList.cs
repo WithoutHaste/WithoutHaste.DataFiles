@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles.Markdown
 {
@@ -107,7 +106,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		}
 
 		/// <inheritdoc />
-		public string ToMarkdown(string previousText)
+		public string ToMarkdownString(string previousText)
 		{
 			if(elements.Count == 0)
 				return "";
@@ -129,7 +128,7 @@ namespace WithoutHaste.DataFiles.Markdown
 			int count = 1;
 			foreach(IMarkdownInList line in elements)
 			{
-				builder.Append(String.Format("{0}{1}. {2}", Margin, count, line.ToMarkdown(null)));
+				builder.Append(String.Format("{0}{1}. {2}", Margin, count, line.ToMarkdownString(null)));
 				count++;
 			}
 		}
@@ -138,7 +137,7 @@ namespace WithoutHaste.DataFiles.Markdown
 		{
 			foreach(IMarkdownInList line in elements)
 			{
-				builder.Append(String.Format("{0}* {1}", Margin, line.ToMarkdown(null)));
+				builder.Append(String.Format("{0}* {1}", Margin, line.ToMarkdownString(null)));
 			}
 		}
 

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WithoutHaste.DataFiles.Markdown
 {
@@ -14,6 +13,6 @@ namespace WithoutHaste.DataFiles.Markdown
 		/// <summary>
 		/// Return markdown-formatted text.
 		/// </summary>
-		string ToMarkdown(string previousText);
+		string ToMarkdownString(string previousText);
 	}
 }
