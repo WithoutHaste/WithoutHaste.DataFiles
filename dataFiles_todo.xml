@@ -38,27 +38,6 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">89</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">manual test:
-install DataFiles NuGet package from local source
-+ it auto-installed LINQLone for a 2.0 project
-+ it auto-installed System.Xml.Linq for a 2.0 project
-+ it auto-installed every version of DataFiles, so I assume the project will find the version it needs</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Test</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2019-03-21T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
           <Data ss:Type="Number">88</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -159,7 +138,9 @@ before first publishing this library to NuGet</Data>
           <Data ss:Type="String">Assembly.LoadFrom
 catch BadImageFormatException, give message about which frameworks are supported
 - add test case
---hmm it isn't throwing an error for the test</Data>
+--hmm it isn't throwing an error for the test
+
+- did run into this during a different test, and the error message came through correctly</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -423,6 +404,30 @@ make one object that can regex break apart all those names into their parts</Dat
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">89</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">manual test:
+install DataFiles NuGet package from local source
++ it auto-installed LINQLone for a 2.0 project
++ it auto-installed System.Xml.Linq for a 2.0 project
++ it auto-installed every version of DataFiles, so I assume the project will find the version it needs</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Test</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-21T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-21T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>

@@ -46,3 +46,46 @@ To build and test all targeted versions:
 3) Developer Command Prompt > DataFilesTest folder: runTestsDebugProjects.bat  
 - verify tests were successful  
 4) Command Prompt > DataFiles folder: compileReleaseProjects.bat  
+
+## Automated Testing
+
+### DataFilesTest
+
+Unit tests for the WithoutHaste.DataFiles library.
+
+### ExcelTest
+
+Unit tests for the WithoutHaste.DataFiles.Excel library.
+
+### LaterFrameworkTest
+
+Supports DataFilesTest.
+
+A project targeting a later framework, so that trying to load a later-framework-project can be tested.
+
+### ThirdPartyTest
+
+Supports DataFilesTest.
+
+A project depending on a third party library, so that trying to generate documentation for such a project can be tested.
+
+### InstallationTests
+
+Automated testing of installing the full WithoutHaste.DataFiles NuGet package in a project targeting each framework.
+
+Folder "Template" contains the fully setup project from which the automated tests are generated. "Template" runs very simple operations against WithoutHaste.DataFiles; essentially smoke-tests for each namespace.
+
+Run "DataFiles/createAndTestPackage.bat" to setup and run these tests.
+
+Batch file:  
+1) Compiles Release configuration of WithoutHaste.DataFiles for each target framework.  
+2) Builds the single multi-targeted Nuget package.  
+3) Copies the NuGet package to the local test source folder.  
+4) Deletes any left-over automated installation test solutions/projects.  
+5) Creates a copy of "Template" solution for each target framework.  
+ - Template's package(s) are not copied, so they can be reinstalled.  
+ - The new *.csproj files are updated to not reference Template's packages.  
+ - The new *.csproj files are updated to target each framework.  
+6) Install WithoutHaste.DataFiles NuGet package into each auto-generated project.  
+7) Build each auto-generated project.  
+8) Run each auto-generated project.  
