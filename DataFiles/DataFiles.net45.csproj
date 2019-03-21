@@ -73,6 +73,7 @@
     <Compile Include="DotNet\DotNetReferenceMethodGeneric.cs" />
     <Compile Include="DotNet\IDotNetCommentLink.cs" />
     <Compile Include="DotNet\DotNetSettings.cs" />
+    <Compile Include="exceptions\LoadException.cs" />
     <Compile Include="exceptions\StringFormatException.cs" />
     <Compile Include="exceptions\XmlFormatException.cs" />
     <Compile Include="Markdown\IMarkdownInLine.cs" />
@@ -111,7 +112,6 @@
     <Compile Include="DotNet\Utilities.cs" />
     <Compile Include="DotNet\DotNetDocumentationFile.cs" />
     <Compile Include="TextHelper.cs" />
-    <Compile Include="XmlDocumentHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -131,13 +131,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <Import Project="packages\EarlyDocs.1.0.0\build\EarlyDocs.targets" Condition="Exists('packages\EarlyDocs.1.0.0\build\EarlyDocs.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('packages\EarlyDocs.1.0.0\build\EarlyDocs.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EarlyDocs.1.0.0\build\EarlyDocs.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

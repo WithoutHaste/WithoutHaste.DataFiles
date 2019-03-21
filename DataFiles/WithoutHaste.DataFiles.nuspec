@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<package>
+  <metadata minClientVersion="2.0"> <!-- 2.0 required for dependency groups -->
+    <id>WithoutHaste.DataFiles</id>
+    <version>1.0.0</version>
+    <title>WithoutHaste.DataFiles</title>
+    <authors>WithoutHaste</authors>
+    <owners>WithoutHaste</owners>
+	<licenseUrl>https://github.com/WithoutHaste/WithoutHaste.DataFiles/blob/master/LICENSE</licenseUrl>
+<!--	<license type="expression">MIT</license>--><!--wasn't allowed by "nuget pack"-->
+    <projectUrl>https://github.com/WithoutHaste/WithoutHaste.DataFiles</projectUrl>
+	<repository type="git" url="https://github.com/WithoutHaste/WithoutHaste.DataFiles"/>
+<!--    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<summary>Load or create various data file formats.</summary>
+    <description>
+	Primarily created to support EarlyDocs (https://packages.nuget.org/packages/EarlyDocs/).
+	
+	Included namespaces:
+	+ WithoutHaste.DataFiles.DotNet: pull comments and object structure from .Net library.
+	+ WithoutHaste.DataFiles.Markdown: generate Markdown files.
+	
+	See full documentation at https://github.com/WithoutHaste/WithoutHaste.DataFiles.
+	</description>
+    <releaseNotes>
+	Initial Release:
+	+ Support for parsing Visual Studio XML documentation files.
+	+ Support for parsing .Net assembly information.
+	+ Support for creating Markdown files.
+	+ Multi-targeted to all .Net Frameworks from 2.0 through 4.7.2.
+	</releaseNotes>
+    <tags>documentation .net c# markdown md open-source</tags>
+    <dependencies>
+	  <group targetFramework='net20'>
+        <dependency id='LINQLone' version='1.1.0' />
+        <dependency id='System.Xml.Linq' version='3.5.21022.801' />
+	  </group>
+	  <group targetFramework='net30'>
+        <dependency id='LINQLone' version='1.1.0' />
+        <dependency id='System.Xml.Linq' version='3.5.21022.801' />
+	  </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src='.\bin\Release\WithoutHaste.DataFiles.net20.dll'  target='lib\net20\'  />
+    <file src='.\bin\Release\WithoutHaste.DataFiles.net30.dll'  target='lib\net30\'  />
+    <file src='.\bin\Release\WithoutHaste.DataFiles.net35.dll'  target='lib\net35\'  />
+    <file src='.\bin\Release\WithoutHaste.DataFiles.net40.dll'  target='lib\net40\'  />
+    <file src='.\bin\Release\WithoutHaste.DataFiles.net45.dll'  target='lib\net45\'  />
+    <file src='.\bin\Release\WithoutHaste.DataFiles.net451.dll' target='lib\net451\' />
+    <file src='.\bin\Release\WithoutHaste.DataFiles.net452.dll' target='lib\net452\' />
+    <file src='.\bin\Release\WithoutHaste.DataFiles.net46.dll'  target='lib\net46\'  />
+    <file src='.\bin\Release\WithoutHaste.DataFiles.net461.dll' target='lib\net461\' />
+    <file src='.\bin\Release\WithoutHaste.DataFiles.net462.dll' target='lib\net462\' />
+    <file src='.\bin\Release\WithoutHaste.DataFiles.net47.dll'  target='lib\net47\'  />
+    <file src='.\bin\Release\WithoutHaste.DataFiles.net471.dll' target='lib\net471\' />
+    <file src='.\bin\Release\WithoutHaste.DataFiles.net472.dll' target='lib\net472\' />
+  </files>
+</package>
