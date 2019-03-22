@@ -21,7 +21,7 @@ namespace Template
 			outputFolder = Path.Combine(outputFolder, "bin");
 			outputFolder = Path.Combine(outputFolder, "Release");
 			string xmlFilename = Path.Combine(outputFolder, "WithoutHaste.DataFiles.XML");
-			string dllFilename = Path.Combine(outputFolder, "WithoutHaste.DataFiles.net20.dll");
+			string dllFilename = Path.Combine(outputFolder, Properties.Settings.Default.DataFilesDll);
 			DotNetDocumentationFile docFile = new DotNetDocumentationFile(xmlFilename);
 			docFile.AddAssemblyInfo(dllFilename);
 
