@@ -10,6 +10,14 @@ Use **WithoutHaste.DataFiles.Excel** to load, edit, or create Excel documents. _
 
 This library is under active development. Report bugs and request features on [Github](https://github.com/WithoutHaste/WithoutHaste.DataFiles/issues) or to wohaste@gmail.com.
 
+## Download
+
+Alpha release is [available on Nuget](https://www.nuget.org/packages/WithoutHaste.DataFiles/1.0.0-alpha).
+
+Package Manager: `Install-Package WithoutHaste.DataFiles -Version 1.0.0-alpha`
+
+.NET CLI: `dotnet add package WithoutHaste.DataFiles --version 1.0.0-alpha`
+
 ## Namespace
 
 Library WithoutHaste.DataFiles includes:  
@@ -36,6 +44,9 @@ Library WithoutHaste.DataFiles.Excel includes:
 For a quick list of the language constructs these libraries can handle:  
 [WithoutHaste.DataFiles.DotNet Summary](DOTNET_SUMMARY.md)  
 [WithoutHaste.DataFiles.Markdown Summary](MARKDOWN_SUMMARY.md)  
+
+To get started coding:  
+[WithoutHaste.DataFiles.DotNet Quick Start](DOTNET_GETTINGSTARTED.md)  
 
 For full documentation of these libraries:  
 [WithoutHaste.DataFiles Table of Contents](documentation/TableOfContents.md)  

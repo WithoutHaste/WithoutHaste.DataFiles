@@ -42,10 +42,10 @@
         </Cell>
         <Cell ss:StyleID="paragraph">
           <Data ss:Type="String">make Alpha release
-- make sure all text is up to date
-- update version number in *.nuspec
-- pack with code signing
-- publish to NuGet
+- make sure all text is up to date - DONE
+- update version number in *.nuspec - DONE
+- pack with code signing - DONE
+- publish to NuGet - PENDING
 - update github readme with link to NuGet</Data>
         </Cell>
         <Cell>
