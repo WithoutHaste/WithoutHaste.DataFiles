@@ -2,7 +2,7 @@
 <package>
   <metadata minClientVersion="2.0"> <!-- 2.0 required for dependency groups -->
     <id>WithoutHaste.DataFiles</id>
-    <version>1.0.0</version>
+    <version>1.0.0-alpha</version>
     <title>WithoutHaste.DataFiles</title>
     <authors>WithoutHaste</authors>
     <owners>WithoutHaste</owners>
@@ -17,7 +17,7 @@
 	Primarily created to support EarlyDocs (https://packages.nuget.org/packages/EarlyDocs/).
 	
 	Included namespaces:
-	+ WithoutHaste.DataFiles.DotNet: pull comments and object structure from .Net library.
+	+ WithoutHaste.DataFiles.DotNet: pull comments and object structure from .Net project/library.
 	+ WithoutHaste.DataFiles.Markdown: generate Markdown files.
 	
 	See full documentation at https://github.com/WithoutHaste/WithoutHaste.DataFiles.

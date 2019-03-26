@@ -1,14 +1,14 @@
 # WithoutHaste.DataFiles
 
-.Net library for consuming or creating various data files.
+.Net library for loading or creating various data file formats.
 
-Use WithoutHaste.DataFiles.DotNet to load .Net documentation information from an XML file and to load the library structure from the assembly itself.  
+Use **WithoutHaste.DataFiles.DotNet** to load .Net documentation information from an XML file and to load the object structure from a compiled library.  
 
-Use WithoutHaste.DataFiles.Markdown to create Markdown documents.  
+Use **WithoutHaste.DataFiles.Markdown** to create Markdown documents.  
 
-Use WithoutHaste.DataFiles.Excel to load, edit, or create Excel documents. _(not released)_
+Use **WithoutHaste.DataFiles.Excel** to load, edit, or create Excel documents. _(not released)_
 
-This library is under active development. Report bugs and request features on [Github](https://github.com/WithoutHaste/WithoutHaste.DataFiles/issues), or to wohaste@gmail.com.
+This library is under active development. Report bugs and request features on [Github](https://github.com/WithoutHaste/WithoutHaste.DataFiles/issues) or to wohaste@gmail.com.
 
 ## Namespace
 
@@ -29,7 +29,7 @@ Library WithoutHaste.DataFiles.Excel includes:
     * No dependencies
 	
 * WithoutHaste.DataFiles.Excel _(not released)_
-  * OfficeOpenXml from [EPPlus v4.5.2.1](https://www.nuget.org/packages/EPPlus/) NuGet package
+  * [EPPlus v4.5.2.1](https://www.nuget.org/packages/EPPlus/): for the OfficeOpenXml namespace
 
 ## Documentation
 
@@ -57,8 +57,8 @@ For programmers working on this project:
 Uses [Semantic Versioning 2.0.0](https://semver.org/).
 
 Initial Release - v1.0.0 under development:
-_For WithoutHaste.DataFiles only_  
-- Support for parsing Visual Studio XML documentation files and assembly information.  
+- Includes namespaces DotNet and Markdown only
+- Support for extracting Visual Studio XML documentation files and assembly information.  
 - Support for creating Markdown files.  
 - Install with NuGet  
 - Includes builds for all .Net frameworks from 2.0 through 4.7.2  
