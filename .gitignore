@@ -1,3 +1,7 @@
+BuildVerification/.vs/*
+BuildVerification/bin/Debug/*
+BuildVerification/obj/*
+
 DataFiles/*.cd
 DataFiles/.vs/*
 DataFiles/bin/Debug/*

@@ -26,11 +26,16 @@ namespace Template
 			string dllFilename = Path.Combine(outputFolder, "WithoutHaste.DataFiles.dll");
 			DotNetDocumentationFile docFile = new DotNetDocumentationFile(xmlFilename);
 			docFile.AddAssemblyInfo(dllFilename);
+			Console.WriteLine("Found {0} types in assembly", docFile.Types.Count);
 
 			//Test Markdown namespace
 			MarkdownFile mdFile = new MarkdownFile();
 			mdFile.AddSection("A Header");
 			string mdText = mdFile.ToMarkdownString();
+			Console.WriteLine("Some markdown: {0}", mdText);
+
+			Console.WriteLine("Done");
+			Console.ReadLine();
 		}
 
 		private string GetMainDirectory()

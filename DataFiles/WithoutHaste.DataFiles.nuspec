@@ -2,7 +2,7 @@
 <package>
   <metadata minClientVersion="2.0"> <!-- 2.0 required for dependency groups -->
     <id>WithoutHaste.DataFiles</id>
-    <version>1.0.0-alpha2</version>
+    <version>1.0.0-alpha3</version>
     <title>WithoutHaste.DataFiles</title>
     <authors>WithoutHaste</authors>
     <owners>WithoutHaste</owners>
@@ -40,6 +40,17 @@
         <dependency id='LINQLone' version='1.1.0' />
         <dependency id='System.Xml.Linq' version='3.5.21022.801' />
 	  </group>
+	  <group targetFramework='net35' />
+	  <group targetFramework='net40' />
+	  <group targetFramework='net45' />
+	  <group targetFramework='net451' />
+	  <group targetFramework='net452' />
+	  <group targetFramework='net46' />
+	  <group targetFramework='net461' />
+	  <group targetFramework='net462' />
+	  <group targetFramework='net47' />
+	  <group targetFramework='net471' />
+	  <group targetFramework='net472' />
     </dependencies>
   </metadata>
   <files>
