@@ -46,7 +46,7 @@
       <HintPath>..\..\..\DataFiles\packages\System.Xml.Linq.3.5.21022.801\lib\net20\System.Xml.Linq.dll</HintPath>
     </Reference>
     <Reference Include="WithoutHaste.DataFiles, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WithoutHaste.DataFiles.1.0.0-alpha\lib\net20\WithoutHaste.DataFiles.dll</HintPath>
+      <HintPath>..\packages\WithoutHaste.DataFiles.1.0.0-alpha2\lib\net20\WithoutHaste.DataFiles.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

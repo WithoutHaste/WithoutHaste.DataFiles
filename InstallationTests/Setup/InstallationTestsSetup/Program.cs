@@ -75,9 +75,16 @@ namespace InstallationTestsSetup
 				foreach(XmlNode referenceNode in referenceNodes)
 				{
 					string include = (referenceNode as XmlElement).GetAttribute("Include");
-					if(include.StartsWith("LINQlone") || include.StartsWith("System.Xml.Linq") || include.StartsWith("WithoutHaste.DataFiles"))
+					if(include.StartsWith("LINQlone") || include.StartsWith("WithoutHaste.DataFiles"))
 					{
 						referenceNode.ParentNode.RemoveChild(referenceNode);
+					}
+					if(include.StartsWith("System.Xml.Linq")) //remove hint path attribute
+					{
+						foreach(XmlNode referenceChildNode in referenceNode.ChildNodes)
+						{
+							referenceNode.RemoveChild(referenceChildNode);
+						}
 					}
 				}
 				//save changes
@@ -88,7 +95,7 @@ namespace InstallationTestsSetup
 				doc = new XmlDocument();
 				doc.Load(configPath);
 				XmlNode valueNode = doc.GetElementsByTagName("value")[0];
-				valueNode.InnerText = "WithoutHaste.DataFiles." + net + ".dll";
+				valueNode.InnerText = net;
 				doc.Save(configPath);
 			}
 		}

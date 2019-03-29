@@ -1709,7 +1709,7 @@
             </summary>
             <remarks>
             Setting always defaults to <see cref="M:WithoutHaste.DataFiles.DotNet.DotNetSettings.DefaultQualifiedNameConverter(System.String,System.Int32)"/>. See default method for usage examples.
-            With target frameworks 2.0 through 3.5, you can turn this on or off with <see cref="!:UseDefaultQualifiedNameConverter(bool)"/>.
+            With target frameworks 2.0 through 3.5, you can turn this on or off with <see cref="M:WithoutHaste.DataFiles.DotNet.DotNetSettings.UseDefaultQualifiedNameConverter(System.Boolean)"/>.
             With target frameworks 3.5 or higher, you can set this to a custom function.
             </remarks>
             <example>
@@ -1718,6 +1718,15 @@
             	string displayString = myQualifiedTypeName.FullName;
             </code>	
             </example>
+        </member>
+        <member name="M:WithoutHaste.DataFiles.DotNet.DotNetSettings.UseDefaultQualifiedNameConverter(System.Boolean)">
+            <summary>
+            Toggle the <see cref="M:WithoutHaste.DataFiles.DotNet.DotNetSettings.DefaultQualifiedNameConverter(System.String,System.Int32)"/> on and off.
+            </summary>
+            <remarks>
+            Only available in target frameworks less than 3.5.
+            </remarks>
+            <param name="useDefault">True to use the default converter, false to not use a converter.</param>
         </member>
         <member name="F:WithoutHaste.DataFiles.DotNet.DotNetSettings.AdditionalQualifiedNameConverter">
             <summary>
