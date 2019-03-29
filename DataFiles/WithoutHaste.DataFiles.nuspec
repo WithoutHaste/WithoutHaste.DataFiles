@@ -43,18 +43,18 @@
     </dependencies>
   </metadata>
   <files>
-    <file src='.\bin\Release\WithoutHaste.DataFiles.net20.dll'  target='lib\net20\'  />
-    <file src='.\bin\Release\WithoutHaste.DataFiles.net30.dll'  target='lib\net30\'  />
-    <file src='.\bin\Release\WithoutHaste.DataFiles.net35.dll'  target='lib\net35\'  />
-    <file src='.\bin\Release\WithoutHaste.DataFiles.net40.dll'  target='lib\net40\'  />
-    <file src='.\bin\Release\WithoutHaste.DataFiles.net45.dll'  target='lib\net45\'  />
-    <file src='.\bin\Release\WithoutHaste.DataFiles.net451.dll' target='lib\net451\' />
-    <file src='.\bin\Release\WithoutHaste.DataFiles.net452.dll' target='lib\net452\' />
-    <file src='.\bin\Release\WithoutHaste.DataFiles.net46.dll'  target='lib\net46\'  />
-    <file src='.\bin\Release\WithoutHaste.DataFiles.net461.dll' target='lib\net461\' />
-    <file src='.\bin\Release\WithoutHaste.DataFiles.net462.dll' target='lib\net462\' />
-    <file src='.\bin\Release\WithoutHaste.DataFiles.net47.dll'  target='lib\net47\'  />
-    <file src='.\bin\Release\WithoutHaste.DataFiles.net471.dll' target='lib\net471\' />
-    <file src='.\bin\Release\WithoutHaste.DataFiles.net472.dll' target='lib\net472\' />
+    <file src='.\bin\Release\net20\WithoutHaste.DataFiles.dll'  target='lib\net20\'  />
+    <file src='.\bin\Release\net30\WithoutHaste.DataFiles.dll'  target='lib\net30\'  />
+    <file src='.\bin\Release\net35\WithoutHaste.DataFiles.dll'  target='lib\net35\'  />
+    <file src='.\bin\Release\net40\WithoutHaste.DataFiles.dll'  target='lib\net40\'  />
+    <file src='.\bin\Release\net45\WithoutHaste.DataFiles.dll'  target='lib\net45\'  />
+    <file src='.\bin\Release\net451\WithoutHaste.DataFiles.dll' target='lib\net451\' />
+    <file src='.\bin\Release\net452\WithoutHaste.DataFiles.dll' target='lib\net452\' />
+    <file src='.\bin\Release\net46\WithoutHaste.DataFiles.dll'  target='lib\net46\'  />
+    <file src='.\bin\Release\net461\WithoutHaste.DataFiles.dll' target='lib\net461\' />
+    <file src='.\bin\Release\net462\WithoutHaste.DataFiles.dll' target='lib\net462\' />
+    <file src='.\bin\Release\net47\WithoutHaste.DataFiles.dll'  target='lib\net47\'  />
+    <file src='.\bin\Release\net471\WithoutHaste.DataFiles.dll' target='lib\net471\' />
+    <file src='.\bin\Release\net472\WithoutHaste.DataFiles.dll' target='lib\net472\' />
   </files>
 </package>

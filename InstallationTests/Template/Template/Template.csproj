@@ -42,12 +42,11 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Xml.Linq.3.5.21022.801\lib\net20\System.Xml.Linq.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="System.Xml.Linq">
+      <HintPath>..\..\..\DataFiles\packages\System.Xml.Linq.3.5.21022.801\lib\net20\System.Xml.Linq.dll</HintPath>
     </Reference>
-    <Reference Include="WithoutHaste.DataFiles.net20, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WithoutHaste.DataFiles.1.0.0\lib\net20\WithoutHaste.DataFiles.net20.dll</HintPath>
+    <Reference Include="WithoutHaste.DataFiles, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WithoutHaste.DataFiles.1.0.0-alpha\lib\net20\WithoutHaste.DataFiles.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

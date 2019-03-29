@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Xml.Linq;
 using WithoutHaste.DataFiles.DotNet;
 using WithoutHaste.DataFiles.Markdown;
 
@@ -21,7 +22,7 @@ namespace Template
 			outputFolder = Path.Combine(outputFolder, "bin");
 			outputFolder = Path.Combine(outputFolder, "Release");
 			string xmlFilename = Path.Combine(outputFolder, "WithoutHaste.DataFiles.XML");
-			string dllFilename = Path.Combine(outputFolder, Properties.Settings.Default.DataFilesDll);
+			string dllFilename = Path.Combine(Path.Combine(outputFolder, Properties.Settings.Default.NetVersion), "WithoutHaste.DataFiles.dll");
 			DotNetDocumentationFile docFile = new DotNetDocumentationFile(xmlFilename);
 			docFile.AddAssemblyInfo(dllFilename);
 

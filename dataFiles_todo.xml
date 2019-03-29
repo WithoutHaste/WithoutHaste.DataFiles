@@ -38,15 +38,12 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">90</Data>
+          <Data ss:Type="Number">91</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">make Alpha release
-- make sure all text is up to date - DONE
-- update version number in *.nuspec - DONE
-- pack with code signing - DONE
-- publish to NuGet - PENDING
-- update github readme with link to NuGet</Data>
+          <Data ss:Type="String">update project to always use AssemblyName "WithoutHaste.DataFiles" for all project versions
+and to compile them into Release/net20/WithoutHaste.dll sort of folders
+- it is important that they all have the same AssemblyName, and probably file name, too</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -55,7 +52,7 @@
           <Data ss:Type="String">Task</Data>
         </Cell>
         <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2019-03-26T00:00:00.000</Data>
+          <Data ss:Type="DateTime">2019-03-29T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -427,6 +424,31 @@ make one object that can regex break apart all those names into their parts</Dat
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">90</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">make Alpha release
+- make sure all text is up to date - DONE
+- update version number in *.nuspec - DONE
+- pack with code signing - DONE
+- publish to NuGet - PENDING - DONE
+- update github readme with link to NuGet - DONE</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-26T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-26T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -2041,7 +2063,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">90</Data>
+          <Data ss:Type="Number">91</Data>
         </Cell>
       </Row>
       <Row>

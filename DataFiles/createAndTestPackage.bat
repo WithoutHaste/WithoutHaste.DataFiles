@@ -12,9 +12,9 @@ nuget sign WithoutHaste.DataFiles.1.0.0-alpha.nupkg -CertificatePath E:\Adulting
 REM Copy package to local test source folder
 xcopy *.nupkg ..\..\..\NuGetTestSource
 
-REM echo "Run InstallationTestsSetup..."
-REM cd ..\InstallationTests
-REM START /WAIT Setup\InstallationTestsSetup\bin\Release\InstallationTestsSetup.exe
+REM Run InstallationTestsSetup
+cd ..\InstallationTests
+START /WAIT Setup\InstallationTestsSetup\bin\Release\InstallationTestsSetup.exe
 
 REM echo "Install NuGet package in each auto-generatedsolution..."
 REM set installationTestsDirectory=%CD%

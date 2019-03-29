@@ -2,8 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Template.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="DataFilesDll" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">WithoutHaste.DataFiles.net20.dll</Value>
+    <Setting Name="NetVersion" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">net20</Value>
     </Setting>
   </Settings>
 </SettingsFile>

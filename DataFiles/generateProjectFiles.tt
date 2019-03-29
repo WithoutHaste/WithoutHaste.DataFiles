@@ -43,9 +43,13 @@ private void GenerateOutput(string version, string netVersion, string[] lines)
 		{
 			outputLine = outputLine.Replace("v2.0", version);
 		}
-		if(outputLine.Contains("<AssemblyName>"))
+		if(outputLine.Contains("<OutputPath>"))
 		{
-			outputLine = outputLine.Replace("DataFiles", "DataFiles." + netVersion);
+			outputLine = outputLine.Replace("</OutputPath>", netVersion + "\\</OutputPath>");
+		}
+		if(outputLine.Contains("<DocumentationFile>"))
+		{
+			outputLine = outputLine.Replace("WithoutHaste.DataFiles.XML", netVersion + "\\WithoutHaste.DataFiles.XML");
 		}
 
 		//no generated project should produce its own T4 generated projects
@@ -95,10 +99,6 @@ private void GenerateOutput(string version, string netVersion, string[] lines)
 		}
 		if(!is452)
 		{
-			if(outputLine.Contains("<DocumentationFile>"))
-			{
-				continue;
-			}
 			if(outputLine.Contains("<EarlyDocsSkip>"))
 			{
 				WriteLine(CurrentIndent + "    <EarlyDocsSkip>True</EarlyDocsSkip>");

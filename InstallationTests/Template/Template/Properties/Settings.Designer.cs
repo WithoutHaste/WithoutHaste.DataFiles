@@ -25,10 +25,10 @@ namespace Template.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("WithoutHaste.DataFiles.net20.dll")]
-        public string DataFilesDll {
+        [global::System.Configuration.DefaultSettingValueAttribute("net20")]
+        public string NetVersion {
             get {
-                return ((string)(this["DataFilesDll"]));
+                return ((string)(this["NetVersion"]));
             }
         }
     }
