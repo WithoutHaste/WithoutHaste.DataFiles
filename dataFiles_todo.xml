@@ -38,10 +38,30 @@
       </Row>
       <Row>
         <Cell>
+          <Data ss:Type="Number">94</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">msbuild sometimes ignoring TargetFrameworkVersion
+- posted question on StackOverflow
+https://stackoverflow.com/questions/55433661/why-does-msbuild-sometimes-ignore-targetframeworkversion</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-30T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
           <Data ss:Type="Number">93</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">maybe if I put empty Dependency Groups into the nuspec for each framework that doesn't need anything extra installed, it will work right?</Data>
+          <Data ss:Type="String">maybe if I put empty Dependency Groups into the nuspec for each framework that doesn't need anything extra installed, it will work right?
+and now it's back to compiling with the wrong target framework</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -2114,7 +2134,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">93</Data>
+          <Data ss:Type="Number">94</Data>
         </Cell>
       </Row>
       <Row>
