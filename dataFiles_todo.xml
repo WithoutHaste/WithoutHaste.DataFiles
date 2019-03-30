@@ -57,32 +57,14 @@ https://stackoverflow.com/questions/55433661/why-does-msbuild-sometimes-ignore-t
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">93</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">maybe if I put empty Dependency Groups into the nuspec for each framework that doesn't need anything extra installed, it will work right?
-and now it's back to compiling with the wrong target framework</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Task</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2019-03-29T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
           <Data ss:Type="Number">92</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">manually testing installation of alpha2 from NuGet to local InstallationTests
-2.0 - installed and ran - DONE
-3.0 - installed and ran - DONE
-3.5 - installed the compatibility libraries - should not
-4.0 - installed the compatibility libraries - should not
+          <Data ss:Type="String">manually testing installation of alpha3 from local source to local InstallationTests
+2.0 - all good - DONE
+3.0 - 
+3.5 - 
+4.0 - just the one library - DONE
 4.5
 4.6
 4.7</Data>
@@ -443,6 +425,27 @@ make one object that can regex break apart all those names into their parts</Dat
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">93</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">maybe if I put empty Dependency Groups into the nuspec for each framework that doesn't need anything extra installed, it will work right?
+and now it's back to compiling with the wrong target framework</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-29T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-30T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>

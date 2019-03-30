@@ -2,7 +2,9 @@ REM save current directory
 set startingDirectory=%CD%
 
 REM Build release version of DataFiles project
-CALL compileReleaseProjects.bat
+REM no longer running this from here - do not put a possibly bad build over a good one
+REM 
+REM CALL compileReleaseProjects.bat
 
 REM Build Nuget package
 nuget pack WithoutHaste.DataFiles.nuspec
