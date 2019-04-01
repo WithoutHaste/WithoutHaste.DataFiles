@@ -57,30 +57,6 @@ https://stackoverflow.com/questions/55433661/why-does-msbuild-sometimes-ignore-t
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">92</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">manually testing installation of alpha3 from local source to local InstallationTests
-2.0 - all good - DONE
-3.0 - 
-3.5 - 
-4.0 - just the one library - DONE
-4.5
-4.6
-4.7</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Test</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2019-03-29T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
           <Data ss:Type="Number">78</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -105,7 +81,7 @@ note the few difference between target frameworks
         </Cell>
         <Cell ss:StyleID="paragraph">
           <Data ss:Type="String">verify EarlyDocs works with multi-targeting and this library
-before first publishing this library to NuGet</Data>
+before fully publishing this library to NuGet</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -425,6 +401,34 @@ make one object that can regex break apart all those names into their parts</Dat
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">92</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">manually testing installation of alpha3 from local source to local InstallationTests
+2.0 - from local - all good - DONE
+3.0 - from published - all good - DONE
+3.5 - from published - just the one library - DONE
+4.0 - from local - just the one library - DONE
+4.5 - from published - just the one library - DONE
+4.6 - from published - just the one library - DONE
+4.7 - from published - just the one library - DONE
+4.5.2 - from published - just the one library - DONE</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Test</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-29T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-04-01T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
