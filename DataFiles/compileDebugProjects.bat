@@ -1,13 +1,13 @@
-msbuild DataFiles.net20.csproj /P:TargetFrameworkVersion=v2.0;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net20.Debug.log;verbosity=normal
-msbuild DataFiles.net30.csproj /P:TargetFrameworkVersion=v3.0;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net30.Debug.log;verbosity=normal
-msbuild DataFiles.net35.csproj /P:TargetFrameworkVersion=v3.5;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net35.Debug.log;verbosity=normal
-msbuild DataFiles.net40.csproj /P:TargetFrameworkVersion=v4.0;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net40.Debug.log;verbosity=normal
-msbuild DataFiles.net45.csproj /P:TargetFrameworkVersion=v4.5;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net45.Debug.log;verbosity=normal
-msbuild DataFiles.net451.csproj /P:TargetFrameworkVersion=v4.5.1;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net451.Debug.log;verbosity=normal
-msbuild DataFiles.net452.csproj /P:TargetFrameworkVersion=v4.5.2;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net452.Debug.log;verbosity=normal
-msbuild DataFiles.net46.csproj /P:TargetFrameworkVersion=v4.6;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net46.Debug.log;verbosity=normal
-msbuild DataFiles.net461.csproj /P:TargetFrameworkVersion=v4.6.1;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net461.Debug.log;verbosity=normal
-msbuild DataFiles.net462.csproj /P:TargetFrameworkVersion=v4.6.2;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net462.Debug.log;verbosity=normal
-msbuild DataFiles.net47.csproj /P:TargetFrameworkVersion=v4.7;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net47.Debug.log;verbosity=normal
-msbuild DataFiles.net471.csproj /P:TargetFrameworkVersion=v4.7.1;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net471.Debug.log;verbosity=normal
-msbuild DataFiles.net472.csproj /P:TargetFrameworkVersion=v4.7.2;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net472.Debug.log;verbosity=normal
+msbuild DataFiles.net20.csproj /t:Clean;Rebuild /P:TargetFrameworkVersion=v2.0;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net20.Debug.log;verbosity=normal
+msbuild DataFiles.net30.csproj /t:Clean;Rebuild /P:TargetFrameworkVersion=v3.0;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net30.Debug.log;verbosity=normal
+msbuild DataFiles.net35.csproj /t:Clean;Rebuild /P:TargetFrameworkVersion=v3.5;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net35.Debug.log;verbosity=normal
+msbuild DataFiles.net40.csproj /t:Clean;Rebuild /P:TargetFrameworkVersion=v4.0;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net40.Debug.log;verbosity=normal
+msbuild DataFiles.net45.csproj /t:Clean;Rebuild /P:TargetFrameworkVersion=v4.5;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net45.Debug.log;verbosity=normal
+msbuild DataFiles.net451.csproj /t:Clean;Rebuild /P:TargetFrameworkVersion=v4.5.1;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net451.Debug.log;verbosity=normal
+msbuild DataFiles.net452.csproj /t:Clean;Rebuild /P:TargetFrameworkVersion=v4.5.2;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net452.Debug.log;verbosity=normal
+msbuild DataFiles.net46.csproj /t:Clean;Rebuild /P:TargetFrameworkVersion=v4.6;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net46.Debug.log;verbosity=normal
+msbuild DataFiles.net461.csproj /t:Clean;Rebuild /P:TargetFrameworkVersion=v4.6.1;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net461.Debug.log;verbosity=normal
+msbuild DataFiles.net462.csproj /t:Clean;Rebuild /P:TargetFrameworkVersion=v4.6.2;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net462.Debug.log;verbosity=normal
+msbuild DataFiles.net47.csproj /t:Clean;Rebuild /P:TargetFrameworkVersion=v4.7;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net47.Debug.log;verbosity=normal
+msbuild DataFiles.net471.csproj /t:Clean;Rebuild /P:TargetFrameworkVersion=v4.7.1;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net471.Debug.log;verbosity=normal
+msbuild DataFiles.net472.csproj /t:Clean;Rebuild /P:TargetFrameworkVersion=v4.7.2;Configuration=Debug -fl -flp:logfile=logs\DataFilesOutput.net472.Debug.log;verbosity=normal

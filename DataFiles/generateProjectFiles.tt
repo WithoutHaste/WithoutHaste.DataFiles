@@ -22,7 +22,7 @@ foreach(string version in targetFrameworkVersions)
 {
 	string netVersion = version.Replace("v", "net").Replace(".", "");
 	//I'm specifying TargetFramework within each csproj file, but it started to not work reliably so I'm also specifying it in the build command
-	WriteLine("msbuild DataFiles." + netVersion + ".csproj /P:TargetFrameworkVersion=" + version + ";Configuration=Debug -fl -flp:logfile=logs\\DataFilesOutput." + netVersion + ".Debug.log;verbosity=normal");
+	WriteLine("msbuild DataFiles." + netVersion + ".csproj /t:Clean;Rebuild /P:TargetFrameworkVersion=" + version + ";Configuration=Debug -fl -flp:logfile=logs\\DataFilesOutput." + netVersion + ".Debug.log;verbosity=normal");
 }
 SaveOutput("compileDebugProjects.bat");
 
@@ -30,7 +30,7 @@ foreach(string version in targetFrameworkVersions)
 {
 	string netVersion = version.Replace("v", "net").Replace(".", "");
 	//I'm specifying TargetFramework within each csproj file, but it started to not work reliably so I'm also specifying it in the build command
-	WriteLine("msbuild DataFiles." + netVersion + ".csproj /P:TargetFrameworkVersion=" + version + ";Configuration=Release -fl -flp:logfile=logs\\DataFilesOutput." + netVersion + ".Release.log;verbosity=normal");
+	WriteLine("msbuild DataFiles." + netVersion + ".csproj /t:Clean;Rebuild /P:TargetFrameworkVersion=" + version + ";Configuration=Release -fl -flp:logfile=logs\\DataFilesOutput." + netVersion + ".Release.log;verbosity=normal");
 }
 SaveOutput("compileReleaseProjects.bat");
 #>
