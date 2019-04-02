@@ -98,7 +98,7 @@ before fully publishing this library to NuGet</Data>
           <Data ss:Type="Number">5</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">release Version 1.0.0 - Initial Release</Data>
+          <Data ss:Type="String">release Version 1.0.0 - Initial Release on GitHub</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -401,6 +401,48 @@ make one object that can regex break apart all those names into their parts</Dat
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">95</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">update nuspec to use Markdown style links
+- turns out that is not supported</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-04-01T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-04-02T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">96</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">not getting protected or private get/set methods on properties
+- compile into alpha4 and publish it</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Bug - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-04-02T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-04-02T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -2141,7 +2183,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">94</Data>
+          <Data ss:Type="Number">96</Data>
         </Cell>
       </Row>
       <Row>

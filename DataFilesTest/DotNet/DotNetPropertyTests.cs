@@ -17,6 +17,16 @@ namespace DataFilesTest
 			public abstract int AbstractProperty { get; set; }
 
 			public int GetOnlyProperty { get { return 0; } }
+
+			public int PublicGetPrivateSet { get; private set; }
+
+			public int PublicGetProtectedSet { get; protected set; }
+
+			public int PublicGetPublicSet { get; set; }
+
+			public int PrivateGetPublicSet { private get; set; }
+
+			public int ProtectedGetPublicSet { protected get; set; }
 		}
 
 		protected interface IInterfaceA
@@ -118,6 +128,96 @@ namespace DataFilesTest
 			Assert.AreEqual("DataFilesTest.DotNetPropertyTests.IInterfaceB", dotNetType.Methods[1].Name.ExplicitInterface);
 			Assert.AreEqual("System.Int32", dotNetType.Methods[0].MethodName.ReturnTypeName);
 			Assert.AreEqual("System.Int32", dotNetType.Methods[1].MethodName.ReturnTypeName);
+		}
+
+		[TestMethod]
+		public void DotNetProperty_Assembly_PublicGetPrivateSet()
+		{
+			//arrange
+			Type type = typeof(AbstractClass);
+			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:AbstractClass'></member>", LoadOptions.PreserveWhitespace));
+			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:AbstractClass.PublicGetPrivateSet'></member>", LoadOptions.PreserveWhitespace)));
+			//act
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
+			//assert
+			Assert.AreEqual("PublicGetPrivateSet", dotNetType.Properties[0].Name.LocalName);
+			Assert.AreEqual(FieldCategory.Normal, dotNetType.Properties[0].Category);
+			Assert.IsTrue(dotNetType.Properties[0].HasGetterMethod);
+			Assert.IsTrue(dotNetType.Properties[0].HasSetterMethod);
+			Assert.AreEqual(AccessModifier.Public, dotNetType.Properties[0].GetterMethod.AccessModifier);
+			Assert.AreEqual(AccessModifier.Private, dotNetType.Properties[0].SetterMethod.AccessModifier);
+		}
+
+		[TestMethod]
+		public void DotNetProperty_Assembly_PublicGetProtectedSet()
+		{
+			//arrange
+			Type type = typeof(AbstractClass);
+			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:AbstractClass'></member>", LoadOptions.PreserveWhitespace));
+			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:AbstractClass.PublicGetProtectedSet'></member>", LoadOptions.PreserveWhitespace)));
+			//act
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
+			//assert
+			Assert.AreEqual("PublicGetProtectedSet", dotNetType.Properties[0].Name.LocalName);
+			Assert.AreEqual(FieldCategory.Normal, dotNetType.Properties[0].Category);
+			Assert.IsTrue(dotNetType.Properties[0].HasGetterMethod);
+			Assert.IsTrue(dotNetType.Properties[0].HasSetterMethod);
+			Assert.AreEqual(AccessModifier.Public, dotNetType.Properties[0].GetterMethod.AccessModifier);
+			Assert.AreEqual(AccessModifier.Protected, dotNetType.Properties[0].SetterMethod.AccessModifier);
+		}
+
+		[TestMethod]
+		public void DotNetProperty_Assembly_PublicGetPublicSet()
+		{
+			//arrange
+			Type type = typeof(AbstractClass);
+			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:AbstractClass'></member>", LoadOptions.PreserveWhitespace));
+			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:AbstractClass.PublicGetPublicSet'></member>", LoadOptions.PreserveWhitespace)));
+			//act
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
+			//assert
+			Assert.AreEqual("PublicGetPublicSet", dotNetType.Properties[0].Name.LocalName);
+			Assert.AreEqual(FieldCategory.Normal, dotNetType.Properties[0].Category);
+			Assert.IsTrue(dotNetType.Properties[0].HasGetterMethod);
+			Assert.IsTrue(dotNetType.Properties[0].HasSetterMethod);
+			Assert.AreEqual(AccessModifier.Public, dotNetType.Properties[0].GetterMethod.AccessModifier);
+			Assert.AreEqual(AccessModifier.Public, dotNetType.Properties[0].SetterMethod.AccessModifier);
+		}
+
+		[TestMethod]
+		public void DotNetProperty_Assembly_PrivateGetPublicSet()
+		{
+			//arrange
+			Type type = typeof(AbstractClass);
+			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:AbstractClass'></member>", LoadOptions.PreserveWhitespace));
+			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:AbstractClass.PrivateGetPublicSet'></member>", LoadOptions.PreserveWhitespace)));
+			//act
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
+			//assert
+			Assert.AreEqual("PrivateGetPublicSet", dotNetType.Properties[0].Name.LocalName);
+			Assert.AreEqual(FieldCategory.Normal, dotNetType.Properties[0].Category);
+			Assert.IsTrue(dotNetType.Properties[0].HasGetterMethod);
+			Assert.IsTrue(dotNetType.Properties[0].HasSetterMethod);
+			Assert.AreEqual(AccessModifier.Private, dotNetType.Properties[0].GetterMethod.AccessModifier);
+			Assert.AreEqual(AccessModifier.Public, dotNetType.Properties[0].SetterMethod.AccessModifier);
+		}
+
+		[TestMethod]
+		public void DotNetProperty_Assembly_ProtectedGetPublicSet()
+		{
+			//arrange
+			Type type = typeof(AbstractClass);
+			DotNetType dotNetType = DotNetType.FromVisualStudioXml(XElement.Parse("<member name='T:AbstractClass'></member>", LoadOptions.PreserveWhitespace));
+			dotNetType.AddMember(DotNetProperty.FromVisualStudioXml(XElement.Parse("<member name='P:AbstractClass.ProtectedGetPublicSet'></member>", LoadOptions.PreserveWhitespace)));
+			//act
+			dotNetType.AddAssemblyInfo(type, dotNetType.Name);
+			//assert
+			Assert.AreEqual("ProtectedGetPublicSet", dotNetType.Properties[0].Name.LocalName);
+			Assert.AreEqual(FieldCategory.Normal, dotNetType.Properties[0].Category);
+			Assert.IsTrue(dotNetType.Properties[0].HasGetterMethod);
+			Assert.IsTrue(dotNetType.Properties[0].HasSetterMethod);
+			Assert.AreEqual(AccessModifier.Protected, dotNetType.Properties[0].GetterMethod.AccessModifier);
+			Assert.AreEqual(AccessModifier.Public, dotNetType.Properties[0].SetterMethod.AccessModifier);
 		}
 	}
 }

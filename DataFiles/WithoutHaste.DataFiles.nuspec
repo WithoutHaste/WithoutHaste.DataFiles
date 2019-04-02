@@ -2,7 +2,7 @@
 <package>
   <metadata minClientVersion="2.0"> <!-- 2.0 required for dependency groups -->
     <id>WithoutHaste.DataFiles</id>
-    <version>1.0.0-alpha3</version>
+    <version>1.0.0-alpha4</version>
     <title>WithoutHaste.DataFiles</title>
     <authors>WithoutHaste</authors>
     <owners>WithoutHaste</owners>
@@ -20,7 +20,7 @@
 	+ WithoutHaste.DataFiles.DotNet: pull comments and object structure from .Net project/library.  
 	+ WithoutHaste.DataFiles.Markdown: generate Markdown files.  
 	
-	See full documentation at https://github.com/WithoutHaste/WithoutHaste.DataFiles.
+	See full documentation on GitHub (https://github.com/WithoutHaste/WithoutHaste.DataFiles).
 	</description>
     <releaseNotes>
 	Initial Release:  

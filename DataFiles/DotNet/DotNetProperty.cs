@@ -57,8 +57,8 @@ namespace WithoutHaste.DataFiles.DotNet
 		/// </summary>
 		public virtual void AddAssemblyInfo(PropertyInfo propertyInfo)
 		{
-			GetterMethod = DotNetPropertyMethod.FromAssemblyInfo(propertyInfo.GetGetMethod());
-			SetterMethod = DotNetPropertyMethod.FromAssemblyInfo(propertyInfo.GetSetMethod());
+			GetterMethod = DotNetPropertyMethod.FromAssemblyInfo(propertyInfo.GetGetMethod(true)); //true means also return non-public methods
+			SetterMethod = DotNetPropertyMethod.FromAssemblyInfo(propertyInfo.GetSetMethod(true));
 			TypeName = DotNetQualifiedTypeName.FromAssemblyInfo(propertyInfo.PropertyType);
 
 			Category = FieldCategory.Normal;
