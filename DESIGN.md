@@ -56,6 +56,12 @@ So this looks into each compiled assembly and checks what framework it actually 
 Good values are ImageRuntimeVersion="v2.0..." for targets 2.0 through 3.5 and "v4.0..." above that.  
 Bad values are ImageRuntimeVersion="v4.0..." for targets 2.0 through 3.5.
 
+### Documentation
+
+Projects for net20, net35, and net40 will generate independent documentation.
+
+These are the points in framework progression when the DataFiles documentation is affected.
+
 ## Automated Testing
 
 ### DataFilesTest

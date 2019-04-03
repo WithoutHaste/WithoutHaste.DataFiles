@@ -38,12 +38,14 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">101</Data>
+          <Data ss:Type="Number">104</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">GitHub: 
-update installation instructions
-save release 1.0.0</Data>
+          <Data ss:Type="String">REMINDER:
+DataFiles currently does not have automated documentation
+because I can set an alias for NuGet WithoutHaste.DataFiles within the *.csproj file, but command line msbuild ignores that and has no command line option to replace it
+
+so it gets ambiguous calls between the current project WithoutHaste.DataFiles and the referenced WithoutHaste.DataFiles.</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -61,6 +63,8 @@ save release 1.0.0</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
           <Data ss:Type="String">documentation:
+After EarlyDocs is published and reinstalled in DataFiles:
+
 note the few difference between target frameworks
 - 2.0/3.0 can toggle QualifiedNameConverter on and off with a method
 - or should I have one folder for 2.0 docs and one for 4.5.2 docs so that I can link to each for pre/post 3.5 differences?</Data>
@@ -154,7 +158,8 @@ catch BadImageFormatException, give message about which frameworks are supported
         </Cell>
         <Cell ss:StyleID="paragraph">
           <Data ss:Type="String">http://geekswithblogs.net/robz/archive/2011/07/15/extend-nuget-command-line.aspx
-Can nuget.exe be extended to support full package installation from command line?</Data>
+Can nuget.exe be extended to support full package installation from command line?
+OR will dotnet add package command do it? in Developer Prompt?</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -401,6 +406,28 @@ make one object that can regex break apart all those names into their parts</Dat
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">101</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">GitHub: 
+update installation instructions
+save release 1.0.0</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-04-03T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-04-03T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -2313,7 +2340,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">102</Data>
+          <Data ss:Type="Number">104</Data>
         </Cell>
       </Row>
       <Row>

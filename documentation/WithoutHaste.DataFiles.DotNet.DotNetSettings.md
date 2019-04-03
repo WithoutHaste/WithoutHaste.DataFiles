@@ -79,3 +79,11 @@ string displayString = myQualifiedTypeName.FullName;
 * **string fullName**: When processing name "System.Collections.Generic.List", fullName will be "System" then "System.Collections" then "System.Collections.Generic" then "System.Collections.Generic.List".  
 * **int depth**: When processing name "System.Collections.Generic.List", depth will be 3 at "System", then 2 at "Collections", then 1 at "Generic", then 0 at "List".  
 
+## UseDefaultQualifiedNameConverter(bool useDefault)
+
+**static void**
+
+Toggle the use of the DefaultQualifiedNameConverter on and off.
+
+**Remarks**  
+Only available in target frameworks less than 3.5. For higher frameworks, set QualifiedNameConverter directly.

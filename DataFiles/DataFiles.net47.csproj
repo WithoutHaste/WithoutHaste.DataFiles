@@ -124,8 +124,8 @@
   <PropertyGroup>
     <EarlyDocsDllFile>$(ProjectDir)$(OutDir)WithoutHaste.DataFiles.dll</EarlyDocsDllFile>
     <EarlyDocsXmlFile>$(ProjectDir)$(OutDir)WithoutHaste.DataFiles.XML</EarlyDocsXmlFile>
-    <EarlyDocsOutputDir>$(ProjectDir)..\documentation\</EarlyDocsOutputDir>
-    <EarlyDocsSkip>True</EarlyDocsSkip>
+    <EarlyDocsOutputDir>$(ProjectDir)..\documentation\net20\</EarlyDocsOutputDir>
+    <EarlyDocsSkip>False</EarlyDocsSkip>
   </PropertyGroup>
   <ItemGroup>
     <!--<EarlyDocsInclude Include="$(ProjectDir)$(OutDir)EPPlus.dll"></EarlyDocsInclude>-->
