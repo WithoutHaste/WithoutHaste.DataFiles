@@ -2,7 +2,7 @@
 <package>
   <metadata minClientVersion="2.0"> <!-- 2.0 required for dependency groups -->
     <id>WithoutHaste.DataFiles</id>
-    <version>1.0.0-alpha4</version>
+    <version>1.0.0</version>
     <title>WithoutHaste.DataFiles</title>
     <authors>WithoutHaste</authors>
     <owners>WithoutHaste</owners>

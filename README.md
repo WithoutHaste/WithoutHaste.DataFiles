@@ -12,11 +12,11 @@ This library is under active development. Report bugs and request features on [G
 
 ## Download
 
-Alpha release is [available on Nuget](https://www.nuget.org/packages/WithoutHaste.DataFiles/1.0.0-alpha).
+[Available on Nuget](https://www.nuget.org/packages/WithoutHaste.DataFiles/1.0.0).
 
-Package Manager: `Install-Package WithoutHaste.DataFiles -Version 1.0.0-alpha`
+Package Manager: `Install-Package WithoutHaste.DataFiles -Version 1.0.0`
 
-.NET CLI: `dotnet add package WithoutHaste.DataFiles --version 1.0.0-alpha`
+.NET CLI: `dotnet add package WithoutHaste.DataFiles --version 1.0.0`
 
 ## Namespace
 
@@ -71,5 +71,5 @@ Initial Release - v1.0.0 under development:
 - Includes namespaces DotNet and Markdown only
 - Support for extracting Visual Studio XML documentation files and assembly information.  
 - Support for creating Markdown files.  
-- Install with NuGet  
+- Installs with NuGet  
 - Includes builds for all .Net frameworks from 2.0 through 4.7.2  

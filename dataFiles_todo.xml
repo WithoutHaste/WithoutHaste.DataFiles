@@ -38,46 +38,12 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">98</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">adding a Clean command before Rebuild miiiiight have fixed the msbuild targeting error
-except net35 is now target v2.0 instead of v4.0 which seeeems to result in it looking for a missing LINQlone library when you run it
-wait, my notes say having net35 ImageRuntimeVersion v2.0 is correct</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Task</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2019-04-02T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
-          <Data ss:Type="Number">100</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">publish full version 1.0.0</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Task</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2019-04-03T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
           <Data ss:Type="Number">101</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">GitHub: save release 1.0.0</Data>
+          <Data ss:Type="String">GitHub: 
+update installation instructions
+save release 1.0.0</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -87,25 +53,6 @@ wait, my notes say having net35 ImageRuntimeVersion v2.0 is correct</Data>
         </Cell>
         <Cell ss:StyleID="cellShortDate">
           <Data ss:Type="DateTime">2019-04-03T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
-          <Data ss:Type="Number">94</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">msbuild sometimes ignoring TargetFrameworkVersion
-- posted question on StackOverflow
-https://stackoverflow.com/questions/55433661/why-does-msbuild-sometimes-ignore-targetframeworkversion</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Task</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2019-03-30T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -454,6 +401,92 @@ make one object that can regex break apart all those names into their parts</Dat
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">100</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">package full version 1.0.0
+run local installation tests
+- net20 installed right files, gave right output - DONE
+- net40 installed right files, gave right output - DONE
+
+publish full version 1.0.0
+run full installation tests
+- net20 installed right files, gave right output - DONE
+- net30 installed right files, gave right output - DONE
+- net35 installed right files, gave right output - DONE
+- net40 installed right files, gave right output - DONE
+- net45 installed right files, gave right output - DONE
+- net46 installed right files, gave right output - DONE
+- net47 installed right files, gave right output - DONE
+- net451 installed right files, gave right output - DONE
+- net452 installed right files, gave right output - DONE
+- net461 installed right files, gave right output - DONE
+- net462 installed right files, gave right output - DONE
+- net471 installed right files, gave right output - DONE
+- net472 installed right files, gave right output - DONE</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-04-03T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-04-03T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">94</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">msbuild sometimes ignoring TargetFrameworkVersion
+- posted question on StackOverflow
+https://stackoverflow.com/questions/55433661/why-does-msbuild-sometimes-ignore-targetframeworkversion</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-03-30T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-04-03T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">98</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">adding a Clean command before Rebuild miiiiight have fixed the msbuild targeting error
+except net35 is now target v2.0 instead of v4.0 which seeeems to result in it looking for a missing LINQlone library when you run it
+wait, my notes say having net35 ImageRuntimeVersion v2.0 is correct
+
+yeah, seems to be working
+- update stackoverflow - DONE</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-04-02T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-04-03T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
