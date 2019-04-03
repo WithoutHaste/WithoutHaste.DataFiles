@@ -67,7 +67,7 @@ For programmers working on this project:
 
 Uses [Semantic Versioning 2.0.0](https://semver.org/).
 
-Initial Release - v1.0.0 under development:
+[Initial Release - v1.0.0](https://github.com/WithoutHaste/WithoutHaste.DataFiles/releases/tag/v1.0.0)
 - Includes namespaces DotNet and Markdown only
 - Support for extracting Visual Studio XML documentation files and assembly information.  
 - Support for creating Markdown files.  
