@@ -45,7 +45,11 @@
 DataFiles currently does not have automated documentation
 because I can set an alias for NuGet WithoutHaste.DataFiles within the *.csproj file, but command line msbuild ignores that and has no command line option to replace it
 
-so it gets ambiguous calls between the current project WithoutHaste.DataFiles and the referenced WithoutHaste.DataFiles.</Data>
+so it gets ambiguous calls between the current project WithoutHaste.DataFiles and the referenced WithoutHaste.DataFiles.
+
+possible solution:
+make a standalone project that will run the documentation for DataFiles and save it into DataFile's documentation folder
+- the drawback is that this will not run automatically whenever DataFiles is built</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -164,6 +168,67 @@ OR will dotnet add package command do it? in Developer Prompt?</Data>
         </Cell>
         <Cell ss:StyleID="cellShortDate">
           <Data ss:Type="DateTime">2019-03-18T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">106</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">Setting:
+default to including documentation for public and protected things that are NOT commented
+with option to only include documentation for commented things</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-04-04T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">107</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">Setting: Maybe:
+default to sorting things into alphabetical order
+with option (per project and per object?) to keep the same order as the actual code because it is in a logical order</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Minor</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-04-04T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">105</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">Breaking Change Proposal:
+can I use an Interface instead of Func&lt;&gt; to let users create custom display logic for QualifiedNames?
+
+Benefits:
+- Consistent DotNetSettings behavior across target frameworks
+- My EarlyDocs Test documentation could all use the same set of NameConverters, so I wouldn't need to maintain multiple sets of Oracle Documentation
+-- with just the one Extensions test being different across target frameworks, I could have just the differences saved in the other folders, and copy them in over the default OracleDocumentation - make it clear what is different</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-04-04T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -2349,7 +2414,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">104</Data>
+          <Data ss:Type="Number">107</Data>
         </Cell>
       </Row>
       <Row>
