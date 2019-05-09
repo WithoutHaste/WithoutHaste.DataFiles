@@ -85,6 +85,26 @@ catch BadImageFormatException, give message about which frameworks are supported
       </Row>
       <Row>
         <Cell>
+          <Data ss:Type="Number">108</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">NEXT:
+do not require XML comments file, just load all public/protected from DLL reflection
+
+this will require a lot of testing</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-05-09T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
           <Data ss:Type="Number">83</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -168,6 +188,24 @@ OR will dotnet add package command do it? in Developer Prompt?</Data>
         </Cell>
         <Cell ss:StyleID="cellShortDate">
           <Data ss:Type="DateTime">2019-03-18T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">109</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">If Settings uses an Interface instead of a Func, then it should work the same way for all frameworks, right?
+- changing this would count as a breaking change</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Feature - Major</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2019-05-09T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -2414,7 +2452,7 @@ so that sorting by filename groups like-object together</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">107</Data>
+          <Data ss:Type="Number">109</Data>
         </Cell>
       </Row>
       <Row>
