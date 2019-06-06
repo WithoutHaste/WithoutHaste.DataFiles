@@ -8,7 +8,7 @@ Use **WithoutHaste.DataFiles.Markdown** to create Markdown documents.
 
 Use **WithoutHaste.DataFiles.Excel** to load, edit, or create Excel documents. _(not released)_
 
-This library is under active development. Report bugs and request features on [Github](https://github.com/WithoutHaste/WithoutHaste.DataFiles/issues) or to wohaste@gmail.com.
+Mainly exists to support [EarlyDocs](https://github.com/WithoutHaste/EarlyDocs) tool.
 
 ## Download
 
